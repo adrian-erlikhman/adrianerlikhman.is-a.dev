@@ -1089,10 +1089,10 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <span class="pn">R.02</span>
         <div class="pmain">
           <h3>Self-Attribution Is Not Self-Recognition: A Peer Baseline for LLM Judges</h3>
-          <div class="meta">First author · CompLLM · Advisor: Philo Juang (Google DeepMind)</div>
-          <div class="st">Submitted · NeurIPS 2026 · JUDGe Workshop</div>
+          <div class="meta">First author · CompLLM · with Ryan Erlikhman &amp; Michael Tarekegn · Advisor: Philo Juang (Google DeepMind)</div>
+          <div class="st">Under review · NeurIPS 2026 · JUDGe Workshop (decision 29 Sept)</div>
           <div class="ptags"><span>NLP</span><span>LLM-as-Judge</span><span>Stylometry</span><span>Evaluation</span></div>
-          <p class="abstract">LLM-as-judge pipelines anonymize candidate responses on the assumption that a judge cannot tell who wrote what. I run five frontier models over the same 190 responses under two elicitation formats and score every self-attribution rate against a peer baseline. Claude names itself on 86.8% of its own writing while its four peers identify that same text at 53.9%; the panel splits three ways, and Grok lands below the chance floor on itself. A stylometric classifier over 18 interpretable features recovers the true author at 86.3%, so the signal is in the text — most judges just do not use it.</p>
+          <p class="abstract">LLM-as-judge pipelines anonymize candidate responses on the assumption that a judge cannot tell who wrote what. I run five frontier models over the same 190 responses under two elicitation formats and score every self-attribution rate against a peer baseline: what the other four judges get on the same text. Claude names itself on 86.8% of its own writing while its peers identify that text at 53.9%; GPT shows a similar edge, two models are neutral, and Grok lands below the chance floor on itself. A stylometric classifier over 18 interpretable features recovers the true author at 86.3%, above every judge, so the signal is in the text — most judges just do not use it. Fully reproducible in one command, no API key.</p>
         </div>
         <div class="paper-cta">
           <button class="dl demo-open" id="openStylo">TRY THE DEMO ↗</button>
