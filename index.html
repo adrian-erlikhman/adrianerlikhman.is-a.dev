@@ -962,7 +962,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
     <a href="#work">Projects</a>
     <a href="#fencing">Fencing</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf" target="_blank" class="navcv" data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-09" target="_blank" class="navcv" data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
 </div>
@@ -1411,7 +1411,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag>GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-55489620b" target="_blank" data-mag>LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag>Fencing</a>
-        <a href="resume.pdf" target="_blank" data-mag>Résumé</a>
+        <a href="resume.pdf?v=2026-09" target="_blank" data-mag>Résumé</a>
       </div>
     </div>
   </div>
@@ -1881,7 +1881,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
-    {ic:'↓',label:'Download résumé',k:'file',run:()=>ext('resume.pdf')},
+    {ic:'↓',label:'Download résumé',k:'file',run:()=>ext('resume.pdf?v=2026-09')},
     {ic:'</>',label:'Repo: Regime-Aware Portfolio Optimizer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer')},
     {ic:'</>',label:'Repo: LSTM Equity Forecaster',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/lstm-equity-forecaster')},
     {ic:'</>',label:'Repo: FinBERT Sentiment Analyzer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/finbert-sentiment-analyzer')},
@@ -2287,7 +2287,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     fencing:()=>{print("Épée, A-rated · Team USA · Top 8 Cadet (U17) Pan-Ams. → opened Fencing.");go('#fencing');},
     contact:()=>print('email → <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a> · <a href="https://github.com/adrian-erlikhman" target="_blank">github</a>'),
     email:()=>{print("opening mail …");location.href='mailto:erlikhman.adrian@gmail.com';},
-    resume:()=>{print("opening resume.pdf …");window.open('resume.pdf','_blank');},
+    resume:()=>{print("opening resume.pdf …");window.open('resume.pdf?v=2026-09','_blank');},
     fortune:()=>print("\"estimating expected returns is the hard part.\" — the portfolio paper, basically",'dim'),
     sudo:()=>print("nice try. you don't have root on adrian.os :)",'dim'),
     clear:()=>{body.innerHTML='';},
