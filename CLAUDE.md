@@ -23,14 +23,22 @@ résumé linked from the site.
   overwrite the user's current résumé, so don't, unless the user explicitly
   asks to go back to the generated résumé.
 
-- **Patched in place 2026-09-09** to add *National Merit Semifinalist* to the
-  front of the HONORS bullet. Done as surgery, not a rebuild: the three
-  baselines of that bullet (129.29 / 121.80 / 114.31) were stripped from the
-  content stream, white-boxed from x 29 so the bullet glyph at x 21.75 survived,
-  and redrawn re-wrapped. It still comes to three lines, so nothing below moved.
-  **If a fresh export is uploaded, that line has to be in the source document or
-  it is lost.** File went 50 KB -> 322 KB because the patch embeds a DejaVuSerif
-  subset.
+- **Patched in place 2026-09-09.** The live `resume.pdf` is Adrian's uploaded export
+  plus five surgical edits, applied in ONE pass from the original 50 KB upload
+  (`~/Downloads/Adrian_Erlikhman_Resume.pdf`). Re-running patches on an
+  already-patched file embeds a second font subset and doubles the size, so always
+  rebuild from the original.
+  Edits: added *National Merit Semifinalist* to HONORS; removed class rank from both
+  EDUCATION and HONORS (**temporary, Adrian asked for it back later**); removed
+  Speech & Debate and National Honor Society (permanent); removed Cedars-Sinai and
+  Friendship Circle LA (permanent); named the dual-enrollment course as linear algebra.
+  Method: strip the target baselines from the content stream, white-box from x 29 so
+  the bullet glyphs at x 21.75 survive, re-wrap at 545pt, redraw at 6.92pt DejaVuSerif,
+  7.49pt leading. Keep each paragraph's FIRST baseline so its bullet stays put. Two
+  paragraphs lost a line; both were last in their section, so the slack fell at a
+  section break. The section rules live in a transformed space and were not moved.
+  **A fresh export from Adrian wipes all of this** unless the changes are in his source
+  document. 50 KB -> 333 KB.
 
 ### (superseded) Résumé generation
 - `resume.pdf` is patched in place by `tools/build_resume.py`:
