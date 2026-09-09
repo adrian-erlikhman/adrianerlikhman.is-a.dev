@@ -15,7 +15,15 @@ résumé linked from the site.
   - Résumé: `tools/build_resume.py` → the `USA Fencing` entry in the `AWARDS`
     list, then regenerate (see below).
 
-## Résumé generation
+## Résumé
+- **As of 2026-09-09, `resume.pdf` is a hand-authored file the user uploads —
+  that uploaded PDF is the source of truth. Do NOT regenerate it.** To update,
+  replace it with a newer PDF the user provides. The `tools/build_resume.py`
+  generator below is **superseded**; running it against `resume.pdf` would
+  overwrite the user's current résumé, so don't, unless the user explicitly
+  asks to go back to the generated résumé.
+
+### (superseded) Résumé generation
 - `resume.pdf` is patched in place by `tools/build_resume.py`:
   `python tools/build_resume.py resume.pdf`. Needs `reportlab` + `pypdf`; the
   DejaVu Serif faces come from the ones matplotlib ships (`mpl-data/fonts/ttf`).
