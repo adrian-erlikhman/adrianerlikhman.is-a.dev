@@ -23,6 +23,15 @@ résumé linked from the site.
   overwrite the user's current résumé, so don't, unless the user explicitly
   asks to go back to the generated résumé.
 
+- **Patched in place 2026-09-09** to add *National Merit Semifinalist* to the
+  front of the HONORS bullet. Done as surgery, not a rebuild: the three
+  baselines of that bullet (129.29 / 121.80 / 114.31) were stripped from the
+  content stream, white-boxed from x 29 so the bullet glyph at x 21.75 survived,
+  and redrawn re-wrapped. It still comes to three lines, so nothing below moved.
+  **If a fresh export is uploaded, that line has to be in the source document or
+  it is lost.** File went 50 KB -> 322 KB because the patch embeds a DejaVuSerif
+  subset.
+
 ### (superseded) Résumé generation
 - `resume.pdf` is patched in place by `tools/build_resume.py`:
   `python tools/build_resume.py resume.pdf`. Needs `reportlab` + `pypdf`; the
