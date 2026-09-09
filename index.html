@@ -1072,7 +1072,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
             <h3>Co-Founder</h3>
             <!-- [EDIT] set the real SafeJew site URL below -->
             <div class="org"><a href="https://safejew.org" target="_blank" style="border-bottom:1px solid var(--acc)" data-mag>SafeJew ↗</a> · JFEDLA Teen Innovation Grant</div>
-            <p>Co-founded a live map and dashboard of antisemitic incidents across Greater Los Angeles, built on ADL, FBI, LAPD, and JFEDLA incident data with an ML hotspot-prediction model on top, then rebuilt as V2 on Next.js and Supabase. Funded by a JFEDLA Teen Innovation Grant and deployed across the Federation's Greater LA network.</p>
+            <p>Co-founded a live map of antisemitic incidents across Greater Los Angeles, in production at safejew.org. It plots 800 incidents in LA — 100 of them individually sourced, each carrying a citable link to the article it came from, the rest from the ADL H.E.A.T. Map — plus 594 more across 33 university campuses nationwide. A GitHub Action scrapes the news daily and runs each hit through a dependency-free LA gazetteer I wrote, which reads a place out of the prose and turns it into coordinates, so new incidents land on the map as their own approximate layer. Next.js, TypeScript and Supabase on Vercel. Funded by a JFEDLA Teen Innovation Grant and deployed across the Federation's Greater LA network.</p>
           </div>
         </div>
       </div>
@@ -1121,7 +1121,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <span class="pn">R.03</span>
         <div class="pmain">
           <h3>Exploring Ukraine's Development with the Legatum Prosperity Index</h3>
-          <div class="meta">A machine-learning approach · Lumiere Research Program · mentor Abdulla Kerimov (Stanford)</div>
+          <div class="meta">A machine-learning approach · mentored by Abdulla Kerimov (Stanford)</div>
           <div class="st">Manuscript complete · 2024</div>
           <div class="ptags"><span>Data Science</span><span>Supervised ML</span><span>Python</span></div>
           <p class="abstract">Trained supervised models on the Legatum Prosperity Index to forecast pillar-level prosperity for Ukraine, with Israel as a comparison case: exploratory analysis, feature engineering, model selection, and evaluation in Python. My first research project, done over a summer with a Stanford mentor, and the reason the two papers below exist.</p>
@@ -1134,9 +1134,9 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <span class="pn">R.04</span>
         <div class="pmain">
           <h3>How Robust Are the Legatum Prosperity Index Rankings?</h3>
-          <div class="meta">Monte Carlo &amp; global sensitivity analysis · with Ryan Erlikhman (LACES)</div>
+          <div class="meta">Composite-index robustness · with Ryan Erlikhman (LACES)</div>
           <div class="st">Accepted with revisions · Journal of High School Science · in revision</div>
-          <div class="ptags"><span>Monte Carlo</span><span>Sensitivity Analysis</span><span>Statistics</span></div>
+          <div class="ptags"><span>Python</span><span>Rank Statistics</span><span>Robustness</span><span>Reproducibility</span></div>
           <p class="abstract">The Legatum Prosperity Index ranks 167 countries by an equal-weighted mean of twelve pillar scores. We audit how much of that ranking survives when the 1/12 weights, the normalization, and the aggregation rule are all allowed to vary: 10,000 Monte Carlo draws under three priors, plus a Sobol' sensitivity analysis over fourteen inputs. The ranking is globally stable (median Spearman ≥ 0.987) but locally soft: the median country's 90% rank interval spans 22 places, and the weights that matter most belong to the pillars least correlated with the composite.</p>
         </div>
         <a class="dl" href="papers/legatum-robustness-audit.pdf" target="_blank" data-mag>PDF ↓</a>
@@ -1241,7 +1241,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
           <div class="be">
             <div class="be-t">Co-Founder <span>· SafeJew</span></div>
             <div class="be-m">JFEDLA Teen Innovation Grant</div>
-            <p>Co-founded and shipped safejew.org: ~800 geolocated, individually sourced incidents, an automated news feed, a campus view covering 33 universities, and a hotspot-prediction model. Rebuilt the whole platform for a pitch to Hillel International.</p>
+            <p>Co-founded and shipped safejew.org: 800 geolocated incidents across Greater LA, 100 of them individually sourced with a citable link on every pin, plus 594 more across 33 university campuses. A daily GitHub Action scrapes the news and geocodes it through a hand-written LA gazetteer, so the map keeps itself current. Rebuilt the whole platform for a pitch to Hillel International.</p>
           </div>
           <div class="be">
             <div class="be-t">President <span>· Jewish Student Union</span></div>
@@ -1348,9 +1348,9 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <span class="stub"></span><span class="sweep"></span>
         <div class="id">P.05</div>
         <h3>SafeJew — Community Safety Platform</h3>
-        <p>A Next.js and Supabase platform that maps ~800 sourced antisemitic incidents across Greater Los Angeles from ADL, FBI, LAPD, and JFEDLA data, with a hotspot-prediction model, a news scraper that keeps the map current, and a campus view for 33 universities. In production at safejew.org and used across JFEDLA's Greater LA network.</p>
-        <div class="metric">in production · ~800 incidents · 33 campuses</div>
-        <div class="tags"><span>Next.js</span><span>Supabase</span><span>ML</span></div>
+        <p>A Next.js and Supabase platform mapping 800 antisemitic incidents across Greater Los Angeles, 100 of them individually sourced with a citable link on every pin and the rest from the ADL H.E.A.T. Map, plus 594 across 33 campuses nationwide. A daily GitHub Action scrapes news and geocodes it through a hand-written LA gazetteer, so the map keeps itself current. In production at safejew.org.</p>
+        <div class="metric">in production · 1,394 incidents · 33 campuses</div>
+        <div class="tags"><span>Next.js</span><span>Supabase</span><span>Geocoding</span></div>
         <div class="proj-actions">
           <a href="https://safejew.org" target="_blank" class="open" data-mag>LIVE SITE <span class="ar">↗</span></a>
           <a href="https://github.com/RE17-IWD/safejew" target="_blank" class="open" data-mag>GITHUB <span class="ar">↗</span></a>
