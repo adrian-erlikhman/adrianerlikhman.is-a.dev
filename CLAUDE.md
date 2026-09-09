@@ -1,4 +1,4 @@
-# Project memory — adrian-erlikhman.github.io
+# Project memory — adrianerlikhman.is-a.dev (repo adrian-erlikhman/adrianerlikhman.is-a.dev, formerly adrian-erlikhman.github.io)
 
 Personal portfolio site (single-page `index.html`), served via GitHub Pages at
 the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). `resume.pdf` is the
