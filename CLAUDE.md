@@ -32,6 +32,10 @@ résumé linked from the site.
      to a different number of lines, fix the wording, not the assertion: the
      layout plan depends on it. Text is 6.92 pt DejaVu Serif, 7.49 pt leading,
      wrapped at 545 pt, x 30.72 (bullet glyphs sit at x 21.75).
+     A heading shares its baseline with its **right-hand date**, and stripping
+     is by baseline — so redrawing a heading silently deletes the date next to
+     it. Entries take an optional `right` run, `(x, font, text)`, drawn on the
+     same baseline, for exactly that. Kiddom is the only entry that needs it.
      There is **no white-out rectangle** — the stale blocks are removed from the
      stream, and a rect wide enough to cover a paragraph also erases the heading
      of the section below it once sections move. That is what clipped
@@ -47,6 +51,10 @@ résumé linked from the site.
      CTM** — the page mixes an upright space with the original's flipped form
      space, and a block moved across that line renders upside down.
 - Finish with `compress_content_streams(level=9)`; the file lands near 128 KB.
+- Kiddom is a **Machine Learning Internship** on both the site and the résumé —
+  it used to read "Data Science Mentorship" on the résumé only. Keep them in
+  step: site card is in Experience `[02]`, résumé entry is last under
+  Professional Experience.
 - **Section order on the page:** Professional Experience · Ventures & Civic
   Technology · Research · Selected Technical Projects · Education · Leadership
   & Athletics · Honors, Service & Coursework · Technical Skills.
@@ -58,7 +66,7 @@ résumé linked from the site.
   their lines, and that the text layer reads in order with nothing doubled.
 - The site links the PDF with a cache-busting query. **Bump it in all four
   places in `index.html` whenever the PDF changes**, or browsers keep serving
-  the old file. Currently `resume.pdf?v=2026-09d`.
+  the old file. Currently `resume.pdf?v=2026-09e`.
 
 ### (superseded) Résumé generation
 - `resume.pdf` is patched in place by `tools/build_resume.py`:
