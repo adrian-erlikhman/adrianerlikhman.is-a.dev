@@ -16,29 +16,49 @@ résumé linked from the site.
     list, then regenerate (see below).
 
 ## Résumé
-- **As of 2026-09-09, `resume.pdf` is a hand-authored file the user uploads —
-  that uploaded PDF is the source of truth. Do NOT regenerate it.** To update,
-  replace it with a newer PDF the user provides. The `tools/build_resume.py`
-  generator below is **superseded**; running it against `resume.pdf` would
-  overwrite the user's current résumé, so don't, unless the user explicitly
-  asks to go back to the generated résumé.
-
-- **Patched in place 2026-09-09.** The live `resume.pdf` is Adrian's uploaded export
-  plus five surgical edits, applied in ONE pass from the original 50 KB upload
-  (`~/Downloads/Adrian_Erlikhman_Resume.pdf`). Re-running patches on an
-  already-patched file embeds a second font subset and doubles the size, so always
-  rebuild from the original.
-  Edits: added *National Merit Semifinalist* to HONORS; removed class rank from both
-  EDUCATION and HONORS (**temporary, Adrian asked for it back later**); removed
-  Speech & Debate and National Honor Society (permanent); removed Cedars-Sinai and
-  Friendship Circle LA (permanent); named the dual-enrollment course as linear algebra.
-  Method: strip the target baselines from the content stream, white-box from x 29 so
-  the bullet glyphs at x 21.75 survive, re-wrap at 545pt, redraw at 6.92pt DejaVuSerif,
-  7.49pt leading. Keep each paragraph's FIRST baseline so its bullet stays put. Two
-  paragraphs lost a line; both were last in their section, so the slack fell at a
-  section break. The section rules live in a transformed space and were not moved.
-  **A fresh export from Adrian wipes all of this** unless the changes are in his source
-  document. 50 KB -> 333 KB.
+- `resume.pdf` is a **hand-authored file Adrian uploads** — that PDF is the
+  source of truth. It is edited by surgery, never regenerated. The generator in
+  the superseded section below now dies with `KeyError: '/fzFrm1'` on this
+  layout; don't run it. **A fresh export from Adrian wipes every edit here**
+  unless the change is also in his source document.
+- The pristine source is `~/Downloads/Adrian_Erlikhman_Resume.pdf` (50 KB).
+  **Always rebuild from that**, never from an already-patched `resume.pdf` —
+  each patch-on-a-patch embeds another font subset and the file balloons.
+- The working scripts are `scratchpad/rebuild.py` and `scratchpad/sortstream.py`
+  (session scratch; re-create from this note if they are gone). Three stages:
+  1. **Text edits.** Each `EDITS` entry has a `band` — the device-space y range
+     whose text blocks get stripped out of the content stream — a `first`
+     baseline, and an `expect` line count the build asserts. If a rewrite wraps
+     to a different number of lines, fix the wording, not the assertion: the
+     layout plan depends on it. Text is 6.92 pt DejaVu Serif, 7.49 pt leading,
+     wrapped at 545 pt, x 30.72 (bullet glyphs sit at x 21.75).
+     There is **no white-out rectangle** — the stale blocks are removed from the
+     stream, and a rect wide enough to cover a paragraph also erases the heading
+     of the section below it once sections move. That is what clipped
+     "HONORS, SERVICE & COURSEWORK" down to "H".
+  2. **Section reorder.** Whole sections move by translating their existing text
+     *and path* operators, so every glyph stays the author's own typesetting.
+     Bullet markers and section rules are **vector paths, not text** — they need
+     the same translation, or the dots float away from their lines. The rules
+     live in a scaled space: `page_y = 792 - rule_y * 0.5808`.
+  3. **Reading order.** `sortstream.py` re-sorts text blocks in the stream by
+     baseline so a résumé parser walking it sees the sections in the order they
+     appear. A block may only trade places with one drawn under the **same
+     CTM** — the page mixes an upright space with the original's flipped form
+     space, and a block moved across that line renders upside down.
+- Finish with `compress_content_streams(level=9)`; the file lands near 128 KB.
+- **Section order on the page:** Professional Experience · Ventures & Civic
+  Technology · Research · Selected Technical Projects · Education · Leadership
+  & Athletics · Honors, Service & Coursework · Technical Skills.
+- Standing content notes: class rank is out of EDUCATION and HONORS
+  **temporarily** — Adrian wants it back later. Speech & Debate, National Honor
+  Society, Cedars-Sinai and Friendship Circle LA are out permanently.
+- Always render with `pypdfium2` **and** re-extract the text before committing:
+  check that it looks right, that no heading is clipped, that bullets sit on
+  their lines, and that the text layer reads in order with nothing doubled.
+- The site links the PDF with a cache-busting query. **Bump it in all four
+  places in `index.html` whenever the PDF changes**, or browsers keep serving
+  the old file. Currently `resume.pdf?v=2026-09d`.
 
 ### (superseded) Résumé generation
 - `resume.pdf` is patched in place by `tools/build_resume.py`:
