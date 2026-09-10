@@ -13,3 +13,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .claude/launch.json
+
+# fetched by tools/make_og.py, not vendored (OFL)
+tools/fonts/
