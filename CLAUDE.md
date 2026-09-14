@@ -103,10 +103,22 @@ résumé linked from the site.
 (id=`record`; sub-cards: Competitions & Awards / Founding & Leadership /
 Craft & Mastery) · `[05]` Projects · `[06]` Fencing · `[07]` Contact ·
 `[08]` Off the clock.
-- Two flagship `.dist-flag` banners open Achievements: eDNAtlas (1st, Decode the
-  Ocean) and Safe Routes to School (3rd, Code for Transportation). Both also
-  have a Projects card — eDNAtlas at P.06, Safe Routes at P.07 — and are
-  intentionally **not** in Experience.
-- The Safe Routes banner uses the `.df-multi` variant (a `div`, not an `a`) so it
-  can carry two links. The second is a `.df-soon` placeholder waiting on the
-  Young Coders' Sphere write-up; swap it for a real `<a>` when that is posted.
+- Three flagship `.dist-flag` banners open Achievements, the two firsts ahead of
+  the third: eDNAtlas (1st, Decode the Ocean), Ledger (1st, VISION HACK: South
+  LA) and Safe Routes to School (3rd, Code for Transportation). Each also has a
+  Projects card — eDNAtlas at P.06, Safe Routes at P.07, Ledger at P.08 — and
+  none of them is in Experience, intentionally.
+- Ledger and Safe Routes use the `.df-multi` variant (a `div`, not an `a`) so
+  each can carry two links. `.df-soon` is the dashed style for a link that is
+  not live yet.
+- **Ledger** (VISION HACK: South LA, 12 Sept 2026). The award label is Devpost's
+  prize name, "CD 9 Champion U18": "Council District 9 Champion, Under 18" on
+  the site, "CD 9 Champion, U18" on the résumé, and the badge says 1st place.
+  As of 13 Sept Devpost had posted neither winners nor its project gallery;
+  when it does, confirm the label and add the Devpost project link to the
+  banner. Role wording is Adrian's call: led the build across the vision
+  pipeline, rule engine and frontend, and wrote the two-pass vision pipeline,
+  the dashboard and renewal calendar, and the static fallback. Keep every
+  mention to exactly that. The SNAP stocking rule Ledger scores against is 7
+  varieties and 21 units per category with a perishable in **3 of the 4**
+  categories — not in every category.
