@@ -31,11 +31,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://adrianerlikhman.is-a.dev/papers/legatum-prosperity.pdf</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

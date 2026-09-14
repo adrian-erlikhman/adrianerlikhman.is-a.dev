@@ -87,8 +87,8 @@ résumé linked from the site.
 - The Legatum entry follows the 13 Sept 2026 JHSS revision: **First Author ·
   Co-author: Ryan Erlikhman**, and no advisor, because the manuscript's
   acknowledgements say no mentor supervised it (Abdulla Kerimov mentored the
-  separate Ukraine paper, R.03 on the site). "Accepted, Journal of High School
-  Science" is Adrian's wording; keep it until he changes it.
+  separate Ukraine paper, which is no longer on the site). "Accepted, Journal of
+  High School Science" is Adrian's wording; keep it until he changes it.
 - Ledger closes the competitions bullet, and VISION HACK also sits in the first
   HONORS line, next to Decode the Ocean.
 - **Section order on the page:** Professional Experience · Ventures & Civic
@@ -160,6 +160,21 @@ Craft & Mastery) · `[05]` Projects · `[06]` Fencing · `[07]` Contact ·
   mention to exactly that. The SNAP stocking rule Ledger scores against is 7
   varieties and 21 units per category with a perishable in **3 of the 4**
   categories — not in every category.
+- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Earshot · R.04 Legatum
+  robustness · R.05 portfolio optimization · R.06 advanced math. The Ukraine
+  Legatum-ML paper (the old R.03) came off on 13 Sept 2026 because Adrian found
+  it too similar to R.04, along with its PDF, ⌘K entry, terminal command and
+  sitemap entry. Don't bring it back.
+- **Earshot (R.03)**, with Michael Tarekegn, is headed for the AI for Peace
+  workshop at NeurIPS 2026 (Paris, 12–13 Dec). The abstract is due 21 Sept AoE
+  through a Google Form (pasted text, no PDF), and decisions come 29 Sept, so
+  there is no paper to link: the card, the ⌘K palette and `read earshot` all
+  point at the public repo, `adrian-erlikhman/earshot`. Take every number from
+  the FINAL STATUS table in that repo's `CLAIMS.md`. Quote only the era-matched
+  odds ratio, 1.03 [0.38, 2.78], never the crude control comparison, and never
+  call it the first to link NLP papers to patents. The title is the repo brief's
+  recommendation; Adrian left the choice to Claude. Update the status line once
+  it's submitted or decided.
 - **Research R.04**, the Legatum robustness paper, links
   `papers/legatum-robustness-audit.pdf?v=2026-09-13` from three places: the
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
