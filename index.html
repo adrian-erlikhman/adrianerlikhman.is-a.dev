@@ -603,6 +603,9 @@ section{padding:128px 0}
 /* hero — much bigger, more air */
 header.hero{padding:180px 0 120px;gap:60px}
 @media(max-width:820px){header.hero{padding:130px 0 70px}}
+/* FIX: those shorthands zero .wrap's side gutter, so the hero hit the screen edge; restore it, less the margin the 1180px box already has (desktop unchanged) */
+header.hero{padding-inline:clamp(0px,40px - (100% - 1180px)/2,40px)}
+@media(max-width:600px){header.hero{padding-inline:22px}}
 .hero .tag-row{font-size:10px;letter-spacing:.14em;margin-bottom:34px}
 .hero h1{font-size:clamp(3.4rem,10.5vw,7.8rem);line-height:.84;letter-spacing:-.05em}
 .hero .role{font-size:19px;line-height:1.6;max-width:40ch;margin-top:36px}
