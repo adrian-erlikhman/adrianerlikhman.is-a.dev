@@ -59,10 +59,13 @@ from LaTeX in `resume/`.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
-- **Site links:** the nav `.navcv`, Contact, ⌘K palette and terminal link
-  `resume.pdf` with a `?v=` cache-buster; bump all four whenever the PDF
-  changes. Currently `?v=2026-09g`. JSON-LD `subjectOf` and `sitemap.xml` list
-  both PDFs.
+- **Site links:** every résumé link carries `data-cv-menu` and opens the
+  `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
+  one-pager. The ⌘K palette and the terminal read their URLs from the picker.
+  The `?v=` cache-buster lives in **four places**: the two triggers (nav
+  `.navcv`, Contact) and the two picker options. Bump all four whenever either
+  PDF changes. Currently `?v=2026-09g`. JSON-LD `subjectOf` and `sitemap.xml`
+  list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
   patched it (`scratchpad/rebuild.py`, `sortstream.py`, `finalize.py`,

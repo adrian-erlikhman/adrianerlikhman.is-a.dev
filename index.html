@@ -736,6 +736,20 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
 .hud .navset a.navcv::before{content:none!important;counter-increment:none!important}
 .hud .navset a.navcv{color:var(--acc);font-weight:600}
 .hud .navset a.navcv:hover{opacity:.72}
+@media(max-width:900px){.hud .navset a.navcv{display:inline}}  /* the one nav link phones keep */
+
+/* résumé picker: a small menu under whichever résumé link was clicked */
+.cvmenu{position:fixed;z-index:9991;width:min(330px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line-strong);box-shadow:0 24px 60px -18px rgba(33,31,24,.45);padding:4px 6px 6px;animation:cmdkIn .16s ease}
+.cvmenu[hidden]{display:none}
+.cvm-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding:9px 10px 8px}
+.cvm-h span{color:var(--dim)}
+.cvm-opt{display:grid;grid-template-columns:1fr auto;gap:3px 12px;padding:11px 10px 12px;border-top:1px solid var(--line);color:var(--ink);text-decoration:none;transition:background .2s}
+.cvm-opt:hover,.cvm-opt:focus-visible{background:color-mix(in srgb,var(--acc) 11%,transparent);outline:none}
+.cvm-k{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.2}
+.cvm-p{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);align-self:center}
+.cvm-d{grid-column:1/-1;font-family:var(--sans);font-size:12.5px;line-height:1.45;color:var(--dim)}
+.cvm-src{display:block;border-top:1px solid var(--line);padding:9px 10px 4px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim);text-decoration:none}
+.cvm-src:hover,.cvm-src:focus-visible{color:var(--acc);outline:none}
 /* off-the-clock lead line (now its own closing section) */
 #offclock .offclock-lead{max-width:640px;font-size:16px;line-height:1.6;color:var(--dim);margin:0}
 #offclock .lifewrap{margin-top:40px}
@@ -989,7 +1003,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
     <a href="#work">Projects</a>
     <a href="#fencing">Fencing</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-09g" target="_blank" class="navcv" data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-09g" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
 </div>
@@ -1478,7 +1492,7 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag>GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-55489620b" target="_blank" data-mag>LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag>Fencing</a>
-        <a href="resume.pdf?v=2026-09g" target="_blank" data-mag>Résumé</a>
+        <a href="resume.pdf?v=2026-09g" target="_blank" data-cv-menu data-mag>Résumé</a>
       </div>
     </div>
   </div>
@@ -1510,6 +1524,21 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
   <span>BUILT FROM SCRATCH · NO TEMPLATE</span>
   <span>34.05°N 118.24°W · L.A.</span>
 </footer>
+
+<!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
+     Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
+<div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
+  <div class="cvm-h">résumé <span>// pick a length</span></div>
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-09g" target="_blank" rel="noopener">
+    <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
+    <span class="cvm-d">The highlights: internships, research and the wins.</span>
+  </a>
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-09g" target="_blank" rel="noopener">
+    <span class="cvm-k">Long</span><span class="cvm-p">2 pages</span>
+    <span class="cvm-d">Everything: every paper, talk, build and honor.</span>
+  </a>
+  <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
+</div>
 
 <!-- COMMAND PALETTE -->
 <div id="cmdk" class="cmdk" hidden>
@@ -1929,12 +1958,62 @@ document.getElementById('yr').textContent=new Date().getFullYear();
   },3800);
 })();
 
+/* ================= RÉSUMÉ PICKER (short / long) ================= */
+(function(){
+  const menu=document.getElementById('cvMenu'); if(!menu) return;
+  const items=[...menu.querySelectorAll('a')];
+  let trigger=null;
+  const place=t=>{
+    const r=t.getBoundingClientRect(), w=menu.offsetWidth, h=menu.offsetHeight;
+    menu.style.left=Math.min(Math.max(16,r.right-w),innerWidth-w-16)+'px';
+    const below=r.bottom+10;
+    menu.style.top=(below+h>innerHeight-12?Math.max(12,r.top-h-10):below)+'px';  // flip above when there's no room below
+  };
+  const open=t=>{
+    if(trigger&&trigger!==t) trigger.setAttribute('aria-expanded','false');
+    trigger=t; menu.hidden=false; place(t);
+    t.setAttribute('aria-expanded','true'); items[0].focus({preventScroll:true});
+  };
+  const close=refocus=>{
+    if(menu.hidden) return;
+    menu.hidden=true;
+    if(trigger){trigger.setAttribute('aria-expanded','false'); if(refocus) trigger.focus({preventScroll:true});}
+    trigger=null;
+  };
+  document.querySelectorAll('[data-cv-menu]').forEach(t=>{
+    t.setAttribute('aria-haspopup','menu'); t.setAttribute('aria-expanded','false'); t.setAttribute('aria-controls','cvMenu');
+    t.addEventListener('click',e=>{
+      if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey) return;  // modified clicks still open the one-pager
+      e.preventDefault();
+      (!menu.hidden&&trigger===t)?close(true):open(t);
+    });
+  });
+  items.forEach(a=>a.addEventListener('click',()=>close(false)));
+  menu.addEventListener('keydown',e=>{
+    const i=items.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();items[(i+(e.key==='ArrowDown'?1:items.length-1))%items.length].focus();}
+    else if(e.key==='Home'||e.key==='End'){e.preventDefault();items[e.key==='Home'?0:items.length-1].focus();}
+    else if(e.key==='Escape'){e.preventDefault();close(true);}
+  });
+  menu.addEventListener('focusout',e=>{if(!menu.contains(e.relatedTarget)&&e.relatedTarget!==trigger) close(false);});
+  document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!e.target.closest('[data-cv-menu]')) close(false);});
+  addEventListener('keydown',e=>{if(e.key==='Escape') close(true);});
+  addEventListener('resize',()=>close(false));
+  addEventListener('scroll',()=>{  // follow the link while it's on screen, close once it's gone
+    if(menu.hidden||!trigger) return;
+    const r=trigger.getBoundingClientRect();
+    (r.bottom<0||r.top>innerHeight)?close(false):place(trigger);
+  },{passive:true});
+})();
+
 /* ================= COMMAND PALETTE (⌘K / /) ================= */
 (function(){
   const overlay=document.getElementById('cmdk'),input=document.getElementById('cmdkInput'),list=document.getElementById('cmdkList');
   if(!overlay) return;
   const go=h=>{close();const el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth'});};
   const ext=u=>{close();window.open(u,'_blank');};
+  const cv=k=>document.querySelector(`#cvMenu [data-cv="${k}"]`).getAttribute('href');
+  const fold=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();  // "resume" finds "Résumé"
   const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);
     requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400);},2800);};
   const cmds=[
@@ -1948,7 +2027,8 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
-    {ic:'↓',label:'Download résumé',k:'file',run:()=>ext('resume.pdf?v=2026-09g')},
+    {ic:'↓',label:'Résumé: short, 1 page',k:'file',run:()=>ext(cv('short'))},
+    {ic:'↓',label:'Résumé: long, 2 pages',k:'file',run:()=>ext(cv('long'))},
     {ic:'</>',label:'Repo: Regime-Aware Portfolio Optimizer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer')},
     {ic:'</>',label:'Repo: LSTM Equity Forecaster',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/lstm-equity-forecaster')},
     {ic:'</>',label:'Repo: FinBERT Sentiment Analyzer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/finbert-sentiment-analyzer')},
@@ -1965,8 +2045,8 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     : '<li class="none">no matches</li>'; };
   const openP=()=>{overlay.hidden=false;input.value='';filtered=cmds;sel=0;render();setTimeout(()=>input.focus(),20);};
   function close(){overlay.hidden=true;}
-  input.addEventListener('input',()=>{const q=input.value.toLowerCase().trim();
-    filtered=cmds.filter(c=>c.label.toLowerCase().includes(q)||c.k.includes(q));sel=0;render();});
+  input.addEventListener('input',()=>{const terms=fold(input.value).split(/\s+/).filter(Boolean);
+    filtered=cmds.filter(c=>{const hay=fold(c.label)+' '+c.k;return terms.every(t=>hay.includes(t));});sel=0;render();});
   input.addEventListener('keydown',e=>{
     if(e.key==='ArrowDown'){e.preventDefault();sel=Math.min(filtered.length-1,sel+1);render();}
     else if(e.key==='ArrowUp'){e.preventDefault();sel=Math.max(0,sel-1);render();}
@@ -2341,7 +2421,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
   const PAPERS={langllm:'papers/langllm-poster-urtc2026.pdf',portfolio:'papers/portfolio-optimization-vs-equal-weight.pdf',robustness:'papers/legatum-robustness-audit.pdf?v=2026-09-13',earshot:'https://github.com/adrian-erlikhman/earshot'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
-    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
+    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>earshot</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
@@ -2354,7 +2434,10 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     fencing:()=>{print("Épée, A-rated · Team USA · Top 8 Cadet (U17) Pan-Ams. → opened Fencing.");go('#fencing');},
     contact:()=>print('email → <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a> · <a href="https://github.com/adrian-erlikhman" target="_blank">github</a>'),
     email:()=>{print("opening mail …");location.href='mailto:erlikhman.adrian@gmail.com';},
-    resume:()=>{print("opening resume.pdf …");window.open('resume.pdf?v=2026-09g','_blank');},
+    resume:a=>{const k=(a||'').toLowerCase(), opt=(k==='short'||k==='long')&&document.querySelector(`#cvMenu [data-cv="${k}"]`);
+      if(opt){print("opening the "+k+" résumé …");window.open(opt.getAttribute('href'),'_blank');}
+      else{const l=v=>{const o=document.querySelector(`#cvMenu [data-cv="${v}"]`);return `<a href="${o.getAttribute('href')}" target="_blank">resume ${v}</a> (${o.querySelector('.cvm-p').textContent})`;};
+        print("two versions: "+l('short')+" · "+l('long'),'dim');}},
     fortune:()=>print("\"estimating expected returns is the hard part.\" — the portfolio paper, basically",'dim'),
     sudo:()=>print("nice try. you don't have root on adrian.os :)",'dim'),
     clear:()=>{body.innerHTML='';},
