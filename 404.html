@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+  // Why Wrong is served from its own repo at adrian-erlikhman.github.io/why-wrong/.
+  // Until the 8 Sep 2026 rename it was also reachable here, so forward old links,
+  // keeping the rest of the URL (deep links like ?view=groups).
+  if (/^\/why-wrong(\/|$)/.test(location.pathname)) {
+    location.replace('https://adrian-erlikhman.github.io' + location.pathname + location.search + location.hash);
+  }
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>404 // signal lost — Adrian Erlikhman</title>
 <meta name="robots" content="noindex, follow">
