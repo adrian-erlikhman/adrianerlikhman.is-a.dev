@@ -1,0 +1,189 @@
+%% ============================================================================
+%%  Adrian Erlikhman -- resume, SHORT version (one page)
+%%  Source of resume.pdf on adrianerlikhman.is-a.dev.
+%%  Updated: 2026-09-17   (build.py stamps the PDF with this date)
+%%
+%%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
+%%  Menu > Compiler to XeLaTeX (what the site's PDFs are built with; the
+%%  preamble also has a pdfLaTeX branch). Locally:  python resume/build.py
+%%  The two-page version is resume-long.tex; keep the two in step.
+%% ============================================================================
+\documentclass[letterpaper]{article}
+
+\usepackage[letterpaper,top=0.42in,bottom=0.4in,left=0.5in,right=0.5in]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage[sfdefault,semibold]{plex-sans}  % IBM Plex, the website's typeface
+\usepackage{plex-mono}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage[explicit]{titlesec}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+% ---- palette: the site's ink and rust -------------------------------------------
+\definecolor{ink}{HTML}{1C1B19}
+\definecolor{rust}{HTML}{B4472E}
+\definecolor{dim}{HTML}{5F5B53}
+\definecolor{hair}{HTML}{CFC9BA}
+
+\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink,
+  pdftitle={Adrian Erlikhman -- R\'esum\'e},
+  pdfauthor={Adrian Erlikhman},
+  pdfsubject={R\'esum\'e},
+  pdfkeywords={Adrian Erlikhman, machine learning, NLP, LLM evaluation, research, Los Angeles}}
+
+% ---- type ------------------------------------------------------------------------
+\renewcommand{\normalsize}{\fontsize{8.9}{10.9}\selectfont}
+\renewcommand{\small}{\fontsize{8.3}{10.2}\selectfont}
+\normalsize\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\makeatletter\@secpenalty=0\makeatother
+\pagestyle{empty}
+\newcommand{\sep}{\enspace\textperiodcentered\enspace}
+\newcommand{\datefont}{\ttfamily\fontsize{7.8}{10}\selectfont\color{dim}}
+\newcommand{\statusfont}{\itshape\color{rust}}
+% symbols that differ between engines (pdfLaTeX has no Greek in its text fonts)
+\ifPDFTeX
+  \newcommand{\rhosym}{\ensuremath{\rho}}
+\else
+  \newcommand{\rhosym}{\symbol{"03C1}}
+\fi
+\newcommand{\sq}{\texttwosuperior}
+
+% ---- section heads: rust mono caps, hairline to the margin ------------------------
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\ttfamily\bfseries\fontsize{8}{10}\selectfont\color{rust}}{}{0pt}%
+  {\MakeUppercase{#1}\hspace{0.7em}{\color{hair}\leaders\hrule height 2.9pt depth -2.5pt\hfill}}
+\titlespacing*{\section}{0pt}{6.5pt}{2.5pt}
+
+% ---- entries ----------------------------------------------------------------------
+% right-aligned tail: on the same line if it fits, otherwise flush right below
+\newcommand{\tail}[1]{{\unskip\nobreak\hfil\penalty50\hskip1.2em\hbox{}\nobreak\hfil#1%
+  \rightskip=0pt\parfillskip=0pt\finalhyphendemerits=0\par}}
+% \role{Organization}{Title}{Detail}{Dates}
+\newcommand{\role}[4]{\par\addvspace{3pt}\noindent
+  {\bfseries #1}\ifblank{#2}{}{\ \textendash\ #2}%
+  \ifblank{#3}{}{{\color{dim}\sep#3}}\tail{\datefont #4}\nopagebreak}
+% \paper{Title}{Link}{Status}: one line, status flush right
+\newcommand{\paper}[3]{\par\addvspace{3pt}\noindent
+  \ifblank{#2}{{\bfseries #1}}{\href{#2}{\bfseries #1}}\tail{\statusfont #3}\nopagebreak}
+\newcommand{\who}[1]{{\color{dim}#1.}\ }
+
+\setlist[itemize]{leftmargin=1em,labelsep=0.4em,itemsep=0.6pt,parsep=0pt,
+  topsep=1pt,partopsep=0pt,beginpenalty=10000,label={\color{rust}\raisebox{0.1ex}{\scriptsize\textbullet}}}
+
+\begin{document}
+
+% =================================================================================
+\noindent{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}%
+\tail{\ttfamily\fontsize{8}{10}\selectfont\color{dim}Los Angeles, CA\sep
+  \href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}}
+\vspace{2pt}
+First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 1st place\sep National Merit Semifinalist\sep Team USA \'ep\'ee\par
+\vspace{1.5pt}
+{\small\color{dim}(213) 330-6884\sep
+\href{mailto:erlikhman.adrian@gmail.com}{erlikhman.adrian@gmail.com}\sep
+\href{https://github.com/adrian-erlikhman}{github.com/adrian-erlikhman}\sep
+\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{linkedin.com/in/adrian-erlikhman-55489620b}\par}
+\vspace{4pt}
+{\color{ink}\hrule height 0.7pt}
+
+% =================================================================================
+\section{Professional Experience}
+
+\role{Kiddom}{Machine Learning Intern}{K--12 EdTech}{2026}
+\begin{itemize}
+  \item On the data science team with Director of Data Science Flora Xu, applying machine learning to educational content and product-usage data: turning classroom usage into models the product team can act on.
+\end{itemize}
+
+\role{Fjor Venture Capital}{Investment Intern}{AI-focused venture fund}{2024 -- Present}
+\begin{itemize}
+  \item Ran diligence on 20+ early-stage AI startups and wrote 10+ full investment memos for partner-level decisions; led the screen of Y Combinator's Summer 2025 batch with Managing Director Tatiana Janko.
+\end{itemize}
+
+\role{Alliance for SoCal Innovation}{Venture Outreach \& Pipeline Intern}{}{2024 -- 2026}
+\begin{itemize}
+  \item Built the Alliance's 250+ firm investor database in HubSpot and the schema it sorts on; rewrote the founder intake form and routed companies to partners including Expert Dojo and the Long Beach Accelerator.
+\end{itemize}
+
+% =================================================================================
+\section{Ventures \& Civic Technology}
+
+\role{AIML-LI (AI/ML Literacy Initiative)}{Co-Founder \& Lead}{\href{https://aiml-initiative.org}{aiml-initiative.org}}{2023 -- Present}
+\begin{itemize}
+  \item Co-wrote a free AI-literacy course, twelve 30-minute sessions any teacher can run on Chromebooks, taught in LACES AP Computer Science; LAUSD is taking it to its Chief Academic and Chief Information Officers toward a district elective.
+  \item Organizing the LA Student AI Summit \& Hackathon for 200+ public-school students: keynotes from Google DeepMind, Microsoft, Google and Snap, backed by Snap, Jane Street, MongoDB, Confluent and Discovery Education.
+  \item \textbf{Invited speaker, NCSS 2026:} aiEDU's student panel on AI, National Consortium of STEM Schools, San Diego, Dec 2026.
+\end{itemize}
+
+\role{SafeJew}{Co-Founder}{\href{https://safejew.org}{safejew.org}\sep JFEDLA Teen Innovation Grant}{2024 -- Present}
+\begin{itemize}
+  \item Live map of 1,394 antisemitic incidents, 800 across Greater LA and 594 on 33 campuses, kept current by a scheduled GitHub Action and a hand-written LA gazetteer. Next.js, TypeScript, Supabase.
+\end{itemize}
+
+% =================================================================================
+\section{Research}
+
+\paper{Self-Attribution Is Not Self-Recognition: A Peer Baseline for LLM Judges}{}{Under review, JUDGe @ NeurIPS 2026}
+\begin{itemize}
+  \item \who{First author, advised by Philo Juang (Google DeepMind)}Five frontier LLM judges over 190 responses, each scored against a peer baseline: Claude names its own writing 86.8\% of the time against 53.9\% for its peers (\textit{p}\,=\,1.6\,\texttimes\,10\textsuperscript{\textminus4}), and an 18-feature stylometric classifier (86.3\%) beats every judge.
+\end{itemize}
+
+\paper{Do LLM Fingerprints Survive Outside English?}{https://github.com/adrian-erlikhman/LangLLM}{Poster submitted, IEEE MIT URTC 2026}
+\begin{itemize}
+  \item \who{First author, advised by Philo Juang (Google DeepMind)}840 responses from five models in seven languages: attribution holds at 59--72\% in every language against 20\% chance, with no drop for low-resource languages, and survives machine translation.
+\end{itemize}
+
+\paper{Proximity, Not Transmission: What the Patent Record Can and Cannot Show About NLP and Surveillance}{https://github.com/adrian-erlikhman/earshot}{Submitting, AI for Peace @ NeurIPS 2026}
+\begin{itemize}
+  \item \who{First author, with Michael Tarekegn}Linked 127,851 ACL Anthology papers to the 9,048 USPTO patents citing them; name-blind coding finds 0.46\% surveillance, no different from science-citing patents of the same era (OR 1.03, 95\% CI 0.38--2.78).
+\end{itemize}
+
+\paper{How Robust Are the Legatum Prosperity Index Rankings?}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{Accepted with revisions, Journal of High School Science}
+\begin{itemize}
+  \item \who{First author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects over a 131,072-run design (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.
+\end{itemize}
+
+% =================================================================================
+\section{Competitions}
+\begin{itemize}
+  \item \textbf{1st place, VISION HACK: South LA} (Council District 9 Champion, U18). Ledger: led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.
+  \item \textbf{1st place, Decode the Ocean Hackathon} (Lovable \texttimes\ United Nations). eDNAtlas: live coastal health scores from environmental DNA.
+  \item \textbf{3rd place internationally, Code for Transportation} (Young Coders' Sphere). Safe Routes to School: A* over 431,599 crime-scored LA blocks, entirely in the browser; the bus cuts a student's exposure by up to 80\%.
+  \item \textbf{Finalist (top 8), Citadel High School Terminal 2026}\sep \textbf{Y Combinator Startup School 2026}, sub-5\% acceptance, \$30,000+ in credits
+\end{itemize}
+
+% =================================================================================
+\section{Education}
+
+\role{Los Angeles Center for Enriched Studies (LACES)}{Class of 2027}{LAUSD magnet school}{Los Angeles, CA}
+\begin{itemize}
+  \item GPA 5.2 weighted, 4.0 unweighted\sep SAT 1520\sep 2\texttimes\ AP Scholar with Distinction\sep 17 APs\sep dual enrollment in linear algebra
+\end{itemize}
+
+% =================================================================================
+\section{Leadership \& Athletics}
+\begin{itemize}
+  \item \textbf{\'Ep\'ee fencing:} USA Fencing A26; Team USA, 2026 Cadet Pan American Championships (6th); U.S. No.\ 49 Junior and No.\ 78 Senior, peak No.\ 17 Cadet; 3\texttimes\ All-American First Team; in active recruitment with MIT.
+  \item \textbf{President}, Jewish Student Union (50+ members)\sep \textbf{Co-Founder \& President}, STEMsters (30+ volunteers in 4 elementary schools)
+\end{itemize}
+
+% =================================================================================
+\section{Skills}
+\begin{itemize}
+  \item Python, TypeScript/JavaScript, SQL, LaTeX\sep PyTorch, scikit-learn, TensorFlow, pandas, NumPy\sep Next.js, React, Supabase\sep LLM evaluation, stylometry, Monte Carlo and Sobol' sensitivity analysis\sep English, Russian (fluent), Spanish
+\end{itemize}
+
+\end{document}
