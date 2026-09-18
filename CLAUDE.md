@@ -59,6 +59,14 @@ from LaTeX in `resume/`.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
+- **NCSS 2026 talk:** aiEDU (Ashley Renick, then Lindsay Berger) invited Adrian,
+  with Michael, onto the student panel in its pre-conference session "Transform
+  Your School's AI Readiness" at NCSS 2026, the National Consortium of STEM
+  Schools conference, San Diego, 2 Dec 2026 (conference 2–5 Dec, about 100
+  educators). He accepted on 17 Sept; a prep call was still being set. It is in
+  both résumés and on the site: the Who paragraph, the AIML-LI Experience card,
+  an Achievements item and a hero-typewriter line. After 2 Dec, reword anything
+  that reads as upcoming.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
