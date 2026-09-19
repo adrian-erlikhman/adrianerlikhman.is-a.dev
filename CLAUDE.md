@@ -33,13 +33,30 @@ from LaTeX in `resume/`.
   `%%  Updated: YYYY-MM-DD` line in its .tex header, so bump that line on edit.
 - **Check every change:** render with `pypdfium2` and read `pdftotext -raw`.
   The long version has about three lines of slack at the end of page 2 and the
-  short one about one, so a new line usually means cutting one. `\tail`
+  short one has none left, so a new line there means cutting one. `\tail`
   right-aligns dates and statuses; `\raggedright` is on, so `\tail` must keep its
   `\rightskip=0pt` or the dates drift off the margin. Section breaks carry no
   penalty and a head can't split from its first bullet: that keeps pages full.
 - **Design:** IBM Plex Sans and Mono with the site's rust (`#B4472E`); mono rust
-  section heads with a hairline to the margin. The line under the name leads
-  with receipts, not category words.
+  section heads with a hairline to the margin.
+- **Header (Adrian chose "the most standard", 19 Sept):** centered name, then
+  one centered contact line — phone, email, `adrianerlikhman.is-a.dev`,
+  LinkedIn, GitHub, the last four as rust links, with LinkedIn and GitHub as
+  labels rather than URLs. No location, no tagline; the one-line "receipts"
+  strap that ran under the name until 19 Sept is gone.
+- **Every paper and poster carries its links** as small rust `[tags]` at the end
+  of its last bullet:
+  - LangLLM: `[abstract]` (Google Doc), `[poster]` (the site's PDF, byte-equal
+    to the repo's), `[code]`.
+  - Earshot: `[abstract]` (Google Doc), `[code]`. The repo's `paper/abstract.md`
+    is a stale draft that says so at the top — never link that one.
+  - Legatum and the portfolio paper: `[pdf]` on the site.
+  - **CompLLM has no link on purpose.** The only copy is a private Drive file
+    and JUDGe review is double-blind; add a link after the 29 Sept decision.
+  - The two Google Docs were shared **only with Flora Xu** when they were first
+    linked. Adrian was asked to switch both to "anyone with the link · viewer";
+    if a tag ever shows a "request access" page, that is why. The Drive tool
+    here can only share with a named person, so it cannot fix this.
 - **Section order** follows Adrian's 9 Sept choice (PR #63), paid work first:
   Professional Experience · Ventures & Civic Technology · Research ·
   Competitions · Education · Leadership & Athletics · Skills. The long version
@@ -59,6 +76,12 @@ from LaTeX in `resume/`.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
+  - Dual enrollment, with the numbers Adrian asked for on 19 Sept: Linear
+    Algebra is **MATH 270** at L.A. Southwest College (MATH 275 there is
+    Ordinary Differential Equations), Programming in Python is **CS 119**, and
+    the one he plans to take, Python Programming for Data Science and Machine
+    Learning, is **CS 121** (LACCD numbering). Drop "planned" from CS 121 once
+    he is enrolled.
 - **NCSS 2026 talk:** aiEDU (Ashley Renick, then Lindsay Berger) invited Adrian,
   with Michael, onto the student panel in its pre-conference session "Transform
   Your School's AI Readiness" at NCSS 2026, the National Consortium of STEM
@@ -72,7 +95,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09g`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09h`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
