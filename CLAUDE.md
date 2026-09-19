@@ -46,17 +46,25 @@ from LaTeX in `resume/`.
   strap that ran under the name until 19 Sept is gone.
 - **Every paper and poster carries its links** as small rust `[tags]` at the end
   of its last bullet:
-  - LangLLM: `[abstract]` (Google Doc), `[poster]` (the site's PDF, byte-equal
-    to the repo's), `[code]`.
-  - Earshot: `[abstract]` (Google Doc), `[code]`. The repo's `paper/abstract.md`
-    is a stale draft that says so at the top — never link that one.
+  - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
+  - Earshot: `[abstract]`, `[code]`. The repo's `paper/abstract.md` is a stale
+    draft that says so at the top — never link that one.
   - Legatum and the portfolio paper: `[pdf]` on the site.
   - **CompLLM has no link on purpose.** The only copy is a private Drive file
     and JUDGe review is double-blind; add a link after the 29 Sept decision.
-  - The two Google Docs were shared **only with Flora Xu** when they were first
-    linked. Adrian was asked to switch both to "anyone with the link · viewer";
-    if a tag ever shows a "request access" page, that is why. The Drive tool
-    here can only share with a named person, so it cannot fix this.
+  - Both abstracts are **site-hosted PDFs**, `papers/langllm-abstract-urtc2026.pdf`
+    and `papers/earshot-abstract-neurips2026.pdf`, exported from Adrian's Google
+    Docs on 19 Sept (`download_file_content` with `exportMimeType:
+    application/pdf`; doc ids 1mDDaOc_5K5laR3hPhYH_7BLBSvU5yX_c3HBFH5tXESU and
+    1pJb-8l70qeS_keGV-mFunK2RkPZIBEASfMniU5VxiAQ). The docs themselves are
+    shared only with Flora Xu, and the Drive tool here can only share with a
+    named person, so the docs could not be made link-viewable. **Re-export the
+    Earshot one after he submits**: the published copy is a snapshot of a draft
+    that was still due on 21 Sept.
+  - The URTC submission's own title is *Interpretable Attribution of Frontier
+    Language Models Across Languages and Translation*, not the friendlier "Do
+    LLM Fingerprints Survive Outside English?" the site and both résumés use.
+    Flagged to Adrian on 19 Sept; leave it unless he asks for the real one.
 - **Section order** follows Adrian's 9 Sept choice (PR #63), paid work first:
   Professional Experience · Ventures & Civic Technology · Research ·
   Competitions · Education · Leadership & Athletics · Skills. The long version
@@ -95,7 +103,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09h`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09i`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
