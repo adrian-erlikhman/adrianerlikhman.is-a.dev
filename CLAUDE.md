@@ -65,6 +65,10 @@ from LaTeX in `resume/`.
     Language Models Across Languages and Translation*, not the friendlier "Do
     LLM Fingerprints Survive Outside English?" the site and both résumés use.
     Flagged to Adrian on 19 Sept; leave it unless he asks for the real one.
+- **Two titles carry a deliberate line break.** Earshot's in the one-pager (at
+  its colon) and Legatum's in the long one (after the question mark), both with
+  `\newline`. Without them the title filled the line and the italic venue was
+  stranded alone on the next one. Keep the break if you edit either title.
 - **Section order** follows Adrian's 9 Sept choice (PR #63), paid work first:
   Professional Experience · Ventures & Civic Technology · Research ·
   Competitions · Education · Leadership & Athletics · Skills. The long version
@@ -103,7 +107,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09i`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09j`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
