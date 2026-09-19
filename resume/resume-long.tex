@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, LONG version (two pages)
 %%  Source of resume-long.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-09-17   (build.py stamps the PDF with this date)
+%%  Updated: 2026-09-19   (build.py stamps the PDF with this date)
 %%
 %%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
 %%  Menu > Compiler to XeLaTeX (what the site's PDFs are built with; the
@@ -98,16 +98,15 @@
 \begin{document}
 
 % =================================================================================
-\noindent{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}%
-\tail{\ttfamily\fontsize{8}{10}\selectfont\color{dim}Los Angeles, CA\sep
-  \href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}}
-\vspace{2pt}
-First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 1st place\sep National Merit Semifinalist\sep Team USA \'ep\'ee\par
-\vspace{1.5pt}
+\begin{center}
+{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}\par
+\vspace{3.5pt}
 {\small\color{dim}(213) 330-6884\sep
-\href{mailto:erlikhman.adrian@gmail.com}{erlikhman.adrian@gmail.com}\sep
-\href{https://github.com/adrian-erlikhman}{github.com/adrian-erlikhman}\sep
-\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{linkedin.com/in/adrian-erlikhman-55489620b}\par}
+\href{mailto:erlikhman.adrian@gmail.com}{\color{rust}erlikhman.adrian@gmail.com}\sep
+\href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}\sep
+\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{\color{rust}LinkedIn}\sep
+\href{https://github.com/adrian-erlikhman}{\color{rust}GitHub}}
+\end{center}
 \vspace{4pt}
 {\color{ink}\hrule height 0.7pt}
 
@@ -169,7 +168,7 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
   {Poster submitted, IEEE MIT URTC 2026}
 \begin{itemize}
   \item 840 responses from five frontier models in seven languages, English to Hindi, attributed with 21 Universal Dependencies features: 59--72\% accuracy in every language (chance is 20\%), no drop for low-resource languages, and it survives machine translation.
-  \item Across 4,195 judge calls, four of the five models attribute authorship at chance, while Claude's self-recognition holds even in Hindi.
+  \item Across 4,195 judge calls, four of the five models attribute authorship at chance, while Claude's self-recognition holds even in Hindi.\enspace\lnk{https://docs.google.com/document/d/1mDDaOc_5K5laR3hPhYH_7BLBSvU5yX_c3HBFH5tXESU/edit}{abstract}\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/langllm-poster-urtc2026.pdf}{poster}\enspace\lnk{https://github.com/adrian-erlikhman/LangLLM}{code}
 \end{itemize}
 
 \paper{Proximity, Not Transmission: What the Patent Record Can and Cannot Show About NLP and Surveillance}{https://github.com/adrian-erlikhman/earshot}%
@@ -177,7 +176,7 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
   {Submitting, AI for Peace @ NeurIPS 2026}
 \begin{itemize}
   \item Linked 127,851 ACL Anthology papers to the 9,048 USPTO patents that cite them, and coded what each patent is for with a rubric that separates a system's operator from its subject; revealing the applicant flips 10 of 31 non-neutral labels.
-  \item Name-blind coding of 2,374 patents finds 0.46\% surveillance, no standout subfield, no trend and no detectable difference from science-citing patents of the same era (Mantel--Haenszel OR 1.03, 95\% CI 0.38--2.78).
+  \item Name-blind coding of 2,374 patents finds 0.46\% surveillance, no standout subfield, no trend and no detectable difference from science-citing patents of the same era (Mantel--Haenszel OR 1.03, 95\% CI 0.38--2.78).\enspace\lnk{https://docs.google.com/document/d/1pJb-8l70qeS_keGV-mFunK2RkPZIBEASfMniU5VxiAQ/edit}{abstract}\enspace\lnk{https://github.com/adrian-erlikhman/earshot}{code}
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
@@ -185,14 +184,14 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
   {Accepted with revisions, Journal of High School Science}
 \begin{itemize}
   \item Reproduced every published score for 167 countries exactly, then varied weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design.
-  \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), the only part of a weight's influence that can reorder countries; it tracks Sobol' total effects (Spearman 0.91--0.99). The ranking holds as a whole (median Spearman \geqsym\ 0.9899) but not mid-table, where the median 90\% rank interval spans 36 places.
+  \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), the only part of a weight's influence that can reorder countries; it tracks Sobol' total effects (Spearman 0.91--0.99). The ranking holds as a whole (median Spearman \geqsym\ 0.9899) but not mid-table, where the median 90\% rank interval spans 36 places.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{pdf}
 \end{itemize}
 
 \paper{Does Portfolio Optimization Beat Splitting Evenly? Markowitz vs.\ the 1/N Portfolio}{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}%
   {With Ryan Erlikhman}%
   {Under review, Oxford Journal of Student Scholarship}
 \begin{itemize}
-  \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 vs.\ 0.51). The loss traces to estimating expected returns, which shrinkage fixes only with about two decades of stationary data.
+  \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 vs.\ 0.51). The loss traces to estimating expected returns, which shrinkage fixes only with about two decades of stationary data.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}{pdf}
 \end{itemize}
 
 \role{Advanced Mathematics Research}{}{number theory, combinatorics, game theory; with PhD candidate Kirill Kovalenko}{2022 -- Present}
@@ -238,7 +237,8 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
 \role{Los Angeles Center for Enriched Studies (LACES)}{Class of 2027}{LAUSD magnet school}{Los Angeles, CA}
 \begin{itemize}
   \item GPA 5.2 weighted / 4.0 unweighted\sep SAT 1520 (Math 770, EBRW 750)\sep 2\texttimes\ AP Scholar with Distinction
-  \item 17 AP courses (11 completed, 6 this year)\sep dual enrollment in linear algebra and Python programming (CS 119)
+  \item 17 AP courses (11 completed, 6 this year)
+  \item Dual enrollment: Linear Algebra (MATH 270, L.A. Southwest College)\sep Programming in Python (CS 119)\sep Python Programming for Data Science and Machine Learning (CS 121, planned)
 \end{itemize}
 
 % =================================================================================

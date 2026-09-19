@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, SHORT version (one page)
 %%  Source of resume.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-09-17   (build.py stamps the PDF with this date)
+%%  Updated: 2026-09-19   (build.py stamps the PDF with this date)
 %%
 %%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
 %%  Menu > Compiler to XeLaTeX (what the site's PDFs are built with; the
@@ -80,6 +80,8 @@
 \newcommand{\paper}[3]{\par\addvspace{3pt}\noindent
   \ifblank{#2}{{\bfseries #1}}{\href{#2}{\bfseries #1}}\tail{\statusfont #3}\nopagebreak}
 \newcommand{\who}[1]{{\color{dim}#1.}\ }
+% \lnk{url}{label}: a small rust tag that links out
+\newcommand{\lnk}[2]{\href{#1}{\ttfamily\fontsize{7.3}{9}\selectfont\color{rust}[#2]}}
 
 \setlist[itemize]{leftmargin=1em,labelsep=0.4em,itemsep=0.6pt,parsep=0pt,
   topsep=1pt,partopsep=0pt,beginpenalty=10000,label={\color{rust}\raisebox{0.1ex}{\scriptsize\textbullet}}}
@@ -87,16 +89,15 @@
 \begin{document}
 
 % =================================================================================
-\noindent{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}%
-\tail{\ttfamily\fontsize{8}{10}\selectfont\color{dim}Los Angeles, CA\sep
-  \href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}}
-\vspace{2pt}
-First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 1st place\sep National Merit Semifinalist\sep Team USA \'ep\'ee\par
-\vspace{1.5pt}
+\begin{center}
+{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}\par
+\vspace{3.5pt}
 {\small\color{dim}(213) 330-6884\sep
-\href{mailto:erlikhman.adrian@gmail.com}{erlikhman.adrian@gmail.com}\sep
-\href{https://github.com/adrian-erlikhman}{github.com/adrian-erlikhman}\sep
-\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{linkedin.com/in/adrian-erlikhman-55489620b}\par}
+\href{mailto:erlikhman.adrian@gmail.com}{\color{rust}erlikhman.adrian@gmail.com}\sep
+\href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}\sep
+\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{\color{rust}LinkedIn}\sep
+\href{https://github.com/adrian-erlikhman}{\color{rust}GitHub}}
+\end{center}
 \vspace{4pt}
 {\color{ink}\hrule height 0.7pt}
 
@@ -138,22 +139,22 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
 
 \paper{Self-Attribution Is Not Self-Recognition: A Peer Baseline for LLM Judges}{}{Under review, JUDGe @ NeurIPS 2026}
 \begin{itemize}
-  \item \who{First author, advised by Philo Juang (Google DeepMind)}Five frontier LLM judges over 190 responses, each scored against a peer baseline: Claude names its own writing 86.8\% of the time against 53.9\% for its peers (\textit{p}\,=\,1.6\,\texttimes\,10\textsuperscript{\textminus4}), and an 18-feature stylometric classifier (86.3\%) beats every judge.
+  \item \who{First author, advised by Philo Juang (Google DeepMind)}Five frontier LLM judges over 190 responses, each scored against a peer baseline: Claude names its own writing 86.8\% against 53.9\% for its peers (\textit{p}\,=\,1.6\,\texttimes\,10\textsuperscript{\textminus4}), and an 18-feature stylometric classifier (86.3\%) beats every judge.
 \end{itemize}
 
 \paper{Do LLM Fingerprints Survive Outside English?}{https://github.com/adrian-erlikhman/LangLLM}{Poster submitted, IEEE MIT URTC 2026}
 \begin{itemize}
-  \item \who{First author, advised by Philo Juang (Google DeepMind)}840 responses from five models in seven languages: attribution holds at 59--72\% in every language against 20\% chance, with no drop for low-resource languages, and survives machine translation.
+  \item \who{First author, advised by Philo Juang (Google DeepMind)}840 responses from five models in seven languages: attribution holds at 59--72\% against 20\% chance, with no drop for low-resource languages, and survives machine translation.\enspace\lnk{https://docs.google.com/document/d/1mDDaOc_5K5laR3hPhYH_7BLBSvU5yX_c3HBFH5tXESU/edit}{abstract}\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/langllm-poster-urtc2026.pdf}{poster}\enspace\lnk{https://github.com/adrian-erlikhman/LangLLM}{code}
 \end{itemize}
 
 \paper{Proximity, Not Transmission: What the Patent Record Can and Cannot Show About NLP and Surveillance}{https://github.com/adrian-erlikhman/earshot}{Submitting, AI for Peace @ NeurIPS 2026}
 \begin{itemize}
-  \item \who{First author, with Michael Tarekegn}Linked 127,851 ACL Anthology papers to the 9,048 USPTO patents citing them; name-blind coding finds 0.46\% surveillance, no different from science-citing patents of the same era (OR 1.03, 95\% CI 0.38--2.78).
+  \item \who{First author, with Michael Tarekegn}Linked 127,851 ACL Anthology papers to the 9,048 USPTO patents citing them; name-blind coding finds 0.46\% surveillance, no different from science-citing patents of the same era (OR 1.03, 95\% CI 0.38--2.78).\enspace\lnk{https://docs.google.com/document/d/1pJb-8l70qeS_keGV-mFunK2RkPZIBEASfMniU5VxiAQ/edit}{abstract}\enspace\lnk{https://github.com/adrian-erlikhman/earshot}{code}
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings?}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{Accepted with revisions, Journal of High School Science}
 \begin{itemize}
-  \item \who{First author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects over a 131,072-run design (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.
+  \item \who{First author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects over a 131,072-run design (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{pdf}
 \end{itemize}
 
 % =================================================================================
@@ -170,7 +171,8 @@ First-author NLP research advised by Google DeepMind\sep 2\texttimes\ hackathon 
 
 \role{Los Angeles Center for Enriched Studies (LACES)}{Class of 2027}{LAUSD magnet school}{Los Angeles, CA}
 \begin{itemize}
-  \item GPA 5.2 weighted, 4.0 unweighted\sep SAT 1520\sep 2\texttimes\ AP Scholar with Distinction\sep 17 APs\sep dual enrollment in linear algebra
+  \item GPA 5.2 weighted, 4.0 unweighted\sep SAT 1520\sep 2\texttimes\ AP Scholar with Distinction\sep 17 APs
+  \item Dual enrollment: Linear Algebra (MATH 270)\sep Programming in Python (CS 119)\sep Python for Data Science and ML (CS 121, planned)
 \end{itemize}
 
 % =================================================================================
