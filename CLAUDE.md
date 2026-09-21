@@ -19,7 +19,8 @@ from LaTeX in `resume/`.
 ## Résumé
 - **Two versions, typeset in LaTeX** (since 17 Sept 2026):
   `resume/resume-short.tex` → `resume.pdf` (one page, the default link) and
-  `resume/resume-long.tex` → `resume-long.pdf` (two pages). The .tex files are
+  `resume/resume-long.tex` → `resume-long.pdf` (three pages, Harvard format
+  since 21 Sept; see Design). The .tex files are
   the source of truth. Each is self-contained pure ASCII that Adrian can paste
   into Overleaf with the compiler set to XeLaTeX. Keep the two in step with each
   other and with the site.
@@ -28,29 +29,42 @@ from LaTeX in `resume/`.
   OK, into a session scratchpad rather than installed, so it may be gone: the
   file is `tectonic-*-x86_64-pc-windows-msvc.zip` from the tectonic-typesetting
   GitHub releases, and downloading it again needs his OK. The build refuses a
-  PDF with the wrong page count (1 and 2) or whose text layer doesn't name every
-  section once, in order. It is deterministic: each PDF is stamped with the
+  PDF with the wrong page count (1 and 3) or whose text layer, as pypdf reads
+  it, doesn't name every section once, in order (mono caps in the one-pager,
+  title case in the long one). It is deterministic: each PDF is stamped with the
   `%%  Updated: YYYY-MM-DD` line in its .tex header, so bump that line on edit.
 - **Check every change:** render with `pypdfium2` and read `pdftotext -raw`.
-  Neither version has slack left (21 Sept), so a new line means cutting one.
-  Page 1 of the long one ends exactly on Legatum's first bullet, and a paper's
-  head can't leave its first bullet, so anything added to page 1 has to be paid
-  for on page 1 or all of Legatum's head moves over and page 2 overflows. In
+  The one-pager has no slack, so a new line there means cutting one. The long
+  one breaks at section heads: page 1 ends after Safe Routes, with room for
+  about five more lines; page 2 runs from Research through More builds; and
+  page 3 has about thirteen lines free at the end. In
   `\paper`, the author line opens with `\noindent`: without it `\color` drops a
   whatsit into the vertical list, and that makes the glue after `\nopagebreak`
   a legal break between a title and its authors. `\tail`
   right-aligns dates and statuses; `\raggedright` is on, so `\tail` must keep its
   `\rightskip=0pt` or the dates drift off the margin. Section breaks carry no
   penalty and a head can't split from its first bullet: that keeps pages full.
-- **Design:** IBM Plex Sans and Mono with the site's rust (`#B4472E`); mono rust
-  section heads with a hairline to the margin.
+- **Design:** the one-pager is IBM Plex Sans and Mono with the site's rust
+  (`#B4472E`), with mono rust section heads and a hairline to the margin. The
+  long one is **Harvard format** (Adrian's ask, 21 Sept), after the Mignone
+  Center's template: name over a rule, then a centered contact line with •
+  separators; centered bold title-case heads; each entry an organization line
+  (bold) over a position line (italic), with context on the right of the first
+  and dates on the right of the second; all black. Harvard puts a location in
+  that first right-hand slot, but none is known for most entries, so it holds
+  the organization's site or a short description; don't guess locations. The
+  face is Times (`newtxtext`, 10 pt), not the Garamond of Harvard's samples:
+  pypdf reads EB Garamond's T and V as separate words ("PyT orch",
+  "T ensorFlow"), and a résumé parser might too. The one-pager keeps Adrian's
+  own design; switching it too is his call.
 - **Header (Adrian chose "the most standard", 19 Sept):** centered name, then
   one centered contact line — phone, email, `adrianerlikhman.is-a.dev`,
-  LinkedIn, GitHub, the last four as rust links, with LinkedIn and GitHub as
-  labels rather than URLs. No location, no tagline; the one-line "receipts"
+  LinkedIn, GitHub, the last four as links (rust in the one-pager, black in the
+  long one, which adds Harvard's rule under the name), with LinkedIn and GitHub
+  as labels rather than URLs. No location, no tagline; the one-line "receipts"
   strap that ran under the name until 19 Sept is gone.
-- **Every paper and poster carries its links** as small rust `[tags]` at the end
-  of its last bullet:
+- **Every paper and poster carries its links** as small `[tags]` (rust in the
+  one-pager, black in the long one) at the end of its last bullet:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
   - Earshot: `[abstract]`, `[code]`. The repo's `paper/abstract.md` is a stale
     draft that says so at the top — never link that one.
@@ -74,21 +88,30 @@ from LaTeX in `resume/`.
   its colon) and Legatum's in the long one (after the question mark), both with
   `\newline`. Without them the title filled the line and the italic venue was
   stranded alone on the next one. Keep the break if you edit either title.
+  In the long one, a paper's status sits on the right of its italic author
+  line, which is why the two advised papers list co-authors as "R. Erlikhman,
+  M. Tarekegn" with no "and": with it the status drops to a line of its own.
 - **Section order** follows Adrian's 9 Sept choice (PR #63), paid work first:
   Professional Experience · Ventures & Civic Technology · Research ·
   Competitions · Education · Leadership & Athletics · Skills. The long version
   adds Talks & Presentations after Competitions & Builds, and Honors before
-  Skills.
+  Skills. Harvard's own template leads with Education; the long one keeps
+  Adrian's order anyway.
 - **Content rules:**
   - **Firstness** (firstness.ai, an AI research engine for discovering new
     hypotheses): Adrian's internship, secured 21 Sept 2026, as a **Software
     Engineering & ML Intern**, 2026–present, working directly under the
-    founder. His project wasn't settled yet, so every mention describes the role
-    and the platform, never a project, and the founder isn't named. It leads
-    Professional Experience in both résumés; to pay for it the one-pager's
-    Alliance bullet lost its partner routing, and its LangLLM bullet says
-    "Google Translate" rather than "machine translation". Once the project is
-    settled, rewrite the bullet around it.
+    founder. His work, in his words: refining the platform "to connect into the
+    research stack", then making it "easier to understand with demos". Every
+    mention says that, glossing the research stack as the literature databases
+    and reference managers researchers already work in, and names no project
+    or integration beyond it. The founder isn't named. It leads Professional
+    Experience in both résumés: the long one has three bullets (the platform
+    and the founder, the research stack, demos for new users). The one-pager has
+    one bullet, with "reporting directly to the founder" on its role line. To fit
+    it, the one-pager's Alliance bullet lost its partner routing and its LangLLM
+    bullet says "Google Translate" rather than "machine translation"; the long
+    one keeps both.
   - Kiddom is a **Machine Learning Internship** everywhere.
   - Legatum: First author with Ryan Erlikhman, no advisor (the manuscript's
     acknowledgements say no mentor supervised it). Both résumés say "Accepted
@@ -128,7 +151,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09m`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09n`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
