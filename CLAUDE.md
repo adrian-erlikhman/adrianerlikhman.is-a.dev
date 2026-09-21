@@ -32,8 +32,13 @@ from LaTeX in `resume/`.
   section once, in order. It is deterministic: each PDF is stamped with the
   `%%  Updated: YYYY-MM-DD` line in its .tex header, so bump that line on edit.
 - **Check every change:** render with `pypdfium2` and read `pdftotext -raw`.
-  The long version has about three lines of slack at the end of page 2 and the
-  short one has none left, so a new line there means cutting one. `\tail`
+  Neither version has slack left (21 Sept), so a new line means cutting one.
+  Page 1 of the long one ends exactly on Legatum's first bullet, and a paper's
+  head can't leave its first bullet, so anything added to page 1 has to be paid
+  for on page 1 or all of Legatum's head moves over and page 2 overflows. In
+  `\paper`, the author line opens with `\noindent`: without it `\color` drops a
+  whatsit into the vertical list, and that makes the glue after `\nopagebreak`
+  a legal break between a title and its authors. `\tail`
   right-aligns dates and statuses; `\raggedright` is on, so `\tail` must keep its
   `\rightskip=0pt` or the dates drift off the margin. Section breaks carry no
   penalty and a head can't split from its first bullet: that keeps pages full.
@@ -75,6 +80,15 @@ from LaTeX in `resume/`.
   adds Talks & Presentations after Competitions & Builds, and Honors before
   Skills.
 - **Content rules:**
+  - **Firstness** (firstness.ai, an AI research engine for discovering new
+    hypotheses): Adrian's internship, secured 21 Sept 2026, as a **Software
+    Engineering & ML Intern**, 2026–present, working directly under the
+    founder. His project wasn't settled yet, so every mention describes the role
+    and the platform, never a project, and the founder isn't named. It leads
+    Professional Experience in both résumés; to pay for it the one-pager's
+    Alliance bullet lost its partner routing, and its LangLLM bullet says
+    "Google Translate" rather than "machine translation". Once the project is
+    settled, rewrite the bullet around it.
   - Kiddom is a **Machine Learning Internship** everywhere.
   - Legatum: First author with Ryan Erlikhman, no advisor (the manuscript's
     acknowledgements say no mentor supervised it). Both résumés say "Accepted
@@ -114,7 +128,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09l`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09m`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that

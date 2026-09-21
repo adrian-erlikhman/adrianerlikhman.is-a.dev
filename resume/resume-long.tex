@@ -80,9 +80,11 @@
   {\bfseries #1}\ifblank{#2}{}{\ \textendash\ #2}%
   \ifblank{#3}{}{{\color{dim}\sep#3}}\tail{\datefont #4}\nopagebreak}
 % \paper{Title}{Link}{Authors and advisor}{Status}
+% (\noindent keeps \color's whatsit out of the vertical list: there it would make
+% the glue after \nopagebreak a legal page break between a title and its authors)
 \newcommand{\paper}[4]{\par\addvspace{3.5pt}\noindent
   \ifblank{#2}{{\bfseries #1}}{\href{#2}{\bfseries #1}}\par\nopagebreak
-  {\color{dim}#3}\tail{\statusfont #4}\nopagebreak}
+  \noindent{\color{dim}#3}\tail{\statusfont #4}\nopagebreak}
 % \lnk{url}{label}: a small rust tag that links out
 \newcommand{\lnk}[2]{\href{#1}{\ttfamily\fontsize{7.3}{9}\selectfont\color{rust}[#2]}}
 
@@ -113,6 +115,11 @@
 % =================================================================================
 \section{Professional Experience}
 
+\role{Firstness}{Software Engineering \& ML Intern}{\href{https://firstness.ai}{firstness.ai}\sep AI research engine}{2026 -- Present}
+\begin{itemize}
+  \item Working directly under the founder on the platform, which generates research hypotheses and checks each against published work.
+\end{itemize}
+
 \role{Kiddom}{Machine Learning Intern}{K--12 EdTech}{2026}
 \begin{itemize}
   \item On the data science team with Director of Data Science Flora Xu, applying machine learning to educational content and product-usage data: turning classroom usage into models the product team can act on, and keeping them honest in production.
@@ -126,8 +133,7 @@
 
 \role{Alliance for SoCal Innovation}{Venture Outreach \& Pipeline Intern}{}{2024 -- 2026}
 \begin{itemize}
-  \item Built the Alliance's 250+ firm investor database in HubSpot and the schema it still sorts on, and led the backend redesign of the pipeline with the Chief Innovation Officer.
-  \item Rewrote the founder intake form, routed companies to partners including Expert Dojo and the Long Beach Accelerator, and sat in on the SVP Life Science pilot committee's pitch reviews.
+  \item Built the Alliance's 250+ firm investor database in HubSpot and the schema it still sorts on, and led the backend redesign of the pipeline with the Chief Innovation Officer; rewrote the founder intake form, routed companies to partners including Expert Dojo and the Long Beach Accelerator, and sat in on the SVP Life Science pilot committee's pitch reviews.
 \end{itemize}
 
 % =================================================================================
@@ -149,7 +155,7 @@
 \role{Safe Routes to School}{Co-Creator}{\href{https://safe-routes-la.github.io}{safe-routes-la.github.io}}{2026}
 \begin{itemize}
   \item \textbf{3rd place internationally, Code for Transportation} (Young Coders' Sphere). Scores 431,599 LA blocks for street-crime risk from 85,634 filtered LAPD incidents, then runs A* entirely in the browser, with no server.
-  \item Found that the afternoon walk home is a student's riskiest hour, and that riding the bus cuts exposure by up to 80\% and is faster.\enspace\lnk{https://safe-routes-la.github.io/}{live}\,\lnk{https://github.com/safe-routes-la/safe-routes-la.github.io}{code}
+  \item Found that the afternoon walk home is a student's riskiest hour, and that the bus cuts exposure up to 80\% and is faster.\enspace\lnk{https://safe-routes-la.github.io/}{live}\,\lnk{https://github.com/safe-routes-la/safe-routes-la.github.io}{code}
 \end{itemize}
 
 % =================================================================================
