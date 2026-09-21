@@ -85,6 +85,13 @@ from LaTeX in `resume/`.
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
     JUDGe and AI for Peace decide (29 Sept) and when URTC does.
+  - The portfolio paper (R.05, with Ryan) got a **conditional acceptance** from
+    the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
+    the reviewers and reformat to the journal's template within 14 days, by
+    5 Oct. The R.05 card and the long résumé say "Accepted with revisions", as
+    Legatum's do, and the card adds "in revision"; the meta, og and JSON-LD
+    blurbs say "accepted". Drop "in revision" once it is published. The
+    one-pager doesn't carry this paper.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
@@ -107,7 +114,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09j`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09l`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
