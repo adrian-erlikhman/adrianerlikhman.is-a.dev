@@ -1,5 +1,5 @@
 %% ============================================================================
-%%  Adrian Erlikhman -- resume, LONG version (two pages)
+%%  Adrian Erlikhman -- resume, LONG version (three pages), Harvard format
 %%  Source of resume-long.pdf on adrianerlikhman.is-a.dev.
 %%  Updated: 2026-09-21   (build.py stamps the PDF with this date)
 %%
@@ -7,17 +7,24 @@
 %%  Menu > Compiler to XeLaTeX (what the site's PDFs are built with; the
 %%  preamble also has a pdfLaTeX branch). Locally:  python resume/build.py
 %%  The one-page version is resume-short.tex; keep the two in step.
+%%
+%%  Layout follows Harvard's Mignone Center template: name over a rule,
+%%  centered contact line, centered bold section heads, and each entry as
+%%  organization / position on the left with context and dates on the right.
+%%  Where Harvard puts a location there is none known, so that slot holds the
+%%  organization's site or a short description instead. Times, not the EB
+%%  Garamond of Harvard's samples: pypdf reads Garamond's T and V as separate
+%%  words ("PyT orch"), and a resume parser might too.
 %% ============================================================================
 \documentclass[letterpaper]{article}
 
-\usepackage[letterpaper,top=0.42in,bottom=0.48in,left=0.5in,right=0.5in,footskip=0.24in]{geometry}
+\usepackage[letterpaper,top=0.5in,bottom=0.55in,left=0.55in,right=0.55in,footskip=0.25in]{geometry}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
 \fi
-\usepackage[sfdefault,semibold]{plex-sans}  % IBM Plex, the website's typeface
-\usepackage{plex-mono}
+\usepackage{newtxtext}  % Times: Harvard's classic face, and every PDF parser tried reads it cleanly
 \usepackage{xcolor}
 \usepackage{etoolbox}
 \usepackage{enumitem}
@@ -27,22 +34,16 @@
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 
-% ---- palette: the site's ink and rust -------------------------------------------
-\definecolor{ink}{HTML}{1C1B19}
-\definecolor{rust}{HTML}{B4472E}
-\definecolor{dim}{HTML}{5F5B53}
-\definecolor{hair}{HTML}{CFC9BA}
-
-\hypersetup{colorlinks=true,urlcolor=ink,linkcolor=ink,
+\hypersetup{colorlinks=true,urlcolor=black,linkcolor=black,
   pdftitle={Adrian Erlikhman -- R\'esum\'e (long)},
   pdfauthor={Adrian Erlikhman},
   pdfsubject={R\'esum\'e},
   pdfkeywords={Adrian Erlikhman, machine learning, NLP, LLM evaluation, research, Los Angeles}}
 
 % ---- type ------------------------------------------------------------------------
-\renewcommand{\normalsize}{\fontsize{8.9}{10.9}\selectfont}
-\renewcommand{\small}{\fontsize{8.3}{10.2}\selectfont}
-\normalsize\color{ink}
+\renewcommand{\normalsize}{\fontsize{10}{11.8}\selectfont}
+\renewcommand{\small}{\fontsize{9}{11}\selectfont}
+\normalsize
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \raggedright
@@ -53,8 +54,6 @@
 \widowpenalty=10000
 \makeatletter\@secpenalty=0\makeatother
 \newcommand{\sep}{\enspace\textperiodcentered\enspace}
-\newcommand{\datefont}{\ttfamily\fontsize{7.8}{10}\selectfont\color{dim}}
-\newcommand{\statusfont}{\itshape\color{rust}}
 % symbols that differ between engines (pdfLaTeX has no Greek in its text fonts)
 \ifPDFTeX
   \newcommand{\rhosym}{\ensuremath{\rho}}
@@ -65,104 +64,104 @@
 \fi
 \newcommand{\sq}{\texttwosuperior}
 
-% ---- section heads: rust mono caps, hairline to the margin ------------------------
+% ---- section heads: bold, centered, title case (Harvard) --------------------------
 \setcounter{secnumdepth}{0}
-\titleformat{\section}{\ttfamily\bfseries\fontsize{8}{10}\selectfont\color{rust}}{}{0pt}%
-  {\MakeUppercase{#1}\hspace{0.7em}{\color{hair}\leaders\hrule height 2.9pt depth -2.5pt\hfill}}
-\titlespacing*{\section}{0pt}{7.5pt}{2.5pt}
+\titleformat{\section}{\normalfont\bfseries\filcenter}{}{0pt}{#1}
+\titlespacing*{\section}{0pt}{9pt}{1pt}
 
 % ---- entries ----------------------------------------------------------------------
 % right-aligned tail: on the same line if it fits, otherwise flush right below
 \newcommand{\tail}[1]{{\unskip\nobreak\hfil\penalty50\hskip1.2em\hbox{}\nobreak\hfil#1%
   \rightskip=0pt\parfillskip=0pt\finalhyphendemerits=0\par}}
-% \role{Organization}{Title}{Detail}{Dates}
-\newcommand{\role}[4]{\par\addvspace{3.5pt}\noindent
-  {\bfseries #1}\ifblank{#2}{}{\ \textendash\ #2}%
-  \ifblank{#3}{}{{\color{dim}\sep#3}}\tail{\datefont #4}\nopagebreak}
+% \entry{Organization}{Context, right}{Position}{Dates, right}
+\newcommand{\entry}[4]{\par\addvspace{5pt}\noindent
+  {\bfseries #1}\tail{#2}\nopagebreak
+  \ifblank{#3#4}{}{\noindent{\itshape #3}\tail{#4}\nopagebreak}}
 % \paper{Title}{Link}{Authors and advisor}{Status}
-% (\noindent keeps \color's whatsit out of the vertical list: there it would make
-% the glue after \nopagebreak a legal page break between a title and its authors)
-\newcommand{\paper}[4]{\par\addvspace{3.5pt}\noindent
+\newcommand{\paper}[4]{\par\addvspace{5pt}\noindent
   \ifblank{#2}{{\bfseries #1}}{\href{#2}{\bfseries #1}}\par\nopagebreak
-  \noindent{\color{dim}#3}\tail{\statusfont #4}\nopagebreak}
-% \lnk{url}{label}: a small rust tag that links out
-\newcommand{\lnk}[2]{\href{#1}{\ttfamily\fontsize{7.3}{9}\selectfont\color{rust}[#2]}}
+  \noindent{\itshape #3}\tail{#4}\nopagebreak}
+% \lnk{url}{label}: a small bracketed tag that links out
+\newcommand{\lnk}[2]{\href{#1}{\small[#2]}}
 
-\setlist[itemize]{leftmargin=1em,labelsep=0.4em,itemsep=0.6pt,parsep=0pt,
-  topsep=1pt,partopsep=0pt,beginpenalty=10000,label={\color{rust}\raisebox{0.1ex}{\scriptsize\textbullet}}}
+\setlist[itemize]{leftmargin=1.5em,labelsep=0.6em,itemsep=0.5pt,parsep=0pt,
+  topsep=1.5pt,partopsep=0pt,beginpenalty=10000,label={\small\textbullet}}
 
 % ---- running foot -----------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[R]{\datefont Adrian Erlikhman\sep\thepage\,/\,\pageref*{LastPage}}
+\fancyfoot[R]{\small Adrian Erlikhman\sep\thepage\,/\,\pageref*{LastPage}}
 
 \begin{document}
 
 % =================================================================================
 \begin{center}
-{\fontsize{24}{27}\selectfont\bfseries Adrian Erlikhman}\par
-\vspace{3.5pt}
-{\small\color{dim}(213) 330-6884\sep
-\href{mailto:erlikhman.adrian@gmail.com}{\color{rust}erlikhman.adrian@gmail.com}\sep
-\href{https://adrianerlikhman.is-a.dev}{\color{rust}adrianerlikhman.is-a.dev}\sep
-\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{\color{rust}LinkedIn}\sep
-\href{https://github.com/adrian-erlikhman}{\color{rust}GitHub}}
+{\fontsize{17}{20}\selectfont\bfseries Adrian Erlikhman}\par
+\vspace{3pt}
+\rule{\textwidth}{0.5pt}\par
+\vspace{3pt}
+(213) 330-6884\enspace\textbullet\enspace
+\href{mailto:erlikhman.adrian@gmail.com}{erlikhman.adrian@gmail.com}\enspace\textbullet\enspace
+\href{https://adrianerlikhman.is-a.dev}{adrianerlikhman.is-a.dev}\enspace\textbullet\enspace
+\href{https://www.linkedin.com/in/adrian-erlikhman-55489620b}{LinkedIn}\enspace\textbullet\enspace
+\href{https://github.com/adrian-erlikhman}{GitHub}
 \end{center}
-\vspace{4pt}
-{\color{ink}\hrule height 0.7pt}
 
 % =================================================================================
 \section{Professional Experience}
 
-\role{Firstness}{Software Engineering \& ML Intern}{\href{https://firstness.ai}{firstness.ai}\sep AI research engine}{2026 -- Present}
+\entry{Firstness}{\href{https://firstness.ai}{firstness.ai}}{Software Engineering \& ML Intern}{2026 -- Present}
 \begin{itemize}
-  \item Working directly under the founder on the platform, which generates research hypotheses and checks each against published work.
+  \item Working directly under the founder on Firstness, an AI research engine that generates research hypotheses and checks each against the published literature.
+  \item Refining how the platform connects into the research stack: the literature databases and reference managers researchers already work in.
+  \item Making the platform easier for new users to understand, with demos that walk them through how it works.
 \end{itemize}
 
-\role{Kiddom}{Machine Learning Intern}{K--12 EdTech}{2026}
+\entry{Kiddom}{K--12 EdTech}{Machine Learning Intern}{2026}
 \begin{itemize}
   \item On the data science team with Director of Data Science Flora Xu, applying machine learning to educational content and product-usage data: turning classroom usage into models the product team can act on, and keeping them honest in production.
 \end{itemize}
 
-\role{Fjor Venture Capital}{Investment Intern}{AI-focused venture fund}{2024 -- Present}
+\entry{Fjor Venture Capital}{AI-focused venture fund}{Investment Intern}{2024 -- Present}
 \begin{itemize}
   \item Ran due diligence on 20+ early-stage AI startups and wrote 10+ full investment memos (market sizing, competitive positioning, technical architecture, founder evaluation) for partner-level decisions.
   \item Led the screen of Y Combinator's Summer 2025 batch with Managing Director Tatiana Janko; drafted the fund's monthly LP updates.
 \end{itemize}
 
-\role{Alliance for SoCal Innovation}{Venture Outreach \& Pipeline Intern}{}{2024 -- 2026}
+\entry{Alliance for SoCal Innovation}{}{Venture Outreach \& Pipeline Intern}{2024 -- 2026}
 \begin{itemize}
-  \item Built the Alliance's 250+ firm investor database in HubSpot and the schema it still sorts on, and led the backend redesign of the pipeline with the Chief Innovation Officer; rewrote the founder intake form, routed companies to partners including Expert Dojo and the Long Beach Accelerator, and sat in on the SVP Life Science pilot committee's pitch reviews.
+  \item Built the Alliance's 250+ firm investor database in HubSpot and the schema it still sorts on, and led the backend redesign of the pipeline with the Chief Innovation Officer.
+  \item Rewrote the founder intake form, routed companies to partners including Expert Dojo and the Long Beach Accelerator, and sat in on the SVP Life Science pilot committee's pitch reviews.
 \end{itemize}
 
 % =================================================================================
 \section{Ventures \& Civic Technology}
 
-\role{AIML-LI (AI/ML Literacy Initiative)}{Co-Founder \& Lead}{\href{https://aiml-initiative.org}{aiml-initiative.org}\sep grew out of the LACES AIML Club}{2023 -- Present}
+\entry{AIML-LI (AI/ML Literacy Initiative)}{\href{https://aiml-initiative.org}{aiml-initiative.org}}{Co-Founder \& Lead; grew out of the LACES AIML Club}{2023 -- Present}
 \begin{itemize}
   \item Co-wrote a free AI-literacy course any teacher can run in twelve 30-minute sessions on Chromebooks: students train and break real models, study bias in real cases and pitch an AI project of their own. Taught in LACES AP Computer Science, spring 2026.
   \item Took it and a 12-week version to LAUSD's Ed Tech \& Innovation office (Sep 2026), which is sending them to the district's Chief Academic and Chief Information Officers toward a standing AI-literacy elective. Advised by Philo Juang (Google DeepMind) and Amir Zohrenejad (Data Herald, YC W21); mentored by aiEDU.
   \item Organizing the LA Student AI Summit \& Hackathon for 200+ LA public-school students: keynotes from Google DeepMind, Microsoft, Google and Snap, backed by Snap, Jane Street, MongoDB, Confluent, Discovery Education and Hacker Fund.
 \end{itemize}
 
-\role{SafeJew}{Co-Founder}{\href{https://safejew.org}{safejew.org}\sep JFEDLA Teen Innovation Grant}{2024 -- Present}
+\entry{SafeJew}{\href{https://safejew.org}{safejew.org}}{Co-Founder; JFEDLA Teen Innovation Grant}{2024 -- Present}
 \begin{itemize}
   \item Shipped a live map of antisemitic incidents, in production at safejew.org: 800 across Greater LA, 100 of them individually sourced with a citable link on every pin, plus 594 on 33 university campuses.
   \item Wrote a dependency-free LA gazetteer that geocodes the places named in news prose, so a scheduled GitHub Action keeps the map current. Next.js, TypeScript and Supabase; rebuilt as V2 for a Hillel International pitch.
 \end{itemize}
 
-\role{Safe Routes to School}{Co-Creator}{\href{https://safe-routes-la.github.io}{safe-routes-la.github.io}}{2026}
+\entry{Safe Routes to School}{\href{https://safe-routes-la.github.io}{safe-routes-la.github.io}}{Co-Creator}{2026}
 \begin{itemize}
   \item \textbf{3rd place internationally, Code for Transportation} (Young Coders' Sphere). Scores 431,599 LA blocks for street-crime risk from 85,634 filtered LAPD incidents, then runs A* entirely in the browser, with no server.
-  \item Found that the afternoon walk home is a student's riskiest hour, and that the bus cuts exposure up to 80\% and is faster.\enspace\lnk{https://safe-routes-la.github.io/}{live}\,\lnk{https://github.com/safe-routes-la/safe-routes-la.github.io}{code}
+  \item Found that the afternoon walk home is a student's riskiest hour, and that riding the bus cuts exposure by up to 80\% and is faster.\enspace\lnk{https://safe-routes-la.github.io/}{live}\,\lnk{https://github.com/safe-routes-la/safe-routes-la.github.io}{code}
 \end{itemize}
 
 % =================================================================================
 \section{Research}
 
 \paper{Self-Attribution Is Not Self-Recognition: A Peer Baseline for LLM Judges}{}%
-  {First author\sep with R.\ Erlikhman, M.\ Tarekegn\sep advised by Philo Juang (Google DeepMind)}%
+  {First author, with R.\ Erlikhman, M.\ Tarekegn; advised by Philo Juang (Google DeepMind)}%
   {Under review, JUDGe @ NeurIPS 2026}
 \begin{itemize}
   \item Introduced a peer baseline that scores each LLM judge's self-attribution rate against what the other judges get on the same text, separating self-recognition from text that is simply easy to identify.
@@ -170,7 +169,7 @@
 \end{itemize}
 
 \paper{Do LLM Fingerprints Survive Outside English?}{https://github.com/adrian-erlikhman/LangLLM}%
-  {First author\sep with M.\ Tarekegn, R.\ Erlikhman\sep advised by Philo Juang (Google DeepMind)}%
+  {First author, with M.\ Tarekegn, R.\ Erlikhman; advised by Philo Juang (Google DeepMind)}%
   {Poster submitted, IEEE MIT URTC 2026}
 \begin{itemize}
   \item 840 responses from five frontier models in seven languages, English to Hindi, attributed with 21 Universal Dependencies features: 59--72\% accuracy in every language (chance is 20\%), no drop for low-resource languages, and it survives machine translation.
@@ -178,7 +177,7 @@
 \end{itemize}
 
 \paper{Proximity, Not Transmission: What the Patent Record Can and Cannot Show About NLP and Surveillance}{https://github.com/adrian-erlikhman/earshot}%
-  {First author\sep with Michael Tarekegn}%
+  {First author, with Michael Tarekegn}%
   {Submitting, AI for Peace @ NeurIPS 2026}
 \begin{itemize}
   \item Linked 127,851 ACL Anthology papers to the 9,048 USPTO patents that cite them, and coded what each patent is for with a rubric that separates a system's operator from its subject; revealing the applicant flips 10 of 31 non-neutral labels.
@@ -186,7 +185,7 @@
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings?\newline A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
-  {First author\sep with Ryan Erlikhman}%
+  {First author, with Ryan Erlikhman}%
   {Accepted with revisions, Journal of High School Science}
 \begin{itemize}
   \item Reproduced every published score for 167 countries exactly, then varied weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design.
@@ -200,50 +199,52 @@
   \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 vs.\ 0.51). The loss traces to estimating expected returns, which shrinkage fixes only with about two decades of stationary data.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}{pdf}
 \end{itemize}
 
-\role{Advanced Mathematics Research}{}{number theory, combinatorics, game theory; with PhD candidate Kirill Kovalenko}{2022 -- Present}
+\entry{Advanced Mathematics Research}{2022 -- Present}{Number theory, combinatorics and game theory, with PhD candidate Kirill Kovalenko}{}
 
 % =================================================================================
 \section{Competitions \& Builds}
 
-\role{Y Combinator Startup School}{Admitted}{sub-5\% acceptance, \$30,000+ in partner credits}{2026}
+\entry{Y Combinator Startup School}{sub-5\% acceptance, \$30,000+ in partner credits}{Admitted}{2026}
 \begin{itemize}
   \item Worked YC's company-building program end to end, from validation and user discovery to go-to-market.\enspace\lnk{https://www.startupschool.org/}{about}
 \end{itemize}
 
-\role{Citadel High School Terminal}{\textbf{Finalist (top 8)}}{Citadel \textbar\ Citadel Securities, hosted by Correlation One}{2026}
+\entry{Citadel High School Terminal}{Citadel \textbar\ Citadel Securities, hosted by Correlation One}{Finalist (top 8)}{2026}
 \begin{itemize}
   \item Wrote ``dunerscore,'' a Python tower-defense strategy that prices every wall, turret and attack lane each turn; iterated through replay post-mortems to the finals on a three-person team.\enspace\lnk{https://terminal.c1games.com/}{about}
 \end{itemize}
 
-\role{Ledger}{\textbf{1st place, VISION HACK: South LA}}{Council District 9 Champion, U18\sep Hacker Fund \texttimes\ City of LA Vision Lab}{Sep 2026}
+\entry{Ledger, VISION HACK: South LA}{Hacker Fund \texttimes\ City of LA Vision Lab}{1st place, Council District 9 Champion, U18}{Sep 2026}
 \begin{itemize}
   \item Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. Ledger puts the 18 programs a corner store answers to on one renewal calendar and scores a photo of a wholesale order against the SNAP stocking rule.\enspace\lnk{https://visionhack-nu.vercel.app/}{live}\,\lnk{https://github.com/michae6345-crypto/visionhack}{code}
 \end{itemize}
 
-\role{eDNAtlas}{\textbf{1st place, Decode the Ocean Hackathon}}{Lovable \texttimes\ United Nations}{2026}
+\entry{eDNAtlas, Decode the Ocean Hackathon}{Lovable \texttimes\ United Nations}{1st place}{2026}
 \begin{itemize}
   \item Built and shipped the winning entry: a live map that turns environmental DNA into a plain-language health score for coastal sites, with the raw evidence and Darwin Core downloads.\enspace\lnk{https://adrianerlikhman.is-a.dev/eDNAtlas/}{live}\,\lnk{https://github.com/adrian-erlikhman/eDNAtlas}{code}
 \end{itemize}
 
-\role{More builds}{}{}{}
+\entry{More builds}{}{}{}
 \begin{itemize}
-  \item \textbf{Why Wrong}, misconception diagnosis for teachers (naive Bayes, then clustering; F1 0.87 on planted misconceptions)\enspace\lnk{https://adrian-erlikhman.github.io/why-wrong/}{live}\,\lnk{https://github.com/adrian-erlikhman/why-wrong}{code}\sep \textbf{Quant:} HMM regime-aware portfolio optimizer, LSTM forecaster, FinBERT sentiment signal, fraud detection (PR-AUC 0.36 vs.\ 0.28)
+  \item \textbf{Why Wrong}, misconception diagnosis for teachers (naive Bayes, then clustering; F1 0.87 on planted misconceptions)\enspace\lnk{https://adrian-erlikhman.github.io/why-wrong/}{live}\,\lnk{https://github.com/adrian-erlikhman/why-wrong}{code}
+  \item \textbf{Quant:} HMM regime-aware portfolio optimizer, LSTM forecaster, FinBERT sentiment signal, fraud detection (PR-AUC 0.36 vs.\ 0.28)
 \end{itemize}
 
 % =================================================================================
 \section{Talks \& Presentations}
 
-\role{NCSS 2026, National Consortium of STEM Schools}{\textbf{Invited Speaker, Student Panel on AI}}{San Diego}{Dec 2026}
+\entry{NCSS 2026, National Consortium of STEM Schools}{San Diego, CA}{Invited Speaker, Student Panel on AI}{Dec 2026}
 \begin{itemize}
   \item Invited by aiEDU to its student panel in the pre-conference session ``Transform Your School's AI Readiness'': how students actually experience AI, and what adults need to know, for about 100 educators.
 \end{itemize}
-\role{LAUSD Innovation Expo}{Presenter}{the AIML-LI curriculum, alongside Google, Microsoft and Canva}{}
-\role{LAUSD Student Innovation Challenge}{Invited Presenter}{\$10,000 district challenge}{}
+
+\entry{LAUSD Innovation Expo}{}{Presenter: the AIML-LI curriculum, alongside Google, Microsoft and Canva}{}
+\entry{LAUSD Student Innovation Challenge}{}{Invited Presenter: a \$10,000 district challenge}{}
 
 % =================================================================================
 \section{Education}
 
-\role{Los Angeles Center for Enriched Studies (LACES)}{Class of 2027}{LAUSD magnet school}{Los Angeles, CA}
+\entry{Los Angeles Center for Enriched Studies (LACES)}{Los Angeles, CA}{LAUSD magnet school}{Class of 2027}
 \begin{itemize}
   \item GPA 5.2 weighted / 4.0 unweighted\sep SAT 1520 (Math 770, EBRW 750)\sep 2\texttimes\ AP Scholar with Distinction
   \item 17 AP courses (11 completed, 6 this year)
@@ -253,22 +254,21 @@
 % =================================================================================
 \section{Leadership \& Athletics}
 
-\role{Competitive Fencing, \'Ep\'ee}{USA Fencing A26, Team USA}{LA International Fencing Center}{}
+\entry{Competitive Fencing, \'Ep\'ee}{LA International Fencing Center}{USA Fencing A26, Team USA}{}
 \begin{itemize}
   \item U.S. No.\ 49 Junior (U20) and No.\ 78 Senior; peak No.\ 17 Cadet (U17); No.\ 1 in Region 4. Team USA at the 2026 Cadet Pan American Championships in Bogot\'a (6th). In active recruitment with MIT.
   \item Top 32 Division I, National Championships\sep Top 8 Senior Team, Summer Nationals\sep Top 8 Cadet, SJCC\sep 4\texttimes\ Junior regional champion\sep 3\texttimes\ All-American and 3\texttimes\ All-Academic First Team
 \end{itemize}
 
-\role{Jewish Student Union}{President}{50+ members}{2023 -- Present}
+\entry{Jewish Student Union}{50+ members}{President}{2023 -- Present}
 \begin{itemize}
   \item Weekly programming with NCSY; organized a school-wide Holocaust Remembrance assembly featuring a survivor, with StandWithUs.
 \end{itemize}
 
-\role{STEMsters}{Co-Founder \& President}{30+ volunteers, 4 elementary schools}{2022 -- Present}
+\entry{STEMsters}{30+ volunteers, 4 elementary schools}{Co-Founder \& President}{2022 -- Present}
 \begin{itemize}
   \item Places LACES volunteers in four elementary schools to teach hands-on coding, robotics and engineering to underserved kids.
 \end{itemize}
-
 
 % =================================================================================
 \section{Honors}
@@ -278,11 +278,10 @@
 
 % =================================================================================
 \section{Skills}
-\begin{itemize}
-  \item \textbf{Code:} Python, TypeScript/JavaScript, SQL, LaTeX; Next.js, React, Supabase/PostgreSQL, GitHub Actions, Git
-  \item \textbf{ML \& statistics:} PyTorch, scikit-learn, TensorFlow/Keras, pandas, NumPy, SHAP, Stanza; LLM evaluation, stylometry, Monte Carlo and Sobol' sensitivity analysis, hypothesis testing, time series, HMMs, A* search
-  \item \textbf{Certifications:} Certiport IT Specialist in Software Development, Cybersecurity, Python, Data Analytics, AI and HTML/CSS; Deep Learning Specialization (Andrew Ng, Coursera); NVIDIA Deep Learning Fundamentals; Kaggle \texttimes\ Google Generative AI Intensive
-  \item \textbf{Languages:} English, Russian (fluent), Spanish (intermediate)
-\end{itemize}
+\everypar{\hangindent=1em\hangafter=1}
+\textbf{Code:} Python, TypeScript/JavaScript, SQL, LaTeX; Next.js, React, Supabase/PostgreSQL, GitHub Actions, Git\par
+\textbf{ML \& statistics:} PyTorch, scikit-learn, TensorFlow/Keras, pandas, NumPy, SHAP, Stanza; LLM evaluation, stylometry, Monte Carlo and Sobol' sensitivity analysis, hypothesis testing, time series, HMMs, A* search\par
+\textbf{Certifications:} Certiport IT Specialist in Software Development, Cybersecurity, Python, Data Analytics, AI and HTML/CSS; Deep Learning Specialization (Andrew Ng, Coursera); NVIDIA Deep Learning Fundamentals; Kaggle \texttimes\ Google Generative AI Intensive\par
+\textbf{Languages:} English, Russian (fluent), Spanish (intermediate)\par
 
 \end{document}

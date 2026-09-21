@@ -4,7 +4,7 @@
     python resume/build.py short      # just one
 
 resume-short.tex -> resume.pdf       (one page; the default link)
-resume-long.tex  -> resume-long.pdf  (two pages)
+resume-long.tex  -> resume-long.pdf  (three pages, Harvard format)
 
 Needs Tectonic (https://tectonic-typesetting.github.io), a one-file XeLaTeX
 engine that fetches the TeX packages it needs on first run. Put it on PATH or
@@ -32,14 +32,16 @@ ROOT = HERE.parent
 
 TARGETS = {
     "short": ("resume-short.tex", "resume.pdf", 1),
-    "long": ("resume-long.tex", "resume-long.pdf", 2),
+    "long": ("resume-long.tex", "resume-long.pdf", 3),
 }
+# How each section head reads in the text layer: the one-pager's are mono caps,
+# the long one's are Harvard's centered title case.
 SECTIONS = {
     "short": ["PROFESSIONAL EXPERIENCE", "VENTURES & CIVIC TECHNOLOGY", "RESEARCH",
               "COMPETITIONS", "EDUCATION", "LEADERSHIP & ATHLETICS", "SKILLS"],
-    "long": ["PROFESSIONAL EXPERIENCE", "VENTURES & CIVIC TECHNOLOGY", "RESEARCH",
-             "COMPETITIONS & BUILDS", "TALKS & PRESENTATIONS", "EDUCATION",
-             "LEADERSHIP & ATHLETICS", "HONORS", "SKILLS"],
+    "long": ["Professional Experience", "Ventures & Civic Technology", "Research",
+             "Competitions & Builds", "Talks & Presentations", "Education",
+             "Leadership & Athletics", "Honors", "Skills"],
 }
 
 
