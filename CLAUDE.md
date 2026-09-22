@@ -255,6 +255,15 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   call it the first to link NLP papers to patents. The title is the repo brief's
   recommendation; Adrian left the choice to Claude. Update the status line once
   it's submitted or decided.
+- **"Which model wrote this?"** (the dark band atop Research, since 22 Sept) is
+  real LangLLM data in `assets/guess-samples.json`: ten English essays, two
+  per model, drawn at random with seed 20260922 from `LangLLM/data/raw`. Each
+  carries the prompt's topic and stance, whether the 21-feature logistic
+  regression named it (leave-one-prompt-out, `results/rq1_cell_correct.csv`),
+  and every model's answer to "who wrote this?" (`data/judge`). The game
+  quotes the whole English set: classifier 72% of 120 essays, models 23% of
+  600 calls, chance 20%. Rebuild it from the repo rather than editing by hand,
+  and keep the random order (the first essay happens to be a classifier miss).
 - **The CompLLM stylometry demo** (TRY THE DEMO on R.02) is a toy, and says so:
   six hand-set profiles (Human, GPT, Claude, Gemini, Grok, DeepSeek) matched on
   four features, with percentages that are shares of similarity, not

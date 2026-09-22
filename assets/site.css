@@ -906,3 +906,45 @@ section{padding:104px 0}
 .fr .k i{font-size:10.5px}
 #offclock .offclock-lead{font-size:17px;color:var(--ink)}
 .life-h .life-hint{font-size:13px}
+
+/* ==================== GUESS THE MODEL — the one dark band on the page ==================== */
+.guess{--g-bg:#1f1d18;--g-card:#2a2721;--g-line:#3d392f;--g-text:#efeadb;--g-dim:#b3ad9b;--g-acc:#e8876c;
+  margin:0 0 60px;background:var(--g-bg);color:var(--g-text);padding:38px 38px 30px;box-shadow:0 40px 80px -46px rgba(33,31,24,.7)}
+@media(max-width:700px){.guess{padding:26px 18px 22px;margin-left:-4px;margin-right:-4px}}
+.g-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:end;margin-bottom:26px}
+@media(max-width:760px){.g-top{grid-template-columns:1fr;gap:18px}}
+.g-kick{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g-acc)}
+.g-title{font-family:'Fraunces',Georgia,serif;font-weight:900;font-optical-sizing:auto;font-size:clamp(2rem,3.8vw,3rem);line-height:1;letter-spacing:-.02em;margin:10px 0 14px;color:#f6efe6}
+.g-sub{font-family:var(--sans);font-size:15.5px;line-height:1.6;color:var(--g-dim);max-width:62ch;margin:0}
+.g-score{display:flex;gap:22px}
+.g-score div{display:flex;flex-direction:column;align-items:flex-end}
+@media(max-width:760px){.g-score div{align-items:flex-start}}
+.g-score b{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.9rem;line-height:1;color:#f6efe6;font-variant-numeric:tabular-nums}
+.g-score span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g-dim);margin-top:7px}
+.g-card{background:var(--g-card);border:1px solid var(--g-line);padding:22px}
+@media(max-width:700px){.g-card{padding:14px}}
+.g-meta{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--g-dim);margin-bottom:12px}
+.g-text{max-height:360px;overflow:auto;background:#f3efe3;color:#211f18;padding:20px 24px;font-family:var(--sans);font-size:15px;line-height:1.65;outline-offset:2px}
+.g-text:focus-visible{outline:2px solid var(--g-acc)}
+.g-text p{margin:0 0 11px}
+.g-text p:last-child{margin-bottom:0}
+.g-text .g-h{font-weight:700}
+.g-choices{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.g-choices button{font-family:var(--mono);font-size:12.5px;padding:11px 14px;background:transparent;color:var(--g-text);border:1px solid #6d675a;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.g-choices button:hover:not(:disabled),.g-choices button:focus-visible{border-color:var(--g-acc);color:#fff;outline:none}
+.g-choices button:disabled{cursor:default;opacity:.55}
+.g-choices button.is-true{background:#3c7a4e;border-color:#3c7a4e;color:#fff;opacity:1}
+.g-choices button.is-wrong{background:#9a3e28;border-color:#9a3e28;color:#fff;opacity:1}
+.g-reveal{margin-top:18px;border-top:1px solid var(--g-line);padding-top:16px;font-family:var(--sans);font-size:15px;line-height:1.6}
+.g-line{margin:0 0 10px}
+.g-k{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g-dim);margin-bottom:3px}
+.g-why{color:var(--g-dim);font-size:13.5px}
+.g-judges{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14.5px}
+.g-reveal .ok{color:#9ad6a8}
+.g-reveal .no{color:#f2a58f}
+.g-end{margin-top:8px;color:#f6efe6}
+.g-next{margin-top:8px;font-family:var(--mono);font-size:12.5px;padding:11px 16px;background:var(--g-acc);color:#1f1d18;border:0;cursor:pointer;font-weight:600}
+.g-next:hover,.g-next:focus-visible{background:#f6efe6;outline:none}
+.g-foot{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--g-dim);margin:16px 0 0}
+.g-foot a{color:var(--g-acc);border-bottom:1px solid currentColor}
+@media(max-width:700px){.g-text{padding:14px 15px;font-size:14.5px}.g-choices button{flex:1 1 44%}}

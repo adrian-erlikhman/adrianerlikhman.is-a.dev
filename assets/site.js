@@ -839,3 +839,71 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(body){const d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="tp">adrian@os:~$</span> <b>root access granted.</b> jk — but seriously, let’s talk.';body.appendChild(d);body.scrollTop=body.scrollHeight;}
   }
 })();
+
+/* ================= GUESS THE MODEL — real LangLLM essays (assets/guess-samples.json) ================= */
+(function(){
+  const box=document.getElementById('guess'); if(!box) return;
+  const $=id=>document.getElementById(id);
+  const NAMES={gpt:'GPT-5.5',claude:'Claude Opus 4.7',gemini:'Gemini 3.5 Flash',grok:'Grok 4.3',deepseek:'DeepSeek V4 Pro'};
+  const ORDER=['gpt','claude','gemini','grok','deepseek'];
+  const SHORT={gpt:'GPT',claude:'Claude',gemini:'Gemini',grok:'Grok',deepseek:'DeepSeek'};
+  let data=null, i=0, n=0, you=0, clf=0, jud=0, judN=0, answered=false;
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  /* just enough markdown to show the essays the way the models wrote them */
+  const md=t=>esc(t).split(/\n{2,}/).map(b=>b.split('\n').map(line=>{
+    let l=line.trim(); if(!l||/^[-*_]{3,}$/.test(l)) return '';
+    const h=/^#{1,6}\s+/.test(l); l=l.replace(/^#{1,6}\s+/,'').replace(/^[-*]\s+/,'• ');
+    l=l.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[^*\w])\*(?!\s)([^*]+?)\*(?!\*)/g,'$1<i>$2</i>');
+    return h?'<p class="g-h">'+l+'</p>':'<p>'+l+'</p>';
+  }).join('')).join('');
+  const score=()=>{ $('gYou').textContent=you+'/'+n; $('gClf').textContent=clf+'/'+n; $('gJud').textContent=jud+'/'+judN; };
+  function show(k){
+    const s=data.samples[k]; answered=false;
+    $('gCount').textContent='essay '+(k+1)+' of '+data.samples.length;
+    $('gTopic').textContent='prompt: '+s.topic.toLowerCase()+' ('+s.stance+')';
+    const t=$('gText'); t.innerHTML=md(s.text); t.scrollTop=0;
+    $('gChoices').innerHTML=ORDER.map(m=>'<button type="button" data-m="'+m+'">'+NAMES[m]+'</button>').join('');
+    $('gReveal').hidden=true; $('gReveal').innerHTML='';
+  }
+  function guess(m){
+    if(answered) return; answered=true;
+    const s=data.samples[i], a=s.author, right=m===a;
+    n++; if(right) you++; if(s.classifier_correct) clf++;
+    const js=ORDER.map(j=>[j,s.judges[j]]);
+    const hits=js.filter(([,g])=>g===a).length; jud+=hits; judN+=js.length; score();
+    $('gChoices').querySelectorAll('button').forEach(b=>{
+      b.disabled=true;
+      if(b.dataset.m===a) b.classList.add('is-true');
+      else if(b.dataset.m===m) b.classList.add('is-wrong');
+    });
+    const last=i===data.samples.length-1;
+    $('gReveal').innerHTML=
+      '<p class="g-line"><b>'+NAMES[a]+'</b> wrote it. '+(right?'You got it.':'You said '+NAMES[m]+'.')+'</p>'+
+      '<p class="g-line"><span class="g-k">my classifier</span>'+(s.classifier_correct?'<span class="ok">named '+NAMES[a]+' ✓</span>':'<span class="no">picked another model ✗</span>')+
+      '<span class="g-why"> · 21 interpretable features, never trained on this prompt</span></p>'+
+      '<p class="g-line"><span class="g-k">the models, asked who wrote it</span><span class="g-judges">'+
+      js.map(([j,g])=>'<span class="'+(g===a?'ok':'no')+'">'+SHORT[j]+' said '+(g?SHORT[g]:'nothing usable')+(g===a?' ✓':' ✗')+'</span>').join('')+'</span></p>'+
+      (last
+        ? '<p class="g-line g-end">That was all ten. You got '+you+' of '+n+'; the classifier '+clf+' of '+n+'; the models '+jud+' of '+judN+'. Across all '+data.english.essays+' English essays the classifier is right '+Math.round(data.english.classifier_accuracy*100)+'% of the time and the models '+Math.round(data.english.judge_accuracy*100)+'%, where guessing gets 20%.</p><button type="button" class="g-next" data-act="again">play again</button>'
+        : '<button type="button" class="g-next" data-act="next">next essay →</button>');
+    $('gReveal').hidden=false;
+    const nx=$('gReveal').querySelector('.g-next'); if(nx) nx.focus({preventScroll:true});
+  }
+  box.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b||!data) return;
+    if(b.dataset.m) guess(b.dataset.m);
+    else if(b.dataset.act==='next'){ i++; show(i); }
+    else if(b.dataset.act==='again'){ i=0; n=you=clf=jud=judN=0; score(); show(0); }
+  });
+  function load(){
+    fetch('/assets/guess-samples.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+      data=d; show(0); score();
+      $('gFoot').innerHTML='Ten of the '+d.english.essays+' English essays, two per model, drawn at random. Across all of them the classifier names the right model '+Math.round(d.english.classifier_accuracy*100)+'% of the time; the five models, asked the same question, '+Math.round(d.english.judge_accuracy*100)+'% (chance is 20%). Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a>';
+    }).catch(()=>{ $('gText').innerHTML='<p>The essays didn’t load. They’re in the LangLLM repo on GitHub.</p>'; });
+  }
+  /* fetch the essays only when the section comes near */
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
+    io.observe(box);
+  } else load();
+})();

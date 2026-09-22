@@ -1,0 +1,179 @@
+{
+ "source": "https://github.com/adrian-erlikhman/LangLLM",
+ "note": "Ten English essays, two per model, drawn at random (seed 20260922). classifier_correct: the 21-feature logistic regression, leave-one-prompt-out (results/rq1_cell_correct.csv). judges: each model's answer to 'which of these five models wrote this text?' (data/judge). topic and stance: the prompt's schema (prompts/native/en.json).",
+ "models": {
+  "gpt": "openai/gpt-5.5",
+  "claude": "anthropic/claude-opus-4.7",
+  "gemini": "google/gemini-3.5-flash",
+  "grok": "x-ai/grok-4.3",
+  "deepseek": "deepseek/deepseek-v4-pro-0813"
+ },
+ "english": {
+  "essays": 120,
+  "classifier_accuracy": 0.717,
+  "judge_accuracy": 0.23,
+  "judge_calls": 600
+ },
+ "samples": [
+  {
+   "id": "deepseek|P09|en|1",
+   "prompt": "P09",
+   "author": "deepseek",
+   "classifier_correct": false,
+   "judges": {
+    "gpt": "claude",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "gpt"
+   },
+   "text": "In an era where digital payments are increasingly ubiquitous, physical cash remains far more than a nostalgic relic; it is an essential pillar of a resilient, free, and inclusive economy. Its continued circulation safeguards societies against systemic fragility, preserves individual liberty, and protects those whom digital finance leaves behind.\n\nThe resilience of cash becomes most visible when infrastructure fails. Card terminals, mobile wallets, and online banking all depend on a continuous supply of electricity, functioning cellular networks, and stable data servers. During power outages, cyberattacks, natural disasters, or even routine network disruptions, digital payment systems can seize up without warning, leaving people unable to buy food, fuel, or medicine precisely when they need them most. Cash, by contrast, requires no authentication, no intermediary, and no signal. In the aftermath of a hurricane or a citywide blackout, a banknote still changes hands and completes a transaction instantly. This offline reliability makes cash not a competitor to digital payments but a vital backup that keeps commerce and emergency provisioning alive when the grid goes dark.\n\nCash also holds a unique position as the only widely available payment method that generates no transactional record. Every card swipe, mobile transfer, or online purchase leaves a data trail held by banks, payment processors, merchants, and sometimes governments. Those records can be aggregated, hacked, sold, or subpoenaed, turning private spending into a surveillance asset. Cash, in contrast, moves silently from hand to hand, creating no ledger of who paid whom, when, or for what. In a time of mass data collection and routine breaches, this anonymity protects not only personal privacy but also the freedom to make legal purchases—whether for political literature, health supplies, or charitable gifts—without being profiled. Cash preserves a sphere of economic life that remains outside observation.\n\nFinally, robust cash circulation is indispensable for the unbanked and many elderly citizens. Millions of people lack bank accounts because of fees, documentation barriers, distrust, or poor credit history. Older adults, too, may struggle with smartphones, biometric authentication, or complex app interfaces, and they are frequent targets of digital fraud. For these groups, cash is not a preference but a necessity. It enables them to pay rent, buy groceries, and participate in daily commerce without a bank account or digital literacy. Removing or marginalising cash would deepen exclusion and force vulnerable people into dependence on others. Maintaining cash ensures that economic participation and dignity remain within everyone’s reach.",
+   "topic": "Keeping physical cash in circulation as digital payments grow",
+   "stance": "for"
+  },
+  {
+   "id": "grok|P09|en|0",
+   "prompt": "P09",
+   "author": "grok",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "gpt",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "In an increasingly digitized financial landscape, the enduring value of physical cash becomes evident when considering its unmatched resilience during infrastructural disruptions. Power outages or network failures can render electronic payment systems inoperable, stranding consumers and businesses alike without access to funds or the ability to complete transactions. Cash, however, operates independently of electricity, internet connectivity, or centralized servers, allowing commerce to persist in emergencies such as natural disasters or cyberattacks on banking infrastructure. This reliability ensures that essential goods and services remain accessible, preventing widespread economic paralysis and underscoring cash's role as a dependable fallback that bolsters societal stability when digital alternatives falter.\n\nEqually compelling is cash's singular capacity to preserve user anonymity, as it alone facilitates transactions without creating any digital trail or record. Unlike card payments or mobile transfers, which log details that can be tracked by institutions, governments, or hackers, physical currency leaves no footprint, shielding individuals from surveillance, data breaches, or profiling based on spending habits. This attribute is vital for protecting personal privacy in an age of pervasive data collection, empowering users to conduct everyday exchanges free from the risk of unauthorized monitoring or exploitation of their financial histories.\n\nFinally, cash remains indispensable for demographic groups such as the unbanked and the elderly, who often lack the means or inclination to adopt digital alternatives. Many in these segments face barriers including limited access to banking services, technological unfamiliarity, or physical constraints that make smartphones and cards impractical. Relying on cash enables them to participate fully in the economy for routine purchases, bill payments, and savings, preventing exclusion that could exacerbate inequality and isolation in a cashless society.",
+   "topic": "Keeping physical cash in circulation as digital payments grow",
+   "stance": "for"
+  },
+  {
+   "id": "claude|P12|en|1",
+   "prompt": "P12",
+   "author": "claude",
+   "classifier_correct": false,
+   "judges": {
+    "gpt": "claude",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "gpt"
+   },
+   "text": "Banning private cars from city centres is one of the most transformative urban policies available to modern municipalities. Far from being a punitive restriction on mobility, it is a liberating reallocation of scarce urban space, delivering measurable gains in public health, environmental quality, and even the commercial vitality that opponents claim it would undermine. The case for such a ban rests on three powerful and mutually reinforcing arguments.\n\nFirst, removing private vehicles unlocks vast quantities of street space for uses that serve people rather than machines. In most historic city centres, roads and parking consume more than half of all public land, yet they are used by a small minority of citizens at any given moment. Reclaiming this space allows for generous pedestrian boulevards, protected cycling networks, outdoor seating for cafés and restaurants, pocket parks, and public plazas where cultural life can flourish. Streets cease to be conduits for through-traffic and become genuine civic spaces, hosting markets, performances, and the informal encounters that constitute urban life. Cities such as Pontevedra, Ghent, and Oslo have demonstrated how quickly asphalt can be reimagined as habitat once the car is displaced.\n\nSecond, the empirical evidence for rapid environmental improvement is striking. In Madrid's central low-emission zone, nitrogen dioxide concentrations fell by roughly 20 percent within a year of implementation, while Paris recorded comparable reductions along the Seine embankments after their pedestrianisation. Noise levels, measured in decibels, typically drop by five to ten points on formerly trafficked streets—a difference perceived by the human ear as roughly a halving of loudness. These are not gradual, generational shifts but changes registered within months, translating directly into fewer respiratory illnesses, better sleep, and lower cardiovascular stress for residents.\n\nFinally, and counterintuitively, retail thrives rather than withers. Studies from Copenhagen, New York's Times Square, and multiple German pedestrianised zones consistently show footfall increases of 20 to 40 percent following car bans, with corresponding rises in shop turnover. Merchants habitually overestimate the share of customers arriving by car and underestimate the appetite of pedestrians and cyclists to linger and spend. Banning private cars is thus not merely defensible but demonstrably beneficial across every relevant dimension of urban life.",
+   "topic": "Banning private cars from city centres",
+   "stance": "for"
+  },
+  {
+   "id": "claude|P06|en|1",
+   "prompt": "P06",
+   "author": "claude",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "gpt"
+   },
+   "text": "The proposal to divert a significant portion of space-exploration funding to ocean research rests on an intuitive appeal to earthly priorities, but it collapses under closer scrutiny. To begin with, the premise that space and ocean science compete for the same pool of money is largely mistaken. In most countries, oceanographic research is funded through separate agencies and ministries: in the United States, for example, the National Oceanic and Atmospheric Administration and the National Science Foundation draw from budget lines quite distinct from those that support NASA's exploration programmes, and similar institutional divisions exist in Europe and Asia. Marine science is not underfunded because astronauts are funded; it is underfunded because governments have chosen not to prioritise it within its own budgetary sphere. Framing the two as substitutes obscures the real political question, which is why ocean science struggles to attract the direct investment it deserves.\n\nMoreover, space research is not the rival of oceanography but one of its most powerful enablers. A vast proportion of what we know about the oceans today comes from orbital observation: satellite altimetry maps sea-surface topography and currents, radiometers track temperature and salinity, and imaging instruments monitor plankton blooms, ice extent, and pollution on scales no ship-based survey could ever approach. Missions such as Jason, Sentinel, and SWOT have transformed climate and marine science. Stripping funds from space programmes would, paradoxically, weaken the very infrastructure on which modern oceanography depends, leaving marine researchers with fewer tools rather than more.\n\nFinally, space programmes generate an unusually broad range of spillover benefits into other industries, benefits that would be difficult to replicate through investment in any single field. The technologies developed for exploration have seeded advances in medical imaging, materials science, telecommunications, weather forecasting, water purification, and computing, with returns that studies consistently estimate at several times the original public expenditure. Ocean research, valuable as it is, cannot claim a comparable record of cross-sectoral innovation. Rather than cannibalising a programme whose economic and scientific dividends are exceptionally wide, a sensible policy would expand ocean funding on its own merits while preserving the distinctive engine of discovery that space exploration provides.",
+   "topic": "Redirecting a large share of space-exploration funding to ocean research",
+   "stance": "against"
+  },
+  {
+   "id": "gemini|P02|en|1",
+   "prompt": "P02",
+   "author": "gemini",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "claude",
+    "claude": "gpt",
+    "gemini": "gpt",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "In an era defined by rapid urbanization and pressing environmental crises, cities must rethink how they move. Transitioning to a fare-free public transit system is not a radical luxury, but a pragmatic investment in a city’s future. By eliminating fares, municipalities can unlock substantial economic, environmental, and social benefits, transforming public transit from a transactional service into a universal public good.\n\nFirst, the financial mechanics of fare collection represent a massive, unnecessary burden on transit operators. Implementing, maintaining, and policing ticketing infrastructure—from electronic card readers and physical booths to enforcement personnel—consumes a significant portion of transit budgets. By removing these costly barriers, transit authorities can streamline their operations and redirect these administrative savings directly into improving service quality. These funds could be used to increase bus frequencies, expand routes into underserved areas, and transition to cleaner, electric fleets, ultimately creating a more reliable system for everyone.\n\nFurthermore, fare-free transit acts as a powerful incentive to alter commuter behavior, directly combatting urban congestion. When public transport is entirely free, it becomes the most logical choice for short, everyday trips that residents might otherwise take by car. A noticeable reduction in private vehicle usage translates to emptier streets, faster travel times for emergency services, and a dramatic decrease in localized air pollution. This shift not only clears the roads but also reclaims urban spaces for pedestrians and cyclists, fostering healthier and more vibrant communities.\n\nFinally, and perhaps most importantly, free public transport is a cornerstone of social equity. For low-income residents, transit fares represent a regressive tax that severely limits mobility. Removing this financial barrier provides marginalized communities with unrestricted access to employment opportunities, medical care, and education. When mobility is guaranteed regardless of income, cities foster upward economic mobility and dismantle the geographic isolation that often traps families in poverty. Ultimately, free public transport is a catalyst for fairer, cleaner, and more efficient cities, proving that when we invest in collective mobility, society as a whole reaps the rewards.",
+   "topic": "Making urban public transport free of charge",
+   "stance": "for"
+  },
+  {
+   "id": "grok|P01|en|0",
+   "prompt": "P01",
+   "author": "grok",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "Remote work should become the default for office jobs, as it delivers substantial gains in employee well-being, organizational reach, and financial efficiency. By eliminating daily commutes, workers regain meaningful time that can be redirected toward productive tasks or personal renewal. The average U.S. commuter spends roughly 27 minutes traveling each way, equating to more than 200 hours annually—time often lost to traffic or crowded transit. Redirecting even a portion of these hours to focused work has been shown to increase output; Stanford research found remote employees completed 13 percent more tasks than their office-based counterparts. Others use the reclaimed hours for family responsibilities or exercise, reducing burnout and improving retention.\n\nCompanies also gain access to a far wider talent pool once location ceases to constrain hiring. A technology firm in a high-cost city such as San Francisco can recruit senior engineers from lower-cost regions or different time zones without relocation packages. Fully remote organizations like GitLab and Automattic routinely hire across dozens of countries, securing specialized skills that local markets cannot supply. This geographic flexibility accelerates innovation by assembling diverse teams unhindered by visa limits or housing shortages.\n\nFinancially, reduced office footprints translate into sizable savings that can be reinvested. Commercial real estate and associated utilities often represent 10–15 percent of operating expenses; many firms report cutting these costs by 30–50 percent after shifting to hybrid or remote models. The freed capital can fund higher salaries to attract top performers or increased research budgets. Salesforce, for example, redirected part of its office savings into employee stipends and cloud infrastructure, boosting both morale and product development velocity. Collectively, these advantages demonstrate that defaulting to remote arrangements strengthens both individual performance and corporate competitiveness.",
+   "topic": "Remote work as the default arrangement for office jobs",
+   "stance": "for"
+  },
+  {
+   "id": "gemini|P09|en|0",
+   "prompt": "P09",
+   "author": "gemini",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "In an era dominated by the seamless allure of digital transactions, the temptation to transition toward a completely cashless society overlooks the fundamental vulnerabilities inherent in virtual systems. The true value of physical currency becomes glaringly apparent during moments of systemic crisis, such as widespread power outages, severe weather events, or cyberattacks on banking infrastructure. When the digital grid falters, leaving card terminals unresponsive and mobile banking applications inaccessible, modern commerce is instantly paralyzed. In these critical conjunctures, physical cash functions as an indispensable, fail-safe mechanism that requires neither electricity nor network connectivity to facilitate the exchange of goods and services, thereby ensuring that society can continue to function and meet its basic needs even in the dark.\n\nBeyond its logistical resilience, cash possesses a unique and increasingly vital attribute in the modern age: absolute transactional anonymity. Every digital swipe, click, or tap generates a permanent electronic ledger entry, creating a detailed digital footprint that is highly vulnerable to corporate surveillance, data breaches, and state overreach. Cash remains the sole payment medium that allows individuals to conduct their legal financial affairs without generating a trackable data trail. This preservation of financial privacy is not merely a matter of convenience, but a cornerstone of personal liberty, safeguarding citizens against the paternalistic monitoring of their purchasing habits and preserving the fundamental right to individual autonomy.\n\nFurthermore, the push for a cashless economy threatens to disenfranchise the most vulnerable segments of our population, notably the elderly and the unbanked. For many older citizens, navigating the rapidly evolving landscape of digital applications and online security protocols presents a daunting and alienating barrier to daily life. Similarly, millions of unbanked individuals, who lack access to traditional financial institutions due to economic hardship or systemic barriers, rely entirely on physical currency to participate in the economy. Forcing a transition to digital-only modalities risks economic exclusion for these demographics, turning basic survival into a bureaucratic obstacle course. Preserving a robust circulation of physical cash is therefore a matter of social justice, ensuring that our financial systems remain inclusive, accessible, and humane for everyone.",
+   "topic": "Keeping physical cash in circulation as digital payments grow",
+   "stance": "for"
+  },
+  {
+   "id": "gpt|P11|en|1",
+   "prompt": "P11",
+   "author": "gpt",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "claude",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "The idea that every child should be taught programming from the age of six may sound forward-looking, but it risks misunderstanding what young children need most. The early years of education are a crucial period for building the foundations on which all later learning depends: language, number sense, social confidence, and imaginative play. A six-year-old benefits enormously from learning to read with understanding, speak clearly, listen carefully, count confidently, recognize patterns, and explore ideas through stories, games, art, and physical activity. These are not “soft” alternatives to technical skills; they are the roots of flexible thinking. Imaginative play, in particular, helps children develop creativity, cooperation, problem-solving, and emotional awareness. If programming is introduced too early as a universal requirement, it may crowd out richer and more age-appropriate experiences that support the whole child.\n\nAnother problem is that programming tools and technologies change at extraordinary speed. The languages, platforms, and methods that seem essential today may be far less relevant by the time a six-year-old reaches adolescence or adulthood. Teaching very young children specific coding skills can therefore create a false sense of preparation. What will matter more in the long run is not whether a child learned a particular programming environment in primary school, but whether that child can think logically, communicate ideas, adapt to new information, and learn independently. These habits can be cultivated through mathematics, reading, puzzles, science exploration, and creative projects without requiring formal coding instruction at such an early age. It is wiser to introduce programming later, when students have the maturity and foundational knowledge to understand it more deeply and apply it more meaningfully.\n\nFinally, making programming compulsory for all six-year-olds ignores a practical reality: many schools do not have enough qualified teachers to provide high-quality coding instruction. Good programming education is not simply a matter of placing children in front of screens or handing teachers a scripted app. It requires instructors who understand both computing concepts and child development. In many places, schools already struggle to recruit teachers for core subjects, support students with diverse needs, and provide basic resources. Requiring universal early coding instruction could widen inequalities, because wealthier schools would hire specialists while under-resourced schools would offer shallow or poorly supported lessons. Rather than imposing an unrealistic mandate, education systems should focus first on strong foundational learning and introduce programming later, thoughtfully and equitably.",
+   "topic": "Teaching programming to all children from age six",
+   "stance": "against"
+  },
+  {
+   "id": "gpt|P12|en|1",
+   "prompt": "P12",
+   "author": "gpt",
+   "classifier_correct": true,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "gpt"
+   },
+   "text": "Banning private cars from city centres is one of the most effective steps a city can take to become healthier, more efficient, and more economically vibrant. The private car is an extraordinarily space-intensive way to move people through dense urban areas: a single vehicle often carries one person while occupying road space, kerb space, junction capacity, and parking areas that could serve many more people if used differently. City centres are not primarily places for high-speed vehicle movement; they are places of work, shopping, culture, public life, and social exchange. Removing private cars therefore aligns the use of urban space with the real purpose of central districts.\n\nThe most immediate benefit is the liberation of street space. Roads and parking lanes currently devoted to private vehicles can be converted into wide pedestrian thoroughfares, protected cycle tracks, bus lanes, trees, seating, terraces, market stalls, and public squares. This does not merely make streets more attractive; it makes them function better. Walking becomes safer and more pleasant, cycling becomes a practical option for a wider range of people, and public transport is less delayed by congestion. Commercial activity also gains from a better public realm: cafés can spill outdoors, shops become easier to browse, and streets become destinations rather than corridors to be hurried through. In dense city centres, reallocating space from cars to people is a more productive use of scarce land.\n\nThe environmental gains are also rapid and measurable. Evidence from low-traffic zones, pedestrianised centres, and car-restricted districts shows that air quality can improve within weeks or months, especially through reductions in nitrogen dioxide and particulate pollution associated with traffic. Noise pollution also falls sharply when engines, acceleration, braking, and horn use are removed from central streets. These changes matter because air pollution is linked to asthma, heart disease, and premature death, while chronic noise contributes to stress, sleep disruption, and poorer mental health. A car ban is therefore not just an aesthetic intervention; it is a public health measure whose benefits can appear quickly after implementation.\n\nNor does the economic case against car bans withstand scrutiny. Although some retailers fear that fewer cars mean fewer customers, many cities that restrict private vehicles find the opposite: footfall rises. This is because most central shoppers arrive by public transport, bicycle, or on foot, and they are more likely to linger in safe, attractive streets. Pedestrian environments encourage browsing, repeat visits, and outdoor spending. By making city centres cleaner, calmer, and more enjoyable, car bans can strengthen rather than weaken urban commerce. Far from excluding people, they create places where more people want to be.",
+   "topic": "Banning private cars from city centres",
+   "stance": "for"
+  },
+  {
+   "id": "deepseek|P02|en|0",
+   "prompt": "P02",
+   "author": "deepseek",
+   "classifier_correct": false,
+   "judges": {
+    "gpt": "gpt",
+    "claude": "gpt",
+    "gemini": "claude",
+    "grok": "claude",
+    "deepseek": "claude"
+   },
+   "text": "In cities worldwide, public transport remains a vital artery, yet the fares charged to use it may do more harm than good. Eliminating fares entirely would not be a reckless giveaway but a strategic investment, yielding benefits that far outweigh lost ticket revenue.\n\nFirst, the very act of collecting fares is a substantial financial burden. Transit operators spend heavily on fareboxes, ticket vending machines, smart card systems, payment processing, and the staff needed to enforce and maintain them. These administrative costs consume a significant share of every dollar collected. By abolishing fares, agencies could redirect these funds toward more frequent buses, extended hours, cleaner stations, and better maintenance, which are direct service improvements that riders feel immediately. The apparent loss of fare revenue is partly illusory, offset by the removal of an expensive collection apparatus.\n\nSecond, free public transport would lure drivers out of their cars for short urban trips. When a bus or tram ride costs nothing, the calculation changes dramatically: a quick errand, a commute across town, or a journey to a restaurant no longer invites comparison with the price of petrol and parking. As more people choose transit, city streets become less choked with single-occupancy vehicles. Reduced congestion speeds up buses themselves, creating a virtuous cycle of reliability and attractiveness. Cleaner air, lower emissions, and safer streets are natural by-products.\n\nThird, and most importantly, free fares would dismantle a barrier that disproportionately harms low-income residents. For those living paycheck to paycheck, even a modest fare can mean choosing between transport and food, medicine, or school supplies. Free transit would open access to jobs that were previously unreachable, enable reliable attendance at medical appointments, and connect families to libraries, parks, and community services. This is not charity; it is the removal of a regressive toll on mobility, allowing everyone to participate fully in the economic and social life of the city.\n\nThe cost of doing nothing is measured in wasted administrative spending, gridlocked streets, and human potential trapped by poverty. Free public transport is not a utopian dream but a practical policy that would make cities fairer, faster, and more efficient for all.",
+   "topic": "Making urban public transport free of charge",
+   "stance": "for"
+  }
+ ]
+}
