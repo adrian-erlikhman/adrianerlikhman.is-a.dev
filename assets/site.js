@@ -1,9 +1,12 @@
 /* adrianerlikhman.is-a.dev: every page's scripts. Each block checks its elements exist, so a page
    without an overlay or section just skips it. Bump ?v= on each page's <script> when this changes. */
-/* always land at the top — disable the browser restoring a prior scroll position on refresh */
+/* land at the top on a plain load (never a restored scroll position), but honor a
+   #section link from another page: skip the intro and go straight to the section */
+const HASH_TARGET=(()=>{try{return location.hash.length>1&&document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch(e){return null;}})();
 if('scrollRestoration' in history) history.scrollRestoration='manual';
-window.scrollTo(0,0);
-addEventListener('load',()=>window.scrollTo(0,0));
+const landOnTarget=()=>HASH_TARGET.scrollIntoView({behavior:'instant',block:'start'});
+if(HASH_TARGET){ addEventListener('load',landOnTarget); }
+else { window.scrollTo(0,0); addEventListener('load',()=>window.scrollTo(0,0)); }
 /* custom crosshair cursor + magnetic buttons removed — normal pointer, far calmer */
 /* background connector lines + traveling pulse */
 (function(){
@@ -122,7 +125,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(siteDown){ showOffline(); return; }   // maintenance mode: keep locked, show offline screen
     try{sessionStorage.setItem('introSeen','1');}catch(e){}
     document.body.classList.remove('intro-lock');
-    window.scrollTo(0,0);
+    HASH_TARGET?landOnTarget():window.scrollTo(0,0);
     if(instant){intro.style.display='none';return;}
     intro.classList.add('done');
     setTimeout(()=>intro.style.display='none',820);
@@ -134,6 +137,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(d&&d.live===false){siteDown=true; if(done){showOffline();} else setTimeout(()=>finish(),900);}
   }).catch(()=>{});
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish(true);return;} /* plays on every load */
+  if(HASH_TARGET){finish(true);return;}   /* arrived by a #section link: no intro */
 
   const cvs=document.getElementById('introCanvas'),ctx=cvs.getContext('2d');
   let W,H,DPR;
@@ -346,7 +350,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 (function(){
   const overlay=document.getElementById('cmdk'),input=document.getElementById('cmdkInput'),list=document.getElementById('cmdkList');
   if(!overlay) return;
-  const go=h=>{close();const el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth'});};
+  const go=h=>{close();const el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth'});else location.href='/'+h;};
   const ext=u=>{close();window.open(u,'_blank');};
   const cv=k=>document.querySelector(`#cvMenu [data-cv="${k}"]`).getAttribute('href');
   const fold=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();  // "resume" finds "Résumé"
@@ -360,6 +364,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
     {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
+    {ic:'▸',label:'All work & achievements',k:'page',run:()=>{close();location.href='/work/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
@@ -437,7 +442,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     },STEP);
   }
   // click / tap the mark → smooth scroll to top
-  mark.addEventListener('click',e=>{ e.preventDefault(); scrollTo({top:0,behavior:'smooth'}); });
+  mark.addEventListener('click',e=>{ if(mark.getAttribute('href')!=='#') return; e.preventDefault(); scrollTo({top:0,behavior:'smooth'}); });
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){ nm.textContent=TARGET; return; }  // stay static
   // lightly interactive: at most 3 hover-triggered scrambles, then it settles for good
   mark.addEventListener('mouseenter',()=>{ if(hovers>=MAX_HOVERS||busy) return; hovers++; scramble(); });

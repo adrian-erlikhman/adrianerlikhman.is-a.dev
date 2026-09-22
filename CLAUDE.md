@@ -162,10 +162,11 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **four places**: the two triggers (nav
-  `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09p`. JSON-LD `subjectOf` and `sitemap.xml`
-  list both PDFs.
+  The `?v=` cache-buster lives in **seven places**: on the homepage the two
+  triggers (nav `.navcv`, Contact) and the two picker options, and on
+  `/work/` its nav trigger and two picker options (root-absolute, `/resume.pdf`).
+  Bump all seven whenever either PDF changes. Currently `?v=2026-09p`.
+  JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
   patched it (`scratchpad/rebuild.py`, `sortstream.py`, `finalize.py`,
@@ -186,6 +187,15 @@ from LaTeX in `resume/`.
   changes. Every script block checks its elements exist, and URLs in the
   script are root-absolute (`/papers/…`), so a page without an overlay or
   section just skips it.
+
+## /work/ — every project, experiment and achievement (since 21 Sept)
+- `work/index.html` holds the full collection so the homepage can stay curated:
+  Projects (P.01 SafeJew, P.02 eDNAtlas, P.03 Safe Routes, P.04 Ledger),
+  Experiments (E.01–E.04, the four ML/quant repos, with the code previews and
+  their `text/plain` samples) and the complete Achievements section. Its HUD is
+  the homepage's with links back (`/#papers` …); the wordmark goes home.
+- A `#section` link from another page (`/#papers`) skips the intro and lands on
+  the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
 ## Site structure (section indices in `index.html`)
 `[01]` Who · `[02]` Experience · `[03]` Research · `[04]` Achievements
