@@ -162,10 +162,11 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **eight places**: on the homepage the three
+  The `?v=` cache-buster lives in **eleven places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
-  options, and on `/work/` its nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). Bump all eight whenever either PDF changes. Currently `?v=2026-09p`.
+  options, and on `/work/` and `/demos/` each a nav trigger and two picker
+  options (root-absolute, `/resume.pdf`). `grep -c "v=2026-09p"` should print
+  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09p`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -196,6 +197,22 @@ from LaTeX in `resume/`.
   the homepage's with links back (`/#papers` …); the wordmark goes home.
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
+
+## /demos/ — the two interactive demos (since 22 Sept)
+- Adrian moved them off the homepage ("the comp / langllm demo takes up too much
+  space... maybe it can be a separate page where you are prompted to it, and it
+  has a short demo walkthrough explaining what to do"). `demos/index.html`
+  carries both, each behind a three-step walkthrough (`.steps`) that says what
+  to do: `[01]` **Which model wrote this?** (the `#guess` band, unchanged) and
+  `[02]` **Does your writing read like a model?** (the CompLLM stylometry toy,
+  which is the old `#stylo` overlay with `sv-inline` added, so it sits in the
+  page instead of over it and drops its own kicker, heading and sub).
+- The homepage prompts people to it from Research: one `.tryline` row above the
+  paper list, plus a TRY THE DEMO link on R.01 (`/demos/#guess-sec`) and on R.02
+  (`/demos/#stylometry`). Link the section, not `#guess`, so the steps come
+  first. The ⌘K palette and the terminal's `demo` command open the page.
+- The stylometry script renders on load when the panel isn't hidden; the guess
+  script still waits for the band to come near. `sitemap.xml` lists the page.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
 Hero · `[01]` Selected work (id=`work`) · `[02]` Research (`papers`) ·
@@ -282,7 +299,8 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   call it the first to link NLP papers to patents. The title is the repo brief's
   recommendation; Adrian left the choice to Claude. Update the status line once
   it's submitted or decided.
-- **"Which model wrote this?"** (the dark band atop Research, since 22 Sept) is
+- **"Which model wrote this?"** (on `/demos/` since 22 Sept; it opened as a band
+  atop Research that day) is
   real LangLLM data in `assets/guess-samples.json`: ten English essays, two
   per model, drawn at random with seed 20260922 from `LangLLM/data/raw`. Each
   carries the prompt's topic and stance, whether the 21-feature logistic
@@ -291,7 +309,7 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   quotes the whole English set: classifier 72% of 120 essays, models 23% of
   600 calls, chance 20%. Rebuild it from the repo rather than editing by hand,
   and keep the random order (the first essay happens to be a classifier miss).
-- **The CompLLM stylometry demo** (TRY THE DEMO on R.02) is a toy, and says so:
+- **The CompLLM stylometry demo** (on `/demos/`, linked from R.02) is a toy, and says so:
   six hand-set profiles (Human, GPT, Claude, Gemini, Grok, DeepSeek) matched on
   four features, with percentages that are shares of similarity, not
   probabilities. Its note gives the paper's real setup (190 responses, five
