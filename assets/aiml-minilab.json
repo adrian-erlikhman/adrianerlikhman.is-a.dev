@@ -1,0 +1,207 @@
+{
+ "lesson": {
+  "unit": "Unit 1 \u00b7 Lesson 1",
+  "notebook": "When Class Balance Changes: Accuracy Under Pressure",
+  "course_line": "What is AI? Automation vs. Learning",
+  "minutes": 25,
+  "scenario": "Screening scholarship applicants with AI.",
+  "primer": [
+   "Class balance (who gets labeled positive vs. negative) shapes metrics.",
+   "Monitoring shifts keeps decisions equitable.",
+   "We must re-evaluate models when the data mix changes."
+  ],
+  "predict": [
+   "What does an accuracy near 0.5 mean in this context?",
+   "Why might balanced data help fairness?",
+   "What other metrics would you track?"
+  ],
+  "ethics": [
+   "Who might be harmed if accuracy stays high but recall for scholarship winners drops?",
+   "How could you involve students and counselors in auditing this system?"
+  ],
+  "summary": [
+   "Accuracy alone can hide shifts when class balance changes.",
+   "Precision and recall reveal which group loses out.",
+   "Ethical reviews should happen whenever the data pipeline changes."
+  ],
+  "standards": "CA CS 3A-IC-26 \u00b7 3A-DA-09 \u00b7 3B-AP-14 \u00b7 LAUSD Digital Citizenship"
+ },
+ "code": [
+  "new_positive_weight = {W}  # Adjust this to simulate fewer scholarships available.",
+  "X_shifted, y_shifted = make_classification(",
+  "    n_samples=400,",
+  "    n_features=3,",
+  "    n_redundant=0,",
+  "    n_clusters_per_class=1,",
+  "    weights=[1 - new_positive_weight, new_positive_weight],",
+  "    class_sep=1.2,",
+  "    random_state=24,",
+  ")",
+  "",
+  "X_train_s, X_test_s, y_train_s, y_test_s = train_test_split(",
+  "    X_shifted, y_shifted, test_size=0.3, random_state=24, stratify=y_shifted",
+  ")",
+  "shift_model = LogisticRegression()",
+  "shift_model.fit(X_train_s, y_train_s)",
+  "shifted_preds = shift_model.predict(X_test_s)",
+  "shifted_acc = accuracy_score(y_test_s, shifted_preds)",
+  "",
+  "print(f\"Shifted accuracy: {shifted_acc:.3f}\")"
+ ],
+ "baseline": {
+  "accuracy": 0.933,
+  "recall": 0.95,
+  "precision": 0.919,
+  "cm": [
+   55,
+   5,
+   3,
+   57
+  ],
+  "winners": 60,
+  "missed": 3
+ },
+ "runs": [
+  {
+   "weight": 0.5,
+   "label": "1 in 2",
+   "blurb": "half the applicants win",
+   "lesson": {
+    "accuracy": 0.992,
+    "precision": 0.984,
+    "recall": 1.0,
+    "cm": [
+     59,
+     1,
+     0,
+     60
+    ],
+    "winners": 60,
+    "missed": 0,
+    "test_n": 120
+   },
+   "pooled": {
+    "accuracy": 0.963,
+    "precision": 0.968,
+    "recall": 0.958,
+    "winners": 1501,
+    "missed": 63,
+    "test_n": 3000,
+    "draws": 25
+   }
+  },
+  {
+   "weight": 0.33,
+   "label": "1 in 3",
+   "blurb": "a third of them win",
+   "lesson": {
+    "accuracy": 0.992,
+    "precision": 0.976,
+    "recall": 1.0,
+    "cm": [
+     79,
+     1,
+     0,
+     40
+    ],
+    "winners": 40,
+    "missed": 0,
+    "test_n": 120
+   },
+   "pooled": {
+    "accuracy": 0.971,
+    "precision": 0.968,
+    "recall": 0.944,
+    "winners": 999,
+    "missed": 56,
+    "test_n": 3000,
+    "draws": 25
+   }
+  },
+  {
+   "weight": 0.2,
+   "label": "1 in 5",
+   "blurb": "the notebook's own example",
+   "lesson": {
+    "accuracy": 0.992,
+    "precision": 1.0,
+    "recall": 0.958,
+    "cm": [
+     96,
+     0,
+     1,
+     23
+    ],
+    "winners": 24,
+    "missed": 1,
+    "test_n": 120
+   },
+   "pooled": {
+    "accuracy": 0.977,
+    "precision": 0.962,
+    "recall": 0.921,
+    "winners": 609,
+    "missed": 48,
+    "test_n": 3000,
+    "draws": 25
+   }
+  },
+  {
+   "weight": 0.1,
+   "label": "1 in 10",
+   "blurb": "ten applicants per scholarship",
+   "lesson": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "cm": [
+     108,
+     0,
+     0,
+     12
+    ],
+    "winners": 12,
+    "missed": 0,
+    "test_n": 120
+   },
+   "pooled": {
+    "accuracy": 0.978,
+    "precision": 0.965,
+    "recall": 0.812,
+    "winners": 309,
+    "missed": 58,
+    "test_n": 3000,
+    "draws": 25
+   }
+  },
+  {
+   "weight": 0.05,
+   "label": "1 in 20",
+   "blurb": "a scholarship worth competing for",
+   "lesson": {
+    "accuracy": 0.983,
+    "precision": 1.0,
+    "recall": 0.667,
+    "cm": [
+     114,
+     0,
+     2,
+     4
+    ],
+    "winners": 6,
+    "missed": 2,
+    "test_n": 120
+   },
+   "pooled": {
+    "accuracy": 0.981,
+    "precision": 0.965,
+    "recall": 0.669,
+    "winners": 163,
+    "missed": 54,
+    "test_n": 3000,
+    "draws": 25
+   }
+  }
+ ],
+ "note": "Output of AIML-LI's own Unit 1 notebook on scikit-learn 1.9.0, changing only new_positive_weight. 'The lesson's run' is the notebook's seed; 'across 25 draws' pools the same cell over random_state 1-25, because one draw of 400 applicants is noisy."
+}
