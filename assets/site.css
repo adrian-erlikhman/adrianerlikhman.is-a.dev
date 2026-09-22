@@ -1090,3 +1090,22 @@ section{padding:104px 0}
 /* every role in Experience links to the company it was at */
 .tl .org a{color:inherit;border-bottom:1px solid color-mix(in srgb,var(--acc) 45%,transparent);transition:color .2s,border-color .2s}
 .tl .org a:hover{color:var(--acc);border-bottom-color:var(--acc)}
+
+/* ==================== HERO GUIDE — what the site holds, and the way into it ==================== */
+.hero .guide{margin-top:32px;max-width:56ch;border-top:1px solid var(--line)}
+.hero .guide-h{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:13px 0 5px}
+.hero .guide a{display:grid;grid-template-columns:134px minmax(0,1fr);gap:16px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.hero .guide a:last-child{border-bottom:0}
+.hero .guide b{font-family:var(--mono);font-weight:500;font-size:12.5px;letter-spacing:.02em;color:var(--acc)}
+.hero .guide span{font-family:var(--sans);font-size:13.5px;line-height:1.5;color:var(--dim)}
+.hero .guide a:hover span{color:var(--ink)}
+.hero .guide a:hover b{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:520px){.hero .guide a{grid-template-columns:1fr;gap:2px;padding:10px 0}}
+
+/* the hero carries the guide now, so it sits a little tighter */
+header.hero{padding-top:126px}
+.hero .hero-cta{margin-top:30px}
+.hero .guide{margin-top:26px}
+.hero .guide a{padding:7px 0}
+@media(max-width:820px){header.hero{padding-top:118px}}
