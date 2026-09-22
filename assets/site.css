@@ -992,3 +992,12 @@ section{padding:104px 0}
 .lw-fix{margin:0;padding-left:18px;font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--ink)}
 .lw-foot{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--dim);margin:20px 0 0;border-top:1px solid var(--line);padding-top:12px}
 .lw-foot a{color:var(--acc);border-bottom:1px solid currentColor}
+
+/* ==================== ACHIEVEMENTS — grouped record, full list one click away ==================== */
+.recog-h{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);
+  margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.recog-h:first-of-type{margin-top:0}
+.sec-lead .lead-more{color:var(--acc);border-bottom:1px solid color-mix(in srgb,var(--acc) 40%,transparent);white-space:nowrap}
+.sec-lead .lead-more:hover{border-bottom-color:var(--acc)}
+#record .more-link{margin-top:40px}
+.case{scroll-margin-top:86px}
