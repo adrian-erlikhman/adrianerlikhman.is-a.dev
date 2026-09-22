@@ -907,3 +907,65 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     io.observe(box);
   } else load();
 })();
+
+/* ================= LEDGER WALKTHROUGH — synthetic test records (assets/ledger-walkthrough.json) ================= */
+(function(){
+  const box=document.getElementById('ledgerWalk'); if(!box) return;
+  const $=id=>document.getElementById(id);
+  const CATS=[['dairy','Dairy'],['grains','Grains'],['protein','Protein'],['produce','Produce']];
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let data=null;
+  function render(k){
+    const r=data.records[k];
+    $('lwTabs').querySelectorAll('button').forEach((b,i)=>{b.setAttribute('aria-selected',i===k?'true':'false');b.tabIndex=i===k?0:-1;});
+    const img=$('lwImg'); img.src=r.image; img.alt='Synthetic wholesale order record: '+r.title+'.';
+    $('lwCap').textContent='synthetic record · '+r.vendor+' · '+r.invoiceNo+' · '+r.date+' · '+r.notes;
+    $('lwLines').innerHTML=r.lines.map(l=>{
+      const pk=[l.pack,l.qty&&('× '+l.qty)].filter(Boolean).join(' ');
+      return l.counted
+        ? '<li class="ok"><span class="lw-t">'+esc(l.text)+'</span><span class="lw-p">'+esc(pk)+'</span><span class="lw-d">'+l.units+' units · '+esc(l.variety)+' · '+l.category+(l.perishable?' · perishable':'')+'</span></li>'
+        : '<li class="held"><span class="lw-t">'+esc(l.text)+'</span><span class="lw-p">'+esc(pk)+'</span><span class="lw-d">held back: '+esc(l.reason.replace(/\.$/,''))+'</span></li>';
+    }).join('');
+    const short=[], fixes=[];
+    $('lwCats').innerHTML=CATS.map(([c,name])=>{
+      const v=r.categories[c], q=v.qualifying, ok=q>=7, under=v.varieties.filter(x=>x.units<3).length;
+      if(!ok){ short.push(name.toLowerCase()); fixes.push(name+': '+(7-q)+' more '+(7-q===1?'variety':'varieties')+', each with at least 3 units'); }
+      let seg=''; for(let i=0;i<7;i++) seg+='<i class="'+(i<q?'on':'')+'"></i>';
+      return '<div class="lw-cat '+(ok?'pass':'fail')+'"><b>'+name+'</b><span class="lw-seg" aria-hidden="true">'+seg+'</span>'+
+        '<span class="lw-num">'+q+' of 7 varieties · '+v.units+' units'+(under?' · '+under+' under 3 units, so not counted':'')+'</span>'+
+        '<span class="lw-per">'+(v.expected.perishable?'perishable ✓':'no perishable')+'</span></div>';
+    }).join('');
+    const per=r.perishableCategories;
+    if(per<3) fixes.push('A perishable variety in '+(3-per)+' more '+(3-per===1?'category':'categories'));
+    const W=['no','one','two','three','four'], cap=x=>x[0].toUpperCase()+x.slice(1);
+    let say;
+    if(r.overall==='pass') say='<b class="pass">Passes.</b> All four categories reach seven varieties, with a perishable in '+(per===4?'every one':W[per]+' of them')+'.';
+    else{
+      const parts=[];
+      if(short.length===4) parts.push('Every category is short of seven varieties');
+      else if(short.length){ const nm=short.map(cap); parts.push((nm.length===1?nm[0]+' is':nm.slice(0,-1).join(', ')+' and '+nm[nm.length-1]+' are')+' short of seven varieties'); }
+      if(per<3) parts.push((parts.length?'only ':'Only ')+W[per]+' of the four categories '+(per===1?'has':'have')+' a perishable');
+      say='<b class="fail">Fails.</b> '+parts.join(', and ')+'.';
+    }
+    $('lwVerdict').innerHTML=say;
+    $('lwFix').innerHTML=fixes.map(f=>'<li>'+esc(f)+'</li>').join('');
+    $('lwFixWrap').hidden=!fixes.length;
+  }
+  function load(){
+    fetch('/assets/ledger-walkthrough.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+      data=d;
+      $('lwTabs').innerHTML=d.records.map((r,i)=>'<button type="button" role="tab" data-k="'+i+'">'+esc(r.label)+'</button>').join('');
+      render(0);
+    }).catch(()=>{ $('lwLines').innerHTML='<li>The records didn’t load. They’re in Ledger’s repo under eval/fixtures.</li>'; });
+  }
+  box.addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(b&&data) render(+b.dataset.k); });
+  box.addEventListener('keydown',e=>{
+    const b=e.target.closest('[role=tab]'); if(!b||!data) return;
+    const n=data.records.length, k=+b.dataset.k;
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(k+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('lwTabs').children[j].focus(); }
+  });
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
+    io.observe(box);
+  } else load();
+})();

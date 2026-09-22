@@ -1,0 +1,1404 @@
+{
+ "source": "https://github.com/michae6345-crypto/visionhack (eval/fixtures)",
+ "note": "Synthetic order records from Ledger's test suite. Line decisions and verdicts are the hand-labeled answers the shipped pipeline matches on all 319 test lines and 24 records (eval/RESULTS.md). The vision model's own reading accuracy has not been measured.",
+ "records": [
+  {
+   "id": "01-full-restock-laser",
+   "label": "A full restock",
+   "title": "Full restock, clean laser print",
+   "notes": "A store that meets the standard. Seven varieties in every category.",
+   "vendor": "Vallarta Wholesale Foods",
+   "invoiceNo": "VWF-884210",
+   "date": "2026-09-08",
+   "store": "Rivera's Corner Market",
+   "image": "/img/ledger/01-full-restock-laser.webp",
+   "lines": [
+    {
+     "code": "418820",
+     "text": "WHL MLK GALLON",
+     "pack": "4/1 GAL",
+     "qty": "2",
+     "counted": true,
+     "category": "dairy",
+     "variety": "whole milk",
+     "units": 8,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "512207",
+     "text": "TILLAMOOK MED CHEDDAR BLOCK 8 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "cheddar cheese",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "515002",
+     "text": "DANNON PLAIN LOWFAT YOGURT 32 OZ",
+     "pack": "6 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "dairy",
+     "variety": "plain yogurt",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "512980",
+     "text": "CACIQUE QUESO FRESCO 10 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "queso fresco",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "221104",
+     "text": "CARNATION EVAP MILK 12 OZ",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "evaporated milk",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "516800",
+     "text": "DAISY COTTAGE CHEESE 16 OZ",
+     "pack": "6 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "cottage cheese",
+     "units": 6,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "221880",
+     "text": "NIDO FORTIFICADA DRY MILK 12.6 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "powdered milk",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "610220",
+     "text": "MISSION FLR TORT SOFT TACO 10 CT",
+     "pack": "12 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "grains",
+     "variety": "flour tortillas",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "620100",
+     "text": "MAHATMA X-LONG GRAIN WHITE RICE 2 LB",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "white rice",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "622010",
+     "text": "BARILLA SPAGHETTI 16 OZ",
+     "pack": "20 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "spaghetti",
+     "units": 20,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "624400",
+     "text": "QUAKER OLD FASHION OATS 18 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "rolled oats",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "624800",
+     "text": "GEN MILLS CHEERIOS 8.9 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "oat cereal",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "626100",
+     "text": "MASECA INST CORN MASA 4.4 LB",
+     "pack": "10 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "corn masa flour",
+     "units": 10,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "630010",
+     "text": "BIMBO SOFT WHITE BREAD 20 OZ",
+     "pack": "8 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "grains",
+     "variety": "white bread",
+     "units": 16,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "710500",
+     "text": "STARKIST CHUNK LT TUNA WTR 5 OZ",
+     "pack": "48 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "canned tuna",
+     "units": 48,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "720100",
+     "text": "GRND BEEF 80/20 1 LB CHUB",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "ground beef",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "722100",
+     "text": "OSCAR MAYER BEEF FRANKS 15 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "beef hot dogs",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "712200",
+     "text": "SWANSON WHITE CHKN BRST 9.75 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "canned chicken",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "722400",
+     "text": "BAR-S CLASSIC BOLOGNA 12 OZ",
+     "pack": "16 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "bologna",
+     "units": 16,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "724100",
+     "text": "FRSH CHKN DRUMSTICKS FAM PK",
+     "pack": "8 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "protein",
+     "variety": "chicken drumsticks",
+     "units": 16,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "710610",
+     "text": "BUMBLE BEE SARDINES IN WTR 3.75 OZ",
+     "pack": "18 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "sardines",
+     "units": 18,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "810104",
+     "text": "BANANAS PETITE",
+     "pack": "150 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "bananas",
+     "units": 150,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "844100",
+     "text": "RUSSET POTATO 5 LB BAG",
+     "pack": "10 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "produce",
+     "variety": "potatoes",
+     "units": 20,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "820200",
+     "text": "COOKING ONION",
+     "pack": "16 / 3 #",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "onions",
+     "units": 16,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "850100",
+     "text": "DEL MONTE WHL KERNEL CORN 15.25 OZ",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "canned corn",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "852140",
+     "text": "DOLE MANDARIN ORANGE CUPS 4 CT",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "mandarin oranges",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "840100",
+     "text": "LETTUCE HEAD 24 CT CELLO WRAP",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "lettuce",
+     "units": 24,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "846100",
+     "text": "LIMES PERSIAN",
+     "pack": "200 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "limes",
+     "units": 200,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "910100",
+     "text": "PAPER TOWELS 2 PLY",
+     "pack": "30 ROLL",
+     "qty": "1",
+     "counted": false,
+     "reason": "Not a staple food category."
+    },
+    {
+     "code": "920100",
+     "text": "COCA COLA 12 OZ CAN",
+     "pack": "24 CT",
+     "qty": "4",
+     "counted": false,
+     "reason": "Not a staple food category."
+    }
+   ],
+   "categories": {
+    "dairy": {
+     "varieties": [
+      {
+       "variety": "whole milk",
+       "units": 8,
+       "perishable": true
+      },
+      {
+       "variety": "cheddar cheese",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "plain yogurt",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "queso fresco",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "evaporated milk",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "cottage cheese",
+       "units": 6,
+       "perishable": true
+      },
+      {
+       "variety": "powdered milk",
+       "units": 12,
+       "perishable": false
+      }
+     ],
+     "qualifying": 7,
+     "units": 86,
+     "expected": {
+      "varieties": 7,
+      "units": 86,
+      "perishable": true
+     }
+    },
+    "grains": {
+     "varieties": [
+      {
+       "variety": "flour tortillas",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "white rice",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "spaghetti",
+       "units": 20,
+       "perishable": false
+      },
+      {
+       "variety": "rolled oats",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "oat cereal",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "corn masa flour",
+       "units": 10,
+       "perishable": false
+      },
+      {
+       "variety": "white bread",
+       "units": 16,
+       "perishable": true
+      }
+     ],
+     "qualifying": 7,
+     "units": 106,
+     "expected": {
+      "varieties": 7,
+      "units": 106,
+      "perishable": true
+     }
+    },
+    "protein": {
+     "varieties": [
+      {
+       "variety": "canned tuna",
+       "units": 48,
+       "perishable": false
+      },
+      {
+       "variety": "ground beef",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "beef hot dogs",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "canned chicken",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "bologna",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "chicken drumsticks",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "sardines",
+       "units": 18,
+       "perishable": false
+      }
+     ],
+     "qualifying": 7,
+     "units": 134,
+     "expected": {
+      "varieties": 7,
+      "units": 134,
+      "perishable": true
+     }
+    },
+    "produce": {
+     "varieties": [
+      {
+       "variety": "bananas",
+       "units": 150,
+       "perishable": true
+      },
+      {
+       "variety": "potatoes",
+       "units": 20,
+       "perishable": true
+      },
+      {
+       "variety": "onions",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "canned corn",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "mandarin oranges",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "lettuce",
+       "units": 24,
+       "perishable": true
+      },
+      {
+       "variety": "limes",
+       "units": 200,
+       "perishable": true
+      }
+     ],
+     "qualifying": 7,
+     "units": 446,
+     "expected": {
+      "varieties": 7,
+      "units": 446,
+      "perishable": true
+     }
+    }
+   },
+   "overall": "pass",
+   "perishableCategories": 4
+  },
+  {
+   "id": "18-mixed-bodega-order",
+   "label": "A typical weekly order",
+   "title": "Mixed order, two categories short",
+   "notes": "A realistic weekly order: produce and grains clear, dairy and protein do not.",
+   "vendor": "Vallarta Wholesale Foods",
+   "invoiceNo": "VWF-885502",
+   "date": "2026-09-18",
+   "store": "Corner Stop Market",
+   "image": "/img/ledger/18-mixed-bodega-order.webp",
+   "lines": [
+    {
+     "code": "418820",
+     "text": "WHL MLK GALLON",
+     "pack": "4/1 GAL",
+     "qty": "2",
+     "counted": true,
+     "category": "dairy",
+     "variety": "whole milk",
+     "units": 8,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "512207",
+     "text": "TILLAMOOK MED CHEDDAR BLOCK 8 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "cheddar cheese",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "515002",
+     "text": "DANNON PLAIN LOWFAT YOGURT 32 OZ",
+     "pack": "6 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "dairy",
+     "variety": "plain yogurt",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "516300",
+     "text": "DAISY SOUR CREAM 16 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "sour cream",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "610220",
+     "text": "MISSION FLR TORT SOFT TACO 10 CT",
+     "pack": "12 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "grains",
+     "variety": "flour tortillas",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "610240",
+     "text": "MISSION CORN TORT 30 CT",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "corn tortillas",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "620100",
+     "text": "MAHATMA X-LONG GRAIN WHITE RICE 2 LB",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "white rice",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "622010",
+     "text": "BARILLA SPAGHETTI 16 OZ",
+     "pack": "20 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "spaghetti",
+     "units": 20,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "624400",
+     "text": "QUAKER OLD FASHION OATS 18 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "rolled oats",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "626100",
+     "text": "MASECA INST CORN MASA 4.4 LB",
+     "pack": "10 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "corn masa flour",
+     "units": 10,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "630010",
+     "text": "BIMBO SOFT WHITE BREAD 20 OZ",
+     "pack": "8 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "grains",
+     "variety": "white bread",
+     "units": 16,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "710500",
+     "text": "STARKIST CHUNK LT TUNA WTR 5 OZ",
+     "pack": "48 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "canned tuna",
+     "units": 48,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "730100",
+     "text": "GRADE A LARGE EGGS 12 CT",
+     "pack": "15 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "protein",
+     "variety": "eggs",
+     "units": 30,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "722400",
+     "text": "BAR-S CLASSIC BOLOGNA 12 OZ",
+     "pack": "16 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "bologna",
+     "units": 16,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "740200",
+     "text": "SKIPPY CREAMY PEANUT BUTTER 16.3 OZ",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "peanut butter",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "810104",
+     "text": "BANANAS PETITE",
+     "pack": "150 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "bananas",
+     "units": 150,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "844100",
+     "text": "RUSSET POTATO 5 LB BAG",
+     "pack": "10 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "produce",
+     "variety": "potatoes",
+     "units": 20,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "820200",
+     "text": "COOKING ONION",
+     "pack": "16 / 3 #",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "onions",
+     "units": 16,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "840100",
+     "text": "LETTUCE HEAD 24 CT CELLO WRAP",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "lettuce",
+     "units": 24,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "846100",
+     "text": "LIMES PERSIAN",
+     "pack": "200 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "limes",
+     "units": 200,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "850100",
+     "text": "DEL MONTE WHL KERNEL CORN 15.25 OZ",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "canned corn",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "846400",
+     "text": "CARROTS 2 LB BAG",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "carrots",
+     "units": 12,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "920100",
+     "text": "COCA COLA 12 OZ CAN",
+     "pack": "24 CT",
+     "qty": "4",
+     "counted": false,
+     "reason": "Not a staple food category."
+    },
+    {
+     "code": "930100",
+     "text": "LAYS CLASSIC CHIPS 1 OZ",
+     "pack": "104 CT",
+     "qty": "1",
+     "counted": false,
+     "reason": "Not a staple food category."
+    }
+   ],
+   "categories": {
+    "dairy": {
+     "varieties": [
+      {
+       "variety": "whole milk",
+       "units": 8,
+       "perishable": true
+      },
+      {
+       "variety": "cheddar cheese",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "plain yogurt",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "sour cream",
+       "units": 12,
+       "perishable": true
+      }
+     ],
+     "qualifying": 4,
+     "units": 44,
+     "expected": {
+      "varieties": 4,
+      "units": 44,
+      "perishable": true
+     }
+    },
+    "grains": {
+     "varieties": [
+      {
+       "variety": "flour tortillas",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "corn tortillas",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "white rice",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "spaghetti",
+       "units": 20,
+       "perishable": false
+      },
+      {
+       "variety": "rolled oats",
+       "units": 12,
+       "perishable": false
+      },
+      {
+       "variety": "corn masa flour",
+       "units": 10,
+       "perishable": false
+      },
+      {
+       "variety": "white bread",
+       "units": 16,
+       "perishable": true
+      }
+     ],
+     "qualifying": 7,
+     "units": 106,
+     "expected": {
+      "varieties": 7,
+      "units": 106,
+      "perishable": true
+     }
+    },
+    "protein": {
+     "varieties": [
+      {
+       "variety": "canned tuna",
+       "units": 48,
+       "perishable": false
+      },
+      {
+       "variety": "eggs",
+       "units": 30,
+       "perishable": true
+      },
+      {
+       "variety": "bologna",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "peanut butter",
+       "units": 12,
+       "perishable": false
+      }
+     ],
+     "qualifying": 4,
+     "units": 106,
+     "expected": {
+      "varieties": 4,
+      "units": 106,
+      "perishable": true
+     }
+    },
+    "produce": {
+     "varieties": [
+      {
+       "variety": "bananas",
+       "units": 150,
+       "perishable": true
+      },
+      {
+       "variety": "potatoes",
+       "units": 20,
+       "perishable": true
+      },
+      {
+       "variety": "onions",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "lettuce",
+       "units": 24,
+       "perishable": true
+      },
+      {
+       "variety": "limes",
+       "units": 200,
+       "perishable": true
+      },
+      {
+       "variety": "canned corn",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "carrots",
+       "units": 12,
+       "perishable": true
+      }
+     ],
+     "qualifying": 7,
+     "units": 446,
+     "expected": {
+      "varieties": 7,
+      "units": 446,
+      "perishable": true
+     }
+    }
+   },
+   "overall": "fail",
+   "perishableCategories": 4
+  },
+  {
+   "id": "09-glare-illegible",
+   "label": "Glare across two lines",
+   "title": "Glare across two lines",
+   "notes": "Two lines are unreadable on the image and must be held back, not guessed.",
+   "vendor": "Vallarta Wholesale Foods",
+   "invoiceNo": "VWF-885140",
+   "date": "2026-09-14",
+   "store": "Rivera's Corner Market",
+   "image": "/img/ledger/09-glare-illegible.webp",
+   "lines": [
+    {
+     "code": "8••••0",
+     "text": "L•••ERNE WH••• M••K",
+     "pack": "•/1 GAL",
+     "qty": "•",
+     "counted": false,
+     "reason": "The line is obscured on the image and cannot be read in full."
+    },
+    {
+     "code": "512",
+     "text": "TILLAMOOK MED CHED",
+     "pack": "",
+     "qty": "",
+     "counted": false,
+     "reason": "The line runs off the edge of the image."
+    },
+    {
+     "code": "515002",
+     "text": "DANNON PLAIN LOWFAT YOGURT 32 OZ",
+     "pack": "6 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "dairy",
+     "variety": "plain yogurt",
+     "units": 12,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "221104",
+     "text": "CARNATION EVAP MILK 12 OZ",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "dairy",
+     "variety": "evaporated milk",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "610220",
+     "text": "MISSION FLR TORT SOFT TACO 10 CT",
+     "pack": "12 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "grains",
+     "variety": "flour tortillas",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "620100",
+     "text": "MAHATMA X-LONG GRAIN WHITE RICE 2 LB",
+     "pack": "12 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "grains",
+     "variety": "white rice",
+     "units": 12,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "710500",
+     "text": "STARKIST CHUNK LT TUNA WTR 5 OZ",
+     "pack": "48 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "protein",
+     "variety": "canned tuna",
+     "units": 48,
+     "perishable": false,
+     "storage": "shelf_stable"
+    },
+    {
+     "code": "730100",
+     "text": "GRADE A LARGE EGGS 12 CT",
+     "pack": "15 CT",
+     "qty": "2",
+     "counted": true,
+     "category": "protein",
+     "variety": "eggs",
+     "units": 30,
+     "perishable": true,
+     "storage": "refrigerated"
+    },
+    {
+     "code": "810104",
+     "text": "BANANAS PETITE",
+     "pack": "150 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "bananas",
+     "units": 150,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "850100",
+     "text": "DEL MONTE WHL KERNEL CORN 15.25 OZ",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "canned corn",
+     "units": 24,
+     "perishable": false,
+     "storage": "shelf_stable"
+    }
+   ],
+   "categories": {
+    "dairy": {
+     "varieties": [
+      {
+       "variety": "plain yogurt",
+       "units": 12,
+       "perishable": true
+      },
+      {
+       "variety": "evaporated milk",
+       "units": 24,
+       "perishable": false
+      }
+     ],
+     "qualifying": 2,
+     "units": 36,
+     "expected": {
+      "varieties": 2,
+      "units": 36,
+      "perishable": true
+     }
+    },
+    "grains": {
+     "varieties": [
+      {
+       "variety": "flour tortillas",
+       "units": 24,
+       "perishable": false
+      },
+      {
+       "variety": "white rice",
+       "units": 12,
+       "perishable": false
+      }
+     ],
+     "qualifying": 2,
+     "units": 36,
+     "expected": {
+      "varieties": 2,
+      "units": 36,
+      "perishable": false
+     }
+    },
+    "protein": {
+     "varieties": [
+      {
+       "variety": "canned tuna",
+       "units": 48,
+       "perishable": false
+      },
+      {
+       "variety": "eggs",
+       "units": 30,
+       "perishable": true
+      }
+     ],
+     "qualifying": 2,
+     "units": 78,
+     "expected": {
+      "varieties": 2,
+      "units": 78,
+      "perishable": true
+     }
+    },
+    "produce": {
+     "varieties": [
+      {
+       "variety": "bananas",
+       "units": 150,
+       "perishable": true
+      },
+      {
+       "variety": "canned corn",
+       "units": 24,
+       "perishable": false
+      }
+     ],
+     "qualifying": 2,
+     "units": 174,
+     "expected": {
+      "varieties": 2,
+      "units": 174,
+      "perishable": true
+     }
+    }
+   },
+   "overall": "fail",
+   "perishableCategories": 3
+  },
+  {
+   "id": "05-weight-priced-produce",
+   "label": "Produce priced by weight",
+   "title": "Produce priced by weight",
+   "notes": "The failure mode this tool has to be honest about: most of the order is priced by weight or by container, so the record shows no unit count and the lines cannot be counted.",
+   "vendor": "Seventh Street Produce Co.",
+   "invoiceNo": "SSP-31882",
+   "date": "2026-09-07",
+   "store": "Rivera's Corner Market",
+   "image": "/img/ledger/05-weight-priced-produce.webp",
+   "lines": [
+    {
+     "code": "830100",
+     "text": "ROMA TOMATOES",
+     "pack": "25 LB CS",
+     "qty": "2",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "820240",
+     "text": "YELLOW ONIONS JUMBO",
+     "pack": "50 LB SACK",
+     "qty": "1",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "844400",
+     "text": "YAM LOUISIANA / MISSISSIPPI",
+     "pack": "40 #",
+     "qty": "1",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "810100",
+     "text": "BANANAS PREMIUM",
+     "pack": "40 #",
+     "qty": "2",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "840400",
+     "text": "SELECT CUCUMBER",
+     "pack": "BUSHEL",
+     "qty": "2",
+     "counted": false,
+     "reason": "A bushel with no printed count gives no sellable unit count."
+    },
+    {
+     "code": "840600",
+     "text": "GREEN CABBAGE",
+     "pack": "BOX",
+     "qty": "2",
+     "counted": false,
+     "reason": "A box with no printed count gives no sellable unit count."
+    },
+    {
+     "code": "830140",
+     "text": "TOMATO 4x4",
+     "pack": "4x4",
+     "qty": "3",
+     "counted": false,
+     "reason": "The printed 4x4 is a size grade, not a unit count."
+    },
+    {
+     "code": "620180",
+     "text": "LONG GRAIN RICE BULK",
+     "pack": "50 LB SACK",
+     "qty": "2",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "720140",
+     "text": "GROUND BEEF 80/20 BULK",
+     "pack": "40 #",
+     "qty": "1",
+     "counted": false,
+     "reason": "Sold by weight, so the record shows no sellable unit count."
+    },
+    {
+     "code": "820200",
+     "text": "COOKING ONION",
+     "pack": "16 / 3 #",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "onions",
+     "units": 16,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "840100",
+     "text": "LETTUCE HEAD 24 CT CELLO WRAP",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "lettuce",
+     "units": 24,
+     "perishable": true,
+     "storage": "fresh"
+    },
+    {
+     "code": "840200",
+     "text": "CELERY 24 CT NO SLEEVE",
+     "pack": "24 CT",
+     "qty": "1",
+     "counted": true,
+     "category": "produce",
+     "variety": "celery",
+     "units": 24,
+     "perishable": true,
+     "storage": "fresh"
+    }
+   ],
+   "categories": {
+    "dairy": {
+     "varieties": [],
+     "qualifying": 0,
+     "units": 0,
+     "expected": {
+      "varieties": 0,
+      "units": 0,
+      "perishable": false
+     }
+    },
+    "grains": {
+     "varieties": [],
+     "qualifying": 0,
+     "units": 0,
+     "expected": {
+      "varieties": 0,
+      "units": 0,
+      "perishable": false
+     }
+    },
+    "protein": {
+     "varieties": [],
+     "qualifying": 0,
+     "units": 0,
+     "expected": {
+      "varieties": 0,
+      "units": 0,
+      "perishable": false
+     }
+    },
+    "produce": {
+     "varieties": [
+      {
+       "variety": "onions",
+       "units": 16,
+       "perishable": true
+      },
+      {
+       "variety": "lettuce",
+       "units": 24,
+       "perishable": true
+      },
+      {
+       "variety": "celery",
+       "units": 24,
+       "perishable": true
+      }
+     ],
+     "qualifying": 3,
+     "units": 64,
+     "expected": {
+      "varieties": 3,
+      "units": 64,
+      "perishable": true
+     }
+    }
+   },
+   "overall": "fail",
+   "perishableCategories": 1
+  }
+ ]
+}
