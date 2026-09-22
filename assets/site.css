@@ -864,3 +864,18 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
 .units li.u-last b,.units li.u-last span:last-child{color:var(--bg)}
 @media(max-width:480px){.units{grid-template-columns:1fr}.units li{min-height:0}}
 .units-cap{font-family:var(--mono);font-size:11px;line-height:1.5;letter-spacing:.03em;color:var(--dim);margin-top:10px}
+
+/* ==================== HERO — stable intro, what's happening now, two ways in ==================== */
+.hero .now{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;max-width:48ch}
+.hero .now li{display:grid;grid-template-columns:104px 1fr;gap:14px;align-items:baseline;font-family:var(--sans);font-size:16px;line-height:1.45;color:var(--ink)}
+.hero .now .now-k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+@media(max-width:480px){.hero .now li{grid-template-columns:1fr;gap:1px}}
+.hero .hero-cta{margin-top:34px}
+.hero .btn{font-size:13px}
+/* recognition rows reuse the fencing results list; the linked row behaves like a link */
+.recog a.res{color:inherit;text-decoration:none}
+.recog a.res:hover .ev{color:var(--acc)}
+.recog .res .pl{min-width:172px}
+@media(max-width:600px){.recog .res{flex-direction:column;gap:4px}.recog .res .pl{min-width:0}}
+/* About: the photos follow the intro with some air */
+#about #offclock{margin-top:56px}

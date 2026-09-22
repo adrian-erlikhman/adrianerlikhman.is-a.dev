@@ -156,16 +156,16 @@ from LaTeX in `resume/`.
   Your School's AI Readiness" at NCSS 2026, the National Consortium of STEM
   Schools conference, San Diego, 2 Dec 2026 (conference 2–5 Dec, about 100
   educators). He accepted on 17 Sept; a prep call was still being set. It is in
-  both résumés and on the site: the Who paragraph, the AIML-LI Experience card,
-  an Achievements item and a hero-typewriter line. After 2 Dec, reword anything
+  both résumés and on the site: the AIML-LI case study, the homepage's
+  Recognition list and the Achievements on /work/. After 2 Dec, reword anything
   that reads as upcoming.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **seven places**: on the homepage the two
-  triggers (nav `.navcv`, Contact) and the two picker options, and on
-  `/work/` its nav trigger and two picker options (root-absolute, `/resume.pdf`).
-  Bump all seven whenever either PDF changes. Currently `?v=2026-09p`.
+  The `?v=` cache-buster lives in **eight places**: on the homepage the three
+  triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
+  options, and on `/work/` its nav trigger and two picker options
+  (root-absolute, `/resume.pdf`). Bump all eight whenever either PDF changes. Currently `?v=2026-09p`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -197,16 +197,34 @@ from LaTeX in `resume/`.
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
-## Site structure (section indices in `index.html`)
-`[01]` Who · `[02]` Experience · `[03]` Research · `[04]` Achievements
-(id=`record`; sub-cards: Competitions & Awards / Founding & Leadership /
-Craft & Mastery) · `[05]` Projects · `[06]` Fencing · `[07]` Contact ·
-`[08]` Off the clock.
-- Three flagship `.dist-flag` banners open Achievements, the two firsts ahead of
-  the third: eDNAtlas (1st, Decode the Ocean), Ledger (1st, VISION HACK: South
-  LA) and Safe Routes to School (3rd, Code for Transportation). Each also has a
-  Projects card — eDNAtlas at P.06, Safe Routes at P.07, Ledger at P.08 — and
-  none of them is in Experience, intentionally.
+## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
+Hero · `[01]` Selected work (id=`work`) · `[02]` Research (`papers`) ·
+`[03]` Experience · `[04]` Recognition (`record`) · `[05]` Fencing ·
+`[06]` About me (`about`, with the photos in `#offclock`) · `[07]` Contact.
+The nav follows it: Work, Research, Experience, Fencing, About, Contact.
+- **Hero:** a stable one-line intro ("i build machine-learning tools for real
+  communities, and i study how language models behave"), a three-item
+  "right now" list (`.now`: interning / in review / organizing), and two
+  buttons, *explore my work* (`#work`) and *résumé*. The old typewriter and the
+  six interest labels are gone; the typewriter's script still sits in site.js,
+  guarded, if Adrian wants it back. Keep the "right now" items current.
+- **Selected work** is four case studies, each *the problem · my part · the
+  hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
+  School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
+  AIML-LI shows its six units instead. Every claim is sourced: SafeJew's
+  scraper runs daily (its workflow); Safe Routes' "My friends are in that
+  number" is from Adrian's published video script, and its hard call from the
+  project README; AIML-LI follows his public-copy rules (committed partners,
+  no pilot numbers, no A–G claims).
+- **Experience** is the internships only (Firstness, Kiddom, Fjor, Alliance);
+  SafeJew and AIML-LI are case studies. **Recognition** lists the awards the
+  case studies don't carry and links to `/work/#achievements`. **About** is the
+  short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
+- The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
+  though the review suggested dropping them.
+- On `/work/`, the three flagship `.dist-flag` banners open Achievements:
+  eDNAtlas (1st, Decode the Ocean), Ledger (1st, VISION HACK: South LA) and
+  Safe Routes to School (3rd, Code for Transportation).
 - Ledger and Safe Routes use the `.df-multi` variant (a `div`, not an `a`) so
   each can carry two links. `.df-soon` is the dashed style for a link that is
   not live yet.

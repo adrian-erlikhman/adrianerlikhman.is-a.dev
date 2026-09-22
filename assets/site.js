@@ -357,14 +357,14 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);
     requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400);},2800);};
   const cmds=[
-    {ic:'▸',label:'About',k:'jump',run:()=>go('#about')},
-    {ic:'▸',label:'Experience',k:'jump',run:()=>go('#experience')},
-    {ic:'▸',label:'Projects',k:'jump',run:()=>go('#work')},
+    {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Research / Papers',k:'jump',run:()=>go('#papers')},
-    {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
+    {ic:'▸',label:'Experience',k:'jump',run:()=>go('#experience')},
+    {ic:'▸',label:'Recognition',k:'jump',run:()=>go('#record')},
     {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
+    {ic:'▸',label:'About',k:'jump',run:()=>go('#about')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
-    {ic:'▸',label:'All work & achievements',k:'page',run:()=>{close();location.href='/work/';}},
+    {ic:'▸',label:'All projects, experiments & achievements',k:'page',run:()=>{close();location.href='/work/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
