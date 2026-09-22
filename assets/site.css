@@ -812,3 +812,16 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
 .nv-work{font-family:var(--mono);font-size:12px;line-height:1.75;color:var(--dim);white-space:pre-wrap;margin:7px 0 0}
 .nv-aside{font-family:var(--sans);font-size:12.5px;color:var(--dim);font-style:italic;margin-top:16px;border-top:1px dashed var(--line-strong);padding-top:11px}
 @media(max-width:700px){.nv-panel{height:90vh}.nv-body{flex-direction:column}.nv-index{width:auto;display:flex;gap:2px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:6px}.nv-item{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;flex:none}.nv-item.on{border-left:0;border-bottom-color:var(--acc)}.nv-content{padding:20px}}
+
+/* ==================== SECONDARY PAGES (/work/) ==================== */
+.page-head{padding-top:176px;padding-bottom:40px}
+@media(max-width:600px){.page-head{padding-top:126px}}
+.ph-kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+.ph-title{font-family:'Fraunces',Georgia,serif;font-weight:900;font-optical-sizing:auto;font-size:clamp(2.8rem,8vw,5.6rem);line-height:.92;letter-spacing:-.03em;color:var(--ink)}
+.ph-lead{font-family:var(--sans);font-size:18px;line-height:1.6;color:var(--ink);max-width:54ch;margin-top:26px}
+.ph-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.ph-jump a{font-family:var(--mono);font-size:12px;letter-spacing:.04em;padding:10px 14px;border:1px solid var(--line-strong);color:var(--ink);transition:background .2s,color .2s,border-color .2s}
+.ph-jump a:hover,.ph-jump a:focus-visible{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.sec-lead{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink);max-width:60ch;margin:-24px 0 34px}
+.more-link{display:inline-flex;align-items:center;gap:8px;margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--acc);border-bottom:1px solid color-mix(in srgb,var(--acc) 40%,transparent);padding-bottom:3px}
+.more-link:hover{border-bottom-color:var(--acc)}
