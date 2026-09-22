@@ -357,12 +357,12 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);
     requestAnimationFrame(()=>t.classList.add('show'));setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400);},2800);};
   const cmds=[
-    {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
-    {ic:'▸',label:'Research / Papers',k:'jump',run:()=>go('#papers')},
-    {ic:'▸',label:'Experience',k:'jump',run:()=>go('#experience')},
-    {ic:'▸',label:'Recognition',k:'jump',run:()=>go('#record')},
-    {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
     {ic:'▸',label:'About',k:'jump',run:()=>go('#about')},
+    {ic:'▸',label:'Experience',k:'jump',run:()=>go('#experience')},
+    {ic:'▸',label:'Research / Papers',k:'jump',run:()=>go('#papers')},
+    {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
+    {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
+    {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
     {ic:'▸',label:'All projects, experiments & achievements',k:'page',run:()=>{close();location.href='/work/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
