@@ -178,6 +178,15 @@ from LaTeX in `resume/`.
 - Per change: commit → push → open a **draft** PR → mark ready → squash-merge
   into `main` → resync the branch to `origin/main` with `--force-with-lease`.
 
+## Shared assets
+- Since 21 Sept the site's styles and scripts live in `assets/site.css` and
+  `assets/site.js`, shared by every page that uses the house design; the
+  JSON-LD and the code-preview samples stay inline in the page that needs them.
+  Each page links them with `?v=`; bump it on every page when either file
+  changes. Every script block checks its elements exist, and URLs in the
+  script are root-absolute (`/papers/…`), so a page without an overlay or
+  section just skips it.
+
 ## Site structure (section indices in `index.html`)
 `[01]` Who · `[02]` Experience · `[03]` Research · `[04]` Achievements
 (id=`record`; sub-cards: Competitions & Awards / Founding & Leadership /
