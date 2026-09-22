@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-09-21b">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-21c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -232,10 +232,117 @@
   </div>
 </header>
 
+<!-- SELECTED WORK: four case studies. Each says the problem, my part, the hard call, and what exists now. -->
+<section id="work" class="selected">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[01]</span><h2>Selected work</h2></div>
+    <p class="sec-lead rv d1">Four things I built with other people: the problem, my part, the call that shaped it, and what exists now.</p>
+    <div class="cases">
+
+      <article class="case rv">
+        <figure class="case-media case-shot">
+          <a href="https://safejew.org/map" target="_blank" rel="noopener" aria-label="Open the SafeJew map"><img src="/img/cases/safejew-map.webp" width="1400" height="875" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles, with filters by category, severity, source and year, and a note that ADL locations are approximate."></a>
+          <figcaption>safejew.org/map · 800 incidents across Greater LA, with the ADL&rsquo;s approximate locations flagged</figcaption>
+        </figure>
+        <div class="case-body">
+          <div class="case-kick"><span class="case-n">01</span>SafeJew<span class="case-sep">·</span>co-founder<span class="case-sep">·</span>2024&ndash;present</div>
+          <h3 class="case-title">A live map of antisemitic incidents across Greater Los Angeles, with a source behind every pin.</h3>
+          <dl class="case-facts">
+            <div><dt>The problem</dt><dd>Reports of antisemitic incidents in Los Angeles are scattered across local news, police data and the ADL&rsquo;s national tracker. SafeJew puts them on one map a family, a school or a synagogue can check, with the source a click away.</dd></div>
+            <div><dt>My part</dt><dd>I co-founded it. I wrote the dependency-free LA gazetteer that reads a place out of a news story and turns it into coordinates, which lets a GitHub Action scrape the news every day and add new incidents on its own. I also rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript and Supabase.</dd></div>
+            <div class="call"><dt>The hard call</dt><dd>Only claim what we can place. A news story rarely gives an address, so an incident the gazetteer can only place at a neighborhood goes on its own amber layer, one dot per incident, never mixed in with the verified pins. The ADL&rsquo;s locations are marked approximate too, and the map says plainly that underreporting is its biggest limitation.</dd></div>
+            <div><dt>Where it stands</dt><dd><ul class="case-proof">
+              <li>In production at safejew.org, funded by a JFEDLA Teen Innovation Grant</li>
+              <li>800 incidents across Greater LA, 100 of them individually sourced, the rest from the ADL</li>
+              <li>594 more across 33 university campuses</li>
+            </ul></dd></div>
+          </dl>
+          <div class="case-links"><a href="https://safejew.org/map" target="_blank" rel="noopener">Open the map ↗</a><a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="case flip rv">
+        <div class="case-media units-wrap">
+          <ol class="units" aria-label="The AIML-LI course, six units over twelve weeks">
+            <li><span class="u-w">Weeks 1&ndash;2</span><b>Foundations</b><span>How machines learn from data.</span></li>
+            <li><span class="u-w">Weeks 3&ndash;4</span><b>Building models</b><span>Your first model that actually works.</span></li>
+            <li><span class="u-w">Weeks 5&ndash;6</span><b>Prediction &amp; error</b><span>Getting predictions right, and honest.</span></li>
+            <li><span class="u-w">Weeks 7&ndash;8</span><b>Neural networks</b><span>Built from scratch, not magic.</span></li>
+            <li><span class="u-w">Weeks 9&ndash;10</span><b>Language &amp; bias</b><span>Where models work, and where they break.</span></li>
+            <li class="u-last"><span class="u-w">Weeks 11&ndash;12</span><b>Capstone</b><span>Students ship a project of their own.</span></li>
+          </ol>
+          <p class="units-cap">The 12-week version, as aiml-initiative.org lays it out. The short course runs in twelve 30-minute sessions.</p>
+        </div>
+        <div class="case-body">
+          <div class="case-kick"><span class="case-n">02</span>AIML-LI<span class="case-sep">·</span>co-founder &amp; lead<span class="case-sep">·</span>2023&ndash;present</div>
+          <h3 class="case-title">A free AI-literacy course, built for the public-school classroom that actually exists.</h3>
+          <dl class="case-facts">
+            <div><dt>The problem</dt><dd>Most students use AI every day, but few are taught how it works or where it fails. We started with Los Angeles public schools.</dd></div>
+            <div><dt>My part</dt><dd>I co-founded AIML-LI with Michael Tarekegn and co-wrote the course: twelve 30-minute sessions any teacher can run, and a 12-week version in six units that ends with a project students ship themselves. Now I&rsquo;m organizing a free AI summit and hackathon for 200+ LA public-school students.</dd></div>
+            <div class="call"><dt>The hard call</dt><dd>Build for the classroom that exists. Every session fits in 30 minutes and runs on the Chromebooks students already have, and every lesson is free and open-source, so no school pays and any teacher can run it.</dd></div>
+            <div><dt>Where it stands</dt><dd><ul class="case-proof">
+              <li>Taught in LACES AP Computer Science, spring 2026</li>
+              <li>LAUSD&rsquo;s Ed Tech &amp; Innovation office is taking it to the district&rsquo;s Chief Academic and Chief Information Officers, toward a standing AI-literacy elective</li>
+              <li>Summit keynotes from Google DeepMind, Microsoft, Google and Snap, backed by Snap, Jane Street, MongoDB, Confluent, Discovery Education and Hacker Fund</li>
+              <li>Invited by aiEDU to speak on its student panel at NCSS 2026 in December</li>
+            </ul></dd></div>
+          </dl>
+          <div class="case-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a></div>
+        </div>
+      </article>
+
+      <article class="case rv">
+        <figure class="case-media case-shot">
+          <a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener" aria-label="Open the Ledger demo"><img src="/img/cases/ledger-scorecard.webp" width="1400" height="572" loading="lazy" decoding="async" alt="Ledger's weekly SNAP stocking scorecard for a corner market: 75 percent passing, grains, protein and produce at seven of seven varieties, dairy at five of seven, and a fix that blocks the review: add two dairy varieties."></a>
+          <figcaption>Ledger&rsquo;s weekly scorecard · three of four categories pass, and dairy blocks the review</figcaption>
+        </figure>
+        <div class="case-body">
+          <div class="case-kick"><span class="case-n">03</span>Ledger<span class="case-sep">·</span>1st place, VISION HACK: South LA<span class="case-sep">·</span>Sep 2026</div>
+          <h3 class="case-title">Compliance for corner stores: every renewal on one calendar, and a photo of an order scored against the SNAP stocking rule.</h3>
+          <dl class="case-facts">
+            <div><dt>The problem</dt><dd>A corner store in South LA answers to eighteen programs across three levels of government, each with its own renewal date, and a store that takes SNAP has to keep a minimum of staple foods on its shelves. Ledger keeps all of it in one place, in English and Spanish.</dd></div>
+            <div><dt>My part</dt><dd>I led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
+            <div class="call"><dt>The hard call</dt><dd>Build it to undercount. Any line the vision pipeline reads below 0.75 confidence is held back and listed for the owner to check, not counted, so a blurry photo shortens the count instead of padding it.</dd></div>
+            <div><dt>Where it stands</dt><dd><ul class="case-proof">
+              <li>1st place, Council District 9 Champion (Under 18), at VISION HACK: South LA, run by Hacker Fund and the City of LA Vision Lab</li>
+              <li>Scores the SNAP rule as written: seven varieties and twenty-one units in each of four categories, with a perishable in three of the four</li>
+            </ul></dd></div>
+          </dl>
+          <div class="case-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="case flip rv">
+        <figure class="case-media case-shot">
+          <a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener" aria-label="Open Safe Routes to School"><img src="/img/cases/saferoutes-route.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Safe Routes to School's worked example on a dark map of Mid-City Los Angeles: three route options, shortest, balanced and safest, and the explanation that the safest route skips 552 meters of South Fairfax Avenue for Venice Boulevard, costs three minutes and halves exposure."></a>
+          <figcaption>The worked example · the safest route trades 552&nbsp;m of South Fairfax Avenue for Venice Boulevard: three more minutes, half the exposure</figcaption>
+        </figure>
+        <div class="case-body">
+          <div class="case-kick"><span class="case-n">04</span>Safe Routes to School<span class="case-sep">·</span>3rd place internationally<span class="case-sep">·</span>2026</div>
+          <h3 class="case-title">Walking directions built from where students actually get robbed, not just from distance.</h3>
+          <dl class="case-facts">
+            <div><dt>The problem</dt><dd>Between 2020 and 2024, 1,838 children aged 10 to 18 were robbed on the streets of Los Angeles, and 56% of those robberies happened in the five hours of the school commute. Map apps route for the shortest walk. My friends are in that number; that&rsquo;s why we built this.</dd></div>
+            <div><dt>My part</dt><dd>Built with Michael Tarekegn: a pipeline that scores 431,599 LA blocks for street-crime risk from 85,634 filtered LAPD incidents, and a router that runs A* over them entirely in the browser, taking the bus when riding is calmer.</dd></div>
+            <div class="call"><dt>The hard call</dt><dd>Decide which crimes count. Keeping only incidents in public space (street, sidewalk, alley, bus stop, park) dropped about 81,000 indoor records. Counting them would have marked ordinary residential blocks as dangerous to walk through: wrong, and the kind of wrong that does real damage.</dd></div>
+            <div><dt>Where it stands</dt><dd><ul class="case-proof">
+              <li>3rd place internationally in Young Coders&rsquo; Sphere&rsquo;s Code for Transportation</li>
+              <li>The afternoon walk home is a student&rsquo;s riskiest hour: 4,246 incidents per hour, against 3,804 after dark</li>
+              <li>On one trip to LACES, two buses instead of a 118-minute walk cut the route&rsquo;s modeled exposure by 80%</li>
+            </ul></dd></div>
+          </dl>
+          <div class="case-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+    </div>
+    <a class="more-link rv" href="/work/">Every project, experiment and achievement, on one page →</a>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[01]</span><h2>Who</h2><span class="note">// the short version</span></div>
+    <div class="sec-label rv"><span class="idx">[02]</span><h2>Who</h2><span class="note">// the short version</span></div>
     <div class="about">
       <div class="mod rv d1">
         <p><b>I'm a high school senior at the Los Angeles Center for Enriched Studies,</b> and I'm applying to college this fall. My interests are in applied machine learning, quantitative finance, and data science, a world I got into by sending hundreds of cold emails until a few of them turned into internships.</p>
@@ -253,7 +360,7 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[02]</span><h2>Experience</h2><span class="note">// ventures · internships · skills</span></div>
+    <div class="sec-label rv"><span class="idx">[03]</span><h2>Experience</h2><span class="note">// ventures · internships · skills</span></div>
     <div class="resume">
       <div class="rv d1">
         <div class="timeline">
@@ -303,7 +410,7 @@
 <!-- RESEARCH / PAPERS -->
 <section id="papers">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// papers &amp; writeups</span></div>
+    <div class="sec-label rv"><span class="idx">[04]</span><h2>Research</h2><span class="note">// papers &amp; writeups</span></div>
     <div class="papers rv d1">
 
       <div class="paper" data-mag>
@@ -392,7 +499,7 @@
 <!-- HIGHLIGHTS -->
 <section id="record">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[04]</span><h2>Achievements</h2><span class="note">// competitions · leadership · craft</span></div>
+    <div class="sec-label rv"><span class="idx">[05]</span><h2>Achievements</h2><span class="note">// competitions · leadership · craft</span></div>
 
     <a class="dist-flag rv d1" href="/eDNAtlas/" target="_blank" data-mag>
       <div class="df-badge">1st<span>place</span></div>
@@ -524,9 +631,9 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="work">
+<section id="projects">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[05]</span><h2>Projects</h2><span class="note">// selected builds</span></div>
+    <div class="sec-label rv"><span class="idx">[06]</span><h2>Projects</h2><span class="note">// selected builds</span></div>
     <div class="grid">
 
       <article class="proj rv d1" data-mag>
@@ -642,7 +749,7 @@
 <!-- FENCING -->
 <section id="fencing">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[06]</span><h2>Fencing</h2><span class="note">// épée · team usa</span></div>
+    <div class="sec-label rv"><span class="idx">[07]</span><h2>Fencing</h2><span class="note">// épée · team usa</span></div>
     <div class="fence">
       <div class="fence-main rv d1">
         <div class="fence-recruit">
@@ -685,7 +792,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="contact mod rv">
-      <div class="idx">[07] // OPEN_CHANNEL</div>
+      <div class="idx">[08] // OPEN_CHANNEL</div>
       <h2>Let's<br><a href="mailto:erlikhman.adrian@gmail.com" data-mag>connect →</a></h2>
       <p>I respond quick. Usually the same day.</p>
       <div class="links">
@@ -702,7 +809,7 @@
 <!-- OFF THE CLOCK (moved to the end, after Contact) -->
 <section id="offclock">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[08]</span><h2>Off the clock</h2><span class="note">// the rest of me</span></div>
+    <div class="sec-label rv"><span class="idx">[09]</span><h2>Off the clock</h2><span class="note">// the rest of me</span></div>
     <p class="offclock-lead rv d1">Off the laptop, I love the outdoors: climbing, backpacking, cycling, surfing, hiking, and swimming in freezing lakes. Any time left I spend finding niche food spots, seeing my family, and catching up on sleep.</p>
     <div class="lifewrap rv d2">
       <div class="life-h"><span class="life-hint">hover to fan · click a photo to focus</span></div>
@@ -864,6 +971,6 @@ for name, model in models.items():
 print(best_threshold(y_te, scores, beta=2.0))
 </script>
 
-<script src="/assets/site.js?v=2026-09-21b"></script>
+<script src="/assets/site.js?v=2026-09-21c"></script>
 </body>
 </html>
