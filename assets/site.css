@@ -1086,3 +1086,7 @@ section{padding:104px 0}
 .sv-inline .sv-body{padding-top:20px}
 #guess-sec,#stylometry{padding-top:80px}
 @media(max-width:600px){#guess-sec,#stylometry{padding-top:60px}}
+
+/* every role in Experience links to the company it was at */
+.tl .org a{color:inherit;border-bottom:1px solid color-mix(in srgb,var(--acc) 45%,transparent);transition:color .2s,border-color .2s}
+.tl .org a:hover{color:var(--acc);border-bottom-color:var(--acc)}
