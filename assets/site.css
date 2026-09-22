@@ -1062,3 +1062,27 @@ section{padding:104px 0}
 .lab-tcol li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--acc)}
 .lab-foot{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--dim);margin:20px 0 0;border-top:1px solid var(--line);padding-top:12px}
 .lab-foot a{color:var(--acc);border-bottom:1px solid currentColor}
+
+/* ==================== THE DEMOS LIVE ON /demos/ — the prompt, the steps, the inline toy ==================== */
+.tryline{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;
+  border:1px solid var(--line-strong);background:var(--panel);padding:16px 20px;margin:0 0 54px;transition:border-color .2s,background .2s}
+.tryline:hover{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 5%,var(--panel))}
+.tl-k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+.tl-t{font-family:var(--sans);font-size:14.5px;line-height:1.55;color:var(--ink)}
+.tl-t b{font-weight:600}
+.tl-go{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--acc);white-space:nowrap}
+@media(max-width:760px){.tryline{grid-template-columns:1fr;gap:9px;padding:15px 16px;margin-bottom:40px}}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:0 0 30px;padding:0}
+@media(max-width:820px){.steps{grid-template-columns:1fr;gap:16px}}
+.steps li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--dim)}
+.steps li b{display:inline-grid;place-items:center;width:24px;height:24px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-weight:500;font-size:12px}
+.steps .st-h{display:block;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);margin-bottom:4px}
+/* the stylometry toy, inline on /demos/ instead of over the page */
+.styloview.sv-inline{position:static;inset:auto;z-index:auto;display:block;padding:0;background:none}
+.sv-inline .sv-panel{width:auto;max-width:none;max-height:none;box-shadow:none}
+.sv-inline .sv-x{display:none}
+/* the steps above already say what it does, so the panel drops its own heading inline */
+.sv-inline .sv-kick,.sv-inline .sv-h,.sv-inline .sv-sub{display:none}
+.sv-inline .sv-body{padding-top:20px}
+#guess-sec,#stylometry{padding-top:80px}
+@media(max-width:600px){#guess-sec,#stylometry{padding-top:60px}}

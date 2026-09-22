@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-09-22f">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-22g">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -304,28 +304,12 @@
 <section id="papers">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// papers &amp; writeups</span></div>
-    <!-- GUESS THE MODEL: real LangLLM essays; the visitor, the classifier and the five models all guess -->
-    <div class="guess rv d1" id="guess" aria-labelledby="gTitle">
-      <div class="g-top">
-        <div>
-          <div class="g-kick">try the research · langllm</div>
-          <h3 class="g-title" id="gTitle">Which model wrote this?</h3>
-          <p class="g-sub">Real essays from my LangLLM data: five frontier models answered the same prompts. Read one, guess the author, then see what my 21-feature classifier said, and what the five models guessed when asked the same question.</p>
-        </div>
-        <div class="g-score" aria-live="polite">
-          <div><b id="gYou">0/0</b><span>you</span></div>
-          <div><b id="gClf">0/0</b><span>classifier</span></div>
-          <div><b id="gJud">0/0</b><span>the models</span></div>
-        </div>
-      </div>
-      <div class="g-card">
-        <div class="g-meta"><span id="gCount">loading an essay…</span><span id="gTopic"></span></div>
-        <div class="g-text" id="gText" tabindex="0" aria-label="The essay"><p>Loading…</p></div>
-        <div class="g-choices" id="gChoices" role="group" aria-label="Who wrote it?"></div>
-        <div class="g-reveal" id="gReveal" hidden></div>
-      </div>
-      <p class="g-foot" id="gFoot">Ten English essays, two per model, drawn at random. Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a></p>
-    </div>
+    <!-- the demos moved to /demos/ (22 Sept); this is the prompt that sends people there -->
+    <a class="tryline rv d1" href="/demos/">
+      <span class="tl-k">try it</span>
+      <span class="tl-t"><b>Which model wrote this?</b> Ten real essays from the LangLLM study, five frontier models. Guess the author, then see what my classifier and the models themselves said.</span>
+      <span class="tl-go">Open the demos &rarr;</span>
+    </a>
 
     <div class="papers rv d1">
 
@@ -339,6 +323,7 @@
           <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
         </div>
         <div class="paper-cta">
+          <a class="dl" href="/demos/#guess-sec" data-mag>TRY THE DEMO ↗</a>
           <a class="dl" href="papers/langllm-poster-urtc2026.pdf" target="_blank" data-mag>POSTER ↓</a>
           <a class="dl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
         </div>
@@ -354,7 +339,7 @@
           <p class="abstract">LLM-as-judge pipelines anonymize candidate responses on the assumption that a judge cannot tell who wrote what. I run five frontier models over the same 190 responses under two elicitation formats and score every self-attribution rate against a peer baseline: what the other four judges get on the same text. Claude names itself on 86.8% of its own writing while its peers identify that text at 53.9%; GPT shows a similar edge, two models are neutral, and Grok lands below the chance floor on itself. A stylometric classifier over 18 interpretable features recovers the true author at 86.3%, above every judge, so the signal is in the text — most judges just do not use it. Fully reproducible in one command, no API key.</p>
         </div>
         <div class="paper-cta">
-          <button class="dl demo-open" id="openStylo">TRY THE DEMO ↗</button>
+          <a class="dl" href="/demos/#stylometry" data-mag>TRY THE DEMO ↗</a>
           <!-- [EDIT] swap for the PDF link once JUDGe notification lands (29 Sept 2026) -->
           <span class="dl dl-pending">PDF · AFTER REVIEW</span>
         </div>
@@ -698,23 +683,6 @@
 </div>
 
 
-<!-- COMPLLM STYLOMETRY DEMO -->
-<div id="stylo" class="styloview" hidden>
-  <div class="sv-panel">
-    <div class="sv-bar"><span class="sv-dots"><i></i><i></i><i></i></span><span class="sv-file">compllm · stylometry demo</span><button class="sv-x" id="svClose">esc ✕</button></div>
-    <div class="sv-body">
-      <div class="sv-kick">stylometry toy · runs in your browser</div>
-      <div class="sv-h">which model does your writing read like?</div>
-      <p class="sv-sub">Paste any paragraph. It measures four simple style features (sentence length, lexical diversity, commas per sentence and "AI vocabulary") and shows which of six rough profiles your text sits closest to.</p>
-      <textarea id="svTa" class="sv-ta">In today's rapidly evolving landscape, artificial intelligence stands as a testament to human ingenuity. It is crucial to delve into the intricate tapestry of machine learning, which underscores a pivotal shift in how we approach complex problems. This robust, seamless framework fosters innovation across a myriad of domains.</textarea>
-      <button class="sv-run" id="svRun">Analyze text</button>
-      <div class="sv-verdict"><span class="lab">reads most like</span><span class="m" id="svM">—</span><span class="lab" id="svConf"></span></div>
-      <div class="sv-bars" id="svBars"></div>
-      <div class="sv-feats" id="svFeats"></div>
-      <div class="sv-note">A toy that shows the idea, not the paper's classifier. The six profiles are rough averages set by hand, not fitted to the study's data, and the Human one isn't from the study at all. The percentages split 100% across the profiles by closeness, so they are not probabilities or accuracy. The paper itself collects 190 responses from five frontier models, and a classifier over 18 interpretable features names the true author 86.3% of the time.</div>
-    </div>
-  </div>
-</div>
 
 <!-- MATH RESEARCH NOTES -->
 <div id="notes" class="notesview" hidden>
@@ -728,6 +696,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-09-22f"></script>
+<script src="/assets/site.js?v=2026-09-22g"></script>
 </body>
 </html>

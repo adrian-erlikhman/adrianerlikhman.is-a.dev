@@ -365,6 +365,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
     {ic:'▸',label:'All projects, experiments & achievements',k:'page',run:()=>{close();location.href='/work/';}},
+    {ic:'▸',label:'Demos: which model wrote this?',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
@@ -537,6 +538,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     document.getElementById('svFeats').innerHTML=feats.map(x=>'<div class="sv-chip"><div class="k">'+x[0]+'</div><div class="v">'+x[1]+'</div></div>').join('');
   }
   const open=()=>{sv.hidden=false;render();};
+  if(!sv.hidden) render();   /* inline on /demos/, so draw it straight away */
   const close=()=>{sv.hidden=true;};
   const btn=document.getElementById('openStylo'); if(btn) btn.addEventListener('click',open);
   document.getElementById('svClose').addEventListener('click',close);
@@ -762,7 +764,8 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13',earshot:'https://github.com/adrian-erlikhman/earshot'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
-    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
+    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>demo</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
+    demo:()=>{print("opening the demos — guess the model, and the stylometry toy …");location.href='/demos/';},
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>earshot</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},

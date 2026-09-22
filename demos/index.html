@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Try it — Adrian Erlikhman</title>
+<meta name="description" content="Two demos from Adrian Erlikhman's research on whether language models leave a fingerprint in their writing: guess which of five frontier models wrote a real essay, and see which model profile your own writing reads like.">
+<meta name="author" content="Adrian Erlikhman">
+<link rel="canonical" href="https://adrianerlikhman.is-a.dev/demos/">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#f3f1ea">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Adrian Erlikhman">
+<meta property="og:title" content="Try it — Adrian Erlikhman">
+<meta property="og:description" content="Which model wrote this? Two demos from my research on model fingerprints.">
+<meta property="og:url" content="https://adrianerlikhman.is-a.dev/demos/">
+<meta property="og:image" content="https://adrianerlikhman.is-a.dev/og.png?v=4">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-22g">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://adrianerlikhman.is-a.dev/demos/#page",
+  "url": "https://adrianerlikhman.is-a.dev/demos/",
+  "name": "Try it — Adrian Erlikhman",
+  "description": "Two interactive demos from Adrian Erlikhman's research on model attribution: guess which of five frontier models wrote a real essay, and measure which profile your own writing reads like.",
+  "isPartOf": { "@id": "https://adrianerlikhman.is-a.dev/#website" },
+  "about": { "@id": "https://adrianerlikhman.is-a.dev/#adrian" },
+  "inLanguage": "en-US"
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="topbar"></div>
+
+<!-- HUD: the homepage's bar; the wordmark goes home and section links point back at it -->
+<div class="hud">
+  <div class="b">
+    <a class="wordmark ae-mark" href="/" id="aeMark" aria-label="Adrian Erlikhman — home">
+      <span class="nm">Adrian Erlikhman</span>
+    </a>
+  </div>
+  <div class="navset">
+    <a href="/">Home</a>
+    <a href="#guess-sec">Guess the model</a>
+    <a href="#stylometry">Your writing</a>
+    <a href="/#papers">Research</a>
+    <a href="/#contact">Contact</a>
+    <a href="/resume.pdf?v=2026-09p" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
+  </div>
+</div>
+
+<main id="main" tabindex="-1">
+<header class="page-head wrap">
+  <div class="ph-kick">try it</div>
+  <h1 class="ph-title">two demos, five models</h1>
+  <p class="ph-lead">Both come out of the same question I research: does a language model leave a fingerprint in what it writes? The first demo is played on real data from the study. The second is a toy, run on whatever you paste into it.</p>
+  <nav class="ph-jump" aria-label="On this page"><a href="#guess-sec">Which model wrote this?</a><a href="#stylometry">Your own writing</a><a href="/#papers">The papers</a><a href="/">Back home</a></nav>
+</header>
+
+<!-- DEMO 1: the LangLLM guessing game, with the steps first -->
+<section id="guess-sec">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[01]</span><h2>Which model wrote this?</h2><span class="note">// langllm · ten essays · about two minutes</span></div>
+    <ol class="steps rv d1">
+      <li><b>1</b><div><span class="st-h">Read the essay</span>It is a real answer from one of five frontier models &mdash; GPT, Claude, Gemini, Grok or DeepSeek &mdash; written for one of the prompts in my LangLLM study. The topic and the side it argues are shown above it.</div></li>
+      <li><b>2</b><div><span class="st-h">Name the model</span>Pick one of the five. Guessing blind gets you 20%. The only clue is how the thing is written: sentence length, punctuation, the words it reaches for.</div></li>
+      <li><b>3</b><div><span class="st-h">See who else got it</span>Each answer shows the true author, whether my 21-feature classifier named it, and what the five models said when asked the same question about the same text. Your running score sits next to theirs.</div></li>
+    </ol>
+    <!-- GUESS THE MODEL: real LangLLM essays; the visitor, the classifier and the five models all guess -->
+    <div class="guess rv d1" id="guess" aria-labelledby="gTitle">
+      <div class="g-top">
+        <div>
+          <div class="g-kick">try the research · langllm</div>
+          <h3 class="g-title" id="gTitle">Which model wrote this?</h3>
+          <p class="g-sub">Real essays from my LangLLM data: five frontier models answered the same prompts. Read one, guess the author, then see what my 21-feature classifier said, and what the five models guessed when asked the same question.</p>
+        </div>
+        <div class="g-score" aria-live="polite">
+          <div><b id="gYou">0/0</b><span>you</span></div>
+          <div><b id="gClf">0/0</b><span>classifier</span></div>
+          <div><b id="gJud">0/0</b><span>the models</span></div>
+        </div>
+      </div>
+      <div class="g-card">
+        <div class="g-meta"><span id="gCount">loading an essay…</span><span id="gTopic"></span></div>
+        <div class="g-text" id="gText" tabindex="0" aria-label="The essay"><p>Loading…</p></div>
+        <div class="g-choices" id="gChoices" role="group" aria-label="Who wrote it?"></div>
+        <div class="g-reveal" id="gReveal" hidden></div>
+      </div>
+      <p class="g-foot" id="gFoot">Ten English essays, two per model, drawn at random. Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO 2: the CompLLM stylometry toy, inline rather than as an overlay -->
+<section id="stylometry">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[02]</span><h2>Does your writing read like a model?</h2><span class="note">// compllm · a toy, in your browser</span></div>
+    <ol class="steps rv d1">
+      <li><b>1</b><div><span class="st-h">Paste a paragraph</span>Anything you have written, or the sample already in the box. Nothing leaves your browser: the whole thing runs in a few lines of JavaScript on this page.</div></li>
+      <li><b>2</b><div><span class="st-h">It measures four things</span>Average sentence length, lexical diversity, commas per sentence, and how often you use the vocabulary models lean on &mdash; delve, tapestry, underscores, robust.</div></li>
+      <li><b>3</b><div><span class="st-h">It finds the closest profile</span>Of six rough profiles, one human and five models. This one is a toy that shows the idea, not the paper&rsquo;s classifier: the real one uses 18 features fitted to 190 collected responses and names the author 86.3% of the time.</div></li>
+    </ol>
+    <!-- COMPLLM STYLOMETRY DEMO -->
+<div id="stylo" class="styloview sv-inline">
+  <div class="sv-panel">
+    <div class="sv-bar"><span class="sv-dots"><i></i><i></i><i></i></span><span class="sv-file">compllm · stylometry demo</span><button class="sv-x" id="svClose">esc ✕</button></div>
+    <div class="sv-body">
+      <div class="sv-kick">stylometry toy · runs in your browser</div>
+      <div class="sv-h">which model does your writing read like?</div>
+      <p class="sv-sub">Paste any paragraph. It measures four simple style features (sentence length, lexical diversity, commas per sentence and "AI vocabulary") and shows which of six rough profiles your text sits closest to.</p>
+      <textarea id="svTa" class="sv-ta">In today's rapidly evolving landscape, artificial intelligence stands as a testament to human ingenuity. It is crucial to delve into the intricate tapestry of machine learning, which underscores a pivotal shift in how we approach complex problems. This robust, seamless framework fosters innovation across a myriad of domains.</textarea>
+      <button class="sv-run" id="svRun">Analyze text</button>
+      <div class="sv-verdict"><span class="lab">reads most like</span><span class="m" id="svM">—</span><span class="lab" id="svConf"></span></div>
+      <div class="sv-bars" id="svBars"></div>
+      <div class="sv-feats" id="svFeats"></div>
+      <div class="sv-note">A toy that shows the idea, not the paper's classifier. The six profiles are rough averages set by hand, not fitted to the study's data, and the Human one isn't from the study at all. The percentages split 100% across the profiles by closeness, so they are not probabilities or accuracy. The paper itself collects 190 responses from five frontier models, and a classifier over 18 interpretable features names the true author 86.3% of the time.</div>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© <span id="yr"></span> ADRIAN ERLIKHMAN</span>
+  <span>BUILT FROM SCRATCH · NO TEMPLATE</span>
+  <span>34.05°N 118.24°W · L.A.</span>
+</footer>
+
+<!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
+     Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
+<div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
+  <div class="cvm-h">résumé <span>// pick a length</span></div>
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="/resume.pdf?v=2026-09p" target="_blank" rel="noopener">
+    <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
+  </a>
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="/resume-long.pdf?v=2026-09p" target="_blank" rel="noopener">
+    <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
+  </a>
+  <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
+</div>
+
+<!-- COMMAND PALETTE -->
+<div id="cmdk" class="cmdk" hidden>
+  <div class="cmdk-panel">
+    <div class="cmdk-top">
+      <span class="cmdk-prompt">adrian.os ~ %</span>
+      <input id="cmdkInput" placeholder="type a command… try 'projects', 'email', 'resume'" autocomplete="off" spellcheck="false">
+    </div>
+    <ul class="cmdk-list" id="cmdkList"></ul>
+    <div class="cmdk-foot"><span>↑ ↓ navigate</span><span>↵ run</span><span>esc close</span></div>
+  </div>
+</div>
+
+<!-- CODE PREVIEW -->
+<div id="codeview" class="codeview" hidden>
+  <div class="cv-panel">
+    <div class="cv-bar"><span class="cv-dots"><i></i><i></i><i></i></span><span class="cv-file" id="cvFile"></span><button class="cv-x" id="cvClose">esc ✕</button></div>
+    <div class="cv-case" id="cvCase"></div>
+    <pre class="cv-code"><code id="cvCode"></code></pre>
+    <div class="cv-foot"><span id="cvDesc"></span><a class="cv-repo" id="cvRepo" target="_blank">Open full repo ↗</a></div>
+  </div>
+</div>
+
+<script src="/assets/site.js?v=2026-09-22g"></script>
+</body>
+</html>
