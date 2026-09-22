@@ -215,16 +215,23 @@ from LaTeX in `resume/`.
   script still waits for the band to come near. `sitemap.xml` lists the page.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
-Hero · `[01]` Selected work (id=`work`) · `[02]` Research (`papers`) ·
-`[03]` Experience · `[04]` Recognition (`record`) · `[05]` Fencing ·
-`[06]` About me (`about`, with the photos in `#offclock`) · `[07]` Contact.
-The nav follows it: Work, Research, Experience, Fencing, About, Contact.
-- **Hero:** a stable one-line intro ("i build machine-learning tools for real
-  communities, and i study how language models behave"), a three-item
-  "right now" list (`.now`: interning / in review / organizing), and two
-  buttons, *explore my work* (`#work`) and *résumé*. The old typewriter and the
-  six interest labels are gone; the typewriter's script still sits in site.js,
-  guarded, if Adrian wants it back. Keep the "right now" items current.
+Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
+`[02]` Experience · `[03]` Research (`papers`) · `[04]` Fencing ·
+`[05]` Achievements (`record`) · `[06]` Selected work (`work`) · `[07]` Contact.
+That order is **Adrian's**, 22 Sept, and the nav and ⌘K palette follow it:
+About, Experience, Research, Fencing, Achievements, Selected work, Contact.
+- **Hero** (Adrian's shape, 22 Sept: name left, photo right): the stable
+  one-line intro ("i'm a senior in los angeles. i build machine-learning tools
+  for real communities, and i study how language models behave"), three buttons
+  (*selected work ↓*, *all achievements ↗*, *résumé*), then `.guide` — six rows
+  headed "what's here" that say what the site holds and double as the way in:
+  selected work, research, experience, achievements ↗, demos ↗, fencing. Keep
+  those descriptions current, since they carry what the old "right now" list
+  used to say (interning at Firstness, two papers in review). That list and its
+  `.now` styles are gone; the old typewriter and the six interest labels too,
+  though the typewriter's script still sits in site.js, guarded, if he wants it
+  back. The hero's top padding is trimmed so all six rows land above the fold
+  at 1280×900.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
   School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
@@ -239,8 +246,9 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   and `alliancesocal.org`, all checked that day. The last two are not the
   obvious domains, and the Fjor site calls itself **Fjor Founders Fund** while
   the site says "Fjor Venture Capital", which is Adrian's wording; leave it
-  unless he asks. **Recognition** lists the awards the
-  case studies don't carry and links to `/work/#achievements`. **About** is the
+  unless he asks. **Achievements** groups the whole record (competitions,
+  founding and leadership, academics) and links to `/work/#achievements` for
+  the detailed version. **About** is the
   short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
   The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
   leaving the deck lays them back down, and a mouse click does nothing. Touch
