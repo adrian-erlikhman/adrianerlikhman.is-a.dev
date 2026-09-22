@@ -234,7 +234,12 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   project README; AIML-LI follows his public-copy rules (committed partners,
   no pilot numbers, no A–G claims).
 - **Experience** is the internships only (Firstness, Kiddom, Fjor, Alliance);
-  SafeJew and AIML-LI are case studies. **Recognition** lists the awards the
+  SafeJew and AIML-LI are case studies. Each role's organisation line links to
+  the company (Adrian, 22 Sept): `firstness.ai`, `www.kiddom.co`, `www.fjor.co`
+  and `alliancesocal.org`, all checked that day. The last two are not the
+  obvious domains, and the Fjor site calls itself **Fjor Founders Fund** while
+  the site says "Fjor Venture Capital", which is Adrian's wording; leave it
+  unless he asks. **Recognition** lists the awards the
   case studies don't carry and links to `/work/#achievements`. **About** is the
   short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
   The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
