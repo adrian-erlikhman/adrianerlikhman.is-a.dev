@@ -91,11 +91,12 @@ from LaTeX in `resume/`.
     "models converge, ρ = −0.96" claim is gone because Michael's revision
     showed it was a Grok effect. The `[abstract]`/`[poster]` tags and the card's
     POSTER button are still the URTC artifacts, some of whose numbers the
-    paper corrected; replacing or dropping them is Adrian's call. So is the
-    author line: the site says "with Michael Tarekegn & Ryan Erlikhman ·
-    Advisor: Philo Juang", while the submitted paper lists Adrian, Michael and
-    Philo. The site keeps the friendlier title "Do LLM Fingerprints Survive
-    Outside English?" unless he asks.
+    paper corrected; Adrian chose to keep them (21 Sept). He also chose to
+    drop LangLLM's author line everywhere, because the old one ("with Michael
+    Tarekegn & Ryan Erlikhman · Advisor: Philo Juang") didn't match the
+    submitted paper (Adrian, Michael, Philo), so the card and both résumés
+    just say "First author". The site keeps the friendlier title "Do LLM
+    Fingerprints Survive Outside English?" unless he asks.
 - **Two titles carry a deliberate line break.** Earshot's in the one-pager (at
   its colon) and Legatum's in the long one (after the question mark), both with
   `\newline`. Without them the title filled the line and the italic venue was
@@ -163,7 +164,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09o`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09p`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
