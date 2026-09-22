@@ -2,7 +2,7 @@
 
 Personal portfolio site (single-page `index.html`), served via GitHub Pages at
 the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links two
-résumés, `resume.pdf` (one page) and `resume-long.pdf` (two pages), both built
+résumés, `resume.pdf` (one page) and `resume-long.pdf` (three pages), both built
 from LaTeX in `resume/`.
 
 ## USA Fencing — current standings (keep in sync between site + résumés)
@@ -80,10 +80,22 @@ from LaTeX in `resume/`.
     named person, so the docs could not be made link-viewable. **Re-export the
     Earshot one after he submits**: the published copy is a snapshot of a draft
     that was still due on 21 Sept.
-  - The URTC submission's own title is *Interpretable Attribution of Frontier
-    Language Models Across Languages and Translation*, not the friendlier "Do
-    LLM Fingerprints Survive Outside English?" the site and both résumés use.
-    Flagged to Adrian on 19 Sept; leave it unless he asks for the real one.
+  - **LangLLM's venue changed.** URTC didn't take it (CMT notice, 18 Sept).
+    A full paper went to the **IEEE BigData 2026 High School Symposium** on
+    21 Sept (SP19343, "Interpretable Multilingual Attribution of Frontier
+    LLMs", authors Adrian, Michael Tarekegn, Philo Juang; decision 9 Oct).
+    The R.01 card and both résumés say "Under review" there. The R.01 summary
+    follows that paper's abstract (`LangLLM/paper/main.tex`): no decline
+    *detected*, n-grams more accurate within a language but the features
+    transfer better, 57–70% on translations, and judges at 20–25%. The old
+    "models converge, ρ = −0.96" claim is gone because Michael's revision
+    showed it was a Grok effect. The `[abstract]`/`[poster]` tags and the card's
+    POSTER button are still the URTC artifacts, some of whose numbers the
+    paper corrected; replacing or dropping them is Adrian's call. So is the
+    author line: the site says "with Michael Tarekegn & Ryan Erlikhman ·
+    Advisor: Philo Juang", while the submitted paper lists Adrian, Michael and
+    Philo. The site keeps the friendlier title "Do LLM Fingerprints Survive
+    Outside English?" unless he asks.
 - **Two titles carry a deliberate line break.** Earshot's in the one-pager (at
   its colon) and Legatum's in the long one (after the question mark), both with
   `\newline`. Without them the title filled the line and the italic venue was
@@ -121,7 +133,7 @@ from LaTeX in `resume/`.
   - The summit is 200+ LA public-school students, never 500, and lists only
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
-    JUDGe and AI for Peace decide (29 Sept) and when URTC does.
+    JUDGe and AI for Peace decide (29 Sept) and when BigData does (9 Oct).
   - The portfolio paper (R.05, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
@@ -151,7 +163,7 @@ from LaTeX in `resume/`.
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **four places**: the two triggers (nav
   `.navcv`, Contact) and the two picker options. Bump all four whenever either
-  PDF changes. Currently `?v=2026-09n`. JSON-LD `subjectOf` and `sitemap.xml`
+  PDF changes. Currently `?v=2026-09o`. JSON-LD `subjectOf` and `sitemap.xml`
   list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -205,6 +217,15 @@ Craft & Mastery) · `[05]` Projects · `[06]` Fencing · `[07]` Contact ·
   call it the first to link NLP papers to patents. The title is the repo brief's
   recommendation; Adrian left the choice to Claude. Update the status line once
   it's submitted or decided.
+- **The CompLLM stylometry demo** (TRY THE DEMO on R.02) is a toy, and says so:
+  six hand-set profiles (Human, GPT, Claude, Gemini, Grok, DeepSeek) matched on
+  four features, with percentages that are shares of similarity, not
+  probabilities. Its note gives the paper's real setup (190 responses, five
+  models, 18 features, 86.3%). Don't describe it as the paper's classifier.
+- **Safe Routes' 80%** is one modeled trip: Exposition & Normandie to LACES by
+  two buses (40 min, 750 m on foot) against walking it (118 min, 9.3 km),
+  measured as the route's modeled street-crime exposure. Say "modeled", and
+  name the trip where there is room.
 - **Research R.04**, the Legatum robustness paper, links
   `papers/legatum-robustness-audit.pdf?v=2026-09-13` from three places: the
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
