@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-09-22a">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-22c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -342,6 +342,29 @@
 <section id="papers">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[02]</span><h2>Research</h2><span class="note">// papers &amp; writeups</span></div>
+    <!-- GUESS THE MODEL: real LangLLM essays; the visitor, the classifier and the five models all guess -->
+    <div class="guess rv d1" id="guess" aria-labelledby="gTitle">
+      <div class="g-top">
+        <div>
+          <div class="g-kick">try the research · langllm</div>
+          <h3 class="g-title" id="gTitle">Which model wrote this?</h3>
+          <p class="g-sub">Real essays from my LangLLM data: five frontier models answered the same prompts. Read one, guess the author, then see what my 21-feature classifier said, and what the five models guessed when asked the same question.</p>
+        </div>
+        <div class="g-score" aria-live="polite">
+          <div><b id="gYou">0/0</b><span>you</span></div>
+          <div><b id="gClf">0/0</b><span>classifier</span></div>
+          <div><b id="gJud">0/0</b><span>the models</span></div>
+        </div>
+      </div>
+      <div class="g-card">
+        <div class="g-meta"><span id="gCount">loading an essay…</span><span id="gTopic"></span></div>
+        <div class="g-text" id="gText" tabindex="0" aria-label="The essay"><p>Loading…</p></div>
+        <div class="g-choices" id="gChoices" role="group" aria-label="Who wrote it?"></div>
+        <div class="g-reveal" id="gReveal" hidden></div>
+      </div>
+      <p class="g-foot" id="gFoot">Ten English essays, two per model, drawn at random. Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a></p>
+    </div>
+
     <div class="papers rv d1">
 
       <div class="paper" data-mag>
@@ -633,6 +656,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-09-22a"></script>
+<script src="/assets/site.js?v=2026-09-22c"></script>
 </body>
 </html>
