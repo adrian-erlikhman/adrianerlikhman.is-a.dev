@@ -251,6 +251,22 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   the vision model, whose accuracy on real photos hasn't been measured. The
   note under it says exactly that; keep it. Re-export from the repo rather than
   editing the JSON.
+- **The AIML-LI mini-lab** (`#aiLab`, under the AIML-LI case study, since 22 Sept)
+  is Unit 1's ethics lab annotated: `u01_l01_ethics_minilab_intro_ai_v1.ipynb`,
+  "When Class Balance Changes", from the **private** repo
+  `adrian-erlikhman/AIML-LI` -- so link aiml-initiative.org, never the repo.
+  A visitor picks how rare the scholarship is and sees the notebook's own cell
+  with the one line students edit, what it prints on the notebook's seed, and
+  the same cell pooled over draws 1-25: accuracy climbs from 96.3% to 98.1%
+  while the share of real winners found falls from 95.8% to 66.9%. The pooled
+  numbers carry the claim, not the single seed -- one draw of 400 applicants is
+  noisy, and on the lesson's own seed the 1-in-10 run is perfect. Data is
+  `assets/aiml-minilab.json`, written by running that notebook's code on
+  scikit-learn 1.9.0 with only `new_positive_weight` changed; regenerate it
+  rather than editing it. The four margin notes are the site's; the prompts
+  under the lab (predict before you run, ethics, summary) are the notebook's
+  own words, and the teacher-key numbers in the notebook don't match what the
+  code prints on this scikit-learn, so don't quote them.
 - **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Earshot · R.04 Legatum
   robustness · R.05 portfolio optimization · R.06 advanced math. The Ukraine
   Legatum-ML paper (the old R.03) came off on 13 Sept 2026 because Adrian found

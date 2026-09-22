@@ -969,3 +969,94 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     io.observe(box);
   } else load();
 })();
+
+/* ================= AIML-LI MINI-LAB — Unit 1's ethics lab on its own output (assets/aiml-minilab.json) ================= */
+(function(){
+  const box=document.getElementById('aiLab'); if(!box) return;
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const pct=x=>(x*100).toFixed(1)+'%';
+  const num=n=>n.toLocaleString('en-US');
+  /* each note hangs off the first line that contains its fragment */
+  const ANN=[
+    {find:'new_positive_weight = ',t:'The one number students change. The model, the split and the seed all stay exactly as they were.'},
+    {find:'weights=[1 - new_positive_weight',t:'It decides how many of the 400 applicants actually win. At one in twenty, that is twenty winners in the whole pool.'},
+    {find:'stratify=y_shifted',t:'Train and test keep the same share of winners, so nothing below is an unlucky split.'},
+    {find:'print(f"Shifted accuracy',t:'The cell prints accuracy, and nothing else. That is the trap the lesson sets: a student who stops reading here sees a number that only goes up.'}
+  ];
+  let data=null,k=0;
+
+  function code(run){
+    const lines=data.code.map(l=>l.replace('{W}',String(run.weight)));
+    const hit={};
+    ANN.forEach((a,i)=>{ const j=lines.findIndex(l=>l.indexOf(a.find)>=0); if(j>=0&&hit[j]===undefined) hit[j]=i; });
+    $('labCode').innerHTML=lines.map((l,j)=>{
+      const i=hit[j], c=l.indexOf('  #');
+      const body=c>=0?esc(l.slice(0,c))+'<span class="cm">'+esc(l.slice(c))+'</span>':esc(l);
+      return '<span class="cl'+(j===0?' edit':'')+'" data-a="'+(i===undefined?'':i)+'">'+(body||' ')+(i===undefined?'':'<i class="am">'+(i+1)+'</i>')+'</span>';
+    }).join('');
+    $('labAnn').innerHTML=ANN.map((a,i)=>'<li data-a="'+i+'"><b>'+(i+1)+'</b><span>'+esc(a.t)+'</span></li>').join('');
+  }
+
+  function chart(sel){
+    const R=data.runs, W=560,H=208, L=44,Rr=86,T=16,B=34;
+    const x=i=>L+i*((W-L-Rr)/(R.length-1)), y=v=>T+(1-(v-0.6)/0.4)*(H-T-B);
+    let g='';
+    for(let v=60;v<=100;v+=10){ g+='<line class="gl" x1="'+L+'" y1="'+y(v/100)+'" x2="'+(W-Rr)+'" y2="'+y(v/100)+'"/>'+
+      '<text class="tk" x="'+(L-8)+'" y="'+(y(v/100)+3)+'" text-anchor="end">'+v+'%</text>'; }
+    g+='<line class="sel" x1="'+x(sel)+'" y1="'+T+'" x2="'+x(sel)+'" y2="'+(H-B)+'"/>';
+    const path=key=>R.map((r,i)=>(i?'L':'M')+x(i)+' '+y(r.pooled[key])).join(' ');
+    g+='<path class="ln-acc" d="'+path('accuracy')+'"/><path class="ln-rec" d="'+path('recall')+'"/>';
+    R.forEach((r,i)=>{
+      g+='<circle class="pt-acc" cx="'+x(i)+'" cy="'+y(r.pooled.accuracy)+'" r="'+(i===sel?4:2.5)+'"/>'+
+         '<circle class="pt-rec" cx="'+x(i)+'" cy="'+y(r.pooled.recall)+'" r="'+(i===sel?4:2.5)+'"/>'+
+         '<text class="tk" x="'+x(i)+'" y="'+(H-14)+'" text-anchor="middle">'+esc(r.label)+'</text>';
+    });
+    const last=R.length-1;
+    g+='<text class="lb" x="'+(x(last)+9)+'" y="'+(y(R[last].pooled.accuracy)+3)+'" fill="var(--ink)">accuracy</text>'+
+       '<text class="lb" x="'+(x(last)+9)+'" y="'+(y(R[last].pooled.recall)+3)+'" fill="var(--acc)">winners found</text>';
+    $('labChart').innerHTML='<title id="labChartT">Accuracy rises as the winners get rarer, while the share of winners the model finds falls</title>'+g;
+  }
+
+  function render(i){
+    k=i; const r=data.runs[i], p=r.pooled, l=r.lesson, base=data.runs[0].pooled;
+    $('labTabs').querySelectorAll('button').forEach((b,j)=>{b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1;});
+    code(r);
+    $('labPrint').innerHTML='&gt;&gt;&gt; Shifted accuracy: <b>'+l.accuracy.toFixed(3)+'</b>'+
+      '<span class="lab-pn">What the class sees: one draw of 400 applicants, on the notebook\u2019s own seed. That draw '+
+      (l.missed?'missed '+l.missed+' of its '+l.winners+' winners':'missed none of its '+l.winners+' winners')+'.</span>';
+    $('labMetrics').innerHTML=
+      '<div class="lab-m"><span class="lab-mk">what the cell prints</span><span class="lab-mv">'+pct(p.accuracy)+'</span><span class="lab-ms">accuracy</span></div>'+
+      '<div class="lab-m rec"><span class="lab-mk">what it doesn&rsquo;t</span><span class="lab-mv">'+pct(p.recall)+'</span><span class="lab-ms">of real winners found</span></div>'+
+      '<div class="lab-m miss"><span class="lab-mk">who that is</span><span class="lab-mv">'+num(p.missed)+'</span><span class="lab-ms">passed over, of '+num(p.winners)+' who should have won</span></div>';
+    chart(i);
+    $('labVerdict').innerHTML=i===0
+      ? 'Balanced, to start: accuracy <b>'+pct(p.accuracy)+'</b>, and the model finds <b>'+pct(p.recall)+'</b> of the winners.'
+      : 'Accuracy is <b>'+pct(p.accuracy)+'</b>, '+(p.accuracy>base.accuracy?'higher than':'no worse than')+' the balanced run. It now finds <b>'+pct(p.recall)+'</b> of the winners, and passes over <b>'+num(p.missed)+' of '+num(p.winners)+'</b> students who should have won.';
+  }
+
+  function load(){
+    fetch('/assets/aiml-minilab.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+      data=d;
+      $('labTabs').innerHTML=d.runs.map((r,i)=>'<button type="button" role="tab" data-k="'+i+'" title="'+esc(r.blurb)+'">'+esc(r.label)+'</button>').join('');
+      const fill=(id,arr)=>{$(id).innerHTML=arr.map(t=>'<li>'+esc(t)+'</li>').join('');};
+      fill('labPredict',d.lesson.predict); fill('labEthics',d.lesson.ethics); fill('labSummary',d.lesson.summary);
+      render(0);
+    }).catch(()=>{ $('labPrint').textContent='The lesson data didn\u2019t load.'; });
+  }
+  box.addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(b&&data) render(+b.dataset.k); });
+  box.addEventListener('keydown',e=>{
+    const b=e.target.closest('[role=tab]'); if(!b||!data) return;
+    const n=data.runs.length, i=+b.dataset.k;
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(i+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('labTabs').children[j].focus(); }
+  });
+  /* hovering a note lights its line */
+  box.addEventListener('mouseover',e=>{ const li=e.target.closest('.lab-ann li'); if(!li) return;
+    const cl=box.querySelector('.lab-pre .cl[data-a="'+li.dataset.a+'"]'); if(cl) cl.classList.add('lit'); });
+  box.addEventListener('mouseout',e=>{ const li=e.target.closest('.lab-ann li'); if(!li) return;
+    box.querySelectorAll('.lab-pre .cl.lit').forEach(c=>c.classList.remove('lit')); });
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
+    io.observe(box);
+  } else load();
+})();

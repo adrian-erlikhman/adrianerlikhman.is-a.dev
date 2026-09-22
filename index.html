@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-09-22e">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-22f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -547,6 +547,41 @@
         </div>
       </article>
 
+      <!-- AIML-LI MINI-LAB: Unit 1's ethics lab, annotated, run on its own code (assets/aiml-minilab.json) -->
+      <div class="lab rv" id="aiLab" aria-labelledby="labTitle">
+        <div class="lab-head">
+          <div class="lab-kick">try the lesson &middot; aiml-li</div>
+          <h3 class="lab-title" id="labTitle">The model keeps getting more accurate. It keeps finding fewer of the students.</h3>
+          <p class="lab-sub">Unit 1 ends with a mini-lab: a model screens scholarship applicants. Students change one number &mdash; how many applicants actually win &mdash; run the cell again, and watch accuracy climb while the model quietly stops finding the winners. This is that notebook, annotated, with its own output.</p>
+          <div class="lab-pick">
+            <span class="lab-pick-k">winners in the pool</span>
+            <div class="lab-tabs" id="labTabs" role="tablist" aria-label="How many applicants win"></div>
+          </div>
+        </div>
+        <div class="lab-body">
+          <figure class="lab-code">
+            <figcaption><span>u01_l01_ethics_minilab_intro_ai_v1.ipynb</span><span class="lab-cap-r">guided activity b</span></figcaption>
+            <pre class="lab-pre"><code id="labCode"></code></pre>
+            <ol class="lab-ann" id="labAnn"></ol>
+          </figure>
+          <div class="lab-out">
+            <div class="lab-print" id="labPrint"></div>
+            <div class="lab-mh">the same cell over 25 draws, because one draw of 400 applicants is noisy</div>
+            <div class="lab-metrics" id="labMetrics"></div>
+            <div class="lab-chart-wrap">
+              <svg class="lab-chart" id="labChart" viewBox="0 0 560 208" role="img" aria-labelledby="labChartT"><title id="labChartT">Accuracy stays flat as the winners get rarer, while the share of winners the model finds falls</title></svg>
+            </div>
+            <p class="lab-verdict" id="labVerdict"></p>
+          </div>
+        </div>
+        <div class="lab-teach">
+          <div class="lab-tcol"><div class="lab-th">predict before you run</div><ul id="labPredict"></ul></div>
+          <div class="lab-tcol"><div class="lab-th">ethics &amp; impact</div><ul id="labEthics"></ul></div>
+          <div class="lab-tcol"><div class="lab-th">what they should leave with</div><ul id="labSummary"></ul></div>
+        </div>
+        <p class="lab-foot">A 25-minute lesson from Unit 1 of the AIML-LI course, which I co-wrote with Michael Tarekegn and which any teacher can run for free. The prompts are the notebook&rsquo;s own words. The numbers are its own output on scikit-learn 1.9.0, with only that one line changed: the lesson&rsquo;s run is the seed in the notebook, and because one draw of 400 applicants is noisy, the panel pools the same cell over 25 draws. <a href="https://aiml-initiative.org" target="_blank" rel="noopener">The course &#8599;</a></p>
+      </div>
+
       <article class="case rv" id="case-ledger">
         <figure class="case-media case-shot">
           <a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener" aria-label="Open the Ledger demo"><img src="/img/cases/ledger-scorecard.webp" width="1400" height="572" loading="lazy" decoding="async" alt="Ledger's weekly SNAP stocking scorecard for a corner market: 75 percent passing, grains, protein and produce at seven of seven varieties, dairy at five of seven, and a fix that blocks the review: add two dairy varieties."></a>
@@ -693,6 +728,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-09-22e"></script>
+<script src="/assets/site.js?v=2026-09-22f"></script>
 </body>
 </html>
