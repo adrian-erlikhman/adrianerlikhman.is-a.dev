@@ -948,3 +948,47 @@ section{padding:104px 0}
 .g-foot{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--g-dim);margin:16px 0 0}
 .g-foot a{color:var(--g-acc);border-bottom:1px solid currentColor}
 @media(max-width:700px){.g-text{padding:14px 15px;font-size:14.5px}.g-choices button{flex:1 1 44%}}
+
+/* ==================== LEDGER WALKTHROUGH ==================== */
+.walk{border:1px solid var(--line-strong);background:var(--panel);padding:30px 30px 24px;margin-top:-54px}
+@media(max-width:900px){.walk{margin-top:-30px;padding:22px 16px 18px}}
+.lw-kick{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.lw-title{font-family:'Fraunces',Georgia,serif;font-weight:900;font-optical-sizing:auto;font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.05;letter-spacing:-.02em;margin:8px 0 10px;color:var(--ink)}
+.lw-sub{font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--ink);max-width:70ch;margin:0}
+.lw-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.lw-tabs button{font-family:var(--mono);font-size:12px;padding:10px 14px;background:transparent;color:var(--ink);border:1px solid var(--line-strong);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.lw-tabs button:hover,.lw-tabs button:focus-visible{border-color:var(--acc);outline:none}
+.lw-tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lw-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;margin-top:22px;align-items:start}
+@media(max-width:900px){.lw-body{grid-template-columns:1fr;gap:18px}}
+.lw-img{margin:0;position:sticky;top:96px}
+@media(max-width:900px){.lw-img{position:static}}
+.lw-img img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.lw-img figcaption{font-family:var(--mono);font-size:11px;line-height:1.55;color:var(--dim);margin-top:9px}
+.lw-step+.lw-step{margin-top:22px}
+.lw-n{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.lw-n b{display:inline-grid;place-items:center;width:20px;height:20px;background:var(--ink);color:var(--bg);font-weight:600;font-size:11px}
+.lw-lines{list-style:none;margin:0;padding:0;max-height:330px;overflow:auto;border:1px solid var(--line);background:var(--bg)}
+.lw-lines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:9px 12px;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:13.5px;line-height:1.4}
+.lw-lines li:last-child{border-bottom:0}
+.lw-lines .lw-t{font-family:var(--mono);font-size:12px;color:var(--ink)}
+.lw-lines .lw-p{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right}
+.lw-lines .lw-d{grid-column:1/-1;color:#3c7a4e}
+.lw-lines li.held{background:color-mix(in srgb,var(--acc) 6%,transparent)}
+.lw-lines li.held .lw-d{color:var(--acc)}
+.lw-cats{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+.lw-cat{display:grid;grid-template-columns:80px auto minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:10px 12px;background:var(--bg);font-family:var(--sans);font-size:13.5px}
+@media(max-width:560px){.lw-cat{grid-template-columns:72px 1fr}.lw-num,.lw-per{grid-column:1/-1}}
+.lw-cat b{font-weight:600}
+.lw-seg{display:inline-flex;gap:3px}
+.lw-seg i{width:10px;height:10px;border:1px solid var(--line-strong)}
+.lw-cat.pass .lw-seg i.on{background:#3c7a4e;border-color:#3c7a4e}
+.lw-cat.fail .lw-seg i.on{background:var(--acc);border-color:var(--acc)}
+.lw-num{color:var(--ink)}
+.lw-per{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.lw-verdict{font-family:var(--sans);font-size:15px;line-height:1.55;margin:12px 0 0;color:var(--ink)}
+.lw-verdict .pass{color:#3c7a4e}
+.lw-verdict .fail{color:var(--acc)}
+.lw-fix{margin:0;padding-left:18px;font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--ink)}
+.lw-foot{font-family:var(--mono);font-size:11px;line-height:1.65;color:var(--dim);margin:20px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.lw-foot a{color:var(--acc);border-bottom:1px solid currentColor}

@@ -240,6 +240,17 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   mention to exactly that. The SNAP stocking rule Ledger scores against is 7
   varieties and 21 units per category with a perishable in **3 of the 4**
   categories — not in every category.
+- **The Ledger walkthrough** (`#ledgerWalk`, under the Ledger case study, since
+  22 Sept) plays four synthetic records from Ledger's test suite
+  (`eval/fixtures` in michae6345-crypto/visionhack): full restock, typical
+  weekly order, glare, produce by weight. They're exported to
+  `assets/ledger-walkthrough.json` with their images in `img/ledger/`. Each
+  line's decision and each verdict is the eval's hand label, which the shipped
+  rule engine matches on all 24 records with no false passes. The readings
+  were written for the tests, so the walkthrough shows the rule engine, not
+  the vision model, whose accuracy on real photos hasn't been measured. The
+  note under it says exactly that; keep it. Re-export from the repo rather than
+  editing the JSON.
 - **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Earshot · R.04 Legatum
   robustness · R.05 portfolio optimization · R.06 advanced math. The Ukraine
   Legatum-ML paper (the old R.03) came off on 13 Sept 2026 because Adrian found
