@@ -237,6 +237,9 @@ The nav follows it: Work, Research, Experience, Fencing, About, Contact.
   SafeJew and AIML-LI are case studies. **Recognition** lists the awards the
   case studies don't carry and links to `/work/#achievements`. **About** is the
   short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
+  The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
+  leaving the deck lays them back down, and a mouse click does nothing. Touch
+  keeps a tap that toggles, since a finger can't hover.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - On `/work/`, the three flagship `.dist-flag` banners open Achievements:

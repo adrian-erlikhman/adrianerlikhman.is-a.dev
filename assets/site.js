@@ -102,16 +102,20 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   calc(); layout(0);
   addEventListener('resize',()=>{calc();layout(0);});
   deck.addEventListener('mousemove',e=>{const r=deck.getBoundingClientRect();layout(((e.clientX-r.left)/r.width-0.5)*2);});
-  deck.addEventListener('mouseleave',()=>layout(0));
-  cards.forEach((c,i)=>{
-    c.addEventListener('mouseenter',()=>{ if(c.classList.contains('focus'))return;
-      const b=base(i); c.style.transform=`translateX(${b.x}px) translateY(-20px) rotate(0deg) scale(1.06)`; c.style.zIndex=50; });
-    c.addEventListener('click',()=>{
-      const was=c.classList.contains('focus');
-      cards.forEach(x=>x.classList.remove('focus'));
-      if(!was){ c.classList.add('focus'); c.style.transform='translateX(0) translateY(-8px) rotate(0deg) scale(1.32)'; c.style.zIndex=60; }
-      else layout(0);
-    });
+  const lay=()=>{cards.forEach(x=>x.classList.remove('focus'));layout(0);};
+  deck.addEventListener('mouseleave',lay);
+  cards.forEach(c=>{
+    /* resting on a card brings it forward; no click needed */
+    const lift=()=>{
+      cards.forEach(x=>{ if(x!==c) x.classList.remove('focus'); });
+      c.classList.add('focus');
+      c.style.transform='translateX(0) translateY(-8px) rotate(0deg) scale(1.28)';
+      c.style.zIndex=60;
+    };
+    c.addEventListener('mouseenter',lift);
+    /* a finger can't hover, so touch keeps a tap that toggles */
+    c.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse') return;
+      if(c.classList.contains('focus')) lay(); else lift(); });
   });
 })();
 
