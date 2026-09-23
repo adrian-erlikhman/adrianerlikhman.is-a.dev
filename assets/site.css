@@ -1109,3 +1109,18 @@ header.hero{padding-top:126px}
 .hero .guide{margin-top:26px}
 .hero .guide a{padding:7px 0}
 @media(max-width:820px){header.hero{padding-top:118px}}
+
+/* the portrait carries more of the hero (Adrian, 22 Sept: bigger) */
+header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
+@media(max-width:820px){header.hero{grid-template-columns:1fr}}
+
+/* with the bigger portrait, the guide needs a few pixels back to stay above the fold */
+.hero .hero-cta{margin-top:26px}
+.hero .guide{margin-top:22px}
+.hero .guide a{padding:6px 0}
+.hero .guide-h{margin:11px 0 4px}
+
+/* the lab's filename is one long token: let the caption wrap so the panel can't run off a phone */
+.lab-body>*{min-width:0}
+.lab-code figcaption{flex-wrap:wrap}
+.lab-code figcaption span{min-width:0;overflow-wrap:anywhere}
