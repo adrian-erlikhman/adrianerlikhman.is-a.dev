@@ -1158,3 +1158,9 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .be-t{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .bel{height:17px;width:auto;display:block;flex:0 0 auto}
 .bel.sq{height:18px}
+
+/* the connect row: brand marks where there is one, a drawn glyph where there isn't */
+.links a{display:inline-flex;align-items:center;gap:7px}
+.links a .cl{margin-right:0;vertical-align:baseline}
+.links a .cg{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.3;
+  stroke-linecap:round;stroke-linejoin:round}
