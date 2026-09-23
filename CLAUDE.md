@@ -268,6 +268,20 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   mockups, 22 Sept): a rust block reading `[ ae ]` in mono, with the full name
   beside it as `.sr-only` so screen readers and crawlers still get it. It
   hovers to ink. Same on all three pages; `.ae-mark .nm.blk` in site.css.
+- **Company and competition marks** (`img/logos/`, since 22 Sept). Adrian asked
+  for them and told Claude to fetch them ("search them on google you got it and
+  download them yourself"). Each came from the organisation's own site that
+  day: `firstness.ai/favicon.svg`; kiddom.co's header SVG on
+  cdn.prod.website-files.com; fjor.co's Wix original; alliancesocal.org's theme
+  asset `alliance_logo_black.png`; youngcoderssphere.org's Wix original;
+  `lovable.dev/icon.svg`; `citadel.com/.../Citadel-Logo.png`; and Y
+  Combinator's header SVG, which that page serves inline as a data URI. PNGs
+  are resized to 120px tall WebP, SVGs kept as they came. Experience carries
+  one per role (`.orgl`), Achievements one per award that has a mark (`.rl`):
+  Lovable, Hacker Fund, Young Coders' Sphere, Citadel, Y Combinator.
+  Correlation One's was downloaded and left out, to keep the Citadel row to a
+  single mark. They identify the organisations, nothing more; if one ever
+  objects, delete the file and its `<img>`.
 - **Summit partner logos** (`img/sponsors/*.webp`, under the AIML-LI case
   study) are the **nine committed partners only**: DeepMind, Microsoft, Google,
   Snap, Jane Street, MongoDB, Confluent, Discovery Education, Hacker Fund. The
