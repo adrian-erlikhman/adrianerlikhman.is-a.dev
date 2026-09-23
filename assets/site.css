@@ -1146,3 +1146,15 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .res .ev .rl{height:15px;width:auto;display:inline-block;vertical-align:-2px;margin-right:9px}
 .res .ev .rl.sq{height:17px;vertical-align:-3px}
 @media(max-width:600px){.res .ev .rl{margin-right:7px}}
+
+/* marks on the rest: fencing, the case kickers, contact, and the full record on /work/ */
+.fencl{height:17px;width:auto;display:inline-block;vertical-align:-4px;margin-right:9px}
+.case-kick{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.casel{height:14px;width:auto;display:block}
+.links a .cl{height:14px;width:auto;display:inline-block;vertical-align:-2px;margin-right:7px}
+.df-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dfl{height:16px;width:auto;display:block;flex:0 0 auto}
+.dfl.sq{height:18px}
+.be-t{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.bel{height:17px;width:auto;display:block;flex:0 0 auto}
+.bel.sq{height:18px}
