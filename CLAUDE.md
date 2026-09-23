@@ -232,14 +232,15 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   though the typewriter's script still sits in site.js, guarded, if he wants it
   back. The hero's top padding is trimmed so all six rows land above the fold
   at 1280×900.
-- **Copy rule (Adrian, 22 Sept): name the thing, not the category.** He called
-  the old section labels cliché, so "// ventures · internships · skills" became
-  "// four internships, 2024 - now", "// papers & writeups" became "// six
-  papers · two in review", and the hero guide lists an incident map, a free AI
-  course, a compliance scanner and a safer walk to school instead of "four
-  things I built". The hero's one line now ends "i study what gives a language
-  model away" rather than "how language models behave". Apply the same test to
-  any new copy.
+- **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
+  He rejected two drafts before this one. Name things, list facts, stop. No
+  metaphors, no trailing clauses, no category words. The guide rows are now
+  "SafeJew, AIML-LI, Ledger, Safe Routes to School" and "Six papers. Two under
+  review, two accepted with revisions"; the labels are "// four internships,
+  2024 - now" and "// six papers · two in review"; the hero reads "i build
+  machine-learning tools for schools, corner stores and neighborhood safety. i
+  research whether you can tell which model wrote a text." Anything warmer than
+  that has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
   School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
