@@ -1137,3 +1137,12 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .ae-mark .nm.blk{font-family:var(--mono)!important;font-weight:600;font-size:12px;letter-spacing:.08em;
   background:var(--acc);color:var(--acc-ink);padding:7px 10px;line-height:1}
 .ae-mark:hover .nm.blk{background:var(--ink);color:var(--bg)}
+
+/* ==================== COMPANY MARKS — beside a role, beside an award ==================== */
+.tl .org{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.orgl{height:19px;width:auto;display:block;flex:0 0 auto}
+.orgl.sq{height:22px}
+.orgl.tall{height:26px}
+.res .ev .rl{height:15px;width:auto;display:inline-block;vertical-align:-2px;margin-right:9px}
+.res .ev .rl.sq{height:17px;vertical-align:-3px}
+@media(max-width:600px){.res .ev .rl{margin-right:7px}}
