@@ -282,6 +282,15 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   Correlation One's was downloaded and left out, to keep the Citadel row to a
   single mark. They identify the organisations, nothing more; if one ever
   objects, delete the file and its `<img>`.
+  A second sweep the same day added NCSS, LAUSD, College Board, Kaggle,
+  DeepLearning.AI, NVIDIA, USA Fencing, SafeJew's own mark, and GitHub's and
+  LinkedIn's glyphs on Contact; `/work/` carries the same marks on its
+  dist-flags and cards. **Four were deliberately dropped after looking at them
+  at 17px:** National Merit (their only asset is 117x57 and goes soft), the
+  Stock Market Game badge and the Teen Innovation Grant ring (grey discs at
+  that size), and AIML-LI's own logo, an illustration that reads as a smudge.
+  Jewish Student Union and STEMsters have no mark. Judge a mark at its real
+  size before committing it; a muddy logo is worse than clean text.
 - **Summit partner logos** (`img/sponsors/*.webp`, under the AIML-LI case
   study) are the **nine committed partners only**: DeepMind, Microsoft, Google,
   Snap, Jane Street, MongoDB, Confluent, Discovery Education, Hacker Fund. The
