@@ -1124,3 +1124,16 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .lab-body>*{min-width:0}
 .lab-code figcaption{flex-wrap:wrap}
 .lab-code figcaption span{min-width:0;overflow-wrap:anywhere}
+
+/* ==================== SUMMIT PARTNERS — AIML-LI's own logo files, committed partners only ==================== */
+.spon{margin-top:22px;border-top:1px solid var(--line);padding-top:15px}
+.spon-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:13px}
+.spon-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px}
+.spon-row img{height:23px;width:auto;display:block}
+.spon-row img.sq{height:27px}
+@media(max-width:600px){.spon-row{gap:14px 20px}.spon-row img{height:20px}.spon-row img.sq{height:24px}}
+
+/* ==================== TOP-LEFT MARK — option 40 (Adrian, 22 Sept) ==================== */
+.ae-mark .nm.blk{font-family:var(--mono)!important;font-weight:600;font-size:12px;letter-spacing:.08em;
+  background:var(--acc);color:var(--acc-ink);padding:7px 10px;line-height:1}
+.ae-mark:hover .nm.blk{background:var(--ink);color:var(--bg)}

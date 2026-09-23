@@ -264,6 +264,18 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   keeps a tap that toggles, since a finger can't hover.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
+- **The top-left mark is option 40** (Adrian picked it from three sheets of
+  mockups, 22 Sept): a rust block reading `[ ae ]` in mono, with the full name
+  beside it as `.sr-only` so screen readers and crawlers still get it. It
+  hovers to ink. Same on all three pages; `.ae-mark .nm.blk` in site.css.
+- **Summit partner logos** (`img/sponsors/*.webp`, under the AIML-LI case
+  study) are the **nine committed partners only**: DeepMind, Microsoft, Google,
+  Snap, Jane Street, MongoDB, Confluent, Discovery Education, Hacker Fund. The
+  files are AIML-LI's own, copied from `aimlinitiative.github.io/src/assets/
+  supporters` and resized to 120px tall as WebP. `AIML-LI_docs_source.zip` in
+  Downloads also holds Arm, Render, Check Point, ServiceNow and LADWP: those
+  are *in conversation, not committed*, so they must never appear. Snap's is
+  square and gets `.sq` for a little more height.
 - On `/work/`, the three flagship `.dist-flag` banners open Achievements:
   eDNAtlas (1st, Decode the Ocean), Ledger (1st, VISION HACK: South LA) and
   Safe Routes to School (3rd, Code for Transportation).
