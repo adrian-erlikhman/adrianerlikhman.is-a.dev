@@ -139,6 +139,17 @@ from LaTeX in `resume/`.
     including the og and twitter image alt text. He asked for it while
     checking he was not overclaiming before Philo Juang writes a letter of
     recommendation.
+  - **Philo Juang and Google DeepMind: reviewed and kept** (Adrian, 26 Sept
+    2026). Before Philo writes him a letter of recommendation he asked for
+    every mention, checked them, and said they were fine, so leave them alone
+    rather than raising it again. For the record, the four advisor claims are
+    the R.02 card, the CompLLM credit in both résumés, and the AIML-LI bullet
+    in the long one; the summit keynote lines and the partner logo are about
+    the company, not him. Two things he saw and accepted: his own URTC poster
+    lists Philo as a **co-author at UCLA**, not an advisor at Google DeepMind,
+    and the CompLLM submission is anonymized, so nothing in the paper states
+    the advising relationship. LangLLM names him nowhere on the site even
+    though he is an author on it.
   - Legatum: Co-first author with Ryan Erlikhman, no advisor (the manuscript's
     acknowledgements say no mentor supervised it). Both résumés say "Accepted
     with revisions, Journal of High School Science", matching the site; the old
