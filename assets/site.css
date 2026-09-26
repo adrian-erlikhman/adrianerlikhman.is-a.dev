@@ -1164,3 +1164,29 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .links a .cl{margin-right:0;vertical-align:baseline}
 .links a .cg{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.3;
   stroke-linecap:round;stroke-linejoin:round}
+
+/* ==================== ACHIEVEMENTS — the podium, then the rest (Adrian, 27 Sept) ==================== */
+/* every mark sits in the same box: squares read larger than wordmarks at equal height, so they get different caps */
+.al{display:flex;align-items:center;height:22px;margin-bottom:10px}
+.al img{width:auto;height:15px;max-width:100px;object-fit:contain;display:block}
+.al.sq img{height:21px;max-width:26px}
+.pods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.pod{display:flex;flex-direction:column;border:1px solid var(--line-strong);background:var(--panel);
+  color:inherit;transition:border-color .2s,transform .2s cubic-bezier(.16,1,.3,1)}
+.pod:hover{border-color:var(--acc);transform:translateY(-2px)}
+.pod-h{display:flex;align-items:baseline;gap:9px;background:var(--ink);padding:13px 16px 11px}
+.pod-h b{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:2.1rem;line-height:1;letter-spacing:-.04em;color:var(--bg)}
+.pod-h span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+.pod-b{padding:14px 16px 16px}
+.pod-b h3{font-family:var(--sans);font-weight:600;font-size:15.5px;line-height:1.3;margin:0 0 5px;color:var(--ink)}
+.pod-b p{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--dim);margin:0}
+.pod:hover .pod-b p{color:var(--ink)}
+.acards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:8px}
+.ac{border:1px solid var(--line);background:var(--bg);padding:14px 16px 16px;transition:border-color .2s}
+.ac:hover{border-color:var(--line-strong)}
+.ac-p{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:9px}
+.ac h3{font-family:var(--sans);font-weight:600;font-size:14.5px;line-height:1.3;margin:0 0 5px;color:var(--ink)}
+.ac p{font-family:var(--sans);font-size:12.5px;line-height:1.5;color:var(--dim);margin:0}
+@media(max-width:900px){.pods,.acards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.pods,.acards{grid-template-columns:1fr;gap:10px}.pod-h b{font-size:1.8rem}}
+#record .recog-h{margin-top:34px}

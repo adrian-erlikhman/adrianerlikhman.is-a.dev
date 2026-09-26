@@ -287,9 +287,15 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   and `alliancesocal.org`, all checked that day. The last two are not the
   obvious domains, and the Fjor site calls itself **Fjor Founders Fund** while
   the site says "Fjor Venture Capital", which is Adrian's wording; leave it
-  unless he asks. **Achievements** groups the whole record (competitions,
-  founding and leadership, academics) and links to `/work/#achievements` for
-  the detailed version. **About** is the
+  unless he asks. **Achievements** (rebuilt 27 Sept from five mockups, Adrian
+  picked "something more like 1 or 3"): the three podium finishes lead as
+  `.pod` cards with a black header carrying the placement, then six `.ac`
+  cards for the rest of the honours, then the Founding and Academics groups as
+  `.recog` rows, then the link to `/work/#achievements`. **Every mark sits in
+  the same `.al` box** so they read at one weight: square marks 21px tall and
+  capped at 26px wide, wordmarks 15px tall and capped at 100px, which is what
+  keeps Citadel's long lockup from dominating its card. Cards with no mark
+  keep an empty `.al` so the titles still line up. **About** is the
   short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
   The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
   leaving the deck lays them back down, and a mouse click does nothing. Touch
