@@ -92,8 +92,8 @@ from LaTeX in `resume/`.
     drop LangLLM's author line everywhere, because the old one ("with Michael
     Tarekegn & Ryan Erlikhman · Advisor: Philo Juang") didn't match the
     submitted paper (Adrian, Michael, Philo), so the card and both résumés
-    just say "First author". The site keeps the friendlier title "Do LLM
-    Fingerprints Survive Outside English?" unless he asks.
+    just say "Co-first author" (see the credit rule below). The site keeps the
+    friendlier title "Do LLM Fingerprints Survive Outside English?" unless he asks.
 - **Two titles carry a deliberate line break.** Earshot's in the one-pager (at
   its colon) and Legatum's in the long one (after the question mark), both with
   `\newline`. Without them the title filled the line and the italic venue was
@@ -134,7 +134,12 @@ from LaTeX in `resume/`.
     and the site say *designing* that evaluation: **the pilot has not run**,
     and it can't be written as if it had. The older line about being "on the
     data science team… product-usage data" was unsupported and is gone.
-  - Legatum: First author with Ryan Erlikhman, no advisor (the manuscript's
+  - **Every paper credit reads "Co-first author"** (Adrian, 26 Sept 2026),
+    on both résumés and on the R cards; "First author" is out everywhere,
+    including the og and twitter image alt text. He asked for it while
+    checking he was not overclaiming before Philo Juang writes a letter of
+    recommendation.
+  - Legatum: Co-first author with Ryan Erlikhman, no advisor (the manuscript's
     acknowledgements say no mentor supervised it). Both résumés say "Accepted
     with revisions, Journal of High School Science", matching the site; the old
     hand-authored résumé said "Accepted".
@@ -174,7 +179,7 @@ from LaTeX in `resume/`.
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/work/` and `/demos/` each a nav trigger and two picker
   options (root-absolute, `/resume.pdf`). `grep -c "v=2026-09p"` should print
-  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09q`.
+  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09r`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
