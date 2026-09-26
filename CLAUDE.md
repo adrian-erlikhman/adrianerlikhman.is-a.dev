@@ -60,6 +60,14 @@ from LaTeX in `resume/`.
   long one, whose contact line is dim grey under the name), with LinkedIn and
   GitHub as labels rather than URLs. No location, no tagline; the one-line "receipts"
   strap that ran under the name until 19 Sept is gone.
+- **Everything clickable looks clickable** (Adrian, 27 Sept): every
+  organisation's site sits in the same rust mono `[tag]` as the paper links --
+  `[firstness.ai]`, `[kiddom.co]`, `[aiml-initiative.org]`, `[safejew.org]`,
+  `[safe-routes-la.github.io]` -- through the `\lnk` macro, and the header's
+  email, site, LinkedIn and GitHub are rust in both files. Adding a tag to a
+  role line pushes its date onto its own line if the line grows too long, which
+  is why Firstness dropped "AI research engine" and Kiddom dropped "K--12
+  EdTech" from their detail slots.
 - **Every paper and poster carries its links** as small rust `[tags]` at the
   end of its last bullet, in both:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
@@ -190,7 +198,7 @@ from LaTeX in `resume/`.
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/work/` and `/demos/` each a nav trigger and two picker
   options (root-absolute, `/resume.pdf`). `grep -c "v=2026-09p"` should print
-  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09r`.
+  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09s`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
