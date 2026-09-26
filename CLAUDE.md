@@ -329,6 +329,17 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   that size), and AIML-LI's own logo, an illustration that reads as a smudge.
   Jewish Student Union and STEMsters have no mark. Judge a mark at its real
   size before committing it; a muddy logo is worse than clean text.
+- **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
+  nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
+  came out of NMSC's own annual report
+  (`nationalmerit.org/s/1758/images/gid2/editor_documents/annual_report.pdf`):
+  its last page prints the mark dark on white beside the note explaining it, so
+  page 56 renders at 8x, auto-trims and knocks out the white. The cover carries
+  the same mark in white on green, which is no use on cream. SIFMA's is the SVG
+  from sifma.org. The Stock Market Game's own lockup was tried in three crops
+  and dropped: at 15px its type is unreadable, while "sifma" still reads and
+  matches the award's name. `.al.mk` is a third size for marks wider than a
+  square but shorter than a wordmark: 18px tall, 64px wide.
 - **Summit partner logos** (`img/sponsors/*.webp`, under the AIML-LI case
   study) are the **nine committed partners only**: DeepMind, Microsoft, Google,
   Snap, Jane Street, MongoDB, Confluent, Discovery Education, Hacker Fund. The
