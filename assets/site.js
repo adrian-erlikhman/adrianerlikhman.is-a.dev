@@ -76,47 +76,29 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   setTimeout(tick, 700);
 })();
 
-/* ================= INTERACTIVE LIFE DECK ================= */
+/* ================= LIFE STRIP — swipe, drag or step through the photos ================= */
 (function(){
-  const deck=document.getElementById('lifedeck'); if(!deck) return;
-  const cards=[...deck.querySelectorAll('.lcard')];
-  const n=cards.length, mid=(n-1)/2;
-  let GAP=88, ROT=7, YOFF=12;
-  /* size the fan to the deck's real width so no card can spill past the viewport (mobile) */
-  function calc(){
-    const dw=deck.clientWidth||360;
-    const cw=(cards[0]?cards[0].getBoundingClientRect().width:200)||200;
-    const fit=mid>0?((dw/2)-(cw/2)-8)/mid:88;
-    GAP=Math.max(22,Math.min(88,fit));
-    ROT=GAP<58?4.5:7; YOFF=GAP<58?8:12;
+  const strip=document.getElementById('lifedeck'); if(!strip) return;
+  const btns=[...document.querySelectorAll('.lnav')];
+  const step=()=>{ const c=strip.querySelector('.lcard'); return c?c.getBoundingClientRect().width+14:280; };
+  const go=d=>strip.scrollBy({left:d*step(),behavior:'smooth'});
+  function ends(){
+    const max=strip.scrollWidth-strip.clientWidth-2;
+    btns.forEach(b=>{ b.disabled=(+b.dataset.d<0)?strip.scrollLeft<=2:strip.scrollLeft>=max; });
   }
-  const base=i=>({x:(i-mid)*GAP, y:Math.abs(i-mid)*YOFF, r:(i-mid)*ROT});
-  function layout(px){
-    cards.forEach((c,i)=>{
-      if(c.classList.contains('focus')) return;
-      const b=base(i), tilt=(px||0)*11;
-      c.style.transform=`translateX(${b.x}px) translateY(${b.y}px) rotate(${b.r}deg) rotateY(${tilt}deg)`;
-      c.style.zIndex=10+(n-Math.abs(i-mid));
-    });
-  }
-  calc(); layout(0);
-  addEventListener('resize',()=>{calc();layout(0);});
-  deck.addEventListener('mousemove',e=>{const r=deck.getBoundingClientRect();layout(((e.clientX-r.left)/r.width-0.5)*2);});
-  const lay=()=>{cards.forEach(x=>x.classList.remove('focus'));layout(0);};
-  deck.addEventListener('mouseleave',lay);
-  cards.forEach(c=>{
-    /* resting on a card brings it forward; no click needed */
-    const lift=()=>{
-      cards.forEach(x=>{ if(x!==c) x.classList.remove('focus'); });
-      c.classList.add('focus');
-      c.style.transform='translateX(0) translateY(-8px) rotate(0deg) scale(1.28)';
-      c.style.zIndex=60;
-    };
-    c.addEventListener('mouseenter',lift);
-    /* a finger can't hover, so touch keeps a tap that toggles */
-    c.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse') return;
-      if(c.classList.contains('focus')) lay(); else lift(); });
-  });
+  btns.forEach(b=>b.addEventListener('click',()=>go(+b.dataset.d)));
+  strip.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); go(e.key==='ArrowRight'?1:-1); } });
+  strip.addEventListener('scroll',ends,{passive:true});
+  addEventListener('resize',ends);
+  /* a mouse drags the strip; touch and trackpads already swipe it natively */
+  let x0=0,s0=0,down=false,moved=false;
+  strip.addEventListener('pointerdown',e=>{ if(e.pointerType!=='mouse'||e.button!==0) return; down=true; moved=false; x0=e.clientX; s0=strip.scrollLeft; });
+  addEventListener('pointermove',e=>{ if(!down) return; const dx=e.clientX-x0; if(!moved&&Math.abs(dx)>4){ moved=true; strip.classList.add('drag'); } if(moved) strip.scrollLeft=s0-dx; });
+  addEventListener('pointerup',()=>{ if(!down) return; down=false;
+    if(moved){ strip.classList.remove('drag');
+      /* let the snap settle on the nearest card */
+      const w=step(); strip.scrollTo({left:Math.round(strip.scrollLeft/w)*w,behavior:'smooth'}); } });
+  ends();
 })();
 
 /* ================= INTRO / BOOT SEQUENCE ================= */
