@@ -1144,25 +1144,22 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .paper .vl.sq{height:16px}
 .res .ev .rl.sm{height:12px;vertical-align:-1px}
 
-/* ==================== HERO STORY — the hero pins; four lines swipe past as you scroll ==================== */
+/* ==================== HERO STORY — four lines that swipe past on their own ==================== */
 .story{font-family:var(--mono);font-size:18px;line-height:1.55;max-width:40ch;color:var(--ink);margin-top:30px}
 .story .sl{margin:0}
 .story .sl+.sl{margin-top:6px}
 .story a{color:var(--acc);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--acc) 40%,transparent)}
 .story a:hover{border-bottom-color:var(--acc)}
 .story-dots{display:none}
-/* story mode: set by site.js on wide screens when motion is allowed */
-.js-story .hero-track{height:250vh}
-.js-story .hero-track>header.hero{position:sticky;top:0;height:100svh;min-height:0;padding:62px 0 0}
-.js-story .hero-track .portrait{height:min(calc(100svh - 190px),640px);width:auto;max-width:100%;aspect-ratio:4/5;justify-self:end}
+/* swipe mode: set by site.js when motion is allowed; otherwise the lines stay stacked */
 .js-story .story{position:relative;height:3.3em}
 .js-story .story .sl{position:absolute;left:0;top:0;right:0;margin:0;opacity:0;transform:translateX(56px);
   transition:opacity .18s ease,transform .5s cubic-bezier(.2,.75,.2,1);pointer-events:none}
 .js-story .story .sl.past{transform:translateX(-56px)}
 .js-story .story .sl.on{opacity:1;transform:none;pointer-events:auto;transition:opacity .4s ease .16s,transform .65s cubic-bezier(.2,.75,.2,1) .1s}
-.js-story .story-dots{display:flex;align-items:center;gap:6px;margin-top:16px}
-.story-dots i{display:block;width:24px;height:3px;background:var(--line-strong);transition:background .3s}
-.story-dots i.on{background:var(--acc)}
-.story-dots span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-left:10px;transition:opacity .3s}
-.story-dots.moved span{opacity:0}
-
+.js-story .story-dots{display:flex;align-items:center;gap:6px;margin-top:14px}
+.story-dots button{display:block;width:26px;height:14px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.story-dots button::before{content:"";position:absolute;left:0;right:0;top:6px;height:3px;background:var(--line-strong);transition:background .3s}
+.story-dots button[aria-current=true]::before{background:var(--acc)}
+.story-dots button:hover::before,.story-dots button:focus-visible::before{background:color-mix(in srgb,var(--acc) 60%,transparent)}
+.story-dots button:focus-visible{outline:1px solid var(--acc);outline-offset:2px}
