@@ -36,23 +36,30 @@ from LaTeX in `resume/`.
 - **Check every change:** render with `pypdfium2` and read `pdftotext -raw`.
   The one-pager has no slack: a two-line Kiddom bullet pushed it to two pages
   on 24 Sept and had to be cut back, so a new line there still means removing
-  one. In the long one, page 1 ends inside SafeJew, page 2 inside Ledger, and
-  page 3 closes after Skills with about an inch to spare; the type is 9.1/11.4,
-  and dropping to 9.2/11.9 is what made it spill to four pages. In
+  one. Since the switch to Computer Modern (26 Sept) the one-pager is 8.8/10.6
+  on 0.45in side margins and fills the page to the last line; the long one is
+  9.1/11.1 on 0.5in sides, with page 2 ending before Ledger's first bullet and
+  page 3 nearly full. Computer Modern's bold is extended and runs wider than
+  Plex did, so at the old sizes both spilled a page. In
   `\paper`, the author line opens with `\noindent`: without it `\color` drops a
   whatsit into the vertical list, and that makes the glue after `\nopagebreak`
   a legal break between a title and its authors. `\tail`
   right-aligns dates and statuses; `\raggedright` is on, so `\tail` must keep its
   `\rightskip=0pt` or the dates drift off the margin. Section breaks carry no
   penalty and a head can't split from its first bullet: that keeps pages full.
-- **Design: both résumés use Adrian's own LaTeX design** — IBM Plex Sans and
-  Mono with a **navy** accent (`accent`, `#1F3A5F`), mono navy section heads
-  with a cool grey hairline to the margin, dates in mono on the right. Adrian
-  said on 26 Sept the résumé "cant be orange" and picked navy from four
-  options (ink only, navy, deep green, charcoal and slate); the site stays rust.
-  He also asked that "the fonts are the latex fonts": Plex is what the .tex
-  already set, and a Computer Modern draft was shown to him (it ran onto a
-  second page at the same sizes); follow his answer on that if it comes. The long one wore the
+- **Design: both résumés use Adrian's own LaTeX design** in **Computer
+  Modern** (Latin Modern: `lmroman9` by file, `lmmono10` for dates and tags)
+  with a **navy** accent (`accent`, `#1F3A5F`), bold navy caps section heads
+  with a cool grey hairline to the margin, dates in mono on the right. On 26
+  Sept Adrian said the résumé "cant be orange", picked navy from four options
+  (ink only, navy, deep green, charcoal and slate), asked for "the latex
+  fonts", and chose the Computer Modern preview over Plex ("the one the
+  right"). The site stays rust and Plex. Two text-layer fixes come with the
+  face: common ligatures are off (`Ligatures={TeX,NoCommon}`), so parsers read
+  "ff" and "fi" as letters, and section heads are unkerned (`\headkern`),
+  because bold "AT" kerns tightly enough that pypdf read "EDUCA TION" and
+  failed the build. Greek and the long résumé's `\geqsym` go through math on
+  both engines, since Latin Modern's text fonts lack them. The long one wore the
   **Harvard template from 21 to 24 Sept**, when he said "i dont like this
   format, go back to the latex format": it now shares the one-pager's preamble,
   with `\role`, `\paper` (title, link, authors, status), `\lnk` and a mono
@@ -194,16 +201,16 @@ from LaTeX in `resume/`.
   Schools conference, San Diego, 2 Dec 2026 (conference 2–5 Dec, about 100
   educators). He accepted on 17 Sept; a prep call was still being set. It is in
   both résumés and on the site: the AIML-LI case study, the homepage's
-  Recognition list and the Achievements on /work/. After 2 Dec, reword anything
+  Recognition list. After 2 Dec, reword anything
   that reads as upcoming.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **eleven places**: on the homepage the three
+  The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
-  options, and on `/work/` and `/demos/` each a nav trigger and two picker
-  options (root-absolute, `/resume.pdf`). `grep -c "v=2026-09p"` should print
-  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09t`.
+  options, and on `/demos/` a nav trigger and two picker options
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-09u"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-09u`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -226,12 +233,22 @@ from LaTeX in `resume/`.
   script are root-absolute (`/papers/…`), so a page without an overlay or
   section just skips it.
 
-## /work/ — every project, experiment and achievement (since 21 Sept)
-- `work/index.html` holds the full collection so the homepage can stay curated:
-  Projects (P.01 SafeJew, P.02 eDNAtlas, P.03 Safe Routes, P.04 Ledger),
-  Experiments (E.01–E.04, the four ML/quant repos, with the code previews and
-  their `text/plain` samples) and the complete Achievements section. Its HUD is
-  the homepage's with links back (`/#papers` …); the wordmark goes home.
+## /work/ — removed 26 Sept
+- Adrian: "i dont think i need the everything all in one place page". The
+  page (projects P.01–P.04, experiments E.01–E.04 with code previews, the full
+  achievements list) is gone, with its sitemap entry, ⌘K entry and the five
+  homepage links; the hero button and guide row now go to `#record`. Its CSS
+  (`.dist-flag`, the code previews) still sits unused in site.css. Git history
+  has the page if he wants anything from it back. Notes below that mention
+  `/work/` are history.
+- What it held that the homepage lacked moved into Achievements (Adrian: "add
+  everything that should be added to the main page achievement page"): the
+  Citadel bot's name ("dunerscore", team of three), StandWithUs on the JSU
+  assembly, the AP split (11 taken, 6 this year), and one Academics row each
+  for Kaggle x Google, the Deep Learning Specialization and NVIDIA DLI. The
+  DeepLearning.AI and NVIDIA marks were tried on those rows and dropped as
+  muddy at 15px. The Selected work caption under the heading is gone too
+  (Adrian: "not needed").
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
@@ -299,7 +316,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   picked "something more like 1 or 3"): the three podium finishes lead as
   `.pod` cards with a black header carrying the placement, then six `.ac`
   cards for the rest of the honours, then the Founding and Academics groups as
-  `.recog` rows, then the link to `/work/#achievements`. **Every mark sits in
+  `.recog` rows. **Every mark sits in
   the same `.al` box** so they read at one weight: square marks 21px tall and
   capped at 26px wide, wordmarks 15px tall and capped at 100px, which is what
   keeps Citadel's long lockup from dominating its card. Cards with no mark

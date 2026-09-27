@@ -368,7 +368,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
     {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
-    {ic:'▸',label:'All projects, experiments & achievements',k:'page',run:()=>{close();location.href='/work/';}},
     {ic:'▸',label:'Demos: which model wrote this?',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
