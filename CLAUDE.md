@@ -274,27 +274,22 @@ Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
 `[05]` Achievements (`record`) · `[06]` Selected work (`work`) · `[07]` Contact.
 That order is **Adrian's**, 22 Sept, and the nav and ⌘K palette follow it:
 About, Experience, Research, Fencing, Achievements, Selected work, Contact.
-- **Hero** (Adrian's shape, 22 Sept: name left, photo right): the stable
-  one-line intro ("i'm a senior in los angeles. i build machine-learning tools
-  for real communities, and i study how language models behave"), three buttons
-  (*selected work ↓*, *all achievements ↗*, *résumé*), then `.guide` — six rows
-  headed "what's here" that say what the site holds and double as the way in:
-  selected work, research, experience, achievements ↗, demos ↗, fencing. Keep
-  those descriptions current, since they carry what the old "right now" list
-  used to say (interning at Firstness, two papers in review). That list and its
-  `.now` styles are gone; the old typewriter and the six interest labels too,
-  though the typewriter's script still sits in site.js, guarded, if he wants it
-  back. The hero's top padding is trimmed so all six rows land above the fold
-  at 1280×900.
+- **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
+  adrian", one line, three buttons (*selected work ↓*, *achievements ↓*,
+  *résumé*), and the photo. On 26 Sept he called the old description
+  "horrible" and picked, from four drafts, **"i'm a senior in los angeles. i
+  build machine-learning tools and research how language models behave."** He
+  also asked whether the six-row "what's here" guide was needed; it wasn't (the
+  nav covers every section), so it is gone, markup and all; its `.guide` CSS
+  still sits in site.css. Four whole-hero mockups (logo strip, facts band, six
+  tiles, full-width name) were shown the same day; he answered only the line
+  and the guide, so the layout is unchanged. The old typewriter's script still
+  sits in site.js, guarded.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
-  metaphors, no trailing clauses, no category words. The guide rows are now
-  "SafeJew, AIML-LI, Ledger, Safe Routes to School" and "Six papers. Two under
-  review, two accepted with revisions"; the labels are "// four internships,
-  2024 - now" and "// six papers · two in review"; the hero reads "i build
-  machine-learning tools for schools, corner stores and neighborhood safety. i
-  research whether you can tell which model wrote a text." Anything warmer than
-  that has been cut twice, so don't reintroduce it.
+  metaphors, no trailing clauses, no category words. The section labels are
+  "// four internships, 2024 - now" and "// six papers · two in review".
+  Anything warmer has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
   School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
@@ -321,7 +316,9 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   capped at 26px wide, wordmarks 15px tall and capped at 100px, which is what
   keeps Citadel's long lockup from dominating its card. Cards with no mark
   keep an empty `.al` so the titles still line up. **About** is the
-  short intro plus the Fei-Fei Li quote (Adrian: keep it) and the photo fan.
+  short intro plus the Heinlein quote, "Everything is theoretically impossible,
+  until it is done." (Adrian's wording, 26 Sept; it replaced the Fei-Fei Li one),
+  and the photo fan.
   The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
   leaving the deck lays them back down, and a mouse click does nothing. Touch
   keeps a tap that toggles, since a finger can't hover.
@@ -354,6 +351,16 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   that size), and AIML-LI's own logo, an illustration that reads as a smudge.
   Jewish Student Union and STEMsters have no mark. Judge a mark at its real
   size before committing it; a muddy logo is worse than clean text.
+- **26 Sept sweep ("add logos wherever you can")**: an agent pulled candidates
+  from each organisation's own site. Kept: IEEE's blue mark (brand-experience.
+  ieee.org; ieee.org blocks scripts) beside R.01's status pill, OJSS's "O"
+  (oxfordjss.org favicon, white knocked out) beside R.05's, and Coursera's
+  wordmark (the inline SVG on coursera.org, fill #0056D2) on the Deep Learning
+  Specialization row at 12px. Dropped as muddy at size: NeurIPS, JHSS, LACES
+  (only a touch icon), and the square StandWithUs and Coursera marks.
+  StandWithUs's wordmark was clean but left off the JSU row, where it would
+  read as the club's own; Correlation One was clean but the Citadel card
+  already carries a mark. aiEDU would need its tagline cropped.
 - **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
   nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
   came out of NMSC's own annual report

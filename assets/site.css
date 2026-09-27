@@ -1137,3 +1137,9 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .aa-verdict b{color:var(--acc);font-weight:600}
 .aa-foot{font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--dim);margin:12px 0 0}
 @media(prefers-reduced-motion:reduce){.aa-track i{transition:none}}
+/* venue marks beside a paper's status pill, where the venue has a mark that holds up at 13px */
+.paper .st-row{display:flex;align-items:center;gap:9px;margin-top:8px}
+.paper .st-row .st{margin-top:0}
+.paper .vl{height:13px;width:auto;display:block}
+.paper .vl.sq{height:16px}
+.res .ev .rl.sm{height:12px;vertical-align:-1px}
