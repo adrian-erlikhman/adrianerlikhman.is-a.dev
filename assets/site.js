@@ -1010,3 +1010,39 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     io.observe(box);
   } else load();
 })();
+
+/* ================= HERO STORY — the hero pins while its four lines swipe past ================= */
+(function(){
+  const story=document.getElementById('heroStory'); if(!story) return;
+  const track=story.closest('.hero-track'); if(!track) return;
+  const lines=[...story.querySelectorAll('.sl')];
+  const dotsBox=document.querySelector('.story-dots');
+  const dots=dotsBox?[...dotsBox.querySelectorAll('i')]:[];
+  /* phones and reduced motion keep the four lines stacked, with nothing pinned */
+  const mq=matchMedia('(min-width:901px) and (prefers-reduced-motion:no-preference)');
+  let on=false,cur=-1;
+  function set(i){
+    if(i===cur) return; cur=i;
+    lines.forEach((l,j)=>{ l.classList.toggle('on',j===i); l.classList.toggle('past',j<i); l.setAttribute('aria-hidden',j===i?'false':'true'); });
+    dots.forEach((d,j)=>d.classList.toggle('on',j<=i));
+    if(dotsBox) dotsBox.classList.toggle('moved',i>0);
+  }
+  function tick(){
+    if(!on) return;
+    const span=track.offsetHeight-innerHeight;
+    const p=span>0?Math.min(1,Math.max(0,-track.getBoundingClientRect().top/span)):0;
+    set(Math.min(lines.length-1,Math.floor(p*lines.length)));
+  }
+  function mode(){
+    on=mq.matches;
+    document.documentElement.classList.toggle('js-story',on);
+    cur=-1;
+    if(on) tick();
+    else lines.forEach(l=>{ l.classList.remove('on','past'); l.removeAttribute('aria-hidden'); });
+  }
+  if(mq.addEventListener) mq.addEventListener('change',mode); else mq.addListener(mode);
+  addEventListener('scroll',tick,{passive:true});
+  addEventListener('resize',tick);
+  mode();
+})();
+

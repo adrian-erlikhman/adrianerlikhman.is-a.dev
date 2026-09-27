@@ -275,16 +275,21 @@ Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
 That order is **Adrian's**, 22 Sept, and the nav and ⌘K palette follow it:
 About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
-  adrian", one line, three buttons (*selected work ↓*, *achievements ↓*,
-  *résumé*), and the photo. On 26 Sept he called the old description
-  "horrible" and picked, from four drafts, **"i'm a senior in los angeles. i
-  build machine-learning tools and research how language models behave."** He
-  also asked whether the six-row "what's here" guide was needed; it wasn't (the
-  nav covers every section), so it is gone, markup and all; its `.guide` CSS
-  still sits in site.css. Four whole-hero mockups (logo strip, facts band, six
-  tiles, full-width name) were shown the same day; he answered only the line
-  and the guide, so the layout is unchanged. The old typewriter's script still
-  sits in site.js, guarded.
+  adrian", then the **hero story** (26 Sept, Adrian's pick: "some type of cool
+  swiping thing when you scroll down"): the hero sits in `.hero-track` (250vh)
+  and pins; four lines swipe in sideways, one per quarter of the track, with
+  four progress dots and a "scroll" hint: "i'm a senior in los angeles." / "i
+  build ML tools people use: SafeJew, Ledger, Safe Routes." / "i research how
+  language models write. six papers." / "and i fence épée for team usa." (the
+  names link to their sections). `site.js` HERO STORY sets `.js-story` only at
+  901px+ with motion allowed; phones, reduced motion and no-JS get the four
+  lines stacked with nothing pinned. Then three buttons (*selected work ↓*,
+  *achievements ↓*, *résumé*) and the photo, sized to fit the pinned viewport.
+  Earlier the same day he called the one-sentence description "horrible" and
+  dropped the six-row "what's here" guide (the nav covers it; `.guide` CSS
+  still sits in site.css). Four whole-hero layouts (logo strip, facts band,
+  six tiles, full-width name) were mocked up and not taken. The old
+  typewriter's script still sits in site.js, guarded.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are

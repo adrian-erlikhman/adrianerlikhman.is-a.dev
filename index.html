@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-09-27e">
+<link rel="stylesheet" href="/assets/site.css?v=2026-09-27f">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -199,6 +199,8 @@
 
 <!-- HERO -->
 <main id="main" tabindex="-1">
+<!-- the hero pins while its four lines swipe past, one per scroll step (site.js: HERO STORY) -->
+<div class="hero-track">
 <header class="hero wrap">
   <div>
     <h1>
@@ -206,7 +208,13 @@
       <span class="ln"><span class="out">adrian</span></span>
       <span class="sr-only">Adrian Erlikhman</span>
     </h1>
-    <p class="role">i'm a senior in los angeles. i build machine-learning tools and research how language models behave.</p>
+    <div class="story" id="heroStory">
+      <p class="sl">i'm a senior in los angeles.</p>
+      <p class="sl">i build ML tools people use: <a href="#case-safejew">SafeJew</a>, <a href="#case-ledger">Ledger</a>, <a href="#case-saferoutes">Safe Routes</a>.</p>
+      <p class="sl">i research how language models write. <a href="#papers">six papers</a>.</p>
+      <p class="sl">and i fence &eacute;p&eacute;e for <a href="#fencing">team usa</a>.</p>
+    </div>
+    <div class="story-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><span>scroll</span></div>
     <div class="hero-cta">
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
@@ -227,6 +235,7 @@
     <span class="ph-cap">adrian erlikhman · los angeles</span>
   </div>
 </header>
+</div>
 
 <!-- ABOUT: the short version, then the life off the laptop -->
 <section id="about">
@@ -720,6 +729,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-09-27e"></script>
+<script src="/assets/site.js?v=2026-09-27f"></script>
 </body>
 </html>
