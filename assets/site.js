@@ -1011,38 +1011,28 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   } else load();
 })();
 
-/* ================= HERO STORY — the hero pins while its four lines swipe past ================= */
+/* ================= HERO STORY — four lines that swipe past on their own; dots jump, hover pauses ================= */
 (function(){
   const story=document.getElementById('heroStory'); if(!story) return;
-  const track=story.closest('.hero-track'); if(!track) return;
   const lines=[...story.querySelectorAll('.sl')];
-  const dotsBox=document.querySelector('.story-dots');
-  const dots=dotsBox?[...dotsBox.querySelectorAll('i')]:[];
-  /* phones and reduced motion keep the four lines stacked, with nothing pinned */
-  const mq=matchMedia('(min-width:901px) and (prefers-reduced-motion:no-preference)');
-  let on=false,cur=-1;
+  const dots=[...document.querySelectorAll('.story-dots button')];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;   /* the lines stay stacked */
+  document.documentElement.classList.add('js-story');
+  const EVERY=3200;
+  let cur=-1,timer=null,held=false;
   function set(i){
-    if(i===cur) return; cur=i;
-    lines.forEach((l,j)=>{ l.classList.toggle('on',j===i); l.classList.toggle('past',j<i); l.setAttribute('aria-hidden',j===i?'false':'true'); });
-    dots.forEach((d,j)=>d.classList.toggle('on',j<=i));
-    if(dotsBox) dotsBox.classList.toggle('moved',i>0);
+    const prev=cur; cur=(i+lines.length)%lines.length;
+    /* the outgoing line always leaves to the left and the next enters from the right, wrap included */
+    lines.forEach((l,j)=>{ l.classList.toggle('on',j===cur); l.classList.toggle('past',j===prev&&j!==cur); l.setAttribute('aria-hidden',j===cur?'false':'true'); });
+    dots.forEach((d,j)=>d.setAttribute('aria-current',j===cur?'true':'false'));
   }
-  function tick(){
-    if(!on) return;
-    const span=track.offsetHeight-innerHeight;
-    const p=span>0?Math.min(1,Math.max(0,-track.getBoundingClientRect().top/span)):0;
-    set(Math.min(lines.length-1,Math.floor(p*lines.length)));
-  }
-  function mode(){
-    on=mq.matches;
-    document.documentElement.classList.toggle('js-story',on);
-    cur=-1;
-    if(on) tick();
-    else lines.forEach(l=>{ l.classList.remove('on','past'); l.removeAttribute('aria-hidden'); });
-  }
-  if(mq.addEventListener) mq.addEventListener('change',mode); else mq.addListener(mode);
-  addEventListener('scroll',tick,{passive:true});
-  addEventListener('resize',tick);
-  mode();
+  function run(){ clearInterval(timer); timer=setInterval(()=>{ if(!held&&!document.hidden) set(cur+1); },EVERY); }
+  set(0); run();
+  dots.forEach((d,j)=>d.addEventListener('click',()=>{ set(j); run(); }));
+  [story,...dots].forEach(el=>{
+    el.addEventListener('mouseenter',()=>{held=true;});
+    el.addEventListener('mouseleave',()=>{held=false;});
+  });
+  story.addEventListener('focusin',()=>{held=true;});
+  story.addEventListener('focusout',()=>{held=false;});
 })();
-

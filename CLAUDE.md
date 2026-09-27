@@ -275,21 +275,20 @@ Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
 That order is **Adrian's**, 22 Sept, and the nav and ⌘K palette follow it:
 About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
-  adrian", then the **hero story** (26 Sept, Adrian's pick: "some type of cool
-  swiping thing when you scroll down"): the hero sits in `.hero-track` (250vh)
-  and pins; four lines swipe in sideways, one per quarter of the track, with
-  four progress dots and a "scroll" hint: "i'm a senior in los angeles." / "i
-  build ML tools people use: SafeJew, Ledger, Safe Routes." / "i research how
-  language models write. six papers." / "and i fence épée for team usa." (the
-  names link to their sections). `site.js` HERO STORY sets `.js-story` only at
-  901px+ with motion allowed; phones, reduced motion and no-JS get the four
-  lines stacked with nothing pinned. Then three buttons (*selected work ↓*,
-  *achievements ↓*, *résumé*) and the photo, sized to fit the pinned viewport.
-  Earlier the same day he called the one-sentence description "horrible" and
-  dropped the six-row "what's here" guide (the nav covers it; `.guide` CSS
-  still sits in site.css). Four whole-hero layouts (logo strip, facts band,
-  six tiles, full-width name) were mocked up and not taken. The old
-  typewriter's script still sits in site.js, guarded.
+  adrian", then the **hero story**: four lines that swipe sideways on their
+  own every 3.2s, always leaving left and entering right, with four clickable
+  dots; hover or focus pauses it, and reduced motion or no-JS shows them
+  stacked (`site.js` HERO STORY, `.js-story`). Adrian's wording, 26 Sept:
+  "i'm a senior in los angeles." / "i build ML and full-stack tools for
+  people." (one link, to #work, "not separate ones") / "i do ML / NLP
+  research." (#papers) / "i fence épée for team usa." (#fencing). A version
+  that pinned the hero and swiped one line per scroll step shipped first
+  (#118); he didn't like how the scroll worked, so nothing is pinned now.
+  Then three buttons (*selected work ↓*, *achievements ↓*, *résumé*) and the
+  photo. Earlier that day he called the one-sentence description "horrible"
+  and dropped the six-row "what's here" guide (the nav covers it; `.guide`
+  CSS still sits in site.css). Four whole-hero layouts (logo strip, facts
+  band, six tiles, full-width name) were mocked up and not taken.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
