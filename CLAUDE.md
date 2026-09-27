@@ -323,9 +323,10 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   short intro plus the Heinlein quote, "Everything is theoretically impossible,
   until it is done." (Adrian's wording, 26 Sept; it replaced the Fei-Fei Li one),
   and the photo fan.
-  The fan **focuses on hover** (Adrian, 22 Sept): resting on a card centres it,
-  leaving the deck lays them back down, and a mouse click does nothing. Touch
-  keeps a tap that toggles, since a finger can't hover.
+  The photos are a **swipe strip** (Adrian, 26 Sept, replacing the hover fan):
+  one row of cards that snaps to each photo; touch and trackpads swipe it, a
+  mouse drags it, the arrow keys and the ← → buttons step it, and each button
+  greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of

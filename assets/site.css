@@ -644,14 +644,22 @@ p,.hero .role,.tl p,.proj p,.paper .meta,.mod,li,.lead,footer,.contact p,.bx p,.
 .lifewrap{margin-top:52px}
 .life-h{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:8px;display:flex;align-items:center;gap:12px}
 .life-h .life-hint{font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:12px;color:var(--dim)}
-.lifedeck{position:relative;height:320px;display:flex;justify-content:center;align-items:center;perspective:1400px;touch-action:manipulation}
-.lcard{position:absolute;width:200px;height:244px;background:var(--panel);border:1px solid var(--line-strong);padding:9px 9px 32px;box-shadow:0 22px 44px -22px rgba(33,31,24,.55);transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .4s;transform-style:preserve-3d;cursor:pointer;will-change:transform;border-radius:2px}
+/* the photos: one strip that swipes, drags or steps with the arrows, snapping to each card */
+.lifestrip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;padding:4px 2px 16px;cursor:grab;scrollbar-width:thin;scrollbar-color:var(--line-strong) transparent}
+.lifestrip:focus-visible{outline:1px solid var(--acc);outline-offset:4px}
+.lifestrip.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.lcard{position:relative;flex:0 0 auto;width:260px;height:320px;margin:0;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line-strong);padding:9px 9px 34px;border-radius:2px;transition:border-color .2s}
+.lcard:hover{border-color:var(--acc)}
+.lcard img{pointer-events:none;user-select:none;-webkit-user-drag:none}
 .lcard img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.1) contrast(1.02)}
 .lcard .lph{width:100%;height:100%;display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--bg2);color:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-align:center;padding:12px}
 .lcard .lph span{font-size:22px;color:var(--acc);line-height:1}
 .lcard .lcap{position:absolute;left:0;right:0;bottom:9px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)}
-.lcard.focus{box-shadow:0 40px 80px -30px rgba(33,31,24,.6)}
-@media(max-width:600px){.lcard{width:150px;height:186px}.lifedeck{height:260px}}
+@media(max-width:600px){.lcard{width:72vw;height:88vw;max-height:360px}}
+.life-nav{margin-left:auto;display:flex;gap:6px}
+.lnav{font-family:var(--mono);font-size:14px;line-height:1;width:36px;height:32px;border:1px solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s,opacity .2s}
+.lnav:hover,.lnav:focus-visible{border-color:var(--acc);color:var(--acc);outline:none}
+.lnav:disabled{opacity:.3;cursor:default;border-color:var(--line-strong);color:var(--ink)}
 
 /* ==================== NAME FONT — Fraunces display serif (hero + intro only) ==================== */
 .hero h1,.scramble{font-family:'Fraunces',Georgia,'Times New Roman',serif!important;font-weight:900;font-optical-sizing:auto;letter-spacing:-.02em}
