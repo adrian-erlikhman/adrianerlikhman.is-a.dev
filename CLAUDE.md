@@ -46,8 +46,13 @@ from LaTeX in `resume/`.
   `\rightskip=0pt` or the dates drift off the margin. Section breaks carry no
   penalty and a head can't split from its first bullet: that keeps pages full.
 - **Design: both résumés use Adrian's own LaTeX design** — IBM Plex Sans and
-  Mono with the site's rust (`#B4472E`), mono rust section heads with a
-  hairline to the margin, dates in mono on the right. The long one wore the
+  Mono with a **navy** accent (`accent`, `#1F3A5F`), mono navy section heads
+  with a cool grey hairline to the margin, dates in mono on the right. Adrian
+  said on 26 Sept the résumé "cant be orange" and picked navy from four
+  options (ink only, navy, deep green, charcoal and slate); the site stays rust.
+  He also asked that "the fonts are the latex fonts": Plex is what the .tex
+  already set, and a Computer Modern draft was shown to him (it ran onto a
+  second page at the same sizes); follow his answer on that if it comes. The long one wore the
   **Harvard template from 21 to 24 Sept**, when he said "i dont like this
   format, go back to the latex format": it now shares the one-pager's preamble,
   with `\role`, `\paper` (title, link, authors, status), `\lnk` and a mono
@@ -56,19 +61,19 @@ from LaTeX in `resume/`.
   reads out of any new face before adopting it.
 - **Header (Adrian chose "the most standard", 19 Sept):** centered name, then
   one centered contact line — phone, email, `adrianerlikhman.is-a.dev`,
-  LinkedIn, GitHub, the last four as links (rust in the one-pager, ink in the
+  LinkedIn, GitHub, the last four as links (navy in the one-pager, ink in the
   long one, whose contact line is dim grey under the name), with LinkedIn and
   GitHub as labels rather than URLs. No location, no tagline; the one-line "receipts"
   strap that ran under the name until 19 Sept is gone.
 - **Everything clickable looks clickable** (Adrian, 27 Sept): every
-  organisation's site sits in the same rust mono `[tag]` as the paper links --
+  organisation's site sits in the same navy mono `[tag]` as the paper links --
   `[firstness.ai]`, `[kiddom.co]`, `[aiml-initiative.org]`, `[safejew.org]`,
   `[safe-routes-la.github.io]` -- through the `\lnk` macro, and the header's
-  email, site, LinkedIn and GitHub are rust in both files. Adding a tag to a
+  email, site, LinkedIn and GitHub are navy in both files. Adding a tag to a
   role line pushes its date onto its own line if the line grows too long, which
   is why Firstness dropped "AI research engine" and Kiddom dropped "K--12
   EdTech" from their detail slots.
-- **Every paper and poster carries its links** as small rust `[tags]` at the
+- **Every paper and poster carries its links** as small navy `[tags]` at the
   end of its last bullet, in both:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
   - Earshot: `[abstract]`, `[code]`. The repo's `paper/abstract.md` is a stale
@@ -106,7 +111,7 @@ from LaTeX in `resume/`.
   its colon) and Legatum's in the long one (after the question mark), both with
   `\newline`. Without them the title filled the line and the italic venue was
   stranded alone on the next one. Keep the break if you edit either title.
-  In the long one, `\paper` puts the status in italic rust on the right of the
+  In the long one, `\paper` puts the status in italic navy on the right of the
   title line and the authors in dim grey under it, so a long title pushes its
   status onto its own line (Earshot's does); that is fine, but check it after
   editing a title.
@@ -198,7 +203,7 @@ from LaTeX in `resume/`.
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/work/` and `/demos/` each a nav trigger and two picker
   options (root-absolute, `/resume.pdf`). `grep -c "v=2026-09p"` should print
-  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09s`.
+  5, 3 and 3. Bump all eleven whenever either PDF changes. Currently `?v=2026-09t`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -276,7 +281,10 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
   School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
-  AIML-LI shows its six units instead. Every claim is sourced: SafeJew's
+  AIML-LI shows its one-activity lab instead. **Short copy** (Adrian, 26
+  Sept: "the other ones are solid, but need a little less writing"; he likes
+  the screenshots, their links and the scroll): each fact is a sentence or
+  two, three proof bullets at most. Every claim is sourced: SafeJew's
   scraper runs daily (its workflow); Safe Routes' "My friends are in that
   number" is from Adrian's published video script, and its hard call from the
   project README; AIML-LI follows his public-copy rules (committed partners,
@@ -377,8 +385,13 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   the vision model, whose accuracy on real photos hasn't been measured. The
   note under it says exactly that; keep it. Re-export from the repo rather than
   editing the JSON.
-- **The AIML-LI mini-lab** (`#aiLab`, under the AIML-LI case study, since 22 Sept)
-  is Unit 1's ethics lab annotated: `u01_l01_ethics_minilab_intro_ai_v1.ipynb`,
+- **The AIML-LI lab** (`#aiLab`, the AIML-LI case study's media panel). On 26
+  Sept Adrian said the old one had "too much going on" and asked for "just one
+  interactive AIML activity", so it is now one question, five buttons (1 in 2
+  to 1 in 20), two bars (accuracy, winners found, pooled over 25 draws) and a
+  one-line verdict. The six-unit grid, the annotated code, the chart and the
+  notebook's prompts are gone; the history below is what the data still is.
+  It was Unit 1's ethics lab annotated: `u01_l01_ethics_minilab_intro_ai_v1.ipynb`,
   "When Class Balance Changes", from the **private** repo
   `adrian-erlikhman/AIML-LI` -- so link aiml-initiative.org, never the repo.
   A visitor picks how rare the scholarship is and sees the notebook's own cell
