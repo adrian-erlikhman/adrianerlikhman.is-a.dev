@@ -338,6 +338,11 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   no audio (Boutcaster's is muted), `video/bout-*.mp4` at 24 and 32 MB, with
   `preload="none"` and posters in `img/bouts/`. Opponents' surnames still show
   small on their jacket backs. ffmpeg came from `pip install imageio-ffmpeg`.
+  Each caption carries the school's athletics mark (Adrian, 28 Sept: "add the
+  harvard and ucsd logos"): Harvard's crimson H shield (`logo_main.svg` from
+  gocrimson.com) and UC San Diego's Triton trident (`logo_scrollstick.svg` from
+  ucsdtritons.com), both 22px tall; the Harvard seal and the "UC San Diego"
+  wordmark from the university sites were too fine at that size.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of
