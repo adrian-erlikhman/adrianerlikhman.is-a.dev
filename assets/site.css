@@ -1183,4 +1183,4 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .bout figcaption{display:flex;align-items:baseline;gap:12px;padding:11px 4px 3px}
 .bout figcaption b{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.6rem;line-height:1;letter-spacing:-.02em;color:var(--acc)}
 .bout figcaption span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-
+.bout figcaption .bl{height:22px;width:auto;align-self:center;flex:none}
