@@ -327,6 +327,17 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   one row of cards that snaps to each photo; touch and trackpads swipe it, a
   mouse drags it, the arrow keys and the ← → buttons step it, and each button
   greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
+- **Fencing bouts** (28 Sept): two Div I pool bouts from Summer Nationals
+  2026 sit under the Fencing section, side by side (`.bouts`): a 5-2 win vs. a
+  Harvard fencer and a 4-3 win vs. a UCSD fencer. They are the Boutcaster
+  recordings Adrian sent Coach Arpad on 27 June; he asked for opponents by
+  school only ("they are current fencers there now"), so the captions name no
+  one and the burned-in name box bottom left is covered with a dark label
+  reading "Harvard" / "UCSD" (ffmpeg drawbox + drawtext). Trimmed to the bout
+  (Harvard from 1:58, UCSD from 0:38, both to the end), 960x540 H.264 at 30 fps,
+  no audio (Boutcaster's is muted), `video/bout-*.mp4` at 24 and 32 MB, with
+  `preload="none"` and posters in `img/bouts/`. Opponents' surnames still show
+  small on their jacket backs. ffmpeg came from `pip install imageio-ffmpeg`.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of
