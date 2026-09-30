@@ -52,7 +52,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 (function(){
   const el=document.getElementById('roleTyp'); if(!el) return;
   const items=[
-    "a first-author nlp paper submitted to neurips 2026 (judge workshop)",
+    "a co-first-author nlp paper in submission to tacl",
     "a software and ml internship at firstness, working directly under the founder",
     "a vc internship working with early-stage b2b and saas companies",
     "an ai summit for 200+ la students, with google deepmind and microsoft on stage",
@@ -754,7 +754,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>earshot</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
-    read:a=>{const k=(a||'').toLowerCase(); if(PAPERS[k]){print("opening "+PAPERS[k]+" …");window.open(PAPERS[k],'_blank');}else if(k==='complm'||k==='compllm'){print("CompLLM is under review at NeurIPS 2026 (JUDGe) — jumping to Research.");go('#papers');}else print("no paper '"+k+"' — try: langllm · earshot · portfolio · robustness",'dim');},
+    read:a=>{const k=(a||'').toLowerCase(); if(PAPERS[k]){print("opening "+PAPERS[k]+" …");window.open(PAPERS[k],'_blank');}else if(k==='complm'||k==='compllm'){print("CompLLM is in submission to TACL — jumping to Research.");go('#papers');}else print("no paper '"+k+"' — try: langllm · earshot · portfolio · robustness",'dim');},
     goto:a=>{const k=(a||'').toLowerCase(); if(SEC[k]){print("→ "+k);go(SEC[k]);}else print("no section '"+k+"' — try: "+Object.keys(SEC).join(' · '),'dim');},
     cd:a=>CMDS.goto(a),
     projects:()=>{print("→ opened Projects. (type <b>ls</b> to list, <b>open &lt;name&gt;</b> for a repo)");go('#work');},

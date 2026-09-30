@@ -86,8 +86,12 @@ from LaTeX in `resume/`.
   - Earshot: `[abstract]`, `[code]`. The repo's `paper/abstract.md` is a stale
     draft that says so at the top — never link that one.
   - Legatum and the portfolio paper: `[pdf]` on the site.
-  - **CompLLM has no link on purpose.** The only copy is a private Drive file
-    and JUDGe review is double-blind; add a link after the 29 Sept decision.
+  - **CompLLM has no link on purpose.** The only copy is a private Drive file.
+    JUDGe rejected it on 29 Sept 2026; it goes to **TACL on 1 Oct** and then
+    to arXiv. Every mention now reads "In submission, TACL" (short form "TACL
+    (in submission)"), never "accepted" or NeurIPS; the og card's chip is
+    "CO-FIRST AUTHOR — TACL (IN SUBMISSION)". Add the arXiv link once it is
+    posted (the R.02 card's `[EDIT]` comment marks the spot).
   - Both abstracts are **site-hosted PDFs**, `papers/langllm-abstract-urtc2026.pdf`
     and `papers/earshot-abstract-neurips2026.pdf`, exported from Adrian's Google
     Docs on 19 Sept (`download_file_content` with `exportMimeType:
@@ -178,7 +182,7 @@ from LaTeX in `resume/`.
   - The summit is 200+ LA public-school students, never 500, and lists only
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
-    JUDGe and AI for Peace decide (29 Sept) and when BigData does (9 Oct).
+    AI for Peace decides (29 Sept), BigData does (9 Oct) and TACL does.
   - The portfolio paper (R.05, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
@@ -209,8 +213,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-09u"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-09u`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-09v"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-09v`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that

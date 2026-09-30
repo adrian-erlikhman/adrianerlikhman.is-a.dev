@@ -64,7 +64,7 @@ TAGLINE = "Machine-learning research, quantitative finance, software that ships.
 
 # (text, filled) -- one row per list
 CHIP_ROWS = [
-    [("NEURIPS 2026 — FIRST AUTHOR", True),
+    [("CO-FIRST AUTHOR — TACL (IN SUBMISSION)", True),
      ("ACCEPTED — J. OF HIGH SCHOOL SCIENCE", False)],
     [("NATIONAL MERIT SEMIFINALIST", False),
      ("1ST — DECODE THE OCEAN", False),
