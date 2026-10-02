@@ -360,7 +360,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'</>',label:'Repo: LSTM Equity Forecaster',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/lstm-equity-forecaster')},
     {ic:'</>',label:'Repo: FinBERT Sentiment Analyzer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/finbert-sentiment-analyzer')},
     {ic:'</>',label:'Repo: Fraud Detection System',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/fraud-detection-system')},
-    {ic:'¶',label:'Paper: Portfolio Optimization vs 1/N',k:'pdf',run:()=>ext('/papers/portfolio-optimization-vs-equal-weight.pdf')},
+    {ic:'¶',label:'Paper: Portfolio Optimization vs 1/N',k:'pdf',run:()=>ext('/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-01')},
     {ic:'¶',label:'Paper: Legatum Robustness Audit',k:'pdf',run:()=>ext('/papers/legatum-robustness-audit.pdf?v=2026-09-13')},
     {ic:'$',label:'whoami',k:'sys',run:()=>toast('adrian erlikhman — senior @ LACES, Los Angeles · ML, quant, data')},
     {ic:'$',label:'uptime',k:'sys',run:()=>toast('rising senior since 2023 · caffeinated · shipping')},
@@ -745,7 +745,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const echo=cmd=>print('<span class="tp">adrian@os:~$</span>'+cmd.replace(/</g,'&lt;'));
   const go=sel=>{const el=document.querySelector(sel); if(el)el.scrollIntoView({behavior:'smooth'});};
   const REPOS={regime:'regime-aware-portfolio-optimizer',lstm:'lstm-equity-forecaster',finbert:'finbert-sentiment-analyzer',fraud:'fraud-detection-system'};
-  const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
+  const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-01',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>demo</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
