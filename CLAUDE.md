@@ -181,9 +181,14 @@ from LaTeX in `resume/`.
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
     5 Oct. The R.04 card and the long résumé say "Accepted with revisions", as
-    Legatum's do, and the card adds "in revision"; the meta, og and JSON-LD
-    blurbs say "accepted". Drop "in revision" once it is published. The
-    one-pager doesn't carry this paper.
+    Legatum's do, and the card adds "revision submitted"; the meta, og and
+    JSON-LD blurbs say "accepted". The revision went in on 1 Oct 2026 (OJSS
+    confirmed it), and the site's PDF is Ryan's revised manuscript ("Updated
+    Papel" email, OJSS template) with the journal's yellow change-highlighting
+    stripped before export; the template's "July 2026 · Vol 10. No 1." footer
+    is the journal's own. Linked as `?v=2026-10-01` from the card, the ⌘K
+    palette and the terminal; bump all three if it changes. Drop "revision
+    submitted" once it is published. The one-pager doesn't carry this paper.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
@@ -207,8 +212,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10a"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10a`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10b"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10b`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
