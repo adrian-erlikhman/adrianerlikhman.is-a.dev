@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-02">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-02b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -192,7 +192,7 @@
     <a href="#record">Achievements</a>
     <a href="#work">Selected work</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-10a" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-10b" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
 </div>
@@ -216,7 +216,7 @@
     <div class="hero-cta">
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
-      <a class="btn" href="resume.pdf?v=2026-10a" target="_blank" data-cv-menu>résumé</a>
+      <a class="btn" href="resume.pdf?v=2026-10b" target="_blank" data-cv-menu>résumé</a>
     </div>
   </div>
 
@@ -363,11 +363,11 @@
         <div class="pmain">
           <h3>Does Portfolio Optimization Beat Splitting Evenly?</h3>
           <div class="meta">Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
-          <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · in revision</div></div>
+          <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · revision submitted</div></div>
           <div class="ptags"><span>Quant Finance</span><span>Portfolio Theory</span><span>Simulation</span></div>
-          <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
+          <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
         </div>
-        <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf" target="_blank" data-mag>PDF ↓</a>
+        <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-01" target="_blank" data-mag>PDF ↓</a>
       </div>
 
       <div class="paper" data-mag>
@@ -678,7 +678,7 @@
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag><img class="cl" src="/img/logos/github.svg" width="14" height="14" loading="lazy" decoding="async" alt="">GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-55489620b" target="_blank" data-mag><img class="cl" src="/img/logos/linkedin.webp" width="14" height="14" loading="lazy" decoding="async" alt="">LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag><img class="cl" src="/img/logos/usafencing.webp" width="15" height="14" loading="lazy" decoding="async" alt="">Fencing</a>
-        <a href="resume.pdf?v=2026-10a" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
+        <a href="resume.pdf?v=2026-10b" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
       </div>
     </div>
   </div>
@@ -694,10 +694,10 @@
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">résumé <span>// pick a length</span></div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10a" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10b" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10a" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10b" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
@@ -729,6 +729,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-02"></script>
+<script src="/assets/site.js?v=2026-10-02b"></script>
 </body>
 </html>
