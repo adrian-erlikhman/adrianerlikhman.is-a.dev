@@ -83,8 +83,6 @@ from LaTeX in `resume/`.
 - **Every paper and poster carries its links** as small navy `[tags]` at the
   end of its last bullet, in both:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
-  - Earshot: `[abstract]`, `[code]`. The repo's `paper/abstract.md` is a stale
-    draft that says so at the top — never link that one.
   - Legatum and the portfolio paper: `[pdf]` on the site.
   - **CompLLM has no link on purpose.** The only copy is a private Drive file.
     JUDGe rejected it on 29 Sept 2026; it goes to **TACL on 1 Oct** and then
@@ -92,15 +90,12 @@ from LaTeX in `resume/`.
     (in submission)"), never "accepted" or NeurIPS; the og card's chip is
     "CO-FIRST AUTHOR — TACL (IN SUBMISSION)". Add the arXiv link once it is
     posted (the R.02 card's `[EDIT]` comment marks the spot).
-  - Both abstracts are **site-hosted PDFs**, `papers/langllm-abstract-urtc2026.pdf`
-    and `papers/earshot-abstract-neurips2026.pdf`, exported from Adrian's Google
-    Docs on 19 Sept (`download_file_content` with `exportMimeType:
-    application/pdf`; doc ids 1mDDaOc_5K5laR3hPhYH_7BLBSvU5yX_c3HBFH5tXESU and
-    1pJb-8l70qeS_keGV-mFunK2RkPZIBEASfMniU5VxiAQ). The docs themselves are
-    shared only with Flora Xu, and the Drive tool here can only share with a
-    named person, so the docs could not be made link-viewable. **Re-export the
-    Earshot one after he submits**: the published copy is a snapshot of a draft
-    that was still due on 21 Sept.
+  - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
+    exported from Adrian's Google Doc on 19 Sept (`download_file_content` with
+    `exportMimeType: application/pdf`; doc id
+    1mDDaOc_5K5laR3hPhYH_7BLBSvU5yX_c3HBFH5tXESU). The doc is shared only with
+    Flora Xu, and the Drive tool here can only share with a named person, so it
+    could not be made link-viewable.
   - **LangLLM's venue changed.** URTC didn't take it (CMT notice, 18 Sept).
     A full paper went to the **IEEE BigData 2026 High School Symposium** on
     21 Sept (SP19343, "Interpretable Multilingual Attribution of Frontier
@@ -118,14 +113,13 @@ from LaTeX in `resume/`.
     submitted paper (Adrian, Michael, Philo), so the card and both résumés
     just say "Co-first author" (see the credit rule below). The site keeps the
     friendlier title "Do LLM Fingerprints Survive Outside English?" unless he asks.
-- **Two titles carry a deliberate line break.** Earshot's in the one-pager (at
-  its colon) and Legatum's in the long one (after the question mark), both with
-  `\newline`. Without them the title filled the line and the italic venue was
-  stranded alone on the next one. Keep the break if you edit either title.
-  In the long one, `\paper` puts the status in italic navy on the right of the
-  title line and the authors in dim grey under it, so a long title pushes its
-  status onto its own line (Earshot's does); that is fine, but check it after
-  editing a title.
+- **Legatum's title carries a deliberate line break** in the long one (after
+  the question mark, with `\newline`). Without it the title filled the line and
+  the italic venue was stranded alone on the next one. Keep the break if you
+  edit the title. In the long one, `\paper` puts the status in italic navy on
+  the right of the title line and the authors in dim grey under it, so a long
+  title pushes its status onto its own line (Legatum's and the portfolio
+  paper's do); that is fine, but check it after editing a title.
 - **Section order** follows Adrian's 9 Sept choice (PR #63), paid work first:
   Professional Experience · Ventures & Civic Technology · Research ·
   Competitions · Education · Leadership & Athletics · Skills. The long version
@@ -182,11 +176,11 @@ from LaTeX in `resume/`.
   - The summit is 200+ LA public-school students, never 500, and lists only
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
-    AI for Peace decides (29 Sept), BigData does (9 Oct) and TACL does.
-  - The portfolio paper (R.05, with Ryan) got a **conditional acceptance** from
+    BigData decides (9 Oct) and TACL does.
+  - The portfolio paper (R.04, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
-    5 Oct. The R.05 card and the long résumé say "Accepted with revisions", as
+    5 Oct. The R.04 card and the long résumé say "Accepted with revisions", as
     Legatum's do, and the card adds "in revision"; the meta, og and JSON-LD
     blurbs say "accepted". Drop "in revision" once it is published. The
     one-pager doesn't carry this paper.
@@ -213,8 +207,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-09v"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-09v`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10a"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10a`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -296,7 +290,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
-  "// four internships, 2024 - now" and "// six papers · two in review".
+  "// four internships, 2024 - now" and "// five papers · two in review".
   Anything warmer has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
@@ -379,7 +373,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **26 Sept sweep ("add logos wherever you can")**: an agent pulled candidates
   from each organisation's own site. Kept: IEEE's blue mark (brand-experience.
   ieee.org; ieee.org blocks scripts) beside R.01's status pill, OJSS's "O"
-  (oxfordjss.org favicon, white knocked out) beside R.05's, and Coursera's
+  (oxfordjss.org favicon, white knocked out) beside R.04's, and Coursera's
   wordmark (the inline SVG on coursera.org, fill #0056D2) on the Deep Learning
   Specialization row at 12px. Dropped as muddy at size: NeurIPS, JHSS, LACES
   (only a touch icon), and the square StandWithUs and Coursera marks.
@@ -455,21 +449,14 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   under the lab (predict before you run, ethics, summary) are the notebook's
   own words, and the teacher-key numbers in the notebook don't match what the
   code prints on this scikit-learn, so don't quote them.
-- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Earshot · R.04 Legatum
-  robustness · R.05 portfolio optimization · R.06 advanced math. The Ukraine
-  Legatum-ML paper (the old R.03) came off on 13 Sept 2026 because Adrian found
-  it too similar to R.04, along with its PDF, ⌘K entry, terminal command and
-  sitemap entry. Don't bring it back.
-- **Earshot (R.03)**, with Michael Tarekegn, is headed for the AI for Peace
-  workshop at NeurIPS 2026 (Paris, 12–13 Dec). The abstract is due 21 Sept AoE
-  through a Google Form (pasted text, no PDF), and decisions come 29 Sept, so
-  there is no paper to link: the card, the ⌘K palette and `read earshot` all
-  point at the public repo, `adrian-erlikhman/earshot`. Take every number from
-  the FINAL STATUS table in that repo's `CLAIMS.md`. Quote only the era-matched
-  odds ratio, 1.03 [0.38, 2.78], never the crude control comparison, and never
-  call it the first to link NLP papers to patents. The title is the repo brief's
-  recommendation; Adrian left the choice to Claude. Update the status line once
-  it's submitted or decided.
+- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Legatum robustness ·
+  R.04 portfolio optimization · R.05 advanced math. Two papers have come off,
+  each with its PDF, ⌘K entry, terminal command and sitemap entry; don't bring
+  either back. The Ukraine Legatum-ML paper went on 13 Sept 2026 because Adrian
+  found it too similar to the Legatum robustness paper. **Earshot** (NLP
+  patents and surveillance, with Michael Tarekegn) was rejected by the AI for
+  Peace workshop at NeurIPS 2026, and on 2 Oct Adrian had it taken off the site
+  and both résumés ("i dont think it has a place anywhere").
 - **"Which model wrote this?"** (on `/demos/` since 22 Sept; it opened as a band
   atop Research that day) is
   real LangLLM data in `assets/guess-samples.json`: ten English essays, two
@@ -489,7 +476,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   two buses (40 min, 750 m on foot) against walking it (118 min, 9.3 km),
   measured as the route's modeled street-crime exposure. Say "modeled", and
   name the trip where there is room.
-- **Research R.04**, the Legatum robustness paper, links
+- **Research R.03**, the Legatum robustness paper, links
   `papers/legatum-robustness-audit.pdf?v=2026-09-13` from three places: the
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
   three whenever the PDF changes. The PDF is the 13 Sept 2026 JHSS revision
