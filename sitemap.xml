@@ -48,11 +48,6 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://adrianerlikhman.is-a.dev/papers/earshot-abstract-neurips2026.pdf</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
