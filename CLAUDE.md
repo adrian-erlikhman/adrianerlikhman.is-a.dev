@@ -85,8 +85,11 @@ from LaTeX in `resume/`.
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
   - Legatum and the portfolio paper: `[pdf]` on the site.
   - **CompLLM has no link on purpose.** The only copy is a private Drive file.
-    JUDGe rejected it on 29 Sept 2026; it goes to **TACL on 1 Oct** and then
-    to arXiv. Every mention now reads "In submission, TACL" (short form "TACL
+    JUDGe rejected it on 29 Sept 2026; it was **submitted to TACL on 2 Oct
+    2026 (submission 11824)** as "Most Apparent Self-Recognition in LLM Judges
+    Does Not Survive a Peer Baseline", with Adrian, Michael Tarekegn and Philo
+    Juang as authors (not Ryan); arXiv may follow. The site's R.02 card still
+    carries the old title and credit line, so update it only if Adrian asks. Every mention now reads "In submission, TACL" (short form "TACL
     (in submission)"), never "accepted" or NeurIPS; the og card's chip is
     "CO-FIRST AUTHOR — TACL (IN SUBMISSION)". Add the arXiv link once it is
     posted (the R.02 card's `[EDIT]` comment marks the spot).
@@ -346,6 +349,17 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   gocrimson.com) and UC San Diego's Triton trident (`logo_scrollstick.svg` from
   ucsdtritons.com), both 22px tall; the Harvard seal and the "UC San Diego"
   wordmark from the university sites were too fine at that size.
+- **Team bout** (4 Oct, Adrian: "add this bout to top of fencing section"):
+  his R3 relay leg in Senior Team Men's Épée (T32), Summer Nationals 2026,
+  vs. AFM's Samyak Jain, whom Adrian describes as on the U.S. cadet travel
+  team; the team finished top 8 (his word). It sits full width above `.fence`
+  (`.bouts-lead`). The scoreboard runs 8-5 to 10-13 and **Adrian is the
+  right-hand fencer** (black mask), so his leg is 8-2, +6. Boutcaster's
+  name boxes had the sides swapped, so both are covered: "AFM" left (red),
+  "Erlikhman, Adrian" right (green), as in the Harvard clip. Source is the
+  Boutcaster MP4 (`hqvideos.boutcaster.com/c0669e4a….mp4`, 1080p, 6:43),
+  cut to 0-400 s, 960x540 CRF 28, no audio, `video/bout-team-afm.mp4` (44 MB),
+  poster `img/bouts/team-afm.webp` at 6:01.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of
