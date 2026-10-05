@@ -1175,6 +1175,7 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 /* ==================== FENCING — two recorded bouts ==================== */
 .bouts{margin-top:42px}
 .bouts .recog-h{margin-top:0}
+.bouts.bouts-lead{margin:0 0 42px}
 .bouts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 @media(max-width:700px){.bouts-grid{grid-template-columns:1fr}}
 .bout{margin:0;border:1px solid var(--line-strong);background:var(--panel);padding:8px;transition:border-color .2s}
