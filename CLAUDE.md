@@ -334,7 +334,8 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   mouse drags it, the arrow keys and the ← → buttons step it, and each button
   greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
 - **Fencing bouts** (28 Sept): two Div I pool bouts from Summer Nationals
-  2026 sit under the Fencing section, side by side (`.bouts`): a 5-2 win vs. a
+  2026 sit under the Fencing section, side by side (`.bouts`), now below the
+  team leg (see Team bout): a 5-2 win vs. a
   Harvard fencer and a 4-3 win vs. a UCSD fencer. They are the Boutcaster
   recordings Adrian sent Coach Arpad on 27 June; he asked for opponents by
   school only ("they are current fencers there now"), so the captions name no
@@ -349,17 +350,19 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   gocrimson.com) and UC San Diego's Triton trident (`logo_scrollstick.svg` from
   ucsdtritons.com), both 22px tall; the Harvard seal and the "UC San Diego"
   wordmark from the university sites were too fine at that size.
-- **Team bout** (4 Oct, Adrian: "add this bout to top of fencing section"):
-  his R3 relay leg in Senior Team Men's Épée (T32), Summer Nationals 2026,
-  vs. AFM's Samyak Jain, whom Adrian describes as on the U.S. cadet travel
-  team; the team finished top 8 (his word). It sits full width above `.fence`
-  (`.bouts-lead`). The scoreboard runs 8-5 to 10-13 and **Adrian is the
-  right-hand fencer** (black mask), so his leg is 8-2, +6. Boutcaster's
-  name boxes had the sides swapped, so both are covered: "AFM" left (red),
-  "Erlikhman, Adrian" right (green), as in the Harvard clip. Source is the
-  Boutcaster MP4 (`hqvideos.boutcaster.com/c0669e4a….mp4`, 1080p, 6:43),
-  cut to 0-400 s, 960x540 CRF 28, no audio, `video/bout-team-afm.mp4` (44 MB),
-  poster `img/bouts/team-afm.webp` at 6:01.
+- **Team bout** (4 Oct): Adrian's R3 relay leg in Senior Team Men's Épée
+  (T32), Summer Nationals 2026, vs. AFM's Samyak Jain, whom Adrian describes
+  as on the U.S. cadet travel team; the team finished top 8 (his word). He
+  asked for it to be "the first one people see" in the bouts block, so it is
+  the first `.bout`, spanning the row (`.bout-lead`), with the two Div I
+  bouts under it. The scoreboard runs 8-5 to 10-13 and **Adrian is the
+  right-hand fencer** (black mask), so his leg is 8-2, +6. Boutcaster's name
+  boxes had the sides swapped, so both are covered: "AFM" left (red),
+  "Erlikhman, Adrian" right (green). Source is the Boutcaster MP4
+  (`hqvideos.boutcaster.com/c0669e4a….mp4`, 1080p, 6:43), cut 0:51-6:40,
+  960x540 CRF 28, no audio, `video/bout-team-afm.mp4`; poster
+  `img/bouts/team-afm.webp`. All three video URLs carry `?v=2026-10-04`;
+  bump it if a clip is re-cut.
 - The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
   though the review suggested dropping them.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of
