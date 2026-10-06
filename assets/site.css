@@ -1175,13 +1175,12 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 /* ==================== FENCING — recorded bouts (team leg first, full row) ==================== */
 .bouts{margin-top:42px}
 .bouts .recog-h{margin-top:0}
-.bout-lead{grid-column:1/-1}
-.bouts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media(max-width:700px){.bouts-grid{grid-template-columns:1fr}}
+.bouts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:900px){.bouts-grid{grid-template-columns:1fr}}
 .bout{margin:0;border:1px solid var(--line-strong);background:var(--panel);padding:8px;transition:border-color .2s}
 .bout:hover{border-color:var(--acc)}
 .bout video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#141310}
 .bout figcaption{display:flex;align-items:baseline;gap:12px;padding:11px 4px 3px}
-.bout figcaption b{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.6rem;line-height:1;letter-spacing:-.02em;color:var(--acc)}
+.bout figcaption b{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:1.6rem;line-height:1;letter-spacing:-.02em;color:var(--acc);white-space:nowrap}
 .bout figcaption span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .bout figcaption .bl{height:22px;width:auto;align-self:center;flex:none}

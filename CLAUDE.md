@@ -354,8 +354,9 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   (T32), Summer Nationals 2026, vs. AFM's Samyak Jain, whom Adrian describes
   as on the U.S. cadet travel team; the team finished top 8 (his word). He
   asked for it to be "the first one people see" in the bouts block, so it is
-  the first `.bout`, spanning the row (`.bout-lead`), with the two Div I
-  bouts under it. The scoreboard runs 8-5 to 10-13 and **Adrian is the
+  the first `.bout`. It spanned the row until 5 Oct, when Adrian said it
+  looked blurry that big: the three clips are now equal tiles in one row of
+  three (one column under 900px), team leg first. The scoreboard runs 8-5 to 10-13 and **Adrian is the
   right-hand fencer** (black mask), so his leg is 8-2, +6. Boutcaster's name
   boxes had the sides swapped, so both are covered: "AFM" left (red),
   "Erlikhman, Adrian" right (green). Source is the Boutcaster MP4
