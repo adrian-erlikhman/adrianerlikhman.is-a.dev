@@ -1,0 +1,35 @@
+# Adrian Erlikhman
+
+> Adrian Erlikhman is a high-school senior at LACES in Los Angeles who does machine-learning and NLP research, builds ML and full-stack tools, and fences épée for Team USA. This is his personal site: https://adrianerlikhman.is-a.dev/
+
+## Profile
+
+- [Homepage](https://adrianerlikhman.is-a.dev/): experience, research, fencing, achievements, selected work, contact
+- [Résumé, one page](https://adrianerlikhman.is-a.dev/resume.pdf)
+- [Résumé, three pages](https://adrianerlikhman.is-a.dev/resume-long.pdf)
+- [GitHub](https://github.com/adrian-erlikhman)
+- [LinkedIn](https://www.linkedin.com/in/adrian-erlikhman-55489620b)
+- [Fencing record](https://fencingtracker.com/p/100253463/Adrian-Erlikhman)
+
+## Research
+
+- LangLLM, "Do LLM Fingerprints Survive Outside English?": cross-lingual stylometric attribution of frontier LLMs. Co-first author; under review, IEEE BigData 2026 High School Symposium.
+- CompLLM: LLM self-recognition measured against a peer baseline. Co-first author; in submission, TACL.
+- [Legatum Prosperity Index robustness audit](https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf): co-first author with Ryan Erlikhman; accepted with revisions, Journal of High School Science.
+- [Does Portfolio Optimization Beat Splitting Evenly?](https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf): with Ryan Erlikhman; accepted with revisions, Oxford Journal of Student Scholarship.
+- [Demos](https://adrianerlikhman.is-a.dev/demos/): guess which model wrote an essay; a stylometry toy.
+
+## Experience
+
+- Firstness (firstness.ai): Software Engineering & ML Intern, 2026–present.
+- Kiddom: Machine Learning Internship & Mentorship, 2026–present.
+- Fjor Venture Capital and Alliance: earlier internships.
+
+## Fencing
+
+- Épée, A26 rating, Team USA. U.S. Junior (U20) No. 49, U.S. Senior No. 78, U.S. Cadet peak No. 17, Region 4 No. 1.
+
+## Selected work and honors
+
+- SafeJew (safejew.org), AIML-LI (aiml-initiative.org), Ledger (1st, VISION HACK: South LA, Council District 9 Champion U18), Safe Routes to School (3rd, Code for Transportation), [eDNAtlas](https://adrianerlikhman.is-a.dev/eDNAtlas/) (1st, Decode the Ocean).
+- National Merit Semifinalist (2027 program).
