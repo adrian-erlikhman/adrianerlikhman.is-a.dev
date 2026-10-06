@@ -253,8 +253,11 @@ from LaTeX in `resume/`.
   `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
   `apple-touch-icon.png`, plus `site.webmanifest`. Google had been showing
   the August glitch "AE", which survived in `apple-touch-icon.png`.
-- Google needs Search Console, which only Adrian can verify: a
-  `google-site-verification` meta tag he pastes in goes in the head.
+- **Google Search Console**: URL-prefix property for
+  `https://adrianerlikhman.is-a.dev/`, verified by the root file
+  `google2a9593ca4bc38729.html` (6 Oct). Never delete it: Google drops the
+  verification. A domain property can't work: the is-a.dev record is a CNAME,
+  which can't sit beside a TXT record.
 
 ## Shared assets
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
