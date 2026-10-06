@@ -241,6 +241,18 @@ from LaTeX in `resume/`.
 - `7fcb94c90a7a7574f5deb93f88ae9e26.txt` at the root is the **IndexNow key**
   (Bing, Yandex, and through Bing DuckDuckGo and Yahoo). After a deploy that
   changes content, ping `https://api.indexnow.org/indexnow?url=<page>&key=<key>`.
+- **Search snippet (Adrian, 5 Oct):** title "Adrian Erlikhman — ML Research ·
+  Full-Stack · Team USA Épée" (he asked for research, building, then
+  fencing); description "Senior in Los Angeles. ML/NLP research in review at
+  TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée
+  (U.S. Junior No. 49)." (first sentence his pick, second "the tuffest
+  stuff"). Same text in the og and twitter tags; keep it under ~155 chars and
+  update the ranking and TACL status when they change.
+- **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
+  (from the Tectonic cache) on rust: `favicon.svg` (outlined paths),
+  `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
+  `apple-touch-icon.png`, plus `site.webmanifest`. Google had been showing
+  the August glitch "AE", which survived in `apple-touch-icon.png`.
 - Google needs Search Console, which only Adrian can verify: a
   `google-site-verification` meta tag he pastes in goes in the head.
 
