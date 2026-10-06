@@ -230,6 +230,20 @@ from LaTeX in `resume/`.
 - Per change: commit → push → open a **draft** PR → mark ready → squash-merge
   into `main` → resync the branch to `origin/main` with `--force-with-lease`.
 
+## SEO (5 Oct 2026)
+- Adrian asked for the site to be the first result for his name. The head
+  already carried title, description, canonical, og/twitter and a Person
+  JSON-LD; on 5 Oct the JSON-LD gained the two published papers
+  (ScholarlyArticle) and the three bouts (VideoObject), every photo's alt
+  names him in full, and `sitemap.xml` lists the homepage's photos and videos.
+  Keep the JSON-LD's statuses and `llms.txt` (a plain summary for AI search)
+  in step with the R cards and Experience.
+- `7fcb94c90a7a7574f5deb93f88ae9e26.txt` at the root is the **IndexNow key**
+  (Bing, Yandex, and through Bing DuckDuckGo and Yahoo). After a deploy that
+  changes content, ping `https://api.indexnow.org/indexnow?url=<page>&key=<key>`.
+- Google needs Search Console, which only Adrian can verify: a
+  `google-site-verification` meta tag he pastes in goes in the head.
+
 ## Shared assets
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the

@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://adrianerlikhman.is-a.dev/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/adrian.jpg</image:loc><image:title>Adrian Erlikhman</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/fencing-1.jpg</image:loc><image:title>Adrian Erlikhman fencing épée</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/fencing-2.jpg</image:loc><image:title>Adrian Erlikhman on the podium with a USA Fencing medal</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/og.png</image:loc><image:title>Adrian Erlikhman — ML research, quant, Team USA épée</image:title></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/bouts/team-afm.webp</video:thumbnail_loc>
+      <video:title>Adrian Erlikhman — Senior Team Men's Épée relay leg, Summer Nationals 2026</video:title>
+      <video:description>Adrian Erlikhman's relay leg in Senior Team Men's Épée at USA Fencing Summer Nationals 2026: 8-2, +6.</video:description>
+      <video:content_loc>https://adrianerlikhman.is-a.dev/video/bout-team-afm.mp4</video:content_loc>
+      <video:duration>349</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/bouts/harvard.webp</video:thumbnail_loc>
+      <video:title>Adrian Erlikhman — Div I épée pool win vs. a Harvard fencer</video:title>
+      <video:description>Adrian Erlikhman wins a Division I épée pool bout 5-2 against a Harvard fencer at USA Fencing Summer Nationals 2026.</video:description>
+      <video:content_loc>https://adrianerlikhman.is-a.dev/video/bout-harvard.mp4</video:content_loc>
+      <video:duration>266</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/bouts/ucsd.webp</video:thumbnail_loc>
+      <video:title>Adrian Erlikhman — Div I épée pool win vs. a UCSD fencer</video:title>
+      <video:description>Adrian Erlikhman wins a Division I épée pool bout 4-3 against a UC San Diego fencer at USA Fencing Summer Nationals 2026.</video:description>
+      <video:content_loc>https://adrianerlikhman.is-a.dev/video/bout-ucsd.mp4</video:content_loc>
+      <video:duration>364</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/demos/</loc>
@@ -32,29 +62,32 @@
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/resume.pdf</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/resume-long.pdf</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/papers/langllm-abstract-urtc2026.pdf</loc>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf</loc>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf</loc>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>
