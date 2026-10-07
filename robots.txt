@@ -2,4 +2,16 @@
 User-agent: *
 Allow: /
 
+# Keep the outdoor photos out of Google's image results, so a search for the
+# name shows the headshot, fencing and Startup School photos instead.
+User-agent: Googlebot-Image
+Disallow: /life-climb.jpg
+Disallow: /life-backpack.jpg
+Disallow: /life-cycle.jpg
+Disallow: /life-hike.jpg
+Disallow: /life-swim.jpg
+Disallow: /life-trips.jpg
+Disallow: /life-sunset.jpg
+Disallow: /life-yc-stage.jpg
+
 Sitemap: https://adrianerlikhman.is-a.dev/sitemap.xml

@@ -258,12 +258,20 @@ from LaTeX in `resume/`.
   changes content, ping `https://api.indexnow.org/indexnow?url=<page>&key=<key>`.
 - **Search snippet (Adrian, 5 Oct):** title "Adrian Erlikhman — ML Research ·
   Full-Stack · Team USA Épée" (he asked for research, building, then
-  fencing); description "Senior in Los Angeles. ML/NLP research submitted to
-  TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée
-  (U.S. Junior No. 49)." (first sentence his pick, second "the tuffest
-  stuff"; "in review at" became "submitted to" after TACL's 6 Oct desk
-  rejection). Same text in the og and twitter tags; keep it under ~155 chars and
-  update the ranking and TACL status when they change.
+  fencing). Description since 7 Oct: "ML/NLP researcher. Software & ML
+  intern at Firstness and Kiddom, investment intern at Fjor, 1st at two
+  hackathons, Team USA épée." Adrian asked for "ML/NLP researcher" up
+  front, then his real-world experience, no National Merit, and "just Team
+  USA" (no ranking). Same text in the og and twitter tags; keep it under
+  ~155 chars and update it when the internships change.
+- **Images in the search result (Adrian, 7 Oct):** he wants his headshot, a
+  fencing photo and a Startup School photo, not the climbing and hiking
+  shots Google had picked. Google chooses these itself, so the site steers it
+  three ways: the Person JSON-LD `image` lists `adrian.jpg`, `fencing-1.jpg`
+  and `life-yc.jpg`; the sitemap's homepage images are those same three; and
+  `robots.txt` blocks Googlebot-Image from the seven outdoor `life-*.jpg`
+  photos and `life-yc-stage.jpg` (he isn't in it). Delete those robots lines
+  to let them back into image search.
 - **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
   (from the Tectonic cache) on rust: `favicon.svg` (outlined paths),
   `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
@@ -378,6 +386,12 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   one row of cards that snaps to each photo; touch and trackpads swipe it, a
   mouse drags it, the arrow keys and the ← → buttons step it, and each button
   greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
+  Since 7 Oct it opens with three Startup School 2026 photos Adrian sent:
+  `life-yc.jpg` (three of them under the YC sign), `life-yc-stage.jpg` (the
+  main stage from the stands) and `life-yc-sf.jpg` (two of them on a San
+  Francisco rooftop). They were resized to 600x800 / 800x600 with EXIF
+  stripped. The alt text doesn't name the other attendees or the speaker on
+  screen; add names only if Adrian gives them.
 - **Fencing bouts** (28 Sept): two Div I pool bouts from Summer Nationals
   2026 sit under the Fencing section, side by side (`.bouts`), now below the
   team leg (see Team bout): a 5-2 win vs. a
