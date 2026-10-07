@@ -84,15 +84,27 @@ from LaTeX in `resume/`.
   end of its last bullet, in both:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
   - Legatum and the portfolio paper: `[pdf]` on the site.
-  - **CompLLM has no link on purpose.** The only copy is a private Drive file.
-    JUDGe rejected it on 29 Sept 2026; it was **submitted to TACL on 2 Oct
-    2026 (submission 11824)** as "Most Apparent Self-Recognition in LLM Judges
-    Does Not Survive a Peer Baseline", with Adrian, Michael Tarekegn and Philo
-    Juang as authors (not Ryan); arXiv may follow. The site's R.02 card still
-    carries the old title and credit line, so update it only if Adrian asks. Every mention now reads "In submission, TACL" (short form "TACL
-    (in submission)"), never "accepted" or NeurIPS; the og card's chip is
-    "CO-FIRST AUTHOR — TACL (IN SUBMISSION)". Add the arXiv link once it is
-    posted (the R.02 card's `[EDIT]` comment marks the spot).
+  - **CompLLM has no paper link yet.** JUDGe rejected it on 29 Sept 2026; it
+    was **submitted to TACL on 2 Oct 2026 (submission 11824)** as "Most
+    Apparent Self-Recognition in LLM Judges Does Not Survive a Peer Baseline",
+    with Adrian, Michael Tarekegn and Philo Juang as authors (not Ryan, whom
+    the paper thanks). **TACL desk-rejected it on 6 Oct** because Table 3 was
+    unreadable in the PDF; Adrian replied the same day asking them to review
+    the corrected PDF he had uploaded, or he'll resubmit in a later cycle. An
+    arXiv version (`paper_arxiv/` in the now-public repo
+    `adrian-erlikhman/self-recognition-peer-baseline`) was waiting on
+    Michael's review on 6 Oct. Adrian's call (7 Oct): the site still says it
+    is in submission at TACL, plus the preprint. R.02's status is "In
+    submission · TACL · arXiv preprint forthcoming", llms.txt matches, and
+    the search snippet says "submitted to TACL". Never "accepted" or NeurIPS.
+    On 7 Oct the R.02 card took the submitted title and a summary from the
+    arXiv abstract, plus a CODE + DATA link to the public repo, but Adrian
+    chose to **keep its old credit line** (Ryan and Michael, Philo as
+    advisor). The og card's chip "CO-FIRST AUTHOR — TACL (IN SUBMISSION)" and
+    both résumés' "In submission, TACL" were left as they were (the résumés wait
+    on a Tectonic download). Swap the dashed "PDF · ARXIV SOON" for the arXiv
+    link once it is posted (the R.02 card's `[EDIT]` comment marks the spot),
+    and drop "forthcoming".
   - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
     exported from Adrian's Google Doc on 19 Sept (`download_file_content` with
     `exportMimeType: application/pdf`; doc id
@@ -186,10 +198,13 @@ from LaTeX in `resume/`.
     5 Oct. The R.04 card and the long résumé say "Accepted with revisions", as
     Legatum's do, and the card adds "revision submitted"; the meta, og and
     JSON-LD blurbs say "accepted". The revision went in on 1 Oct 2026 (OJSS
-    confirmed it), and the site's PDF is Ryan's revised manuscript ("Updated
-    Papel" email, OJSS template) with the journal's yellow change-highlighting
-    stripped before export; the template's "July 2026 · Vol 10. No 1." footer
-    is the journal's own. Linked as `?v=2026-10-01` from the card, the ⌘K
+    confirmed it). Since 7 Oct the site's PDF is Ryan's own clean export,
+    `OJSS_Revised_Manuscript_CLEAN.pdf` (his email of 2 Oct, 14:34 UTC, no
+    subject), with only the Title/Author metadata added. Its text matches the
+    earlier "Updated Papel" export the site had from 2 to 7 Oct, but that copy
+    set part of Figure 2's caption and a paragraph on pages 11–12 in a
+    monospace font. The template's "July 2026 · Vol 10. No 1." footer
+    is the journal's own. Linked as `?v=2026-10-02` from the card, the ⌘K
     palette and the terminal; bump all three if it changes. Drop "revision
     submitted" once it is published. The one-pager doesn't carry this paper.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
@@ -243,10 +258,11 @@ from LaTeX in `resume/`.
   changes content, ping `https://api.indexnow.org/indexnow?url=<page>&key=<key>`.
 - **Search snippet (Adrian, 5 Oct):** title "Adrian Erlikhman — ML Research ·
   Full-Stack · Team USA Épée" (he asked for research, building, then
-  fencing); description "Senior in Los Angeles. ML/NLP research in review at
+  fencing); description "Senior in Los Angeles. ML/NLP research submitted to
   TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée
   (U.S. Junior No. 49)." (first sentence his pick, second "the tuffest
-  stuff"). Same text in the og and twitter tags; keep it under ~155 chars and
+  stuff"; "in review at" became "submitted to" after TACL's 6 Oct desk
+  rejection). Same text in the og and twitter tags; keep it under ~155 chars and
   update the ranking and TACL status when they change.
 - **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
   (from the Tectonic cache) on rust: `favicon.svg` (outlined paths),
@@ -501,6 +517,10 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   under the lab (predict before you run, ethics, summary) are the notebook's
   own words, and the teacher-key numbers in the notebook don't match what the
   code prints on this scikit-learn, so don't quote them.
+- **Research summaries** open on hover or focus and are capped at 640px
+  (was 200px until 7 Oct, which clipped three on desktop and cut every one
+  roughly in half on a phone). Keep the cap above the tallest summary at
+  390px wide.
 - **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Legatum robustness ·
   R.04 portfolio optimization · R.05 advanced math. Two papers have come off,
   each with its PDF, ⌘K entry, terminal command and sitemap entry; don't bring
