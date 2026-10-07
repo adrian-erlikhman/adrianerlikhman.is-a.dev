@@ -12,7 +12,7 @@
 <!--  and paper drafts when they're ready.                         -->
 <!-- ============================================================= -->
 <title>Adrian Erlikhman — ML Research · Full-Stack · Team USA Épée</title>
-<meta name="description" content="Senior in Los Angeles. ML/NLP research in review at TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
+<meta name="description" content="Senior in Los Angeles. ML/NLP research submitted to TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
 <meta name="author" content="Adrian Erlikhman">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="me" href="https://github.com/adrian-erlikhman">
@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="Adrian Erlikhman">
 <meta name="application-name" content="Adrian Erlikhman">
 <meta property="og:title" content="Adrian Erlikhman — ML Research · Full-Stack · Team USA Épée">
-<meta property="og:description" content="Senior in Los Angeles. ML/NLP research in review at TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
+<meta property="og:description" content="Senior in Los Angeles. ML/NLP research submitted to TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
 <meta property="og:url" content="https://adrianerlikhman.is-a.dev/">
 <meta property="og:image" content="https://adrianerlikhman.is-a.dev/og.png?v=5">
 <meta property="og:image:width" content="1200">
@@ -42,13 +42,13 @@
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Adrian Erlikhman — ML Research · Full-Stack · Team USA Épée">
-<meta name="twitter:description" content="Senior in Los Angeles. ML/NLP research in review at TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
+<meta name="twitter:description" content="Senior in Los Angeles. ML/NLP research submitted to TACL, 1st at two hackathons, National Merit Semifinalist, and Team USA épée (U.S. Junior No. 49).">
 <meta name="twitter:image" content="https://adrianerlikhman.is-a.dev/og.png?v=5">
 <meta name="twitter:image:alt" content="Adrian Erlikhman — machine-learning research, quantitative finance, software that ships. Co-first author, TACL (in submission); accepted to the Journal of High School Science, National Merit Semifinalist, 1st at Decode the Ocean, Team USA épée No. 49.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-05">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-07">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -405,16 +405,17 @@
       <div class="paper" data-mag>
         <span class="pn">R.02</span>
         <div class="pmain">
-          <h3>Self-Attribution Is Not Self-Recognition: A Peer Baseline for LLM Judges</h3>
+          <h3>Most Apparent Self-Recognition in LLM Judges Does Not Survive a Peer Baseline</h3>
           <div class="meta">Co-first author · CompLLM · with Ryan Erlikhman &amp; Michael Tarekegn · Advisor: Philo Juang (Google DeepMind)</div>
-          <div class="st">In submission · TACL</div>
+          <div class="st">In submission · TACL · arXiv preprint forthcoming</div>
           <div class="ptags"><span>NLP</span><span>LLM-as-Judge</span><span>Stylometry</span><span>Evaluation</span></div>
-          <p class="abstract">LLM-as-judge pipelines anonymize candidate responses on the assumption that a judge cannot tell who wrote what. I run five frontier models over the same 190 responses under two elicitation formats and score every self-attribution rate against a peer baseline: what the other four judges get on the same text. Claude names itself on 86.8% of its own writing while its peers identify that text at 53.9%; GPT shows a similar edge, two models are neutral, and Grok lands below the chance floor on itself. A stylometric classifier over 18 interpretable features recovers the true author at 86.3%, above every judge, so the signal is in the text — most judges just do not use it. Fully reproducible in one command, no API key.</p>
+          <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text, and the usual check is how often a judge names itself on its own writing. We score each judge against two references the same experiment provides: how often it names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags self-recognition in 15 cases, and 11 do not survive. Where it is real it is large (Claude and GPT beat their peers by 33 and 28 points on chat-app essays), but it disappears on a second set of 600 texts, and the question format alone can create or erase it. The authorship signal is in the text; the judges' answers do not follow it.</p>
         </div>
         <div class="paper-cta">
           <a class="dl" href="/demos/#stylometry" data-mag>TRY THE DEMO ↗</a>
+          <a class="dl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
           <!-- [EDIT] swap for the arXiv link once it is posted -->
-          <span class="dl dl-pending">PDF · AFTER REVIEW</span>
+          <span class="dl dl-pending">PDF · ARXIV SOON</span>
         </div>
       </div>
 
@@ -434,12 +435,12 @@
         <span class="pn">R.04</span>
         <div class="pmain">
           <h3>Does Portfolio Optimization Beat Splitting Evenly?</h3>
-          <div class="meta">Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
+          <div class="meta">Co-first author · Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
           <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · revision submitted</div></div>
           <div class="ptags"><span>Quant Finance</span><span>Portfolio Theory</span><span>Simulation</span></div>
           <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
         </div>
-        <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-01" target="_blank" data-mag>PDF ↓</a>
+        <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" data-mag>PDF ↓</a>
       </div>
 
       <div class="paper" data-mag>
@@ -805,6 +806,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-04b"></script>
+<script src="/assets/site.js?v=2026-10-07"></script>
 </body>
 </html>
