@@ -267,9 +267,9 @@ from LaTeX in `resume/`.
   fencing photo and a Startup School photo, not the climbing and hiking
   shots Google had picked. Google chooses these itself, so the site steers it
   three ways: the Person JSON-LD `image` lists `adrian.jpg`, `fencing-1.jpg`
-  and `life-yc.jpg`; the sitemap's homepage images are those same three; and
+  and `img/ycs/yc-sign.jpg`; the sitemap's homepage images are those same three; and
   `robots.txt` blocks Googlebot-Image from the seven outdoor `life-*.jpg`
-  photos and `life-yc-stage.jpg` (he isn't in it). Delete those robots lines
+  photos and `img/ycs/main-stage.jpg` (he isn't in it). Delete those robots lines
   to let them back into image search.
 - **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
   (from the Tectonic cache) on rust: `favicon.svg` (outlined paths),
@@ -385,12 +385,17 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   one row of cards that snaps to each photo; touch and trackpads swipe it, a
   mouse drags it, the arrow keys and the ← → buttons step it, and each button
   greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
-  Since 7 Oct it opens with three Startup School 2026 photos Adrian sent:
-  `life-yc.jpg` (three of them under the YC sign), `life-yc-stage.jpg` (the
-  main stage from the stands) and `life-yc-sf.jpg` (two of them on a San
-  Francisco rooftop). They were resized to 600x800 / 800x600 with EXIF
-  stripped. The alt text doesn't name the other attendees or the speaker on
-  screen; add names only if Adrian gives them.
+  The strip is the seven outdoor photos only. The Startup School photos sat
+  in it for an hour on 7 Oct before Adrian asked for them "elsewhere".
+- **Startup School 2026 photos** (Adrian, 7 Oct) are a row of three under
+  Achievements (`.ycs-grid`, framed like the bouts, cropped 4:3), right after
+  the `.ac` cards that include Y Combinator Startup School: `img/ycs/yc-sign.jpg`
+  (three of them under the YC sign), `main-stage.jpg` (the stage from the
+  stands) and `deepmind-yc.jpg` (two of them on a San Francisco rooftop at a
+  **DeepMind × YC event**, Adrian's words; it isn't Startup School itself).
+  Resized to 600x800 / 800x600 with EXIF stripped. The alt text doesn't name
+  the other attendees or the speaker on screen; add names only if Adrian
+  gives them.
 - **Fencing bouts** (28 Sept): two Div I pool bouts from Summer Nationals
   2026 sit under the Fencing section, side by side (`.bouts`), now below the
   team leg (see Team bout): a 5-2 win vs. a
