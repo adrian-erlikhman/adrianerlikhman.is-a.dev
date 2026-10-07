@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-07b">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-07c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -320,20 +320,38 @@
         <cite class="whoq-cite">Robert A. Heinlein</cite>
       </aside>
     </div>
+    <!-- OFF THE LAPTOP: a topo card that opens one big photo frame with a numbered list (Adrian picked both, 7 Oct) -->
     <div id="offclock">
-    <p class="offclock-lead rv d1">Off the laptop, I love the outdoors: climbing, backpacking, cycling, surfing, hiking, and swimming in freezing lakes. Any time left I spend finding niche food spots, seeing my family, and catching up on sleep.</p>
-    <div class="lifewrap rv d2">
-      <div class="life-h"><span class="life-hint">swipe or drag</span><span class="life-nav"><button type="button" class="lnav" data-d="-1" aria-label="Previous photos">&larr;</button><button type="button" class="lnav" data-d="1" aria-label="Next photos">&rarr;</button></span></div>
-      <div class="lifestrip" id="lifedeck" tabindex="0" aria-label="Photos: use the arrow keys to move">
-        <figure class="lcard"><img src="life-climb.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman rock climbing" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-climb.jpg</div><figcaption class="lcap">Climbing</figcaption></figure>
-        <figure class="lcard"><img src="life-backpack.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman backpacking at an alpine lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-backpack.jpg</div><figcaption class="lcap">Backpacking</figcaption></figure>
-        <figure class="lcard"><img src="life-cycle.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman road cycling" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-cycle.jpg</div><figcaption class="lcap">Cycling</figcaption></figure>
-        <figure class="lcard"><img src="life-hike.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman hiking a foggy ridge" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-hike.jpg</div><figcaption class="lcap">Hiking</figcaption></figure>
-        <figure class="lcard"><img src="life-swim.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman swimming in a lake" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-swim.jpg</div><figcaption class="lcap">Swimming</figcaption></figure>
-        <figure class="lcard"><img src="life-trips.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on a backpacking trip" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-trips.jpg</div><figcaption class="lcap">Trips</figcaption></figure>
-        <figure class="lcard"><img src="life-sunset.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on the coast at dusk" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="lph"><span>＋</span>life-sunset.jpg</div><figcaption class="lcap">Sunsets</figcaption></figure>
+      <div class="oc-card rv d1" role="button" tabindex="0" aria-expanded="false" aria-controls="ocPanel">
+        <div class="oc-txt">
+          <div><div class="oc-k">Off the laptop</div><p class="oc-line">Climbing, backpacking, cycling, surfing, and swimming in freezing lakes.</p></div>
+          <span class="oc-btn"><span class="oc-lbl">have a look</span> <span class="n" aria-hidden="true">&darr;</span></span>
+        </div>
+        <svg class="oc-topo" viewBox="0 0 300 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><polygon class="pk" points="170,86 175,95 165,95"/></svg>
       </div>
-    </div>
+      <div class="oc-panel" id="ocPanel"><div><div class="oc-inner">
+        <div class="viewer" id="lifeViewer" tabindex="-1">
+          <div class="v-main">
+            <img src="life-climb.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman rock climbing" class="on">
+            <img src="life-backpack.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman backpacking at an alpine lake">
+            <img src="life-hike.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman hiking a foggy ridge">
+            <img src="life-cycle.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman road cycling">
+            <img src="life-swim.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman swimming in an alpine lake">
+            <img src="life-trips.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on a backpacking trip">
+            <img src="life-sunset.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on the coast at dusk">
+            <div class="v-cap"><span class="vc" aria-live="polite">01 / 07 · Climbing</span><span class="arr"><button type="button" class="vp" aria-label="Previous photo">&larr;</button><button type="button" class="vn" aria-label="Next photo">&rarr;</button></span></div>
+          </div>
+          <ol class="v-list" aria-label="Photos">
+            <li><button type="button" data-c="Climbing" aria-current="true"><span class="no">01</span><img src="life-climb.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Climbing</span></button></li>
+            <li><button type="button" data-c="Backpacking" aria-current="false"><span class="no">02</span><img src="life-backpack.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Backpacking</span></button></li>
+            <li><button type="button" data-c="Hiking" aria-current="false"><span class="no">03</span><img src="life-hike.jpg" width="600" height="800" loading="lazy" decoding="async" alt=""><span class="t">Hiking</span></button></li>
+            <li><button type="button" data-c="Cycling" aria-current="false"><span class="no">04</span><img src="life-cycle.jpg" width="800" height="600" loading="lazy" decoding="async" alt=""><span class="t">Cycling</span></button></li>
+            <li><button type="button" data-c="Alpine lake" aria-current="false"><span class="no">05</span><img src="life-swim.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Alpine lake</span></button></li>
+            <li><button type="button" data-c="Trips" aria-current="false"><span class="no">06</span><img src="life-trips.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Trips</span></button></li>
+            <li><button type="button" data-c="Coast at dusk" aria-current="false"><span class="no">07</span><img src="life-sunset.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Coast at dusk</span></button></li>
+          </ol>
+        </div>
+      </div></div></div>
     </div>
   </div>
 </section>
@@ -814,6 +832,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-07"></script>
+<script src="/assets/site.js?v=2026-10-07c"></script>
 </body>
 </html>

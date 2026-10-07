@@ -381,12 +381,18 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   short intro plus the Heinlein quote, "Everything is theoretically impossible,
   until it is done." (Adrian's wording, 26 Sept; it replaced the Fei-Fei Li one),
   and the photo fan.
-  The photos are a **swipe strip** (Adrian, 26 Sept, replacing the hover fan):
-  one row of cards that snaps to each photo; touch and trackpads swipe it, a
-  mouse drags it, the arrow keys and the ← → buttons step it, and each button
-  greys out at its end (`site.js` LIFE STRIP; the element keeps id `lifedeck`).
-  The strip is the seven outdoor photos only. The Startup School photos sat
-  in it for an hour on 7 Oct before Adrian asked for them "elsewhere".
+  The photos sit **behind a topo card** (Adrian, 7 Oct: they shouldn't be
+  among the first things people see). He picked card C from three mockups
+  (trail ridge, elevation profile, topo map): "Off the laptop", one line, a
+  "have a look" button, and contour lines that drift, faster on hover. It
+  opens **one big frame with a numbered list** (layout 3 of three: grid,
+  pinned prints, frame), crossfading between photos; arrows and keys step it.
+  Captions are his: 05 is "Alpine lake", and 07 is "Coast at dusk" (he asked
+  for 07 to change without naming it; that was Claude's pick). `site.js`
+  OFF THE LAPTOP; the panel only collapses once the script runs. The old
+  swipe strip (26 Sept) and its CSS are gone.
+  The viewer is the seven outdoor photos only. The Startup School photos sat
+  in the old strip for an hour on 7 Oct before Adrian asked for them "elsewhere".
 - **Startup School 2026 photos** (Adrian, 7 Oct) are a row of three under
   Achievements (`.ycs-grid`, framed like the bouts, cropped 4:3), right after
   the `.ac` cards that include Y Combinator Startup School: `img/ycs/yc-sign.jpg`

@@ -76,29 +76,45 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   setTimeout(tick, 700);
 })();
 
-/* ================= LIFE STRIP — swipe, drag or step through the photos ================= */
+/* ================= OFF THE LAPTOP — a topo card that opens the photo viewer ================= */
 (function(){
-  const strip=document.getElementById('lifedeck'); if(!strip) return;
-  const btns=[...document.querySelectorAll('.lnav')];
-  const step=()=>{ const c=strip.querySelector('.lcard'); return c?c.getBoundingClientRect().width+14:280; };
-  const go=d=>strip.scrollBy({left:d*step(),behavior:'smooth'});
-  function ends(){
-    const max=strip.scrollWidth-strip.clientWidth-2;
-    btns.forEach(b=>{ b.disabled=(+b.dataset.d<0)?strip.scrollLeft<=2:strip.scrollLeft>=max; });
+  const box=document.getElementById('offclock'); if(!box) return;
+  const card=box.querySelector('.oc-card'), panel=document.getElementById('ocPanel'); if(!card||!panel) return;
+  const svg=box.querySelector('.oc-topo'), lbl=box.querySelector('.oc-lbl');
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  box.classList.add('oc-ready'); panel.inert=true;
+  /* nine contour rings around the peak, wobbled by three sines; they drift slowly, faster on hover */
+  if(svg){
+    const NS='http://www.w3.org/2000/svg', pk=svg.querySelector('.pk');
+    const rings=[...Array(9)].map((_,k)=>{ const p=document.createElementNS(NS,'path'); p.setAttribute('class','c'+(k%3===2?' idx':'')); svg.insertBefore(p,pk); return p; });
+    const nz=(a,k,t)=>Math.sin(a*3+k*.7+t)*.10+Math.sin(a*5-k*.4-t*.7)*.06+Math.sin(a*2+k*1.3+t*.4)*.08;
+    const draw=t=>rings.forEach((p,k)=>{ const R=14+k*17; let d='';
+      for(let i=0;i<=72;i++){ const a=i/72*Math.PI*2, r=R*(1+nz(a,k,t)); d+=(i?'L':'M')+(170+Math.cos(a)*r*1.35).toFixed(1)+','+(92+Math.sin(a)*r).toFixed(1); }
+      p.setAttribute('d',d+'Z'); });
+    let t=0, speed=.004, vis=false, raf=0;
+    const loop=()=>{ t+=speed; draw(t); raf=vis?requestAnimationFrame(loop):0; };
+    draw(t);
+    if(!RM){
+      new IntersectionObserver(e=>{ vis=e[0].isIntersecting; if(vis&&!raf) raf=requestAnimationFrame(loop); }).observe(svg);
+      card.addEventListener('mouseenter',()=>speed=.014); card.addEventListener('mouseleave',()=>speed=.004);
+    }
   }
-  btns.forEach(b=>b.addEventListener('click',()=>go(+b.dataset.d)));
-  strip.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); go(e.key==='ArrowRight'?1:-1); } });
-  strip.addEventListener('scroll',ends,{passive:true});
-  addEventListener('resize',ends);
-  /* a mouse drags the strip; touch and trackpads already swipe it natively */
-  let x0=0,s0=0,down=false,moved=false;
-  strip.addEventListener('pointerdown',e=>{ if(e.pointerType!=='mouse'||e.button!==0) return; down=true; moved=false; x0=e.clientX; s0=strip.scrollLeft; });
-  addEventListener('pointermove',e=>{ if(!down) return; const dx=e.clientX-x0; if(!moved&&Math.abs(dx)>4){ moved=true; strip.classList.add('drag'); } if(moved) strip.scrollLeft=s0-dx; });
-  addEventListener('pointerup',()=>{ if(!down) return; down=false;
-    if(moved){ strip.classList.remove('drag');
-      /* let the snap settle on the nearest card */
-      const w=step(); strip.scrollTo({left:Math.round(strip.scrollLeft/w)*w,behavior:'smooth'}); } });
-  ends();
+  const toggle=()=>{ const o=!panel.classList.contains('open');
+    panel.classList.toggle('open',o); panel.inert=!o; card.setAttribute('aria-expanded',o?'true':'false'); if(lbl) lbl.textContent=o?'close':'have a look'; };
+  card.addEventListener('click',toggle);
+  card.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  /* the viewer: one big frame, a numbered list, and arrows (buttons or keys) */
+  const v=document.getElementById('lifeViewer'); if(!v) return;
+  const imgs=[...v.querySelectorAll('.v-main img')], bs=[...v.querySelectorAll('.v-list button')], cap=v.querySelector('.vc');
+  let vi=0;
+  const show=i=>{ vi=(i+imgs.length)%imgs.length;
+    imgs.forEach((im,k)=>im.classList.toggle('on',k===vi)); bs.forEach((b,k)=>b.setAttribute('aria-current',k===vi?'true':'false'));
+    if(cap) cap.textContent=String(vi+1).padStart(2,'0')+' / '+String(imgs.length).padStart(2,'0')+' · '+bs[vi].dataset.c; };
+  bs.forEach((b,k)=>b.addEventListener('click',()=>show(k)));
+  const vp=v.querySelector('.vp'), vn=v.querySelector('.vn');
+  if(vp) vp.addEventListener('click',()=>show(vi-1));
+  if(vn) vn.addEventListener('click',()=>show(vi+1));
+  v.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); show(vi+(e.key==='ArrowRight'?1:-1)); } });
 })();
 
 /* ================= INTRO / BOOT SEQUENCE ================= */
