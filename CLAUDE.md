@@ -258,12 +258,11 @@ from LaTeX in `resume/`.
   changes content, ping `https://api.indexnow.org/indexnow?url=<page>&key=<key>`.
 - **Search snippet (Adrian, 5 Oct):** title "Adrian Erlikhman — ML Research ·
   Full-Stack · Team USA Épée" (he asked for research, building, then
-  fencing). Description since 7 Oct: "ML/NLP researcher. Software & ML
-  intern at Firstness and Kiddom, investment intern at Fjor, 1st at two
-  hackathons, Team USA épée." Adrian asked for "ML/NLP researcher" up
-  front, then his real-world experience, no National Merit, and "just Team
-  USA" (no ranking). Same text in the og and twitter tags; keep it under
-  ~155 chars and update it when the internships change.
+  fencing). Description since 7 Oct, Adrian's own words: "ML/NLP
+  researcher. Software, ML, investment, and venture intern. Team USA
+  fencer." The four internships map to Firstness, Kiddom, Fjor and Alliance.
+  He turned down a longer draft that named the companies and the hackathons.
+  No National Merit, no ranking. Same text in the og and twitter tags.
 - **Images in the search result (Adrian, 7 Oct):** he wants his headshot, a
   fencing photo and a Startup School photo, not the climbing and hiking
   shots Google had picked. Google chooses these itself, so the site steers it
