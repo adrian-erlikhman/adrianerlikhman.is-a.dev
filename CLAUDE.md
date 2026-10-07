@@ -192,10 +192,10 @@ from LaTeX in `resume/`.
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
     BigData decides (9 Oct) and TACL does.
-  - The portfolio paper (R.04, with Ryan) got a **conditional acceptance** from
+  - The portfolio paper (R.03 since 7 Oct, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
-    5 Oct. The R.04 card and the long résumé say "Accepted with revisions", as
+    5 Oct. The card and the long résumé say "Accepted with revisions", as
     Legatum's do, and the card adds "revision submitted"; the meta, og and
     JSON-LD blurbs say "accepted". The revision went in on 1 Oct 2026 (OJSS
     confirmed it). Since 7 Oct the site's PDF is Ryan's own clean export,
@@ -459,7 +459,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **26 Sept sweep ("add logos wherever you can")**: an agent pulled candidates
   from each organisation's own site. Kept: IEEE's blue mark (brand-experience.
   ieee.org; ieee.org blocks scripts) beside R.01's status pill, OJSS's "O"
-  (oxfordjss.org favicon, white knocked out) beside R.04's, and Coursera's
+  (oxfordjss.org favicon, white knocked out) beside the portfolio paper's, and Coursera's
   wordmark (the inline SVG on coursera.org, fill #0056D2) on the Deep Learning
   Specialization row at 12px. Dropped as muddy at size: NeurIPS, JHSS, LACES
   (only a touch icon), and the square StandWithUs and Coursera marks.
@@ -539,8 +539,9 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   (was 200px until 7 Oct, which clipped three on desktop and cut every one
   roughly in half on a phone). Keep the cap above the tallest summary at
   390px wide.
-- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 Legatum robustness ·
-  R.04 portfolio optimization · R.05 advanced math. Two papers have come off,
+- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 portfolio optimization ·
+  R.04 Legatum robustness · R.05 advanced math (Adrian swapped R.03 and R.04
+  on 7 Oct). Two papers have come off,
   each with its PDF, ⌘K entry, terminal command and sitemap entry; don't bring
   either back. The Ukraine Legatum-ML paper went on 13 Sept 2026 because Adrian
   found it too similar to the Legatum robustness paper. **Earshot** (NLP
@@ -566,7 +567,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   two buses (40 min, 750 m on foot) against walking it (118 min, 9.3 km),
   measured as the route's modeled street-crime exposure. Say "modeled", and
   name the trip where there is room.
-- **Research R.03**, the Legatum robustness paper, links
+- **Research R.04** (R.03 until 7 Oct), the Legatum robustness paper, links
   `papers/legatum-robustness-audit.pdf?v=2026-09-13` from three places: the
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
   three whenever the PDF changes. The PDF is the 13 Sept 2026 JHSS revision
