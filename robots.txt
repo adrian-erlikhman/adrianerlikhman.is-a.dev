@@ -12,6 +12,6 @@ Disallow: /life-hike.jpg
 Disallow: /life-swim.jpg
 Disallow: /life-trips.jpg
 Disallow: /life-sunset.jpg
-Disallow: /life-yc-stage.jpg
+Disallow: /img/ycs/main-stage.jpg
 
 Sitemap: https://adrianerlikhman.is-a.dev/sitemap.xml
