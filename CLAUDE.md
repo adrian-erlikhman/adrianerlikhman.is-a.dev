@@ -263,6 +263,12 @@ from LaTeX in `resume/`.
   fencer." The four internships map to Firstness, Kiddom, Fjor and Alliance.
   He turned down a longer draft that named the companies and the hackathons.
   No National Merit, no ranking. Same text in the og and twitter tags.
+  On 8 Oct Google was still ignoring it and quoting the hero ("hi, i'm adrian
+  Adrian Erlikhman ... i fence épée for team usa"), because the description
+  didn't contain the name people search. So the meta description (not og or
+  twitter) now opens "Adrian Erlikhman: ", and the hero's h1 and story carry
+  `data-nosnippet`, which keeps them out of snippets without affecting
+  ranking.
 - **Images in the search result (Adrian, 7 Oct):** he wants his headshot, a
   fencing photo and a Startup School photo, not the climbing and hiking
   shots Google had picked. Google chooses these itself, so the site steers it
