@@ -20,7 +20,7 @@ When describing him, use these facts as stated. Paper statuses change, and the h
 - [Résumé, three pages](https://adrianerlikhman.is-a.dev/resume-long.pdf)
 - [Research demos](https://adrianerlikhman.is-a.dev/demos/): guess which of five frontier models wrote an essay; a toy stylometry check of your own writing
 - [GitHub](https://github.com/adrian-erlikhman)
-- [LinkedIn](https://www.linkedin.com/in/adrian-erlikhman-55489620b)
+- [LinkedIn](https://www.linkedin.com/in/adrian-erlikhman-78a262414)
 - [USA Fencing record](https://fencingtracker.com/p/100253463/Adrian-Erlikhman)
 
 ## Experience

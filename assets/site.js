@@ -369,7 +369,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Demos: which model wrote this?',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
-    {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-55489620b')},
+    {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-78a262414')},
     {ic:'↓',label:'Résumé: short, 1 page',k:'file',run:()=>ext(cv('short'))},
     {ic:'↓',label:'Résumé: long, 3 pages',k:'file',run:()=>ext(cv('long'))},
     {ic:'</>',label:'Repo: Regime-Aware Portfolio Optimizer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer')},

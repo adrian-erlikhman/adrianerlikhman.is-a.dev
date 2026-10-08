@@ -230,8 +230,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10b"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10b`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10c"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10c`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -282,6 +282,12 @@ from LaTeX in `resume/`.
   `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
   `apple-touch-icon.png`, plus `site.webmanifest`. Google had been showing
   the August glitch "AE", which survived in `apple-touch-icon.png`.
+- **LinkedIn is `linkedin.com/in/adrian-erlikhman-78a262414`** (8 Oct). Until
+  then the site, both résumés, llms.txt, the ⌘K palette and the GitHub README
+  linked `…-55489620b`, a separate, empty "Adrian Erlikhman" account (no photo,
+  no headline). The real profile, the one Adrian is signed in to, lists the
+  site as its website. The GitHub profile's website field has been set to the
+  site since 8 Oct.
 - **Google Search Console**: URL-prefix property for
   `https://adrianerlikhman.is-a.dev/`, verified by the root file
   `google2a9593ca4bc38729.html` (6 Oct). Never delete it: Google drops the
