@@ -503,50 +503,113 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   addEventListener('keydown',e=>{if(e.key==='Escape'&&!cv.hidden)close();});
 })();
 
-/* ================= COMPLLM STYLOMETRY DEMO ================= */
+/* ================= FEATURE STRIP — where a text sits against the five models' averages (both demos) ================= */
+window.AEstrip=function(o){
+  /* o: {label, unit, v (this text), means {model: mean}, hi (model to highlight), names {model: short name}, me (what to call the text)} */
+  const ks=Object.keys(o.means), all=ks.map(k=>o.means[k]).concat([o.v]);
+  let lo=Math.min.apply(null,all), hi=Math.max.apply(null,all); const pad=(hi-lo)*.08||1; lo-=pad; hi+=pad;
+  const x=v=>((v-lo)/(hi-lo)*100).toFixed(2)+'%', f=window.AEfmt;
+  const others=ks.filter(k=>k!==o.hi).map(k=>o.means[k]), omin=Math.min.apply(null,others), omax=Math.max.apply(null,others);
+  return '<div class="fx"><div class="fx-h"><b>'+o.label+'</b><span>'+o.unit+'</span></div>'+
+    '<div class="fx-track" aria-hidden="true">'+ks.map(k=>'<i class="fx-m'+(k===o.hi?' hi':'')+'" style="left:'+x(o.means[k])+'"></i>').join('')+
+    '<i class="fx-me" style="left:'+x(o.v)+'"></i></div>'+
+    '<div class="fx-v">'+(o.me||'this text')+' <b>'+f(o.v)+'</b> · '+o.names[o.hi]+' average <b>'+f(o.means[o.hi])+'</b> · the other four '+f(omin)+'–'+f(omax)+'</div></div>';
+};
+window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v.toFixed(1):a>=1?v.toFixed(2):v.toFixed(3);};
+
+/* ================= RUN THE CLASSIFIER — CompLLM's 18 features and a logistic regression (assets/stylometry-model.json) ================= */
 (function(){
-  const sv=document.getElementById('stylo'); if(!sv) return;
-  const MODELS=[{n:'Human',s:[17,.67,1.3,0]},{n:'GPT',s:[22,.55,2.2,4]},{n:'Claude',s:[19,.62,1.6,2]},{n:'Gemini',s:[15,.50,1.2,3]},{n:'Grok',s:[13,.58,.9,1]},{n:'DeepSeek',s:[24,.52,2.0,6]}];
-  const AIV=['delve','tapestry','testament','underscore','underscores','showcase','showcases','intricate','pivotal','vibrant','realm','foster','fosters','landscape','nuanced','crucial','leverage','robust','seamless','holistic','myriad','evolving'];
-  function analyze(t){
-    t=(t||'').trim();
-    const sents=t.split(/[.!?]+/).filter(s=>s.trim().length>0);
-    const words=(t.toLowerCase().match(/[a-z']+/g)||[]);
-    const nW=Math.max(1,words.length), nS=Math.max(1,sents.length);
-    const avg=nW/nS, ttr=new Set(words).size/nW;
-    const comma=(t.match(/,/g)||[]).length/nS;
-    const ai=words.filter(w=>AIV.indexOf(w)>-1).length/nW*1000;
-    const syll=words.reduce((a,w)=>a+Math.max(1,(w.match(/[aeiouy]+/g)||[]).length),0);
-    const flesch=Math.max(0,Math.min(120,206.835-1.015*avg-84.6*(syll/nW)));
-    return {nW,avg,ttr,comma,ai,flesch};
+  const box=document.getElementById('lab'); if(!box) return;
+  const $=id=>document.getElementById(id);
+  const NAMES={GPT:'GPT-5.5',Claude:'Claude Opus 4.7',Gemini:'Gemini 3.5 Flash',Grok:'Grok 4.3',DeepSeek:'DeepSeek'};
+  /* STYLO-FEATURES: a line-for-line port of CompLLM's src/features.py extract(). Python's \w and \b are
+     Unicode-aware and JS's \b is not, so word boundaries are spelled out with lookarounds. */
+  const W='[\\p{L}\\p{N}_]', B='(?:(?<='+W+')(?!'+W+')|(?<!'+W+')(?='+W+'))';
+  const RX_WORD=new RegExp(B+"[\\p{L}\\p{N}_'-]+"+B,'gu');
+  const RX_SENT=/[.!?]+(?:\s|$)/u;
+  const BE='(?:is|are|was|were|be|been|being|am|get|gets|got|becomes|became)';
+  const RX_PASS=new RegExp(B+BE+B+'\\s+(?:'+W+'+ly\\s+)?'+B+W+'+(?:ed|en|wn|ne|de)'+B,'giu');
+  const mean=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:NaN;
+  const sd=a=>{const m=mean(a);return Math.sqrt(mean(a.map(v=>(v-m)*(v-m))));};
+  function syll(word){
+    const w=word.toLowerCase().replace(/[^a-z]/g,'');
+    if(!w) return 0; if(w.length<=3) return 1;
+    let n=(w.match(/[aeiouy]+/g)||[]).length;
+    if(w.endsWith('e')&&!/(le|ee|ye)$/.test(w)&&n>1) n--;
+    if(/(es|ed)$/.test(w)&&n>1&&!/(ies|ted|ded)$/.test(w)) n--;
+    return Math.max(n,1);
   }
-  function classify(f){
-    const sc=[3.4,.12,1.0,3.0], out=MODELS.map(m=>{
-      const d=Math.sqrt(Math.pow((f.avg-m.s[0])/sc[0],2)+Math.pow((f.ttr-m.s[1])/sc[1],2)+Math.pow((f.comma-m.s[2])/sc[2],2)+Math.pow((f.ai-m.s[3])/sc[3],2));
-      return {n:m.n,d};
-    });
-    const ex=out.map(o=>Math.exp(-o.d*1.1)), sum=ex.reduce((a,b)=>a+b,0);
-    out.forEach((o,i)=>o.p=ex[i]/sum*100);
-    return out.sort((a,b)=>b.p-a.p);
+  function stylFeatures(text,hedges){
+    text=(text||'').trim();
+    const words=text.match(RX_WORD)||[], lower=words.map(w=>w.toLowerCase()), nW=Math.max(words.length,1);
+    let sents=text.split(RX_SENT).map(s=>s.trim()).filter(Boolean); if(!sents.length) sents=[text];
+    const sl=sents.map(s=>(s.match(RX_WORD)||[]).length), nS=sents.length;
+    let paras=text.split(/\n\s*\n/u).filter(p=>p.trim()); if(!paras.length) paras=[text];
+    const counts=new Map(); lower.forEach(w=>counts.set(w,(counts.get(w)||0)+1));
+    let hapax=0; counts.forEach(c=>{if(c===1)hapax++;});
+    const syl=words.reduce((s,w)=>s+syll(w),0), cx=words.filter(w=>syll(w)>=3).length;
+    const per100=k=>100*k/nW, cnt=s=>text.split(s).length-1, spw=nW/Math.max(nS,1);
+    const hs=new Set(hedges);
+    return [
+      words.length, counts.size/nW, hapax/nW, words.length?mean(words.map(w=>w.length)):0,
+      mean(sl), sd(sl), nS, per100((text.match(RX_PASS)||[]).length),
+      206.835-1.015*spw-84.6*(syl/nW), 0.39*spw+11.8*(syl/nW)-15.59, 0.4*(spw+100*cx/nW),
+      per100(lower.filter(w=>hs.has(w)).length), paras.length, mean(paras.map(p=>(p.match(RX_WORD)||[]).length)),
+      per100(cnt(',')), per100(cnt('—')+cnt('--')), per100(cnt(':')), per100(cnt(';'))
+    ];
+  }
+  /* STYLO-FEATURES END */
+  let M=null, k=-1, sample=null, timer=0;
+  const fmt=window.AEfmt;
+  const YOURS='your text · scored by the fit to all 190 essays';
+  function score(m,x){
+    const z=x.map((v,j)=>(v-m.mean[j])/m.scale[j]);
+    const l=m.coef.map((w,c)=>w.reduce((s,wj,j)=>s+wj*z[j],m.intercept[c])), mx=Math.max.apply(null,l);
+    const e=l.map(v=>Math.exp(v-mx)), t=e.reduce((a,b)=>a+b,0);
+    return {p:e.map(v=>v/t), z};
   }
   function render(){
-    const f=analyze(document.getElementById('svTa').value), r=classify(f);
-    document.getElementById('svM').textContent=r[0].n;
-    document.getElementById('svConf').textContent=Math.round(r[0].p)+'% similarity share';
-    document.getElementById('svBars').innerHTML=r.map(o=>'<div class="sv-row"><span class="nm">'+o.n+'</span><div class="sv-track"><div class="sv-fill" style="width:'+Math.round(o.p)+'%"></div></div><span class="pc">'+Math.round(o.p)+'%</span></div>').join('');
-    const feats=[['avg sentence',f.avg.toFixed(1)+' wds'],['lexical diversity',Math.round(f.ttr*100)+'%'],['commas / sentence',f.comma.toFixed(1)],['ai-vocabulary',f.ai.toFixed(1)+'/1k'],['readability',Math.round(f.flesch)]];
-    document.getElementById('svFeats').innerHTML=feats.map(x=>'<div class="sv-chip"><div class="k">'+x[0]+'</div><div class="v">'+x[1]+'</div></div>').join('');
+    const out=$('labOut'), x=stylFeatures($('labTa').value,M.hedges), words=x[0];
+    if(words<20){ out.innerHTML='<p class="lab-empty">Paste at least a paragraph. The essays it learned from averaged '+Math.round(M.mean_words)+' words.</p>'; return; }
+    const m=sample?M.folds[sample.fold]:M.full, r=score(m,x);
+    const order=M.classes.map((c,i)=>i).sort((a,b)=>r.p[b]-r.p[a]), top=order[0], c=M.classes[top];
+    /* each feature's push toward the winner, relative to the average class: z * (w_top - mean w) */
+    const avg=M.features.map((f,j)=>m.coef.reduce((s,row)=>s+row[j],0)/m.coef.length);
+    const push=M.features.map((f,j)=>({j,v:r.z[j]*(m.coef[top][j]-avg[j])})).filter(o=>o.v>0).sort((a,b)=>b.v-a.v).slice(0,3);
+    let html='<p class="g-line lab-verdict"><span class="g-k">reads most like</span><b class="lab-m">'+NAMES[c]+'</b><span class="lab-p">'+Math.round(r.p[top]*100)+'%</span></p>';
+    html+=sample
+      ? '<p class="g-line">'+(c===sample.author?'<span class="ok">Right ✓</span>':'<span class="no">Wrong ✗</span>')+' '+NAMES[sample.author]+' wrote it. The fit that scored it never saw this prompt.</p>'
+      : '<p class="g-line g-why">There is no human option: it names whichever of the five models your text sits closest to.'+(words<150?' Short texts lean on length; the essays it learned from averaged '+Math.round(M.mean_words)+' words.':'')+'</p>';
+    html+='<div class="lab-bars">'+order.map(i=>'<div class="lab-row'+(i===top?' top':'')+'"><span class="nm">'+M.classes[i]+'</span><span class="lab-track"><span style="width:'+(r.p[i]*100).toFixed(1)+'%"></span></span><span class="pc">'+Math.round(r.p[i]*100)+'%</span></div>').join('')+'</div>';
+    const means=j=>{const o={};M.classes.forEach(cl=>{o[cl]=M.means[cl][j];});return o;}, short={};
+    M.classes.forEach(cl=>{short[cl]=cl;});
+    if(push.length) html+='<p class="g-k lab-wh">what pointed to '+c+'</p><div class="fxs">'+push.map(o=>{const f=M.features[o.j];
+      return AEstrip({label:M.labels[f].label,unit:M.labels[f].unit,v:x[o.j],means:means(o.j),hi:c,names:short,me:sample?'this essay':'your text'});}).join('')+'</div>';
+    html+='<details class="lab-all"><summary>all 18 features, against each model&rsquo;s average</summary><div class="lab-tw"><table><thead><tr><th>feature</th><th>this text</th>'+M.classes.map(cl=>'<th>'+cl+'</th>').join('')+'</tr></thead><tbody>'+
+      M.features.map((f,j)=>'<tr><td>'+M.labels[f].label+' <span>'+M.labels[f].unit+'</span></td><td><b>'+fmt(x[j])+'</b></td>'+M.classes.map(cl=>'<td>'+fmt(M.means[cl][j])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></details>';
+    const open=out.querySelector('details[open]'); out.innerHTML=html; if(open) out.querySelector('details').open=true;
   }
-  const open=()=>{sv.hidden=false;render();};
-  if(!sv.hidden) render();   /* inline on /demos/, so draw it straight away */
-  const close=()=>{sv.hidden=true;};
-  const btn=document.getElementById('openStylo'); if(btn) btn.addEventListener('click',open);
-  document.getElementById('svClose').addEventListener('click',close);
-  sv.addEventListener('click',e=>{if(e.target===sv)close();});
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&!sv.hidden)close();});
-  const ta=document.getElementById('svTa'); if(ta) ta.addEventListener('input',render);
-  document.getElementById('svRun').addEventListener('click',render);
+  function load(i){
+    k=(i+M.samples.length)%M.samples.length; sample=M.samples[k];
+    $('labTa').value=sample.text; $('labTa').scrollTop=0;
+    $('labSrc').textContent='essay '+(k+1)+' of '+M.samples.length+' · prompt '+sample.prompt+' · edit it and it counts as your text';
+    $('labNext').textContent='next essay'; render();
+  }
+  $('labNext').addEventListener('click',()=>{ if(M) load(k+1); });
+  $('labClear').addEventListener('click',()=>{ if(!M) return; sample=null; $('labTa').value=''; $('labSrc').textContent=YOURS; $('labTa').focus(); render(); });
+  $('labTa').addEventListener('input',()=>{ if(!M) return;
+    if(sample){ sample=null; $('labSrc').textContent=YOURS; }
+    clearTimeout(timer); timer=setTimeout(render,150); });
+  fetch('/assets/stylometry-model.json?v=2026-10-10').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+    M=d; load(0);
+    $('labFoot').innerHTML='The paper&rsquo;s 18 features, ported line for line from its Python, and a logistic regression fitted to its '+d.essays+' chat-app essays on '+d.prompts+' prompts. Each essay here is scored by a fit that held out its prompt; held out that way, the regression names the right model for '+Math.round(d.lr_accuracy*100)+'% of the essays (the paper&rsquo;s random forest: '+(d.rf_accuracy*100).toFixed(1)+'%; chance: 20%). The percentages are its probabilities. Data and code: <a href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">self-recognition-peer-baseline on GitHub ↗</a>';
+  }).catch(()=>{ $('labOut').innerHTML='<p class="lab-empty">The classifier didn’t load. Its data and code are on GitHub.</p>'; });
 })();
+
+/* ================= RESEARCH SUMMARIES — hover opens them; on touch screens the summary button does ================= */
+document.querySelectorAll('.paper .ab-t').forEach(b=>b.addEventListener('click',()=>{
+  const p=b.closest('.paper'), on=p.classList.toggle('open'); b.setAttribute('aria-expanded',on);
+}));
 
 /* ================= MATH RESEARCH NOTES ================= */
 (function(){
@@ -765,7 +828,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>demo</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
-    demo:()=>{print("opening the demos — guess the model, and the stylometry toy …");location.href='/demos/';},
+    demo:()=>{print("opening the demos — guess the model, then run the classifier …");location.href='/demos/';},
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
@@ -872,6 +935,8 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(answered) return; answered=true;
     const s=data.samples[i], a=s.author, right=m===a;
     n++; if(right) you++; if(s.classifier_correct) clf++;
+    const C=s.classifier, F=data.features, ok=C.pred===a;
+    const strips=(C.why||[]).map(w=>AEstrip({label:F[w.f].label,unit:F[w.f].unit,v:w.v,means:w.means,hi:C.pred,names:SHORT,me:'this essay'})).join('');
     const js=ORDER.map(j=>[j,s.judges[j]]);
     const hits=js.filter(([,g])=>g===a).length; jud+=hits; judN+=js.length; score();
     $('gChoices').querySelectorAll('button').forEach(b=>{
@@ -882,8 +947,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     const last=i===data.samples.length-1;
     $('gReveal').innerHTML=
       '<p class="g-line"><b>'+NAMES[a]+'</b> wrote it. '+(right?'You got it.':'You said '+NAMES[m]+'.')+'</p>'+
-      '<p class="g-line"><span class="g-k">my classifier</span>'+(s.classifier_correct?'<span class="ok">named '+NAMES[a]+' ✓</span>':'<span class="no">picked another model ✗</span>')+
-      '<span class="g-why"> · 21 interpretable features, never trained on this prompt</span></p>'+
+      '<p class="g-line"><span class="g-k">my classifier, never trained on this prompt</span>'+(ok?'<span class="ok">said '+NAMES[C.pred]+' ✓</span>':'<span class="no">said '+NAMES[C.pred]+' ✗</span>')+
+      '<span class="g-why"> · '+Math.round(C.proba[C.pred]*100)+'% sure</span></p>'+
+      (strips?'<div class="g-line"><span class="g-k">what pointed it to '+SHORT[C.pred]+'</span><div class="fxs">'+strips+'</div></div>':'')+
       '<p class="g-line"><span class="g-k">the models, asked who wrote it</span><span class="g-judges">'+
       js.map(([j,g])=>'<span class="'+(g===a?'ok':'no')+'">'+SHORT[j]+' said '+(g?SHORT[g]:'nothing usable')+(g===a?' ✓':' ✗')+'</span>').join('')+'</span></p>'+
       (last
@@ -899,9 +965,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     else if(b.dataset.act==='again'){ i=0; n=you=clf=jud=judN=0; score(); show(0); }
   });
   function load(){
-    fetch('/assets/guess-samples.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
+    fetch('/assets/guess-samples.json?v=2026-10-10').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
       data=d; show(0); score();
-      $('gFoot').innerHTML='Ten of the '+d.english.essays+' English essays, two per model, drawn at random. Across all of them the classifier names the right model '+Math.round(d.english.classifier_accuracy*100)+'% of the time; the five models, asked the same question, '+Math.round(d.english.judge_accuracy*100)+'% (chance is 20%). Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a>';
+      $('gFoot').innerHTML='Ten of the '+d.english.essays+' English essays, two per model, drawn at random. Across all of them my classifier, a logistic regression on 21 interpretable features refit with each prompt held out, names the right model '+Math.round(d.english.classifier_accuracy*100)+'% of the time; the five models, asked the same question, '+Math.round(d.english.judge_accuracy*100)+'% (chance is 20%). Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a>';
     }).catch(()=>{ $('gText').innerHTML='<p>The essays didn’t load. They’re in the LangLLM repo on GitHub.</p>'; });
   }
   /* fetch the essays only when the section comes near */

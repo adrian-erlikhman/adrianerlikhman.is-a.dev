@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-07c">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-10">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -395,11 +395,11 @@
 <!-- RESEARCH / PAPERS -->
 <section id="papers">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// five papers · one in review</span></div>
+    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// four papers · three accepted</span></div>
     <!-- the demos moved to /demos/ (22 Sept); this is the prompt that sends people there -->
     <a class="tryline rv d1" href="/demos/">
       <span class="tl-k">try it</span>
-      <span class="tl-t"><b>Which model wrote this?</b> Ten real essays from the LangLLM study, five frontier models. Guess the author, then see what my classifier and the models themselves said.</span>
+      <span class="tl-t"><b>Two demos.</b> Guess which of five models wrote a real essay from the LangLLM study, then run the CompLLM classifier on your own writing.</span>
       <span class="tl-go">Open the demos &rarr;</span>
     </a>
 
@@ -412,6 +412,8 @@
           <div class="meta">Co-first author · LangLLM</div>
           <div class="st-row"><img class="vl" src="/img/logos/ieee.webp" width="45" height="13" loading="lazy" decoding="async" alt=""><div class="st">Accepted · IEEE BigData 2026 High School Symposium · Phoenix, 17 Dec</div></div>
           <div class="ptags"><span>Multilingual NLP</span><span>Stylometry</span><span>Interpretability</span><span>LLM-as-Judge</span></div>
+          <p class="find">A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.</p>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
           <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
         </div>
         <div class="paper-cta">
@@ -426,12 +428,14 @@
         <div class="pmain">
           <h3>Most Apparent Self-Recognition in LLM Judges Does Not Survive a Peer Baseline</h3>
           <div class="meta">Co-first author · CompLLM · with Ryan Erlikhman &amp; Michael Tarekegn · Advisor: Philo Juang (Google DeepMind)</div>
-          <div class="st">In submission · TACL · arXiv preprint forthcoming</div>
+          <div class="st st-open">In submission · TACL · arXiv preprint forthcoming</div>
           <div class="ptags"><span>NLP</span><span>LLM-as-Judge</span><span>Stylometry</span><span>Evaluation</span></div>
+          <p class="find">The usual test flags self-recognition in 15 judge settings. Scored against a peer baseline, 11 of them do not survive.</p>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
           <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text, and the usual check is how often a judge names itself on its own writing. We score each judge against two references the same experiment provides: how often it names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags self-recognition in 15 cases, and 11 do not survive. Where it is real it is large (Claude and GPT beat their peers by 33 and 28 points on chat-app essays), but it disappears on a second set of 600 texts, and the question format alone can create or erase it. The authorship signal is in the text; the judges' answers do not follow it.</p>
         </div>
         <div class="paper-cta">
-          <a class="dl" href="/demos/#stylometry" data-mag>TRY THE DEMO ↗</a>
+          <a class="dl" href="/demos/#stylometry" data-mag>RUN THE CLASSIFIER ↗</a>
           <a class="dl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
           <!-- [EDIT] swap for the arXiv link once it is posted -->
           <span class="dl dl-pending">PDF · ARXIV SOON</span>
@@ -445,6 +449,8 @@
           <div class="meta">Co-first author · Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
           <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · revision submitted</div></div>
           <div class="ptags"><span>Quant Finance</span><span>Portfolio Theory</span><span>Simulation</span></div>
+          <p class="find">Splitting evenly beat the Markowitz portfolio in 74% of 250 calibrated simulations (Sharpe 0.70 against 0.51).</p>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
           <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
         </div>
         <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" data-mag>PDF ↓</a>
@@ -457,6 +463,8 @@
           <div class="meta">Co-first author · composite-index robustness · with Ryan Erlikhman (LACES)</div>
           <div class="st">Accepted with revisions · Journal of High School Science · in revision</div>
           <div class="ptags"><span>Python</span><span>Rank Statistics</span><span>Robustness</span><span>Reproducibility</span></div>
+          <p class="find">The ranking holds as a whole (median Spearman ≥ 0.99) but not mid-table, where the median 90% rank interval spans 36 places.</p>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
           <p class="abstract">The Legatum Prosperity Index ranks 167 countries by an equal-weighted mean of twelve pillar scores. We reproduce every published score and rank exactly, then vary the weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design. The ranking holds as a whole (median Spearman ≥ 0.9899) but not in mid-table: the median 90% rank interval is 22 places overall and 36 for ranks 68–100. The paper's new result is rank leverage, c²(1 − ρ²): a weight can reorder countries only through the share of its pillar's variance that the composite doesn't share, times the pillar's squared relative spread. With arithmetic aggregation it tracks the weights' total effects under all four normalizations (Spearman 0.91–0.99), and equal weights of 1/12 give leverages that differ sixfold.</p>
         </div>
         <a class="dl" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" data-mag>PDF ↓</a>
@@ -467,8 +475,9 @@
         <div class="pmain">
           <h3>Advanced Mathematics Research</h3>
           <div class="meta">with PhD candidate Kirill Kovalenko</div>
-          <div class="st">Ongoing</div>
+          <div class="st st-open">Ongoing</div>
           <div class="ptags"><span>Induction</span><span>Number Theory</span><span>Combinatorics</span><span>Game Theory</span></div>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
           <p class="abstract">Ongoing study of induction, number theory, combinatorics, and game theory with a PhD mentor, applied to algorithmic problem-solving and computational mathematics. My working session notes are below.</p>
         </div>
         <button class="dl notes-open" id="openNotes">READ THE NOTES ↗</button>
@@ -826,6 +835,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-08"></script>
+<script src="/assets/site.js?v=2026-10-10"></script>
 </body>
 </html>
