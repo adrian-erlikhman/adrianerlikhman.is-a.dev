@@ -334,10 +334,17 @@ from LaTeX in `resume/`.
   space... maybe it can be a separate page where you are prompted to it, and it
   has a short demo walkthrough explaining what to do"). `demos/index.html`
   carries both, each behind a three-step walkthrough (`.steps`) that says what
-  to do: `[01]` **Which model wrote this?** (the `#guess` band, unchanged) and
-  `[02]` **Does your writing read like a model?** (the CompLLM stylometry toy,
-  which is the old `#stylo` overlay with `sv-inline` added, so it sits in the
-  page instead of over it and drops its own kicker, heading and sub).
+  to do: `[01]` **Which model wrote this?** (the `#guess` band) and `[02]`
+  **Run the classifier** (`#lab`, CompLLM's real classifier since 10 Oct; it
+  was a hand-set toy, `#stylo`, until then).
+- **10 Oct refinement** (Adrian: "update all of the research stuff and demos
+  to make it a lot better and refine it"): the cards inside each demo lost
+  their own kicker, heading and sub (the steps say it), the guess reveal shows
+  the classifier's pick, its probability and the three features that pointed
+  to it, and the toy became the paper's classifier. Both data files come from
+  `tools/build_demo_data.py`, which reads `LangLLM/` and `~/Downloads/complm`;
+  re-run it rather than editing the JSON. The feature strips (`AEstrip` in
+  site.js) put the text against the five models' averages.
 - The homepage prompts people to it from Research: one `.tryline` row above the
   paper list, plus a TRY THE DEMO link on R.01 (`/demos/#guess-sec`) and on R.02
   (`/demos/#stylometry`). Link the section, not `#guess`, so the steps come
@@ -369,8 +376,8 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
-  "// four internships, 2024 - now" and "// five papers · one in review" (two until
-  LangLLM's acceptance, 9 Oct).
+  "// four internships, 2024 - now" and "// four papers · three accepted" (10 Oct;
+  "five papers · two in review" before LangLLM's acceptance).
   Anything warmer has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
@@ -566,6 +573,12 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   under the lab (predict before you run, ethics, summary) are the notebook's
   own words, and the teacher-key numbers in the notebook don't match what the
   code prints on this scikit-learn, so don't quote them.
+- **Each R card shows one finding** (`.find`, since 10 Oct), a sentence of
+  numbers taken from its own summary; update it with the summary. On touch
+  screens a "summary +" button (`.ab-t`, hidden where hover works) opens the
+  summary. Status pills are solid when accepted and outlined (`.st-open`) when
+  in submission or ongoing. The label is "// four papers · three accepted"
+  (R.05 is a study, not a paper).
 - **Research summaries** open on hover or focus and are capped at 640px
   (was 200px until 7 Oct, which clipped three on desktop and cut every one
   roughly in half on a phone). Keep the cap above the tallest summary at
@@ -585,15 +598,26 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   per model, drawn at random with seed 20260922 from `LangLLM/data/raw`. Each
   carries the prompt's topic and stance, whether the 21-feature logistic
   regression named it (leave-one-prompt-out, `results/rq1_cell_correct.csv`),
-  and every model's answer to "who wrote this?" (`data/judge`). The game
+  and every model's answer to "who wrote this?" (`data/judge`). Since 10 Oct
+  each also carries `classifier`: that regression refit without the essay's
+  prompt, with its five probabilities and the features pushing hardest
+  toward its pick (z times the class's weight minus the mean weight). The
+  build stops unless the refit matches rq1_cell_correct on all 120. The game
   quotes the whole English set: classifier 72% of 120 essays, models 23% of
   600 calls, chance 20%. Rebuild it from the repo rather than editing by hand,
   and keep the random order (the first essay happens to be a classifier miss).
-- **The CompLLM stylometry demo** (on `/demos/`, linked from R.02) is a toy, and says so:
-  six hand-set profiles (Human, GPT, Claude, Gemini, Grok, DeepSeek) matched on
-  four features, with percentages that are shares of similarity, not
-  probabilities. Its note gives the paper's real setup (190 responses, five
-  models, 18 features, 86.3%). Don't describe it as the paper's classifier.
+- **Run the classifier** (on `/demos/`, linked from R.02 as RUN THE
+  CLASSIFIER) is CompLLM's own: the 18 features of `src/features.py`, ported
+  to JS line for line (`stylFeatures` in site.js; on 10 Oct it matched the
+  Python on all 190 essays, every feature, and on every held-out prediction),
+  and a StandardScaler + LogisticRegression(C=1) on the 190 chat-app essays
+  (`assets/stylometry-model.json`). Pasted text is scored by the fit to all
+  190; the ten sample essays (two per model, seed 20261010) by the GroupKFold
+  fit that held out their prompt. Held out by prompt, the regression is right
+  on **87.4%**; the paper's 86.3% is its random forest, so quote the 87% as the
+  regression's and the 86.3% as the paper's. The percentages are real
+  probabilities. It has no human option, and says so. If the JS port is ever
+  edited, re-check parity against the Python before shipping.
 - **Safe Routes' 80%** is one modeled trip: Exposition & Normandie to LACES by
   two buses (40 min, 750 m on foot) against walking it (118 min, 9.3 km),
   measured as the route's modeled street-crime exposure. Say "modeled", and
