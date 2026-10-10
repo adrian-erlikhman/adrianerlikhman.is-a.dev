@@ -114,8 +114,15 @@ from LaTeX in `resume/`.
   - **LangLLM's venue changed.** URTC didn't take it (CMT notice, 18 Sept).
     A full paper went to the **IEEE BigData 2026 High School Symposium** on
     21 Sept (SP19343, "Interpretable Multilingual Attribution of Frontier
-    LLMs", authors Adrian, Michael Tarekegn, Philo Juang; decision 9 Oct).
-    The R.01 card and both résumés say "Under review" there. The R.01 summary
+    LLMs", authors Adrian, Michael Tarekegn, Philo Juang). **Accepted** on
+    9 Oct 2026 (email 10 Oct 03:26 UTC) for presentation at the symposium,
+    17 Dec 2026, Phoenix, AZ; oral or poster not yet assigned; included in
+    the proceedings; camera-ready and registration instructions to follow.
+    The R.01 card says "Accepted · IEEE BigData 2026 High School Symposium ·
+    Phoenix, 17 Dec", both résumés "Accepted, IEEE BigData 2026 HS
+    Symposium", and the JSON-LD and llms.txt match. Once the format is
+    assigned it can go under the long résumé's Talks, and after 17 Dec the
+    card's "Phoenix, 17 Dec" should stop reading as upcoming. The R.01 summary
     follows that paper's abstract (`LangLLM/paper/main.tex`): no decline
     *detected*, n-grams more accurate within a language but the features
     transfer better, 57–70% on translations, and judges at 20–25%. The old
@@ -191,7 +198,7 @@ from LaTeX in `resume/`.
   - The summit is 200+ LA public-school students, never 500, and lists only
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
-    BigData decides (9 Oct) and TACL does.
+    TACL decides (BigData accepted LangLLM on 9 Oct).
   - The portfolio paper (R.03 since 7 Oct, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
@@ -230,8 +237,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10c"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10c`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10d"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10d`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -362,7 +369,8 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
-  "// four internships, 2024 - now" and "// five papers · two in review".
+  "// four internships, 2024 - now" and "// five papers · one in review" (two until
+  LangLLM's acceptance, 9 Oct).
   Anything warmer has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
