@@ -445,8 +445,13 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   960x540 CRF 28, no audio, `video/bout-team-afm.mp4`; poster
   `img/bouts/team-afm.webp`. All three video URLs carry `?v=2026-10-04`;
   bump it if a clip is re-cut.
-- The MIT logo and "In active recruitment" banner stay (Adrian, 21 Sept),
-  though the review suggested dropping them.
+- **The MIT "In active recruitment" banner and the "Full USA Fencing record"
+  button are off the Fencing section** (Adrian, 9 Oct: "remove this from my
+  site for now... we will add more later"); it now opens on the rankings.
+  Their CSS (`.fence-recruit`, `.fence-cta`, `.ft-link`, `.mit-logo`,
+  `.fr-txt`) and `mit-logo.svg` are kept for when he brings something back.
+  Contact's Fencing link and the JSON-LD `sameAs` still point to
+  fencingtracker.
 - **The top-left mark is option 40** (Adrian picked it from three sheets of
   mockups, 22 Sept): a rust block reading `[ ae ]` in mono, with the full name
   beside it as `.sr-only` so screen readers and crawlers still get it. It
