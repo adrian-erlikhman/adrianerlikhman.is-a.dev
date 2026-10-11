@@ -97,6 +97,14 @@ from LaTeX in `resume/`.
     is in submission at TACL, plus the preprint. R.02's status is "In
     submission · TACL · arXiv preprint forthcoming", llms.txt matches, and
     the search snippet says "submitted to TACL". Never "accepted" or NeurIPS.
+    **Title since 11 Oct 2026: "Whose Line Is It Anyway? Auditing Self- and
+    Other-Recognition in LLM Judges"** (the arXiv version's; Adrian took it
+    from Philo's suggestions). The R.02 card, both résumés and llms.txt use
+    it; TACL has the paper under the old title. The card's finding, summary
+    and both résumés' bullets follow the arXiv abstract: 15 of 37 cases
+    flagged, 8 survive the false-alarm control, 3 beat the pooled peers,
+    none beats its strongest single peer (Claude 33 of 38, GPT names Claude
+    on 32).
     On 7 Oct the R.02 card took the submitted title and a summary from the
     arXiv abstract, plus a CODE + DATA link to the public repo, but Adrian
     chose to **keep its old credit line** (Ryan and Michael, Philo as
@@ -237,8 +245,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10d"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10d`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10e"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10e`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
