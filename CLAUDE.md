@@ -33,10 +33,17 @@ from LaTeX in `resume/`.
   it, doesn't name every section once, in order (mono caps in both since
   24 Sept). It is deterministic: each PDF is stamped with the
   `%%  Updated: YYYY-MM-DD` line in its .tex header, so bump that line on edit.
+  **Without Tectonic** (12 Oct, cloud session): TeX Live's `xelatex` builds the
+  same layout. Run it twice (the long one's footer needs `LastPage`) with
+  `SOURCE_DATE_EPOCH` set from the Updated line, then run `build.check()` on the
+  result. On 12 Oct the unchanged sources gave text identical, line for line,
+  to the Tectonic PDFs, and the 12 Oct PDFs were built that way.
 - **Check every change:** render with `pypdfium2` and read `pdftotext -raw`.
   The one-pager has no slack: a two-line Kiddom bullet pushed it to two pages
   on 24 Sept and had to be cut back, so a new line there still means removing
-  one. Since the switch to Computer Modern (26 Sept) the one-pager is 8.8/10.6
+  one. (On 12 Oct the one-pager took Curated to Win, title, status line and a
+  two-line bullet, without cutting anything, so it has some room again; check the
+  render rather than trusting this.) Since the switch to Computer Modern (26 Sept) the one-pager is 8.8/10.6
   on 0.45in side margins and fills the page to the last line; the long one is
   9.1/11.1 on 0.5in sides, with page 2 ending before Ledger's first bullet and
   page 3 nearly full. Computer Modern's bold is extended and runs wider than
@@ -84,6 +91,8 @@ from LaTeX in `resume/`.
   end of its last bullet, in both:
   - LangLLM: `[abstract]`, `[poster]` (byte-equal to the repo's), `[code]`.
   - Legatum and the portfolio paper: `[pdf]` on the site.
+  - Curated to Win: `[pdf]` (the site's copy of the camera-ready) and `[code]`
+    (the public repo `adrian-erlikhman/curated-to-win`).
   - **CompLLM has no paper link yet.** JUDGe rejected it on 29 Sept 2026; it
     was **submitted to TACL on 2 Oct 2026 (submission 11824)** as "Most
     Apparent Self-Recognition in LLM Judges Does Not Survive a Peer Baseline",
@@ -94,24 +103,24 @@ from LaTeX in `resume/`.
     arXiv version (`paper_arxiv/` in the now-public repo
     `adrian-erlikhman/self-recognition-peer-baseline`) was waiting on
     Michael's review on 6 Oct. Adrian's call (7 Oct): the site still says it
-    is in submission at TACL, plus the preprint. R.02's status is "In
+    is in submission at TACL, plus the preprint. R.03's status is "In
     submission · TACL · arXiv preprint forthcoming", llms.txt matches, and
     the search snippet says "submitted to TACL". Never "accepted" or NeurIPS.
     **Title since 11 Oct 2026: "Whose Line Is It Anyway? Auditing Self- and
     Other-Recognition in LLM Judges"** (the arXiv version's; Adrian took it
-    from Philo's suggestions). The R.02 card, both résumés and llms.txt use
+    from Philo's suggestions). The R.03 card, both résumés and llms.txt use
     it; TACL has the paper under the old title. The card's finding, summary
     and both résumés' bullets follow the arXiv abstract: 15 of 37 cases
     flagged, 8 survive the false-alarm control, 3 beat the pooled peers,
     none beats its strongest single peer (Claude 33 of 38, GPT names Claude
     on 32).
-    On 7 Oct the R.02 card took the submitted title and a summary from the
+    On 7 Oct the R.03 card (R.02 until 12 Oct) took the submitted title and a summary from the
     arXiv abstract, plus a CODE + DATA link to the public repo, but Adrian
     chose to **keep its old credit line** (Ryan and Michael, Philo as
     advisor). The og card's chip "CO-FIRST AUTHOR — TACL (IN SUBMISSION)" and
     both résumés' "In submission, TACL" were left as they were (the résumés wait
     on a Tectonic download). Swap the dashed "PDF · ARXIV SOON" for the arXiv
-    link once it is posted (the R.02 card's `[EDIT]` comment marks the spot),
+    link once it is posted (the R.03 card's `[EDIT]` comment marks the spot),
     and drop "forthcoming".
   - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
     exported from Adrian's Google Doc on 19 Sept (`download_file_content` with
@@ -191,7 +200,7 @@ from LaTeX in `resume/`.
     2026). Before Philo writes him a letter of recommendation he asked for
     every mention, checked them, and said they were fine, so leave them alone
     rather than raising it again. For the record, the four advisor claims are
-    the R.02 card, the CompLLM credit in both résumés, and the AIML-LI bullet
+    the R.03 card, the CompLLM credit in both résumés, and the AIML-LI bullet
     in the long one; the summit keynote lines and the partner logo are about
     the company, not him. Two things he saw and accepted: his own URTC poster
     lists Philo as a **co-author at UCLA**, not an advisor at Google DeepMind,
@@ -207,7 +216,7 @@ from LaTeX in `resume/`.
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
     TACL decides (BigData accepted LangLLM on 9 Oct).
-  - The portfolio paper (R.03 since 7 Oct, with Ryan) got a **conditional acceptance** from
+  - The portfolio paper (R.04 since 12 Oct, R.03 from 7 Oct, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
     5 Oct. The card and the long résumé say "Accepted with revisions", as
@@ -222,6 +231,27 @@ from LaTeX in `resume/`.
     is the journal's own. Linked as `?v=2026-10-02` from the card, the ⌘K
     palette and the terminal; bump all three if it changes. Drop "revision
     submitted" once it is published. The one-pager doesn't carry this paper.
+  - **Curated to Win** (R.02 since 12 Oct): "Curated to Win: Certifying
+    Reward-Model and Judge Selection Against Evaluation-Set Curation", Adrian's
+    **sole-author** paper, so its credit reads "Sole author", the one exception to
+    the "Co-first author" rule (that rule was about not overclaiming, and he is
+    the only author on the camera-ready). Accepted 12 Oct 2026 (OpenReview email
+    09:17 UTC, paper #13) at **ARRSI**, the first Workshop on Autonomous Research
+    and Recursive Self-Improvement, at AACL-IJCNLP 2026, Hengqin, China, 10 Nov
+    2026. Status everywhere: "Accepted, ARRSI Workshop @ AACL-IJCNLP 2026" (the
+    card's pill uses "·" and spells the name out in its `title`). Adrian can't
+    travel to China; on 12 Oct he planned to ask the organizers to present
+    virtually and to **withdraw if they say no**, so if he withdraws, take it off
+    the card, both résumés, llms.txt and the JSON-LD (or reword) at once. Don't
+    claim the ACL Anthology or proceedings until he confirms he chose archival,
+    don't quote an acceptance rate, and don't add a talk or poster line until the
+    format is settled. The site's PDF, `papers/curated-to-win-arrsi2026.pdf`, is
+    the camera-ready from the repo (commit ad14f21, 12 Oct) with only Title/Author
+    metadata added; linked with `?v=2026-10-12` from the card, the ⌘K palette
+    and the terminal's `read curated`. Bump all three if it changes. Numbers on
+    the card, résumés and llms.txt come from the paper's `numbers.tex`: leader
+    certified against any 11 of 2,985 RewardBench items, 12 flip it; RB2 any 42;
+    200-item RewardBench samples 87% vs 43%.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
@@ -245,8 +275,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10e"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10e`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10f"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10f`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -354,7 +384,7 @@ from LaTeX in `resume/`.
   re-run it rather than editing the JSON. The feature strips (`AEstrip` in
   site.js) put the text against the five models' averages.
 - The homepage prompts people to it from Research: one `.tryline` row above the
-  paper list, plus a TRY THE DEMO link on R.01 (`/demos/#guess-sec`) and on R.02
+  paper list, plus a TRY THE DEMO link on R.01 (`/demos/#guess-sec`) and on R.03
   (`/demos/#stylometry`). Link the section, not `#guess`, so the steps come
   first. The ⌘K palette and the terminal's `demo` command open the page.
 - The stylometry script renders on load when the panel isn't hidden; the guess
@@ -384,7 +414,8 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
-  "// four internships, 2024 - now" and "// four papers · three accepted" (10 Oct;
+  "// four internships, 2024 - now" and "// five papers · four accepted" (12 Oct;
+  "four papers · three accepted" from 10 Oct;
   "five papers · two in review" before LangLLM's acceptance).
   Anything warmer has been cut twice, so don't reintroduce it.
 - **Selected work** is four case studies, each *the problem · my part · the
@@ -585,14 +616,16 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   numbers taken from its own summary; update it with the summary. On touch
   screens a "summary +" button (`.ab-t`, hidden where hover works) opens the
   summary. Status pills are solid when accepted and outlined (`.st-open`) when
-  in submission or ongoing. The label is "// four papers · three accepted"
-  (R.05 is a study, not a paper).
+  in submission or ongoing. The label is "// five papers · four accepted"
+  (R.06 is a study, not a paper).
 - **Research summaries** open on hover or focus and are capped at 640px
   (was 200px until 7 Oct, which clipped three on desktop and cut every one
   roughly in half on a phone). Keep the cap above the tallest summary at
   390px wide.
-- **Research** runs R.01 LangLLM · R.02 CompLLM · R.03 portfolio optimization ·
-  R.04 Legatum robustness · R.05 advanced math (Adrian swapped R.03 and R.04
+- **Research** runs R.01 LangLLM · R.02 Curated to Win · R.03 CompLLM ·
+  R.04 portfolio optimization · R.05 Legatum robustness · R.06 advanced math.
+  Curated to Win went in at R.02 on 12 Oct, after the other accepted NLP paper;
+  that placement was Claude's call, so move it if Adrian asks. (Adrian swapped R.03 and R.04
   on 7 Oct). Two papers have come off,
   each with its PDF, ⌘K entry, terminal command and sitemap entry; don't bring
   either back. The Ukraine Legatum-ML paper went on 13 Sept 2026 because Adrian
@@ -614,7 +647,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   quotes the whole English set: classifier 72% of 120 essays, models 23% of
   600 calls, chance 20%. Rebuild it from the repo rather than editing by hand,
   and keep the random order (the first essay happens to be a classifier miss).
-- **Run the classifier** (on `/demos/`, linked from R.02 as RUN THE
+- **Run the classifier** (on `/demos/`, linked from R.03 as RUN THE
   CLASSIFIER) is CompLLM's own: the 18 features of `src/features.py`, ported
   to JS line for line (`stylFeatures` in site.js; on 10 Oct it matched the
   Python on all 190 essays, every feature, and on every held-out prediction),
@@ -630,7 +663,7 @@ About, Experience, Research, Fencing, Achievements, Selected work, Contact.
   two buses (40 min, 750 m on foot) against walking it (118 min, 9.3 km),
   measured as the route's modeled street-crime exposure. Say "modeled", and
   name the trip where there is room.
-- **Research R.04** (R.03 until 7 Oct), the Legatum robustness paper, links
+- **Research R.05** (R.04 from 7 Oct, R.03 before), the Legatum robustness paper, links
   `papers/legatum-robustness-audit.pdf?v=2026-09-13` from three places: the
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
   three whenever the PDF changes. The PDF is the 13 Sept 2026 JHSS revision

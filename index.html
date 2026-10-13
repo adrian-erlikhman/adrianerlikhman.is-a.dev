@@ -88,7 +88,7 @@
         { "@type": "ImageObject", "url": "https://adrianerlikhman.is-a.dev/img/ycs/yc-sign.jpg", "caption": "Adrian Erlikhman at Y Combinator Startup School 2026" }
       ],
       "jobTitle": "Student Researcher",
-      "description": "High-school senior in Los Angeles working on machine learning, quantitative finance, and data science. Co-first-author NLP research accepted to the IEEE BigData 2026 High School Symposium and in submission to TACL; a Legatum Prosperity Index robustness audit accepted to the Journal of High School Science and a portfolio-optimization paper accepted to the Oxford Journal of Student Scholarship. National Merit Semifinalist, software, ML and VC internships, Y Combinator Startup School, and competitive épée fencing for Team USA.",
+      "description": "High-school senior in Los Angeles working on machine learning, quantitative finance, and data science. Co-first-author NLP research accepted to the IEEE BigData 2026 High School Symposium and in submission to TACL; a sole-author paper on reward-model and LLM-judge selection accepted to the ARRSI workshop at AACL-IJCNLP 2026; a Legatum Prosperity Index robustness audit accepted to the Journal of High School Science and a portfolio-optimization paper accepted to the Oxford Journal of Student Scholarship. National Merit Semifinalist, software, ML and VC internships, Y Combinator Startup School, and competitive épée fencing for Team USA.",
       "email": "mailto:erlikhman.adrian@gmail.com",
       "alumniOf": {
         "@type": "EducationalOrganization",
@@ -122,6 +122,7 @@
       "award": [
         "National Merit Semifinalist (2027 program)",
         "Accepted, IEEE BigData 2026 High School Symposium",
+        "Accepted, ARRSI Workshop at AACL-IJCNLP 2026 (sole author)",
         "Accepted with revisions, Journal of High School Science",
         "Accepted with revisions, Oxford Journal of Student Scholarship",
         "USA Fencing A26 rating, épée",
@@ -146,6 +147,19 @@
           "url": "https://adrianerlikhman.is-a.dev/resume-long.pdf"
         }
       ]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://adrianerlikhman.is-a.dev/#curated-to-win",
+      "headline": "Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation",
+      "name": "Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation",
+      "url": "https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf",
+      "encodingFormat": "application/pdf",
+      "author": [ { "@id": "https://adrianerlikhman.is-a.dev/#adrian" } ],
+      "creativeWorkStatus": "Accepted, Workshop on Autonomous Research and Recursive Self-Improvement (ARRSI) at AACL-IJCNLP 2026",
+      "about": "Reward-model and LLM-judge selection under evaluation-set curation",
+      "sameAs": "https://github.com/adrian-erlikhman/curated-to-win",
+      "inLanguage": "en"
     },
     {
       "@type": "ScholarlyArticle",
@@ -265,7 +279,7 @@
     <a href="#record">Achievements</a>
     <a href="#work">Selected work</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-10e" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-10f" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
 </div>
@@ -289,7 +303,7 @@
     <div class="hero-cta">
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
-      <a class="btn" href="resume.pdf?v=2026-10e" target="_blank" data-cv-menu>résumé</a>
+      <a class="btn" href="resume.pdf?v=2026-10f" target="_blank" data-cv-menu>résumé</a>
     </div>
   </div>
 
@@ -395,7 +409,7 @@
 <!-- RESEARCH / PAPERS -->
 <section id="papers">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// four papers · three accepted</span></div>
+    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// five papers · four accepted</span></div>
     <!-- the demos moved to /demos/ (22 Sept); this is the prompt that sends people there -->
     <a class="tryline rv d1" href="/demos/">
       <span class="tl-k">try it</span>
@@ -426,6 +440,23 @@
       <div class="paper" data-mag>
         <span class="pn">R.02</span>
         <div class="pmain">
+          <h3>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</h3>
+          <div class="meta">Sole author · reward-model and LLM-judge selection</div>
+          <div class="st" title="Workshop on Autonomous Research and Recursive Self-Improvement, at AACL-IJCNLP 2026">Accepted · ARRSI Workshop @ AACL-IJCNLP 2026</div>
+          <div class="ptags"><span>Reward Models</span><span>LLM-as-Judge</span><span>Evaluation</span><span>Linear Programming</span></div>
+          <p class="find">RewardBench's leader survives the removal of any 11 of its 2,985 items. Removing 12 particular items makes the runner-up the winner.</p>
+          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <p class="abstract">Automated research and self-improvement pipelines pick a reward model or LLM judge by its accuracy on a validation set, and that set is often curated by the pipeline or its designers. The paper's curation certificate says how much of the set could be removed before the winner changes. In benchmark weight it is at least the gap between the top two models; in items it is exact, from one sort per challenger. Linear programs show the bound is tight near the top of RewardBench (118 models) and RewardBench 2 (188). RewardBench's leader survives any 11 removed items, and RewardBench 2's any 42. On 200-item RewardBench validation sets, picks whose top two are more than 2 points apart match the full-benchmark winner 87% of the time, against 43% for the rest.</p>
+        </div>
+        <div class="paper-cta">
+          <a class="dl" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" data-mag>PDF ↓</a>
+          <a class="dl" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
+        </div>
+      </div>
+
+      <div class="paper" data-mag>
+        <span class="pn">R.03</span>
+        <div class="pmain">
           <h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3>
           <div class="meta">Co-first author · CompLLM · with Ryan Erlikhman &amp; Michael Tarekegn · Advisor: Philo Juang (Google DeepMind)</div>
           <div class="st st-open">In submission · TACL · arXiv preprint forthcoming</div>
@@ -443,7 +474,7 @@
       </div>
 
       <div class="paper" data-mag>
-        <span class="pn">R.03</span>
+        <span class="pn">R.04</span>
         <div class="pmain">
           <h3>Does Portfolio Optimization Beat Splitting Evenly?</h3>
           <div class="meta">Co-first author · Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
@@ -457,7 +488,7 @@
       </div>
 
       <div class="paper" data-mag>
-        <span class="pn">R.04</span>
+        <span class="pn">R.05</span>
         <div class="pmain">
           <h3>How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3>
           <div class="meta">Co-first author · composite-index robustness · with Ryan Erlikhman (LACES)</div>
@@ -471,7 +502,7 @@
       </div>
 
       <div class="paper" data-mag>
-        <span class="pn">R.05</span>
+        <span class="pn">R.06</span>
         <div class="pmain">
           <h3>Advanced Mathematics Research</h3>
           <div class="meta">with PhD candidate Kirill Kovalenko</div>
@@ -784,7 +815,7 @@
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag><img class="cl" src="/img/logos/github.svg" width="14" height="14" loading="lazy" decoding="async" alt="">GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" data-mag><img class="cl" src="/img/logos/linkedin.webp" width="14" height="14" loading="lazy" decoding="async" alt="">LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag><img class="cl" src="/img/logos/usafencing.webp" width="15" height="14" loading="lazy" decoding="async" alt="">Fencing</a>
-        <a href="resume.pdf?v=2026-10e" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
+        <a href="resume.pdf?v=2026-10f" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
       </div>
     </div>
   </div>
@@ -800,10 +831,10 @@
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">résumé <span>// pick a length</span></div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10e" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10f" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10e" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10f" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
@@ -835,6 +866,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-10"></script>
+<script src="/assets/site.js?v=2026-10-12"></script>
 </body>
 </html>

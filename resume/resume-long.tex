@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, LONG version
 %%  Source of resume-long.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-10-11
+%%  Updated: 2026-10-12
 %%
 %%  Same house design as the one-pager (Computer Modern, navy section heads):
 %%  Adrian asked on 24 Sept to drop the Harvard template and come back to it.
@@ -195,6 +195,14 @@
   \item Collected 840 essays from five frontier models across seven languages, English to Hindi, and attributed them with 21 interpretable features computed from Universal Dependencies parses: 59--72\% accuracy in every language against a 20\% chance floor, with no decline detected as a language's resources fall.
   \item Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49\% against 41\%), and attribution still holds at 57--70\% on machine-translated text.
   \item Across 4,195 judge calls, four of the five models attribute authorship at chance (20--25\%) while Claude's self-recognition holds even in Hindi.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/langllm-abstract-urtc2026.pdf}{abstract}\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/langllm-poster-urtc2026.pdf}{poster}\enspace\lnk{https://github.com/adrian-erlikhman/LangLLM}{code}
+\end{itemize}
+
+\paper{Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation}{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}%
+  {Sole author}%
+  {Accepted, ARRSI Workshop @ AACL-IJCNLP 2026}
+\begin{itemize}
+  \item Proposed a curation certificate for choosing a reward model or LLM judge by validation accuracy: how much of the set could be removed before the winner changes. In benchmark weight it is at least the top-two gap; counted in items it is exact.
+  \item RewardBench's leader survives the removal of any 11 of 2,985 items, and removing 12 particular items makes the runner-up the winner; linear programs show the bound is tight near the top of RewardBench and RewardBench 2. On 200-item RewardBench samples, picks with a top-two gap above 2 points match the full-benchmark winner 87\% of the time (43\% otherwise).\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}{pdf}\enspace\lnk{https://github.com/adrian-erlikhman/curated-to-win}{code}
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings?\newline A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
