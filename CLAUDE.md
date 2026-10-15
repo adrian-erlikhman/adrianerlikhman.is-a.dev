@@ -12,7 +12,8 @@ from LaTeX in `resume/`.
 - Épée · **A26 rating** · Region 4 No. 1 · Team USA
 - Public record: https://fencingtracker.com/p/100253463/Adrian-Erlikhman
 - Update in three places when these change:
-  - Site: `index.html`, `.fence-meta` chips (Fencing section, id currently `[06]`).
+  - Site: `index.html`, the `.fence-ranks` cells (Fencing section, `[05]`), and the
+    hero's "Top 20 · U.S. épée" fact (`.facts`), which rests on the peak cadet No. 17.
   - Both résumés: the fencing lines under LEADERSHIP & ATHLETICS in
     `resume/resume-short.tex` and `resume/resume-long.tex`, then rebuild.
 
@@ -397,10 +398,38 @@ from LaTeX in `resume/`.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
 Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
-`[02]` Experience · `[03]` Research (`papers`) · `[04]` Fencing ·
-`[05]` Achievements (`record`) · `[06]` Selected work (`work`) · `[07]` Contact.
-That order is **Adrian's**, 22 Sept, and the nav and ⌘K palette follow it:
-About, Experience, Research, Fencing, Achievements, Selected work, Contact.
+`[02]` Experience · `[03]` Research (`papers`) · `[04]` Selected work (`work`) ·
+`[05]` Fencing · `[06]` Achievements (`record`) · `[07]` Contact.
+That order is **Adrian's**: his 22 Sept order, with Selected work moved up from
+`[06]` on 15 Oct ("selected work should be higher"). The nav, the phone strip,
+the rail and the ⌘K palette follow it.
+- **Admissions pass (15 Oct 2026).** Adrian: the site "is going to be looked at by
+  college admissions counselors", so it should skim well, and be "really really
+  cool". What shipped:
+  - **At a glance** (`.facts`, under the hero buttons): four linked cells, his
+    wording. "4 accepted papers" (IEEE BigData · ARRSI @ AACL · 2 journals, the
+    R-card count); "Top 20 U.S. épée" with "Team USA · peak No. 17, Cadet" under
+    it, because he asked for "top 20 US" and only the peak cadet ranking
+    supports it (current junior is No. 49), so the qualifier must stay; "4
+    internships" across ML, software and venture capital; "200+ LA
+    public-school students", AIML-LI summit, co-founder. He wrote "200+ LA
+    schools", but the summit figure is students, never schools. The numbers
+    count up on reveal.
+  - **Fixes:** the hero lines are a real swipe now (the box clips; the old line
+    leaves left as the new one enters right, never overlapping); Experience
+    cards no longer fade to 35% until reached; reveals fire when a block's top
+    enters the screen (threshold .16 left tall blocks blank for a whole phone
+    screen).
+  - **Phones** get a section strip under the bar (`.secnav`, static HTML) that
+    follows the scroll. **Wide screens (1360px+)** get a rail in the right
+    margin (`.rail`, built by site.js from the `[0n]` labels).
+  - **Fencing** opens on `video/fence-loop.mp4`: six muted seconds of the team
+    relay leg (`bout-team-afm.mp4` from 0:40, cropped to the piste, 574 KB),
+    poster `img/bouts/fence-loop.webp`. It loads near the screen, plays only
+    on screen, and stays a poster under reduced motion or Save-Data.
+  - **The Ledger walkthrough** is folded into a `<details>` bar under the Ledger
+    case and fetches its JSON when opened.
+  - The intro overlay was left as is; it costs a first-time visitor up to 3.6 s.
 - **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
   adrian", then the **hero story**: four lines that swipe sideways on their
   own every 3.2s, always leaving left and entering right, with four clickable

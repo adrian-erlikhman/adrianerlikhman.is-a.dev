@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-10">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -275,13 +275,23 @@
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#papers">Research</a>
+    <a href="#work">Selected work</a>
     <a href="#fencing">Fencing</a>
     <a href="#record">Achievements</a>
-    <a href="#work">Selected work</a>
     <a href="#contact">Contact</a>
     <a href="resume.pdf?v=2026-10g" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
+  <!-- phones: the same sections as a strip under the bar (hidden above 900px, where .navset shows them) -->
+  <nav class="secnav" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#papers">Research</a>
+    <a href="#work">Work</a>
+    <a href="#fencing">Fencing</a>
+    <a href="#record">Achievements</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </div>
 
 <!-- HERO -->
@@ -304,6 +314,13 @@
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
       <a class="btn" href="resume.pdf?v=2026-10g" target="_blank" data-cv-menu>résumé</a>
+    </div>
+    <!-- AT A GLANCE (15 Oct): Adrian's four facts; each links to its section. Keep in step with the R cards, Fencing and Experience. -->
+    <div class="facts rv d2" aria-label="At a glance">
+      <a class="fact" href="#papers"><b data-count="4">4</b><span class="fk">accepted papers</span><span class="fi">IEEE BigData · ARRSI @ AACL · 2 journals</span></a>
+      <a class="fact" href="#fencing"><b>Top&nbsp;<span data-count="20">20</span></b><span class="fk">U.S. épée</span><span class="fi">Team USA · peak No.&nbsp;17, Cadet</span></a>
+      <a class="fact" href="#experience"><b data-count="4">4</b><span class="fk">internships</span><span class="fi">ML · software · venture capital</span></a>
+      <a class="fact" href="#case-aimlli"><b><span data-count="200">200</span>+</b><span class="fk">LA public-school students</span><span class="fi">AIML-LI summit · co-founder</span></a>
     </div>
   </div>
 
@@ -517,161 +534,10 @@
     </div>
   </div>
 </section>
-<!-- FENCING -->
-<section id="fencing">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[04]</span><h2>Fencing</h2><span class="note">// épée · team usa</span></div>
-    <div class="fence">
-      <div class="fence-main rv d1">
-        <div class="fence-ranks">
-          <div class="fr"><span class="v">No.&nbsp;49</span><span class="k">U.S. Junior<i>national ranking, U20</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;78</span><span class="k">U.S. Senior<i>national ranking, open</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;17</span><span class="k">U.S. Cadet<i>peak national ranking, U17</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;1</span><span class="k">Region 4<i>regional ranking</i></span></div>
-        </div>
-        <div class="fence-line"><img class="fencl" src="/img/logos/usafencing.webp" width="20" height="19" loading="lazy" decoding="async" alt=""><b>A26</b> · highest USA Fencing rating awarded &nbsp;|&nbsp; Épée &nbsp;|&nbsp; Team USA &nbsp;|&nbsp; LA International Fencing Center</div>
-        <div class="results">
-          <div class="res hot"><span class="pl">6th</span><span class="ev">Cadet (U17) · Pan-American Championships — <b>Team USA</b>, Bogotá, Colombia</span></div>
-          <div class="res"><span class="pl">Top 8</span><span class="ev">Cadet (U17) · Super Junior &amp; Cadet Circuit (SJCC)</span></div>
-          <div class="res"><span class="pl">Top 16</span><span class="ev">Cadet (U17) · October North American Cup</span></div>
-          <div class="res"><span class="pl">Top 16</span><span class="ev">Y14 (U14) · Summer Nationals 2023</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Div I · National Championships — April North American Cup</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Junior (U20) · Summer Nationals 2026</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · Summer Nationals 2025</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · November North American Cup</span></div>
-          <div class="res"><span class="pl">Top 64</span><span class="ev">Junior (U20) · North American Cup</span></div>
-          <div class="res"><span class="pl">4×</span><span class="ev">Junior (U20) · Regional Champion</span></div>
-          <div class="res"><span class="pl">3×</span><span class="ev">All-American · First Team</span></div>
-          <div class="res"><span class="pl">3×</span><span class="ev">All-Academic · First Team</span></div>
-        </div>
-      </div>
-      <div class="fence-gallery rv d2">
-        <figure class="fpho"><img src="fencing-1.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman fencing — épée lunge at an international event" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-1.jpg</div><figcaption class="fcap">Direct elimination · épée</figcaption></figure>
-        <figure class="fpho"><img src="fencing-2.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman on the podium with a USA Fencing medal" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-2.jpg</div><figcaption class="fcap">USA Fencing · podium</figcaption></figure>
-      </div>
-    </div>
-    <!-- three recorded bouts, Summer Nationals 2026 (Boutcaster), cut to start just before the clock runs, 540p, name boxes covered; in the team leg Adrian is on the right and Boutcaster had the boxes swapped, so both are relabelled -->
-    <div class="bouts rv d1">
-      <div class="recog-h">Bouts · Summer Nationals 2026</div>
-      <div class="bouts-grid">
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/team-afm.webp"><source src="/video/bout-team-afm.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>+6</b><span>Senior team relay leg, 8&ndash;2 · vs. a U.S. cadet travel-team fencer · team top 8</span></figcaption>
-        </figure>
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/harvard.webp"><source src="/video/bout-harvard.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>5&ndash;2</b><img class="bl" src="/img/logos/harvard.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a Harvard fencer</span></figcaption>
-        </figure>
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/ucsd.webp"><source src="/video/bout-ucsd.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>4&ndash;3</b><img class="bl" src="/img/logos/ucsd.svg" width="25" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a UCSD fencer</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ACHIEVEMENTS: the podium first, then the rest -->
-<section id="record">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[05]</span><h2>Achievements</h2><span class="note">// competitions · leadership · academics</span></div>
-    <p class="sec-lead rv d1">Awards, founding roles, invitations and coursework.</p>
-
-    <div class="pods rv d1">
-      <a class="pod" href="/eDNAtlas/" target="_blank">
-        <div class="pod-h"><b>1st</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al sq"><img src="/img/logos/lovable.svg" width="21" height="21" loading="lazy" decoding="async" alt="Lovable"></span>
-          <h3>Decode the Ocean</h3>
-          <p>Lovable × United Nations · eDNAtlas, a live map that scores coastal sites from environmental DNA ↗</p>
-        </div>
-      </a>
-      <a class="pod" href="#case-ledger">
-        <div class="pod-h"><b>1st</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al"><img src="/img/sponsors/hackerfund.webp" width="79" height="15" loading="lazy" decoding="async" alt="Hacker Fund"></span>
-          <h3>VISION HACK: South LA</h3>
-          <p>Hacker Fund × City of LA Vision Lab · Council District 9 Champion, Under 18, for Ledger ↓</p>
-        </div>
-      </a>
-      <a class="pod" href="#case-saferoutes">
-        <div class="pod-h"><b>3rd</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al sq"><img src="/img/logos/ycs.webp" width="21" height="21" loading="lazy" decoding="async" alt="Young Coders&rsquo; Sphere"></span>
-          <h3>Code for Transportation</h3>
-          <p>Young Coders&rsquo; Sphere · third internationally, for Safe Routes to School ↓</p>
-        </div>
-      </a>
-    </div>
-
-    <div class="acards rv d1">
-      <article class="ac">
-        <span class="ac-p">Semifinalist</span>
-        <span class="al mk"><img src="/img/logos/nmsc.webp" width="56" height="18" loading="lazy" decoding="async" alt="National Merit Scholarship Corporation"></span>
-        <h3>National Merit Scholarship Program</h3>
-        <p>About 16,000 of 1.3 million+ entrants</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Finalist</span>
-        <span class="al"><img src="/img/logos/citadel.webp" width="126" height="15" loading="lazy" decoding="async" alt="Citadel"></span>
-        <h3>Citadel High School Terminal</h3>
-        <p>Top 8 of 45 teams with &ldquo;dunerscore&rdquo;, a Python tower-defense bot built by a team of three · Citadel | Citadel Securities, hosted by Correlation One</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Admitted</span>
-        <span class="al sq"><img src="/img/logos/yc.svg" width="21" height="21" loading="lazy" decoding="async" alt="Y Combinator"></span>
-        <h3>Y Combinator Startup School</h3>
-        <p>Sub-5% acceptance, $30,000+ in partner credits</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Invited speaker</span>
-        <span class="al"><img src="/img/logos/ncss.webp" width="39" height="15" loading="lazy" decoding="async" alt="NCSS"></span>
-        <h3>NCSS 2026</h3>
-        <p>aiEDU&rsquo;s student panel on AI · National Consortium of STEM Schools, San Diego, December 2026</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Invited presenter</span>
-        <span class="al"><img src="/img/logos/lausd.webp" width="42" height="15" loading="lazy" decoding="async" alt="LAUSD"></span>
-        <h3>LAUSD Student Innovation Challenge</h3>
-        <p>A $10,000 district challenge</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Top 5%</span>
-        <span class="al"><img src="/img/logos/sifma.svg" width="31" height="15" loading="lazy" decoding="async" alt="SIFMA"></span>
-        <h3>SIFMA Stock Market Game</h3>
-        <p>A simulated portfolio on live data, against thousands of teams</p>
-      </article>
-    </div>
-
-    <!-- Startup School 2026 photos Adrian sent (7 Oct); the third is from a DeepMind x YC event in SF the same trip -->
-    <div class="recog-h rv d1">Y Combinator Startup School 2026</div>
-    <div class="ycs-grid rv d1">
-        <figure class="ycs"><img src="/img/ycs/yc-sign.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman with two other attendees at Y Combinator Startup School 2026" style="object-position:50% 72%"><figcaption>Startup School</figcaption></figure>
-        <figure class="ycs"><img src="/img/ycs/main-stage.jpg" width="600" height="800" loading="lazy" decoding="async" alt="The main stage at Y Combinator Startup School 2026, seen by Adrian Erlikhman from the stands" style="object-position:50% 45%"><figcaption>Main stage</figcaption></figure>
-        <figure class="ycs"><img src="/img/ycs/deepmind-yc.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman with another attendee at a DeepMind × Y Combinator event in San Francisco" style="object-position:50% 40%"><figcaption>DeepMind × YC event</figcaption></figure>
-    </div>
-
-    <div class="recog-h rv d1">Founding &amp; leadership</div>
-    <div class="results recog rv d1">
-      <a class="res" href="#case-safejew"><span class="pl">Co-founder</span><span class="ev"><img class="rl sq" src="/img/logos/safejew.webp" width="18" height="17" loading="lazy" decoding="async" alt=""><b>SafeJew</b> · JFEDLA Teen Innovation Grant · 800 geolocated incidents across Greater LA, and a scraper that keeps the map current ↓</span></a>
-      <a class="res" href="#case-aimlli"><span class="pl">Co-founder</span><span class="ev"><b>AI &amp; Machine Learning Literacy Initiative</b> · a free AI curriculum for LA public schools, and a summit for 200+ students ↓</span></a>
-      <div class="res"><span class="pl">President</span><span class="ev"><b>Jewish Student Union</b> · 50+ members · weekly programming, and a school-wide Holocaust Remembrance assembly with a survivor, run with StandWithUs</span></div>
-      <div class="res"><span class="pl">Founder</span><span class="ev"><b>STEMsters</b> · coding, robotics and engineering for 30+ students across four elementary schools</span></div>
-    </div>
-
-    <div class="recog-h rv d1">Academics &amp; training</div>
-    <div class="results recog rv d1">
-      <div class="res"><span class="pl">LACES &rsquo;27</span><span class="ev"><img class="rl sq" src="/img/logos/collegeboard.webp" width="17" height="17" loading="lazy" decoding="async" alt=""><b>5.2 weighted GPA · 1520 SAT</b> · AP Scholar with Distinction, on a 17-AP course load: 11 exams taken, 6 this year</span></div>
-      <div class="res"><span class="pl">Program</span><span class="ev"><img class="rl" src="/img/logos/kaggle.svg" width="44" height="15" loading="lazy" decoding="async" alt=""><b>Kaggle × Google Gen-AI Intensive</b> · five days on LLMs, embeddings, prompting and agents</span></div>
-      <div class="res"><span class="pl">Course</span><span class="ev"><img class="rl sm" src="/img/logos/coursera.svg" width="85" height="12" loading="lazy" decoding="async" alt=""><b>Deep Learning Specialization</b> · Andrew Ng, DeepLearning.AI on Coursera · five courses: neural nets, optimization, CNNs, sequence models</span></div>
-      <div class="res"><span class="pl">Certificate</span><span class="ev"><b>NVIDIA Deep Learning Institute</b> · deep-learning fundamentals</span></div>
-    </div>
-
-  </div>
-</section>
 <!-- SELECTED WORK: four case studies. Each says the problem, my part, the hard call, and what exists now. -->
 <section id="work" class="selected">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[06]</span><h2>Selected work</h2></div>
+    <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
     <div class="cases">
 
       <article class="case rv" id="case-safejew">
@@ -761,7 +627,9 @@
       </article>
 
       <!-- LEDGER WALKTHROUGH: four synthetic records from Ledger's own test suite -->
-      <div class="walk rv" id="ledgerWalk" aria-labelledby="lwTitle">
+      <details class="walk-d rv">
+      <summary><span class="wd-k">try the product · ledger</span><span class="wd-t">Pick an order record and see what counts</span><span class="wd-go">open <span aria-hidden="true">&darr;</span></span></summary>
+      <div class="walk" id="ledgerWalk" aria-labelledby="lwTitle">
         <div class="lw-head">
           <div class="lw-kick">try the product · ledger</div>
           <h3 class="lw-title" id="lwTitle">Pick an order record. See what counts.</h3>
@@ -778,6 +646,7 @@
         </div>
         <p class="lw-foot">Synthetic records from Ledger&rsquo;s test suite. This shows the rule engine, which matches hand scoring on all 24 records with no false passes, not the vision model, whose accuracy on real photos hasn&rsquo;t been measured. <a href="https://github.com/michae6345-crypto/visionhack/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">The eval ↗</a></p>
       </div>
+      </details>
 
       <article class="case flip rv" id="case-saferoutes">
         <figure class="case-media case-shot">
@@ -801,6 +670,162 @@
       </article>
 
     </div>
+  </div>
+</section>
+<!-- FENCING -->
+<section id="fencing">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[05]</span><h2>Fencing</h2><span class="note">// épée · team usa</span></div>
+    <!-- six seconds of the team relay leg (bout-team-afm.mp4 from 0:40, cropped to the piste, no audio); site.js plays it only on screen, and never under reduced motion -->
+    <figure class="reel rv d1">
+      <video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp" data-src="/video/fence-loop.mp4?v=2026-10-15" aria-hidden="true" tabindex="-1"></video>
+      <figcaption><span class="rk">Team USA · épée</span><span class="rt">Senior team relay, Summer Nationals 2026 · I'm on the right</span><a href="#bouts">full bouts &darr;</a></figcaption>
+    </figure>
+    <div class="fence">
+      <div class="fence-main rv d1">
+        <div class="fence-ranks">
+          <div class="fr"><span class="v">No.&nbsp;49</span><span class="k">U.S. Junior<i>national ranking, U20</i></span></div>
+          <div class="fr"><span class="v">No.&nbsp;78</span><span class="k">U.S. Senior<i>national ranking, open</i></span></div>
+          <div class="fr"><span class="v">No.&nbsp;17</span><span class="k">U.S. Cadet<i>peak national ranking, U17</i></span></div>
+          <div class="fr"><span class="v">No.&nbsp;1</span><span class="k">Region 4<i>regional ranking</i></span></div>
+        </div>
+        <div class="fence-line"><img class="fencl" src="/img/logos/usafencing.webp" width="20" height="19" loading="lazy" decoding="async" alt=""><b>A26</b> · highest USA Fencing rating awarded &nbsp;|&nbsp; Épée &nbsp;|&nbsp; Team USA &nbsp;|&nbsp; LA International Fencing Center</div>
+        <div class="results">
+          <div class="res hot"><span class="pl">6th</span><span class="ev">Cadet (U17) · Pan-American Championships — <b>Team USA</b>, Bogotá, Colombia</span></div>
+          <div class="res"><span class="pl">Top 8</span><span class="ev">Cadet (U17) · Super Junior &amp; Cadet Circuit (SJCC)</span></div>
+          <div class="res"><span class="pl">Top 16</span><span class="ev">Cadet (U17) · October North American Cup</span></div>
+          <div class="res"><span class="pl">Top 16</span><span class="ev">Y14 (U14) · Summer Nationals 2023</span></div>
+          <div class="res"><span class="pl">Top 32</span><span class="ev">Div I · National Championships — April North American Cup</span></div>
+          <div class="res"><span class="pl">Top 32</span><span class="ev">Junior (U20) · Summer Nationals 2026</span></div>
+          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · Summer Nationals 2025</span></div>
+          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · November North American Cup</span></div>
+          <div class="res"><span class="pl">Top 64</span><span class="ev">Junior (U20) · North American Cup</span></div>
+          <div class="res"><span class="pl">4×</span><span class="ev">Junior (U20) · Regional Champion</span></div>
+          <div class="res"><span class="pl">3×</span><span class="ev">All-American · First Team</span></div>
+          <div class="res"><span class="pl">3×</span><span class="ev">All-Academic · First Team</span></div>
+        </div>
+      </div>
+      <div class="fence-gallery rv d2">
+        <figure class="fpho"><img src="fencing-1.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman fencing — épée lunge at an international event" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-1.jpg</div><figcaption class="fcap">Direct elimination · épée</figcaption></figure>
+        <figure class="fpho"><img src="fencing-2.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman on the podium with a USA Fencing medal" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-2.jpg</div><figcaption class="fcap">USA Fencing · podium</figcaption></figure>
+      </div>
+    </div>
+    <!-- three recorded bouts, Summer Nationals 2026 (Boutcaster), cut to start just before the clock runs, 540p, name boxes covered; in the team leg Adrian is on the right and Boutcaster had the boxes swapped, so both are relabelled -->
+    <div class="bouts rv d1" id="bouts">
+      <div class="recog-h">Bouts · Summer Nationals 2026</div>
+      <div class="bouts-grid">
+        <figure class="bout">
+          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/team-afm.webp"><source src="/video/bout-team-afm.mp4?v=2026-10-04" type="video/mp4"></video>
+          <figcaption><b>+6</b><span>Senior team relay leg, 8&ndash;2 · vs. a U.S. cadet travel-team fencer · team top 8</span></figcaption>
+        </figure>
+        <figure class="bout">
+          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/harvard.webp"><source src="/video/bout-harvard.mp4?v=2026-10-04" type="video/mp4"></video>
+          <figcaption><b>5&ndash;2</b><img class="bl" src="/img/logos/harvard.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a Harvard fencer</span></figcaption>
+        </figure>
+        <figure class="bout">
+          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/ucsd.webp"><source src="/video/bout-ucsd.mp4?v=2026-10-04" type="video/mp4"></video>
+          <figcaption><b>4&ndash;3</b><img class="bl" src="/img/logos/ucsd.svg" width="25" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a UCSD fencer</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ACHIEVEMENTS: the podium first, then the rest -->
+<section id="record">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[06]</span><h2>Achievements</h2><span class="note">// competitions · leadership · academics</span></div>
+    <p class="sec-lead rv d1">Awards, founding roles, invitations and coursework.</p>
+
+    <div class="pods rv d1">
+      <a class="pod" href="/eDNAtlas/" target="_blank">
+        <div class="pod-h"><b>1st</b><span>place</span></div>
+        <div class="pod-b">
+          <span class="al sq"><img src="/img/logos/lovable.svg" width="21" height="21" loading="lazy" decoding="async" alt="Lovable"></span>
+          <h3>Decode the Ocean</h3>
+          <p>Lovable × United Nations · eDNAtlas, a live map that scores coastal sites from environmental DNA ↗</p>
+        </div>
+      </a>
+      <a class="pod" href="#case-ledger">
+        <div class="pod-h"><b>1st</b><span>place</span></div>
+        <div class="pod-b">
+          <span class="al"><img src="/img/sponsors/hackerfund.webp" width="79" height="15" loading="lazy" decoding="async" alt="Hacker Fund"></span>
+          <h3>VISION HACK: South LA</h3>
+          <p>Hacker Fund × City of LA Vision Lab · Council District 9 Champion, Under 18, for Ledger ↑</p>
+        </div>
+      </a>
+      <a class="pod" href="#case-saferoutes">
+        <div class="pod-h"><b>3rd</b><span>place</span></div>
+        <div class="pod-b">
+          <span class="al sq"><img src="/img/logos/ycs.webp" width="21" height="21" loading="lazy" decoding="async" alt="Young Coders&rsquo; Sphere"></span>
+          <h3>Code for Transportation</h3>
+          <p>Young Coders&rsquo; Sphere · third internationally, for Safe Routes to School ↑</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="acards rv d1">
+      <article class="ac">
+        <span class="ac-p">Semifinalist</span>
+        <span class="al mk"><img src="/img/logos/nmsc.webp" width="56" height="18" loading="lazy" decoding="async" alt="National Merit Scholarship Corporation"></span>
+        <h3>National Merit Scholarship Program</h3>
+        <p>About 16,000 of 1.3 million+ entrants</p>
+      </article>
+      <article class="ac">
+        <span class="ac-p">Finalist</span>
+        <span class="al"><img src="/img/logos/citadel.webp" width="126" height="15" loading="lazy" decoding="async" alt="Citadel"></span>
+        <h3>Citadel High School Terminal</h3>
+        <p>Top 8 of 45 teams with &ldquo;dunerscore&rdquo;, a Python tower-defense bot built by a team of three · Citadel | Citadel Securities, hosted by Correlation One</p>
+      </article>
+      <article class="ac">
+        <span class="ac-p">Admitted</span>
+        <span class="al sq"><img src="/img/logos/yc.svg" width="21" height="21" loading="lazy" decoding="async" alt="Y Combinator"></span>
+        <h3>Y Combinator Startup School</h3>
+        <p>Sub-5% acceptance, $30,000+ in partner credits</p>
+      </article>
+      <article class="ac">
+        <span class="ac-p">Invited speaker</span>
+        <span class="al"><img src="/img/logos/ncss.webp" width="39" height="15" loading="lazy" decoding="async" alt="NCSS"></span>
+        <h3>NCSS 2026</h3>
+        <p>aiEDU&rsquo;s student panel on AI · National Consortium of STEM Schools, San Diego, December 2026</p>
+      </article>
+      <article class="ac">
+        <span class="ac-p">Invited presenter</span>
+        <span class="al"><img src="/img/logos/lausd.webp" width="42" height="15" loading="lazy" decoding="async" alt="LAUSD"></span>
+        <h3>LAUSD Student Innovation Challenge</h3>
+        <p>A $10,000 district challenge</p>
+      </article>
+      <article class="ac">
+        <span class="ac-p">Top 5%</span>
+        <span class="al"><img src="/img/logos/sifma.svg" width="31" height="15" loading="lazy" decoding="async" alt="SIFMA"></span>
+        <h3>SIFMA Stock Market Game</h3>
+        <p>A simulated portfolio on live data, against thousands of teams</p>
+      </article>
+    </div>
+
+    <!-- Startup School 2026 photos Adrian sent (7 Oct); the third is from a DeepMind x YC event in SF the same trip -->
+    <div class="recog-h rv d1">Y Combinator Startup School 2026</div>
+    <div class="ycs-grid rv d1">
+        <figure class="ycs"><img src="/img/ycs/yc-sign.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman with two other attendees at Y Combinator Startup School 2026" style="object-position:50% 72%"><figcaption>Startup School</figcaption></figure>
+        <figure class="ycs"><img src="/img/ycs/main-stage.jpg" width="600" height="800" loading="lazy" decoding="async" alt="The main stage at Y Combinator Startup School 2026, seen by Adrian Erlikhman from the stands" style="object-position:50% 45%"><figcaption>Main stage</figcaption></figure>
+        <figure class="ycs"><img src="/img/ycs/deepmind-yc.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman with another attendee at a DeepMind × Y Combinator event in San Francisco" style="object-position:50% 40%"><figcaption>DeepMind × YC event</figcaption></figure>
+    </div>
+
+    <div class="recog-h rv d1">Founding &amp; leadership</div>
+    <div class="results recog rv d1">
+      <a class="res" href="#case-safejew"><span class="pl">Co-founder</span><span class="ev"><img class="rl sq" src="/img/logos/safejew.webp" width="18" height="17" loading="lazy" decoding="async" alt=""><b>SafeJew</b> · JFEDLA Teen Innovation Grant · 800 geolocated incidents across Greater LA, and a scraper that keeps the map current ↑</span></a>
+      <a class="res" href="#case-aimlli"><span class="pl">Co-founder</span><span class="ev"><b>AI &amp; Machine Learning Literacy Initiative</b> · a free AI curriculum for LA public schools, and a summit for 200+ students ↑</span></a>
+      <div class="res"><span class="pl">President</span><span class="ev"><b>Jewish Student Union</b> · 50+ members · weekly programming, and a school-wide Holocaust Remembrance assembly with a survivor, run with StandWithUs</span></div>
+      <div class="res"><span class="pl">Founder</span><span class="ev"><b>STEMsters</b> · coding, robotics and engineering for 30+ students across four elementary schools</span></div>
+    </div>
+
+    <div class="recog-h rv d1">Academics &amp; training</div>
+    <div class="results recog rv d1">
+      <div class="res"><span class="pl">LACES &rsquo;27</span><span class="ev"><img class="rl sq" src="/img/logos/collegeboard.webp" width="17" height="17" loading="lazy" decoding="async" alt=""><b>5.2 weighted GPA · 1520 SAT</b> · AP Scholar with Distinction, on a 17-AP course load: 11 exams taken, 6 this year</span></div>
+      <div class="res"><span class="pl">Program</span><span class="ev"><img class="rl" src="/img/logos/kaggle.svg" width="44" height="15" loading="lazy" decoding="async" alt=""><b>Kaggle × Google Gen-AI Intensive</b> · five days on LLMs, embeddings, prompting and agents</span></div>
+      <div class="res"><span class="pl">Course</span><span class="ev"><img class="rl sm" src="/img/logos/coursera.svg" width="85" height="12" loading="lazy" decoding="async" alt=""><b>Deep Learning Specialization</b> · Andrew Ng, DeepLearning.AI on Coursera · five courses: neural nets, optimization, CNNs, sequence models</span></div>
+      <div class="res"><span class="pl">Certificate</span><span class="ev"><b>NVIDIA Deep Learning Institute</b> · deep-learning fundamentals</span></div>
+    </div>
+
   </div>
 </section>
 <!-- CONTACT -->
@@ -866,6 +891,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-15"></script>
+<script src="/assets/site.js?v=2026-10-15b"></script>
 </body>
 </html>
