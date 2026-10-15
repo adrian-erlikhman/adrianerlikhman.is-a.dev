@@ -1636,3 +1636,14 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
   .aw-md{font-size:9px;top:6px;left:7px}
   .aw-d{padding:22px 18px 18px}
 }
+/* ==================== ABOUT (15 Oct, Adrian: quote out, "Off the laptop" on the right so it takes less space) ====================
+   #offclock dissolves into the .about grid: its card is the right-hand column, its photo panel spans the row underneath */
+#about .about{align-items:center}
+#about .about #offclock{display:contents}
+#about .about #offclock .oc-card{grid-column:2;min-height:0;grid-template-columns:minmax(0,1fr) 170px}
+#about .about #offclock .oc-txt{padding:20px 22px}
+#about .about #offclock .oc-panel{grid-column:1/-1}
+@media(max-width:820px){#about .about #offclock .oc-card{grid-column:auto}}
+@media(max-width:700px){#about .about #offclock .oc-card{grid-template-columns:1fr}}
+/* the open tab's underline was the auto-advance timer; with no timer it is simply the selected tab's rule */
+.xf-tab[aria-selected=true] .xf-prog{transform:scaleX(1)}

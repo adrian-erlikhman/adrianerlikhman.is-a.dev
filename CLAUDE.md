@@ -195,7 +195,15 @@ from LaTeX in `resume/`.
     research stack", then making it "easier to understand with demos". Every
     mention says that, glossing the research stack as the literature databases
     and reference managers researchers already work in, and names no project
-    or integration beyond it. The founder isn't named. It leads Professional
+    or integration beyond it. The founder isn't named. **Since 15 Oct the site's
+    Firstness file follows his UC activities doc ("UC Activities & Awards —
+    FINAL v3", Drive)** after he asked for the founder part to be "a little
+    more specific": the org line says "working directly with the founder, a
+    UC Berkeley- and UCSF-affiliated neuroscientist" (still unnamed), the
+    connectors reach "the tools scientists already use for literature, data
+    and analysis" (no tools named; the doc itself says [NAME tools]), and the
+    demos turn "the founder's LLM research" into product demos. The headline
+    stat is "1:1 with the founder". The résumés keep the older wording. It leads Professional
     Experience in both résumés: the long one has three bullets (the platform
     and the founder, the research stack, demos for new users). The one-pager has
     one bullet, with "reporting directly to the founder" on its role line. To fit
@@ -508,7 +516,7 @@ the rail and the ⌘K palette follow it.
       10 very distinct options" (mocked in a throwaway `_mock/`: terminal,
       deck, side-scroll, big type, transit map, bento, ticker, case files,
       scroll story, flip cards), liked case files, and from three takes on it
-      picked **B**: "make what i did very clear". One manila file per
+      picked **B**: "make what i did very clear". **No auto-advance since 15 Oct** (Adrian: "not timed... they can stay on the tab for as long as they want"); the Alliance tab is its mark alone, like Kiddom and Fjor. One manila file per
       internship behind tabs: a typed sheet with "Internship · 0n / 04 ·
       dates", a Current/Completed stamp, the role, the company with its mark
       and who he worked with, then **What I did** (a dark label, three items,
@@ -660,9 +668,10 @@ the rail and the ⌘K palette follow it.
   and LAUSD "invited presenter". He said no to class rank and to the junior
   regional titles here (those stay in Fencing). The old `.pod`/`.ac`/`.ycs-grid`
   CSS is unused in site.css. **About** is the
-  short intro plus the Heinlein quote, "Everything is theoretically impossible,
-  until it is done." (Adrian's wording, 26 Sept; it replaced the Fei-Fei Li one),
-  and the photo fan.
+  short intro with the "Off the laptop" card beside it on the right (15 Oct:
+  Adrian dropped the Heinlein quote and moved the card up "so it takes up less
+  space"; `#offclock` is display:contents inside `.about`, so the photo panel
+  still opens full width underneath).
   The photos sit **behind a topo card** (Adrian, 7 Oct: they shouldn't be
   among the first things people see). He picked card C from three mockups
   (trail ridge, elevation profile, topo map): "Off the laptop", one line, a

@@ -328,9 +328,8 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   },3800);
 })();
 
-/* ================= EXPERIENCE — internship files: tabs switch the open file. While the files are on screen they step
-   through by themselves (the open tab's underline is the timer); hover or focus pauses, and a click or a key hands control
-   to the visitor for good. Without JS all four files show. ================= */
+/* ================= EXPERIENCE — internship files: tabs switch the open file, and it stays open until the visitor picks
+   another (arrows, Home and End too). Without JS all four files show. ================= */
 (function(){
   const b=document.getElementById('xpFiles'); if(!b) return;
   const tabs=[...b.querySelectorAll('.xf-tab')], panels=[...b.querySelectorAll('.xf-p')];
@@ -356,10 +355,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     const pr=t.querySelector('.xf-prog'); if(pr) pr.addEventListener('animationend',()=>{ if(b.classList.contains('auto')) set(cur+1); });
   });
   set(0);
-  if(!REDUCED&&'IntersectionObserver' in window){
-    b.classList.add('auto','off');
-    new IntersectionObserver(es=>es.forEach(e=>b.classList.toggle('off',!e.isIntersecting)),{threshold:.35}).observe(b);
-  }
+  /* no auto-advance (Adrian, 15 Oct: "not timed... they can stay on the tab for as long as they want") */
 })();
 
 /* ================= RÉSUMÉ PICKER (short / long) ================= */
