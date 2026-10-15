@@ -774,6 +774,17 @@ the rail and the ⌘K palette follow it.
   StandWithUs's wordmark was clean but left off the JSU row, where it would
   read as the club's own; Correlation One was clean but the Citadel card
   already carries a mark. aiEDU would need its tagline cropped.
+- **Achievements tiles, 15 Oct (Adrian):** the IEEE Best Paper tile came off
+  ("a tad redundant": Research shows it); VISION HACK (1st, Ledger, wording per
+  the Ledger rule) and Code for Transportation (3rd, Safe Routes) went in after
+  Decode the Ocean, and NCSS 2026 (invited speaker) after Startup School: 14
+  tiles. New marks, each from the organisation's own site that day:
+  `img/logos/jsu.webp` (jsu.org's white lockup on Cloudinary, recolored to
+  JSU's navy 0,4,83 sampled from their footer mark), `laces.webp` (the
+  L.A.C.E.S. Unicorns seal, lacesmagnetschool.org's apple-touch-icon, white
+  outside the ring knocked out) and `visionlab.webp` (Vision Lab @ South LA,
+  VISION HACK's Luma calendar image). STEMsters has no mark anywhere online,
+  so it keeps its small-caps wordmark.
 - **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
   nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
   came out of NMSC's own annual report
