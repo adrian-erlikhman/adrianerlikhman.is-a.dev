@@ -289,8 +289,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10g"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10g`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-fjor"` should print 5
+  and 3. Bump all eight whenever either PDF changes, to a value nobody else has
+  used. Currently `?v=2026-10-15-fjor`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -503,6 +504,18 @@ the rail and the ⌘K palette follow it.
       through the files while on screen (9 s, the tab's underline is the
       timer) until a click or key; without JS all four show. Content rules for
       Firstness and Kiddom hold here too.
+      **Second pass (same day; Adrian: the work "tuff", the headline "way
+      tuffer", logos on the tabs, Fjor completed):** each What I did item is an
+      imperative action ("Diligence 20+ AI startups") and one tight sentence;
+      the yellow sticky became a navy **headline card**: one sentence that says
+      what the internship amounted to, then two or three numbers. Tabs carry
+      each company's mark (Kiddom and Fjor by mark alone, their names in
+      `.sr-only`). Fjor's sectors (enterprise SaaS, fintech, deep tech) come
+      from his MIT profile doc. He also asked for "the algo stuff i did for fjor
+      and alliance"; nothing on record (résumés, site, notes, that doc) names
+      an algorithm at either, so it waits for his description.
+  - **Fjor is completed** (Adrian, 15 Oct 2026): 2024–2026 on the site, both
+    résumés (rebuilt) and llms.txt; its file is stamped Completed.
     - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
       kicker, a one-line title that says what it is, then Built / Backed by /
       Result (Safe Routes adds Why, with "My friends are in that number").
