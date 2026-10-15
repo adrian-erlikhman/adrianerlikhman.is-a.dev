@@ -377,6 +377,16 @@ from LaTeX in `resume/`.
 - `[03]` Ledger's walkthrough and `[04]` the AIML-LI Unit 1 lab moved here from
   the homepage's case studies on 15 Oct, each behind three `.steps`; the page
   head says "four demos".
+- **For admissions readers (15 Oct, Adrian: "make it more impressive for an
+  admissions office"):** the head is a one-line lead and an index of four
+  tiles (`.dx`), each with the demo's headline number and its source: 72% vs
+  23% (classifier vs the models, LangLLM), 87% (CompLLM's regression held out
+  by prompt), 24 of 24 (Ledger's rule engine vs hand scoring, no false
+  passes), 98% / 67% (the lab's pooled accuracy vs winners found at 1 in 20).
+  Each section opens with a "from" line (`.prov`): the paper or project, its
+  status pill and links. The Ledger and lab cards' own kickers are hidden
+  there, and the lab sits beside "what students take from it" (the pooled
+  96.3→98.1% and 95.8→66.9%). Keep those numbers in step with their sources.
 - Adrian moved them off the homepage ("the comp / langllm demo takes up too much
   space... maybe it can be a separate page where you are prompted to it, and it
   has a short demo walkthrough explaining what to do"). `demos/index.html`
@@ -440,9 +450,17 @@ the rail and the ⌘K palette follow it.
       credit, the one-line finding, then inline mono links (`.plinks`, `.pl`;
       `.pl-try` for a demo). The "try it" banner and the topic tags are gone;
       the summary still opens on hover or with the summary button.
-    - **Experience** is a vertical list (`.xp` / `.xr`): dates left, role and
-      company with its mark, three bullets each, key numbers bold; on desktop
-      hover lifts the row and dims the others. The zigzag timeline is gone.
+    - **Experience** is a board (`#xpBoard`, `.xb`), since a third pass the same
+      day (Adrian: the vertical list and its bullets looked "mid"; he wanted
+      "something unique... possibly interactive"). Each internship is a bar on
+      a 2024 / 2025 / 2026 / now track, at year precision only (no months are
+      known); ongoing roles pulse at the "now" end. Picking a bar opens its
+      panel: dates, role, company with mark, and three "moves" (a mono verb, a
+      big rust value, one line; 20+, 10+ and 250+ count up). While on screen it
+      steps through by itself, the selected bar's underline being the timer;
+      hover or focus pauses, a click or arrow key hands over control for good,
+      and reduced motion turns it off. Without JS all four panels show. The
+      moves' wording follows the Firstness and Kiddom rules.
     - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
       kicker, a one-line title that says what it is, then Built / Backed by /
       Result (Safe Routes adds Why, with "My friends are in that number").

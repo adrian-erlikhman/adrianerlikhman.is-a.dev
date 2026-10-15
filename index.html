@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15c">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15d">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -390,57 +390,56 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[02]</span><h2>Experience</h2><span class="note">// four internships, 2024 &ndash; now</span></div>
-    <!-- EXPERIENCE as a list (15 Oct): dates left, role and company, three bullets. Wording follows the content rules in CLAUDE.md
-         (Firstness: research stack + demos, founder unnamed; Kiddom: the evaluation is being designed, the pilot has not run). -->
-    <div class="xp rv d1">
-      <article class="xr">
-        <div class="xr-when">2026 — now</div>
-        <div class="xr-main">
-          <h3>Software Engineering &amp; ML Intern</h3>
-          <div class="xr-org"><img class="orgl sq" src="/img/logos/firstness.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a><span>AI research engine</span></div>
-          <ul class="xr-pts">
-            <li>Software and ML engineering on Firstness, a research engine for discovering new hypotheses, working directly under the founder.</li>
-            <li>Refining how the platform connects into the research stack: the literature databases and reference managers researchers already work in.</li>
-            <li>Building demos that walk new users through how it works.</li>
-          </ul>
+    <!-- EXPERIENCE BOARD (15 Oct, Adrian: "something unique... possibly interactive"): each internship is a bar on a 2024-now
+         track; picking one shows its role and three moves. It steps through on its own while on screen until someone picks one.
+         Without JS every panel shows. Wording follows the content rules in CLAUDE.md (Firstness: research stack + demos,
+         founder unnamed; Kiddom: the evaluation is being designed, the pilot has not run). -->
+    <div class="xb rv d1" id="xpBoard">
+      <div class="xb-track">
+        <div class="xb-axis" aria-hidden="true"><span>2024</span><span>2025</span><span>2026</span><span class="now">now</span></div>
+        <div class="xb-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="xb-lanes" role="tablist" aria-label="Internships">
+          <button type="button" role="tab" class="xb-lane on-now" id="xbt0" aria-controls="xbp0" aria-selected="true" style="--s:3;--e:5"><span class="xb-bar"><img src="/img/logos/firstness.svg" width="22" height="22" alt=""><b>Firstness</b><em>SWE &amp; ML</em><i class="xb-prog"></i></span></button>
+          <button type="button" role="tab" class="xb-lane" id="xbt1" aria-controls="xbp1" aria-selected="false" style="--s:3;--e:4"><span class="xb-bar"><b>Kiddom</b><em>ML</em><i class="xb-prog"></i></span></button>
+          <button type="button" role="tab" class="xb-lane on-now" id="xbt2" aria-controls="xbp2" aria-selected="false" style="--s:1;--e:5"><span class="xb-bar"><b>Fjor</b><em>Investment</em><i class="xb-prog"></i></span></button>
+          <button type="button" role="tab" class="xb-lane" id="xbt3" aria-controls="xbp3" aria-selected="false" style="--s:1;--e:4"><span class="xb-bar"><b>Alliance for SoCal Innovation</b><em>Venture pipeline</em><i class="xb-prog"></i></span></button>
         </div>
-      </article>
-      <article class="xr">
-        <div class="xr-when">2026</div>
-        <div class="xr-main">
-          <h3>Machine Learning Internship &amp; Mentorship</h3>
-          <div class="xr-org"><img class="orgl" src="/img/logos/kiddom.svg" width="67" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a><span>K–12 EdTech</span></div>
-          <ul class="xr-pts">
-            <li>Applying ML and NLP to teacher-facing problems in K–12 assessment with Kiddom&rsquo;s Director of Data Science: what is worth modeling, what student data a school can share, and what counts as evidence.</li>
-            <li>Built <b>Why Wrong</b>, which reads a class&rsquo;s answer sheets, names the misconception behind each wrong answer and groups students by shared mistake.</li>
-            <li>Designing its classroom evaluation with an LAUSD teacher: an item-bank review, a pilot on de-identified responses from one class, and a write-up of where the tool and the teacher agree.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="xr">
-        <div class="xr-when">2024 — now</div>
-        <div class="xr-main">
-          <h3>Investment Intern</h3>
-          <div class="xr-org"><img class="orgl" src="/img/logos/fjor.webp" width="61" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a></div>
-          <ul class="xr-pts">
-            <li>Diligence on <b>20+</b> early-stage AI startups and <b>10+</b> full investment memos for partner-level decisions: market sizing, competition, technical architecture, founders.</li>
-            <li>Led the screen of Y Combinator&rsquo;s Summer 2025 batch with Managing Director Tatiana Janko.</li>
-            <li>Drafted the monthly LP updates.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="xr">
-        <div class="xr-when">2024 — 2026</div>
-        <div class="xr-main">
-          <h3>Venture Outreach &amp; Pipeline Intern</h3>
-          <div class="xr-org"><img class="orgl tall" src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt=""><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a></div>
-          <ul class="xr-pts">
-            <li>Built the Alliance&rsquo;s <b>250+</b> firm investor database in HubSpot: VCs, angel syndicates and accelerators.</li>
-            <li>Led the pipeline&rsquo;s backend redesign with the Chief Innovation Officer: the schema it still sorts on, and the intake form that routes founders to partners like Expert Dojo and the Long Beach Accelerator.</li>
-            <li>Maintained the life-sciences segment and sat in on the SVP Life Science pilot committee&rsquo;s pitch reviews.</li>
-          </ul>
-        </div>
-      </article>
+      </div>
+
+      <div class="xb-panels">
+        <article class="xb-p" id="xbp0" role="tabpanel" aria-labelledby="xbt0">
+          <header class="xb-head"><span class="xb-when">2026 — now</span><h3>Software Engineering &amp; ML Intern</h3><div class="xb-org"><img src="/img/logos/firstness.svg" width="22" height="22" loading="lazy" decoding="async" alt="" class="sq"><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a><span>AI research engine</span></div></header>
+          <ol class="xb-moves">
+            <li><span class="mv-k">01 · engineer</span><b class="mv-v">Under the founder</b><p>Software and ML engineering on Firstness, a research engine for discovering new hypotheses.</p></li>
+            <li><span class="mv-k">02 · connect</span><b class="mv-v">The research stack</b><p>How the platform connects into the literature databases and reference managers researchers already work in.</p></li>
+            <li><span class="mv-k">03 · explain</span><b class="mv-v">Demos</b><p>Walkthroughs that show new users how it works.</p></li>
+          </ol>
+        </article>
+        <article class="xb-p" id="xbp1" role="tabpanel" aria-labelledby="xbt1">
+          <header class="xb-head"><span class="xb-when">2026</span><h3>Machine Learning Internship &amp; Mentorship</h3><div class="xb-org"><img src="/img/logos/kiddom.svg" width="67" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a><span>K–12 EdTech</span></div></header>
+          <ol class="xb-moves">
+            <li><span class="mv-k">01 · scope</span><b class="mv-v">K–12 assessment</b><p>With Kiddom&rsquo;s Director of Data Science: which teacher-facing problems are worth modeling, what student data a school can share, and what counts as evidence.</p></li>
+            <li><span class="mv-k">02 · build</span><b class="mv-v">Why Wrong</b><p>Reads a class&rsquo;s answer sheets, names the misconception behind each wrong answer, and groups students by shared mistake.</p></li>
+            <li><span class="mv-k">03 · evaluate</span><b class="mv-v">With an LAUSD teacher</b><p>Designing its classroom evaluation: an item-bank review, a pilot on one class&rsquo;s de-identified responses, and a write-up of where the tool and the teacher agree.</p></li>
+          </ol>
+        </article>
+        <article class="xb-p" id="xbp2" role="tabpanel" aria-labelledby="xbt2">
+          <header class="xb-head"><span class="xb-when">2024 — now</span><h3>Investment Intern</h3><div class="xb-org"><img src="/img/logos/fjor.webp" width="61" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a></div></header>
+          <ol class="xb-moves">
+            <li><span class="mv-k">01 · diligence</span><b class="mv-v"><span data-count="20">20</span>+</b><p>Early-stage AI startups: market sizing, competition, technical architecture, founders.</p></li>
+            <li><span class="mv-k">02 · memos</span><b class="mv-v"><span data-count="10">10</span>+</b><p>Full investment memos, written for partner-level decisions.</p></li>
+            <li><span class="mv-k">03 · screen</span><b class="mv-v">YC S25</b><p>Led the screen of Y Combinator&rsquo;s Summer 2025 batch with Managing Director Tatiana Janko, and drafted the monthly LP updates.</p></li>
+          </ol>
+        </article>
+        <article class="xb-p" id="xbp3" role="tabpanel" aria-labelledby="xbt3">
+          <header class="xb-head"><span class="xb-when">2024 — 2026</span><h3>Venture Outreach &amp; Pipeline Intern</h3><div class="xb-org"><img src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt="" class="tall"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a></div></header>
+          <ol class="xb-moves">
+            <li><span class="mv-k">01 · build</span><b class="mv-v"><span data-count="250">250</span>+</b><p>Firms in the investor database I built in HubSpot: VCs, angel syndicates and accelerators.</p></li>
+            <li><span class="mv-k">02 · redesign</span><b class="mv-v">The pipeline</b><p>With the Chief Innovation Officer: the schema it still sorts on, and the intake form that routes founders to partners like Expert Dojo and the Long Beach Accelerator.</p></li>
+            <li><span class="mv-k">03 · review</span><b class="mv-v">Life sciences</b><p>Maintained the life-sciences segment and sat in on the SVP Life Science pilot committee&rsquo;s pitch reviews.</p></li>
+          </ol>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -813,6 +812,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-15c"></script>
+<script src="/assets/site.js?v=2026-10-15d"></script>
 </body>
 </html>
