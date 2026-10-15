@@ -532,7 +532,13 @@ the rail and the ⌘K palette follow it.
       tuffer", logos on the tabs, Fjor completed):** each What I did item is an
       imperative action ("Diligence 20+ AI startups") and one tight sentence;
       the yellow sticky became a navy **headline card**: one sentence that says
-      what the internship amounted to, then two or three numbers. Tabs carry
+      what the internship amounted to, then two or three numbers.
+      **Third pass (15 Oct, late; Adrian: the big top part should make "clear
+      what i did", the bullets "can be more abstract"):** the headline card now
+      says concretely what he built or does ("Built the models that scored 134
+      Y Combinator startups for a $15M fund, then led the screen"), and each
+      What I did item is an area of work (Platform engineering, Applied ML,
+      Deal screening, Data engineering…) with one short general line. Tabs carry
       each company's mark (Kiddom and Fjor by mark alone, their names in
       `.sr-only`). Fjor's sectors (enterprise SaaS, fintech, deep tech) come
       from his MIT profile doc. **Fjor and Alliance now follow his college-app
