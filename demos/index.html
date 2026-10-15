@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15c">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15d">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,7 +54,8 @@
     <a href="/">Home</a>
     <a href="#guess-sec">Guess the model</a>
     <a href="#stylometry">Classifier</a>
-    <a href="/#papers">Research</a>
+    <a href="#ledger-sec">Ledger</a>
+    <a href="#ailab-sec">Unit 1 lab</a>
     <a href="/#contact">Contact</a>
     <a href="/resume.pdf?v=2026-10g" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
@@ -65,14 +66,45 @@
 <header class="page-head wrap">
   <div class="ph-kick">try it</div>
   <h1 class="ph-title">four demos</h1>
-  <p class="ph-lead">The first two run on data from my papers on whether a language model leaves a fingerprint in what it writes: you guess which model wrote an essay, then a paper&rsquo;s classifier reads one, or your own text. The last two come from my projects: Ledger&rsquo;s rule engine on test orders, and the first lab of the AIML-LI course.</p>
-  <nav class="ph-jump" aria-label="On this page"><a href="#guess-sec">Which model wrote this?</a><a href="#stylometry">Run the classifier</a><a href="#ledger-sec">Ledger</a><a href="#ailab-sec">Unit 1 lab</a><a href="/#papers">The papers</a><a href="/">Back home</a></nav>
+  <p class="ph-lead">Each one runs in your browser on real data from my research or my projects.</p>
+  <!-- DEMO INDEX (15 Oct): each tile carries the demo's headline number and its source; every number is quoted elsewhere on the site -->
+  <nav class="dx" aria-label="The four demos">
+    <a class="dx-t" href="#guess-sec">
+      <span class="dx-n">01</span>
+      <span class="dx-h">Which model wrote this?</span>
+      <span class="dx-v">72% <i>vs</i> 23%</span>
+      <span class="dx-d">My classifier against the five models themselves, naming who wrote an essay. Chance is 20%.</span>
+      <span class="dx-s">LangLLM · accepted, IEEE BigData 2026</span>
+    </a>
+    <a class="dx-t" href="#stylometry">
+      <span class="dx-n">02</span>
+      <span class="dx-h">Run the classifier</span>
+      <span class="dx-v">87%</span>
+      <span class="dx-d">Right on essays whose prompt it never saw, from 18 features of style. Paste your own.</span>
+      <span class="dx-s">CompLLM · preprint</span>
+    </a>
+    <a class="dx-t" href="#ledger-sec">
+      <span class="dx-n">03</span>
+      <span class="dx-h">What counts in Ledger</span>
+      <span class="dx-v">24 <i>of</i> 24</span>
+      <span class="dx-d">Test records the rule engine scores the same as hand scoring, with no false passes.</span>
+      <span class="dx-s">Ledger · 1st place, VISION HACK: South LA</span>
+    </a>
+    <a class="dx-t" href="#ailab-sec">
+      <span class="dx-n">04</span>
+      <span class="dx-h">The Unit 1 lab</span>
+      <span class="dx-v">98% <i>/</i> 67%</span>
+      <span class="dx-d">Accuracy against winners found when 1 in 20 applicants wins: the lesson in one pair of numbers.</span>
+      <span class="dx-s">AIML-LI · taught in LACES AP CS</span>
+    </a>
+  </nav>
 </header>
 
 <!-- DEMO 1: the LangLLM guessing game. Data: assets/guess-samples.json, built by tools/build_demo_data.py -->
 <section id="guess-sec">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[01]</span><h2>Which model wrote this?</h2><span class="note">// langllm · ten essays · about two minutes</span></div>
+    <p class="prov rv d1"><span class="prov-k">from</span><b>Do LLM Fingerprints Survive Outside English?</b><span class="prov-st">Accepted · IEEE BigData 2026 High School Symposium</span><a href="/#papers">The paper ↗</a><a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></p>
     <ol class="steps rv d1">
       <li><b>1</b><div><span class="st-h">Read the essay</span>A real answer from GPT, Claude, Gemini, Grok or DeepSeek to one of the twelve prompts in the LangLLM study.</div></li>
       <li><b>2</b><div><span class="st-h">Name the model</span>Pick one of the five. A blind guess is right 20% of the time.</div></li>
@@ -99,6 +131,7 @@
 <section id="stylometry">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[02]</span><h2>Run the classifier</h2><span class="note">// compllm · 18 features · in your browser</span></div>
+    <p class="prov rv d1"><span class="prov-k">from</span><b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b><span class="prov-st prov-open">Preprint · arXiv forthcoming</span><a href="/#papers">The paper ↗</a><a href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a></p>
     <ol class="steps rv d1">
       <li><b>1</b><div><span class="st-h">Load an essay or paste text</span>Ten essays from the CompLLM study, two per model, or anything you write. Nothing leaves your browser.</div></li>
       <li><b>2</b><div><span class="st-h">It measures 18 features</span>The paper&rsquo;s own: length, sentence and paragraph shape, vocabulary, hedging, punctuation and readability.</div></li>
@@ -121,7 +154,8 @@
 <!-- DEMO 3: Ledger's rule engine on four synthetic records from its test suite (moved from the homepage, 15 Oct). Data: assets/ledger-walkthrough.json -->
 <section id="ledger-sec">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[03]</span><h2>What counts in Ledger</h2><span class="note">// ledger · 1st place, vision hack: south la</span></div>
+    <div class="sec-label rv"><span class="idx">[03]</span><h2>What counts in Ledger</h2><span class="note">// ledger · four test records</span></div>
+    <p class="prov rv d1"><span class="prov-k">from</span><b>Ledger</b><span class="prov-st">1st place · VISION HACK: South LA · Council District 9 Champion, Under 18</span><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">The live demo ↗</a><a href="/#case-ledger">The project ↗</a></p>
     <ol class="steps rv d1">
       <li><b>1</b><div><span class="st-h">Pick an order record</span>Four synthetic records from Ledger&rsquo;s test suite: a full restock, a typical week, glare, and produce sold by weight.</div></li>
       <li><b>2</b><div><span class="st-h">See each line</span>Every line is counted, or held back with a reason when the reading is unsure.</div></li>
@@ -151,12 +185,13 @@
 <section id="ailab-sec">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[04]</span><h2>The Unit 1 lab</h2><span class="note">// aiml-li · ai-literacy course</span></div>
+    <p class="prov rv d1"><span class="prov-k">from</span><b>AIML-LI&rsquo;s AI-literacy course</b><span class="prov-st">Taught in LACES AP Computer Science, spring 2026</span><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a><a href="/#case-aimlli">The project ↗</a></p>
     <ol class="steps rv d1">
       <li><b>1</b><div><span class="st-h">Make the scholarship rarer</span>Pick how many applicants win, from 1 in 2 to 1 in 20.</div></li>
       <li><b>2</b><div><span class="st-h">Watch two numbers</span>The model&rsquo;s accuracy, and the share of real winners it finds.</div></li>
       <li><b>3</b><div><span class="st-h">Read the verdict</span>The course&rsquo;s own notebook, pooled over 25 draws of 400 applicants.</div></li>
     </ol>
-    <div class="rv d1">
+    <div class="lab-wrap rv d1">
         <div class="aa" id="aiLab" aria-labelledby="aaQ">
           <div class="aa-kick">try it · unit 1 lab</div>
           <p class="aa-q" id="aaQ">A model screens scholarship applicants. Make the scholarship rarer.</p>
@@ -168,6 +203,11 @@
           <p class="aa-verdict" id="aaVerdict"></p>
           <p class="aa-foot">The course&rsquo;s Unit 1 notebook, pooled over 25 draws of 400 applicants.</p>
         </div>
+        <aside class="lab-why">
+          <div class="lw-k">what students take from it</div>
+          <p>As the scholarship gets rarer, the model looks better and does worse. Pooled over 25 draws, accuracy climbs from <b>96.3%</b> to <b>98.1%</b> while the share of real winners it finds falls from <b>95.8%</b> to <b>66.9%</b>.</p>
+          <p>A model can score well by ignoring the people it is meant to find. The lab asks students to predict that before they run it.</p>
+        </aside>
     </div>
   </div>
 </section>
@@ -214,6 +254,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-15c"></script>
+<script src="/assets/site.js?v=2026-10-15d"></script>
 </body>
 </html>
