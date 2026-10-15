@@ -226,8 +226,9 @@ from LaTeX in `resume/`.
     with revisions, Journal of High School Science", matching the site; the old
     hand-authored résumé said "Accepted".
   - Ledger's role wording is fixed; see Site structure.
-  - The summit is 200+ LA public-school students, never 500, and lists only
-    committed partners.
+  - The summit is **500+ LA students** since 15 Oct 2026 (Adrian: "event is for
+    500 + students", told that his Sept prep notes and aiml-initiative.org still
+    say 200+; he answered "it's grown"). It lists only committed partners.
   - Research statuses track the site's R cards: update both .tex files when
     CompLLM's preprint posts (BigData accepted LangLLM on 9 Oct).
   - The portfolio paper (R.04 since 12 Oct, R.03 from 7 Oct, with Ryan) got a **conditional acceptance** from
@@ -572,6 +573,27 @@ the rail and the ⌘K palette follow it.
   (`safejew-incident`), Ledger's live demo after a sample scan, the rule and
   per-category counts (`ledger-scan`), and Safe Routes' worked example with
   the tour dismissed (`saferoutes-walk`). AIML-LI keeps the partner logos.
+  **15 Oct, card by card (Adrian):** the frame is Chrome-like (window dots,
+  a tab with the page's own favicon and `<title>`, back/forward/reload and an
+  address box; no LIVE tag, which he disliked). SafeJew: title adds U.S.
+  college campuses; Backed by is "A Teen Innovation Grant from the Jewish
+  Federation of Greater Los Angeles (JFEDLA)" with the TIG seal
+  (`img/logos/tig-seal.webp`, the inner seal of `21040-JBPTIG-Outlined.png`
+  from jewishla.org's TIG page); Result is "1,300+ incidents tracked across
+  Greater LA, including 33 college campuses nationwide" (800 + 594).
+  AIML-LI: Built names the six units; a Worked with row follows
+  aiml-initiative.org's own Supporters wording (engineers at Google DeepMind
+  and Microsoft, a UCLA professor, a YC-backed founder, Arm and PhET, aiEDU,
+  LAUSD's Ed Tech & Innovation office; never the professor's or engineer's
+  names); Result says it taught a 4-week version at LACES and is "piloting
+  with LAUSD, working toward a standing AI-literacy elective" (no pilot
+  numbers), and the summit is 500+. Ledger: screenshot is the live dashboard
+  with the sample store loaded (`ledger-dashboard.webp`); What/How rows
+  explain it (eighteen programs, renewal reminders, two vision passes, the
+  rule, lines it won't count); Result adds the rule engine matching all 24
+  hand-scored test records with no false passes (the rule engine, never the
+  vision model). Safe Routes: blocks scored by hour, offline, EN/ES, and the
+  80% trip named.
   Each card also has a browser frame (`.wk-bar`: dots, the live address, a
   pulsing LIVE) and the project's own mark as an app-icon badge across the
   seam (`.wk-badge`, Adrian: "add our logos in a cool way"):
