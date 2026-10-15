@@ -150,11 +150,15 @@ from LaTeX in `resume/`.
     Award: Submission SP19343"): one of 12 papers, top 16 of the 130
     accepted; presented with a certificate at the Phoenix ceremony, 17 Dec.
     Found on 15 Oct and put on the Achievements wall, llms.txt and the JSON-LD
-    awards. Not yet on the R.01 card or the résumés (ask; the résumés need a
-    rebuild).
-    The R.01 card says "Accepted · IEEE BigData 2026 High School Symposium ·
-    Phoenix, 17 Dec", both résumés "Accepted, IEEE BigData 2026 HS
-    Symposium", and the JSON-LD and llms.txt match. Once the format is
+    awards; the same day (Adrian's OK) the R.01 card got a "★ Best Paper
+    Finalist" pill, an Award row and that label on its shelf tab, and both
+    résumés' LangLLM status became "Best Paper Finalist, IEEE BigData 2026 HS
+    Symposium" (the long one also leads Honors with it). Rebuilt with Tectonic
+    from `~/bin/tectonic.exe`.
+    The R.01 card says "Accepted" and "★ Best Paper Finalist" ·
+    IEEE BigData 2026 High School Symposium · Phoenix, 17 Dec, both résumés
+    "Best Paper Finalist, IEEE BigData 2026 HS Symposium", and the JSON-LD
+    and llms.txt match. Once the format is
     assigned it can go under the long résumé's Talks, and after 17 Dec the
     card's "Phoenix, 17 Dec" should stop reading as upcoming. The R.01 summary
     follows that paper's abstract (`LangLLM/paper/main.tex`): no decline
@@ -296,9 +300,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-cv2"` should print 5
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-bp1"` should print 5
   and 3. Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-15-cv2`.
+  used. Currently `?v=2026-10-15-bp1`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
