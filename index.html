@@ -390,54 +390,73 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[02]</span><h2>Experience</h2><span class="note">// four internships, 2024 &ndash; now</span></div>
-    <!-- EXPERIENCE BOARD (15 Oct, Adrian: "something unique... possibly interactive"): each internship is a bar on a 2024-now
-         track; picking one shows its role and three moves. It steps through on its own while on screen until someone picks one.
-         Without JS every panel shows. Wording follows the content rules in CLAUDE.md (Firstness: research stack + demos,
-         founder unnamed; Kiddom: the evaluation is being designed, the pilot has not run). -->
-    <div class="xb rv d1" id="xpBoard">
-      <div class="xb-track">
-        <div class="xb-axis" aria-hidden="true"><span>2024</span><span>2025</span><span>2026</span><span class="now">now</span></div>
-        <div class="xb-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div class="xb-lanes" role="tablist" aria-label="Internships">
-          <button type="button" role="tab" class="xb-lane on-now" id="xbt0" aria-controls="xbp0" aria-selected="true" style="--s:3;--e:5"><span class="xb-bar"><img src="/img/logos/firstness.svg" width="22" height="22" alt=""><b>Firstness</b><em>SWE &amp; ML</em><i class="xb-prog"></i></span></button>
-          <button type="button" role="tab" class="xb-lane" id="xbt1" aria-controls="xbp1" aria-selected="false" style="--s:3;--e:4"><span class="xb-bar"><b>Kiddom</b><em>ML</em><i class="xb-prog"></i></span></button>
-          <button type="button" role="tab" class="xb-lane on-now" id="xbt2" aria-controls="xbp2" aria-selected="false" style="--s:1;--e:5"><span class="xb-bar"><b>Fjor</b><em>Investment</em><i class="xb-prog"></i></span></button>
-          <button type="button" role="tab" class="xb-lane" id="xbt3" aria-controls="xbp3" aria-selected="false" style="--s:1;--e:4"><span class="xb-bar"><b>Alliance for SoCal Innovation</b><em>Venture pipeline</em><i class="xb-prog"></i></span></button>
-        </div>
-      </div>
-
-      <div class="xb-panels">
-        <article class="xb-p" id="xbp0" role="tabpanel" aria-labelledby="xbt0">
-          <header class="xb-head"><span class="xb-when">2026 — now</span><h3>Software Engineering &amp; ML Intern</h3><div class="xb-org"><img src="/img/logos/firstness.svg" width="22" height="22" loading="lazy" decoding="async" alt="" class="sq"><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a><span>AI research engine</span></div></header>
-          <ol class="xb-moves">
-            <li><span class="mv-k">01 · engineer</span><b class="mv-v">Under the founder</b><p>Software and ML engineering on Firstness, a research engine for discovering new hypotheses.</p></li>
-            <li><span class="mv-k">02 · connect</span><b class="mv-v">The research stack</b><p>How the platform connects into the literature databases and reference managers researchers already work in.</p></li>
-            <li><span class="mv-k">03 · explain</span><b class="mv-v">Demos</b><p>Walkthroughs that show new users how it works.</p></li>
-          </ol>
+    <!-- EXPERIENCE as internship files (15 Oct, take B of three; Adrian: "make what i did very clear"). One manila file per
+         internship: a typed sheet with the role and What I did (an action, then one sentence), tools and skills (tools only where
+         on record), a sticky note with the headline, and the deliverables clipped beside it. Tabs switch files; while on screen
+         it steps through by itself until someone picks a tab. Without JS all four files show. Wording follows CLAUDE.md's
+         Firstness and Kiddom rules. -->
+    <div class="xf rv d1" id="xpFiles">
+      <div class="xf-tabs" role="tablist" aria-label="Internships"><button type="button" role="tab" class="xf-tab" id="xft0" aria-controls="xfp0" aria-selected="true">Firstness<small>2026 — now</small><i class="xf-prog"></i></button><button type="button" role="tab" class="xf-tab" id="xft1" aria-controls="xfp1" aria-selected="false" tabindex="-1">Kiddom<small>2026</small><i class="xf-prog"></i></button><button type="button" role="tab" class="xf-tab" id="xft2" aria-controls="xfp2" aria-selected="false" tabindex="-1">Fjor<small>2024 — now</small><i class="xf-prog"></i></button><button type="button" role="tab" class="xf-tab" id="xft3" aria-controls="xfp3" aria-selected="false" tabindex="-1">Alliance<small>2024 — 2026</small><i class="xf-prog"></i></button></div>
+      <div class="xf-body">
+        <article class="xf-p" id="xfp0" role="tabpanel" aria-labelledby="xft0">
+          <div class="xf-sheet">
+            <div class="xf-file"><span>Internship · 01 / 04 · 2026 — now</span><span class="xf-stamp">Current</span></div>
+            <h3>Software Engineering &amp; ML Intern</h3>
+            <div class="xf-org"><img src="/img/logos/firstness.svg" width="20" height="20" loading="lazy" decoding="async" alt=""><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a><span>AI research engine · working directly under the founder</span></div>
+            <h4 class="xf-h">What I did</h4>
+            <ol class="xf-did"><li><b>Engineering the platform</b><span>Software and ML engineering on Firstness, an AI research engine for discovering new hypotheses.</span></li><li><b>Connecting it to the research stack</b><span>So it works with the literature databases and reference managers researchers already use.</span></li><li><b>Building demos for new users</b><span>Walkthroughs that show a first-time user how the platform works.</span></li></ol>
+            <h4 class="xf-h sm">Skills</h4>
+            <div class="xf-chips"><span class="xf-chip sk">ML engineering</span><span class="xf-chip sk">Product demos</span></div>
+          </div>
+          <aside class="xf-side">
+            <div class="xf-note"><span>Headline</span><b>Demos</b><p>for new users of an AI research engine</p></div>
+            <div class="xf-clip"><h4 class="xf-h sm">Deliverables</h4><ul class="xf-del"><li class=""><span>Demos that walk new users through the platform</span></li><li class="wip"><span>Research-stack connections <em>· in progress</em></span></li></ul></div>
+          </aside>
         </article>
-        <article class="xb-p" id="xbp1" role="tabpanel" aria-labelledby="xbt1">
-          <header class="xb-head"><span class="xb-when">2026</span><h3>Machine Learning Internship &amp; Mentorship</h3><div class="xb-org"><img src="/img/logos/kiddom.svg" width="67" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a><span>K–12 EdTech</span></div></header>
-          <ol class="xb-moves">
-            <li><span class="mv-k">01 · scope</span><b class="mv-v">K–12 assessment</b><p>With Kiddom&rsquo;s Director of Data Science: which teacher-facing problems are worth modeling, what student data a school can share, and what counts as evidence.</p></li>
-            <li><span class="mv-k">02 · build</span><b class="mv-v">Why Wrong</b><p>Reads a class&rsquo;s answer sheets, names the misconception behind each wrong answer, and groups students by shared mistake.</p></li>
-            <li><span class="mv-k">03 · evaluate</span><b class="mv-v">With an LAUSD teacher</b><p>Designing its classroom evaluation: an item-bank review, a pilot on one class&rsquo;s de-identified responses, and a write-up of where the tool and the teacher agree.</p></li>
-          </ol>
+        <article class="xf-p" id="xfp1" role="tabpanel" aria-labelledby="xft1">
+          <div class="xf-sheet">
+            <div class="xf-file"><span>Internship · 02 / 04 · 2026</span><span class="xf-stamp">Current</span></div>
+            <h3>Machine Learning Internship &amp; Mentorship</h3>
+            <div class="xf-org"><img src="/img/logos/kiddom.svg" width="71" height="20" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a><span>K–12 EdTech · with Kiddom&rsquo;s Director of Data Science</span></div>
+            <h4 class="xf-h">What I did</h4>
+            <ol class="xf-did"><li><b>Scoped ML for K–12 assessment</b><span>Which teacher-facing problems are worth modeling, what student data a school can share, and what counts as evidence.</span></li><li><b>Built Why Wrong</b><span>A tool that reads a class&rsquo;s answer sheets, names the misconception behind each wrong answer, and groups students by shared mistake.</span></li><li><b>Designing its classroom evaluation</b><span>With an LAUSD teacher: an item-bank review, a pilot on one class&rsquo;s de-identified responses, and a write-up of where the tool and the teacher agree.</span></li></ol>
+            <h4 class="xf-h sm">Tools &amp; skills</h4>
+            <div class="xf-chips"><span class="xf-chip">JavaScript</span><span class="xf-chip">Naive Bayes</span><span class="xf-chip">k-means clustering</span><span class="xf-chip sk">ML evaluation</span><span class="xf-chip sk">Assessment design</span></div>
+          </div>
+          <aside class="xf-side">
+            <div class="xf-note"><span>Headline</span><b>Why Wrong</b><p>a misconception tool, built for teachers</p></div>
+            <div class="xf-clip"><h4 class="xf-h sm">Deliverables</h4><ul class="xf-del"><li class=""><span><a href="https://adrian-erlikhman.github.io/why-wrong/" target="_blank" rel="noopener">Why Wrong, live ↗</a></span></li><li class="wip"><span>Classroom evaluation plan with an LAUSD teacher <em>· in progress</em></span></li></ul></div>
+          </aside>
         </article>
-        <article class="xb-p" id="xbp2" role="tabpanel" aria-labelledby="xbt2">
-          <header class="xb-head"><span class="xb-when">2024 — now</span><h3>Investment Intern</h3><div class="xb-org"><img src="/img/logos/fjor.webp" width="61" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a></div></header>
-          <ol class="xb-moves">
-            <li><span class="mv-k">01 · diligence</span><b class="mv-v"><span data-count="20">20</span>+</b><p>Early-stage AI startups: market sizing, competition, technical architecture, founders.</p></li>
-            <li><span class="mv-k">02 · memos</span><b class="mv-v"><span data-count="10">10</span>+</b><p>Full investment memos, written for partner-level decisions.</p></li>
-            <li><span class="mv-k">03 · screen</span><b class="mv-v">YC S25</b><p>Led the screen of Y Combinator&rsquo;s Summer 2025 batch with Managing Director Tatiana Janko, and drafted the monthly LP updates.</p></li>
-          </ol>
+        <article class="xf-p" id="xfp2" role="tabpanel" aria-labelledby="xft2">
+          <div class="xf-sheet">
+            <div class="xf-file"><span>Internship · 03 / 04 · 2024 — now</span><span class="xf-stamp">Current</span></div>
+            <h3>Investment Intern</h3>
+            <div class="xf-org"><img src="/img/logos/fjor.webp" width="64" height="20" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a><span>Venture capital · with Managing Director Tatiana Janko</span></div>
+            <h4 class="xf-h">What I did</h4>
+            <ol class="xf-did"><li><b>Diligenced 20+ AI startups</b><span>Early-stage companies: market sizing, competition, technical architecture and founders.</span></li><li><b>Wrote 10+ investment memos</b><span>Full memos, written for partner-level decisions.</span></li><li><b>Led the YC Summer 2025 screen</b><span>Screened Y Combinator&rsquo;s Summer 2025 batch with Managing Director Tatiana Janko, and drafted the monthly LP updates.</span></li></ol>
+            <h4 class="xf-h sm">Skills</h4>
+            <div class="xf-chips"><span class="xf-chip sk">Due diligence</span><span class="xf-chip sk">Market sizing</span><span class="xf-chip sk">Memo writing</span></div>
+          </div>
+          <aside class="xf-side">
+            <div class="xf-note"><span>Headline</span><b>20+</b><p>early-stage AI startups diligenced</p></div>
+            <div class="xf-clip"><h4 class="xf-h sm">Deliverables</h4><ul class="xf-del"><li class=""><span>10+ investment memos</span></li><li class=""><span>YC Summer 2025 batch screen</span></li><li class=""><span>Monthly LP updates</span></li></ul></div>
+          </aside>
         </article>
-        <article class="xb-p" id="xbp3" role="tabpanel" aria-labelledby="xbt3">
-          <header class="xb-head"><span class="xb-when">2024 — 2026</span><h3>Venture Outreach &amp; Pipeline Intern</h3><div class="xb-org"><img src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt="" class="tall"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a></div></header>
-          <ol class="xb-moves">
-            <li><span class="mv-k">01 · build</span><b class="mv-v"><span data-count="250">250</span>+</b><p>Firms in the investor database I built in HubSpot: VCs, angel syndicates and accelerators.</p></li>
-            <li><span class="mv-k">02 · redesign</span><b class="mv-v">The pipeline</b><p>With the Chief Innovation Officer: the schema it still sorts on, and the intake form that routes founders to partners like Expert Dojo and the Long Beach Accelerator.</p></li>
-            <li><span class="mv-k">03 · review</span><b class="mv-v">Life sciences</b><p>Maintained the life-sciences segment and sat in on the SVP Life Science pilot committee&rsquo;s pitch reviews.</p></li>
-          </ol>
+        <article class="xf-p" id="xfp3" role="tabpanel" aria-labelledby="xft3">
+          <div class="xf-sheet">
+            <div class="xf-file"><span>Internship · 04 / 04 · 2024 — 2026</span><span class="xf-stamp done">Completed</span></div>
+            <h3>Venture Outreach &amp; Pipeline Intern</h3>
+            <div class="xf-org"><img src="/img/logos/alliance.webp" width="38" height="20" loading="lazy" decoding="async" alt=""><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a><span>Venture pipeline · with the Chief Innovation Officer</span></div>
+            <h4 class="xf-h">What I did</h4>
+            <ol class="xf-did"><li><b>Built a 250+ firm investor database</b><span>VCs, angel syndicates and accelerators, in HubSpot.</span></li><li><b>Redesigned the pipeline</b><span>With the Chief Innovation Officer: the schema it still sorts on, and the intake form that routes founders to partners like Expert Dojo and the Long Beach Accelerator.</span></li><li><b>Covered life sciences</b><span>Kept the life-sciences segment current, and sat in on the SVP Life Science pilot committee&rsquo;s pitch reviews.</span></li></ol>
+            <h4 class="xf-h sm">Tools &amp; skills</h4>
+            <div class="xf-chips"><span class="xf-chip">HubSpot</span><span class="xf-chip sk">CRM data modeling</span><span class="xf-chip sk">Investor research</span></div>
+          </div>
+          <aside class="xf-side">
+            <div class="xf-note"><span>Headline</span><b>250+</b><p>firms in the investor database I built</p></div>
+            <div class="xf-clip"><h4 class="xf-h sm">Deliverables</h4><ul class="xf-del"><li class=""><span>250+ firm investor database</span></li><li class=""><span>Pipeline schema: org category, stage, location, contact</span></li><li class=""><span>Founder intake form that routes companies to partners</span></li></ul></div>
+          </aside>
         </article>
       </div>
     </div>

@@ -1317,69 +1317,73 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .plinks .ab-t{margin-top:0}
 @media(max-width:600px){.paper{grid-template-columns:1fr;padding:22px 2px}.paper .pn{padding:0 0 9px}}
 
-/* ================= EXPERIENCE BOARD (15 Oct) ================= */
-/* a 2024-now track, one bar per internship; the picked one opens its panel. Ongoing roles pulse at the "now" end. */
-.xb{--cols:repeat(3,minmax(0,1fr)) 58px;border:1px solid var(--line-strong);background:var(--panel)}
-.xb-track{position:relative;padding:20px 26px 22px;background:var(--bg);border-bottom:1px solid var(--line-strong)}
-.xb-axis,.xb-grid,.xb-lanes{display:grid;grid-template-columns:var(--cols)}
-.xb-axis{margin-bottom:10px}
-.xb-axis span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--dim);padding-left:8px}
-.xb-axis .now{color:var(--acc)}
-.xb-grid{position:absolute;left:26px;right:26px;top:20px;bottom:22px;pointer-events:none}
-.xb-grid i{border-left:1px dashed var(--line-strong)}
-.xb-grid i:last-child{border-left:1px solid color-mix(in srgb,var(--acc) 45%,transparent)}
-.xb-lanes{position:relative;row-gap:9px}
-.xb-lane{grid-column:var(--s)/var(--e);display:block;height:46px;padding:0;margin:0;background:none;border:0;text-align:left;cursor:pointer;font:inherit;color:inherit}
-.xb-bar{position:relative;display:flex;align-items:center;gap:10px;height:100%;padding:0 30px 0 14px;overflow:hidden;border:1px solid var(--line-strong);background:var(--panel);transition:background .3s,border-color .3s,color .3s}
-.xb-bar img{height:18px;width:auto;display:block;flex:none}
-.xb-bar b{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.xb-bar em{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.xb-lane:hover .xb-bar,.xb-lane:focus-visible .xb-bar{border-color:var(--acc)}
-.xb-lane:focus-visible{outline:none}
-.xb-lane[aria-selected=true] .xb-bar{background:var(--acc);border-color:var(--acc)}
-.xb-lane[aria-selected=true] .xb-bar b,.xb-lane[aria-selected=true] .xb-bar em{color:var(--acc-ink)}
-.xb-lane[aria-selected=true] .xb-bar img{filter:brightness(0) invert(1)}
-.xb-lane.on-now .xb-bar::after{content:"";position:absolute;right:13px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 color-mix(in srgb,var(--acc) 60%,transparent);animation:xbPulse 2s infinite}
-.xb-lane.on-now[aria-selected=true] .xb-bar::after{background:var(--acc-ink);box-shadow:0 0 0 0 rgba(244,246,249,.6)}
-@keyframes xbPulse{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.xb-prog{position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--ink);transform:scaleX(0);transform-origin:left}
-.xb.auto .xb-lane[aria-selected=true] .xb-prog{animation:xbFill 6.5s linear forwards}
-.xb.auto:hover .xb-prog,.xb.auto:focus-within .xb-prog,.xb.auto.off .xb-prog{animation-play-state:paused}
-@keyframes xbFill{to{transform:scaleX(1)}}
+/* ================= EXPERIENCE as internship files (15 Oct, take B) ================= */
+.xf{--manila:#e7dcbc;--manila2:#d8cba6;--edge:#b7a679;--paper:#fbf8ef;--paper-edge:#d9d0b4}
+.xf-tabs{display:flex;gap:4px;padding-left:16px;overflow-x:auto;scrollbar-width:none}
+.xf-tabs::-webkit-scrollbar{display:none}
+.xf-tab{position:relative;flex:none;overflow:hidden;font-family:var(--mono);font-size:12.5px;line-height:1.25;text-align:left;color:var(--ink);padding:10px 18px 12px;background:var(--manila2);border:1px solid var(--edge);border-bottom:0;border-radius:8px 8px 0 0;cursor:pointer;transform:translateY(5px);transition:transform .25s,background .25s}
+.xf-tab small{display:block;font-size:10px;letter-spacing:.06em;color:var(--dim)}
+.xf-tab:hover{transform:translateY(2px)}
+.xf-tab[aria-selected=true]{background:var(--manila);transform:none;font-weight:600}
+.xf-tab:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.xf-prog{position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left}
+.xf.auto .xf-tab[aria-selected=true] .xf-prog{animation:xfFill 9s linear forwards}
+.xf.auto:hover .xf-prog,.xf.auto:focus-within .xf-prog,.xf.auto.off .xf-prog{animation-play-state:paused}
+@keyframes xfFill{to{transform:scaleX(1)}}
+.xf-body{background:var(--manila);border:1px solid var(--edge);padding:30px;box-shadow:0 30px 60px -40px rgba(33,31,24,.6)}
+.xf-p{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:30px;align-items:start}
+.xf-p[hidden]{display:none}
+.xf-p+.xf-p{margin-top:30px;padding-top:30px;border-top:1px dashed var(--edge)}
+.xf.js .xf-p+.xf-p{margin-top:0;padding-top:0;border-top:0}
+.xf.js .xf-p.in{animation:xfPull .45s cubic-bezier(.16,1,.3,1)}
+@keyframes xfPull{from{transform:translateY(14px);opacity:.2}to{transform:none;opacity:1}}
 
-.xb-panels{padding:30px 30px 32px}
-.xb-p{display:grid;grid-template-columns:minmax(220px,290px) minmax(0,1fr);gap:20px 36px;align-items:start}
-.xb-p+.xb-p{margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
-.xb.js .xb-p+.xb-p{margin-top:0;padding-top:0;border-top:0}
-.xb-when{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
-.xb-head h3{font-family:var(--serif);font-weight:800;font-size:1.55rem;line-height:1.15;letter-spacing:-.01em;margin-top:8px;color:var(--ink)}
-.xb-org{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:12px;font-size:13.5px;color:var(--dim)}
-.xb-org img{height:19px;width:auto;display:block}
-.xb-org img.sq{height:21px}.xb-org img.tall{height:25px}
-.xb-org a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong);font-weight:500}
-.xb-org a:hover{color:var(--acc);border-color:var(--acc)}
-.xb-org span::before{content:"· ";color:var(--line-strong)}
-.xb-moves{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line-strong);border:1px solid var(--line-strong)}
-.xb-moves li{background:var(--bg);padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
-.mv-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.mv-v{font-family:var(--serif);font-weight:900;font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;color:var(--acc);font-variant-numeric:tabular-nums}
-.xb-moves p{margin:0;font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--ink)}
-.xb.js .xb-p.in .xb-head,.xb.js .xb-p.in .xb-moves li{animation:xbIn .55s cubic-bezier(.16,1,.3,1) both}
-.xb.js .xb-p.in .xb-moves li:nth-child(1){animation-delay:.06s}
-.xb.js .xb-p.in .xb-moves li:nth-child(2){animation-delay:.14s}
-.xb.js .xb-p.in .xb-moves li:nth-child(3){animation-delay:.22s}
-@keyframes xbIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.xb.js .xb-p.in .xb-head,.xb.js .xb-p.in .xb-moves li{animation:none}.xb-lane.on-now .xb-bar::after{animation:none}}
-@media(max-width:900px){.xb-p{grid-template-columns:1fr}}
-@media(max-width:640px){
-  .xb{--cols:repeat(3,minmax(0,1fr)) 34px}
-  .xb-track{padding:16px 14px 18px}.xb-grid{left:14px;right:14px;top:16px;bottom:18px}
-  .xb-axis span{font-size:10px;padding-left:5px}
-  .xb-lane{height:42px}.xb-bar{padding:0 24px 0 10px;gap:7px}.xb-bar em{display:none}.xb-bar b{font-size:12px}
-  .xb-lane.on-now .xb-bar::after{right:9px}
-  .xb-panels{padding:22px 16px 24px}
-  .xb-moves{grid-template-columns:1fr}
-  .xb-head h3{font-size:1.35rem}
+.xf-sheet{background:var(--paper);border:1px solid var(--paper-edge);padding:28px 32px 30px;box-shadow:0 2px 0 var(--paper-edge),0 4px 0 #ece4cc}
+.xf-file{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.xf-stamp{font-weight:600;font-size:12.5px;letter-spacing:.18em;color:var(--acc);border:3px solid var(--acc);padding:4px 10px;transform:rotate(-6deg);opacity:.9}
+.xf-stamp.done{color:#4c6b4f;border-color:#4c6b4f}
+.xf-sheet h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.5rem,2.6vw,1.95rem);line-height:1.1;letter-spacing:-.015em;margin-top:12px;color:var(--ink)}
+.xf-org{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:10px;font-size:14px;color:var(--dim)}
+.xf-org img{display:block;height:20px;width:auto}
+.xf-org a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.xf-org a:hover{color:var(--acc);border-color:var(--acc)}
+.xf-org span::before{content:"· ";color:var(--line-strong)}
+/* What I did leads the sheet: a labelled bar, then each item as an action and one sentence */
+.xf-h{font-family:var(--mono);font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.xf-sheet .xf-h:not(.sm){margin:24px 0 4px;padding:6px 10px;background:var(--ink);color:var(--paper);display:inline-block}
+.xf-h.sm{font-weight:500;font-size:10.5px;color:var(--dim);margin:22px 0 10px}
+.xf-did{list-style:none;margin:0;padding:0;counter-reset:d}
+.xf-did li{counter-increment:d;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:6px;padding:15px 0;border-bottom:1px solid var(--paper-edge)}
+.xf-did li::before{content:counter(d,decimal-leading-zero);grid-row:span 2;font-family:var(--serif);font-weight:900;font-size:1.5rem;line-height:1;color:var(--acc)}
+.xf-did b{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.3;color:var(--ink)}
+.xf-did span{font-family:var(--sans);font-size:14.5px;line-height:1.55;color:var(--ink);margin-top:3px}
+.xf-chips{display:flex;flex-wrap:wrap;gap:6px}
+.xf-chip{font-family:var(--mono);font-size:11.5px;padding:4px 8px;border:1px solid var(--ink);color:var(--ink)}
+.xf-chip.sk{border-color:var(--line-strong);color:var(--dim)}
+
+.xf-side{display:flex;flex-direction:column;gap:22px;padding-top:6px}
+.xf-note{background:#f3df8a;padding:18px 20px 20px;transform:rotate(1.6deg);box-shadow:0 18px 28px -18px rgba(33,31,24,.5)}
+.xf-note span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#6b5d2b}
+.xf-note b{display:block;font-family:var(--serif);font-weight:900;font-size:2.5rem;line-height:1;color:var(--ink);margin-top:6px}
+.xf-note p{font-family:var(--sans);font-size:13.5px;line-height:1.45;margin-top:6px;color:var(--ink)}
+.xf-clip{position:relative;background:var(--paper);border:1px solid var(--paper-edge);padding:16px 18px 18px;transform:rotate(-.6deg)}
+.xf-clip::before{content:"";position:absolute;top:-14px;right:26px;width:14px;height:34px;border:2.5px solid #8d8a80;border-radius:8px;border-bottom-color:transparent}
+.xf-clip .xf-h.sm{margin:0 0 10px}
+.xf-del{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.xf-del li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:9px;font-family:var(--sans);font-size:14px;line-height:1.45;color:var(--ink)}
+.xf-del li::before{content:"✓";display:grid;place-items:center;width:16px;height:16px;border:1.5px solid var(--ink);font-size:11px;font-weight:700;margin-top:2px}
+.xf-del li.wip::before{content:"…";border-style:dashed;color:var(--dim)}
+.xf-del em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.xf-del a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--acc)}
+.xf-del a:hover{color:var(--acc)}
+@media(prefers-reduced-motion:reduce){.xf.js .xf-p.in{animation:none}}
+@media(max-width:860px){
+  .xf-body{padding:16px}
+  .xf-p{grid-template-columns:1fr;gap:22px}
+  .xf-sheet{padding:22px 18px 24px}
+  .xf-did li{grid-template-columns:34px minmax(0,1fr)}
+  .xf-did b{font-size:16px}
+  .xf-tab{padding:9px 14px 11px}
 }
 
 /* ================= SELECTED WORK as four cards (15 Oct) ================= */
@@ -1412,7 +1416,6 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .wk-links a:first-child{color:var(--acc);border-color:var(--acc);font-weight:600}
 .wk-links a:hover{color:var(--acc);border-color:var(--acc)}
 @media(max-width:600px){.wk-body{padding:18px 16px}.wk-facts>div{grid-template-columns:1fr;gap:3px}.wk-logos{padding:18px}.wl-grid{gap:16px 18px}.wl-grid img{height:18px}.wl-grid img.sq{height:24px}}
-.xb-p[hidden]{display:none}
 
 /* ================= /demos/ for an admissions reader (15 Oct): an index with each demo's number and source ================= */
 .dx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);margin-top:36px}

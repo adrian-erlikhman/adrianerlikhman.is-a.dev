@@ -328,23 +328,20 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   },3800);
 })();
 
-/* ================= EXPERIENCE BOARD — one bar per internship on a 2024-now track; the picked one opens its panel.
-   While the board is on screen it steps on by itself (the bar's underline is the timer); hover or focus pauses it,
-   and a click or a key hands control to the visitor for good. Without JS every panel shows. ================= */
+/* ================= EXPERIENCE — internship files: tabs switch the open file. While the files are on screen they step
+   through by themselves (the open tab's underline is the timer); hover or focus pauses, and a click or a key hands control
+   to the visitor for good. Without JS all four files show. ================= */
 (function(){
-  const b=document.getElementById('xpBoard'); if(!b) return;
-  const tabs=[...b.querySelectorAll('.xb-lane')], panels=[...b.querySelectorAll('.xb-p')];
+  const b=document.getElementById('xpFiles'); if(!b) return;
+  const tabs=[...b.querySelectorAll('.xf-tab')], panels=[...b.querySelectorAll('.xf-p')];
   b.classList.add('js');
   let cur=0;
-  const count=el=>{const t=+el.dataset.count,t0=performance.now();
-    (function s(n){const p=Math.min((n-t0)/900,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0);};
   function set(i,focus){
     cur=(i+tabs.length)%tabs.length;
     tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===cur?'true':'false');t.tabIndex=j===cur?0:-1;});
     panels.forEach((p,j)=>{p.hidden=j!==cur;p.classList.remove('in');});
     void panels[cur].offsetWidth; panels[cur].classList.add('in');
-    if(!REDUCED) panels[cur].querySelectorAll('[data-count]').forEach(count);
-    const pr=tabs[cur].querySelector('.xb-prog'); if(pr){pr.style.animation='none';void pr.offsetWidth;pr.style.animation='';}
+    const pr=tabs[cur].querySelector('.xf-prog'); if(pr){pr.style.animation='none';void pr.offsetWidth;pr.style.animation='';}
     if(focus) tabs[cur].focus();
   }
   const takeOver=()=>b.classList.remove('auto');
@@ -356,7 +353,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
       else if(e.key==='Home'){e.preventDefault();takeOver();set(0,true);}
       else if(e.key==='End'){e.preventDefault();takeOver();set(tabs.length-1,true);}
     });
-    const pr=t.querySelector('.xb-prog'); if(pr) pr.addEventListener('animationend',()=>{ if(b.classList.contains('auto')) set(cur+1); });
+    const pr=t.querySelector('.xf-prog'); if(pr) pr.addEventListener('animationend',()=>{ if(b.classList.contains('auto')) set(cur+1); });
   });
   set(0);
   if(!REDUCED&&'IntersectionObserver' in window){
