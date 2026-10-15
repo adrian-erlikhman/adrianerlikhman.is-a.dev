@@ -373,7 +373,10 @@ from LaTeX in `resume/`.
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
-## /demos/ — the two interactive demos (since 22 Sept)
+## /demos/ — four interactive demos (two since 22 Sept, four since 15 Oct)
+- `[03]` Ledger's walkthrough and `[04]` the AIML-LI Unit 1 lab moved here from
+  the homepage's case studies on 15 Oct, each behind three `.steps`; the page
+  head says "four demos".
 - Adrian moved them off the homepage ("the comp / langllm demo takes up too much
   space... maybe it can be a separate page where you are prompted to it, and it
   has a short demo walkthrough explaining what to do"). `demos/index.html`
@@ -406,15 +409,16 @@ the rail and the ⌘K palette follow it.
 - **Admissions pass (15 Oct 2026).** Adrian: the site "is going to be looked at by
   college admissions counselors", so it should skim well, and be "really really
   cool". What shipped:
-  - **At a glance** (`.facts`, under the hero buttons): four linked cells, his
-    wording. "4 accepted papers" (IEEE BigData · ARRSI @ AACL · 2 journals, the
+  - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
+    row, his wording (a fourth, "200+ LA public-school students", came off the
+    same day: "i dont like the fourth box"). "4 accepted papers" (IEEE BigData · ARRSI @ AACL · 2 journals, the
     R-card count); "Top 20 U.S. épée" with "Team USA · peak No. 17, Cadet" under
     it, because he asked for "top 20 US" and only the peak cadet ranking
     supports it (current junior is No. 49), so the qualifier must stay; "4
     internships" across ML, software and venture capital; "200+ LA
-    public-school students", AIML-LI summit, co-founder. He wrote "200+ LA
-    schools", but the summit figure is students, never schools. The numbers
-    count up on reveal.
+    public-school students" was the fourth until he dropped it (he had written
+    "200+ LA schools"; the summit figure is students, never schools). The
+    numbers count up on reveal.
   - **Fixes:** the hero lines are a real swipe now (the box clips; the old line
     leaves left as the new one enters right, never overlapping); Experience
     cards no longer fade to 35% until reached; reveals fire when a block's top
@@ -427,8 +431,25 @@ the rail and the ⌘K palette follow it.
     relay leg (`bout-team-afm.mp4` from 0:40, cropped to the piste, 574 KB),
     poster `img/bouts/fence-loop.webp`. It loads near the screen, plays only
     on screen, and stays a poster under reduced motion or Save-Data.
-  - **The Ledger walkthrough** is folded into a `<details>` bar under the Ledger
-    case and fetches its JSON when opened.
+  - **Second pass, same day** (Adrian: research "still need[s] to refine";
+    Experience "smoother / tuffer... some bullets and then different
+    orientation"; Selected work "shorter and more condensed... what it is,
+    the support i got, what i built... mimic other similar professional
+    websites"):
+    - **Research** is a publication list (`.paper` rows): status pill, title,
+      credit, the one-line finding, then inline mono links (`.plinks`, `.pl`;
+      `.pl-try` for a demo). The "try it" banner and the topic tags are gone;
+      the summary still opens on hover or with the summary button.
+    - **Experience** is a vertical list (`.xp` / `.xr`): dates left, role and
+      company with its mark, three bullets each, key numbers bold; on desktop
+      hover lifts the row and dims the others. The zigzag timeline is gone.
+    - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
+      kicker, a one-line title that says what it is, then Built / Backed by /
+      Result (Safe Routes adds Why, with "My friends are in that number").
+      AIML-LI's media is the nine committed partner logos. "The hard call"
+      lines are gone. The **Ledger walkthrough and the AIML-LI Unit 1 lab moved
+      to /demos/** as `[03]` (`#ledger-sec`) and `[04]` (`#ailab-sec`); the
+      cards link there.
   - The intro overlay was left as is; it costs a first-time visitor up to 3.6 s.
 - **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
   adrian", then the **hero story**: four lines that swipe sideways on their
@@ -452,7 +473,8 @@ the rail and the ⌘K palette follow it.
   "four papers · three accepted" from 10 Oct;
   "five papers · two in review" before LangLLM's acceptance).
   Anything warmer has been cut twice, so don't reintroduce it.
-- **Selected work** is four case studies, each *the problem · my part · the
+- **Selected work** is four cards since 15 Oct (see the admissions pass); until
+  then it was four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
   School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
   AIML-LI shows its one-activity lab instead. **Short copy** (Adrian, 26

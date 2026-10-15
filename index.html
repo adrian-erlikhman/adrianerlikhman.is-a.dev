@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15b">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -315,12 +315,11 @@
       <a class="btn" href="#record">achievements ↓</a>
       <a class="btn" href="resume.pdf?v=2026-10g" target="_blank" data-cv-menu>résumé</a>
     </div>
-    <!-- AT A GLANCE (15 Oct): Adrian's four facts; each links to its section. Keep in step with the R cards, Fencing and Experience. -->
+    <!-- AT A GLANCE (15 Oct): Adrian's three facts (the fourth, AIML-LI's 200+ students, came off at his ask the same day); each links to its section. Keep in step with the R cards, Fencing and Experience. -->
     <div class="facts rv d2" aria-label="At a glance">
       <a class="fact" href="#papers"><b data-count="4">4</b><span class="fk">accepted papers</span><span class="fi">IEEE BigData · ARRSI @ AACL · 2 journals</span></a>
       <a class="fact" href="#fencing"><b>Top&nbsp;<span data-count="20">20</span></b><span class="fk">U.S. épée</span><span class="fi">Team USA · peak No.&nbsp;17, Cadet</span></a>
       <a class="fact" href="#experience"><b data-count="4">4</b><span class="fk">internships</span><span class="fi">ML · software · venture capital</span></a>
-      <a class="fact" href="#case-aimlli"><b><span data-count="200">200</span>+</b><span class="fk">LA public-school students</span><span class="fi">AIML-LI summit · co-founder</span></a>
     </div>
   </div>
 
@@ -391,35 +390,57 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[02]</span><h2>Experience</h2><span class="note">// four internships, 2024 &ndash; now</span></div>
-    <div class="resume">
-      <div class="rv d1">
-        <div class="timeline">
-          <div class="tl">
-            <div class="when">2026 — PRESENT</div>
-            <h3>Software Engineering &amp; ML Intern</h3>
-            <div class="org"><img class="orgl sq" src="/img/logos/firstness.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><a href="https://firstness.ai" target="_blank" rel="noopener" data-mag>Firstness ↗</a> · AI research engine</div>
-            <p>Software and ML engineering on the Firstness AI platform, working directly under the founder. My work has two parts: refining how the platform connects into the research stack (the literature databases and reference managers researchers already work in), and making it easier for new users to understand, with demos that walk them through how it works. Firstness is a research engine for discovering new hypotheses: it grows a question into a map of branching ideas, writes each answer from the peer-reviewed literature with a citation on every sentence, and checks a new hypothesis against published prior work.</p>
-          </div>
-          <div class="tl">
-            <div class="when">2026</div>
-            <h3>Machine Learning Internship &amp; Mentorship</h3>
-            <div class="org"><img class="orgl" src="/img/logos/kiddom.svg" width="67" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener" data-mag>Kiddom ↗</a> · K–12 EdTech</div>
-            <p>Designing machine-learning and NLP approaches to teacher-facing problems in K–12 assessment, with Kiddom’s Director of Data Science: which problems are worth modeling, what student data a school can realistically share, and what result would count as evidence rather than a demo. I built <b>Why Wrong</b> against one of them — it reads a class’s answer sheets, names the misconception behind each wrong answer, and groups the class by shared mistake — and I’m designing its classroom evaluation with an LAUSD teacher: a review of the item bank, a pilot on de-identified responses from one class, then a written comparison of where the tool and the teacher agree and where they don’t.</p>
-          </div>
-          <div class="tl">
-            <div class="when">2024 — PRESENT</div>
-            <h3>Investment Intern</h3>
-            <div class="org"><img class="orgl" src="/img/logos/fjor.webp" width="61" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener" data-mag>Fjor Venture Capital ↗</a></div>
-            <p>Diligence on 20+ early-stage AI startups, and 10+ full investment memoranda — market sizing, competitive positioning, technical architecture, founder evaluation — written for partner-level decisions. Led the screen of Y Combinator's Summer 2025 batch with Managing Director Tatiana Janko, and drafted the monthly LP updates.</p>
-          </div>
-          <div class="tl">
-            <div class="when">2024 — 2026</div>
-            <h3>Venture Outreach &amp; Pipeline Intern</h3>
-            <div class="org"><img class="orgl tall" src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt=""><a href="https://alliancesocal.org" target="_blank" rel="noopener" data-mag>Alliance for SoCal Innovation ↗</a></div>
-            <p>Built the Alliance's 250+ firm investor database in HubSpot — VCs, angel syndicates, accelerators — and led the backend redesign of the pipeline infrastructure with the Chief Innovation Officer. Defined the schema it still sorts on (org category, funding stage, location, point of contact) and rewrote the intake form founders fill out, so inbound companies could be routed to partners like Expert Dojo and the Long Beach Accelerator. Maintained the life-sciences segment the review process runs on, tracking rounds as they closed, and sat in on the SVP Life Science pilot committee's pitch reviews.</p>
-          </div>
+    <!-- EXPERIENCE as a list (15 Oct): dates left, role and company, three bullets. Wording follows the content rules in CLAUDE.md
+         (Firstness: research stack + demos, founder unnamed; Kiddom: the evaluation is being designed, the pilot has not run). -->
+    <div class="xp rv d1">
+      <article class="xr">
+        <div class="xr-when">2026 — now</div>
+        <div class="xr-main">
+          <h3>Software Engineering &amp; ML Intern</h3>
+          <div class="xr-org"><img class="orgl sq" src="/img/logos/firstness.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a><span>AI research engine</span></div>
+          <ul class="xr-pts">
+            <li>Software and ML engineering on Firstness, a research engine for discovering new hypotheses, working directly under the founder.</li>
+            <li>Refining how the platform connects into the research stack: the literature databases and reference managers researchers already work in.</li>
+            <li>Building demos that walk new users through how it works.</li>
+          </ul>
         </div>
-      </div>
+      </article>
+      <article class="xr">
+        <div class="xr-when">2026</div>
+        <div class="xr-main">
+          <h3>Machine Learning Internship &amp; Mentorship</h3>
+          <div class="xr-org"><img class="orgl" src="/img/logos/kiddom.svg" width="67" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a><span>K–12 EdTech</span></div>
+          <ul class="xr-pts">
+            <li>Applying ML and NLP to teacher-facing problems in K–12 assessment with Kiddom&rsquo;s Director of Data Science: what is worth modeling, what student data a school can share, and what counts as evidence.</li>
+            <li>Built <b>Why Wrong</b>, which reads a class&rsquo;s answer sheets, names the misconception behind each wrong answer and groups students by shared mistake.</li>
+            <li>Designing its classroom evaluation with an LAUSD teacher: an item-bank review, a pilot on de-identified responses from one class, and a write-up of where the tool and the teacher agree.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="xr">
+        <div class="xr-when">2024 — now</div>
+        <div class="xr-main">
+          <h3>Investment Intern</h3>
+          <div class="xr-org"><img class="orgl" src="/img/logos/fjor.webp" width="61" height="19" loading="lazy" decoding="async" alt=""><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a></div>
+          <ul class="xr-pts">
+            <li>Diligence on <b>20+</b> early-stage AI startups and <b>10+</b> full investment memos for partner-level decisions: market sizing, competition, technical architecture, founders.</li>
+            <li>Led the screen of Y Combinator&rsquo;s Summer 2025 batch with Managing Director Tatiana Janko.</li>
+            <li>Drafted the monthly LP updates.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="xr">
+        <div class="xr-when">2024 — 2026</div>
+        <div class="xr-main">
+          <h3>Venture Outreach &amp; Pipeline Intern</h3>
+          <div class="xr-org"><img class="orgl tall" src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt=""><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a></div>
+          <ul class="xr-pts">
+            <li>Built the Alliance&rsquo;s <b>250+</b> firm investor database in HubSpot: VCs, angel syndicates and accelerators.</li>
+            <li>Led the pipeline&rsquo;s backend redesign with the Chief Innovation Officer: the schema it still sorts on, and the intake form that routes founders to partners like Expert Dojo and the Long Beach Accelerator.</li>
+            <li>Maintained the life-sciences segment and sat in on the SVP Life Science pilot committee&rsquo;s pitch reviews.</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -427,110 +448,80 @@
 <section id="papers">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// five papers · four accepted</span></div>
-    <!-- the demos moved to /demos/ (22 Sept); this is the prompt that sends people there -->
-    <a class="tryline rv d1" href="/demos/">
-      <span class="tl-k">try it</span>
-      <span class="tl-t"><b>Two demos.</b> Guess which of five models wrote a real essay from the LangLLM study, then run the CompLLM classifier on your own writing.</span>
-      <span class="tl-go">Open the demos &rarr;</span>
-    </a>
-
+    <!-- RESEARCH as a publication list (15 Oct): status, title, credit, one finding, inline links; the summary opens on hover
+         or with the summary button. The demos are linked from R.01 and R.03; the "try it" banner and the topic tags are gone. -->
     <div class="papers rv d1">
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.01</span>
         <div class="pmain">
+          <div class="st-row"><img class="vl" src="/img/logos/ieee.webp" width="45" height="13" loading="lazy" decoding="async" alt=""><div class="st">Accepted · IEEE BigData 2026 High School Symposium · Phoenix, 17 Dec</div></div>
           <h3>Do LLM Fingerprints Survive Outside English?</h3>
           <div class="meta">Co-first author · LangLLM</div>
-          <div class="st-row"><img class="vl" src="/img/logos/ieee.webp" width="45" height="13" loading="lazy" decoding="async" alt=""><div class="st">Accepted · IEEE BigData 2026 High School Symposium · Phoenix, 17 Dec</div></div>
-          <div class="ptags"><span>Multilingual NLP</span><span>Stylometry</span><span>Interpretability</span><span>LLM-as-Judge</span></div>
           <p class="find">A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.</p>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><a class="pl pl-try" href="/demos/#guess-sec">Try the demo ↗</a><a class="pl" href="papers/langllm-poster-urtc2026.pdf" target="_blank">Poster ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
         </div>
-        <div class="paper-cta">
-          <a class="dl" href="/demos/#guess-sec" data-mag>TRY THE DEMO ↗</a>
-          <a class="dl" href="papers/langllm-poster-urtc2026.pdf" target="_blank" data-mag>POSTER ↓</a>
-          <a class="dl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
-        </div>
-      </div>
+      </article>
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.02</span>
         <div class="pmain">
+          <div class="st" title="Workshop on Autonomous Research and Recursive Self-Improvement, at AACL-IJCNLP 2026">Accepted · ARRSI Workshop @ AACL-IJCNLP 2026</div>
           <h3>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</h3>
           <div class="meta">Sole author · reward-model and LLM-judge selection</div>
-          <div class="st" title="Workshop on Autonomous Research and Recursive Self-Improvement, at AACL-IJCNLP 2026">Accepted · ARRSI Workshop @ AACL-IJCNLP 2026</div>
-          <div class="ptags"><span>Reward Models</span><span>LLM-as-Judge</span><span>Evaluation</span><span>Linear Programming</span></div>
           <p class="find">RewardBench's leader survives the removal of any 11 of its 2,985 items. Removing 12 particular items makes the runner-up the winner.</p>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><a class="pl" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank">PDF ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code + data ↗</a><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">Automated research and self-improvement pipelines pick a reward model or LLM judge by its accuracy on a validation set, and that set is often curated by the pipeline or its designers. The paper's curation certificate says how much of the set could be removed before the winner changes. In benchmark weight it is at least the gap between the top two models; in items it is exact, from one sort per challenger. Linear programs show the bound is tight near the top of RewardBench (118 models) and RewardBench 2 (188). RewardBench's leader survives any 11 removed items, and RewardBench 2's any 42. On 200-item RewardBench validation sets, picks whose top two are more than 2 points apart match the full-benchmark winner 87% of the time, against 43% for the rest.</p>
         </div>
-        <div class="paper-cta">
-          <a class="dl" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" data-mag>PDF ↓</a>
-          <a class="dl" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
-        </div>
-      </div>
+      </article>
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.03</span>
         <div class="pmain">
+          <div class="st st-open">Preprint · arXiv forthcoming</div>
           <h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3>
           <div class="meta">Co-first author · CompLLM · with Ryan Erlikhman &amp; Michael Tarekegn · Advisor: Philo Juang (Google DeepMind)</div>
-          <div class="st st-open">Preprint · arXiv forthcoming</div>
-          <div class="ptags"><span>NLP</span><span>LLM-as-Judge</span><span>Stylometry</span><span>Evaluation</span></div>
           <p class="find">The usual test flags self-recognition in 15 of 37 cases. 8 survive a false-alarm control, 3 beat the pooled peers, and none beats its strongest single peer.</p>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><a class="pl pl-try" href="/demos/#stylometry">Run the classifier ↗</a><a class="pl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a><!-- [EDIT] swap for the arXiv link once it is posted --><span class="pl pl-soon">PDF · arXiv soon</span><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text. The usual check is whether a judge names itself on its own writing more often than chance. We add two controls from the same experiment: how often the judge names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags 15 of 37 cases. In 7 the judge names itself as often on others' text. Of the other 8, all frontier models, 3 beat the pooled peers and none beats its strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32. The authorship signal is in the text (a style classifier attributes 86% of the essays); the judges' answers do not follow it.</p>
         </div>
-        <div class="paper-cta">
-          <a class="dl" href="/demos/#stylometry" data-mag>RUN THE CLASSIFIER ↗</a>
-          <a class="dl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" data-mag>CODE + DATA ↗</a>
-          <!-- [EDIT] swap for the arXiv link once it is posted -->
-          <span class="dl dl-pending">PDF · ARXIV SOON</span>
-        </div>
-      </div>
+      </article>
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.04</span>
         <div class="pmain">
+          <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · revision submitted</div></div>
           <h3>Does Portfolio Optimization Beat Splitting Evenly?</h3>
           <div class="meta">Co-first author · Markowitz vs. the 1/N portfolio · with Ryan Erlikhman (LACES)</div>
-          <div class="st-row"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><div class="st">Accepted with revisions · Oxford Journal of Student Scholarship · revision submitted</div></div>
-          <div class="ptags"><span>Quant Finance</span><span>Portfolio Theory</span><span>Simulation</span></div>
           <p class="find">Splitting evenly beat the Markowitz portfolio in 74% of 250 calibrated simulations (Sharpe 0.70 against 0.51).</p>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><a class="pl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank">PDF ↓</a><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
         </div>
-        <a class="dl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" data-mag>PDF ↓</a>
-      </div>
+      </article>
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.05</span>
         <div class="pmain">
+          <div class="st">Accepted with revisions · Journal of High School Science · in revision</div>
           <h3>How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3>
           <div class="meta">Co-first author · composite-index robustness · with Ryan Erlikhman (LACES)</div>
-          <div class="st">Accepted with revisions · Journal of High School Science · in revision</div>
-          <div class="ptags"><span>Python</span><span>Rank Statistics</span><span>Robustness</span><span>Reproducibility</span></div>
           <p class="find">The ranking holds as a whole (median Spearman ≥ 0.99) but not mid-table, where the median 90% rank interval spans 36 places.</p>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><a class="pl" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank">PDF ↓</a><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">The Legatum Prosperity Index ranks 167 countries by an equal-weighted mean of twelve pillar scores. We reproduce every published score and rank exactly, then vary the weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design. The ranking holds as a whole (median Spearman ≥ 0.9899) but not in mid-table: the median 90% rank interval is 22 places overall and 36 for ranks 68–100. The paper's new result is rank leverage, c²(1 − ρ²): a weight can reorder countries only through the share of its pillar's variance that the composite doesn't share, times the pillar's squared relative spread. With arithmetic aggregation it tracks the weights' total effects under all four normalizations (Spearman 0.91–0.99), and equal weights of 1/12 give leverages that differ sixfold.</p>
         </div>
-        <a class="dl" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" data-mag>PDF ↓</a>
-      </div>
+      </article>
 
-      <div class="paper" data-mag>
+      <article class="paper">
         <span class="pn">R.06</span>
         <div class="pmain">
+          <div class="st st-open">Ongoing</div>
           <h3>Advanced Mathematics Research</h3>
           <div class="meta">with PhD candidate Kirill Kovalenko</div>
-          <div class="st st-open">Ongoing</div>
-          <div class="ptags"><span>Induction</span><span>Number Theory</span><span>Combinatorics</span><span>Game Theory</span></div>
-          <button type="button" class="ab-t" aria-expanded="false">summary</button>
+          <div class="plinks"><button class="pl notes-open" id="openNotes">Read the notes ↗</button><button type="button" class="ab-t" aria-expanded="false">summary</button></div>
           <p class="abstract">Ongoing study of induction, number theory, combinatorics, and game theory with a PhD mentor, applied to algorithmic problem-solving and computational mathematics. My working session notes are below.</p>
         </div>
-        <button class="dl notes-open" id="openNotes">READ THE NOTES ↗</button>
-      </div>
-
+      </article>
     </div>
   </div>
 </section>
@@ -538,134 +529,65 @@
 <section id="work" class="selected">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
-    <div class="cases">
+    <!-- SELECTED WORK as four cards (15 Oct, Adrian: "shorter and more condensed... what it is, the support i got, what i built"):
+         the title says what it is, then Built / Backed by / Result. The Ledger walkthrough and the AIML-LI lab moved to /demos/. -->
+    <div class="works rv d1">
 
-      <article class="case rv" id="case-safejew">
-        <figure class="case-media case-shot">
-          <a href="https://safejew.org/map" target="_blank" rel="noopener" aria-label="Open the SafeJew map"><img src="/img/cases/safejew-map.webp" width="1400" height="875" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles, with filters by category, severity, source and year, and a note that ADL locations are approximate."></a>
-          <figcaption>safejew.org/map · 800 incidents across Greater LA, with the ADL&rsquo;s approximate locations flagged</figcaption>
-        </figure>
-        <div class="case-body">
-          <div class="case-kick"><span class="case-n">01</span><img class="casel" src="/img/logos/safejew.webp" width="15" height="14" loading="lazy" decoding="async" alt="">SafeJew<span class="case-sep">·</span>co-founder<span class="case-sep">·</span>2024&ndash;present</div>
-          <h3 class="case-title">A live map of antisemitic incidents across Greater Los Angeles, with a source behind every pin.</h3>
-          <dl class="case-facts">
-            <div><dt>The problem</dt><dd>Reports of antisemitic incidents in Los Angeles are scattered across local news, police data and the ADL&rsquo;s tracker. SafeJew puts them on one map, each with its source.</dd></div>
-            <div><dt>My part</dt><dd>Co-founder. I wrote the LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. I rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.</dd></div>
-            <div class="call"><dt>The hard call</dt><dd>Only claim what we can place. An incident placed only to a neighborhood goes on a separate amber layer, never mixed with verified pins, and the ADL&rsquo;s locations are marked approximate.</dd></div>
-            <div><dt>Where it stands</dt><dd><ul class="case-proof">
-              <li>Live at safejew.org, funded by a JFEDLA Teen Innovation Grant</li>
-              <li>800 incidents across Greater LA, 100 individually sourced</li>
-              <li>594 more on 33 university campuses</li>
-            </ul></dd></div>
+      <article class="wk" id="case-safejew">
+        <a class="wk-media" href="https://safejew.org/map" target="_blank" rel="noopener" aria-label="Open the SafeJew map"><img src="/img/cases/safejew-map.webp" width="1400" height="875" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles, with filters by category, severity, source and year."></a>
+        <div class="wk-body">
+          <div class="wk-kick"><img class="casel" src="/img/logos/safejew.webp" width="15" height="14" loading="lazy" decoding="async" alt="">SafeJew<span>·</span>co-founder<span>·</span>2024&ndash;now</div>
+          <h3 class="wk-title">A live map of antisemitic incidents across Greater Los Angeles, with a source behind every pin.</h3>
+          <dl class="wk-facts">
+            <div><dt>Built</dt><dd>The LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. Rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.</dd></div>
+            <div><dt>Backed by</dt><dd>A JFEDLA Teen Innovation Grant.</dd></div>
+            <div><dt>Result</dt><dd>Live at safejew.org: <b>800</b> incidents across Greater LA, 100 individually sourced, and 594 more on 33 campuses.</dd></div>
           </dl>
-          <div class="case-links"><a href="https://safejew.org/map" target="_blank" rel="noopener">Open the map ↗</a><a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://safejew.org/map" target="_blank" rel="noopener">Open the map ↗</a><a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
-      <article class="case flip rv" id="case-aimlli">
-        <div class="case-media aa" id="aiLab" aria-labelledby="aaQ">
-          <div class="aa-kick">try it · unit 1 lab</div>
-          <p class="aa-q" id="aaQ">A model screens scholarship applicants. Make the scholarship rarer.</p>
-          <div class="aa-tabs" id="labTabs" role="tablist" aria-label="How many applicants win"></div>
-          <div class="aa-rows">
-            <div class="aa-row"><span class="aa-k">accuracy</span><span class="aa-track"><i id="aaAccBar"></i></span><b id="aaAcc">&ndash;</b></div>
-            <div class="aa-row rec"><span class="aa-k">winners found</span><span class="aa-track"><i id="aaRecBar"></i></span><b id="aaRec">&ndash;</b></div>
-          </div>
-          <p class="aa-verdict" id="aaVerdict"></p>
-          <p class="aa-foot">The course&rsquo;s Unit 1 notebook, pooled over 25 draws of 400 applicants.</p>
-        </div>
-        <div class="case-body">
-          <div class="case-kick"><span class="case-n">02</span>AIML-LI<span class="case-sep">·</span>co-founder &amp; lead<span class="case-sep">·</span>2023&ndash;present</div>
-          <h3 class="case-title">A free AI-literacy course, built for the public-school classroom that actually exists.</h3>
-          <dl class="case-facts">
-            <div><dt>The problem</dt><dd>Students use AI every day, but few are taught how it works or where it fails.</dd></div>
-            <div><dt>My part</dt><dd>I co-founded AIML-LI with Michael Tarekegn and co-wrote the course: twelve 30-minute sessions, or a 12-week version in six units. I&rsquo;m organizing a free AI summit and hackathon for 200+ LA public-school students.</dd></div>
-            <div class="call"><dt>The hard call</dt><dd>Build for the classroom that exists: 30-minute sessions, the school&rsquo;s Chromebooks, free and open-source.</dd></div>
-            <div><dt>Where it stands</dt><dd><ul class="case-proof">
-              <li>Taught in LACES AP Computer Science, spring 2026</li>
-              <li>LAUSD&rsquo;s Ed Tech &amp; Innovation office is taking it to district leadership, toward an AI-literacy elective</li>
-              <li>aiEDU student panel, NCSS 2026, December</li>
-            </ul></dd></div>
+      <article class="wk" id="case-aimlli">
+        <a class="wk-media wk-logos" href="https://aiml-initiative.org" target="_blank" rel="noopener" aria-label="Open aiml-initiative.org">
+          <span class="wl-h">summit partners &amp; speakers</span>
+          <span class="wl-grid"><img src="/img/sponsors/deepmind.webp" alt="Google DeepMind" loading="lazy" decoding="async"><img src="/img/sponsors/microsoft.webp" alt="Microsoft" loading="lazy" decoding="async"><img src="/img/sponsors/google.webp" alt="Google" loading="lazy" decoding="async"><img src="/img/sponsors/snap.webp" alt="Snap" class="sq" loading="lazy" decoding="async"><img src="/img/sponsors/janestreet.webp" alt="Jane Street" loading="lazy" decoding="async"><img src="/img/sponsors/mongodb.webp" alt="MongoDB" loading="lazy" decoding="async"><img src="/img/sponsors/confluent.webp" alt="Confluent" loading="lazy" decoding="async"><img src="/img/sponsors/discovery.webp" alt="Discovery Education" loading="lazy" decoding="async"><img src="/img/sponsors/hackerfund.webp" alt="Hacker Fund" loading="lazy" decoding="async"></span>
+        </a>
+        <div class="wk-body">
+          <div class="wk-kick">AIML-LI<span>·</span>co-founder &amp; lead<span>·</span>2023&ndash;now</div>
+          <h3 class="wk-title">A free AI-literacy course, built for the public-school classroom that actually exists.</h3>
+          <dl class="wk-facts">
+            <div><dt>Built</dt><dd>Co-founded AIML-LI with Michael Tarekegn and co-wrote the course: twelve 30-minute sessions on the school&rsquo;s Chromebooks, or a 12-week version in six units. Organizing a free AI summit and hackathon for <b>200+</b> LA public-school students.</dd></div>
+            <div><dt>Backed by</dt><dd>Nine committed summit partners and speakers. LAUSD&rsquo;s Ed Tech &amp; Innovation office is taking the course to district leadership, toward an AI-literacy elective.</dd></div>
+            <div><dt>Result</dt><dd>Taught in LACES AP Computer Science, spring 2026. aiEDU student panel at NCSS 2026, December.</dd></div>
           </dl>
-          <div class="spon">
-            <div class="spon-h">partners &amp; speakers committed to the summit</div>
-            <div class="spon-row">
-            <img src="/img/sponsors/deepmind.webp" width="392" height="60" loading="lazy" decoding="async" alt="Google DeepMind">
-            <img src="/img/sponsors/microsoft.webp" width="279" height="60" loading="lazy" decoding="async" alt="Microsoft">
-            <img src="/img/sponsors/google.webp" width="182" height="60" loading="lazy" decoding="async" alt="Google">
-            <img src="/img/sponsors/snap.webp" width="60" height="60" loading="lazy" decoding="async" alt="Snap" class="sq">
-            <img src="/img/sponsors/janestreet.webp" width="154" height="60" loading="lazy" decoding="async" alt="Jane Street">
-            <img src="/img/sponsors/mongodb.webp" width="230" height="60" loading="lazy" decoding="async" alt="MongoDB">
-            <img src="/img/sponsors/confluent.webp" width="362" height="60" loading="lazy" decoding="async" alt="Confluent">
-            <img src="/img/sponsors/discovery.webp" width="251" height="60" loading="lazy" decoding="async" alt="Discovery Education">
-            <img src="/img/sponsors/hackerfund.webp" width="317" height="60" loading="lazy" decoding="async" alt="Hacker Fund">
-            </div>
-          </div>
-          <div class="case-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a></div>
+          <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a><a href="/demos/#ailab-sec">Try the Unit 1 lab ↗</a></div>
         </div>
       </article>
 
-
-      <article class="case rv" id="case-ledger">
-        <figure class="case-media case-shot">
-          <a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener" aria-label="Open the Ledger demo"><img src="/img/cases/ledger-scorecard.webp" width="1400" height="572" loading="lazy" decoding="async" alt="Ledger's weekly SNAP stocking scorecard for a corner market: 75 percent passing, grains, protein and produce at seven of seven varieties, dairy at five of seven, and a fix that blocks the review: add two dairy varieties."></a>
-          <figcaption>Ledger&rsquo;s weekly scorecard · three of four categories pass, and dairy blocks the review</figcaption>
-        </figure>
-        <div class="case-body">
-          <div class="case-kick"><span class="case-n">03</span>Ledger<span class="case-sep">·</span>1st place, VISION HACK: South LA<span class="case-sep">·</span>Sep 2026</div>
-          <h3 class="case-title">Compliance for corner stores: every renewal on one calendar, and a photo of an order scored against the SNAP stocking rule.</h3>
-          <dl class="case-facts">
-            <div><dt>The problem</dt><dd>A South LA corner store answers to eighteen programs, each with its own renewal date, and a store that takes SNAP must stock minimum staples. Ledger tracks both, in English and Spanish.</dd></div>
-            <div><dt>My part</dt><dd>I led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
-            <div class="call"><dt>The hard call</dt><dd>Undercount, never pad. A line read below 0.75 confidence is held for the owner to check, not counted.</dd></div>
-            <div><dt>Where it stands</dt><dd><ul class="case-proof">
-              <li>1st place, Council District 9 Champion (Under 18), VISION HACK: South LA</li>
-            </ul></dd></div>
+      <article class="wk" id="case-ledger">
+        <a class="wk-media" href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener" aria-label="Open the Ledger demo"><img src="/img/cases/ledger-scorecard.webp" width="1400" height="572" loading="lazy" decoding="async" alt="Ledger's weekly SNAP stocking scorecard for a corner market: 75 percent passing, with dairy blocking the review." style="object-position:0 0"></a>
+        <div class="wk-body">
+          <div class="wk-kick">Ledger<span>·</span>1st place, VISION HACK: South LA<span>·</span>Sep 2026</div>
+          <h3 class="wk-title">Compliance for corner stores: every renewal on one calendar, and a photo of an order scored against the SNAP stocking rule.</h3>
+          <dl class="wk-facts">
+            <div><dt>Built</dt><dd>Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
+            <div><dt>Result</dt><dd><b>1st place</b>, Council District 9 Champion (Under 18). Tracks a South LA store&rsquo;s eighteen programs, in English and Spanish.</dd></div>
           </dl>
-          <div class="case-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="/demos/#ledger-sec">Walkthrough ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
-      <!-- LEDGER WALKTHROUGH: four synthetic records from Ledger's own test suite -->
-      <details class="walk-d rv">
-      <summary><span class="wd-k">try the product · ledger</span><span class="wd-t">Pick an order record and see what counts</span><span class="wd-go">open <span aria-hidden="true">&darr;</span></span></summary>
-      <div class="walk" id="ledgerWalk" aria-labelledby="lwTitle">
-        <div class="lw-head">
-          <div class="lw-kick">try the product · ledger</div>
-          <h3 class="lw-title" id="lwTitle">Pick an order record. See what counts.</h3>
-          <p class="lw-sub">Each line is counted or held back with a reason, then each category is scored against the SNAP rule.</p>
-          <div class="lw-tabs" id="lwTabs" role="tablist" aria-label="Order records"></div>
-        </div>
-        <div class="lw-body">
-          <figure class="lw-img"><img id="lwImg" alt="" width="1000" height="838" loading="lazy" decoding="async"><figcaption id="lwCap"></figcaption></figure>
-          <div class="lw-steps">
-            <div class="lw-step"><div class="lw-n"><b>1</b> what ledger reads</div><ol class="lw-lines" id="lwLines"></ol></div>
-            <div class="lw-step"><div class="lw-n"><b>2</b> the SNAP check</div><div class="lw-cats" id="lwCats"></div><p class="lw-verdict" id="lwVerdict"></p></div>
-            <div class="lw-step" id="lwFixWrap"><div class="lw-n"><b>3</b> what's missing</div><ul class="lw-fix" id="lwFix"></ul></div>
-          </div>
-        </div>
-        <p class="lw-foot">Synthetic records from Ledger&rsquo;s test suite. This shows the rule engine, which matches hand scoring on all 24 records with no false passes, not the vision model, whose accuracy on real photos hasn&rsquo;t been measured. <a href="https://github.com/michae6345-crypto/visionhack/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">The eval ↗</a></p>
-      </div>
-      </details>
-
-      <article class="case flip rv" id="case-saferoutes">
-        <figure class="case-media case-shot">
-          <a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener" aria-label="Open Safe Routes to School"><img src="/img/cases/saferoutes-route.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Safe Routes to School's worked example on a dark map of Mid-City Los Angeles: three route options, shortest, balanced and safest, and the explanation that the safest route skips 552 meters of South Fairfax Avenue for Venice Boulevard, costs three minutes and halves exposure."></a>
-          <figcaption>The worked example · the safest route trades 552&nbsp;m of South Fairfax Avenue for Venice Boulevard: three more minutes, half the exposure</figcaption>
-        </figure>
-        <div class="case-body">
-          <div class="case-kick"><span class="case-n">04</span>Safe Routes to School<span class="case-sep">·</span>3rd place internationally<span class="case-sep">·</span>2026</div>
-          <h3 class="case-title">Walking directions built from where students actually get robbed, not just from distance.</h3>
-          <dl class="case-facts">
-            <div><dt>The problem</dt><dd>From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. Map apps route for the shortest walk. My friends are in that number.</dd></div>
-            <div><dt>My part</dt><dd>With Michael Tarekegn: a pipeline that scores 431,599 LA blocks from 85,634 LAPD incidents, and an in-browser A* router that takes the bus when riding is calmer.</dd></div>
-            <div class="call"><dt>The hard call</dt><dd>Count only public-space crime. Dropping about 81,000 indoor records keeps ordinary residential blocks from being marked dangerous to walk through.</dd></div>
-            <div><dt>Where it stands</dt><dd><ul class="case-proof">
-              <li>3rd place internationally, Young Coders&rsquo; Sphere Code for Transportation</li>
-              <li>One trip to LACES: two buses instead of a 118-minute walk cut modeled exposure by 80%</li>
-            </ul></dd></div>
+      <article class="wk" id="case-saferoutes">
+        <a class="wk-media" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener" aria-label="Open Safe Routes to School"><img src="/img/cases/saferoutes-route.webp" width="1400" height="875" loading="lazy" decoding="async" alt="Safe Routes to School's worked example on a map of Mid-City Los Angeles: shortest, balanced and safest routes."></a>
+        <div class="wk-body">
+          <div class="wk-kick">Safe Routes to School<span>·</span>3rd place internationally<span>·</span>2026</div>
+          <h3 class="wk-title">Walking directions built from where students actually get robbed, not just from distance.</h3>
+          <dl class="wk-facts">
+            <div><dt>Why</dt><dd>From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.</dd></div>
+            <div><dt>Built</dt><dd>With Michael Tarekegn: a pipeline that scores 431,599 LA blocks from 85,634 LAPD incidents, and an in-browser A* router that takes the bus when riding is calmer.</dd></div>
+            <div><dt>Result</dt><dd><b>3rd place internationally</b>, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, two buses instead of a 118-minute walk cut exposure by 80%.</dd></div>
           </dl>
-          <div class="case-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
@@ -891,6 +813,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-15b"></script>
+<script src="/assets/site.js?v=2026-10-15c"></script>
 </body>
 </html>

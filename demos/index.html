@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15b">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,9 +64,9 @@
 <main id="main" tabindex="-1">
 <header class="page-head wrap">
   <div class="ph-kick">try it</div>
-  <h1 class="ph-title">two demos, five models</h1>
-  <p class="ph-lead">Both run on data from my papers on whether a language model leaves a fingerprint in what it writes. In the first, you guess which model wrote an essay. In the second, a paper&rsquo;s classifier reads an essay, or your own text, in your browser.</p>
-  <nav class="ph-jump" aria-label="On this page"><a href="#guess-sec">Which model wrote this?</a><a href="#stylometry">Run the classifier</a><a href="/#papers">The papers</a><a href="/">Back home</a></nav>
+  <h1 class="ph-title">four demos</h1>
+  <p class="ph-lead">The first two run on data from my papers on whether a language model leaves a fingerprint in what it writes: you guess which model wrote an essay, then a paper&rsquo;s classifier reads one, or your own text. The last two come from my projects: Ledger&rsquo;s rule engine on test orders, and the first lab of the AIML-LI course.</p>
+  <nav class="ph-jump" aria-label="On this page"><a href="#guess-sec">Which model wrote this?</a><a href="#stylometry">Run the classifier</a><a href="#ledger-sec">Ledger</a><a href="#ailab-sec">Unit 1 lab</a><a href="/#papers">The papers</a><a href="/">Back home</a></nav>
 </header>
 
 <!-- DEMO 1: the LangLLM guessing game. Data: assets/guess-samples.json, built by tools/build_demo_data.py -->
@@ -117,6 +117,60 @@
     </div>
   </div>
 </section>
+
+<!-- DEMO 3: Ledger's rule engine on four synthetic records from its test suite (moved from the homepage, 15 Oct). Data: assets/ledger-walkthrough.json -->
+<section id="ledger-sec">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[03]</span><h2>What counts in Ledger</h2><span class="note">// ledger · 1st place, vision hack: south la</span></div>
+    <ol class="steps rv d1">
+      <li><b>1</b><div><span class="st-h">Pick an order record</span>Four synthetic records from Ledger&rsquo;s test suite: a full restock, a typical week, glare, and produce sold by weight.</div></li>
+      <li><b>2</b><div><span class="st-h">See each line</span>Every line is counted, or held back with a reason when the reading is unsure.</div></li>
+      <li><b>3</b><div><span class="st-h">See the SNAP check</span>Each category is scored against the stocking rule, with what is missing to pass.</div></li>
+    </ol>
+      <div class="walk" id="ledgerWalk" aria-labelledby="lwTitle">
+        <div class="lw-head">
+          <div class="lw-kick">try the product · ledger</div>
+          <h3 class="lw-title" id="lwTitle">Pick an order record. See what counts.</h3>
+          <p class="lw-sub">Each line is counted or held back with a reason, then each category is scored against the SNAP rule.</p>
+          <div class="lw-tabs" id="lwTabs" role="tablist" aria-label="Order records"></div>
+        </div>
+        <div class="lw-body">
+          <figure class="lw-img"><img id="lwImg" alt="" width="1000" height="838" loading="lazy" decoding="async"><figcaption id="lwCap"></figcaption></figure>
+          <div class="lw-steps">
+            <div class="lw-step"><div class="lw-n"><b>1</b> what ledger reads</div><ol class="lw-lines" id="lwLines"></ol></div>
+            <div class="lw-step"><div class="lw-n"><b>2</b> the SNAP check</div><div class="lw-cats" id="lwCats"></div><p class="lw-verdict" id="lwVerdict"></p></div>
+            <div class="lw-step" id="lwFixWrap"><div class="lw-n"><b>3</b> what's missing</div><ul class="lw-fix" id="lwFix"></ul></div>
+          </div>
+        </div>
+        <p class="lw-foot">Synthetic records from Ledger&rsquo;s test suite. This shows the rule engine, which matches hand scoring on all 24 records with no false passes, not the vision model, whose accuracy on real photos hasn&rsquo;t been measured. <a href="https://github.com/michae6345-crypto/visionhack/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">The eval ↗</a></p>
+      </div>
+  </div>
+</section>
+
+<!-- DEMO 4: Unit 1 of the AIML-LI course (moved from the homepage, 15 Oct). Data: assets/aiml-minilab.json -->
+<section id="ailab-sec">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[04]</span><h2>The Unit 1 lab</h2><span class="note">// aiml-li · ai-literacy course</span></div>
+    <ol class="steps rv d1">
+      <li><b>1</b><div><span class="st-h">Make the scholarship rarer</span>Pick how many applicants win, from 1 in 2 to 1 in 20.</div></li>
+      <li><b>2</b><div><span class="st-h">Watch two numbers</span>The model&rsquo;s accuracy, and the share of real winners it finds.</div></li>
+      <li><b>3</b><div><span class="st-h">Read the verdict</span>The course&rsquo;s own notebook, pooled over 25 draws of 400 applicants.</div></li>
+    </ol>
+    <div class="rv d1">
+        <div class="aa" id="aiLab" aria-labelledby="aaQ">
+          <div class="aa-kick">try it · unit 1 lab</div>
+          <p class="aa-q" id="aaQ">A model screens scholarship applicants. Make the scholarship rarer.</p>
+          <div class="aa-tabs" id="labTabs" role="tablist" aria-label="How many applicants win"></div>
+          <div class="aa-rows">
+            <div class="aa-row"><span class="aa-k">accuracy</span><span class="aa-track"><i id="aaAccBar"></i></span><b id="aaAcc">&ndash;</b></div>
+            <div class="aa-row rec"><span class="aa-k">winners found</span><span class="aa-track"><i id="aaRecBar"></i></span><b id="aaRec">&ndash;</b></div>
+          </div>
+          <p class="aa-verdict" id="aaVerdict"></p>
+          <p class="aa-foot">The course&rsquo;s Unit 1 notebook, pooled over 25 draws of 400 applicants.</p>
+        </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -160,6 +214,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-15b"></script>
+<script src="/assets/site.js?v=2026-10-15c"></script>
 </body>
 </html>
