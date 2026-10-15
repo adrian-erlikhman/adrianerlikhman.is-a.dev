@@ -594,6 +594,17 @@ the rail and the ⌘K palette follow it.
   hand-scored test records with no false passes (the rule engine, never the
   vision model). Safe Routes: blocks scored by hour, offline, EN/ES, and the
   80% trip named.
+  **Fifth card, full width (15 Oct, Adrian: "add one of my impressive coding
+  projects... one of the finance ML ones, quant ones"; he picked it over the
+  two under-review finance papers, whose repos aren't public): the
+  Regime-Aware Portfolio Optimizer** (public repo
+  adrian-erlikhman/regime-aware-portfolio-optimizer, Aug 2026). `.wk-wide`:
+  a dark terminal (`.wk-term`) with the README figure redrawn dark
+  (`img/cases/regime-paths.webp`, plot.py's markov generator, seed 7) and the
+  README's 24-seed table printing line by line on screen (`.wk-out`, site.js
+  TERMINAL PRINT); "14 passed" is `pytest -q` run on 15 Oct. Every number is
+  the README's; the data is simulated, and the card says so. Badge is
+  `img/logos/regime.svg` (Claude's mark; the project has none).
   Each card also has a browser frame (`.wk-bar`: dots, the live address, a
   pulsing LIVE) and the project's own mark as an app-icon badge across the
   seam (`.wk-badge`, Adrian: "add our logos in a cool way"):

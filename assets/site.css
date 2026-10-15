@@ -1561,3 +1561,26 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .wk-grant{display:flex;align-items:center;gap:12px}
 .wk-facts>div:has(.wk-grant){align-items:center}
 .wk-grant img{width:46px;height:46px;flex:none;object-fit:contain}
+/* ==================== the quant project, full width (15 Oct): a dark terminal beside the write-up ==================== */
+.wk-wide{grid-column:1/-1;flex-direction:row}
+.wk-term{flex:0 0 56%;min-width:0;display:flex;flex-direction:column;background:#0e1420;border-right:1px solid var(--line-strong)}
+.wk-tbar{display:flex;align-items:center;gap:14px;padding:10px 14px;background:#161e2c;border-bottom:1px solid #232d3e}
+.wk-tname{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:11px;color:#8b95a7}
+.wk-wide .wk-media{aspect-ratio:auto;border-bottom:0;background:#0e1420}
+.wk-wide .wk-media img{height:auto;object-fit:contain}
+.wk-wide .wk-media::after{background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.08) 50%,transparent 65%)}
+.wk-out{margin:0;flex:1;padding:14px 20px 18px;border-top:1px solid #232d3e;font-family:var(--mono);font-size:12px;line-height:1.7;color:#c9d2df;white-space:pre;overflow-x:auto}
+.wk-out .pr{color:#9db8e0}.wk-out .dm{color:#6f7a8c}.wk-out .hl{color:#f2a65a}.wk-out .ok{color:#7fd19b}
+/* lines print one by one when the card comes on screen (site.js); without JS or with reduced motion they are all there */
+.wk-out.typing .ln{opacity:0}
+.wk-out .ln{transition:opacity .25s}
+.wk-out .ln.on{opacity:1}
+.wk-out .ln.on:last-child::after{content:"▍";color:#9db8e0;margin-left:6px;animation:wkCaret 1s steps(1) infinite}
+@keyframes wkCaret{50%{opacity:0}}
+.wk-wide .wk-body{padding:28px 30px 26px}
+.wk-wide .wk-head{margin-top:0;align-items:center}
+.wk-wide .wk-head .wk-kick{margin-top:0}
+.wk-wide .wk-title{font-size:1.45rem}
+@media(max-width:900px){.wk-wide{flex-direction:column}.wk-term{flex:none;border-right:0;border-bottom:1px solid var(--line-strong)}.wk-wide .wk-body{padding:22px 24px}}
+@media(max-width:600px){.wk-out{font-size:10.5px;padding:12px 14px 14px}.wk-wide .wk-body{padding:18px 16px}}
+@media(prefers-reduced-motion:reduce){.wk-out .ln.on:last-child::after{animation:none}}
