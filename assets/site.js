@@ -394,7 +394,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
     {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
-    {ic:'▸',label:'Demos: which model wrote this?',k:'page',run:()=>{close();location.href='/demos/';}},
+    {ic:'▸',label:'Demos: guess the model, the classifier, Ledger, the Unit 1 lab',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-78a262414')},
@@ -857,7 +857,7 @@ document.querySelectorAll('.paper .ab-t').forEach(b=>b.addEventListener('click',
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>demo</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
-    demo:()=>{print("opening the demos — guess the model, then run the classifier …");location.href='/demos/';},
+    demo:()=>{print("opening the demos — guess the model, the classifier, ledger, the unit 1 lab …");location.href='/demos/';},
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>curated</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
@@ -1062,10 +1062,7 @@ document.querySelectorAll('.paper .ab-t').forEach(b=>b.addEventListener('click',
     const n=data.records.length, k=+b.dataset.k;
     if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(k+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('lwTabs').children[j].focus(); }
   });
-  /* the walkthrough sits in a closed <details> on the homepage: fetch once, when it is opened */
-  const fold=box.closest('details');
-  if(fold){ fold.addEventListener('toggle',()=>{ if(fold.open&&!data&&!box.dataset.loading){ box.dataset.loading='1'; load(); } }); }
-  else if('IntersectionObserver' in window){
+  if('IntersectionObserver' in window){
     const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
     io.observe(box);
   } else load();
