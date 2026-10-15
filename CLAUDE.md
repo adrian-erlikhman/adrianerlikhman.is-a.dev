@@ -62,7 +62,8 @@ from LaTeX in `resume/`.
   Sept Adrian said the résumé "cant be orange", picked navy from four options
   (ink only, navy, deep green, charcoal and slate), asked for "the latex
   fonts", and chose the Computer Modern preview over Plex ("the one the
-  right"). The site stays rust and Plex. Two text-layer fixes come with the
+  right"). Since 15 Oct the site wears the same navy and Latin Modern (see
+  Site theme). Two text-layer fixes come with the
   face: common ligatures are off (`Ligatures={TeX,NoCommon}`), so parsers read
   "ff" and "fi" as letters, and section heads are unkerned (`\headkern`),
   because bold "AT" kerns tightly enough that pypdf read "EDUCA TION" and
@@ -112,7 +113,7 @@ from LaTeX in `resume/`.
     The WLLFM paper is a different paper, so it doesn't go on this card.
     BigData's LangLLM acceptance took TACL's place in the teasers: the og
     chip "CO-FIRST AUTHOR — IEEE BIGDATA 2026 (ACCEPTED)" (`tools/make_og.py`,
-    og.png `?v=6`), the og/twitter alt text and the hero typewriter's first
+    og.png `?v=7`), the og/twitter alt text and the hero typewriter's first
     line. Never "accepted" or NeurIPS.
     **Title since 11 Oct 2026: "Whose Line Is It Anyway? Auditing Self- and
     Other-Recognition in LLM Judges"** (the arXiv version's; Adrian took it
@@ -124,8 +125,12 @@ from LaTeX in `resume/`.
     on 32).
     On 7 Oct the R.03 card (R.02 until 12 Oct) took the submitted title and a summary from the
     arXiv abstract, plus a CODE + DATA link to the public repo, but Adrian
-    chose to **keep its old credit line** (Ryan and Michael, Philo as
-    advisor). Swap the dashed "PDF · ARXIV SOON" for the arXiv
+    chose to keep its old credit line (Ryan and Michael, Philo as advisor)
+    until **15 Oct, when he chose each paper's real author list**: the site's
+    R.03 panel and llms.txt now say Adrian Erlikhman, Michael Tarekegn, Philo
+    Juang, co-first author. **Both résumés still carry the old CompLLM credit**
+    ("advised by Philo Juang (Google DeepMind)"; the long one adds R.
+    Erlikhman) and were not rebuilt; ask before changing them. Swap the dashed "PDF · ARXIV SOON" for the arXiv
     link once it is posted (the R.03 card's `[EDIT]` comment marks the spot),
     and drop "forthcoming".
   - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
@@ -155,8 +160,10 @@ from LaTeX in `resume/`.
     paper corrected; Adrian chose to keep them (21 Sept). He also chose to
     drop LangLLM's author line everywhere, because the old one ("with Michael
     Tarekegn & Ryan Erlikhman · Advisor: Philo Juang") didn't match the
-    submitted paper (Adrian, Michael, Philo), so the card and both résumés
-    just say "Co-first author" (see the credit rule below). The site keeps the
+    submitted paper (Adrian, Michael, Philo). Since 15 Oct the site's R.01
+    panel and llms.txt list the paper's real authors (Adrian Erlikhman,
+    Michael Tarekegn, Philo Juang); both résumés still just say "Co-first
+    author" (see the credit rule below). The site keeps the
     friendlier title "Do LLM Fingerprints Survive Outside English?" unless he asks.
 - **Legatum's title carries a deliberate line break** in the long one (after
   the question mark, with `\newline`). Without it the title filled the line and
@@ -211,8 +218,9 @@ from LaTeX in `resume/`.
     the company, not him. Two things he saw and accepted: his own URTC poster
     lists Philo as a **co-author at UCLA**, not an advisor at Google DeepMind,
     and the CompLLM submission is anonymized, so nothing in the paper states
-    the advising relationship. LangLLM names him nowhere on the site even
-    though he is an author on it.
+    the advising relationship. Since 15 Oct the R.01 and R.03 panels list
+    him as an author (no affiliation), and R.01's cover image is the BigData
+    paper's first page, which names him at UCLA.
   - Legatum: Co-first author with Ryan Erlikhman, no advisor (the manuscript's
     acknowledgements say no mentor supervised it). Both résumés say "Accepted
     with revisions, Journal of High School Science", matching the site; the old
@@ -329,7 +337,8 @@ from LaTeX in `resume/`.
   photos and `img/ycs/main-stage.jpg` (he isn't in it). Delete those robots lines
   to let them back into image search.
 - **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
-  (from the Tectonic cache) on rust: `favicon.svg` (outlined paths),
+  (from the Tectonic cache), recoloured 15 Oct from rust to navy `#1F3A5F`
+  (pixel remap; the SVG's two fills edited): `favicon.svg` (outlined paths),
   `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
   `apple-touch-icon.png`, plus `site.webmanifest`. Google had been showing
   the August glitch "AE", which survived in `apple-touch-icon.png`.
@@ -344,6 +353,26 @@ from LaTeX in `resume/`.
   `google2a9593ca4bc38729.html` (6 Oct). Never delete it: Google drops the
   verification. A domain property can't work: the is-a.dev record is a CNAME,
   which can't sit beside a TXT record.
+
+## Site theme (15 Oct 2026)
+- Adrian "officially" didn't like the cream and rust any more and asked for
+  "maybe latex font". He picked **B** of four previews on the live homepage:
+  the résumés' **navy** (`--acc:#1f3a5f`) on warm white (`--bg:#fbfaf7`), with
+  **Latin Modern Roman** for headings and text and **IBM Plex Mono kept for
+  the small labels** (over all-LaTeX, cobalt on grey, and forest green).
+- The tokens are in `site.css`'s `[data-theme="light"]` block; every serif
+  heading goes through `--serif` (it was Fraunces, written into ~20 rules),
+  and `--disp`/`--sans` point at it. Latin Modern's bold is wide, so the big
+  heads' tracking is reset to -.01em at the end of site.css.
+- Fonts are self-hosted: `fonts/lmroman10-{regular,bold,bolditalic}.woff2`
+  and `lmroman9-italic.woff2` (no 10pt italic in the bundle), made from the
+  Tectonic cache's OTFs with fontTools, subset to Latin, Greek and symbols
+  (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
+- The demos' dark panels (`.guess`, the lab) went from warm brown to deep
+  navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
+- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=7` on both
+  pages); the OTFs sit in the gitignored `tools/fonts/`. The 404 page keeps
+  its own dark neon design.
 
 ## Shared assets
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
@@ -446,10 +475,8 @@ the rail and the ⌘K palette follow it.
     orientation"; Selected work "shorter and more condensed... what it is,
     the support i got, what i built... mimic other similar professional
     websites"):
-    - **Research** is a publication list (`.paper` rows): status pill, title,
-      credit, the one-line finding, then inline mono links (`.plinks`, `.pl`;
-      `.pl-try` for a demo). The "try it" banner and the topic tags are gone;
-      the summary still opens on hover or with the summary button.
+    - **Research** was a publication list (`.paper` rows) for one day; it is
+      now the cover shelf (see Research shelf).
     - **Experience** is a board (`#xpBoard`, `.xb`), since a third pass the same
       day (Adrian: the vertical list and its bullets looked "mid"; he wanted
       "something unique... possibly interactive"). Each internship is a bar on
@@ -686,16 +713,23 @@ the rail and the ⌘K palette follow it.
   under the lab (predict before you run, ethics, summary) are the notebook's
   own words, and the teacher-key numbers in the notebook don't match what the
   code prints on this scikit-learn, so don't quote them.
-- **Each R card shows one finding** (`.find`, since 10 Oct), a sentence of
-  numbers taken from its own summary; update it with the summary. On touch
-  screens a "summary +" button (`.ab-t`, hidden where hover works) opens the
-  summary. Status pills are solid when accepted and outlined (`.st-open`) when
-  in submission or ongoing. The label is "// five papers · four accepted"
-  (R.06 is a study, not a paper).
-- **Research summaries** open on hover or focus and are capped at 640px
-  (was 200px until 7 Oct, which clipped three on desktop and cut every one
-  roughly in half on a phone). Keep the cap above the tallest summary at
-  390px wide.
+- **Research shelf (15 Oct, Adrian: the list was "too long to scroll
+  through"; he wanted "the front page of the paper seen like on a small
+  interactive clickly thingy", then where it was accepted and who worked on
+  it).** A row of six front pages (`.rshelf`, `.rs-b` tabs; a swipe strip
+  under 700px), and below it one panel per paper (`.rp`), only the picked one
+  shown; arrows, Home and End move along the shelf, and without JS the shelf
+  hides and every panel shows. A panel is the big cover (links the PDF where
+  the site hosts one), the status pill (solid when accepted, outlined
+  `.st-open` otherwise), the title, a facts list (Venue, Presenting/Status,
+  Authors, My role), the one-line finding (`.find`, from the summary; update
+  it with the summary), the summary, and the links. Covers are page 1 of each
+  PDF at 640px wide, `img/papers/r0N-*.webp` (pypdfium2); re-render one when
+  its PDF changes. R.01's is the BigData paper's (`LangLLM/paper/main.pdf`),
+  shown as an image with no PDF link until the camera-ready is posted
+  (Adrian, 15 Oct); R.03's is the arXiv version's; R.06's is a CSS ruled
+  sheet (`.rs-notes`). The label is "// five papers · four accepted" (R.06 is
+  a study, not a paper).
 - **Research** runs R.01 LangLLM · R.02 Curated to Win · R.03 CompLLM ·
   R.04 portfolio optimization · R.05 Legatum robustness · R.06 advanced math.
   Curated to Win went in at R.02 on 12 Oct, after the other accepted NLP paper;

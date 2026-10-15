@@ -149,7 +149,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   resize();addEventListener('resize',resize);
   const css=getComputedStyle(document.documentElement);
   const hexA=(h,a)=>{h=(h||'').trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;};
-  const ACChex=css.getPropertyValue('--acc').trim()||'#c1543a';
+  const ACChex=css.getPropertyValue('--acc').trim()||'#1f3a5f';
   const INKhex=css.getPropertyValue('--ink').trim()||'#1a1c22';
   const DIMhex=css.getPropertyValue('--dim').trim()||'#5d6470';
   const ACC=ACChex, RED='#e5484d';
@@ -159,7 +159,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   if(!isTouch) addEventListener('mousemove',e=>{mx=e.clientX*DPR;my=e.clientY*DPR;});
 
   // interactive equity chart — candlesticks + close line + hover crosshair (no rain, no boot log)
-  const DOWN='#a49e8c';                 // warm gray for down-moves (no red clash with rust)
+  const DOWN='#9aa3b2';                 // cool gray for down-moves
   const N=60; let price=100; const candles=[];
   for(let i=0;i<N;i++){const o=price;price=Math.max(30,price+(Math.random()-0.44)*3.8);const c=price;
     candles.push({o,c,hi:Math.max(o,c)+Math.random()*1.8,lo:Math.min(o,c)-Math.random()*1.8});}
@@ -218,7 +218,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
       let bxp=scx+12*DPR; if(bxp+bw2>bx1) bxp=scx-12*DPR-bw2;
       ctx.fillStyle=hexA(INKhex,.93);ctx.fillRect(bxp,by0,bw2,bh2);
       ctx.strokeStyle=hexA(ACChex,.5);ctx.lineWidth=1*DPR;ctx.strokeRect(bxp,by0,bw2,bh2);
-      rows.forEach((ln,i)=>{ctx.fillStyle=i===0?ACC:(i===5?(upC?ACC:DOWN):'#efece3');ctx.fillText(ln,bxp+9*DPR,by0+18*DPR+i*15*DPR);});
+      rows.forEach((ln,i)=>{ctx.fillStyle=i===0?ACC:(i===5?(upC?ACC:DOWN):'#eef1f5');ctx.fillText(ln,bxp+9*DPR,by0+18*DPR+i*15*DPR);});
     }
     ctx.restore();
     // subtle rust rule marking the top of the tape region (the barrier)
@@ -672,10 +672,25 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   }).catch(()=>{ $('labOut').innerHTML='<p class="lab-empty">The classifier didn’t load. Its data and code are on GitHub.</p>'; });
 })();
 
-/* ================= RESEARCH SUMMARIES — hover opens them; on touch screens the summary button does ================= */
-document.querySelectorAll('.paper .ab-t').forEach(b=>b.addEventListener('click',()=>{
-  const p=b.closest('.paper'), on=p.classList.toggle('open'); b.setAttribute('aria-expanded',on);
-}));
+/* ================= RESEARCH SHELF — click a front page to open its panel; arrows, Home and End move along the shelf ================= */
+(function(){
+  const sh=document.querySelector('.rshelf'), box=document.querySelector('.rpanels'); if(!sh||!box) return;
+  const tabs=[...sh.querySelectorAll('.rs-b')], panels=tabs.map(t=>document.getElementById(t.getAttribute('aria-controls')));
+  sh.classList.add('js'); box.classList.add('js');
+  function pick(i,focus){
+    tabs.forEach((t,j)=>{const on=j===i; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; panels[j].classList.toggle('on',on); panels[j].hidden=!on;});
+    if(focus) tabs[i].focus({preventScroll:true});
+    if(sh.scrollWidth>sh.clientWidth) sh.scrollTo({left:Math.max(0,tabs[i].offsetLeft-sh.offsetLeft-22),behavior:'smooth'});
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>pick(i));
+    t.addEventListener('keydown',e=>{
+      const n=tabs.length, j={ArrowRight:(i+1)%n,ArrowLeft:(i-1+n)%n,Home:0,End:n-1}[e.key];
+      if(j!==undefined){e.preventDefault(); pick(j,true);}
+    });
+  });
+  pick(0);
+})();
 
 /* ================= MATH RESEARCH NOTES ================= */
 (function(){
