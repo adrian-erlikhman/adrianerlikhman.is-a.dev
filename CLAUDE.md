@@ -467,8 +467,12 @@ the rail and the ⌘K palette follow it.
     follows the scroll. **Wide screens (1360px+)** get a rail in the right
     margin (`.rail`, built by site.js from the `[0n]` labels).
   - **Fencing** opens on `video/fence-loop.mp4`: six muted seconds of the team
-    relay leg (`bout-team-afm.mp4` from 0:40, cropped to the piste, 574 KB),
-    poster `img/bouts/fence-loop.webp`. It loads near the screen, plays only
+    relay leg ending on one of Adrian's touches (`bout-team-afm.mp4` from
+    2:59.2, the touch that made it 11-10, cropped to the piste, ~500 KB),
+    poster `img/bouts/fence-loop.webp`, both `?v=2026-10-15e`. Adrian picked
+    it ("E") from seven of his touches, found by reading the overlay's score
+    bar (his team 5→13, AFM 8→10). He turned down a sharper 1080p cut of a
+    Div I touch (Boutcaster's Cloudflare Stream, bout d7d19a4c…, 2:51). It loads near the screen, plays only
     on screen, and stays a poster under reduced motion or Save-Data.
   - **Second pass, same day** (Adrian: research "still need[s] to refine";
     Experience "smoother / tuffer... some bullets and then different
