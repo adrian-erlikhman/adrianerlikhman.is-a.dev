@@ -25,13 +25,15 @@ else { window.scrollTo(0,0); addEventListener('load',()=>window.scrollTo(0,0)); 
 /* hero intro */
 function playHero(){document.querySelectorAll('.hero h1 .ln').forEach((l,i)=>setTimeout(()=>l.classList.add('go'),140+i*140));}
 addEventListener('load',playHero);setTimeout(playHero,900);
-/* reveal + meters + counters */
+/* reveal + meters + counters. A block shows as soon as its top is on screen (not once 16% of it is:
+   a 4,000px block on a phone stayed blank for a whole screen), and counters run only with motion on. */
+const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const io=new IntersectionObserver(es=>{es.forEach(en=>{if(!en.isIntersecting)return;
   en.target.classList.add('in');
   en.target.querySelectorAll('.meter i').forEach(b=>b.style.width=b.dataset.w+'%');
-  en.target.querySelectorAll('[data-count]').forEach(c=>{const t=+c.dataset.count,t0=performance.now();
-    (function s(n){const p=Math.min((n-t0)/1200,1);c.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0);});
-  io.unobserve(en.target);});},{threshold:.16});
+  if(!REDUCED) en.target.querySelectorAll('[data-count]').forEach(c=>{const t=+c.dataset.count,t0=performance.now();
+    (function s(n){const p=Math.min((n-t0)/1300,1);c.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s)})(t0);});
+  io.unobserve(en.target);});},{threshold:0,rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 /* progress bar */
 const tb=document.getElementById('topbar');
@@ -238,14 +240,40 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 })();
 
 /* ================= PAGE MOTION ================= */
-/* scroll-spy: light the nav link for the section in view */
+/* section rail (wide screens): one tick per numbered section, built from the section labels */
 (function(){
-  const links=[...document.querySelectorAll('.hud .navset a[href^="#"]')];
-  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const secs=[...document.querySelectorAll('main section[id]')].filter(s=>s.querySelector('.idx'));
+  if(secs.length<3||!document.querySelector('.hero')) return;
+  const rail=document.createElement('nav'); rail.className='rail'; rail.setAttribute('aria-label','Sections');
+  rail.innerHTML=secs.map(s=>{const n=(s.querySelector('.idx').textContent.match(/\d+/)||[''])[0];
+    const h=s.querySelector('h2'); const t=h?h.textContent.trim():'Contact';
+    return `<a href="#${s.id}"><span class="rl">${t}</span><span class="rn">${n}</span><i></i></a>`;}).join('');
+  document.body.appendChild(rail);
+  const show=()=>rail.classList.toggle('on',scrollY>innerHeight*.55);
+  addEventListener('scroll',show,{passive:true}); show();
+})();
+/* scroll-spy: light the section in view in the nav, the phone strip and the rail */
+(function(){
+  const links=[...document.querySelectorAll('.hud .navset a[href^="#"], .secnav a, .rail a')];
+  const strip=document.querySelector('.secnav');
   const spy=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map.get(e.target.id);if(a)a.classList.add('active');}
+    if(!e.isIntersecting) return;
+    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+    const a=strip&&strip.querySelector(`a[href="#${e.target.id}"]`);
+    if(a&&strip.offsetParent) strip.scrollTo({left:a.offsetLeft-strip.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});
   }),{rootMargin:'-45% 0px -50% 0px'});
   document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+})();
+
+/* fencing reel: a six-second muted loop, fetched when it comes near and playing only while on screen */
+(function(){
+  const v=document.querySelector('.reel video'); if(!v) return;
+  if(REDUCED||(navigator.connection&&navigator.connection.saveData)) return;   /* the poster stays */
+  let loaded=false;
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ if(!loaded){ v.src=v.dataset.src; loaded=true; } const p=v.play(); if(p&&p.catch) p.catch(()=>{}); }
+    else if(loaded) v.pause();
+  }),{rootMargin:'200px 0px'}).observe(v);
 })();
 
 /* timeline: spine fills + nodes ignite as you scroll through Experience */
@@ -362,9 +390,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'About',k:'jump',run:()=>go('#about')},
     {ic:'▸',label:'Experience',k:'jump',run:()=>go('#experience')},
     {ic:'▸',label:'Research / Papers',k:'jump',run:()=>go('#papers')},
+    {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
     {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
-    {ic:'▸',label:'Selected work',k:'jump',run:()=>go('#work')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
     {ic:'▸',label:'Demos: which model wrote this?',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
@@ -1034,7 +1062,10 @@ document.querySelectorAll('.paper .ab-t').forEach(b=>b.addEventListener('click',
     const n=data.records.length, k=+b.dataset.k;
     if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(k+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('lwTabs').children[j].focus(); }
   });
-  if('IntersectionObserver' in window){
+  /* the walkthrough sits in a closed <details> on the homepage: fetch once, when it is opened */
+  const fold=box.closest('details');
+  if(fold){ fold.addEventListener('toggle',()=>{ if(fold.open&&!data&&!box.dataset.loading){ box.dataset.loading='1'; load(); } }); }
+  else if('IntersectionObserver' in window){
     const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
     io.observe(box);
   } else load();
