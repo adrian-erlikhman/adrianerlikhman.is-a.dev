@@ -477,17 +477,24 @@ the rail and the ⌘K palette follow it.
     websites"):
     - **Research** was a publication list (`.paper` rows) for one day; it is
       now the cover shelf (see Research shelf).
-    - **Experience** is a board (`#xpBoard`, `.xb`), since a third pass the same
-      day (Adrian: the vertical list and its bullets looked "mid"; he wanted
-      "something unique... possibly interactive"). Each internship is a bar on
-      a 2024 / 2025 / 2026 / now track, at year precision only (no months are
-      known); ongoing roles pulse at the "now" end. Picking a bar opens its
-      panel: dates, role, company with mark, and three "moves" (a mono verb, a
-      big rust value, one line; 20+, 10+ and 250+ count up). While on screen it
-      steps through by itself, the selected bar's underline being the timer;
-      hover or focus pauses, a click or arrow key hands over control for good,
-      and reduced motion turns it off. Without JS all four panels show. The
-      moves' wording follows the Firstness and Kiddom rules.
+    - **Experience** is a set of **internship files** (`#xpFiles`, `.xf`), the
+      fourth design that day. Adrian found the vertical list "mid", then the
+      year-track board (`#xpBoard`, #150) not what he wanted, asked for "like
+      10 very distinct options" (mocked in a throwaway `_mock/`: terminal,
+      deck, side-scroll, big type, transit map, bento, ticker, case files,
+      scroll story, flip cards), liked case files, and from three takes on it
+      picked **B**: "make what i did very clear". One manila file per
+      internship behind tabs: a typed sheet with "Internship · 0n / 04 ·
+      dates", a Current/Completed stamp, the role, the company with its mark
+      and who he worked with, then **What I did** (a dark label, three items,
+      each a bold action and one sentence), then "Tools & skills" (tools only
+      where on record: Why Wrong's JavaScript, naive Bayes and k-means for
+      Kiddom, HubSpot for Alliance; Firstness and Fjor show skills only until
+      he names their tools). Beside it a sticky note with the headline and a
+      paper-clipped Deliverables card (✓ done, dashed … in progress). It steps
+      through the files while on screen (9 s, the tab's underline is the
+      timer) until a click or key; without JS all four show. Content rules for
+      Firstness and Kiddom hold here too.
     - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
       kicker, a one-line title that says what it is, then Built / Backed by /
       Result (Safe Routes adds Why, with "My friends are in that number").
