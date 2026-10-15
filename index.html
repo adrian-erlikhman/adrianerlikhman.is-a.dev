@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15-sw3">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-15-aw1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -122,6 +122,7 @@
       "award": [
         "National Merit Semifinalist (2027 program)",
         "Accepted, IEEE BigData 2026 High School Symposium",
+        "Best Paper Finalist, IEEE BigData 2026 High School Symposium",
         "Accepted, ARRSI Workshop at AACL-IJCNLP 2026 (sole author)",
         "Accepted with revisions, Journal of High School Science",
         "Accepted with revisions, Oxford Journal of Student Scholarship",
@@ -133,7 +134,11 @@
         "Decode the Ocean 2026 — 1st place (eDNAtlas)",
         "VISION HACK: South LA 2026 — Council District 9 Champion, Under 18 (Ledger)",
         "Code for Transportation 2026 — 3rd place (Safe Routes LA)",
-        "Citadel Terminal 2026 — Finalist"
+        "Citadel Terminal 2026 — Finalist",
+        "Y Combinator Startup School 2026",
+        "USA Fencing All-American First Team (3×)",
+        "USA Fencing All-Academic First Team (3×)",
+        "AP Scholar with Distinction (2×)"
       ],
       "subjectOf": [
         {
@@ -616,7 +621,7 @@
           <dl class="wk-facts">
             <div><dt>Built</dt><dd>Co-founded AIML-LI with Michael Tarekegn and co-wrote a free, open-source <b>12-week course</b> in six units: foundations, building models, prediction and error, neural networks, language and bias, and a capstone project students ship. Real notebooks, aligned to state standards, on the school&rsquo;s Chromebooks.</dd></div>
             <div><dt>Worked with</dt><dd>Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD&rsquo;s Ed Tech &amp; Innovation office.</dd></div>
-                        <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now <b>piloting with LAUSD</b>, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for <b>500+</b> LA students with nine committed partners. aiEDU student panel at NCSS 2026.</dd></div>
+                        <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now <b>piloting with LAUSD</b>, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for <b>200+</b> LA public-school students with nine committed partners. aiEDU student panel at NCSS 2026.</dd></div>
           </dl>
           <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a><a href="/demos/#ailab-sec">Try the Unit 1 lab ↗</a></div>
         </div>
@@ -715,8 +720,6 @@
           <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · November North American Cup</span></div>
           <div class="res"><span class="pl">Top 64</span><span class="ev">Junior (U20) · North American Cup</span></div>
           <div class="res"><span class="pl">4×</span><span class="ev">Junior (U20) · Regional Champion</span></div>
-          <div class="res"><span class="pl">3×</span><span class="ev">All-American · First Team</span></div>
-          <div class="res"><span class="pl">3×</span><span class="ev">All-Academic · First Team</span></div>
         </div>
       </div>
       <div class="fence-gallery rv d2">
@@ -744,100 +747,66 @@
     </div>
   </div>
 </section>
-<!-- ACHIEVEMENTS: the podium first, then the rest -->
+<!-- ACHIEVEMENTS: a wall of the organisations, one panel per honour (15 Oct; Adrian picked the logo wall).
+     Nothing here repeats Selected work, Research or Fencing. Without JS every panel shows, stacked. -->
 <section id="record">
   <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[06]</span><h2>Achievements</h2><span class="note">// competitions · leadership · academics</span></div>
-    <p class="sec-lead rv d1">Awards, founding roles, invitations and coursework.</p>
+    <div class="sec-label rv"><span class="idx">[06]</span><h2>Achievements</h2><span class="note">// awards · programs · leadership · academics</span></div>
 
-    <div class="pods rv d1">
-      <a class="pod" href="/eDNAtlas/" target="_blank">
-        <div class="pod-h"><b>1st</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al sq"><img src="/img/logos/lovable.svg" width="21" height="21" loading="lazy" decoding="async" alt="Lovable"></span>
-          <h3>Decode the Ocean</h3>
-          <p>Lovable × United Nations · eDNAtlas, a live map that scores coastal sites from environmental DNA ↗</p>
-        </div>
-      </a>
-      <a class="pod" href="#case-ledger">
-        <div class="pod-h"><b>1st</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al"><img src="/img/sponsors/hackerfund.webp" width="79" height="15" loading="lazy" decoding="async" alt="Hacker Fund"></span>
-          <h3>VISION HACK: South LA</h3>
-          <p>Hacker Fund × City of LA Vision Lab · Council District 9 Champion, Under 18, for Ledger ↑</p>
-        </div>
-      </a>
-      <a class="pod" href="#case-saferoutes">
-        <div class="pod-h"><b>3rd</b><span>place</span></div>
-        <div class="pod-b">
-          <span class="al sq"><img src="/img/logos/ycs.webp" width="21" height="21" loading="lazy" decoding="async" alt="Young Coders&rsquo; Sphere"></span>
-          <h3>Code for Transportation</h3>
-          <p>Young Coders&rsquo; Sphere · third internationally, for Safe Routes to School ↑</p>
-        </div>
-      </a>
+    <div class="aw-wrap rv d1">
+    <div class="aw" id="awWall" role="tablist" aria-label="Achievements">
+      <button type="button" class="aw-t" role="tab" id="aw-t0" aria-controls="aw-p0" aria-selected="true"><span class="aw-md gold">Best Paper</span><span class="aw-lo"><img src="/img/logos/ieee.webp" alt="IEEE"></span><span class="aw-tg">BigData 2026 · Finalist</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t1" aria-controls="aw-p1" aria-selected="false" tabindex="-1"><span class="aw-md gold">1st</span><span class="aw-lo"><img class="sq" src="/img/logos/lovable.svg" alt="Lovable"></span><span class="aw-tg">Decode the Ocean</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t2" aria-controls="aw-p2" aria-selected="false" tabindex="-1"><span class="aw-md">Admitted</span><span class="aw-lo"><img class="sq" src="/img/logos/yc.svg" alt="Y Combinator"></span><span class="aw-tg">Startup School</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t3" aria-controls="aw-p3" aria-selected="false" tabindex="-1"><span class="aw-md">Semifinalist</span><span class="aw-lo"><img src="/img/logos/nmsc.webp" alt="National Merit Scholarship Corporation"></span><span class="aw-tg">National Merit</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t4" aria-controls="aw-p4" aria-selected="false" tabindex="-1"><span class="aw-md">Finalist</span><span class="aw-lo"><img src="/img/logos/citadel.webp" alt="Citadel" style="max-height:17px"></span><span class="aw-tg">Terminal</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t5" aria-controls="aw-p5" aria-selected="false" tabindex="-1"><span class="aw-md">3× First Team</span><span class="aw-lo"><img class="sq" src="/img/logos/usafencing.webp" alt="USA Fencing" style="max-height:42px"></span><span class="aw-tg">All-American</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t6" aria-controls="aw-p6" aria-selected="false" tabindex="-1"><span class="aw-md">3× First Team</span><span class="aw-lo"><span class="aw-num">3×</span></span><span class="aw-tg">All-Academic</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t7" aria-controls="aw-p7" aria-selected="false" tabindex="-1"><span class="aw-md">2× Distinction</span><span class="aw-lo"><img class="sq" src="/img/logos/collegeboard.webp" alt="College Board"></span><span class="aw-tg">AP Scholar</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t8" aria-controls="aw-p8" aria-selected="false" tabindex="-1"><span class="aw-md">LACES &rsquo;27</span><span class="aw-lo"><span class="aw-num">4.0 · 1520</span></span><span class="aw-tg">GPA · SAT</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t9" aria-controls="aw-p9" aria-selected="false" tabindex="-1"><span class="aw-md">Top 5%</span><span class="aw-lo"><img src="/img/logos/sifma.svg" alt="SIFMA"></span><span class="aw-tg">Stock Market Game</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t10" aria-controls="aw-p10" aria-selected="false" tabindex="-1"><span class="aw-md">President</span><span class="aw-lo"><span class="aw-wm">Jewish Student<br>Union</span></span><span class="aw-tg">50+ members</span><i class="aw-bar" aria-hidden="true"></i></button>
+      <button type="button" class="aw-t" role="tab" id="aw-t11" aria-controls="aw-p11" aria-selected="false" tabindex="-1"><span class="aw-md">Co-founder</span><span class="aw-lo"><span class="aw-wm">STEMsters</span></span><span class="aw-tg">30+ volunteers</span><i class="aw-bar" aria-hidden="true"></i></button>
     </div>
-
-    <div class="acards rv d1">
-      <article class="ac">
-        <span class="ac-p">Semifinalist</span>
-        <span class="al mk"><img src="/img/logos/nmsc.webp" width="56" height="18" loading="lazy" decoding="async" alt="National Merit Scholarship Corporation"></span>
-        <h3>National Merit Scholarship Program</h3>
-        <p>About 16,000 of 1.3 million+ entrants</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Finalist</span>
-        <span class="al"><img src="/img/logos/citadel.webp" width="126" height="15" loading="lazy" decoding="async" alt="Citadel"></span>
-        <h3>Citadel High School Terminal</h3>
-        <p>Top 8 of 45 teams with &ldquo;dunerscore&rdquo;, a Python tower-defense bot built by a team of three · Citadel | Citadel Securities, hosted by Correlation One</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Admitted</span>
-        <span class="al sq"><img src="/img/logos/yc.svg" width="21" height="21" loading="lazy" decoding="async" alt="Y Combinator"></span>
-        <h3>Y Combinator Startup School</h3>
-        <p>Sub-5% acceptance, $30,000+ in partner credits</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Invited speaker</span>
-        <span class="al"><img src="/img/logos/ncss.webp" width="39" height="15" loading="lazy" decoding="async" alt="NCSS"></span>
-        <h3>NCSS 2026</h3>
-        <p>aiEDU&rsquo;s student panel on AI · National Consortium of STEM Schools, San Diego, December 2026</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Invited presenter</span>
-        <span class="al"><img src="/img/logos/lausd.webp" width="42" height="15" loading="lazy" decoding="async" alt="LAUSD"></span>
-        <h3>LAUSD Student Innovation Challenge</h3>
-        <p>A $10,000 district challenge</p>
-      </article>
-      <article class="ac">
-        <span class="ac-p">Top 5%</span>
-        <span class="al"><img src="/img/logos/sifma.svg" width="31" height="15" loading="lazy" decoding="async" alt="SIFMA"></span>
-        <h3>SIFMA Stock Market Game</h3>
-        <p>A simulated portfolio on live data, against thousands of teams</p>
-      </article>
+    <div class="aw-d" id="awPanel" aria-live="polite">
+      <div class="aw-it" role="tabpanel" id="aw-p0" aria-labelledby="aw-t0"><div class="aw-ix"><span>01 / 12</span><span>Research award</span></div><div class="aw-body">
+        <div class="aw-pl">Best Paper Finalist</div><h3>IEEE BigData 2026 High School Symposium</h3><div class="aw-by">One of 12 papers · top 16 of 130 accepted</div>
+        <p>For <i>Do LLM Fingerprints Survive Outside English?</i>, co-first author. The award is presented in Phoenix on 17 December 2026.</p><a class="aw-go" href="#papers">See the paper &uarr;</a></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p1" aria-labelledby="aw-t1"><div class="aw-ix"><span>02 / 12</span><span>Competition</span></div><div class="aw-body">
+        <div class="aw-pl">1st place</div><h3>Decode the Ocean</h3><div class="aw-by">Lovable × United Nations</div>
+        <p>eDNAtlas, a live map that scores coastal sites from environmental DNA.</p><a class="aw-go" href="/eDNAtlas/" target="_blank">Open eDNAtlas &nearr;</a></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p2" aria-labelledby="aw-t2"><div class="aw-ix"><span>03 / 12</span><span>Selective program</span></div><div class="aw-body">
+        <div class="aw-pl">Admitted</div><h3>Y Combinator Startup School 2026</h3><div class="aw-by">Sub-5% acceptance · $30,000+ in partner credits</div>
+        <div class="aw-ph"><figure><img src="/img/ycs/yc-sign.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman with two other attendees at Y Combinator Startup School 2026" style="object-position:50% 72%"><figcaption>Startup School</figcaption></figure><figure><img src="/img/ycs/main-stage.jpg" width="600" height="800" loading="lazy" decoding="async" alt="The main stage at Y Combinator Startup School 2026, seen by Adrian Erlikhman from the stands" style="object-position:50% 45%"><figcaption>Main stage</figcaption></figure><figure><img src="/img/ycs/deepmind-yc.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman with another attendee at a DeepMind × Y Combinator event in San Francisco" style="object-position:50% 40%"><figcaption>DeepMind × YC event</figcaption></figure></div></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p3" aria-labelledby="aw-t3"><div class="aw-ix"><span>04 / 12</span><span>Selective</span></div><div class="aw-body">
+        <div class="aw-pl">Semifinalist</div><h3>National Merit Scholarship Program</h3><div class="aw-by">2027 program</div>
+        <p>About 16,000 of 1.3 million+ entrants.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p4" aria-labelledby="aw-t4"><div class="aw-ix"><span>05 / 12</span><span>Competition</span></div><div class="aw-body">
+        <div class="aw-pl">Finalist</div><h3>Citadel High School Terminal</h3><div class="aw-by">Citadel | Citadel Securities, hosted by Correlation One</div>
+        <p>Top 8 of 45 teams with &ldquo;dunerscore&rdquo;, a Python tower-defense bot built by a team of three.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p5" aria-labelledby="aw-t5"><div class="aw-ix"><span>06 / 12</span><span>National honor</span></div><div class="aw-body">
+        <div class="aw-pl">3× First Team</div><h3>USA Fencing All-American</h3><div class="aw-by">Three seasons</div>
+        <p>All-American First Team goes to the top national finishers in an age group over a full season.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p6" aria-labelledby="aw-t6"><div class="aw-ix"><span>07 / 12</span><span>National honor</span></div><div class="aw-body">
+        <div class="aw-pl">3× First Team</div><h3>USA Fencing All-Academic</h3><div class="aw-by">Three seasons</div>
+        <p>A qualifying national result plus a 3.85+ GPA, earned while training 18&ndash;20 hours a week.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p7" aria-labelledby="aw-t7"><div class="aw-ix"><span>08 / 12</span><span>National honor</span></div><div class="aw-body">
+        <div class="aw-pl">2×</div><h3>AP Scholar with Distinction</h3><div class="aw-by">College Board · 2025 and 2026</div>
+        <p>A 3.5+ average across five or more exams. 17 APs: 11 exams through junior year, 6 more this year.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p8" aria-labelledby="aw-t8"><div class="aw-ix"><span>09 / 12</span><span>Academics</span></div><div class="aw-body">
+        <div class="aw-pl">4.0 · 1520</div><h3>Unweighted GPA · SAT</h3><div class="aw-by">Los Angeles Center for Enriched Studies, class of 2027</div>
+        <p>4.0 unweighted, 5.2 weighted. SAT 1520: Math 770, EBRW 750.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p9" aria-labelledby="aw-t9"><div class="aw-ix"><span>10 / 12</span><span>Competition</span></div><div class="aw-body">
+        <div class="aw-pl">Top 5%</div><h3>SIFMA Stock Market Game</h3><div class="aw-by">Statewide · as a solo entrant</div>
+        <p>A simulated portfolio on live data. Top 5% statewide, entered solo against teams.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p10" aria-labelledby="aw-t10"><div class="aw-ix"><span>11 / 12</span><span>Leadership</span></div><div class="aw-body">
+        <div class="aw-pl">President</div><h3>Jewish Student Union</h3><div class="aw-by">50+ members</div>
+        <p>Weekly programming with NCSY, and a school-wide Holocaust Remembrance assembly with a survivor, run with StandWithUs.</p></div></div>
+      <div class="aw-it" role="tabpanel" id="aw-p11" aria-labelledby="aw-t11"><div class="aw-ix"><span>12 / 12</span><span>Leadership</span></div><div class="aw-body">
+        <div class="aw-pl">Co-founder &amp; President</div><h3>STEMsters</h3><div class="aw-by">30+ volunteers · four elementary schools</div>
+        <p>Places LACES volunteers in four elementary schools to teach hands-on coding, robotics and engineering.</p></div></div>
+      <div class="aw-nav" aria-hidden="true"><button type="button" tabindex="-1" data-d="-1">&larr; prev</button><button type="button" tabindex="-1" data-d="1">next &rarr;</button></div>
     </div>
-
-    <!-- Startup School 2026 photos Adrian sent (7 Oct); the third is from a DeepMind x YC event in SF the same trip -->
-    <div class="recog-h rv d1">Y Combinator Startup School 2026</div>
-    <div class="ycs-grid rv d1">
-        <figure class="ycs"><img src="/img/ycs/yc-sign.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman with two other attendees at Y Combinator Startup School 2026" style="object-position:50% 72%"><figcaption>Startup School</figcaption></figure>
-        <figure class="ycs"><img src="/img/ycs/main-stage.jpg" width="600" height="800" loading="lazy" decoding="async" alt="The main stage at Y Combinator Startup School 2026, seen by Adrian Erlikhman from the stands" style="object-position:50% 45%"><figcaption>Main stage</figcaption></figure>
-        <figure class="ycs"><img src="/img/ycs/deepmind-yc.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman with another attendee at a DeepMind × Y Combinator event in San Francisco" style="object-position:50% 40%"><figcaption>DeepMind × YC event</figcaption></figure>
-    </div>
-
-    <div class="recog-h rv d1">Founding &amp; leadership</div>
-    <div class="results recog rv d1">
-      <a class="res" href="#case-safejew"><span class="pl">Co-founder</span><span class="ev"><img class="rl sq" src="/img/logos/safejew.webp" width="18" height="17" loading="lazy" decoding="async" alt=""><b>SafeJew</b> · JFEDLA Teen Innovation Grant · 800 geolocated incidents across Greater LA, and a scraper that keeps the map current ↑</span></a>
-      <a class="res" href="#case-aimlli"><span class="pl">Co-founder</span><span class="ev"><b>AI &amp; Machine Learning Literacy Initiative</b> · a free AI curriculum for LA public schools, and a summit for 500+ students ↑</span></a>
-      <div class="res"><span class="pl">President</span><span class="ev"><b>Jewish Student Union</b> · 50+ members · weekly programming, and a school-wide Holocaust Remembrance assembly with a survivor, run with StandWithUs</span></div>
-      <div class="res"><span class="pl">Founder</span><span class="ev"><b>STEMsters</b> · coding, robotics and engineering for 30+ students across four elementary schools</span></div>
-    </div>
-
-    <div class="recog-h rv d1">Academics &amp; training</div>
-    <div class="results recog rv d1">
-      <div class="res"><span class="pl">LACES &rsquo;27</span><span class="ev"><img class="rl sq" src="/img/logos/collegeboard.webp" width="17" height="17" loading="lazy" decoding="async" alt=""><b>5.2 weighted GPA · 1520 SAT</b> · AP Scholar with Distinction, on a 17-AP course load: 11 exams taken, 6 this year</span></div>
-      <div class="res"><span class="pl">Program</span><span class="ev"><img class="rl" src="/img/logos/kaggle.svg" width="44" height="15" loading="lazy" decoding="async" alt=""><b>Kaggle × Google Gen-AI Intensive</b> · five days on LLMs, embeddings, prompting and agents</span></div>
-      <div class="res"><span class="pl">Course</span><span class="ev"><img class="rl sm" src="/img/logos/coursera.svg" width="85" height="12" loading="lazy" decoding="async" alt=""><b>Deep Learning Specialization</b> · Andrew Ng, DeepLearning.AI on Coursera · five courses: neural nets, optimization, CNNs, sequence models</span></div>
-      <div class="res"><span class="pl">Certificate</span><span class="ev"><b>NVIDIA Deep Learning Institute</b> · deep-learning fundamentals</span></div>
     </div>
 
   </div>
@@ -905,6 +874,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-15-sw3"></script>
+<script src="/assets/site.js?v=2026-10-15-aw1"></script>
 </body>
 </html>

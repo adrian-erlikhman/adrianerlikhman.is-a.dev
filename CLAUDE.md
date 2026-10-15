@@ -146,6 +146,12 @@ from LaTeX in `resume/`.
     9 Oct 2026 (email 10 Oct 03:26 UTC) for presentation at the symposium,
     17 Dec 2026, Phoenix, AZ; oral or poster not yet assigned; included in
     the proceedings; camera-ready and registration instructions to follow.
+    **Best Paper Finalist** (email 10 Oct 05:31 UTC, "Best Paper Finalist
+    Award: Submission SP19343"): one of 12 papers, top 16 of the 130
+    accepted; presented with a certificate at the Phoenix ceremony, 17 Dec.
+    Found on 15 Oct and put on the Achievements wall, llms.txt and the JSON-LD
+    awards. Not yet on the R.01 card or the résumés (ask; the résumés need a
+    rebuild).
     The R.01 card says "Accepted · IEEE BigData 2026 High School Symposium ·
     Phoenix, 17 Dec", both résumés "Accepted, IEEE BigData 2026 HS
     Symposium", and the JSON-LD and llms.txt match. Once the format is
@@ -630,15 +636,26 @@ the rail and the ⌘K palette follow it.
   and `alliancesocal.org`, all checked that day. The last two are not the
   obvious domains, and the Fjor site calls itself **Fjor Founders Fund** while
   the site says "Fjor Venture Capital", which is Adrian's wording; leave it
-  unless he asks. **Achievements** (rebuilt 27 Sept from five mockups, Adrian
-  picked "something more like 1 or 3"): the three podium finishes lead as
-  `.pod` cards with a black header carrying the placement, then six `.ac`
-  cards for the rest of the honours, then the Founding and Academics groups as
-  `.recog` rows. **Every mark sits in
-  the same `.al` box** so they read at one weight: square marks 21px tall and
-  capped at 26px wide, wordmarks 15px tall and capped at 100px, which is what
-  keeps Citadel's long lockup from dominating its card. Cards with no mark
-  keep an empty `.al` so the titles still line up. **About** is the
+  unless he asks. **Achievements is a logo wall** (15 Oct; Adrian picked E of
+  six mockups in `_mock/ach.html`, then "make sure everything there is really
+  tuff"): twelve tiles (`#awWall`, `.aw-t`), greyed marks that colour on
+  hover, and one panel at a time beside them (`#awPanel`, `.aw-it`) that steps
+  every 6 s while on screen until touched (`site.js` ACHIEVEMENTS WALL);
+  without JS every panel shows, stacked. **Rule: nothing on the wall repeats
+  another section** (Adrian: "i dont want any overlap"). So VISION HACK and
+  Code for Transportation live only on the Ledger and Safe Routes cards, the
+  Teen Innovation Grant and NCSS only on the Selected work cards, the papers in
+  Research, the rankings and results in Fencing; All-American and
+  All-Academic moved here *from* Fencing. The twelve: Best Paper Finalist
+  (IEEE BigData HSS), Decode the Ocean 1st, YC Startup School (its panel holds
+  the three Startup School photos), National Merit, Citadel Terminal, 3×
+  All-American, 3× All-Academic, 2× AP Scholar with Distinction, 4.0 · 1520,
+  SIFMA top 5% statewide (solo entrant), JSU president, STEMsters co-founder &
+  president (30+ *volunteers*; the old "Founder… 30+ students" was wrong).
+  Cut as weak: Kaggle × Google, the Deep Learning Specialization, NVIDIA DLI,
+  and LAUSD "invited presenter". He said no to class rank and to the junior
+  regional titles here (those stay in Fencing). The old `.pod`/`.ac`/`.ycs-grid`
+  CSS is unused in site.css. **About** is the
   short intro plus the Heinlein quote, "Everything is theoretically impossible,
   until it is done." (Adrian's wording, 26 Sept; it replaced the Fei-Fei Li one),
   and the photo fan.
@@ -654,9 +671,9 @@ the rail and the ⌘K palette follow it.
   swipe strip (26 Sept) and its CSS are gone.
   The viewer is the seven outdoor photos only. The Startup School photos sat
   in the old strip for an hour on 7 Oct before Adrian asked for them "elsewhere".
-- **Startup School 2026 photos** (Adrian, 7 Oct) are a row of three under
-  Achievements (`.ycs-grid`, framed like the bouts, cropped 4:3), right after
-  the `.ac` cards that include Y Combinator Startup School: `img/ycs/yc-sign.jpg`
+- **Startup School 2026 photos** (Adrian, 7 Oct) sit in the YC panel of the
+  Achievements wall since 15 Oct (a row under Achievements before that):
+  `img/ycs/yc-sign.jpg`
   (three of them under the YC sign), `main-stage.jpg` (the stage from the
   stands) and `deepmind-yc.jpg` (two of them on a San Francisco rooftop at a
   **DeepMind × YC event**, Adrian's words; it isn't Startup School itself).

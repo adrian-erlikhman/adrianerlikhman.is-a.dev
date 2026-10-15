@@ -1188,3 +1188,38 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   story.addEventListener('focusin',()=>{held=true;});
   story.addEventListener('focusout',()=>{held=false;});
 })();
+
+// ACHIEVEMENTS WALL: pick a tile, its panel shows; it steps on its own while on screen until touched
+(function(){
+  const w=document.getElementById('awWall'),d=document.getElementById('awPanel');
+  if(!w||!d) return;
+  const bs=[...w.querySelectorAll('.aw-t')],its=[...d.querySelectorAll('.aw-it')],N=bs.length,DUR=6000;
+  if(!N||its.length!==N) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let cur=0,timer=null,stopped=reduce,onScreen=false;
+  d.classList.add('js-aw');
+  function arm(){ clearTimeout(timer); if(stopped||!onScreen) return;
+    const b=bs[cur].querySelector('.aw-bar'); b.style.animation='none'; void b.offsetWidth; b.style.animation='';
+    timer=setTimeout(()=>show(cur+1),DUR); }
+  function show(i,focus){ cur=(i+N)%N;
+    bs.forEach((b,j)=>{ b.setAttribute('aria-selected',j===cur?'true':'false'); b.tabIndex=j===cur?0:-1; });
+    its.forEach((x,j)=>{ x.hidden=j!==cur; if(j===cur){ const y=x.querySelector('.aw-body'); y.classList.remove('swap'); void y.offsetWidth; y.classList.add('swap'); } });
+    if(focus) bs[cur].focus();
+    arm(); }
+  function stop(){ stopped=true; clearTimeout(timer); w.classList.remove('auto'); }
+  bs.forEach((b,j)=>{
+    b.addEventListener('click',()=>{ stop(); show(j);
+      // phones: the panel sits under the wall, so bring it up if it is mostly off screen
+      const r=d.getBoundingClientRect(); if(innerWidth<900&&r.top>innerHeight-220) d.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'}); });
+    b.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches){ stop(); show(j); } });
+  });
+  w.addEventListener('keydown',e=>{ const cols=getComputedStyle(w).gridTemplateColumns.split(' ').length;
+    const m={ArrowRight:1,ArrowLeft:-1,ArrowDown:cols,ArrowUp:-cols}[e.key];
+    if(m){ e.preventDefault(); stop(); show(cur+m,true); }
+    else if(e.key==='Home'){ e.preventDefault(); stop(); show(0,true); }
+    else if(e.key==='End'){ e.preventDefault(); stop(); show(N-1,true); } });
+  d.querySelector('.aw-nav').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; stop(); show(cur+(+b.dataset.d)); });
+  if(!reduce){ w.classList.add('auto'); w.style.setProperty('--aw-dur',DUR+'ms'); }
+  show(0);
+  new IntersectionObserver(es=>es.forEach(en=>{ onScreen=en.isIntersecting; if(onScreen) arm(); else clearTimeout(timer); }),{threshold:.3}).observe(w);
+})();
