@@ -472,18 +472,17 @@ the rail and the ⌘K palette follow it.
     follows the scroll. **Wide screens (1360px+)** get a rail in the right
     margin (`.rail`, built by site.js from the `[0n]` labels).
   - **Fencing** opens on `video/fence-loop.mp4`: six muted seconds ending on
-    one of Adrian's touches. Since 15 Oct (late) it is his touch to 4-2 in a
-    Div I Men's Épée bout at Summer Nationals 2026, **Adrian on the left**, cut
-    from Boutcaster's 1080p original (Cloudflare Stream `d7d19a4c…`, HLS fMP4:
-    fetch init.mp4 plus the 4 s segments, then re-encode; ffmpeg's own HLS
-    seek garbles it), cropped 1920x580 from y=124 so the name boxes and score
-    bar are out, 1440x436, ~900 KB; poster `img/bouts/fence-loop.webp`, both
-    `?v=2026-10-15-251`. Because he is on the left, the figure carries
-    `.reel-r` and the caption and gradient sit on the right (phones keep the
-    bottom caption). Before that it was "E", his touch to 11-10 in the team
-    relay (`bout-team-afm.mp4` from 2:59.2), picked from seven touches found
-    by reading the overlay's score bar (his team 5→13, AFM 8→10); he asked to
-    see the 2:51 cut live before deciding. It loads near the screen, plays only
+    one of Adrian's touches. Since 15 Oct (late) it is **"A"**, his touch to
+    6-8 in the Senior team relay (he is the black mask on the right), cut from
+    Boutcaster's 1080p original `hqvideos.boutcaster.com/c0669e4aee914a220dc1193ff3bce1e0.mp4`
+    from 56.6 s (that file starts 51 s before our `bout-team-afm.mp4`),
+    cropped 1920x580 from y=124 so the name boxes and score bar are out,
+    1440x436, ~1 MB; poster `img/bouts/fence-loop.webp`, both `?v=2026-10-15-a`.
+    The same evening he tried "E" (touch to 11-10, from the 540p copy) and a
+    1080p Div I touch to 4-2 (Cloudflare Stream `d7d19a4c…` at 2:51, he is on
+    the left there, which needed the caption on the right: `.reel-r`, still
+    in site.css). The seven team-relay touches were found by reading the
+    overlay's score bar (his team 5→13, AFM 8→10). It loads near the screen, plays only
     on screen, and stays a poster under reduced motion or Save-Data.
   - **Second pass, same day** (Adrian: research "still need[s] to refine";
     Experience "smoother / tuffer... some bullets and then different
