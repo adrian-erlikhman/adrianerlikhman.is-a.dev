@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Render og.png, the link-preview card for adrianerlikhman.is-a.dev.
 
-Same furniture as the card it replaces -- 7px rust spine, warm ground, Fraunces
-name, IBM Plex Mono chips -- but the content does more work. The old card led
+Same furniture as the card it replaces -- 7px navy spine, paper-white ground,
+Latin Modern name (the LaTeX face; site and résumés since 15 Oct 2026), IBM Plex
+Mono chips -- but the content does more work. The old card led
 with category words ("machine learning, quantitative finance, data science")
 that say nothing a hundred other pages don't. This one leads with the things
 that are hard to fake and easy to check.
@@ -19,21 +20,19 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1200, 630
-BG = (232, 228, 214)          # --bg
-INK = (33, 31, 24)            # --ink
-ACC = (193, 84, 58)           # --acc
-DIM = (107, 104, 87)          # --dim
-WASH = (237, 232, 218)        # the warm top-left lift
+BG = (251, 250, 247)          # --bg
+INK = (21, 23, 28)            # --ink
+ACC = (31, 58, 95)            # --acc, the résumés' navy
+DIM = (92, 98, 108)           # --dim
+WASH = (243, 244, 246)        # the cool top-left lift
 SPINE = 7
 
-# Fraunces and IBM Plex Mono are the faces the site itself loads from Google
-# Fonts. They are fetched into a gitignored cache rather than vendored: both are
+# Latin Modern Roman (lmroman10-*.otf) is copied into the same cache from the
+# TeX distribution (Tectonic's bundle); the site serves it as woff2 from /fonts/.
+# IBM Plex Mono is the face the site itself loads from Google Fonts. They are fetched into a gitignored cache rather than vendored: both are
 # OFL, and redistributing them in-repo would mean shipping their licences too.
 FD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
 FONTS = {
-    "Fraunces.ttf":
-        "https://github.com/google/fonts/raw/main/ofl/fraunces/"
-        "Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
     "IBMPlexMono-SemiBold.ttf":
         "https://github.com/google/fonts/raw/main/ofl/ibmplexmono/"
         "IBMPlexMono-SemiBold.ttf",
@@ -51,7 +50,8 @@ def ensure_fonts():
     return [os.path.join(FD, n) for n in FONTS]
 
 
-FRAUNCES = os.path.join(FD, "Fraunces.ttf")
+LM_BOLD = os.path.join(FD, "lmroman10-bold.otf")
+LM_REG = os.path.join(FD, "lmroman10-regular.otf")
 MONO_SB = os.path.join(FD, "IBMPlexMono-SemiBold.ttf")
 
 MARGIN = 88
@@ -72,10 +72,8 @@ CHIP_ROWS = [
 ]
 
 
-def fraunces(size, wght=900, opsz=144):
-    f = ImageFont.truetype(FRAUNCES, size)
-    f.set_variation_by_axes([float(opsz), float(wght), 0.0, 0.0])
-    return f
+def lm(size, bold=True):
+    return ImageFont.truetype(LM_BOLD if bold else LM_REG, size)
 
 
 def tracked(d, xy, text, font, fill, tracking=0.0):
@@ -110,12 +108,12 @@ def build():
     # faint dot grid
     for gy in range(46, H, 34):
         for gx in range(MARGIN // 2, W - 24, 34):
-            d.point((gx, gy), fill=(224, 219, 204))
+            d.point((gx, gy), fill=(226, 229, 234))
 
     d.rectangle([0, 0, SPINE - 1, H], fill=ACC)
 
     f_kick = ImageFont.truetype(MONO_SB, 19)
-    f_tag = fraunces(31, wght=500, opsz=40)
+    f_tag = lm(31, bold=False)
     f_chip = ImageFont.truetype(MONO_SB, 18)
 
     # ---- kicker -------------------------------------------------------
@@ -129,7 +127,7 @@ def build():
     tracked(d, (rx, ky), KICK_R, f_kick, INK, 2.6)
 
     # ---- name ---------------------------------------------------------
-    f_name = fraunces(132, wght=900, opsz=144)
+    f_name = lm(132)
     a1 = d.textbbox((0, 0), NAME_1, font=f_name)
     d.text((MARGIN - 6, 118 - a1[1]), NAME_1, font=f_name, fill=INK)
     a2 = d.textbbox((0, 0), NAME_2, font=f_name)
@@ -164,7 +162,7 @@ def build():
                 col = BG
             else:
                 d.rounded_rectangle(box, radius=ch_h // 2,
-                                    outline=(196, 190, 172), width=2)
+                                    outline=(188, 194, 204), width=2)
                 col = INK
             bb = d.textbbox((0, 0), text, font=f_chip)
             tracked(d, (x + pad_x, y + (ch_h - (bb[3] - bb[1])) / 2 - bb[1]),
