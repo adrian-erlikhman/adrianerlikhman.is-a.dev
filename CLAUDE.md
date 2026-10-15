@@ -102,14 +102,21 @@ from LaTeX in `resume/`.
     the corrected PDF he had uploaded, or he'll resubmit in a later cycle. An
     arXiv version (`paper_arxiv/` in the now-public repo
     `adrian-erlikhman/self-recognition-peer-baseline`) was waiting on
-    Michael's review on 6 Oct. Adrian's call (7 Oct): the site still says it
-    is in submission at TACL, plus the preprint. R.03's status is "In
-    submission · TACL · arXiv preprint forthcoming", llms.txt matches, and
-    the search snippet says "submitted to TACL". Never "accepted" or NeurIPS.
+    Michael's review on 6 Oct. **Adrian withdrew it from TACL on 14 Oct
+    2026**, so that a separate paper built from CompLLM's open-weight panel
+    can go to the archival WLLFM 2026 workshop at IEEE BigData (due 26 Oct).
+    Since 15 Oct (his pick) R.03's status is "Preprint · arXiv forthcoming",
+    both résumés say "Preprint, arXiv forthcoming", llms.txt and the JSON-LD
+    description call it a preprint, and nothing on the site mentions TACL.
+    The WLLFM paper is a different paper, so it doesn't go on this card.
+    BigData's LangLLM acceptance took TACL's place in the teasers: the og
+    chip "CO-FIRST AUTHOR — IEEE BIGDATA 2026 (ACCEPTED)" (`tools/make_og.py`,
+    og.png `?v=6`), the og/twitter alt text and the hero typewriter's first
+    line. Never "accepted" or NeurIPS.
     **Title since 11 Oct 2026: "Whose Line Is It Anyway? Auditing Self- and
     Other-Recognition in LLM Judges"** (the arXiv version's; Adrian took it
     from Philo's suggestions). The R.03 card, both résumés and llms.txt use
-    it; TACL has the paper under the old title. The card's finding, summary
+    it; TACL had the paper under the old title. The card's finding, summary
     and both résumés' bullets follow the arXiv abstract: 15 of 37 cases
     flagged, 8 survive the false-alarm control, 3 beat the pooled peers,
     none beats its strongest single peer (Claude 33 of 38, GPT names Claude
@@ -117,9 +124,7 @@ from LaTeX in `resume/`.
     On 7 Oct the R.03 card (R.02 until 12 Oct) took the submitted title and a summary from the
     arXiv abstract, plus a CODE + DATA link to the public repo, but Adrian
     chose to **keep its old credit line** (Ryan and Michael, Philo as
-    advisor). The og card's chip "CO-FIRST AUTHOR — TACL (IN SUBMISSION)" and
-    both résumés' "In submission, TACL" were left as they were (the résumés wait
-    on a Tectonic download). Swap the dashed "PDF · ARXIV SOON" for the arXiv
+    advisor). Swap the dashed "PDF · ARXIV SOON" for the arXiv
     link once it is posted (the R.03 card's `[EDIT]` comment marks the spot),
     and drop "forthcoming".
   - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
@@ -215,7 +220,7 @@ from LaTeX in `resume/`.
   - The summit is 200+ LA public-school students, never 500, and lists only
     committed partners.
   - Research statuses track the site's R cards: update both .tex files when
-    TACL decides (BigData accepted LangLLM on 9 Oct).
+    CompLLM's preprint posts (BigData accepted LangLLM on 9 Oct).
   - The portfolio paper (R.04 since 12 Oct, R.03 from 7 Oct, with Ryan) got a **conditional acceptance** from
     the Oxford Journal of Student Scholarship on 21 Sept 2026: revise, answer
     the reviewers and reformat to the journal's template within 14 days, by
@@ -275,8 +280,8 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10f"` should print 5 and 3.
-  Bump all eight whenever either PDF changes. Currently `?v=2026-10f`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10g"` should print 5 and 3.
+  Bump all eight whenever either PDF changes. Currently `?v=2026-10g`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
