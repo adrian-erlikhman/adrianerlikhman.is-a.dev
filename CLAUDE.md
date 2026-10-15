@@ -289,9 +289,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-fjor"` should print 5
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-cv2"` should print 5
   and 3. Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-15-fjor`.
+  used. Currently `?v=2026-10-15-cv2`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -528,8 +528,9 @@ the rail and the ⌘K palette follow it.
       firms (matches from investment histories and company characteristics;
       deduplication cut lookups from days to under a minute), led outreach to
       80+ founders, mapped SoCal deep tech, and redesigned the pipeline. Those
-      titles and facts are on the site and in llms.txt; **both résumés still
-      carry the old titles and bullets** until Adrian says to update them.
+      titles and facts are on the site, in llms.txt and, since the same day
+      (his OK), in both résumés: one bullet each in the one-pager, three each
+      in the long one.
   - **Fjor is completed** (Adrian, 15 Oct 2026): 2024–2026 on the site, both
     résumés (rebuilt) and llms.txt; its file is stamped Completed.
     - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
