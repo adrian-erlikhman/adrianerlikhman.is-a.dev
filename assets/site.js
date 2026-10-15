@@ -689,6 +689,17 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   pick(0);
 })();
 
+/* ================= TERMINAL PRINT — the quant card's output lines appear one at a time when it comes on screen ================= */
+(function(){
+  const out=document.querySelector('.wk-out'); if(!out||!('IntersectionObserver' in window)) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const lines=[...out.querySelectorAll('.ln')]; out.classList.add('typing');
+  const io=new IntersectionObserver(es=>{ if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
+    lines.forEach((l,i)=>setTimeout(()=>{ lines.forEach(x=>x.classList.remove('cur')); l.classList.add('on'); }, 260+i*240));
+  },{threshold:.35});
+  io.observe(out);
+})();
+
 /* ================= MATH RESEARCH NOTES ================= */
 (function(){
   const nv=document.getElementById('notes'); if(!nv) return;
