@@ -536,7 +536,16 @@ the rail and the ⌘K palette follow it.
 - **Selected work** is four cards since 15 Oct (see the admissions pass); until
   then it was four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
-  School. Screenshots are `img/cases/*.webp` (live pages captured headlessly);
+  School. Screenshots are `img/cases/*.webp` (live pages captured headlessly). Since
+  15 Oct (Adrian: "use the most impressive ones... most impressive /
+  technical") they are 1600x900 shots at 2x from headless Chrome over CDP:
+  SafeJew's map with one incident's sourced record open
+  (`safejew-incident`), Ledger's live demo after a sample scan, the rule and
+  per-category counts (`ledger-scan`), and Safe Routes' worked example with
+  the tour dismissed (`saferoutes-walk`). AIML-LI keeps the partner logos.
+  SafeJew needs `sj_intro_seen` (sessionStorage) and
+  `sj_cookie_notice_ack` (localStorage) set before load to skip its intro and
+  cookie bar;
   AIML-LI shows its one-activity lab instead. **Short copy** (Adrian, 26
   Sept: "the other ones are solid, but need a little less writing"; he likes
   the screenshots, their links and the scroll): each fact is a sentence or
@@ -745,6 +754,12 @@ the rail and the ⌘K palette follow it.
   (Adrian, 15 Oct); R.03's is the arXiv version's; R.06's is a CSS ruled
   sheet (`.rs-notes`). The label is "// five papers · four accepted" (R.06 is
   a study, not a paper).
+  **Under each cover the venue is the headline** (option C of three, picked
+  15 Oct after Adrian said the nickname labels were "not impressive at all"):
+  the venue in big navy serif (`.rs-v`), a mono sub-line (`.rs-v2`), the
+  paper's title in italics (`.rs-t`), then the status pill and his role.
+  The two journal papers' pills say "Accepted with revisions", never just
+  "Accepted".
 - **Research** runs R.01 LangLLM · R.02 Curated to Win · R.03 CompLLM ·
   R.04 portfolio optimization · R.05 Legatum robustness · R.06 advanced math.
   Curated to Win went in at R.02 on 12 Oct, after the other accepted NLP paper;

@@ -1457,9 +1457,14 @@ header.hero{grid-template-columns:1.04fr .96fr;gap:52px}
 .rs-b[aria-selected=false] .rs-c{opacity:.8}
 .rs-b[aria-selected=false]:hover .rs-c{opacity:1}
 .rs-b:focus-visible .rs-c{outline:2px solid var(--acc);outline-offset:4px}
-.rs-n{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--acc)}
-.rs-k{font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.2;color:var(--ink)}
-.rs-s{align-self:flex-start;margin-top:4px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink);background:var(--acc);padding:2px 6px}
+/* venue as the headline (Adrian picked C of three, 15 Oct: the nicknames were "not impressive at all") */
+.rshelf{align-items:start}
+.rs-v{margin-top:14px;font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.15;color:var(--acc)}
+.rs-v2{margin-top:4px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.45;color:var(--dim)}
+.rs-t{margin-top:8px;font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.3;color:var(--ink)}
+.rs-m{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:9px}
+.rs-r{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--dim)}
+.rs-s{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink);background:var(--acc);padding:2px 6px}
 .rs-s.rs-o{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
 /* R.06 has no paper: its "front page" is a ruled notebook sheet */
 .rs-notes{display:flex;flex-direction:column;gap:8px;padding:16% 13% 12%;background:#fff repeating-linear-gradient(transparent 0 13px,color-mix(in srgb,var(--acc) 14%,transparent) 13px 14px);background-position:0 30%;box-sizing:border-box}
@@ -1498,7 +1503,8 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 @media(max-width:700px){
   .rshelf{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -22px;padding:12px 22px 8px;scrollbar-width:none}
   .rshelf::-webkit-scrollbar{display:none}
-  .rs-b{flex:0 0 112px;scroll-snap-align:start;scroll-margin-left:22px}
+  .rs-b{flex:0 0 150px;scroll-snap-align:start;scroll-margin-left:22px}
+  .rs-v{font-size:17px}
   .rpanels{margin-top:22px}
   .rp{grid-template-columns:1fr;gap:22px;padding-top:26px}
   .rp-cover{position:relative;top:auto;max-width:190px}
