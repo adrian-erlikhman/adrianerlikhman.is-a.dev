@@ -471,13 +471,19 @@ the rail and the ⌘K palette follow it.
   - **Phones** get a section strip under the bar (`.secnav`, static HTML) that
     follows the scroll. **Wide screens (1360px+)** get a rail in the right
     margin (`.rail`, built by site.js from the `[0n]` labels).
-  - **Fencing** opens on `video/fence-loop.mp4`: six muted seconds of the team
-    relay leg ending on one of Adrian's touches (`bout-team-afm.mp4` from
-    2:59.2, the touch that made it 11-10, cropped to the piste, ~500 KB),
-    poster `img/bouts/fence-loop.webp`, both `?v=2026-10-15e`. Adrian picked
-    it ("E") from seven of his touches, found by reading the overlay's score
-    bar (his team 5→13, AFM 8→10). He turned down a sharper 1080p cut of a
-    Div I touch (Boutcaster's Cloudflare Stream, bout d7d19a4c…, 2:51). It loads near the screen, plays only
+  - **Fencing** opens on `video/fence-loop.mp4`: six muted seconds ending on
+    one of Adrian's touches. Since 15 Oct (late) it is his touch to 4-2 in a
+    Div I Men's Épée bout at Summer Nationals 2026, **Adrian on the left**, cut
+    from Boutcaster's 1080p original (Cloudflare Stream `d7d19a4c…`, HLS fMP4:
+    fetch init.mp4 plus the 4 s segments, then re-encode; ffmpeg's own HLS
+    seek garbles it), cropped 1920x580 from y=124 so the name boxes and score
+    bar are out, 1440x436, ~900 KB; poster `img/bouts/fence-loop.webp`, both
+    `?v=2026-10-15-251`. Because he is on the left, the figure carries
+    `.reel-r` and the caption and gradient sit on the right (phones keep the
+    bottom caption). Before that it was "E", his touch to 11-10 in the team
+    relay (`bout-team-afm.mp4` from 2:59.2), picked from seven touches found
+    by reading the overlay's score bar (his team 5→13, AFM 8→10); he asked to
+    see the 2:51 cut live before deciding. It loads near the screen, plays only
     on screen, and stays a poster under reduced motion or Save-Data.
   - **Second pass, same day** (Adrian: research "still need[s] to refine";
     Experience "smoother / tuffer... some bullets and then different
@@ -511,9 +517,19 @@ the rail and the ⌘K palette follow it.
       what the internship amounted to, then two or three numbers. Tabs carry
       each company's mark (Kiddom and Fjor by mark alone, their names in
       `.sr-only`). Fjor's sectors (enterprise SaaS, fintech, deep tech) come
-      from his MIT profile doc. He also asked for "the algo stuff i did for fjor
-      and alliance"; nothing on record (résumés, site, notes, that doc) names
-      an algorithm at either, so it waits for his description.
+      from his MIT profile doc. **Fjor and Alliance now follow his college-app
+      descriptions** (Drive: "UC Activities & Awards — FINAL v3", the Common App
+      activities doc, his MIT essay 1), which he pointed to on 15 Oct: Fjor is
+      an "Investment & Software Engineering Intern" at a $15M early-stage fund
+      who built classifier and scoring models to screen 134 YC S25 startups,
+      led that screen, did 20+ diligences and 10+ memos, and built the fund's
+      internal software tools; Alliance is a "Venture & Data Strategy Intern"
+      who built a Python/SQL investor-matching engine over 10K contacts at 250+
+      firms (matches from investment histories and company characteristics;
+      deduplication cut lookups from days to under a minute), led outreach to
+      80+ founders, mapped SoCal deep tech, and redesigned the pipeline. Those
+      titles and facts are on the site and in llms.txt; **both résumés still
+      carry the old titles and bullets** until Adrian says to update them.
   - **Fjor is completed** (Adrian, 15 Oct 2026): 2024–2026 on the site, both
     résumés (rebuilt) and llms.txt; its file is stamped Completed.
     - **Selected work** is a 2x2 grid of cards (`.works` / `.wk`): screenshot,
@@ -556,6 +572,14 @@ the rail and the ⌘K palette follow it.
   (`safejew-incident`), Ledger's live demo after a sample scan, the rule and
   per-category counts (`ledger-scan`), and Safe Routes' worked example with
   the tour dismissed (`saferoutes-walk`). AIML-LI keeps the partner logos.
+  Each card also has a browser frame (`.wk-bar`: dots, the live address, a
+  pulsing LIVE) and the project's own mark as an app-icon badge across the
+  seam (`.wk-badge`, Adrian: "add our logos in a cool way"):
+  `img/logos/safejew.webp`, `aimlli-mark.webp` (the emblem cropped from
+  AIML-LI's `public/logo.jpg`, no wordmark), and Ledger's and WalkHome's own
+  favicons as `ledger.svg` / `walkhome.svg` (`.app`, full-bleed). On hover the
+  badge tips and a sheen crosses the screenshot. Ledger's frame links
+  `/demo`, the page in its screenshot.
   SafeJew needs `sj_intro_seen` (sessionStorage) and
   `sj_cookie_notice_ack` (localStorage) set before load to skip its intro and
   cookie bar;
@@ -773,6 +797,12 @@ the rail and the ⌘K palette follow it.
   paper's title in italics (`.rs-t`), then the status pill and his role.
   The two journal papers' pills say "Accepted with revisions", never just
   "Accepted".
+  Adrian's wording for two sub-lines (15 Oct): R.01's says "HSS · Phoenix"
+  (not "High School Symposium"; the panel's Venue row keeps the full name),
+  and R.02's spells ARRSI out and says it is in China ("Workshop on
+  Autonomous Research & Recursive Self-Improvement · Hengqin, China"); the
+  R.02 panel has a Where row, "Hengqin, China · 10 Nov 2026". That is where
+  the workshop is, not a claim that he presents there.
 - **Research** runs R.01 LangLLM · R.02 Curated to Win · R.03 CompLLM ·
   R.04 portfolio optimization · R.05 Legatum robustness · R.06 advanced math.
   Curated to Win went in at R.02 on 12 Oct, after the other accepted NLP paper;
