@@ -379,7 +379,11 @@ from LaTeX in `resume/`.
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
   Each page links them with `?v=`; bump it on every page when either file
-  changes. Every script block checks its elements exist, and URLs in the
+  changes, to a value **no other change has used**: read origin/main's value
+  first and don't just increment a letter. On 15 Oct two sessions both bumped
+  to `2026-10-15e` (#151, then #152), so browsers that had #151's stylesheet
+  never fetched #152's rules and Experience rendered unstyled; fixed with
+  `2026-10-15-xf`. Every script block checks its elements exist, and URLs in the
   script are root-absolute (`/papers/…`), so a page without an overlay or
   section just skips it.
 
