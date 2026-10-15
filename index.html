@@ -671,11 +671,11 @@
         </div>
         <div class="wk-body">
           <div class="wk-head"><span class="wk-badge app"><img src="/img/logos/regime.svg" width="64" height="64" loading="lazy" decoding="async" alt=""></span><div class="wk-kick">Regime-Aware Portfolio Optimizer<span>·</span>2026</div></div>
-          <h3 class="wk-title">A Hidden Markov Model that de-risks a portfolio when markets turn, and a backtest built so it can&rsquo;t grade itself.</h3>
+          <h3 class="wk-title">A Hidden Markov Model that cuts equity exposure in turbulent markets, backtested without look-ahead.</h3>
           <dl class="wk-facts">
-            <div><dt>Model</dt><dd>A two-state Gaussian HMM fitted by Baum-Welch from 8 random restarts, keeping the best likelihood: one bad start flips regime 504 times instead of the true 26. It holds 80% or 20% equity, trades on the next day&rsquo;s close and pays 5 bps a side.</dd></div>
-            <div><dt>Backtest</dt><dd>Walk-forward: refits every 63 days on past data only and filters forward in between, and even picks which state means risk-off inside the training window. The tests perturb every return after day <i>k</i> and assert that no earlier signal moves.</dd></div>
-            <div><dt>Found</dt><dd>Decoding with hindsight <b>doubles the reported Sharpe, 0.43 to 0.83</b>, in 96% of 24 simulated markets. On GARCH data with no true regimes, the overlay loses to its own average weight held constant, ahead in only 38%.</dd></div>
+            <div><dt>Model</dt><dd>Two-state Gaussian HMM, best of 8 Baum-Welch restarts. Holds 80% or 20% equity, trades the next day, pays 5 bps.</dd></div>
+            <div><dt>Backtest</dt><dd>Walk-forward, refit every 63 days on past data only. Tests change every return after day <i>k</i> and check that no earlier signal moves.</dd></div>
+            <div><dt>Found</dt><dd>With hindsight, the reported Sharpe <b>doubles, 0.43 to 0.83</b>, in 96% of 24 simulated markets. On GARCH data with no real regimes, it loses to holding its average weight.</dd></div>
             <div><dt>Stack</dt><dd>Python, hmmlearn, NumPy, pandas, pytest.</dd></div>
           </dl>
           <div class="wk-links"><a href="https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer" target="_blank" rel="noopener">Code ↗</a><a href="https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer#results" target="_blank" rel="noopener">Results ↗</a></div>
