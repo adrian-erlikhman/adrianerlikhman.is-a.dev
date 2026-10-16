@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-16-rc2">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-16-nodemo">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -499,7 +499,7 @@
           </dl>
           <p class="find">A 21-feature classifier names the model <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-lang">59–72%<sup>measured</sup></button> of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.<span class="rc-n" id="rc-lang" data-t="m" hidden><span class="rc-ty">Measured</span>Five-way attribution of 840 essays, 120 in each language, with leave-one-prompt-out cross-validation over the 12 prompts, so the classifier never sees an essay&rsquo;s prompt in training. Logistic regression on 21 features from Universal Dependencies parses.</span></p>
           <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
-          <div class="plinks"><a class="pl pl-try" href="/demos/#guess-sec">Try the demo ↗</a><a class="pl" href="papers/langllm-poster-urtc2026.pdf" target="_blank">Poster ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></div>
+          <div class="plinks"><a class="pl" href="papers/langllm-poster-urtc2026.pdf" target="_blank">Poster ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></div>
         </div>
       </article>
 
@@ -532,7 +532,7 @@
           </dl>
           <p class="find">The usual test flags self-recognition in <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-cmp">15 of 37 cases<sup>measured</sup></button>. 8 survive a false-alarm control, 3 beat the pooled peers, and none beats its strongest single peer.<span class="rc-n" id="rc-cmp" data-t="m" hidden><span class="rc-ty">Measured</span>From over 19,000 judgments by nine LLM judges on 1,270 texts. The two added controls: how often a judge names itself on text it did not write, and how often the other judges name it on its own text.</span></p>
           <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text. The usual check is whether a judge names itself on its own writing more often than chance. We add two controls from the same experiment: how often the judge names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags 15 of 37 cases. In 7 the judge names itself as often on others' text. Of the other 8, all frontier models, 3 beat the pooled peers and none beats its strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32. The authorship signal is in the text (a style classifier attributes 86% of the essays); the judges' answers do not follow it.</p>
-          <div class="plinks"><a class="pl pl-try" href="/demos/#stylometry">Run the classifier ↗</a><a class="pl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a><!-- [EDIT] swap for the arXiv link once it is posted --><span class="pl pl-soon">PDF · arXiv soon</span></div>
+          <div class="plinks"><a class="pl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a><!-- [EDIT] swap for the arXiv link once it is posted --><span class="pl pl-soon">PDF · arXiv soon</span></div>
         </div>
       </article>
 
@@ -592,7 +592,7 @@
     <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
     <p class="rc-key rv d1"><span>Tap an underlined number for where it comes from:</span><i data-t="m">measured</i><i data-t="s">scale</i><i data-t="o">result</i><i data-t="p">plan</i></p>
     <!-- SELECTED WORK as four cards (15 Oct, Adrian: "shorter and more condensed... what it is, the support i got, what i built"):
-         the title says what it is, then Built / Backed by / Result. The Ledger walkthrough and the AIML-LI lab moved to /demos/. -->
+         the title says what it is, then Built / Backed by / Result. -->
     <div class="works rv d1">
 
       <article class="wk" id="case-safejew">
@@ -624,7 +624,7 @@
             <div><dt>Worked with</dt><dd>Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD&rsquo;s Ed Tech &amp; Innovation office.</dd></div>
                         <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now <button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-lausd">piloting with LAUSD<sup>status</sup></button>, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for <button type="button" class="rc" data-t="p" aria-expanded="false" aria-controls="rc-summit">500+<sup>plan</sup></button> LA public-school students with nine committed partners. aiEDU student panel at NCSS 2026.<span class="rc-n" id="rc-lausd" data-t="o" hidden><span class="rc-ty">Result · in progress</span>Under way with the district. There are no pilot results yet, so none are quoted.</span><span class="rc-n" id="rc-summit" data-t="p" hidden><span class="rc-ty">Plan · not yet happened</span>Expected attendance at the free LA Student AI Summit &amp; Hackathon, planned for late 2026. It has not happened yet.</span></dd></div>
           </dl>
-          <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a><a href="/demos/#ailab-sec">Try the Unit 1 lab ↗</a></div>
+          <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a></div>
         </div>
       </article>
 
@@ -640,7 +640,7 @@
             <div><dt>Built</dt><dd>Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
             <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-vh">1st place<sup>award</sup></button>, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team&rsquo;s 24 test records, the rule engine <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-vh24">matches every hand-scored verdict<sup>measured</sup></button>, with no false passes.<span class="rc-n" id="rc-vh" data-t="o" hidden><span class="rc-ty">Result</span>VISION HACK: South LA, 12 September 2026. Devpost&rsquo;s prize name is &ldquo;CD 9 Champion U18&rdquo;.</span><span class="rc-n" id="rc-vh24" data-t="m" hidden><span class="rc-ty">Measured</span>24 of 24 synthetic records from Ledger&rsquo;s test suite. This is the rule engine; the vision model&rsquo;s accuracy on real photos hasn&rsquo;t been measured. <a href="https://github.com/michae6345-crypto/visionhack/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">The eval ↗</a></span></dd></div>
           </dl>
-          <div class="wk-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="/demos/#ledger-sec">Walkthrough ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
@@ -653,9 +653,9 @@
           <dl class="wk-facts">
             <div><dt>Why</dt><dd>From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.</dd></div>
             <div><dt>Built</dt><dd>With Michael Tarekegn: a pipeline that scores <button type="button" class="rc" data-t="s" aria-expanded="false" aria-controls="rc-blocks">431,599<sup>scale</sup></button> LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.<span class="rc-n" id="rc-blocks" data-t="s" hidden><span class="rc-ty">Scale of the work</span>Every street block in Los Angeles, scored for each hour of the day. Of the LAPD incidents, only public-space crime is kept: indoor records would mislabel residential blocks.</span></dd></div>
-            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-ycs">3rd place internationally<sup>award</sup></button>, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, from Exposition &amp; Normandie, two buses instead of a 118-minute walk cut modeled exposure by <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-sr80">80%<sup>model</sup></button>.<span class="rc-n" id="rc-ycs" data-t="o" hidden><span class="rc-ty">Result</span>Young Coders&rsquo; Sphere, Code for Transportation, an international high-school competition, August 2026.</span><span class="rc-n" id="rc-sr80" data-t="m" hidden><span class="rc-ty">Measured · model output</span>Walking: 118 minutes, 9.3 km on foot. Routes 206 then 33: 40 minutes, 750 m on foot. Exposure is the router&rsquo;s modeled street-crime exposure, not observed incidents. <a href="/demos/#saferoutes-sec">Compare them ↗</a></span></dd></div>
+            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-ycs">3rd place internationally<sup>award</sup></button>, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, from Exposition &amp; Normandie, two buses instead of a 118-minute walk cut modeled exposure by <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-sr80">80%<sup>model</sup></button>.<span class="rc-n" id="rc-ycs" data-t="o" hidden><span class="rc-ty">Result</span>Young Coders&rsquo; Sphere, Code for Transportation, an international high-school competition, August 2026.</span><span class="rc-n" id="rc-sr80" data-t="m" hidden><span class="rc-ty">Measured · model output</span>Walking: 118 minutes, 9.3 km on foot. Routes 206 then 33: 40 minutes, 750 m on foot. Exposure is the router&rsquo;s modeled street-crime exposure, not observed incidents.</span></dd></div>
           </dl>
-          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="/demos/#saferoutes-sec">Walk or ride? ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
@@ -895,6 +895,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-16-rc2"></script>
+<script src="/assets/site.js?v=2026-10-16-nodemo"></script>
 </body>
 </html>
