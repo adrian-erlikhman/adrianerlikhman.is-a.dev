@@ -1649,3 +1649,11 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 @media(max-width:700px){#about .about #offclock .oc-card{grid-template-columns:1fr}}
 /* the open tab's underline was the auto-advance timer; with no timer it is simply the selected tab's rule */
 .xf-tab[aria-selected=true] .xf-prog{transform:scaleX(1)}
+
+/* Achievements: the numbers behind each award (15 Oct) */
+.aw-stats{display:flex;flex-wrap:wrap;gap:12px 0;margin-top:16px;padding:14px 0 2px;border-top:1px solid var(--line-strong)}
+.aw-stats div{flex:1 1 0;min-width:88px;padding:0 14px;border-left:1px solid var(--line)}
+.aw-stats div:first-child{padding-left:0;border-left:0}
+.aw-stats b{display:block;font-family:var(--serif);font-weight:700;font-size:1.55rem;line-height:1;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+.aw-stats span{display:block;font-family:var(--mono);font-size:10.5px;line-height:1.35;letter-spacing:.03em;color:var(--dim);margin-top:6px}
+.aw-stats+p{margin-top:14px}

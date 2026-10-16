@@ -57,7 +57,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     "a co-first-author nlp paper accepted at ieee bigdata 2026",
     "a software and ml internship at firstness, working directly under the founder",
     "a vc internship working with early-stage b2b and saas companies",
-    "an ai summit for 200+ la students, with google deepmind and microsoft on stage",
+    "an ai summit for 500+ la students, with google deepmind and microsoft on stage",
     "a student panel on ai at the national consortium of stem schools",
     "a hidden-markov portfolio optimizer for turbulent markets",
     "an ai/ml course now piloting across lausd"
