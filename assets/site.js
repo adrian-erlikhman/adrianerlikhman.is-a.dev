@@ -1228,3 +1228,59 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   show(0);
   new IntersectionObserver(es=>es.forEach(en=>{ onScreen=en.isIntersecting; if(onScreen) arm(); else clearTimeout(timer); }),{threshold:.3}).observe(w);
 })();
+
+/* ================= WALK OR RIDE — Safe Routes to School on /demos/ (numbers from the project's SUBMISSION.md and validate.py output) ================= */
+(function(){
+  const card=document.getElementById('wrTrip'); if(!card) return;
+  /* Exposition & Normandie to LACES: walking 118 min, 9.3 km; Routes 206 -> 33, 40 min, 750 m on foot, exposure -80% */
+  const M={walk:{t:118,d:9.3,e:100},bus:{t:40,d:0.75,e:20}};
+  const btns=[...card.querySelectorAll('.wr-seg button')], $=id=>document.getElementById(id);
+  const go=mode=>{
+    const m=M[mode];
+    btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
+    $('wrBT').style.width=(m.t/118*100)+'%'; $('wrBD').style.width=(m.d/9.3*100)+'%'; $('wrBE').style.width=m.e+'%';
+    $('wrVT').textContent=m.t+' min'; $('wrVD').textContent=m.d<1?Math.round(m.d*1000)+' m':m.d+' km'; $('wrVE').textContent=m.e;
+    $('wrVerdict').innerHTML=mode==='walk'?'118 minutes and 9.3 km on the sidewalk.':'Faster, and <b>80% less modeled exposure</b>: 750 m of it is on foot.';
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>go(b.dataset.mode)));
+  go('walk');
+
+  /* six random evening walks: [shortest m, calmer m, shortest exposure, calmer exposure] */
+  const T=[[1429,1452,747,603],[1785,1802,276,157],[1711,1815,351,239],[1568,1696,562,349],[1801,2183,581,237],[1371,1382,810,601]];
+  const svg=$('wrPlot'), out=$('wrRead'); if(!svg) return;
+  const W=360,H=230,L=40,R=10,Tp=10,B=34, ns='http://www.w3.org/2000/svg';
+  const x=v=>L+v/25*(W-L-R), y=v=>Tp+(1-v/70)*(H-Tp-B);
+  const el=(n,a,p)=>{const e=document.createElementNS(ns,n); for(const k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e;};
+  [0,5,10,15,20,25].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:Tp,y2:H-B}); el('text',{x:x(v),y:H-B+14,'text-anchor':'middle'}).textContent='+'+v+'%';});
+  [0,20,40,60].forEach(v=>{el('line',{x1:L,x2:W-R,y1:y(v),y2:y(v)}); el('text',{x:L-6,y:y(v)+3,'text-anchor':'end'}).textContent=(v?'−':'')+v+'%';});
+  el('line',{x1:L,x2:W-R,y1:H-B,y2:H-B,class:'ax'}); el('line',{x1:L,x2:L,y1:Tp,y2:H-B,class:'ax'});
+  el('text',{x:(L+W-R)/2,y:H-4,'text-anchor':'middle'}).textContent='extra distance walked';
+  const my=(Tp+H-B)/2; el('text',{x:10,y:my,'text-anchor':'middle',transform:`rotate(-90 10 ${my})`}).textContent='exposure cut';
+  const g=el('g',{});
+  T.forEach((t,i)=>{
+    const ex=(t[1]/t[0]-1)*100, cut=(1-t[3]/t[2])*100;
+    const d=el('g',{class:'wr-dot',tabindex:0,role:'button','aria-label':`Trip ${i+1}: ${ex.toFixed(1)}% longer, ${Math.round(cut)}% less exposure`},g);
+    el('circle',{cx:x(ex),cy:y(cut),r:6},d);
+    const pick=()=>{ g.querySelectorAll('.wr-dot').forEach(n=>n.classList.remove('on')); d.classList.add('on');
+      out.innerHTML=`Trip ${i+1}: ${t[0].toLocaleString()} m &rarr; ${t[1].toLocaleString()} m <span>(+${t[1]-t[0]} m)</span><br>exposure ${t[2]} &rarr; ${t[3]} · <b>${Math.round(cut)}% less</b>`; };
+    d.addEventListener('click',pick); d.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(); } });
+  });
+})();
+
+/* ================= RECEIPTS — a tapped number opens its note (what kind of number, where it comes from) ================= */
+(function(){
+  const tags=document.querySelectorAll('.rc[aria-controls]'); if(!tags.length) return;
+  const noteOf=b=>document.getElementById(b.getAttribute('aria-controls'));
+  const shut=b=>{ b.setAttribute('aria-expanded','false'); const n=noteOf(b); if(n) n.hidden=true; };
+  tags.forEach(b=>b.addEventListener('click',()=>{
+    const open=b.getAttribute('aria-expanded')!=='true', box=b.parentElement;
+    /* one note open per line: close the others in the same paragraph */
+    box.querySelectorAll('.rc[aria-expanded="true"]').forEach(o=>{ if(o!==b) shut(o); });
+    b.setAttribute('aria-expanded',String(open)); const n=noteOf(b); if(n) n.hidden=!open;
+  }));
+  document.addEventListener('keydown',e=>{
+    if(e.key!=='Escape') return;
+    const b=e.target.closest&&(e.target.closest('.rc')||(e.target.closest('.rc-n')&&document.querySelector(`.rc[aria-controls="${e.target.closest('.rc-n').id}"]`)));
+    if(b&&b.getAttribute('aria-expanded')==='true'){ shut(b); b.focus(); }
+  });
+})();
