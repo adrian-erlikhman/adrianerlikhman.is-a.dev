@@ -308,9 +308,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-bp1"` should print 5
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-cy"` should print 5
   and 3. Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-15-bp1`.
+  used. Currently `?v=2026-10-15-cy`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that

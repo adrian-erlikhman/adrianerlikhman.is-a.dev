@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Try it — Adrian Erlikhman</title>
-<meta name="description" content="Two demos from Adrian Erlikhman's research on whether language models leave a fingerprint in their writing: guess which of five frontier models wrote a real essay, and run a paper's 18-feature classifier on your own writing.">
+<meta name="description" content="Five demos on real data from Adrian Erlikhman's research and projects: guess which of five frontier models wrote an essay, run a paper's 18-feature classifier on your own writing, score a store order against the SNAP rule, see a model ignore the people it should find, and compare walking to school with taking the bus.">
 <meta name="author" content="Adrian Erlikhman">
 <link rel="canonical" href="https://adrianerlikhman.is-a.dev/demos/">
 <link rel="icon" href="/favicon.ico?v=2026-10-05" sizes="any">
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Adrian Erlikhman">
 <meta property="og:title" content="Try it — Adrian Erlikhman">
-<meta property="og:description" content="Which model wrote this? Two demos from my research on model fingerprints, run on the papers' data.">
+<meta property="og:description" content="Which model wrote this? Five demos from my research and projects, run on their real data.">
 <meta property="og:url" content="https://adrianerlikhman.is-a.dev/demos/">
 <meta property="og:image" content="https://adrianerlikhman.is-a.dev/og.png?v=9">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15-aw3">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-16-rc1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,7 +32,7 @@
   "@id": "https://adrianerlikhman.is-a.dev/demos/#page",
   "url": "https://adrianerlikhman.is-a.dev/demos/",
   "name": "Try it — Adrian Erlikhman",
-  "description": "Two interactive demos from Adrian Erlikhman's research on model attribution: guess which of five frontier models wrote a real essay, and run a paper's 18-feature classifier on your own writing.",
+  "description": "Five interactive demos on real data from Adrian Erlikhman's research and projects: model attribution, CompLLM's classifier, Ledger's SNAP check, the AIML-LI Unit 1 lab and Safe Routes to School's walk-or-ride trade-off.",
   "isPartOf": { "@id": "https://adrianerlikhman.is-a.dev/#website" },
   "about": { "@id": "https://adrianerlikhman.is-a.dev/#adrian" },
   "inLanguage": "en-US"
@@ -56,8 +56,9 @@
     <a href="#stylometry">Classifier</a>
     <a href="#ledger-sec">Ledger</a>
     <a href="#ailab-sec">Unit 1 lab</a>
+    <a href="#saferoutes-sec">Routes</a>
     <a href="/#contact">Contact</a>
-    <a href="/resume.pdf?v=2026-10-15-500" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <a href="/resume.pdf?v=2026-10-15-cy" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
 </div>
@@ -65,10 +66,10 @@
 <main id="main" tabindex="-1">
 <header class="page-head wrap">
   <div class="ph-kick">try it</div>
-  <h1 class="ph-title">four demos</h1>
+  <h1 class="ph-title">five demos</h1>
   <p class="ph-lead">Each one runs in your browser on real data from my research or my projects.</p>
   <!-- DEMO INDEX (15 Oct): each tile carries the demo's headline number and its source; every number is quoted elsewhere on the site -->
-  <nav class="dx" aria-label="The four demos">
+  <nav class="dx" aria-label="The five demos">
     <a class="dx-t" href="#guess-sec">
       <span class="dx-n">01</span>
       <span class="dx-h">Which model wrote this?</span>
@@ -96,6 +97,13 @@
       <span class="dx-v">98% <i>/</i> 67%</span>
       <span class="dx-d">Accuracy against winners found when 1 in 20 applicants wins: the lesson in one pair of numbers.</span>
       <span class="dx-s">AIML-LI · taught in LACES AP CS</span>
+    </a>
+    <a class="dx-t" href="#saferoutes-sec">
+      <span class="dx-n">05</span>
+      <span class="dx-h">Walk or ride?</span>
+      <span class="dx-v">80% <i>less</i></span>
+      <span class="dx-d">Modeled street-crime exposure when two buses replace a 118-minute walk to school.</span>
+      <span class="dx-s">Safe Routes · 3rd place, Code for Transportation</span>
     </a>
   </nav>
 </header>
@@ -211,6 +219,45 @@
     </div>
   </div>
 </section>
+
+<!-- DEMO 5: Safe Routes to School's walk-or-ride trade-off (16 Oct). Numbers: SUBMISSION.md (the 206 -> 33 trip) and
+     README.md's validate.py output (six evening walks) in safe-routes-la/safe-routes-la.github.io. site.js WALK OR RIDE. -->
+<section id="saferoutes-sec">
+  <div class="wrap">
+    <div class="sec-label rv"><span class="idx">[05]</span><h2>Walk or ride?</h2><span class="note">// safe routes to school · modeled exposure</span></div>
+    <p class="prov rv d1"><span class="prov-k">from</span><b>Safe Routes to School</b><span class="prov-st">3rd place internationally · Young Coders&rsquo; Sphere Code for Transportation</span><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">The app ↗</a><a href="/#case-saferoutes">The project ↗</a></p>
+    <ol class="steps rv d1">
+      <li><b>1</b><div><span class="st-h">Pick how to get there</span>One real trip to LACES, walked the whole way or on two buses.</div></li>
+      <li><b>2</b><div><span class="st-h">Compare the bars</span>Time, distance on foot, and the router&rsquo;s modeled street-crime exposure.</div></li>
+      <li><b>3</b><div><span class="st-h">Pick a detour</span>Six random evening walks: how much longer the calmer route is, and how much calmer.</div></li>
+    </ol>
+    <div class="wr rv d1">
+      <div class="wr-card" id="wrTrip">
+        <div class="wr-k">one trip to school</div>
+        <h3 class="wr-h">Exposition &amp; Normandie to LACES</h3>
+        <div class="wr-sub">To LACES in Mid City, Los Angeles</div>
+        <div class="wr-seg" role="group" aria-label="How to get there">
+          <button type="button" aria-pressed="true" data-mode="walk">Walk the whole way<small>sidewalks only</small></button>
+          <button type="button" aria-pressed="false" data-mode="bus">Two buses<small>Route 206, then Route 33</small></button>
+        </div>
+        <div class="wr-bars">
+          <div class="wr-row"><span class="wr-l">Time</span><span class="wr-t"><i id="wrBT" style="width:100%"></i></span><b id="wrVT">118 min</b></div>
+          <div class="wr-row"><span class="wr-l">On foot</span><span class="wr-t"><i id="wrBD" style="width:100%"></i></span><b id="wrVD">9.3 km</b></div>
+          <div class="wr-row wr-ex"><span class="wr-l">Exposure</span><span class="wr-t"><i id="wrBE" style="width:100%"></i></span><b id="wrVE">100</b></div>
+        </div>
+        <p class="wr-verdict" id="wrVerdict" aria-live="polite">Walking: 118 minutes and 9.3 km on the sidewalk. Two buses: 40 minutes, 750 m on foot, and 80% less modeled exposure.</p>
+        <p class="wr-foot">Exposure is the router&rsquo;s modeled street-crime exposure along the route, scored by hour from 85,634 LAPD incidents, with the walk set to 100. A minute waiting at a stop is charged like 80 m of walking there. A model output, not a safety guarantee.</p>
+      </div>
+      <div class="wr-card">
+        <div class="wr-k">walking only · six random evening trips</div>
+        <h3 class="wr-h">A little longer, a lot calmer</h3>
+        <div class="wr-plot"><svg id="wrPlot" viewBox="0 0 360 230" role="img" aria-label="Six random evening walks: the calmer route adds 1 to 21 percent distance and cuts modeled exposure by 19 to 59 percent."></svg></div>
+        <p class="wr-read" id="wrRead" aria-live="polite">Pick a trip.</p>
+        <p class="wr-foot">From the project&rsquo;s validation run: the shortest route against the router&rsquo;s calmer one, same start and end. The calmer route was 1&ndash;21% longer and cut modeled exposure by 19&ndash;59%, on 6 of 6 trips. <a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">The code ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -223,10 +270,10 @@
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">résumé <span>// pick a length</span></div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="/resume.pdf?v=2026-10-15-500" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="/resume.pdf?v=2026-10-15-cy" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="/resume-long.pdf?v=2026-10-15-500" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="/resume-long.pdf?v=2026-10-15-cy" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
@@ -254,6 +301,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-15-aw3"></script>
+<script src="/assets/site.js?v=2026-10-16-rc1"></script>
 </body>
 </html>
