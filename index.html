@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-15-aw3">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-16-rc1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -284,7 +284,7 @@
     <a href="#fencing">Fencing</a>
     <a href="#record">Achievements</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-10-15-500" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-10-15-cy" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
   <!-- phones: the same sections as a strip under the bar (hidden above 900px, where .navset shows them) -->
@@ -318,13 +318,13 @@
     <div class="hero-cta">
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
-      <a class="btn" href="resume.pdf?v=2026-10-15-500" target="_blank" data-cv-menu>résumé</a>
+      <a class="btn" href="resume.pdf?v=2026-10-15-cy" target="_blank" data-cv-menu>résumé</a>
     </div>
     <!-- AT A GLANCE (15 Oct): Adrian's three facts (the fourth, AIML-LI's summit students, came off at his ask the same day); each links to its section. Keep in step with the R cards, Fencing and Experience. -->
     <div class="facts rv d2" aria-label="At a glance">
-      <a class="fact" href="#papers"><b data-count="4">4</b><span class="fk">accepted papers</span><span class="fi">IEEE BigData · ARRSI @ AACL · 2 journals</span></a>
-      <a class="fact" href="#fencing"><b>Top&nbsp;<span data-count="20">20</span></b><span class="fk">U.S. épée</span><span class="fi">Team USA · peak No.&nbsp;17, Cadet</span></a>
-      <a class="fact" href="#experience"><b data-count="4">4</b><span class="fk">internships</span><span class="fi">ML · software · venture capital</span></a>
+      <a class="fact" href="#papers"><b data-count="4">4</b><span class="fk">accepted papers</span><span class="fi">IEEE BigData · ARRSI @ AACL · 2 journals</span><span class="fsrc">2 accepted · 2 accepted with revisions</span></a>
+      <a class="fact" href="#fencing"><b>Top&nbsp;<span data-count="20">20</span></b><span class="fk">U.S. épée</span><span class="fi">Team USA · peak No.&nbsp;17, Cadet</span><span class="fsrc">USA Fencing national rankings</span></a>
+      <a class="fact" href="#experience"><b data-count="4">4</b><span class="fk">internships</span><span class="fi">ML · software · venture capital</span><span class="fsrc">Firstness · Kiddom · Fjor · Alliance</span></a>
     </div>
   </div>
 
@@ -470,6 +470,7 @@
 <section id="papers">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// five papers · four accepted</span></div>
+    <p class="rc-key rv d1"><span>Tap an underlined number for where it comes from:</span><i data-t="m">measured</i><i data-t="s">scale</i><i data-t="o">result</i><i data-t="p">plan</i></p>
     <!-- RESEARCH as a shelf of front pages (15 Oct, Adrian: the list was "too long to scroll through"; he wanted each
          paper's front page in a small clickable shelf, then where it was accepted and who worked on it). Covers are page 1
          of each PDF (img/papers/, rendered with pypdfium2); LangLLM's is the BigData paper's, shown as an image only until the
@@ -496,7 +497,7 @@
             <div><dt>Authors</dt><dd>Adrian Erlikhman, Michael Tarekegn, Philo Juang</dd></div>
             <div><dt>My role</dt><dd>Co-first author</dd></div>
           </dl>
-          <p class="find">A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.</p>
+          <p class="find">A 21-feature classifier names the model <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-lang">59–72%<sup>measured</sup></button> of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.<span class="rc-n" id="rc-lang" data-t="m" hidden><span class="rc-ty">Measured</span>Five-way attribution of 840 essays, 120 in each language, with leave-one-prompt-out cross-validation over the 12 prompts, so the classifier never sees an essay&rsquo;s prompt in training. Logistic regression on 21 features from Universal Dependencies parses.</span></p>
           <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
           <div class="plinks"><a class="pl pl-try" href="/demos/#guess-sec">Try the demo ↗</a><a class="pl" href="papers/langllm-poster-urtc2026.pdf" target="_blank">Poster ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></div>
         </div>
@@ -513,7 +514,7 @@
             <div><dt>Authors</dt><dd>Adrian Erlikhman</dd></div>
             <div><dt>My role</dt><dd>Sole author</dd></div>
           </dl>
-          <p class="find">RewardBench's leader survives the removal of any 11 of its 2,985 items. Removing 12 particular items makes the runner-up the winner.</p>
+          <p class="find">RewardBench's leader survives the removal of <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-ctw">any 11 of its 2,985 items<sup>exact</sup></button>. Removing 12 particular items makes the runner-up the winner.<span class="rc-n" id="rc-ctw" data-t="m" hidden><span class="rc-ty">Measured · exact bound</span>Exact, not sampled: the certificate checks every challenger with one sort each, so no choice of 11 removals can change the leader, and the paper exhibits 12 that do. RewardBench 2&rsquo;s leader survives any 42.</span></p>
           <p class="abstract">Automated research and self-improvement pipelines pick a reward model or LLM judge by its accuracy on a validation set, and that set is often curated by the pipeline or its designers. The paper's curation certificate says how much of the set could be removed before the winner changes. In benchmark weight it is at least the gap between the top two models; in items it is exact, from one sort per challenger. Linear programs show the bound is tight near the top of RewardBench (118 models) and RewardBench 2 (188). RewardBench's leader survives any 11 removed items, and RewardBench 2's any 42. On 200-item RewardBench validation sets, picks whose top two are more than 2 points apart match the full-benchmark winner 87% of the time, against 43% for the rest.</p>
           <div class="plinks"><a class="pl" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank">PDF ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code + data ↗</a></div>
         </div>
@@ -529,7 +530,7 @@
             <div><dt>Authors</dt><dd>Adrian Erlikhman, Michael Tarekegn, Philo Juang</dd></div>
             <div><dt>My role</dt><dd>Co-first author</dd></div>
           </dl>
-          <p class="find">The usual test flags self-recognition in 15 of 37 cases. 8 survive a false-alarm control, 3 beat the pooled peers, and none beats its strongest single peer.</p>
+          <p class="find">The usual test flags self-recognition in <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-cmp">15 of 37 cases<sup>measured</sup></button>. 8 survive a false-alarm control, 3 beat the pooled peers, and none beats its strongest single peer.<span class="rc-n" id="rc-cmp" data-t="m" hidden><span class="rc-ty">Measured</span>From over 19,000 judgments by nine LLM judges on 1,270 texts. The two added controls: how often a judge names itself on text it did not write, and how often the other judges name it on its own text.</span></p>
           <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text. The usual check is whether a judge names itself on its own writing more often than chance. We add two controls from the same experiment: how often the judge names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags 15 of 37 cases. In 7 the judge names itself as often on others' text. Of the other 8, all frontier models, 3 beat the pooled peers and none beats its strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32. The authorship signal is in the text (a style classifier attributes 86% of the essays); the judges' answers do not follow it.</p>
           <div class="plinks"><a class="pl pl-try" href="/demos/#stylometry">Run the classifier ↗</a><a class="pl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a><!-- [EDIT] swap for the arXiv link once it is posted --><span class="pl pl-soon">PDF · arXiv soon</span></div>
         </div>
@@ -546,7 +547,7 @@
             <div><dt>Authors</dt><dd>Adrian Erlikhman, Ryan Erlikhman (LACES)</dd></div>
             <div><dt>My role</dt><dd>Co-first author</dd></div>
           </dl>
-          <p class="find">Splitting evenly beat the Markowitz portfolio in 74% of 250 calibrated simulations (Sharpe 0.70 against 0.51).</p>
+          <p class="find">Splitting evenly beat the Markowitz portfolio in <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-pf">74% of 250<sup>simulated</sup></button> calibrated simulations (Sharpe 0.70 against 0.51).<span class="rc-n" id="rc-pf" data-t="m" hidden><span class="rc-ty">Measured · in simulation</span>Simulated, not live returns: 250 runs of a factor model calibrated to real market data. Given the true means, the optimizer is nearly optimal; estimating them is what loses.</span></p>
           <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
           <div class="plinks"><a class="pl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank">PDF ↓</a></div>
         </div>
@@ -563,7 +564,7 @@
             <div><dt>Authors</dt><dd>Adrian Erlikhman, Ryan Erlikhman (LACES)</dd></div>
             <div><dt>My role</dt><dd>Co-first author</dd></div>
           </dl>
-          <p class="find">The ranking holds as a whole (median Spearman ≥ 0.99) but not mid-table, where the median 90% rank interval spans 36 places.</p>
+          <p class="find">The ranking holds as a whole (<button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-lg">median Spearman ≥ 0.99<sup>measured</sup></button>) but not mid-table, where the median 90% rank interval spans 36 places.<span class="rc-n" id="rc-lg" data-t="m" hidden><span class="rc-ty">Measured</span>After reproducing all 167 published scores and ranks exactly: 10,000 weight draws under each of three priors and a 131,072-run Sobol&rsquo; design. The median is 0.9899.</span></p>
           <p class="abstract">The Legatum Prosperity Index ranks 167 countries by an equal-weighted mean of twelve pillar scores. We reproduce every published score and rank exactly, then vary the weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design. The ranking holds as a whole (median Spearman ≥ 0.9899) but not in mid-table: the median 90% rank interval is 22 places overall and 36 for ranks 68–100. The paper's new result is rank leverage, c²(1 − ρ²): a weight can reorder countries only through the share of its pillar's variance that the composite doesn't share, times the pillar's squared relative spread. With arithmetic aggregation it tracks the weights' total effects under all four normalizations (Spearman 0.91–0.99), and equal weights of 1/12 give leverages that differ sixfold.</p>
           <div class="plinks"><a class="pl" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank">PDF ↓</a></div>
         </div>
@@ -589,6 +590,7 @@
 <section id="work" class="selected">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
+    <p class="rc-key rv d1"><span>Tap an underlined number for where it comes from:</span><i data-t="m">measured</i><i data-t="s">scale</i><i data-t="o">result</i><i data-t="p">plan</i></p>
     <!-- SELECTED WORK as four cards (15 Oct, Adrian: "shorter and more condensed... what it is, the support i got, what i built"):
          the title says what it is, then Built / Backed by / Result. The Ledger walkthrough and the AIML-LI lab moved to /demos/. -->
     <div class="works rv d1">
@@ -602,7 +604,7 @@
           <dl class="wk-facts">
             <div><dt>Built</dt><dd>The LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. Rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.</dd></div>
             <div><dt>Backed by</dt><dd><span class="wk-grant"><img src="/img/logos/tig-seal.webp" width="176" height="176" loading="lazy" decoding="async" alt="The Julie Beren Platt Teen Innovation Grants seal"><span>A <b>Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles (JFEDLA).</span></span></dd></div>
-            <div><dt>Result</dt><dd>Live at safejew.org: <b>1,300+</b> incidents tracked across Greater LA, including 33 college campuses nationwide.</dd></div>
+            <div><dt>Result</dt><dd>Live at safejew.org: <button type="button" class="rc" data-t="s" aria-expanded="false" aria-controls="rc-sj">1,300+<sup>scale</sup></button> incidents tracked across Greater LA, including 33 college campuses nationwide.<span class="rc-n" id="rc-sj" data-t="s" hidden><span class="rc-ty">Scale of the work</span>800 incidents across Greater Los Angeles and 594 on 33 college campuses, each with its source; a GitHub Action adds new ones daily. These are the reported incidents the map has found, not every incident.</span></dd></div>
           </dl>
           <div class="wk-links"><a href="https://safejew.org/map" target="_blank" rel="noopener">Open the map ↗</a><a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
@@ -620,7 +622,7 @@
           <dl class="wk-facts">
             <div><dt>Built</dt><dd>Co-founded AIML-LI with Michael Tarekegn and co-wrote a free, open-source <b>12-week course</b> in six units: foundations, building models, prediction and error, neural networks, language and bias, and a capstone project students ship. Real notebooks, aligned to state standards, on the school&rsquo;s Chromebooks.</dd></div>
             <div><dt>Worked with</dt><dd>Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD&rsquo;s Ed Tech &amp; Innovation office.</dd></div>
-                        <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now <b>piloting with LAUSD</b>, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for <b>500+</b> LA public-school students with nine committed partners. aiEDU student panel at NCSS 2026.</dd></div>
+                        <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now <button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-lausd">piloting with LAUSD<sup>status</sup></button>, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for <button type="button" class="rc" data-t="p" aria-expanded="false" aria-controls="rc-summit">500+<sup>plan</sup></button> LA public-school students with nine committed partners. aiEDU student panel at NCSS 2026.<span class="rc-n" id="rc-lausd" data-t="o" hidden><span class="rc-ty">Result · in progress</span>Under way with the district. There are no pilot results yet, so none are quoted.</span><span class="rc-n" id="rc-summit" data-t="p" hidden><span class="rc-ty">Plan · not yet happened</span>Expected attendance at the free LA Student AI Summit &amp; Hackathon, planned for late 2026. It has not happened yet.</span></dd></div>
           </dl>
           <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a><a href="/demos/#ailab-sec">Try the Unit 1 lab ↗</a></div>
         </div>
@@ -636,7 +638,7 @@
             <div><dt>What</dt><dd>Ledger covers <b>eighteen</b> federal, state and local programs a South LA corner store can answer to. It puts each license, its agency and its renewal date on one dashboard, worst first, with reminders before each deadline, in English and Spanish.</dd></div>
             <div><dt>How</dt><dd>The owner photographs a wholesale order record. Two vision passes read each line; a rule engine counts varieties and units per food category against the SNAP rule (7 varieties and 21 units in each of four categories) and lists every line it could not count, with the reason, instead of guessing.</dd></div>
             <div><dt>Built</dt><dd>Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
-            <div><dt>Result</dt><dd><b>1st place</b>, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team&rsquo;s 24 test records, the rule engine matches every hand-scored verdict, with no false passes.</dd></div>
+            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-vh">1st place<sup>award</sup></button>, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team&rsquo;s 24 test records, the rule engine <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-vh24">matches every hand-scored verdict<sup>measured</sup></button>, with no false passes.<span class="rc-n" id="rc-vh" data-t="o" hidden><span class="rc-ty">Result</span>VISION HACK: South LA, 12 September 2026. Devpost&rsquo;s prize name is &ldquo;CD 9 Champion U18&rdquo;.</span><span class="rc-n" id="rc-vh24" data-t="m" hidden><span class="rc-ty">Measured</span>24 of 24 synthetic records from Ledger&rsquo;s test suite. This is the rule engine; the vision model&rsquo;s accuracy on real photos hasn&rsquo;t been measured. <a href="https://github.com/michae6345-crypto/visionhack/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">The eval ↗</a></span></dd></div>
           </dl>
           <div class="wk-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="/demos/#ledger-sec">Walkthrough ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
@@ -650,10 +652,10 @@
           <h3 class="wk-title">Walking directions built from where students actually get robbed, not just from distance.</h3>
           <dl class="wk-facts">
             <div><dt>Why</dt><dd>From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.</dd></div>
-            <div><dt>Built</dt><dd>With Michael Tarekegn: a pipeline that scores <b>431,599</b> LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.</dd></div>
-            <div><dt>Result</dt><dd><b>3rd place internationally</b>, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, from Exposition &amp; Normandie, two buses instead of a 118-minute walk cut modeled exposure by <b>80%</b>.</dd></div>
+            <div><dt>Built</dt><dd>With Michael Tarekegn: a pipeline that scores <button type="button" class="rc" data-t="s" aria-expanded="false" aria-controls="rc-blocks">431,599<sup>scale</sup></button> LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.<span class="rc-n" id="rc-blocks" data-t="s" hidden><span class="rc-ty">Scale of the work</span>Every street block in Los Angeles, scored for each hour of the day. Of the LAPD incidents, only public-space crime is kept: indoor records would mislabel residential blocks.</span></dd></div>
+            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-ycs">3rd place internationally<sup>award</sup></button>, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, from Exposition &amp; Normandie, two buses instead of a 118-minute walk cut modeled exposure by <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-sr80">80%<sup>model</sup></button>.<span class="rc-n" id="rc-ycs" data-t="o" hidden><span class="rc-ty">Result</span>Young Coders&rsquo; Sphere, Code for Transportation, an international high-school competition, August 2026.</span><span class="rc-n" id="rc-sr80" data-t="m" hidden><span class="rc-ty">Measured · model output</span>Walking: 118 minutes, 9.3 km on foot. Routes 206 then 33: 40 minutes, 750 m on foot. Exposure is the router&rsquo;s modeled street-crime exposure, not observed incidents. <a href="/demos/#saferoutes-sec">Compare them ↗</a></span></dd></div>
           </dl>
-          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
+          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="/demos/#saferoutes-sec">Walk or ride? ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
         </div>
       </article>
 
@@ -842,7 +844,7 @@
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag><img class="cl" src="/img/logos/github.svg" width="14" height="14" loading="lazy" decoding="async" alt="">GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" data-mag><img class="cl" src="/img/logos/linkedin.webp" width="14" height="14" loading="lazy" decoding="async" alt="">LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag><img class="cl" src="/img/logos/usafencing.webp" width="15" height="14" loading="lazy" decoding="async" alt="">Fencing</a>
-        <a href="resume.pdf?v=2026-10-15-500" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
+        <a href="resume.pdf?v=2026-10-15-cy" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
       </div>
     </div>
   </div>
@@ -858,10 +860,10 @@
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">résumé <span>// pick a length</span></div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10-15-500" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10-15-cy" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10-15-500" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10-15-cy" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
@@ -893,6 +895,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-15-aw3"></script>
+<script src="/assets/site.js?v=2026-10-16-rc1"></script>
 </body>
 </html>
