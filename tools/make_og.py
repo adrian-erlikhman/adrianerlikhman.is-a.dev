@@ -55,15 +55,14 @@ MONO_SB = os.path.join(FD, "IBMPlexMono-SemiBold.ttf")
 
 MARGIN = 88
 
-# 16 Oct: no dash, no coordinates, but not "Los Angeles" alone, so it
-# carries the hero's own line ("i'm a senior in los angeles")
-KICK = "HIGH SCHOOL SENIOR"
-KICK_2 = "LOS ANGELES"
+# 16 Oct: no dash, no coordinates; Adrian picked the full place name
+KICK = "LOS ANGELES, CALIFORNIA"
 NAME = ["Adrian", "Erlikhman"]
-# Adrian's own words, the same as the meta description (7 Oct)
-TAGLINE = ["ML/NLP researcher. Software, ML,",
-           "investment, and venture intern.",
-           "Team USA fencer."]
+# Adrian's own words, the meta description's, one per line with a marker
+# (16 Oct, the layout he picked)
+TAGLINE = ["ML/NLP researcher",
+           "Software, ML, investment & venture intern",
+           "Team USA fencer"]
 # 16 Oct: the credential lines are gone (Adrian: just the researcher and
 # intern line); the site carries the achievements.
 
@@ -105,15 +104,9 @@ def build():
     im = Image.composite(Image.new("RGB", (W, H), NAVY), im, mask)
     d = ImageDraw.Draw(im)
 
-    # ---- kicker: HIGH SCHOOL SENIOR · LOS ANGELES ---------------------
+    # ---- kicker: LOS ANGELES, CALIFORNIA -------------------------------
     f_kick = ImageFont.truetype(MONO_SB, 19)
-    ky = 92
-    x = MARGIN
-    x += tracked(d, (x, ky), KICK, f_kick, SKY, 3.2)
-    x += 16
-    d.ellipse([x, ky + 9, x + 5, ky + 14], fill=SKY)
-    x += 21
-    tracked(d, (x, ky), KICK_2, f_kick, WHITE, 3.2)
+    tracked(d, (MARGIN, 92), KICK, f_kick, WHITE, 3.2)
 
     # ---- name -------------------------------------------------------------
     f_name = lm(128)
@@ -121,10 +114,12 @@ def build():
         bb = d.textbbox((0, 0), t, font=f_name)
         d.text((MARGIN - 7, 150 + i * 140 - bb[1]), t, font=f_name, fill=WHITE)
 
-    # ---- tagline ----------------------------------------------------------
-    f_tag = lm(30, bold=False)
+    # ---- tagline: three lines, each with a light-blue marker ------------
+    f_tag = lm(28, bold=False)
     for i, t in enumerate(TAGLINE):
-        d.text((MARGIN, 438 + i * 39), t, font=f_tag, fill=SOFT)
+        y = 440 + i * 42
+        d.rectangle([MARGIN, y + 9, MARGIN + 4, y + 29], fill=SKY)
+        d.text((MARGIN + 20, y), t, font=f_tag, fill=SOFT if i == 1 else WHITE)
     return im
 
 
