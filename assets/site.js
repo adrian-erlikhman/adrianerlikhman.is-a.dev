@@ -424,7 +424,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'▸',label:'Fencing',k:'jump',run:()=>go('#fencing')},
     {ic:'▸',label:'Achievements',k:'jump',run:()=>go('#record')},
     {ic:'▸',label:'Contact',k:'jump',run:()=>go('#contact')},
-    {ic:'▸',label:'Demos: guess the model, the classifier, Ledger, the Unit 1 lab',k:'page',run:()=>{close();location.href='/demos/';}},
     {ic:'✉',label:'Email Adrian',k:'link',run:()=>{close();location.href='mailto:erlikhman.adrian@gmail.com';}},
     {ic:'↗',label:'Open GitHub',k:'link',run:()=>ext('https://github.com/adrian-erlikhman')},
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-78a262414')},
@@ -560,109 +559,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   document.getElementById('cvClose').addEventListener('click',close);
   cv.addEventListener('click',e=>{if(e.target===cv)close();});
   addEventListener('keydown',e=>{if(e.key==='Escape'&&!cv.hidden)close();});
-})();
-
-/* ================= FEATURE STRIP — where a text sits against the five models' averages (both demos) ================= */
-window.AEstrip=function(o){
-  /* o: {label, unit, v (this text), means {model: mean}, hi (model to highlight), names {model: short name}, me (what to call the text)} */
-  const ks=Object.keys(o.means), all=ks.map(k=>o.means[k]).concat([o.v]);
-  let lo=Math.min.apply(null,all), hi=Math.max.apply(null,all); const pad=(hi-lo)*.08||1; lo-=pad; hi+=pad;
-  const x=v=>((v-lo)/(hi-lo)*100).toFixed(2)+'%', f=window.AEfmt;
-  const others=ks.filter(k=>k!==o.hi).map(k=>o.means[k]), omin=Math.min.apply(null,others), omax=Math.max.apply(null,others);
-  return '<div class="fx"><div class="fx-h"><b>'+o.label+'</b><span>'+o.unit+'</span></div>'+
-    '<div class="fx-track" aria-hidden="true">'+ks.map(k=>'<i class="fx-m'+(k===o.hi?' hi':'')+'" style="left:'+x(o.means[k])+'"></i>').join('')+
-    '<i class="fx-me" style="left:'+x(o.v)+'"></i></div>'+
-    '<div class="fx-v">'+(o.me||'this text')+' <b>'+f(o.v)+'</b> · '+o.names[o.hi]+' average <b>'+f(o.means[o.hi])+'</b> · the other four '+f(omin)+'–'+f(omax)+'</div></div>';
-};
-window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v.toFixed(1):a>=1?v.toFixed(2):v.toFixed(3);};
-
-/* ================= RUN THE CLASSIFIER — CompLLM's 18 features and a logistic regression (assets/stylometry-model.json) ================= */
-(function(){
-  const box=document.getElementById('lab'); if(!box) return;
-  const $=id=>document.getElementById(id);
-  const NAMES={GPT:'GPT-5.5',Claude:'Claude Opus 4.7',Gemini:'Gemini 3.5 Flash',Grok:'Grok 4.3',DeepSeek:'DeepSeek'};
-  /* STYLO-FEATURES: a line-for-line port of CompLLM's src/features.py extract(). Python's \w and \b are
-     Unicode-aware and JS's \b is not, so word boundaries are spelled out with lookarounds. */
-  const W='[\\p{L}\\p{N}_]', B='(?:(?<='+W+')(?!'+W+')|(?<!'+W+')(?='+W+'))';
-  const RX_WORD=new RegExp(B+"[\\p{L}\\p{N}_'-]+"+B,'gu');
-  const RX_SENT=/[.!?]+(?:\s|$)/u;
-  const BE='(?:is|are|was|were|be|been|being|am|get|gets|got|becomes|became)';
-  const RX_PASS=new RegExp(B+BE+B+'\\s+(?:'+W+'+ly\\s+)?'+B+W+'+(?:ed|en|wn|ne|de)'+B,'giu');
-  const mean=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:NaN;
-  const sd=a=>{const m=mean(a);return Math.sqrt(mean(a.map(v=>(v-m)*(v-m))));};
-  function syll(word){
-    const w=word.toLowerCase().replace(/[^a-z]/g,'');
-    if(!w) return 0; if(w.length<=3) return 1;
-    let n=(w.match(/[aeiouy]+/g)||[]).length;
-    if(w.endsWith('e')&&!/(le|ee|ye)$/.test(w)&&n>1) n--;
-    if(/(es|ed)$/.test(w)&&n>1&&!/(ies|ted|ded)$/.test(w)) n--;
-    return Math.max(n,1);
-  }
-  function stylFeatures(text,hedges){
-    text=(text||'').trim();
-    const words=text.match(RX_WORD)||[], lower=words.map(w=>w.toLowerCase()), nW=Math.max(words.length,1);
-    let sents=text.split(RX_SENT).map(s=>s.trim()).filter(Boolean); if(!sents.length) sents=[text];
-    const sl=sents.map(s=>(s.match(RX_WORD)||[]).length), nS=sents.length;
-    let paras=text.split(/\n\s*\n/u).filter(p=>p.trim()); if(!paras.length) paras=[text];
-    const counts=new Map(); lower.forEach(w=>counts.set(w,(counts.get(w)||0)+1));
-    let hapax=0; counts.forEach(c=>{if(c===1)hapax++;});
-    const syl=words.reduce((s,w)=>s+syll(w),0), cx=words.filter(w=>syll(w)>=3).length;
-    const per100=k=>100*k/nW, cnt=s=>text.split(s).length-1, spw=nW/Math.max(nS,1);
-    const hs=new Set(hedges);
-    return [
-      words.length, counts.size/nW, hapax/nW, words.length?mean(words.map(w=>w.length)):0,
-      mean(sl), sd(sl), nS, per100((text.match(RX_PASS)||[]).length),
-      206.835-1.015*spw-84.6*(syl/nW), 0.39*spw+11.8*(syl/nW)-15.59, 0.4*(spw+100*cx/nW),
-      per100(lower.filter(w=>hs.has(w)).length), paras.length, mean(paras.map(p=>(p.match(RX_WORD)||[]).length)),
-      per100(cnt(',')), per100(cnt('—')+cnt('--')), per100(cnt(':')), per100(cnt(';'))
-    ];
-  }
-  /* STYLO-FEATURES END */
-  let M=null, k=-1, sample=null, timer=0;
-  const fmt=window.AEfmt;
-  const YOURS='your text · scored by the fit to all 190 essays';
-  function score(m,x){
-    const z=x.map((v,j)=>(v-m.mean[j])/m.scale[j]);
-    const l=m.coef.map((w,c)=>w.reduce((s,wj,j)=>s+wj*z[j],m.intercept[c])), mx=Math.max.apply(null,l);
-    const e=l.map(v=>Math.exp(v-mx)), t=e.reduce((a,b)=>a+b,0);
-    return {p:e.map(v=>v/t), z};
-  }
-  function render(){
-    const out=$('labOut'), x=stylFeatures($('labTa').value,M.hedges), words=x[0];
-    if(words<20){ out.innerHTML='<p class="lab-empty">Paste at least a paragraph. The essays it learned from averaged '+Math.round(M.mean_words)+' words.</p>'; return; }
-    const m=sample?M.folds[sample.fold]:M.full, r=score(m,x);
-    const order=M.classes.map((c,i)=>i).sort((a,b)=>r.p[b]-r.p[a]), top=order[0], c=M.classes[top];
-    /* each feature's push toward the winner, relative to the average class: z * (w_top - mean w) */
-    const avg=M.features.map((f,j)=>m.coef.reduce((s,row)=>s+row[j],0)/m.coef.length);
-    const push=M.features.map((f,j)=>({j,v:r.z[j]*(m.coef[top][j]-avg[j])})).filter(o=>o.v>0).sort((a,b)=>b.v-a.v).slice(0,3);
-    let html='<p class="g-line lab-verdict"><span class="g-k">reads most like</span><b class="lab-m">'+NAMES[c]+'</b><span class="lab-p">'+Math.round(r.p[top]*100)+'%</span></p>';
-    html+=sample
-      ? '<p class="g-line">'+(c===sample.author?'<span class="ok">Right ✓</span>':'<span class="no">Wrong ✗</span>')+' '+NAMES[sample.author]+' wrote it. The fit that scored it never saw this prompt.</p>'
-      : '<p class="g-line g-why">There is no human option: it names whichever of the five models your text sits closest to.'+(words<150?' Short texts lean on length; the essays it learned from averaged '+Math.round(M.mean_words)+' words.':'')+'</p>';
-    html+='<div class="lab-bars">'+order.map(i=>'<div class="lab-row'+(i===top?' top':'')+'"><span class="nm">'+M.classes[i]+'</span><span class="lab-track"><span style="width:'+(r.p[i]*100).toFixed(1)+'%"></span></span><span class="pc">'+Math.round(r.p[i]*100)+'%</span></div>').join('')+'</div>';
-    const means=j=>{const o={};M.classes.forEach(cl=>{o[cl]=M.means[cl][j];});return o;}, short={};
-    M.classes.forEach(cl=>{short[cl]=cl;});
-    if(push.length) html+='<p class="g-k lab-wh">what pointed to '+c+'</p><div class="fxs">'+push.map(o=>{const f=M.features[o.j];
-      return AEstrip({label:M.labels[f].label,unit:M.labels[f].unit,v:x[o.j],means:means(o.j),hi:c,names:short,me:sample?'this essay':'your text'});}).join('')+'</div>';
-    html+='<details class="lab-all"><summary>all 18 features, against each model&rsquo;s average</summary><div class="lab-tw"><table><thead><tr><th>feature</th><th>this text</th>'+M.classes.map(cl=>'<th>'+cl+'</th>').join('')+'</tr></thead><tbody>'+
-      M.features.map((f,j)=>'<tr><td>'+M.labels[f].label+' <span>'+M.labels[f].unit+'</span></td><td><b>'+fmt(x[j])+'</b></td>'+M.classes.map(cl=>'<td>'+fmt(M.means[cl][j])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></details>';
-    const open=out.querySelector('details[open]'); out.innerHTML=html; if(open) out.querySelector('details').open=true;
-  }
-  function load(i){
-    k=(i+M.samples.length)%M.samples.length; sample=M.samples[k];
-    $('labTa').value=sample.text; $('labTa').scrollTop=0;
-    $('labSrc').textContent='essay '+(k+1)+' of '+M.samples.length+' · prompt '+sample.prompt+' · edit it and it counts as your text';
-    $('labNext').textContent='next essay'; render();
-  }
-  $('labNext').addEventListener('click',()=>{ if(M) load(k+1); });
-  $('labClear').addEventListener('click',()=>{ if(!M) return; sample=null; $('labTa').value=''; $('labSrc').textContent=YOURS; $('labTa').focus(); render(); });
-  $('labTa').addEventListener('input',()=>{ if(!M) return;
-    if(sample){ sample=null; $('labSrc').textContent=YOURS; }
-    clearTimeout(timer); timer=setTimeout(render,150); });
-  fetch('/assets/stylometry-model.json?v=2026-10-10').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
-    M=d; load(0);
-    $('labFoot').innerHTML='The paper&rsquo;s 18 features, ported line for line from its Python, and a logistic regression fitted to its '+d.essays+' chat-app essays on '+d.prompts+' prompts. Each essay here is scored by a fit that held out its prompt; held out that way, the regression names the right model for '+Math.round(d.lr_accuracy*100)+'% of the essays (the paper&rsquo;s random forest: '+(d.rf_accuracy*100).toFixed(1)+'%; chance: 20%). The percentages are its probabilities. Data and code: <a href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">self-recognition-peer-baseline on GitHub ↗</a>';
-  }).catch(()=>{ $('labOut').innerHTML='<p class="lab-empty">The classifier didn’t load. Its data and code are on GitHub.</p>'; });
 })();
 
 /* ================= RESEARCH SHELF — click a front page to open its panel; arrows, Home and End move along the shelf ================= */
@@ -912,8 +808,7 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
-    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>demo</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
-    demo:()=>{print("opening the demos — guess the model, the classifier, ledger, the unit 1 lab …");location.href='/demos/';},
+    help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
     ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>curated</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
     open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
@@ -991,174 +886,6 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   }
 })();
 
-/* ================= GUESS THE MODEL — real LangLLM essays (assets/guess-samples.json) ================= */
-(function(){
-  const box=document.getElementById('guess'); if(!box) return;
-  const $=id=>document.getElementById(id);
-  const NAMES={gpt:'GPT-5.5',claude:'Claude Opus 4.7',gemini:'Gemini 3.5 Flash',grok:'Grok 4.3',deepseek:'DeepSeek V4 Pro'};
-  const ORDER=['gpt','claude','gemini','grok','deepseek'];
-  const SHORT={gpt:'GPT',claude:'Claude',gemini:'Gemini',grok:'Grok',deepseek:'DeepSeek'};
-  let data=null, i=0, n=0, you=0, clf=0, jud=0, judN=0, answered=false;
-  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  /* just enough markdown to show the essays the way the models wrote them */
-  const md=t=>esc(t).split(/\n{2,}/).map(b=>b.split('\n').map(line=>{
-    let l=line.trim(); if(!l||/^[-*_]{3,}$/.test(l)) return '';
-    const h=/^#{1,6}\s+/.test(l); l=l.replace(/^#{1,6}\s+/,'').replace(/^[-*]\s+/,'• ');
-    l=l.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[^*\w])\*(?!\s)([^*]+?)\*(?!\*)/g,'$1<i>$2</i>');
-    return h?'<p class="g-h">'+l+'</p>':'<p>'+l+'</p>';
-  }).join('')).join('');
-  const score=()=>{ $('gYou').textContent=you+'/'+n; $('gClf').textContent=clf+'/'+n; $('gJud').textContent=jud+'/'+judN; };
-  function show(k){
-    const s=data.samples[k]; answered=false;
-    $('gCount').textContent='essay '+(k+1)+' of '+data.samples.length;
-    $('gTopic').textContent='prompt: '+s.topic.toLowerCase()+' ('+s.stance+')';
-    const t=$('gText'); t.innerHTML=md(s.text); t.scrollTop=0;
-    $('gChoices').innerHTML=ORDER.map(m=>'<button type="button" data-m="'+m+'">'+NAMES[m]+'</button>').join('');
-    $('gReveal').hidden=true; $('gReveal').innerHTML='';
-  }
-  function guess(m){
-    if(answered) return; answered=true;
-    const s=data.samples[i], a=s.author, right=m===a;
-    n++; if(right) you++; if(s.classifier_correct) clf++;
-    const C=s.classifier, F=data.features, ok=C.pred===a;
-    const strips=(C.why||[]).map(w=>AEstrip({label:F[w.f].label,unit:F[w.f].unit,v:w.v,means:w.means,hi:C.pred,names:SHORT,me:'this essay'})).join('');
-    const js=ORDER.map(j=>[j,s.judges[j]]);
-    const hits=js.filter(([,g])=>g===a).length; jud+=hits; judN+=js.length; score();
-    $('gChoices').querySelectorAll('button').forEach(b=>{
-      b.disabled=true;
-      if(b.dataset.m===a) b.classList.add('is-true');
-      else if(b.dataset.m===m) b.classList.add('is-wrong');
-    });
-    const last=i===data.samples.length-1;
-    $('gReveal').innerHTML=
-      '<p class="g-line"><b>'+NAMES[a]+'</b> wrote it. '+(right?'You got it.':'You said '+NAMES[m]+'.')+'</p>'+
-      '<p class="g-line"><span class="g-k">my classifier, never trained on this prompt</span>'+(ok?'<span class="ok">said '+NAMES[C.pred]+' ✓</span>':'<span class="no">said '+NAMES[C.pred]+' ✗</span>')+
-      '<span class="g-why"> · '+Math.round(C.proba[C.pred]*100)+'% sure</span></p>'+
-      (strips?'<div class="g-line"><span class="g-k">what pointed it to '+SHORT[C.pred]+'</span><div class="fxs">'+strips+'</div></div>':'')+
-      '<p class="g-line"><span class="g-k">the models, asked who wrote it</span><span class="g-judges">'+
-      js.map(([j,g])=>'<span class="'+(g===a?'ok':'no')+'">'+SHORT[j]+' said '+(g?SHORT[g]:'nothing usable')+(g===a?' ✓':' ✗')+'</span>').join('')+'</span></p>'+
-      (last
-        ? '<p class="g-line g-end">That was all ten. You got '+you+' of '+n+'; the classifier '+clf+' of '+n+'; the models '+jud+' of '+judN+'. Across all '+data.english.essays+' English essays the classifier is right '+Math.round(data.english.classifier_accuracy*100)+'% of the time and the models '+Math.round(data.english.judge_accuracy*100)+'%, where guessing gets 20%.</p><button type="button" class="g-next" data-act="again">play again</button>'
-        : '<button type="button" class="g-next" data-act="next">next essay →</button>');
-    $('gReveal').hidden=false;
-    const nx=$('gReveal').querySelector('.g-next'); if(nx) nx.focus({preventScroll:true});
-  }
-  box.addEventListener('click',e=>{
-    const b=e.target.closest('button'); if(!b||!data) return;
-    if(b.dataset.m) guess(b.dataset.m);
-    else if(b.dataset.act==='next'){ i++; show(i); }
-    else if(b.dataset.act==='again'){ i=0; n=you=clf=jud=judN=0; score(); show(0); }
-  });
-  function load(){
-    fetch('/assets/guess-samples.json?v=2026-10-10').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
-      data=d; show(0); score();
-      $('gFoot').innerHTML='Ten of the '+d.english.essays+' English essays, two per model, drawn at random. Across all of them my classifier, a logistic regression on 21 interpretable features refit with each prompt held out, names the right model '+Math.round(d.english.classifier_accuracy*100)+'% of the time; the five models, asked the same question, '+Math.round(d.english.judge_accuracy*100)+'% (chance is 20%). Data and code: <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">LangLLM on GitHub ↗</a>';
-    }).catch(()=>{ $('gText').innerHTML='<p>The essays didn’t load. They’re in the LangLLM repo on GitHub.</p>'; });
-  }
-  /* fetch the essays only when the section comes near */
-  if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
-    io.observe(box);
-  } else load();
-})();
-
-/* ================= LEDGER WALKTHROUGH — synthetic test records (assets/ledger-walkthrough.json) ================= */
-(function(){
-  const box=document.getElementById('ledgerWalk'); if(!box) return;
-  const $=id=>document.getElementById(id);
-  const CATS=[['dairy','Dairy'],['grains','Grains'],['protein','Protein'],['produce','Produce']];
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  let data=null;
-  function render(k){
-    const r=data.records[k];
-    $('lwTabs').querySelectorAll('button').forEach((b,i)=>{b.setAttribute('aria-selected',i===k?'true':'false');b.tabIndex=i===k?0:-1;});
-    const img=$('lwImg'); img.src=r.image; img.alt='Synthetic wholesale order record: '+r.title+'.';
-    $('lwCap').textContent='synthetic record · '+r.vendor+' · '+r.invoiceNo+' · '+r.date+' · '+r.notes;
-    $('lwLines').innerHTML=r.lines.map(l=>{
-      const pk=[l.pack,l.qty&&('× '+l.qty)].filter(Boolean).join(' ');
-      return l.counted
-        ? '<li class="ok"><span class="lw-t">'+esc(l.text)+'</span><span class="lw-p">'+esc(pk)+'</span><span class="lw-d">'+l.units+' units · '+esc(l.variety)+' · '+l.category+(l.perishable?' · perishable':'')+'</span></li>'
-        : '<li class="held"><span class="lw-t">'+esc(l.text)+'</span><span class="lw-p">'+esc(pk)+'</span><span class="lw-d">held back: '+esc(l.reason.replace(/\.$/,''))+'</span></li>';
-    }).join('');
-    const short=[], fixes=[];
-    $('lwCats').innerHTML=CATS.map(([c,name])=>{
-      const v=r.categories[c], q=v.qualifying, ok=q>=7, under=v.varieties.filter(x=>x.units<3).length;
-      if(!ok){ short.push(name.toLowerCase()); fixes.push(name+': '+(7-q)+' more '+(7-q===1?'variety':'varieties')+', each with at least 3 units'); }
-      let seg=''; for(let i=0;i<7;i++) seg+='<i class="'+(i<q?'on':'')+'"></i>';
-      return '<div class="lw-cat '+(ok?'pass':'fail')+'"><b>'+name+'</b><span class="lw-seg" aria-hidden="true">'+seg+'</span>'+
-        '<span class="lw-num">'+q+' of 7 varieties · '+v.units+' units'+(under?' · '+under+' under 3 units, so not counted':'')+'</span>'+
-        '<span class="lw-per">'+(v.expected.perishable?'perishable ✓':'no perishable')+'</span></div>';
-    }).join('');
-    const per=r.perishableCategories;
-    if(per<3) fixes.push('A perishable variety in '+(3-per)+' more '+(3-per===1?'category':'categories'));
-    const W=['no','one','two','three','four'], cap=x=>x[0].toUpperCase()+x.slice(1);
-    let say;
-    if(r.overall==='pass') say='<b class="pass">Passes.</b> All four categories reach seven varieties, with a perishable in '+(per===4?'every one':W[per]+' of them')+'.';
-    else{
-      const parts=[];
-      if(short.length===4) parts.push('Every category is short of seven varieties');
-      else if(short.length){ const nm=short.map(cap); parts.push((nm.length===1?nm[0]+' is':nm.slice(0,-1).join(', ')+' and '+nm[nm.length-1]+' are')+' short of seven varieties'); }
-      if(per<3) parts.push((parts.length?'only ':'Only ')+W[per]+' of the four categories '+(per===1?'has':'have')+' a perishable');
-      say='<b class="fail">Fails.</b> '+parts.join(', and ')+'.';
-    }
-    $('lwVerdict').innerHTML=say;
-    $('lwFix').innerHTML=fixes.map(f=>'<li>'+esc(f)+'</li>').join('');
-    $('lwFixWrap').hidden=!fixes.length;
-  }
-  function load(){
-    fetch('/assets/ledger-walkthrough.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
-      data=d;
-      $('lwTabs').innerHTML=d.records.map((r,i)=>'<button type="button" role="tab" data-k="'+i+'">'+esc(r.label)+'</button>').join('');
-      render(0);
-    }).catch(()=>{ $('lwLines').innerHTML='<li>The records didn’t load. They’re in Ledger’s repo under eval/fixtures.</li>'; });
-  }
-  box.addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(b&&data) render(+b.dataset.k); });
-  box.addEventListener('keydown',e=>{
-    const b=e.target.closest('[role=tab]'); if(!b||!data) return;
-    const n=data.records.length, k=+b.dataset.k;
-    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(k+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('lwTabs').children[j].focus(); }
-  });
-  if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
-    io.observe(box);
-  } else load();
-})();
-
-/* ================= AIML-LI LAB — one choice, two numbers (assets/aiml-minilab.json, pooled over 25 draws) ================= */
-(function(){
-  const box=document.getElementById('aiLab'); if(!box) return;
-  const $=id=>document.getElementById(id);
-  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const pct=x=>(x*100).toFixed(1)+'%';
-  let data=null;
-  function render(i){
-    const p=data.runs[i].pooled;
-    $('labTabs').querySelectorAll('button').forEach((b,j)=>{b.setAttribute('aria-selected',j===i?'true':'false');b.tabIndex=j===i?0:-1;});
-    $('aaAcc').textContent=pct(p.accuracy); $('aaAccBar').style.width=(p.accuracy*100)+'%';
-    $('aaRec').textContent=pct(p.recall);   $('aaRecBar').style.width=(p.recall*100)+'%';
-    $('aaVerdict').innerHTML=i===0
-      ? 'Half the applicants win. Now make the scholarship rarer.'
-      : 'Accuracy went up. The model now passes over <b>'+p.missed+' of '+p.winners+'</b> students who should have won.';
-  }
-  function load(){
-    fetch('/assets/aiml-minilab.json?v=2026-09-22').then(r=>r.ok?r.json():Promise.reject(r.status)).then(d=>{
-      data=d;
-      $('labTabs').innerHTML=d.runs.map((r,i)=>'<button type="button" role="tab" data-k="'+i+'" title="'+esc(r.blurb)+'">'+esc(r.label)+'</button>').join('');
-      render(0);
-    }).catch(()=>{ $('aaVerdict').textContent='The lesson data didn’t load.'; });
-  }
-  box.addEventListener('click',e=>{ const b=e.target.closest('[data-k]'); if(b&&data) render(+b.dataset.k); });
-  box.addEventListener('keydown',e=>{
-    const b=e.target.closest('[role=tab]'); if(!b||!data) return;
-    const n=data.runs.length, i=+b.dataset.k;
-    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const j=(i+(e.key==='ArrowRight'?1:n-1))%n; render(j); $('labTabs').children[j].focus(); }
-  });
-  if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); } },{rootMargin:'600px 0px'});
-    io.observe(box);
-  } else load();
-})();
-
 /* ================= HERO STORY — four lines that swipe past on their own; dots jump, hover pauses ================= */
 (function(){
   const story=document.getElementById('heroStory'); if(!story) return;
@@ -1227,44 +954,6 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   if(!reduce){ w.classList.add('auto'); w.style.setProperty('--aw-dur',DUR+'ms'); }
   show(0);
   new IntersectionObserver(es=>es.forEach(en=>{ onScreen=en.isIntersecting; if(onScreen) arm(); else clearTimeout(timer); }),{threshold:.3}).observe(w);
-})();
-
-/* ================= WALK OR RIDE — Safe Routes to School on /demos/ (numbers from the project's SUBMISSION.md and validate.py output) ================= */
-(function(){
-  const card=document.getElementById('wrTrip'); if(!card) return;
-  /* Exposition & Normandie to LACES: walking 118 min, 9.3 km; Routes 206 -> 33, 40 min, 750 m on foot, exposure -80% */
-  const M={walk:{t:118,d:9.3,e:100},bus:{t:40,d:0.75,e:20}};
-  const btns=[...card.querySelectorAll('.wr-seg button')], $=id=>document.getElementById(id);
-  const go=mode=>{
-    const m=M[mode];
-    btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===mode));
-    $('wrBT').style.width=(m.t/118*100)+'%'; $('wrBD').style.width=(m.d/9.3*100)+'%'; $('wrBE').style.width=m.e+'%';
-    $('wrVT').textContent=m.t+' min'; $('wrVD').textContent=m.d<1?Math.round(m.d*1000)+' m':m.d+' km'; $('wrVE').textContent=m.e;
-    $('wrVerdict').innerHTML=mode==='walk'?'118 minutes and 9.3 km on the sidewalk.':'Faster, and <b>80% less modeled exposure</b>: 750 m of it is on foot.';
-  };
-  btns.forEach(b=>b.addEventListener('click',()=>go(b.dataset.mode)));
-  go('walk');
-
-  /* six random evening walks: [shortest m, calmer m, shortest exposure, calmer exposure] */
-  const T=[[1429,1452,747,603],[1785,1802,276,157],[1711,1815,351,239],[1568,1696,562,349],[1801,2183,581,237],[1371,1382,810,601]];
-  const svg=$('wrPlot'), out=$('wrRead'); if(!svg) return;
-  const W=360,H=230,L=40,R=10,Tp=10,B=34, ns='http://www.w3.org/2000/svg';
-  const x=v=>L+v/25*(W-L-R), y=v=>Tp+(1-v/70)*(H-Tp-B);
-  const el=(n,a,p)=>{const e=document.createElementNS(ns,n); for(const k in a) e.setAttribute(k,a[k]); (p||svg).appendChild(e); return e;};
-  [0,5,10,15,20,25].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:Tp,y2:H-B}); el('text',{x:x(v),y:H-B+14,'text-anchor':'middle'}).textContent='+'+v+'%';});
-  [0,20,40,60].forEach(v=>{el('line',{x1:L,x2:W-R,y1:y(v),y2:y(v)}); el('text',{x:L-6,y:y(v)+3,'text-anchor':'end'}).textContent=(v?'−':'')+v+'%';});
-  el('line',{x1:L,x2:W-R,y1:H-B,y2:H-B,class:'ax'}); el('line',{x1:L,x2:L,y1:Tp,y2:H-B,class:'ax'});
-  el('text',{x:(L+W-R)/2,y:H-4,'text-anchor':'middle'}).textContent='extra distance walked';
-  const my=(Tp+H-B)/2; el('text',{x:10,y:my,'text-anchor':'middle',transform:`rotate(-90 10 ${my})`}).textContent='exposure cut';
-  const g=el('g',{});
-  T.forEach((t,i)=>{
-    const ex=(t[1]/t[0]-1)*100, cut=(1-t[3]/t[2])*100;
-    const d=el('g',{class:'wr-dot',tabindex:0,role:'button','aria-label':`Trip ${i+1}: ${ex.toFixed(1)}% longer, ${Math.round(cut)}% less exposure`},g);
-    el('circle',{cx:x(ex),cy:y(cut),r:6},d);
-    const pick=()=>{ g.querySelectorAll('.wr-dot').forEach(n=>n.classList.remove('on')); d.classList.add('on');
-      out.innerHTML=`Trip ${i+1}: ${t[0].toLocaleString()} m &rarr; ${t[1].toLocaleString()} m <span>(+${t[1]-t[0]} m)</span><br>exposure ${t[2]} &rarr; ${t[3]} · <b>${Math.round(cut)}% less</b>`; };
-    d.addEventListener('click',pick); d.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pick(); } });
-  });
 })();
 
 /* ================= RECEIPTS — a tapped number opens its note (what kind of number, where it comes from) ================= */

@@ -436,49 +436,16 @@ from LaTeX in `resume/`.
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
-## /demos/ — five interactive demos (two since 22 Sept, four since 15 Oct, five since 16 Oct)
-- **`[05]` Walk or ride?** (`#saferoutes-sec`, 16 Oct, from ChatGPT's feedback via `_mock/feedback.html`;
-  Adrian: "lets do 1 and 2"): Safe Routes' one trip, Exposition & Normandie to LACES, walked (118 min,
-  9.3 km) or by Routes 206 then 33 (40 min, 750 m on foot, exposure 100 -> 20), as two buttons and three
-  bars, beside the six random evening walks from the repo README's `validate.py` output as a dot plot
-  (1-21% longer, 19-59% less exposure, 6 of 6). Numbers are inline in site.js WALK OR RIDE; source is
-  `~/ycs-saferoutes` (SUBMISSION.md and README.md). Exposure is always "modeled". The index has a fifth
-  tile, the nav a "Routes" link (the nav now wraps between ~900 and 1000px, as the homepage's already
-  did), and the Safe Routes card a "Walk or ride?" link.
-- `[03]` Ledger's walkthrough and `[04]` the AIML-LI Unit 1 lab moved here from
-  the homepage's case studies on 15 Oct, each behind three `.steps`; the page
-  head says "four demos".
-- **For admissions readers (15 Oct, Adrian: "make it more impressive for an
-  admissions office"):** the head is a one-line lead and an index of four
-  tiles (`.dx`), each with the demo's headline number and its source: 72% vs
-  23% (classifier vs the models, LangLLM), 87% (CompLLM's regression held out
-  by prompt), 24 of 24 (Ledger's rule engine vs hand scoring, no false
-  passes), 98% / 67% (the lab's pooled accuracy vs winners found at 1 in 20).
-  Each section opens with a "from" line (`.prov`): the paper or project, its
-  status pill and links. The Ledger and lab cards' own kickers are hidden
-  there, and the lab sits beside "what students take from it" (the pooled
-  96.3→98.1% and 95.8→66.9%). Keep those numbers in step with their sources.
-- Adrian moved them off the homepage ("the comp / langllm demo takes up too much
-  space... maybe it can be a separate page where you are prompted to it, and it
-  has a short demo walkthrough explaining what to do"). `demos/index.html`
-  carries both, each behind a three-step walkthrough (`.steps`) that says what
-  to do: `[01]` **Which model wrote this?** (the `#guess` band) and `[02]`
-  **Run the classifier** (`#lab`, CompLLM's real classifier since 10 Oct; it
-  was a hand-set toy, `#stylo`, until then).
-- **10 Oct refinement** (Adrian: "update all of the research stuff and demos
-  to make it a lot better and refine it"): the cards inside each demo lost
-  their own kicker, heading and sub (the steps say it), the guess reveal shows
-  the classifier's pick, its probability and the three features that pointed
-  to it, and the toy became the paper's classifier. Both data files come from
-  `tools/build_demo_data.py`, which reads `LangLLM/` and `~/Downloads/complm`;
-  re-run it rather than editing the JSON. The feature strips (`AEstrip` in
-  site.js) put the text against the five models' averages.
-- The homepage prompts people to it from Research: one `.tryline` row above the
-  paper list, plus a TRY THE DEMO link on R.01 (`/demos/#guess-sec`) and on R.03
-  (`/demos/#stylometry`). Link the section, not `#guess`, so the steps come
-  first. The ⌘K palette and the terminal's `demo` command open the page.
-- The stylometry script renders on load when the panel isn't hidden; the guess
-  script still waits for the band to come near. `sitemap.xml` lists the page.
+## /demos/ — removed 16 Oct
+- Adrian, the day after Walk or ride? went up as its fifth demo: "delete the fuck out of my demo page.
+  i rly dont like it". The page (guess the model, CompLLM's classifier, the Ledger walkthrough, the
+  AIML-LI Unit 1 lab, Walk or ride?) is gone with its data (`assets/guess-samples.json`,
+  `stylometry-model.json`, `ledger-walkthrough.json`, `aiml-minilab.json`, `img/ledger/`), its builder
+  `tools/build_demo_data.py`, its JS blocks, its sitemap and llms.txt entries, the ⌘K entry, the
+  terminal's `demo` command, and every homepage link into it (R.01 and R.03's try buttons, the AIML-LI,
+  Ledger and Safe Routes card links, the 80% receipt's link). Older demo CSS still sits unused in
+  site.css. Git history has all of it (last commit with the page: ae30c60). Notes elsewhere in this
+  file that mention /demos/ are history; don't bring any of it back unless he asks.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
 Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
