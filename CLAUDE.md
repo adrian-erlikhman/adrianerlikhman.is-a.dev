@@ -390,17 +390,17 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=9` on both
-  pages); the OTFs sit in the gitignored `tools/fonts/`. **Since 15 Oct**
-  (Adrian, before texting the link: "a lot more better stuff… more
-  impressive") it carries his headshot (`adrian.jpg`) in a navy ring right of
-  the name, his meta-description words as the tagline, and three chip rows:
-  Best Paper Finalist (filled) · National Merit / sole author, AACL-IJCNLP 2026
-  workshop · Team USA épée, 6th at Pan-Ams (filled) / 4 accepted papers · 2×
-  hackathon 1st place · YC Startup School (YC orange, #FF6600, Adrian's ask). The old card's "ACCEPTED — J. OF
-  HIGH SCHOOL SCIENCE" broke the "accepted with revisions" rule; no journal is
-  named on a chip now. Bump `?v=` on both pages when it changes; chat apps
-  cache the first preview of a URL. The 404 page keeps
+- `og.png` (`tools/make_og.py`, `?v=10` on both pages) is, since 15 Oct
+  (Adrian picked C of three takes, after asking for no bubbles and "a cool
+  picture"): his Team USA lunge at the Pan-Ams (`fencing-1.jpg`) across the
+  card under a navy fade from the left; "LOS ANGELES · 34.05°N 118.24°W" (the
+  footer's coordinates) with no URL; the name in white Latin Modern; his
+  meta-description words in three lines; three credential lines (Best Paper
+  Finalist, Team USA 6th at Pan-Ams, YC Startup School in YC orange). Earlier
+  the same day it was chips, then chips beside his headshot. Chat apps show a
+  still, so no animation. The OTFs sit in the gitignored `tools/fonts/`. Bump
+  `?v=` on both pages when it changes; chat apps cache the first preview of a
+  URL. Never "accepted" alone for the two journal papers. The 404 page keeps
   its own dark neon design.
 
 ## Shared assets

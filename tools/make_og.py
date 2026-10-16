@@ -1,43 +1,42 @@
 # -*- coding: utf-8 -*-
 """Render og.png, the link-preview card for adrianerlikhman.is-a.dev.
 
-Same furniture as the card it replaces -- 7px navy spine, paper-white ground,
-Latin Modern name (the LaTeX face; site and résumés since 15 Oct 2026), IBM Plex
-Mono chips -- but the content does more work. The old card led
-with category words ("machine learning, quantitative finance, data science")
-that say nothing a hundred other pages don't. This one leads with the things
-that are hard to fake and easy to check.
+Since 15 Oct 2026 (Adrian picked C of three takes): his Team USA lunge at the
+Pan-American Championships (fencing-1.jpg) fills the card, under a navy fade
+from the left; the name in white Latin Modern (the LaTeX face of the site and
+the résumés); his own meta-description words; three credentials as plain
+lines, no bubbles. Earlier cards were a wall of chips, then chips beside his
+headshot; he asked for "a cool picture" instead.
 
-Cards get rendered small: ~300px in iMessage, ~360px in Slack. Only the name and
-the tagline survive that. So the chips are laid out as a credential wall -- read
-as texture at thumbnail size, read as receipts at full size.
-
-Fonts come from the same families the site loads from Google Fonts.
+Cards get rendered small: ~300px in iMessage, ~360px in Slack. The name and the
+photo survive that, so everything else stays inside the dark left side where
+it reads at full size. Chat apps show a still, so there is no animation.
 """
 import os
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 W, H = 1200, 630
-BG = (251, 250, 247)          # --bg
-INK = (21, 23, 28)            # --ink
-ACC = (31, 58, 95)            # --acc, the résumés' navy
-DIM = (92, 98, 108)           # --dim
-WASH = (243, 244, 246)        # the cool top-left lift
-SPINE = 7
-YC_ORANGE = (255, 102, 0)    # #FF6600, from img/logos/yc.svg (Adrian, 15 Oct)
+NAVY = (16, 30, 52)           # deeper than --acc, so white text holds over it
+WHITE = (246, 247, 250)
+SOFT = (214, 222, 236)        # tagline
+SKY = (157, 184, 224)         # the demos' light-blue accent (--g-acc)
+YC_ORANGE = (255, 140, 60)    # YC's #FF6600, lifted a step to read on navy (Adrian, 15 Oct)
 
 # Latin Modern Roman (lmroman10-*.otf) is copied into the same cache from the
 # TeX distribution (Tectonic's bundle); the site serves it as woff2 from /fonts/.
-# IBM Plex Mono is the face the site itself loads from Google Fonts. They are fetched into a gitignored cache rather than vendored: both are
-# OFL, and redistributing them in-repo would mean shipping their licences too.
+# IBM Plex Mono is the face the site itself loads from Google Fonts. They are
+# fetched into a gitignored cache rather than vendored: both are OFL, and
+# redistributing them in-repo would mean shipping their licences too.
 FD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
 FONTS = {
     "IBMPlexMono-SemiBold.ttf":
         "https://github.com/google/fonts/raw/main/ofl/ibmplexmono/"
         "IBMPlexMono-SemiBold.ttf",
 }
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PHOTO = os.path.join(ROOT, "fencing-1.jpg")   # Team USA, Pan-Ams, Bogotá
 
 
 def ensure_fonts():
@@ -57,33 +56,18 @@ MONO_SB = os.path.join(FD, "IBMPlexMono-SemiBold.ttf")
 
 MARGIN = 88
 
-KICK_L = "ML RESEARCH  //  LOS ANGELES"
-KICK_R = "adrianerlikhman.is-a.dev"
-NAME_1 = "Adrian"
-NAME_2 = "Erlikhman"
+# the site footer's coordinates (Adrian: make "Los Angeles" a little different)
+KICK = "LOS ANGELES"
+KICK_COORD = "34.05°N 118.24°W"
+NAME = ["Adrian", "Erlikhman"]
 # Adrian's own words, the same as the meta description (7 Oct)
-TAGLINE = "ML/NLP researcher. Software, ML, investment, and venture intern. Team USA fencer."
-
-# (text, filled) -- one row per list; filled is True (navy) or an RGB fill
-# 15 Oct: Best Paper Finalist leads. Every chip is on the site: "4 accepted
-# papers" is the hero's count (the two journals are accepted with revisions,
-# so neither is called just "accepted" on its own chip); Curated to Win is at
-# the ARRSI workshop, so the chip names the workshop, not the proceedings.
-CHIP_ROWS = [
-    [("BEST PAPER FINALIST — IEEE BIGDATA 2026", True),
-     ("NATIONAL MERIT SEMIFINALIST", False)],
-    [("SOLE AUTHOR — AACL-IJCNLP 2026 WORKSHOP", False),
-     ("TEAM USA ÉPÉE — 6TH, PAN-AMS", True)],
-    [("4 ACCEPTED PAPERS", False),
-     ("2× HACKATHON 1ST PLACE", False),
-     ("Y COMBINATOR STARTUP SCHOOL", YC_ORANGE)],
-]
-
-# the site's headshot, in a ring to the right of the name (15 Oct)
-PHOTO = os.path.join(os.path.dirname(FD), "..", "adrian.jpg")
-PHOTO_CROP = (196, 22, 684, 510)      # face and tie, square
-PHOTO_D = 228                         # diameter on the card
-PHOTO_XY = (W - MARGIN - PHOTO_D, 114)
+TAGLINE = ["ML/NLP researcher. Software, ML,",
+           "investment, and venture intern.",
+           "Team USA fencer."]
+# Each is on the site. YC keeps its own colour.
+CREDS = [("BEST PAPER FINALIST — IEEE BIGDATA 2026", SKY),
+         ("TEAM USA ÉPÉE — 6TH, PAN-AMERICAN CHAMPIONSHIPS", SKY),
+         ("Y COMBINATOR STARTUP SCHOOL", YC_ORANGE)]
 
 
 def lm(size, bold=True):
@@ -106,105 +90,54 @@ def tracked_width(d, text, font, tracking=0.0):
 
 
 def build():
-    im = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(im)
+    # ---- the photo, filling the card, fencer on the right ---------------
+    ph = Image.open(PHOTO).convert("RGB")
+    scale = max(W / ph.width, H / ph.height)
+    ph = ph.resize((round(ph.width * scale), round(ph.height * scale)), Image.LANCZOS)
+    left, top = ph.width - W, (ph.height - H) // 2
+    im = ph.crop((left, top, left + W, top + H)).filter(ImageFilter.GaussianBlur(0.6))
 
-    # a soft diagonal lift from the top-left, the way the old card had it
-    wash = Image.new("RGB", (W, H), WASH)
-    mask = Image.new("L", (W, H), 0)
+    # ---- navy fade: solid over the left third, gone by five-sixths -------
+    mask = Image.new("L", (W, H))
     md = ImageDraw.Draw(mask)
-    for i in range(60):
-        md.ellipse([-500 - i * 6, -640 - i * 6, 780 + i * 6, 520 + i * 6],
-                   outline=max(0, 46 - i), width=14)
-    im = Image.composite(wash, im, mask)
+    for x in range(W):
+        t = x / W
+        a = 250 if t < 0.34 else max(0, int(250 - (t - 0.34) / 0.5 * 250))
+        md.line([x, 0, x, H], fill=a)
+    im = Image.composite(Image.new("RGB", (W, H), NAVY), im, mask)
     d = ImageDraw.Draw(im)
 
-    # faint dot grid
-    for gy in range(46, H, 34):
-        for gx in range(MARGIN // 2, W - 24, 34):
-            d.point((gx, gy), fill=(226, 229, 234))
-
-    d.rectangle([0, 0, SPINE - 1, H], fill=ACC)
-
+    # ---- kicker: a short rule, LOS ANGELES, then the coordinates --------
     f_kick = ImageFont.truetype(MONO_SB, 19)
-    f_tag = lm(31, bold=False)
-    f_chip = ImageFont.truetype(MONO_SB, 18)
+    f_coord = ImageFont.truetype(MONO_SB, 15)
+    ky = 66
+    d.line([MARGIN, ky + 11, MARGIN + 34, ky + 11], fill=SKY, width=3)
+    x = MARGIN + 50
+    x += tracked(d, (x, ky), KICK, f_kick, WHITE, 3.2)
+    x += 18
+    d.ellipse([x, ky + 8, x + 6, ky + 14], fill=SKY)
+    x += 20
+    cb = d.textbbox((0, 0), KICK_COORD, font=f_coord)
+    kb = d.textbbox((0, 0), KICK, font=f_kick)
+    tracked(d, (x, ky + (kb[3] - cb[3])), KICK_COORD, f_coord, SKY, 1.6)
 
-    # ---- kicker -------------------------------------------------------
-    ky = 62
-    d.line([MARGIN, ky + 11, MARGIN + 34, ky + 11], fill=ACC, width=3)
-    tracked(d, (MARGIN + 50, ky), KICK_L, f_kick, DIM, 2.6)
-
-    rw = tracked_width(d, KICK_R, f_kick, 2.6)
-    rx = W - MARGIN - rw
-    d.ellipse([rx - 26, ky + 6, rx - 16, ky + 16], fill=ACC)
-    tracked(d, (rx, ky), KICK_R, f_kick, INK, 2.6)
-
-    # ---- name ---------------------------------------------------------
+    # ---- name -------------------------------------------------------------
     f_name = lm(118)
-    a1 = d.textbbox((0, 0), NAME_1, font=f_name)
-    d.text((MARGIN - 6, 108 - a1[1]), NAME_1, font=f_name, fill=INK)
-    a2 = d.textbbox((0, 0), NAME_2, font=f_name)
-    d.text((MARGIN - 6, 230 - a2[1]), NAME_2, font=f_name, fill=ACC)
+    for i, t in enumerate(NAME):
+        bb = d.textbbox((0, 0), t, font=f_name)
+        d.text((MARGIN - 6, 120 + i * 130 - bb[1]), t, font=f_name, fill=WHITE)
 
-    # ---- headshot -----------------------------------------------------
-    ph = Image.open(PHOTO).convert("RGB").crop(PHOTO_CROP)
-    k = 3                                   # draw big, shrink: smooth edges
-    ph = ph.resize((PHOTO_D * k, PHOTO_D * k), Image.LANCZOS)
-    m = Image.new("L", ph.size, 0)
-    ImageDraw.Draw(m).ellipse([0, 0, ph.size[0] - 1, ph.size[1] - 1], fill=255)
-    ph = ph.resize((PHOTO_D, PHOTO_D), Image.LANCZOS)
-    m = m.resize((PHOTO_D, PHOTO_D), Image.LANCZOS)
-    px, py = PHOTO_XY
-    ring = 5
-    d.ellipse([px - ring - 4, py - ring - 4, px + PHOTO_D + ring + 3, py + PHOTO_D + ring + 3], fill=ACC)
-    d.ellipse([px - 4, py - 4, px + PHOTO_D + 3, py + PHOTO_D + 3], fill=BG)
-    im.paste(ph, (px, py), m)
-    d = ImageDraw.Draw(im)
+    # ---- tagline ----------------------------------------------------------
+    f_tag = lm(27, bold=False)
+    for i, t in enumerate(TAGLINE):
+        d.text((MARGIN, 382 + i * 35), t, font=f_tag, fill=SOFT)
 
-    # ---- tagline ------------------------------------------------------
-    ty = 372
-    size = 31
-    while size > 22 and d.textlength(TAGLINE, font=lm(size, bold=False)) > W - MARGIN * 2:
-        size -= 1
-    f_tag = lm(size, bold=False)
-    tb = d.textbbox((0, 0), TAGLINE, font=f_tag)
-    d.text((MARGIN, ty - tb[1]), TAGLINE, font=f_tag, fill=INK)
-
-    # ---- chips --------------------------------------------------------
-    pad_x, ch_h, gap = 21, 40, 13
-    avail = W - MARGIN * 2
-    y = 432
-    for row in CHIP_ROWS:
-        # monospace, so the row's width is predictable -- shrink until it fits
-        size, track = 18, 1.7
-        while size > 12:
-            f_chip = ImageFont.truetype(MONO_SB, size)
-            wide = sum(tracked_width(d, t, f_chip, track) + pad_x * 2
-                       for t, _ in row) + gap * (len(row) - 1)
-            if wide <= avail:
-                break
-            size -= 1
-        x = MARGIN
-        for text, filled in row:
-            tw = tracked_width(d, text, f_chip, 1.7)
-            w = tw + pad_x * 2
-            box = [x, y, x + w, y + ch_h]
-            if filled:
-                fill = ACC if filled is True else filled
-                d.rounded_rectangle(box, radius=ch_h // 2, fill=fill)
-                col = BG if filled is True else (255, 255, 255)
-            else:
-                d.rounded_rectangle(box, radius=ch_h // 2,
-                                    outline=(188, 194, 204), width=2)
-                col = INK
-            bb = d.textbbox((0, 0), text, font=f_chip)
-            tracked(d, (x + pad_x, y + (ch_h - (bb[3] - bb[1])) / 2 - bb[1]),
-                    text, f_chip, col, 1.7)
-            x += w + gap
-        print("  row: %d chips at %dpx, ends %.0f / %d" %
-              (len(row), size, x - gap, W - MARGIN))
-        y += ch_h + gap
+    # ---- credentials: three plain lines with a marker, in the dark --------
+    f_c = ImageFont.truetype(MONO_SB, 15)
+    for i, (t, col) in enumerate(CREDS):
+        y = 508 + i * 30
+        d.rectangle([MARGIN, y + 3, MARGIN + 4, y + 16], fill=col)
+        tracked(d, (MARGIN + 16, y), t, f_c, col if col is YC_ORANGE else WHITE, 1.5)
     return im
 
 
