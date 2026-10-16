@@ -111,10 +111,10 @@ from LaTeX in `resume/`.
     both résumés say "Preprint, arXiv forthcoming", llms.txt and the JSON-LD
     description call it a preprint, and nothing on the site mentions TACL.
     The WLLFM paper is a different paper, so it doesn't go on this card.
-    BigData's LangLLM acceptance took TACL's place in the teasers: the og
-    chip "CO-FIRST AUTHOR — IEEE BIGDATA 2026 (ACCEPTED)" (`tools/make_og.py`,
-    og.png `?v=7`), the og/twitter alt text and the hero typewriter's first
-    line. Never "accepted" or NeurIPS.
+    BigData's LangLLM acceptance took TACL's place in the teasers (the og
+    card's lead chip, now "BEST PAPER FINALIST — IEEE BIGDATA 2026"; the
+    og/twitter alt text; the hero typewriter's first line). Never "accepted"
+    or NeurIPS for CompLLM.
     **Title since 11 Oct 2026: "Whose Line Is It Anyway? Auditing Self- and
     Other-Recognition in LLM Judges"** (the arXiv version's; Adrian took it
     from Philo's suggestions). The R.03 card, both résumés and llms.txt use
@@ -390,8 +390,17 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=7` on both
-  pages); the OTFs sit in the gitignored `tools/fonts/`. The 404 page keeps
+- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=8` on both
+  pages); the OTFs sit in the gitignored `tools/fonts/`. **Since 15 Oct**
+  (Adrian, before texting the link: "a lot more better stuff… more
+  impressive") it carries his headshot (`adrian.jpg`) in a navy ring right of
+  the name, his meta-description words as the tagline, and three chip rows:
+  Best Paper Finalist (filled) · National Merit / sole author, AACL-IJCNLP 2026
+  workshop · Team USA épée, 6th at Pan-Ams (filled) / 4 accepted papers · 2×
+  hackathon 1st place · YC Startup School. The old card's "ACCEPTED — J. OF
+  HIGH SCHOOL SCIENCE" broke the "accepted with revisions" rule; no journal is
+  named on a chip now. Bump `?v=` on both pages when it changes; chat apps
+  cache the first preview of a URL. The 404 page keeps
   its own dark neon design.
 
 ## Shared assets

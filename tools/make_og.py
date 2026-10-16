@@ -56,20 +56,33 @@ MONO_SB = os.path.join(FD, "IBMPlexMono-SemiBold.ttf")
 
 MARGIN = 88
 
-KICK_L = "MACHINE LEARNING  //  LOS ANGELES"
+KICK_L = "ML RESEARCH  //  LOS ANGELES"
 KICK_R = "adrianerlikhman.is-a.dev"
 NAME_1 = "Adrian"
 NAME_2 = "Erlikhman"
-TAGLINE = "Machine-learning research, quantitative finance, software that ships."
+# Adrian's own words, the same as the meta description (7 Oct)
+TAGLINE = "ML/NLP researcher. Software, ML, investment, and venture intern. Team USA fencer."
 
 # (text, filled) -- one row per list
+# 15 Oct: Best Paper Finalist leads. Every chip is on the site: "4 accepted
+# papers" is the hero's count (the two journals are accepted with revisions,
+# so neither is called just "accepted" on its own chip); Curated to Win is at
+# the ARRSI workshop, so the chip names the workshop, not the proceedings.
 CHIP_ROWS = [
-    [("CO-FIRST AUTHOR — IEEE BIGDATA 2026 (ACCEPTED)", True),
-     ("ACCEPTED — J. OF HIGH SCHOOL SCIENCE", False)],
-    [("NATIONAL MERIT SEMIFINALIST", False),
-     ("1ST — DECODE THE OCEAN", False),
-     ("TEAM USA ÉPÉE — NO. 49", False)],
+    [("BEST PAPER FINALIST — IEEE BIGDATA 2026", True),
+     ("NATIONAL MERIT SEMIFINALIST", False)],
+    [("SOLE AUTHOR — AACL-IJCNLP 2026 WORKSHOP", False),
+     ("TEAM USA ÉPÉE — 6TH, PAN-AMS", True)],
+    [("4 ACCEPTED PAPERS", False),
+     ("2× HACKATHON 1ST PLACE", False),
+     ("Y COMBINATOR STARTUP SCHOOL", False)],
 ]
+
+# the site's headshot, in a ring to the right of the name (15 Oct)
+PHOTO = os.path.join(os.path.dirname(FD), "..", "adrian.jpg")
+PHOTO_CROP = (196, 22, 684, 510)      # face and tie, square
+PHOTO_D = 228                         # diameter on the card
+PHOTO_XY = (W - MARGIN - PHOTO_D, 114)
 
 
 def lm(size, bold=True):
@@ -127,21 +140,40 @@ def build():
     tracked(d, (rx, ky), KICK_R, f_kick, INK, 2.6)
 
     # ---- name ---------------------------------------------------------
-    f_name = lm(132)
+    f_name = lm(118)
     a1 = d.textbbox((0, 0), NAME_1, font=f_name)
-    d.text((MARGIN - 6, 118 - a1[1]), NAME_1, font=f_name, fill=INK)
+    d.text((MARGIN - 6, 108 - a1[1]), NAME_1, font=f_name, fill=INK)
     a2 = d.textbbox((0, 0), NAME_2, font=f_name)
-    d.text((MARGIN - 6, 256 - a2[1]), NAME_2, font=f_name, fill=ACC)
+    d.text((MARGIN - 6, 230 - a2[1]), NAME_2, font=f_name, fill=ACC)
+
+    # ---- headshot -----------------------------------------------------
+    ph = Image.open(PHOTO).convert("RGB").crop(PHOTO_CROP)
+    k = 3                                   # draw big, shrink: smooth edges
+    ph = ph.resize((PHOTO_D * k, PHOTO_D * k), Image.LANCZOS)
+    m = Image.new("L", ph.size, 0)
+    ImageDraw.Draw(m).ellipse([0, 0, ph.size[0] - 1, ph.size[1] - 1], fill=255)
+    ph = ph.resize((PHOTO_D, PHOTO_D), Image.LANCZOS)
+    m = m.resize((PHOTO_D, PHOTO_D), Image.LANCZOS)
+    px, py = PHOTO_XY
+    ring = 5
+    d.ellipse([px - ring - 4, py - ring - 4, px + PHOTO_D + ring + 3, py + PHOTO_D + ring + 3], fill=ACC)
+    d.ellipse([px - 4, py - 4, px + PHOTO_D + 3, py + PHOTO_D + 3], fill=BG)
+    im.paste(ph, (px, py), m)
+    d = ImageDraw.Draw(im)
 
     # ---- tagline ------------------------------------------------------
-    ty = 418
+    ty = 372
+    size = 31
+    while size > 22 and d.textlength(TAGLINE, font=lm(size, bold=False)) > W - MARGIN * 2:
+        size -= 1
+    f_tag = lm(size, bold=False)
     tb = d.textbbox((0, 0), TAGLINE, font=f_tag)
     d.text((MARGIN, ty - tb[1]), TAGLINE, font=f_tag, fill=INK)
 
     # ---- chips --------------------------------------------------------
     pad_x, ch_h, gap = 21, 40, 13
     avail = W - MARGIN * 2
-    y = 486
+    y = 432
     for row in CHIP_ROWS:
         # monospace, so the row's width is predictable -- shrink until it fits
         size, track = 18, 1.7
