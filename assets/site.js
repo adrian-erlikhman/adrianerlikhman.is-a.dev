@@ -1192,12 +1192,21 @@ window.AEfmt=v=>{const a=Math.abs(v);return a>=100?String(Math.round(v)):a>=10?v
   const bs=[...w.querySelectorAll('.aw-t')],its=[...d.querySelectorAll('.aw-it')],N=bs.length,DUR=6000;
   if(!N||its.length!==N) return;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let cur=0,timer=null,stopped=reduce,onScreen=false;
+  /* phones: the detail opens inside the wall, under the row of the tile that was picked, and nothing auto-advances
+     (a panel that hops between rows on its own would shove the page around) */
+  const narrow=matchMedia('(max-width: 700px)'), home=d.parentNode;
+  let cur=0,timer=null,stopped=reduce||narrow.matches,onScreen=false;
   d.classList.add('js-aw');
+  function place(){
+    if(narrow.matches){ const g=bs[cur].dataset.g; const row=bs.filter(b=>b.dataset.g===g); const last=row[row.length-1]||bs[cur];
+      if(last.nextElementSibling!==d) last.after(d); }
+    else if(d.parentNode!==home) home.appendChild(d);
+  }
+  narrow.addEventListener('change',()=>{ if(narrow.matches) stop(); place(); });
   function arm(){ clearTimeout(timer); if(stopped||!onScreen) return;
     const b=bs[cur].querySelector('.aw-bar'); b.style.animation='none'; void b.offsetWidth; b.style.animation='';
     timer=setTimeout(()=>show(cur+1),DUR); }
-  function show(i,focus){ cur=(i+N)%N;
+  function show(i,focus){ cur=(i+N)%N; place();
     bs.forEach((b,j)=>{ b.setAttribute('aria-selected',j===cur?'true':'false'); b.tabIndex=j===cur?0:-1; });
     its.forEach((x,j)=>{ x.hidden=j!==cur; if(j===cur){ const y=x.querySelector('.aw-body'); y.classList.remove('swap'); void y.offsetWidth; y.classList.add('swap'); } });
     if(focus) bs[cur].focus();
