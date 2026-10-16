@@ -5,7 +5,7 @@ Since 15 Oct 2026 (Adrian picked C of three takes): his Team USA lunge at the
 Pan-American Championships (fencing-1.jpg) fills the card, under a navy fade
 from the left; the name in white Latin Modern (the LaTeX face of the site and
 the résumés); his own meta-description words; three credentials as plain
-lines, no bubbles. Earlier cards were a wall of chips, then chips beside his
+lines, no bubbles (16 Oct: the credential lines went too). Earlier cards were a wall of chips, then chips beside his
 headshot; he asked for "a cool picture" instead.
 
 Cards get rendered small: ~300px in iMessage, ~360px in Slack. The name and the
@@ -22,7 +22,6 @@ NAVY = (16, 30, 52)           # deeper than --acc, so white text holds over it
 WHITE = (246, 247, 250)
 SOFT = (214, 222, 236)        # tagline
 SKY = (157, 184, 224)         # the demos' light-blue accent (--g-acc)
-YC_ORANGE = (255, 140, 60)    # YC's #FF6600, lifted a step to read on navy (Adrian, 15 Oct)
 
 # Latin Modern Roman (lmroman10-*.otf) is copied into the same cache from the
 # TeX distribution (Tectonic's bundle); the site serves it as woff2 from /fonts/.
@@ -56,18 +55,17 @@ MONO_SB = os.path.join(FD, "IBMPlexMono-SemiBold.ttf")
 
 MARGIN = 88
 
-# the site footer's coordinates (Adrian: make "Los Angeles" a little different)
-KICK = "LOS ANGELES"
-KICK_COORD = "34.05°N 118.24°W"
+# 16 Oct: no dash, no coordinates, but not "Los Angeles" alone, so it
+# carries the hero's own line ("i'm a senior in los angeles")
+KICK = "HIGH SCHOOL SENIOR"
+KICK_2 = "LOS ANGELES"
 NAME = ["Adrian", "Erlikhman"]
 # Adrian's own words, the same as the meta description (7 Oct)
 TAGLINE = ["ML/NLP researcher. Software, ML,",
            "investment, and venture intern.",
            "Team USA fencer."]
-# Each is on the site. YC keeps its own colour.
-CREDS = [("BEST PAPER FINALIST — IEEE BIGDATA 2026", SKY),
-         ("TEAM USA ÉPÉE — 6TH, PAN-AMERICAN CHAMPIONSHIPS", SKY),
-         ("Y COMBINATOR STARTUP SCHOOL", YC_ORANGE)]
+# 16 Oct: the credential lines are gone (Adrian: just the researcher and
+# intern line); the site carries the achievements.
 
 
 def lm(size, bold=True):
@@ -107,37 +105,26 @@ def build():
     im = Image.composite(Image.new("RGB", (W, H), NAVY), im, mask)
     d = ImageDraw.Draw(im)
 
-    # ---- kicker: a short rule, LOS ANGELES, then the coordinates --------
+    # ---- kicker: HIGH SCHOOL SENIOR · LOS ANGELES ---------------------
     f_kick = ImageFont.truetype(MONO_SB, 19)
-    f_coord = ImageFont.truetype(MONO_SB, 15)
-    ky = 66
-    d.line([MARGIN, ky + 11, MARGIN + 34, ky + 11], fill=SKY, width=3)
-    x = MARGIN + 50
-    x += tracked(d, (x, ky), KICK, f_kick, WHITE, 3.2)
-    x += 18
-    d.ellipse([x, ky + 8, x + 6, ky + 14], fill=SKY)
-    x += 20
-    cb = d.textbbox((0, 0), KICK_COORD, font=f_coord)
-    kb = d.textbbox((0, 0), KICK, font=f_kick)
-    tracked(d, (x, ky + (kb[3] - cb[3])), KICK_COORD, f_coord, SKY, 1.6)
+    ky = 92
+    x = MARGIN
+    x += tracked(d, (x, ky), KICK, f_kick, SKY, 3.2)
+    x += 16
+    d.ellipse([x, ky + 9, x + 5, ky + 14], fill=SKY)
+    x += 21
+    tracked(d, (x, ky), KICK_2, f_kick, WHITE, 3.2)
 
     # ---- name -------------------------------------------------------------
-    f_name = lm(118)
+    f_name = lm(128)
     for i, t in enumerate(NAME):
         bb = d.textbbox((0, 0), t, font=f_name)
-        d.text((MARGIN - 6, 120 + i * 130 - bb[1]), t, font=f_name, fill=WHITE)
+        d.text((MARGIN - 7, 150 + i * 140 - bb[1]), t, font=f_name, fill=WHITE)
 
     # ---- tagline ----------------------------------------------------------
-    f_tag = lm(27, bold=False)
+    f_tag = lm(30, bold=False)
     for i, t in enumerate(TAGLINE):
-        d.text((MARGIN, 382 + i * 35), t, font=f_tag, fill=SOFT)
-
-    # ---- credentials: three plain lines with a marker, in the dark --------
-    f_c = ImageFont.truetype(MONO_SB, 15)
-    for i, (t, col) in enumerate(CREDS):
-        y = 508 + i * 30
-        d.rectangle([MARGIN, y + 3, MARGIN + 4, y + 16], fill=col)
-        tracked(d, (MARGIN + 16, y), t, f_c, col if col is YC_ORANGE else WHITE, 1.5)
+        d.text((MARGIN, 438 + i * 39), t, font=f_tag, fill=SOFT)
     return im
 
 
