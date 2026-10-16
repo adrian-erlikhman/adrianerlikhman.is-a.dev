@@ -390,13 +390,13 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- `og.png` (`tools/make_og.py`, `?v=11` on both pages) is, since 15 Oct
+- `og.png` (`tools/make_og.py`, `?v=12`) is, since 15 Oct
   (Adrian picked C of three takes, after asking for no bubbles and "a cool
   picture"): his Team USA lunge at the Pan-Ams (`fencing-1.jpg`) across the
-  card under a navy fade from the left; "HIGH SCHOOL SENIOR · LOS ANGELES"
-  (16 Oct: no dash, no coordinates, and not "Los Angeles" on its own; the
-  words are the hero's); the name in white Latin Modern; his
-  meta-description words in three lines, and nothing else (the credential
+  card under a navy fade from the left; "LOS ANGELES, CALIFORNIA" on top
+  (16 Oct, his pick of three: no dash, no coordinates, not "high school
+  senior"); the name in white Latin Modern; his meta-description words as
+  three lines, each with a light-blue marker, and nothing else (the credential
   lines came off on 16 Oct: "just do the researcher intern stuff"). Earlier
   the same day it was chips, then chips beside his headshot. Chat apps show a
   still, so no animation. The OTFs sit in the gitignored `tools/fonts/`. Bump
