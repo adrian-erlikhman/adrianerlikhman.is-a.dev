@@ -795,6 +795,19 @@ the rail and the ⌘K palette follow it.
   after NCSS, and the **JFEDLA Teen Innovation Grant** (for SafeJew;
   `jfedla.webp`, the Federation's primary logo with its teal boxes knocked out
   and the lettering set in their teal 0,104,127) before the leadership tiles.
+  **Refined the same night (Adrian: "do all five"):** the 16 tiles sit in four
+  labelled rows of four (`.aw-gl`): Builds & competitions (Decode the Ocean,
+  VISION HACK, Code for Transportation, Citadel), Selected & invited (National
+  Merit, Startup School, NCSS, LAUSD), Academics & athletics (All-American,
+  All-Academic, AP Scholar, GPA/SAT), Finance, funding & leadership (SIFMA,
+  JFEDLA grant, JSU, STEMsters); tiles carry `data-g`. Marks are in colour
+  (the grey-at-55% treatment is gone); All-Academic carries the USA Fencing
+  mark. Five panels show proof (`.aw-shot`): eDNAtlas (`img/cases/ednatlas.webp`,
+  its hero captured headlessly), the Ledger dashboard, the Safe Routes worked
+  example, the podium photo and the SafeJew map. Every panel has a context
+  line, a row of numbers (`.aw-stats`) and a sentence. On phones (<=700px)
+  the grid is 4-up and the detail moves inside the wall under the tapped
+  row (`place()` in site.js), with auto-advance off there.
 - **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
   nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
   came out of NMSC's own annual report
