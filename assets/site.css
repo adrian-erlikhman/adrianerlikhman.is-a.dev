@@ -1685,3 +1685,69 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .aw-list li em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-left:5px}
 .aw-list:not(.one) li em{color:var(--acc);font-size:11px}
 @media(max-width:420px){.aw-list{grid-template-columns:1fr}}
+
+/* /demos/ [05] Walk or ride? (16 Oct): Safe Routes' bus-vs-walk trip and six evening detours. The index takes a fifth tile. */
+@media(min-width:1001px){.dx{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:1000px) and (min-width:561px){.dx-t:last-child{grid-column:span 2}}
+.wr{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px}
+@media(max-width:900px){.wr{grid-template-columns:1fr}}
+.wr-card{background:var(--panel);border:1px solid var(--line-strong);padding:24px 24px 20px}
+@media(max-width:600px){.wr-card{padding:18px 16px 16px}}
+.wr-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.wr-h{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.2;margin-top:6px}
+.wr-sub{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:5px}
+.wr-seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.wr-seg button{font-family:var(--mono);font-size:12.5px;line-height:1.35;text-align:left;padding:12px 14px;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}
+.wr-seg button small{display:block;font-size:11px;color:var(--dim);margin-top:3px}
+.wr-seg button:hover{border-color:var(--acc)}
+.wr-seg button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.wr-seg button[aria-pressed="true"] small{color:#9db8e0}
+.wr-seg button:focus-visible,.wr-dot:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.wr-bars{display:grid;gap:14px;margin-top:22px}
+.wr-row{display:grid;grid-template-columns:90px minmax(0,1fr) 72px;gap:12px;align-items:center;font-family:var(--mono);font-size:12px}
+.wr-l{color:var(--dim)}
+.wr-row b{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.wr-t{height:12px;background:var(--bg2);position:relative;overflow:hidden}
+.wr-t i{position:absolute;inset:0 auto 0 0;background:var(--acc);transition:width .55s cubic-bezier(.2,.7,.2,1)}
+.wr-ex .wr-t i{background:#9c3d27}
+.wr-verdict{font-family:var(--serif);font-size:17px;line-height:1.45;margin-top:20px;padding-top:14px;border-top:1px solid var(--line);min-height:3.1em}
+.wr-verdict b{color:var(--acc)}
+.wr-foot{font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--dim);margin-top:12px}
+.wr-foot a{color:var(--acc);border-bottom:1px solid currentColor}
+.wr-plot{margin-top:14px}
+.wr-plot svg{display:block;width:100%;height:auto;overflow:visible}
+.wr-plot line{stroke:var(--line);stroke-width:1}
+.wr-plot line.ax{stroke:var(--line-strong)}
+.wr-plot text{font-family:var(--mono);font-size:10px;fill:var(--dim)}
+.wr-dot{cursor:pointer;outline:none}
+.wr-dot circle{fill:var(--acc);stroke:var(--panel);stroke-width:2;transition:r .2s,fill .2s}
+.wr-dot:hover circle,.wr-dot.on circle{r:9;fill:#9c3d27}
+.wr-read{font-family:var(--mono);font-size:12px;line-height:1.6;margin-top:10px;min-height:3.2em}
+.wr-read span{color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.wr-t i,.wr-dot circle{transition:none}}
+
+/* Receipts (16 Oct): key numbers carry an underline in their type's colour (measured, scale, result, plan);
+   a tap opens a note under the line saying what the number is and where it comes from. site.js RECEIPTS. */
+.rc{font:inherit;font-weight:700;color:var(--acc);background:none;border:0;border-bottom:1.5px solid var(--acc);padding:0;margin:0;cursor:pointer;text-align:inherit;line-height:inherit}
+.rc sup{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.04em;line-height:0;margin-left:2px;color:var(--acc)}
+.rc[data-t="s"]{border-bottom-color:#7a8594}.rc[data-t="s"] sup{color:#5a6472}
+.rc[data-t="o"]{border-bottom-color:var(--up)}.rc[data-t="o"] sup{color:var(--up)}
+.rc[data-t="p"]{border-bottom:1.5px dashed #9a5b13}.rc[data-t="p"] sup{color:#9a5b13}
+.rc:hover,.rc[aria-expanded="true"]{background:color-mix(in srgb,var(--acc) 8%,transparent)}
+.rc:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.rc-n{display:block;margin:10px 0 4px;padding:11px 14px 12px;background:var(--ink);color:#e9edf3;font-family:var(--mono);font-size:12px;font-weight:400;line-height:1.6;letter-spacing:0;text-transform:none;animation:rcIn .22s ease}
+.rc-n[hidden]{display:none}
+.rc-ty{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9db8e0;margin-bottom:3px}
+.rc-n[data-t="o"] .rc-ty{color:#9fd3b2}.rc-n[data-t="p"] .rc-ty{color:#e8b779}
+.rc-n a{color:#9db8e0;border-bottom:1px solid currentColor;margin-left:4px}
+@keyframes rcIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rc-n{animation:none}}
+.rc-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:-26px 0 30px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.rc-key i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.rc-key i::before{content:"";width:14px;height:0;border-bottom:2px solid var(--acc)}
+.rc-key i[data-t="s"]::before{border-bottom-color:#7a8594}
+.rc-key i[data-t="o"]::before{border-bottom-color:var(--up)}
+.rc-key i[data-t="p"]::before{border-bottom:2px dashed #9a5b13}
+@media(max-width:600px){.rc-key{margin:-16px 0 24px}.rc-key span{width:100%}}
+.fact .fsrc{font-family:var(--mono);font-size:10px;line-height:1.4;color:var(--acc);margin-top:3px;padding-top:6px;border-top:1px dashed var(--line)}
+@media(max-width:480px){.fact .fsrc{font-size:9.5px}}

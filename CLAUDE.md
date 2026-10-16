@@ -435,7 +435,15 @@ from LaTeX in `resume/`.
 - A `#section` link from another page (`/#papers`) skips the intro and lands on
   the section (`HASH_TARGET` in site.js); a plain visit still plays the intro.
 
-## /demos/ — four interactive demos (two since 22 Sept, four since 15 Oct)
+## /demos/ — five interactive demos (two since 22 Sept, four since 15 Oct, five since 16 Oct)
+- **`[05]` Walk or ride?** (`#saferoutes-sec`, 16 Oct, from ChatGPT's feedback via `_mock/feedback.html`;
+  Adrian: "lets do 1 and 2"): Safe Routes' one trip, Exposition & Normandie to LACES, walked (118 min,
+  9.3 km) or by Routes 206 then 33 (40 min, 750 m on foot, exposure 100 -> 20), as two buttons and three
+  bars, beside the six random evening walks from the repo README's `validate.py` output as a dot plot
+  (1-21% longer, 19-59% less exposure, 6 of 6). Numbers are inline in site.js WALK OR RIDE; source is
+  `~/ycs-saferoutes` (SUBMISSION.md and README.md). Exposure is always "modeled". The index has a fifth
+  tile, the nav a "Routes" link (the nav now wraps between ~900 and 1000px, as the homepage's already
+  did), and the Safe Routes card a "Walk or ride?" link.
 - `[03]` Ledger's walkthrough and `[04]` the AIML-LI Unit 1 lab moved here from
   the homepage's case studies on 15 Oct, each behind three `.steps`; the page
   head says "four demos".
@@ -593,6 +601,13 @@ the rail and the ⌘K palette follow it.
   and dropped the six-row "what's here" guide (the nav covers it; `.guide`
   CSS still sits in site.css). Four whole-hero layouts (logo strip, facts
   band, six tiles, full-width name) were mocked up and not taken.
+- **Receipts (16 Oct, Adrian picked it from `_mock/feedback.html`):** thirteen key numbers in the
+  Research findings and the Selected work cards are `.rc` buttons, underlined by type (`data-t`: m
+  measured, s scale, o result, p plan, dashed), with a small sup label; a tap opens a dark note
+  (`.rc-n`, hidden until then) under the line saying what the number is and where it comes from. A
+  `.rc-key` legend sits under both section heads, and each hero fact has a `.fsrc` line (2 accepted · 2
+  accepted with revisions; USA Fencing national rankings; the four companies). The summit's 500+ is
+  the one "plan". Keep each note in step with its number. site.js RECEIPTS.
 - **Copy rule (Adrian, 22 Sept): precise and concise, "not flourishy at all".**
   He rejected two drafts before this one. Name things, list facts, stop. No
   metaphors, no trailing clauses, no category words. The section labels are
