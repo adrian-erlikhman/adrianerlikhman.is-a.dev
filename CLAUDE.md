@@ -808,6 +808,21 @@ the rail and the ⌘K palette follow it.
   line, a row of numbers (`.aw-stats`) and a sentence. On phones (<=700px)
   the grid is 4-up and the detail moves inside the wall under the tapped
   row (`place()` in site.js), with auto-advance off there.
+  **Detail pass, same night:** the proof screenshots came out again (Adrian:
+  "dont do the cut outs like in the selected work section again. i will find
+  photos you can add"), so only Startup School has photos until he sends more.
+  Every panel got a fuller sentence from his own docs (Citadel: the game, the
+  bot, the three of them reviewing replays, from his MIT fencing brief; YC:
+  the curriculum and what it was used for, from the UC doc). **AP Scholar lists
+  all 17 APs** (from his recruiting profile: 11 taken, ★ marking the four 5s
+  his UC doc names; 6 this year), and the academics tile ("GPA · SAT ·
+  courses") lists the three dual-enrollment courses. National Merit no longer
+  quotes a PSAT score: his UC doc says 1480, his June recruiting profile 1490
+  (760/730); ask before quoting either.
+- **The Regime-Aware Portfolio Optimizer badge** (`img/logos/regime.svg`) is two
+  Gaussian regimes on the dark tile, a tall narrow calm curve in the chart's
+  cool white and a low wide turbulent one in its amber (Adrian disliked the
+  stepped-allocation glyph, 15 Oct).
 - **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
   nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
   came out of NMSC's own annual report
