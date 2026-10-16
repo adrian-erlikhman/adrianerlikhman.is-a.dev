@@ -787,8 +787,14 @@ the rail and the ⌘K palette follow it.
   JSU's navy 0,4,83 sampled from their footer mark), `laces.webp` (the
   L.A.C.E.S. Unicorns seal, lacesmagnetschool.org's apple-touch-icon, white
   outside the ring knocked out) and `visionlab.webp` (Vision Lab @ South LA,
-  VISION HACK's Luma calendar image). STEMsters has no mark anywhere online,
-  so it keeps its small-caps wordmark.
+  VISION HACK's Luma calendar image). STEMsters' mark (`stemsters.webp`) is
+  the file Adrian sent that evening, white knocked out; it has no web presence.
+  He then asked what else was impressive enough to add, and two sourced items
+  filled the grid to 16 (4x4): the **LAUSD Student Innovation Challenge**
+  (invited presenter, a $10,000 district challenge, for AIML-LI; `lausd.webp`)
+  after NCSS, and the **JFEDLA Teen Innovation Grant** (for SafeJew;
+  `jfedla.webp`, the Federation's primary logo with its teal boxes knocked out
+  and the lettering set in their teal 0,104,127) before the leadership tiles.
 - **National Merit and SIFMA** were found on 27 Sept, when Adrian asked again.
   nationalmerit.org serves only a 117x57 logo, so the **Lamp of Learning** mark
   came out of NMSC's own annual report
