@@ -1662,10 +1662,6 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .aw-gl{grid-column:1/-1;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding:9px 12px 8px;background:var(--bg);border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
 .aw-lo img{filter:none;opacity:1}
 .aw-t:hover img,.aw-t[aria-selected=true] img{transform:scale(1.08)}
-.aw-shot{margin:16px 0 0}
-.aw-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:50% 0;border:1px solid var(--line-strong);background:#0b0e14}
-.aw-shot.aw-shot-tall img{aspect-ratio:4/3;object-position:50% 30%}
-.aw-shot figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:6px}
 .aw > .aw-d{grid-column:1/-1;border-width:0 1px 1px 0;border-style:solid;border-color:var(--line-strong);background:var(--bg2)}
 @media(max-width:700px){
   .aw{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -1678,3 +1674,14 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
   .aw > .aw-d{padding:18px 14px 16px}
   .aw > .aw-d .aw-nav{display:none}
 }
+
+/* Achievements lists: every AP (taken and this year) and the dual-enrollment courses (15 Oct) */
+.aw-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.aw-list.one{grid-template-columns:1fr}
+.aw-lk{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:7px}
+.aw-lk em{font-style:normal;color:var(--dim);letter-spacing:.04em;text-transform:none;margin-left:6px}
+.aw-list ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.aw-list li{font-family:var(--serif);font-size:14.5px;line-height:1.35;color:var(--ink)}
+.aw-list li em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-left:5px}
+.aw-list:not(.one) li em{color:var(--acc);font-size:11px}
+@media(max-width:420px){.aw-list{grid-template-columns:1fr}}
