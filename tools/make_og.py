@@ -26,6 +26,7 @@ ACC = (31, 58, 95)            # --acc, the résumés' navy
 DIM = (92, 98, 108)           # --dim
 WASH = (243, 244, 246)        # the cool top-left lift
 SPINE = 7
+YC_ORANGE = (255, 102, 0)    # #FF6600, from img/logos/yc.svg (Adrian, 15 Oct)
 
 # Latin Modern Roman (lmroman10-*.otf) is copied into the same cache from the
 # TeX distribution (Tectonic's bundle); the site serves it as woff2 from /fonts/.
@@ -63,7 +64,7 @@ NAME_2 = "Erlikhman"
 # Adrian's own words, the same as the meta description (7 Oct)
 TAGLINE = "ML/NLP researcher. Software, ML, investment, and venture intern. Team USA fencer."
 
-# (text, filled) -- one row per list
+# (text, filled) -- one row per list; filled is True (navy) or an RGB fill
 # 15 Oct: Best Paper Finalist leads. Every chip is on the site: "4 accepted
 # papers" is the hero's count (the two journals are accepted with revisions,
 # so neither is called just "accepted" on its own chip); Curated to Win is at
@@ -75,7 +76,7 @@ CHIP_ROWS = [
      ("TEAM USA ÉPÉE — 6TH, PAN-AMS", True)],
     [("4 ACCEPTED PAPERS", False),
      ("2× HACKATHON 1ST PLACE", False),
-     ("Y COMBINATOR STARTUP SCHOOL", False)],
+     ("Y COMBINATOR STARTUP SCHOOL", YC_ORANGE)],
 ]
 
 # the site's headshot, in a ring to the right of the name (15 Oct)
@@ -190,8 +191,9 @@ def build():
             w = tw + pad_x * 2
             box = [x, y, x + w, y + ch_h]
             if filled:
-                d.rounded_rectangle(box, radius=ch_h // 2, fill=ACC)
-                col = BG
+                fill = ACC if filled is True else filled
+                d.rounded_rectangle(box, radius=ch_h // 2, fill=fill)
+                col = BG if filled is True else (255, 255, 255)
             else:
                 d.rounded_rectangle(box, radius=ch_h // 2,
                                     outline=(188, 194, 204), width=2)
