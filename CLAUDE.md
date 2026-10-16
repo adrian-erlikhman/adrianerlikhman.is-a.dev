@@ -390,14 +390,14 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=8` on both
+- `og.png` (`tools/make_og.py`) uses navy and Latin Modern (`?v=9` on both
   pages); the OTFs sit in the gitignored `tools/fonts/`. **Since 15 Oct**
   (Adrian, before texting the link: "a lot more better stuff… more
   impressive") it carries his headshot (`adrian.jpg`) in a navy ring right of
   the name, his meta-description words as the tagline, and three chip rows:
   Best Paper Finalist (filled) · National Merit / sole author, AACL-IJCNLP 2026
   workshop · Team USA épée, 6th at Pan-Ams (filled) / 4 accepted papers · 2×
-  hackathon 1st place · YC Startup School. The old card's "ACCEPTED — J. OF
+  hackathon 1st place · YC Startup School (YC orange, #FF6600, Adrian's ask). The old card's "ACCEPTED — J. OF
   HIGH SCHOOL SCIENCE" broke the "accepted with revisions" rule; no journal is
   named on a chip now. Bump `?v=` on both pages when it changes; chat apps
   cache the first preview of a URL. The 404 page keeps
