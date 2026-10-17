@@ -1721,16 +1721,16 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-q{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:12.5px;line-height:1.35;color:#eaf0fa;border:1px solid #3a4f76;border-radius:5px;padding:9px 11px;transition:background .15s,border-color .15s}
 .ask-q::before{content:"? ";color:#9db8e0}
 .ask-q:hover,.ask-q[aria-selected=true]{background:#21345a;border-color:#9db8e0}
-.ask-q:focus-visible{outline:2px solid #ffd28a;outline-offset:2px}
+.ask-q:focus-visible{outline:2px solid #9db8e0;outline-offset:2px}
 .ask-as{padding:14px 16px 16px;margin-top:14px;border-top:1px solid #22324f}
-.ask-p p{white-space:pre-line;line-height:1.62;margin:0}
+.ask-p p{white-space:pre-line;font-family:var(--mono);font-size:13px;line-height:1.7;color:#c9d6ea;margin:0}
 .ask-p b{color:#fff;font-weight:600}
 .ask-p+.ask-p{margin-top:18px;padding-top:14px;border-top:1px dashed #22324f}
 .js-ask .ask-p+.ask-p{margin-top:0;padding-top:0;border-top:0}
 .ask-p[hidden]{display:none}
-.ask-go{display:inline-block;margin-top:12px;background:#ffd28a;color:#1a1300;font-weight:600;font-size:12.5px;padding:5px 11px;border-radius:3px;text-decoration:none}
-.ask-go:hover{filter:brightness(1.07)}
+.ask-go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9db8e0;border:1px solid #9db8e0;padding:6px 12px;border-radius:3px;text-decoration:none;transition:background .15s,color .15s}
+.ask-go:hover,.ask-go:focus-visible{background:#9db8e0;color:#0f1726}
 .ask-cur{display:inline-block;width:8px;height:15px;background:#9db8e0;vertical-align:-2px;animation:askBlink 1s steps(1) infinite}
 @keyframes askBlink{50%{opacity:0}}
 @media(max-width:700px){.ask-qs{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}.ask-as{padding:12px 14px 14px}}
+@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}.ask-as{padding:12px 14px 14px}.ask-p p{font-size:12px;line-height:1.65}}
