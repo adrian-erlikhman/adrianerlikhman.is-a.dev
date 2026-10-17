@@ -1808,3 +1808,10 @@ footer .ft-c{font-family:var(--mono)}
 .wk-ch button.on b{color:#e09a2b}
 .wk-facts code{font-family:var(--mono);font-size:.86em;padding:1px 5px;border-radius:3px;background:color-mix(in srgb,var(--acc) 8%,transparent);color:var(--acc)}
 @media(max-width:600px){.wk-ch{grid-template-columns:minmax(0,1fr);padding:10px 10px 12px}.wk-play{left:10px;bottom:10px;padding:8px 12px 8px 10px;font-size:11px}}
+
+/* receipts without labels (17 Oct, Adrian: the "scale"/"measured" tags were noise): one plain dotted underline */
+.rc,.rc[data-t]{border-bottom:1.5px dotted color-mix(in srgb,var(--acc) 55%,transparent)}
+.rc sup{display:none}
+.wk-tlink{margin-left:auto;flex:none;font-family:var(--mono);font-size:11px;color:#9db8e0;padding:3px 9px;border:1px solid #2e3746;border-radius:999px;transition:background .2s,color .2s}
+.wk-tlink:hover,.wk-tlink:focus-visible{background:#1f3a5f;color:#fff;outline:none}
+@media(max-width:600px){.wk-tlink{font-size:10px}#case-hivemind .wk-tname{display:none}}
