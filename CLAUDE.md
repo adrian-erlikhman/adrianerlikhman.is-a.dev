@@ -631,6 +631,17 @@ the rail and the ⌘K palette follow it.
   "four papers · three accepted" from 10 Oct;
   "five papers · two in review" before LangLLM's acceptance).
   Anything warmer has been cut twice, so don't reintroduce it.
+- **Hivemind leads Selected work** (17 Oct, Adrian: "put it as one of my first selected works, include the really
+  good video"): a full-width `.wk-wide` card (`#case-hivemind`) above SafeJew. Built with Michael Tarekegn for
+  SEPHacks 2026 (USC SEP x LA Tech Week); Devpost `devpost.com/software/hivemind-v7rwgx`, site
+  `hivemind-q17i.onrender.com`, film `youtu.be/wmBzH3som4A`. The player is the 1:20 Fuser-style ad cut, re-encoded
+  from `~/Downloads/hivemind-demo-4k.mp4` to `video/hivemind-ad.mp4` (1080p, ~13 MB) with poster
+  `img/cases/hivemind-ad.webp` (frame at 29 s), both `?v=2026-10-17`. It plays muted on screen; "Watch with sound"
+  and six chapter buttons (caption start times) restart it with sound (site.js HIVEMIND FILM). Adrian's part, per
+  the repo split: website, web app, the terminal app's design, the film; Michael's: engine, hooks, eval. Result is
+  the Devpost eval (36/36 vs 14/36, placebo 15/36), with its limits in the receipt. Results weren't out on 17 Oct:
+  add any prize to the kicker, llms.txt and Achievements once announced. Also in built.py, llms.txt, JSON-LD
+  (VideoObject `#hivemind-film`) and sitemap. Not on the résumés yet.
 - **Selected work** is four cards since 15 Oct (see the admissions pass); until
   then it was four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to

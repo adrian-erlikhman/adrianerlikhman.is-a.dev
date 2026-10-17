@@ -301,6 +301,28 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   }),{rootMargin:'200px 0px'}).observe(v);
 })();
 
+/* Hivemind film: plays muted while on screen (never under reduced motion or Save-Data); "watch with sound" and the
+   chapters restart it with sound and controls; the chapter list follows the playhead. */
+(function(){
+  const box=document.getElementById('hmFilm'); if(!box) return;
+  const v=box.querySelector('video'),btn=document.getElementById('hmPlay'),chs=[...document.querySelectorAll('#hmCh button')];
+  let loaded=false,sound=false;
+  const load=()=>{ if(!loaded){ v.src=v.dataset.src; loaded=true; } };
+  const play=()=>{ const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+  const withSound=t=>{ load(); sound=true; box.classList.add('sound'); v.muted=false; v.loop=false; v.controls=true;
+    const go=()=>{ v.currentTime=t; play(); };
+    if(v.readyState>=1) go(); else v.addEventListener('loadedmetadata',go,{once:true}); };
+  btn.addEventListener('click',()=>withSound(0));
+  chs.forEach(b=>b.addEventListener('click',()=>withSound(+b.dataset.t)));
+  v.addEventListener('timeupdate',()=>{ let k=0; chs.forEach((b,i)=>{ if(v.currentTime>=+b.dataset.t-.05) k=i; });
+    chs.forEach((b,i)=>b.classList.toggle('on',i===k)); });
+  if(REDUCED||(navigator.connection&&navigator.connection.saveData)) return;   /* the poster stays until a click */
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ load(); if(!sound||!v.ended) play(); }
+    else if(loaded) v.pause();
+  }),{rootMargin:'200px 0px'}).observe(v);
+})();
+
 /* timeline: spine fills + nodes ignite as you scroll through Experience */
 (function(){
   const tl=document.querySelector('.timeline'); if(!tl) return;
