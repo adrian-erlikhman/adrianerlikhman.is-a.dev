@@ -457,6 +457,23 @@ the rail and the ⌘K palette follow it.
 - **Admissions pass (15 Oct 2026).** Adrian: the site "is going to be looked at by
   college admissions counselors", so it should skim well, and be "really really
   cool". What shipped:
+  - **Ask adrian** (`#askBox`, `.ask-*`, site.js ASK ADRIAN) replaced the
+    At-a-glance stat box under the hero buttons on 16 Oct. Adrian wanted
+    "something interactive" that a non-technical person can use, picked the
+    "click a question" terminal of four takes (`_mock/hero-term.html`), and
+    edited the answers himself: six questions (research · built · fencing ·
+    interned · what else stands out · interests), each answer typing out and
+    ending in a yellow button to its section; question 1 answers itself on
+    load; the box holds the tallest answer's height; two columns of questions
+    on phones; without JS all answers show. His calls in the copy: "accepted
+    by two peer-reviewed journals" (both are accepted *with revisions*;
+    Research still says so), the sole-author paper described by its result
+    (12 of 2,985 benchmark questions flip the leader), "three hackathon
+    winners" (1st, 1st, 3rd), YC first under "what else stands out", the
+    summit at 500+. **Dated line:** "Coming up: AACL-IJCNLP in Hengqin, China
+    (10 Nov), NCSS in San Diego (2 Dec), and IEEE BigData in Phoenix (17
+    Dec)"; reword after each date, and drop China if he withdraws from ARRSI.
+    The `.facts` CSS is unused now. History of the stat box:
   - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
     row, his wording (a fourth, "200+ LA public-school students", came off the
     same day: "i dont like the fourth box"). "4 accepted papers" (IEEE BigData · ARRSI @ AACL · 2 journals, the
