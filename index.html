@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-ask6">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-piste">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -866,8 +866,33 @@
 </main>
 
 <footer>
-  <span>© <span id="yr"></span> ADRIAN ERLIKHMAN</span>
-  <span>34.05°N 118.24°W · L.A.</span>
+  <span class="ft-c">© <span id="yr"></span> Adrian Erlikhman</span>
+  <!-- FOOTER PISTE: click to lunge; épée scoring lights; touches kept in localStorage. Hidden without JS. -->
+  <div class="piste" id="piste" hidden>
+    <button type="button" class="pst-go" id="pstGo" aria-label="Lunge: score a touch">
+      <svg class="pst-svg" viewBox="0 0 132 42" aria-hidden="true">
+        <line class="pst-strip" x1="2" y1="39" x2="130" y2="39"/>
+        <g class="pst-guard">
+          <circle cx="30" cy="8" r="4"/>
+          <path d="M30 12 28 24M28 24 22 31 20 38M28 24 35 30 36 38M30 15 37 18 42 16M29 15 24 11 22 6"/>
+          <path class="pst-blade" d="M42 16 62 12"/>
+        </g>
+        <g class="pst-lunge">
+          <circle cx="42" cy="12" r="4"/>
+          <path d="M41 16 35 26M35 26 18 38M35 26 47 29 48 38M41 18 54 17M40 18 31 23 25 26"/>
+          <path class="pst-blade" d="M54 17 82 15"/>
+        </g>
+        <g class="pst-dummy">
+          <rect x="96" y="6" width="3" height="32" rx="1"/>
+          <circle class="pst-tgt" cx="97.5" cy="15" r="7"/>
+          <circle class="pst-tgt" cx="97.5" cy="15" r="3"/>
+        </g>
+      </svg>
+      <span class="pst-lights" aria-hidden="true"><i class="pst-r"></i><i class="pst-g"></i></span>
+    </button>
+    <span class="pst-txt"><span class="pst-say" id="pstSay" aria-live="polite">en garde. click to lunge</span><span class="pst-n">touches <b id="pstN">00</b></span></span>
+  </div>
+  <button type="button" class="ft-top" id="ftTop">back to top <span aria-hidden="true">↑</span></button>
 </footer>
 
 <!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
@@ -909,6 +934,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-17-ask6"></script>
+<script src="/assets/site.js?v=2026-10-17-piste"></script>
 </body>
 </html>

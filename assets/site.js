@@ -40,6 +40,31 @@ const tb=document.getElementById('topbar');
 if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});
 /* year */
 {const yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();}
+/* footer piste: each click is a lunge and a touch. Épée has no right of way, so now and then both lights go.
+   Pool bouts are to 5 and DEs to 15, hence the milestones. The count lives in localStorage when it can. */
+(function(){
+  const P=document.getElementById('piste'),go=document.getElementById('pstGo'),say=document.getElementById('pstSay'),nEl=document.getElementById('pstN');
+  if(!P||!go) return;
+  P.hidden=false;
+  let n=0; try{n=+localStorage.getItem('ae_touches')||0;}catch(e){}
+  const pad=v=>String(v).padStart(2,'0'); nEl.textContent=pad(n);
+  const LINES=['touché!','allez!','straight to the wrist','point in line','parry, riposte','beat, then lunge','no right of way in épée','counter-attack. clean.','that was a flick','the ref saw it'];
+  const MILE={5:'5 touches. pool bout won',15:'15. you just won a DE',30:'30 touches. you made the team',50:'50?? go fence for real',100:'100. ok you can stop now'};
+  let last=-1,t;
+  go.addEventListener('click',()=>{
+    const dbl=Math.random()<.14;
+    if(!dbl){n++; try{localStorage.setItem('ae_touches',n);}catch(e){}}
+    let line;
+    if(dbl) line='double touch! both lights';
+    else if(MILE[n]) line=MILE[n];
+    else{let i;do{i=Math.floor(Math.random()*LINES.length);}while(i===last);last=i;line=LINES[i];}
+    nEl.textContent=pad(n); say.textContent=line;
+    P.classList.remove('hit','dbl'); say.classList.remove('pop'); void P.offsetWidth;
+    P.classList.add('hit'); if(dbl) P.classList.add('dbl'); say.classList.add('pop');
+    clearTimeout(t); t=setTimeout(()=>P.classList.remove('hit','dbl'),420);
+  });
+})();
+{const top=document.getElementById('ftTop'); if(top) top.addEventListener('click',()=>scrollTo({top:0,behavior:REDUCED?'auto':'smooth'}));}
 
 /* ================= TICKER TAPE ================= */
 (function(){
