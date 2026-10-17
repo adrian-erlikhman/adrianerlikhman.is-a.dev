@@ -974,34 +974,24 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   });
 })();
 
-// ASK ADRIAN: click a question, its answer types out (the first answers itself)
+// ASK ADRIAN: click a question, its bullets slide in (the first answers itself)
 (function(){
   const box=document.getElementById('askBox');
   if(!box) return;
   const qs=[...box.querySelectorAll('.ask-q')],ps=[...box.querySelectorAll('.ask-p')],area=box.querySelector('.ask-as');
   if(!qs.length||qs.length!==ps.length) return;
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const html=ps.map(p=>p.querySelector('p').innerHTML);
   box.classList.add('js-ask');
+  ps.forEach(p=>p.querySelectorAll('.ask-l li').forEach((li,n)=>li.style.setProperty('--n',n)));
   // hold the tallest answer's height so the hero doesn't jump as answers change
   function hold(){ area.style.minHeight=''; let h=0;
     ps.forEach(p=>{ const was=p.hidden; p.hidden=false; h=Math.max(h,p.offsetHeight); p.hidden=was; });
     area.style.minHeight=(h+30)+'px'; }
-  let job=null,cur=-1;
+  let cur=-1;
   function show(i,focus){
     if(i===cur) return; cur=i;
     qs.forEach((q,j)=>{ q.setAttribute('aria-selected',j===i?'true':'false'); q.tabIndex=j===i?0:-1; });
     ps.forEach((p,j)=>{ p.hidden=j!==i; });
     if(focus) qs[i].focus();
-    const el=ps[i].querySelector('p'),go=ps[i].querySelector('.ask-go'),src=html[i];
-    clearInterval(job);
-    if(reduce){ el.innerHTML=src; go.style.visibility=''; return; }
-    go.style.visibility='hidden'; let n=0;
-    job=setInterval(()=>{ n+=4; let part=src.slice(0,n);
-      const lt=part.lastIndexOf('<'),amp=part.lastIndexOf('&');
-      if(lt>part.lastIndexOf('>')||amp>part.lastIndexOf(';')) return;
-      el.innerHTML=part+(n<src.length?'<span class="ask-cur"></span>':'');
-      if(n>=src.length){ clearInterval(job); go.style.visibility=''; } },14);
   }
   qs.forEach((q,i)=>q.addEventListener('click',()=>show(i)));
   box.querySelector('.ask-qs').addEventListener('keydown',e=>{

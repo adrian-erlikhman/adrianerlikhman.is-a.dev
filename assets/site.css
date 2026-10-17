@@ -1722,15 +1722,30 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-q::before{content:"? ";color:#9db8e0}
 .ask-q:hover,.ask-q[aria-selected=true]{background:#21345a;border-color:#9db8e0}
 .ask-q:focus-visible{outline:2px solid #9db8e0;outline-offset:2px}
-.ask-as{padding:14px 16px 16px;margin-top:14px;border-top:1px solid #22324f}
-.ask-p p{white-space:pre-line;font-family:var(--mono);font-size:13px;line-height:1.7;color:#c9d6ea;margin:0}
-.ask-p b{color:#fff;font-weight:600}
+.ask-as{padding:16px 16px 14px;margin-top:14px;border-top:1px solid #22324f}
 .ask-p+.ask-p{margin-top:18px;padding-top:14px;border-top:1px dashed #22324f}
 .js-ask .ask-p+.ask-p{margin-top:0;padding-top:0;border-top:0}
 .ask-p[hidden]{display:none}
-.ask-go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9db8e0;border:1px solid #9db8e0;padding:6px 12px;border-radius:3px;text-decoration:none;transition:background .15s,color .15s}
-.ask-go:hover,.ask-go:focus-visible{background:#9db8e0;color:#0f1726}
-.ask-cur{display:inline-block;width:8px;height:15px;background:#9db8e0;vertical-align:-2px;animation:askBlink 1s steps(1) infinite}
-@keyframes askBlink{50%{opacity:0}}
+/* the bullets: a tag column, then one short line */
+.ask-h{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9db8e0;margin:0 0 10px}
+.ask-h span{color:#7f93b4;font-weight:400;letter-spacing:.06em}
+/* one tag column per answer, as wide as its widest tag */
+.ask-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:7px 14px;align-items:baseline}
+.ask-l li{display:contents;font-family:var(--mono);font-size:12.5px;line-height:1.45}
+.ask-k{font-family:var(--mono);font-size:11.5px;color:#9db8e0;white-space:nowrap}
+.ask-k::before{content:"[";color:#3f5478}
+.ask-k::after{content:"]";color:#3f5478}
+.ask-v{font-family:var(--mono);font-size:12.5px;line-height:1.45}
+.ask-v{color:#c9d6ea}
+.ask-v b{color:#fff;font-weight:600}
+.ask-v i{font-style:normal;color:#7f93b4}
+.ask-v i::before{content:"· ";color:#3f5478}
+.js-ask .ask-p:not([hidden]) .ask-l li>*{animation:askIn .4s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--n,0) * 70ms)}
+@keyframes askIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+/* the link out: plain text with an arrow, no box */
+.ask-go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;color:#eaf0fa;text-decoration:none;border-bottom:1px solid #3f5478;padding-bottom:1px;transition:border-color .15s,color .15s}
+.ask-go:hover,.ask-go:focus-visible{color:#fff;border-color:#9db8e0}
+@media(prefers-reduced-motion:reduce){.js-ask .ask-p:not([hidden]) .ask-l li>*{animation:none}}
 @media(max-width:700px){.ask-qs{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}.ask-as{padding:12px 14px 14px}.ask-p p{font-size:12px;line-height:1.65}}
+@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}.ask-as{padding:14px 12px 12px}
+  .ask-l{gap:7px 10px}.ask-v{font-size:11.5px}.ask-k{font-size:10.5px}}

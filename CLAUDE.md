@@ -480,6 +480,16 @@ the rail and the ⌘K palette follow it.
     interested in?" is his fields (ML, NLP, AI evals & infra, data science,
     quant finance, startups, VC, AI in education) and then his papers by
     broad topic, with no "off the laptop" line (he cut it).
+    **Third pass (16 Oct):** every answer is short bullets (Adrian: "this
+    should be a brief overview"), one line each at desktop width: a
+    `[bracket]` tag in light blue (he picked B of four marker styles,
+    `_mock/ask-markers.html`), a bold phrase, a dim tail. Research opens with
+    "PUBLICATIONS · 4 accepted · 1 preprint" and tags each paper by venue:
+    [IEEE] [AACL] [OJSS] [JHSS] [arXiv] ("make sure it is clear that it is
+    publication"). Bullets slide in, no typing; the button is a plain
+    "→ jump to …" link (he disliked the yellow, then the outlined box).
+    Check new lines with a 1280px wrap test; each answer's tag column is as
+    wide as its widest tag.
     The `.facts` CSS is unused now. History of the stat box:
   - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
     row, his wording (a fourth, "200+ LA public-school students", came off the
