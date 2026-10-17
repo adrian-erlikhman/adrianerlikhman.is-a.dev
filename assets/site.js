@@ -974,14 +974,14 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   });
 })();
 
-// ASK ADRIAN: click a question, its bullets slide in (the first answers itself)
+// ASK ADRIAN: click a question, its file's lines appear one by one (the first answers itself)
 (function(){
   const box=document.getElementById('askBox');
   if(!box) return;
   const qs=[...box.querySelectorAll('.ask-q')],ps=[...box.querySelectorAll('.ask-p')],area=box.querySelector('.ask-as');
   if(!qs.length||qs.length!==ps.length) return;
   box.classList.add('js-ask');
-  ps.forEach(p=>p.querySelectorAll('.ask-l li').forEach((li,n)=>li.style.setProperty('--n',n)));
+  ps.forEach(p=>p.querySelectorAll('.ask-code .l').forEach((l,n)=>l.style.setProperty('--n',n)));
   // hold the tallest answer's height so the hero doesn't jump as answers change
   function hold(){ area.style.minHeight=''; let h=0;
     ps.forEach(p=>{ const was=p.hidden; p.hidden=false; h=Math.max(h,p.offsetHeight); p.hidden=was; });
