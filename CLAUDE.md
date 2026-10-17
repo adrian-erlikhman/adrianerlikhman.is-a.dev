@@ -473,6 +473,13 @@ the rail and the ⌘K palette follow it.
     summit at 500+. **Dated line:** "Coming up: AACL-IJCNLP in Hengqin, China
     (10 Nov), NCSS in San Diego (2 Dec), and IEEE BigData in Phoenix (17
     Dec)"; reword after each date, and drop China if he withdraws from ARRSI.
+    **Second pass (16 Oct):** answers in Plex Mono, not Latin Modern ("i
+    dont love the font"); the button is a light-blue outline, not yellow;
+    "What has he built?" covers SafeJew, AIML-LI, Why Wrong, the portfolio
+    optimizer and the three hackathon winners, one line each; "What is he
+    interested in?" is his fields (ML, NLP, AI evals & infra, data science,
+    quant finance, startups, VC, AI in education) and then his papers by
+    broad topic, with no "off the laptop" line (he cut it).
     The `.facts` CSS is unused now. History of the stat box:
   - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
     row, his wording (a fourth, "200+ LA public-school students", came off the
