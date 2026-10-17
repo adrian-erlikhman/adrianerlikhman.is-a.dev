@@ -494,8 +494,12 @@ the rail and the ⌘K palette follow it.
     picked the **code editor** (style 5 of `_mock/ask-styles.html`): each
     answer is a small Python file (publications.py, built.py, fencing.py,
     internships.py, highlights.py, interests.py) with a tab, line numbers and
-    syntax colours (keys light blue, strings green, comments grey italic, a
-    glowing gold ★ on the Best Paper comment); lines slide in one by one.
+    syntax colours (keys light blue, strings green, comments grey italic;
+    no star on the Best Paper comment, Adrian took it out 17 Oct); lines
+    slide in one by one.
+    highlights.py says Citadel Terminal "1,000+ applied; top 8 of 45 teams"
+    (Adrian, 17 Oct; his Common App honors list: "Top 8, 60/1000+ selected").
+    The Achievements wall still says only "Top 8 of 45 teams".
     The panels are generated with a tiny highlighter (scratch script
     `ask_v6.py` in that session); to edit by hand, keep the
     `<span class="l"><span class="c">` structure. Long lines soft-wrap beside

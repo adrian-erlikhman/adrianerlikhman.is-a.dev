@@ -1740,7 +1740,6 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-code .key{color:#9db8e0}
 .ask-code .str{color:#a6e3a1}
 .ask-code .com{color:#6c7f9e;font-style:italic}
-.ask-code .st{color:#f2c46d;font-style:normal;text-shadow:0 0 8px rgba(242,196,109,.6)}
 .ask-code .p{color:#7f93b4}
 .js-ask .ask-p:not([hidden]) .ask-code .l{animation:askLine .35s ease both;animation-delay:calc(var(--n,0) * 55ms)}
 @keyframes askLine{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
