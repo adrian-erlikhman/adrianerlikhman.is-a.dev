@@ -308,9 +308,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-15-cy"` should print 5
-  and 3. Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-15-cy`.
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-17-hm"` should print 5
+  (the /demos/ three went with that page). Bump all eight whenever either PDF changes, to a value nobody else has
+  used. Currently `?v=2026-10-17-hm`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -617,6 +617,8 @@ the rail and the ⌘K palette follow it.
   and dropped the six-row "what's here" guide (the nav covers it; `.guide`
   CSS still sits in site.css). Four whole-hero layouts (logo strip, facts
   band, six tiles, full-width name) were mocked up and not taken.
+- **Receipts lost their labels on 17 Oct** (Adrian, of the "scale" superscript: "remove all of these bs
+  things"): the `<sup>` tags are gone and every receipt is one dotted navy underline; the tap notes stay.
 - **Receipts (16 Oct, Adrian picked it from `_mock/feedback.html`):** thirteen key numbers in the
   Research findings and the Selected work cards are `.rc` buttons, underlined by type (`data-t`: m
   measured, s scale, o result, p plan, dashed), with a small sup label; a tap opens a dark note
@@ -641,7 +643,11 @@ the rail and the ⌘K palette follow it.
   the repo split: website, web app, the terminal app's design, the film; Michael's: engine, hooks, eval. Result is
   the Devpost eval (36/36 vs 14/36, placebo 15/36), with its limits in the receipt. Results weren't out on 17 Oct:
   add any prize to the kicker, llms.txt and Achievements once announced. Also in built.py, llms.txt, JSON-LD
-  (VideoObject `#hivemind-film`) and sitemap. Not on the résumés yet.
+  (VideoObject `#hivemind-film`) and sitemap. **On both résumés since 17 Oct** (his OK), last in the
+  one-pager's Competitions (one line, [live] [devpost], no eval numbers) and after eDNAtlas in the long one (two
+  bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
+  long one lost Citadel's second bullet (what Terminal is), "(Andrew Ng" from the DL Specialization, and a few
+  words in Citadel, YC, More builds and JSU. Both résumés now have no slack at all.
 - **Selected work** is four cards since 15 Oct (see the admissions pass); until
   then it was four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
