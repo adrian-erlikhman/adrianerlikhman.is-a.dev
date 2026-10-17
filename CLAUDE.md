@@ -490,6 +490,16 @@ the rail and the ⌘K palette follow it.
     "→ jump to …" link (he disliked the yellow, then the outlined box).
     Check new lines with a 1280px wrap test; each answer's tag column is as
     wide as its widest tag.
+    **Fourth pass (16 Oct, current):** Adrian still didn't like bullets and
+    picked the **code editor** (style 5 of `_mock/ask-styles.html`): each
+    answer is a small Python file (publications.py, built.py, fencing.py,
+    internships.py, highlights.py, interests.py) with a tab, line numbers and
+    syntax colours (keys light blue, strings green, comments grey italic, a
+    glowing gold ★ on the Best Paper comment); lines slide in one by one.
+    The panels are generated with a tiny highlighter (scratch script
+    `ask_v6.py` in that session); to edit by hand, keep the
+    `<span class="l"><span class="c">` structure. Long lines soft-wrap beside
+    their number on phones; on desktop no line wraps (check at 1280px).
     The `.facts` CSS is unused now. History of the stat box:
   - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
     row, his wording (a fourth, "200+ LA public-school students", came off the

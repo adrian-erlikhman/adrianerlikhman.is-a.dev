@@ -1722,30 +1722,32 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-q::before{content:"? ";color:#9db8e0}
 .ask-q:hover,.ask-q[aria-selected=true]{background:#21345a;border-color:#9db8e0}
 .ask-q:focus-visible{outline:2px solid #9db8e0;outline-offset:2px}
-.ask-as{padding:16px 16px 14px;margin-top:14px;border-top:1px solid #22324f}
-.ask-p+.ask-p{margin-top:18px;padding-top:14px;border-top:1px dashed #22324f}
-.js-ask .ask-p+.ask-p{margin-top:0;padding-top:0;border-top:0}
+.ask-as{margin-top:14px;border-top:1px solid #22324f;padding-bottom:14px}
+.ask-p+.ask-p{margin-top:14px;border-top:1px dashed #22324f}
+.js-ask .ask-p+.ask-p{margin-top:0;border-top:0}
 .ask-p[hidden]{display:none}
-/* the bullets: a tag column, then one short line */
-.ask-h{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9db8e0;margin:0 0 10px}
-.ask-h span{color:#7f93b4;font-weight:400;letter-spacing:.06em}
-/* one tag column per answer, as wide as its widest tag */
-.ask-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:7px 14px;align-items:baseline}
-.ask-l li{display:contents;font-family:var(--mono);font-size:12.5px;line-height:1.45}
-.ask-k{font-family:var(--mono);font-size:11.5px;color:#9db8e0;white-space:nowrap}
-.ask-k::before{content:"[";color:#3f5478}
-.ask-k::after{content:"]";color:#3f5478}
-.ask-v{font-family:var(--mono);font-size:12.5px;line-height:1.45}
-.ask-v{color:#c9d6ea}
-.ask-v b{color:#fff;font-weight:600}
-.ask-v i{font-style:normal;color:#7f93b4}
-.ask-v i::before{content:"· ";color:#3f5478}
-.js-ask .ask-p:not([hidden]) .ask-l li>*{animation:askIn .4s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--n,0) * 70ms)}
-@keyframes askIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+/* each answer is a small file: a tab, numbered lines, syntax colours */
+.ask-tab{display:flex;align-items:stretch;background:#0b1220;border-bottom:1px solid #22324f}
+.ask-tab span{padding:7px 14px;font-size:11px;color:#eaf0fa;background:#0f1726;border-top:2px solid #9db8e0;margin-bottom:-1px}
+.ask-tab em{margin-left:auto;align-self:center;padding:0 14px;font-style:normal;font-size:10px;letter-spacing:.08em;color:#4e6283}
+.ask-code{font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:10px 0 0;padding:0;counter-reset:ln;white-space:normal;background:none;color:#c9d6ea}
+/* number, then the line; a long line wraps beside its number */
+.ask-code .l{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:14px;padding-right:14px}
+.ask-code .l::before{counter-increment:ln;content:counter(ln);text-align:right;color:#3a4a66;user-select:none}
+.ask-code .c{white-space:pre-wrap;overflow-wrap:anywhere}
+.ask-code .l:hover{background:#151f33}
+.ask-code .var{color:#eaf0fa;font-weight:600}
+.ask-code .key{color:#9db8e0}
+.ask-code .str{color:#a6e3a1}
+.ask-code .com{color:#6c7f9e;font-style:italic}
+.ask-code .st{color:#f2c46d;font-style:normal;text-shadow:0 0 8px rgba(242,196,109,.6)}
+.ask-code .p{color:#7f93b4}
+.js-ask .ask-p:not([hidden]) .ask-code .l{animation:askLine .35s ease both;animation-delay:calc(var(--n,0) * 55ms)}
+@keyframes askLine{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 /* the link out: plain text with an arrow, no box */
-.ask-go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:12px;color:#eaf0fa;text-decoration:none;border-bottom:1px solid #3f5478;padding-bottom:1px;transition:border-color .15s,color .15s}
+.ask-go{display:inline-block;margin:12px 0 0 48px;font-family:var(--mono);font-size:12px;color:#eaf0fa;text-decoration:none;border-bottom:1px solid #3f5478;padding-bottom:1px;transition:border-color .15s,color .15s}
 .ask-go:hover,.ask-go:focus-visible{color:#fff;border-color:#9db8e0}
-@media(prefers-reduced-motion:reduce){.js-ask .ask-p:not([hidden]) .ask-l li>*{animation:none}}
+@media(prefers-reduced-motion:reduce){.js-ask .ask-p:not([hidden]) .ask-code .l{animation:none}}
 @media(max-width:700px){.ask-qs{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}.ask-as{padding:14px 12px 12px}
-  .ask-l{gap:7px 10px}.ask-v{font-size:11.5px}.ask-k{font-size:10.5px}}
+@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}
+  .ask-code{font-size:11px;line-height:1.6}.ask-code .l{grid-template-columns:22px minmax(0,1fr);column-gap:9px;padding-right:10px}.ask-go{margin-left:31px}}
