@@ -499,7 +499,7 @@ the rail and the ⌘K palette follow it.
     slide in one by one.
     highlights.py says Citadel Terminal "1,000+ applied; top 8 of 45 teams"
     (Adrian, 17 Oct; his Common App honors list: "Top 8, 60/1000+ selected").
-    The Achievements wall still says only "Top 8 of 45 teams".
+    The Achievements wall's Citadel panel and llms.txt carry it too (17 Oct).
     The panels are generated with a tiny highlighter (scratch script
     `ask_v6.py` in that session); to edit by hand, keep the
     `<span class="l"><span class="c">` structure. Long lines soft-wrap beside
