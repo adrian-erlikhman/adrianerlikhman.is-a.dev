@@ -1733,27 +1733,41 @@ footer .ft-c{font-family:var(--mono)}
 .pst-go{position:relative;display:block;background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px 2px;cursor:pointer;transition:border-color .2s,transform .15s}
 .pst-go:hover,.pst-go:focus-visible{border-color:var(--acc);outline:none}
 .pst-go:active{transform:scale(.97)}
-.pst-svg{display:block;width:132px;height:42px;overflow:visible}
-.pst-svg path,.pst-svg line,.pst-dummy rect{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pst-svg{display:block;width:130px;height:42px;overflow:visible}
+.pst-svg path,.pst-svg line{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .pst-svg circle{fill:var(--bg);stroke:var(--ink);stroke-width:2}
 .pst-svg .pst-blade{stroke:var(--acc);stroke-width:1.4}
 .pst-svg .pst-strip{stroke:var(--line-strong);stroke-width:1.2;stroke-dasharray:3 4}
-.pst-dummy rect{stroke:var(--dim)}
-.pst-svg .pst-tgt{stroke:var(--dim);fill:none}
+.pst-op path,.pst-svg .pst-op circle{stroke:var(--dim)}
+.pst-svg .pst-op .pst-blade{stroke:var(--dim)}
+.pst-svg .pst-spark{stroke:none;fill:#e0453a;opacity:0}
+.pst-svg .pst-op .pst-spark{fill:#2fbf5b}
 .pst-lunge{opacity:0}
-.piste.hit .pst-guard{opacity:0}
-.piste.hit .pst-lunge{opacity:1}
-.piste.hit .pst-dummy{animation:pst-wob .45s ease-out}
-.piste.hit .pst-tgt{stroke:var(--up)}
-@keyframes pst-wob{0%{transform:rotate(0)}30%{transform:rotate(9deg)}60%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
-.pst-dummy{transform-origin:97.5px 38px}
-.pst-lights{position:absolute;top:-6px;right:8px;display:flex;gap:4px}
-.pst-lights i{width:9px;height:5px;border-radius:2px;background:var(--line-strong);transition:background .1s,box-shadow .1s}
-.piste.hit .pst-g{background:#2fbf5b;box-shadow:0 0 8px #2fbf5b}
-.piste.dbl .pst-r{background:#e0453a;box-shadow:0 0 8px #e0453a}
+.pst-guard{transform-box:fill-box;transform-origin:50% 100%}
+.piste.me .pst-me .pst-guard,.piste.op .pst-op .pst-guard{opacity:0}
+.piste.me .pst-me .pst-lunge,.piste.op .pst-op .pst-lunge{opacity:1}
+.piste.me.op .pst-lunge{transform:translateX(-14px)} /* a double: both lunge from further out, so they don't collide */
+.piste.me .pst-me .pst-spark,.piste.op .pst-op .pst-spark{animation:pst-spk .5s ease-out}
+.piste.me:not(.op) .pst-op .pst-guard,.piste.op:not(.me) .pst-me .pst-guard{animation:pst-wob .45s ease-out}
+@keyframes pst-wob{0%{transform:rotate(0)}30%{transform:rotate(-10deg)}60%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+@keyframes pst-spk{0%{opacity:1;r:1.5}40%{opacity:1;r:3.4}100%{opacity:0;r:4}}
+/* the scoring box: a dark machine, left lamp red and right lamp green as on the real thing */
+.pst-box{flex:none;width:100px;padding:5px 7px 4px;border-radius:6px;background:#10161f;border:1px solid #2a3442;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);font-family:var(--mono);user-select:none}
+.pbx-row{display:flex;align-items:center;justify-content:space-between}
+.pbx-lamp{flex:none;width:14px;height:7px;border-radius:2px;transition:background .08s,box-shadow .08s}
+.pbx-r{background:#4a1d1b}.pbx-g{background:#173d24}
+.piste.me .pbx-r{background:#ff4b3e;box-shadow:0 0 10px #ff4b3e,0 0 3px #fff inset}
+.piste.op .pbx-g{background:#33e06b;box-shadow:0 0 10px #33e06b,0 0 3px #fff inset}
+.pbx-cap{white-space:nowrap;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:#6d7a8c}
+.pbx-sc{justify-content:center;gap:4px;margin:2px 0 0;line-height:1}
+.pbx-n{min-width:22px;text-align:center;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.pbx-nr{color:#ff5a4d;text-shadow:0 0 6px rgba(255,75,62,.55)}
+.pbx-ng{color:#3fe577;text-shadow:0 0 6px rgba(51,224,107,.5)}
+.pbx-sep{color:#55606f;font-size:15px}
+.pbx-who{font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:#8592a4;padding:0 6px}
 .pst-txt{display:flex;flex-direction:column;gap:3px;min-width:15.5em}
 .pst-say{color:var(--ink);font-size:11.5px}
-.piste.hit .pst-say{color:var(--acc);font-weight:600}
+.piste.me .pst-say,.piste.op .pst-say{color:var(--acc);font-weight:600}
 .pst-say.pop{animation:pst-pop .35s cubic-bezier(.2,1.6,.4,1)}
 @keyframes pst-pop{0%{transform:translateY(4px) scale(.92);opacity:.3}100%{transform:none;opacity:1}}
 .pst-n{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
@@ -1762,8 +1776,8 @@ footer .ft-c{font-family:var(--mono)}
 .ft-top span{display:inline-block;transition:transform .25s cubic-bezier(.2,1.6,.4,1)}
 .ft-top:hover,.ft-top:focus-visible{color:var(--acc);outline:none}
 .ft-top:hover span,.ft-top:focus-visible span{transform:translateY(-4px)}
-@media(max-width:700px){footer{justify-content:center;text-align:center}.piste{order:-1;width:100%;justify-content:center}.pst-txt{min-width:0;text-align:left}}
-@media(prefers-reduced-motion:reduce){.piste.hit .pst-dummy,.pst-say.pop{animation:none}}
+@media(max-width:700px){footer{justify-content:center;text-align:center}.piste{order:-1;width:100%;justify-content:center;flex-wrap:wrap;gap:10px}.pst-txt{min-width:0;flex-basis:100%;text-align:center}}
+@media(prefers-reduced-motion:reduce){.pst-guard,.pst-spark,.pst-say.pop{animation:none!important}}
 
 /* ==================== HIVEMIND FILM (17 Oct): the Selected work lead card's player and chapters ==================== */
 .wk-vid{position:relative;aspect-ratio:16/9;background:#0e1420;overflow:hidden}

@@ -40,28 +40,39 @@ const tb=document.getElementById('topbar');
 if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});
 /* year */
 {const yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();}
-/* footer piste: each click is a lunge and a touch. Épée has no right of way, so now and then both lights go.
-   Pool bouts are to 5 and DEs to 15, hence the milestones. The count lives in localStorage when it can. */
+/* footer piste: an épée pool bout to 5 against a grey opponent. Each click is one action: you hit, they hit,
+   or both lights go (no right of way in épée, so a double scores for both, except at 4-4, where it's annulled).
+   The bout and the W-L record live in localStorage when they can. */
 (function(){
-  const P=document.getElementById('piste'),go=document.getElementById('pstGo'),say=document.getElementById('pstSay'),nEl=document.getElementById('pstN');
+  const P=document.getElementById('piste'),go=document.getElementById('pstGo'),say=document.getElementById('pstSay');
   if(!P||!go) return;
+  const $=id=>document.getElementById(id),aEl=$('pstA'),bEl=$('pstB'),wEl=$('pstW'),lEl=$('pstL');
   P.hidden=false;
-  let n=0; try{n=+localStorage.getItem('ae_touches')||0;}catch(e){}
-  const pad=v=>String(v).padStart(2,'0'); nEl.textContent=pad(n);
-  const LINES=['touché!','allez!','straight to the wrist','point in line','parry, riposte','beat, then lunge','no right of way in épée','counter-attack. clean.','that was a flick','the ref saw it'];
-  const MILE={5:'5 touches. pool bout won',15:'15. you just won a DE',30:'30 touches. you made the team',50:'50?? go fence for real',100:'100. ok you can stop now'};
-  let last=-1,t;
+  let s={a:0,b:0,w:0,l:0}; try{Object.assign(s,JSON.parse(localStorage.getItem('ae_bout'))||{});}catch(e){}
+  const TO=5,save=()=>{try{localStorage.setItem('ae_bout',JSON.stringify(s));}catch(e){}};
+  const show=()=>{aEl.textContent=s.a;bEl.textContent=s.b;wEl.textContent=s.w;lEl.textContent=s.l;};
+  show();
+  const MINE=['touché!','allez!','straight to the wrist','point in line','beat, then lunge','counter-attack. clean.','that was a flick','toe touch','parry, riposte'];
+  const THEIRS=['they hit. stop-hit to the wrist','caught on your prep','they remised. reset','parried. their riposte','you fell short','they took the foot'];
+  const pick=(arr,k)=>{let i;do{i=Math.floor(Math.random()*arr.length);}while(arr.length>1&&i===pick[k]);pick[k]=i;return arr[i];};
+  let t,done=s.a>=TO||s.b>=TO;
   go.addEventListener('click',()=>{
-    const dbl=Math.random()<.14;
-    if(!dbl){n++; try{localStorage.setItem('ae_touches',n);}catch(e){}}
+    if(done){s.a=s.b=0;done=false;save();show();P.classList.remove('me','op');say.textContent='new bout. en garde';return;}
+    const r=Math.random(),me=r<.55,dbl=r>=.87,op=!me&&!dbl;
     let line;
-    if(dbl) line='double touch! both lights';
-    else if(MILE[n]) line=MILE[n];
-    else{let i;do{i=Math.floor(Math.random()*LINES.length);}while(i===last);last=i;line=LINES[i];}
-    nEl.textContent=pad(n); say.textContent=line;
-    P.classList.remove('hit','dbl'); say.classList.remove('pop'); void P.offsetWidth;
-    P.classList.add('hit'); if(dbl) P.classList.add('dbl'); say.classList.add('pop');
-    clearTimeout(t); t=setTimeout(()=>P.classList.remove('hit','dbl'),420);
+    if(dbl&&s.a===TO-1&&s.b===TO-1) line='double at 4-4. annulled, fence on';
+    else if(dbl){s.a++;s.b++;line='double touch. both lights';}
+    else if(me){s.a++;line=pick(MINE,'m');}
+    else{s.b++;line=pick(THEIRS,'t');}
+    if(s.a>=TO||s.b>=TO){
+      done=true;
+      if(s.a>s.b){s.w++;line=`V${s.a}-${s.b}. bout won`;}
+      else{s.l++;line=`D${s.a}-${s.b}. bout lost. click for another`;}
+    }
+    save();show();say.textContent=line;
+    P.classList.remove('me','op'); say.classList.remove('pop'); void P.offsetWidth;
+    if(me||dbl) P.classList.add('me'); if(op||dbl) P.classList.add('op'); say.classList.add('pop');
+    clearTimeout(t); t=setTimeout(()=>P.classList.remove('me','op'),dbl?700:560);
   });
 })();
 {const top=document.getElementById('ftTop'); if(top) top.addEventListener('click',()=>scrollTo({top:0,behavior:REDUCED?'auto':'smooth'}));}
