@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-norc">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-bout">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -945,30 +945,47 @@
 
 <footer>
   <span class="ft-c">© <span id="yr"></span> Adrian Erlikhman</span>
-  <!-- FOOTER PISTE: click to lunge; épée scoring lights; touches kept in localStorage. Hidden without JS. -->
+  <!-- FOOTER PISTE: an épée pool bout to 5. Each click is one action: you hit, they hit, or a double.
+       The scoring box shows the lamps (left fencer red, right green, as on a real machine) and the score;
+       the bout and the W-L record live in localStorage. Hidden without JS. -->
   <div class="piste" id="piste" hidden>
-    <button type="button" class="pst-go" id="pstGo" aria-label="Lunge: score a touch">
-      <svg class="pst-svg" viewBox="0 0 132 42" aria-hidden="true">
-        <line class="pst-strip" x1="2" y1="39" x2="130" y2="39"/>
-        <g class="pst-guard">
-          <circle cx="30" cy="8" r="4"/>
-          <path d="M30 12 28 24M28 24 22 31 20 38M28 24 35 30 36 38M30 15 37 18 42 16M29 15 24 11 22 6"/>
-          <path class="pst-blade" d="M42 16 62 12"/>
+    <button type="button" class="pst-go" id="pstGo" aria-label="Lunge: fence the next touch">
+      <svg class="pst-svg" viewBox="0 0 130 42" aria-hidden="true">
+        <line class="pst-strip" x1="2" y1="39" x2="128" y2="39"/>
+        <g class="pst-op" transform="matrix(-1 0 0 1 130 0)">
+          <g class="pst-guard">
+            <circle cx="30" cy="8" r="4"/>
+            <path d="M30 12 28 24M28 24 22 31 20 38M28 24 35 30 36 38M30 15 37 18 42 16M29 15 24 11 22 6"/>
+            <path class="pst-blade" d="M42 16 61 19"/>
+          </g>
+          <g class="pst-lunge">
+            <circle cx="57" cy="12" r="4"/>
+            <path d="M56 16 50 26M50 26 33 38M50 26 62 29 63 38M56 18 69 17M55 18 46 23 40 26"/>
+            <path class="pst-blade" d="M69 17 99 16"/>
+            <circle class="pst-spark" cx="99" cy="16" r="2.6"/>
+          </g>
         </g>
-        <g class="pst-lunge">
-          <circle cx="42" cy="12" r="4"/>
-          <path d="M41 16 35 26M35 26 18 38M35 26 47 29 48 38M41 18 54 17M40 18 31 23 25 26"/>
-          <path class="pst-blade" d="M54 17 82 15"/>
-        </g>
-        <g class="pst-dummy">
-          <rect x="96" y="6" width="3" height="32" rx="1"/>
-          <circle class="pst-tgt" cx="97.5" cy="15" r="7"/>
-          <circle class="pst-tgt" cx="97.5" cy="15" r="3"/>
+        <g class="pst-me">
+          <g class="pst-guard">
+            <circle cx="30" cy="8" r="4"/>
+            <path d="M30 12 28 24M28 24 22 31 20 38M28 24 35 30 36 38M30 15 37 18 42 16M29 15 24 11 22 6"/>
+            <path class="pst-blade" d="M42 16 62 12"/>
+          </g>
+          <g class="pst-lunge">
+            <circle cx="57" cy="12" r="4"/>
+            <path d="M56 16 50 26M50 26 33 38M50 26 62 29 63 38M56 18 69 17M55 18 46 23 40 26"/>
+            <path class="pst-blade" d="M69 17 99 15"/>
+            <circle class="pst-spark" cx="99" cy="15" r="2.6"/>
+          </g>
         </g>
       </svg>
-      <span class="pst-lights" aria-hidden="true"><i class="pst-r"></i><i class="pst-g"></i></span>
     </button>
-    <span class="pst-txt"><span class="pst-say" id="pstSay" aria-live="polite">en garde. click to lunge</span><span class="pst-n">touches <b id="pstN">00</b></span></span>
+    <div class="pst-box" aria-hidden="true">
+      <div class="pbx-row"><i class="pbx-lamp pbx-r"></i><span class="pbx-cap">pool · to 5</span><i class="pbx-lamp pbx-g"></i></div>
+      <div class="pbx-row pbx-sc"><b class="pbx-n pbx-nr" id="pstA">0</b><span class="pbx-sep">:</span><b class="pbx-n pbx-ng" id="pstB">0</b></div>
+      <div class="pbx-row pbx-who"><span>you</span><span>opp</span></div>
+    </div>
+    <span class="pst-txt"><span class="pst-say" id="pstSay" aria-live="polite">en garde. click to lunge</span><span class="pst-n">bouts <b id="pstW">0</b>W <b id="pstL">0</b>L</span></span>
   </div>
   <button type="button" class="ft-top" id="ftTop">back to top <span aria-hidden="true">↑</span></button>
 </footer>
@@ -1012,6 +1029,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-17-norc"></script>
+<script src="/assets/site.js?v=2026-10-17-bout"></script>
 </body>
 </html>
