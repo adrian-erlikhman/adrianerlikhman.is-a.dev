@@ -702,6 +702,9 @@ the rail and the ⌘K palette follow it.
   hand-scored test records with no false passes (the rule engine, never the
   vision model). Safe Routes: blocks scored by hour, offline, EN/ES, and the
   80% trip named.
+  **The Regime-Aware Portfolio Optimizer card was deleted on 17 Oct** (Adrian: "delete the whole hmm thing"), with
+  its images, its terminal print script, its Ask adrian, ⌘K, terminal and llms.txt entries; the long résumé's More
+  builds line still names it. The note below is history.
   **Fifth card, full width (15 Oct, Adrian: "add one of my impressive coding
   projects... one of the finance ML ones, quant ones"; he picked it over the
   two under-review finance papers, whose repos aren't public): the

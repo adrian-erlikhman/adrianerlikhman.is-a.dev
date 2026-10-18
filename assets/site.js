@@ -195,7 +195,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     "a vc internship working with early-stage b2b and saas companies",
     "an ai summit for 500+ la students, with google deepmind and microsoft on stage",
     "a student panel on ai at the national consortium of stem schools",
-    "a hidden-markov portfolio optimizer for turbulent markets",
     "an ai/ml course now piloting across lausd"
   ];
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){ el.textContent=items[0]; return; }
@@ -587,7 +586,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'in',label:'Open LinkedIn',k:'link',run:()=>ext('https://www.linkedin.com/in/adrian-erlikhman-78a262414')},
     {ic:'↓',label:'Résumé: short, 1 page',k:'file',run:()=>ext(cv('short'))},
     {ic:'↓',label:'Résumé: long, 3 pages',k:'file',run:()=>ext(cv('long'))},
-    {ic:'</>',label:'Repo: Regime-Aware Portfolio Optimizer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer')},
     {ic:'</>',label:'Repo: LSTM Equity Forecaster',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/lstm-equity-forecaster')},
     {ic:'</>',label:'Repo: FinBERT Sentiment Analyzer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/finbert-sentiment-analyzer')},
     {ic:'</>',label:'Repo: Fraud Detection System',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/fraud-detection-system')},
@@ -673,10 +671,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 (function(){
   const cv=document.getElementById('codeview'); if(!cv) return;
   const meta={
-    regime:{file:'regime_optimizer.py',repo:'https://github.com/adrian-erlikhman/regime-aware-portfolio-optimizer',desc:'HMM regime detection → conditional allocation',
-      problem:'A static 60/40 portfolio is blind to whether the market is calm or turbulent.',
-      approach:'Fit a 2-state Gaussian HMM to returns, then de-risk hard in the high-volatility regime.',
-      result:'+4.0% return at roughly half the volatility — Sharpe 0.49 vs −0.05 for static 60/40.'},
     lstm:{file:'forecast.py',repo:'https://github.com/adrian-erlikhman/lstm-equity-forecaster',desc:'Rolling windows + stacked LSTM vs. baseline',
       problem:'Most "LSTM predicts the market" demos never check whether the net beats a trivial model.',
       approach:'Stacked LSTM on rolling windows, benchmarked against linear regression on every run.',
@@ -737,17 +731,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     });
   });
   pick(0);
-})();
-
-/* ================= TERMINAL PRINT — the quant card's output lines appear one at a time when it comes on screen ================= */
-(function(){
-  const out=document.querySelector('.wk-out'); if(!out||!('IntersectionObserver' in window)) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const lines=[...out.querySelectorAll('.ln')]; out.classList.add('typing');
-  const io=new IntersectionObserver(es=>{ if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
-    lines.forEach((l,i)=>setTimeout(()=>{ lines.forEach(x=>x.classList.remove('cur')); l.classList.add('on'); }, 260+i*240));
-  },{threshold:.35});
-  io.observe(out);
 })();
 
 /* ================= MATH RESEARCH NOTES ================= */
@@ -962,14 +945,14 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const print=(html,cls)=>{const d=document.createElement('div');d.className='term-line'+(cls?' '+cls:'');d.innerHTML=html;body.appendChild(d);body.scrollTop=body.scrollHeight;};
   const echo=cmd=>print('<span class="tp">adrian@os:~$</span>'+cmd.replace(/</g,'&lt;'));
   const go=sel=>{const el=document.querySelector(sel); if(el)el.scrollIntoView({behavior:'smooth'});};
-  const REPOS={regime:'regime-aware-portfolio-optimizer',lstm:'lstm-equity-forecaster',finbert:'finbert-sentiment-analyzer',fraud:'fraud-detection-system'};
+  const REPOS={lstm:'lstm-equity-forecaster',finbert:'finbert-sentiment-analyzer',fraud:'fraud-detection-system'};
   const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
     whoami:()=>print("Adrian Erlikhman — 17, Los Angeles. Senior @ LACES. ML research, quant, and data."),
-    ls:()=>print("projects: <b>regime</b> · <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>curated</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open regime</b>  or  <b>read portfolio</b>",'dim'),
-    open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: regime · lstm · finbert · fraud",'dim');},
+    ls:()=>print("projects: <b>lstm</b> · <b>finbert</b> · <b>fraud</b>   papers: <b>curated</b> · <b>portfolio</b> · <b>robustness</b><br>→ e.g. <b>open lstm</b>  or  <b>read portfolio</b>",'dim'),
+    open:a=>{const k=(a||'').toLowerCase(); if(REPOS[k]){print("opening github.com/adrian-erlikhman/"+REPOS[k]+" …");window.open('https://github.com/adrian-erlikhman/'+REPOS[k],'_blank');}else print("no project '"+k+"' — try: lstm · finbert · fraud",'dim');},
     read:a=>{const k=(a||'').toLowerCase(); if(PAPERS[k]){print("opening "+PAPERS[k]+" …");window.open(PAPERS[k],'_blank');}else if(k==='complm'||k==='compllm'){print("CompLLM is a preprint, arXiv forthcoming — jumping to Research.");go('#papers');}else print("no paper '"+k+"' — try: langllm · curated · portfolio · robustness",'dim');},
     goto:a=>{const k=(a||'').toLowerCase(); if(SEC[k]){print("→ "+k);go(SEC[k]);}else print("no section '"+k+"' — try: "+Object.keys(SEC).join(' · '),'dim');},
     cd:a=>CMDS.goto(a),
