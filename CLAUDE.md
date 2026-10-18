@@ -650,7 +650,7 @@ the rail and the ⌘K palette follow it.
   both résumés (the one-pager's line sits after the two 1st places). Link the Devpost winners page once it shows.
   **The Lemma track panel** (`#lemma-track`, `.trk`, a div: a `<section>` picks up the site's section padding) sits
   full width under the card: SEPHacks' own Devpost header as a banner (`img/cases/sephacks-banner.webp`), Winner ·
-  SEPHacks 2026 · USC SEP x LA Tech Week, a two-sentence description, "22 → 0" eval runs that broke a team rule, the
+  SEPHacks 2026 · USC SEP x LA Tech Week, one line on Lemma (no stat: Adrian called the "22 → 0" slop, 17 Oct), the
   track's three required Devpost questions (how does your agent know it is failing / what counts as a failure / what
   guardrails) with one-sentence answers, then Hosted by (USC SEP as text, Tech Week's mark from tech-week.com's
   `logo-white.svg` inked, `img/logos/techweek.svg`; latechweek.com is a parked domain) and Sponsors (AfterQuery,
@@ -659,7 +659,11 @@ the rail and the ⌘K palette follow it.
   named the prize "Continual Failure Detection". The card's links and the Achievements panel point to it.
   **The badge's note** (`.hm-note`): "click here for the live site!" in Shantell Sans (Google Fonts) with a pencil
   arrow that draws in once Selected work is revealed, copied from the Hivemind site's `notes.tsx` (Adrian: "annotate
-  it with the arrows like on the actual hivemind website"). Also in built.py, llms.txt, JSON-LD
+  it with the arrows like on the actual hivemind website").
+  **Copy (17 Oct, Adrian: "a lot of ai sloppity... make the writing more precise"):** the card title is just "Shared
+  memory for a team's AI coding agents."; What, the track answers and the Achievements panel say literally what the
+  product does (saves a correction as a lesson, a team lead approves, agents load it next session). No slogans, no
+  "X's answer is that...", no stat callouts. Also in built.py, llms.txt, JSON-LD
   (VideoObject `#hivemind-film`) and sitemap. **On both résumés since 17 Oct** (his OK), last in the
   one-pager's Competitions (one line, [live] [devpost], no eval numbers) and after eDNAtlas in the long one (two
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
