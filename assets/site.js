@@ -40,30 +40,105 @@ const tb=document.getElementById('topbar');
 if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%';},{passive:true});
 /* year */
 {const yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();}
-/* footer piste: an épée pool bout to 5 against a grey opponent. Each click is one action: you hit, they hit,
-   or both lights go (no right of way in épée, so a double scores for both, except at 4-4, where it's annulled).
+/* footer piste: an épée pool bout to 5 against a grey opponent. Each click plays one action by either fencer:
+   lunge to the chest, wrist, mask or foot, flèche, parry-riposte, stop-hit, beat-lunge, or a double (no right
+   of way in épée, so both score, except at 4-4, where it's annulled). Both fencers are one jointed skeleton
+   (the opponent mirrored at x=130), posed by keyframes. Score and lamps change at the moment of the hit.
    The bout and the W-L record live in localStorage when they can. */
 (function(){
   const P=document.getElementById('piste'),go=document.getElementById('pstGo'),say=document.getElementById('pstSay');
   if(!P||!go) return;
   const $=id=>document.getElementById(id),aEl=$('pstA'),bEl=$('pstB'),wEl=$('pstW'),lEl=$('pstL');
+  const svg=P.querySelector('.pst-svg'),W=130;
+  const fig=k=>{const g=P.querySelector('.pst-'+k);return{g,bd:g.querySelector('.pst-bd'),hd:g.querySelector('.pst-hd'),bl:g.querySelector('.pst-blade'),sp:g.querySelector('.pst-spark'),mx:k==='op'};};
+  const ME=fig('me'),OP=fig('op');
+  /* a pose is 13 joints facing right, ground at y=38, then opacity:
+     head neck hip backKnee backFoot frontKnee frontFoot shoulder elbow hand tip rearElbow rearHand */
+  const J={head:0,neck:1,hip:2,bk:3,bf:4,fk:5,ff:6,sh:7,se:8,hand:9,tip:10,oe:11,oh:12};
+  const mk=(s,o=1)=>s.trim().split(/[\s,]+/).map(Number).concat(o);
+  const ov=(p,c)=>{const q=p.slice();for(const k in c){if(k==='o')q[26]=c.o;else{q[J[k]*2]=c[k][0];q[J[k]*2+1]=c[k][1];}}return q;};
+  const T=(p,dx,dy=0)=>p.map((v,i)=>i===26?v:i%2?v+dy:v+dx);
+  const G=mk('30,8 30,12 28,24 22,31 20,38 35,30 36,38 30,15 37,18 42,16 67,11 24,11 22,6');
+  const EXT=ov(G,{head:[31,8],se:[40,15],hand:[48,14],tip:[76,12]});            // arm first, then the legs
+  const EXTL=ov(G,{head:[31,9],se:[39,19],hand:[46,21],tip:[72,31]});           // arm first, aimed low
+  const LUNGE=mk('57,12 56,16 50,26 41,32 33,38 62,29 64,38 56,18 63,17 69,16 99,15 46,23 40,26');
+  const WRIST=mk('47,11 46,15 41,25 33,32 26,38 51,30 53,38 46,17 52,17 58,17 86,16 37,21 32,22');
+  const MASK=ov(LUNGE,{se:[62,16],hand:[68,14],tip:[96,9]});
+  const FOOT=mk('58,15 56,19 49,27 40,33 32,38 62,30 64,38 56,21 61,24 66,26 92,37 46,25 40,28');
+  const REC=mk('27,9 28,13 27,24 22,31 20,38 35,30 36,38 28,16 34,19 39,18 64,15 22,12 20,7');
+  const REC_ARM=ov(G,{se:[33,20],hand:[37,21],tip:[61,24]});
+  const REC_FOOT=ov(REC,{fk:[32,31],ff:[29,35]});
+  const REC_HEAD=ov(REC,{head:[25,8]});
+  // flèche: extend, fall forward off the front leg, back leg crosses, hit in the air, run past, reset
+  const F1=mk('36,9 35,13 30,24 23,31 21,38 37,30 38,38 35,16 42,15 49,14 77,13 28,14 24,12');
+  const F2=mk('54,12 51,15 44,24 52,28 51,35 41,31 38,38 51,17 58,16 64,15 92,14 45,21 40,23');
+  const F3=mk('63,13 60,17 52,26 61,31 64,37 46,31 40,35 60,19 65,17 71,16 99,15 54,23 49,22');
+  const F4=mk('82,11 81,15 78,26 84,31 88,38 72,31 67,36 81,17 86,21 89,24 115,33 76,20 72,23');
+  const F5=ov(T(F4,18),{o:0}),G0=ov(G,{o:0});
+  // parry-riposte: their lunge falls short, the blade is taken and lifted, the riposte lands while they're still down
+  const LS=T(LUNGE,-6),DEFL=ov(LS,{tip:[89,2]});
+  const PARRY=ov(G,{se:[37,17],hand:[44,17],tip:[66,5]});
+  const RIP=mk('33,8 33,12 30,24 23,31 21,38 37,30 38,38 33,15 42,16 51,17 80,18 26,12 23,8');
+  // stop-hit: they step in with a bent arm, the point meets their hand
+  const ADV=T(G,9),ADV_R=ov(ADV,{se:[42,20],hand:[46,21],tip:[70,24]});
+  const STOP=ov(G,{head:[31,8],se:[40,15],hand:[51,16],tip:[78,16]});
+  // beat: knock their blade down, then lunge
+  const BEAT=ov(G,{se:[37,17],hand:[43,16],tip:[66,17]}),BEATEN=ov(G,{tip:[65,22]});
+  const DBL=T(LUNGE,-13);
+  /* each action: s = scorer's track, o = the other's, [time 0-1, pose]; hit = when the point lands */
+  const lunge=(x,pre,rec)=>({dur:950,hit:.42,s:[[0,G],[.18,pre],[.42,x],[.74,x],[1,G]],o:[[0,G],[.42,G],[.52,rec],[.76,rec],[1,G]]});
+  const A={
+    chest:lunge(LUNGE,EXT,REC),
+    mask:lunge(MASK,EXT,REC_HEAD),
+    foot:lunge(FOOT,EXTL,REC_FOOT),
+    wrist:{dur:850,hit:.36,s:[[0,G],[.14,EXT],[.36,WRIST],[.7,WRIST],[1,G]],o:[[0,G],[.36,G],[.46,REC_ARM],[.74,REC_ARM],[1,G]]},
+    fleche:{dur:1400,hit:.36,s:[[0,G],[.12,F1],[.25,F2],[.36,F3],[.52,F4],[.66,F5],[.67,G0],[.9,G],[1,G]],o:[[0,G],[.36,G],[.46,REC],[.72,REC],[1,G]]},
+    parry:{dur:1250,hit:.54,s:[[0,G],[.3,G],[.4,PARRY],[.54,RIP],[.8,RIP],[1,G]],o:[[0,G],[.14,EXT],[.32,LS],[.4,DEFL],[.8,DEFL],[1,G]]},
+    stop:{dur:1000,hit:.42,s:[[0,G],[.3,G],[.42,STOP],[.74,STOP],[1,G]],o:[[0,G],[.32,ADV],[.42,ADV],[.52,ADV_R],[.78,ADV_R],[1,G]]},
+    beat:{dur:1100,hit:.46,s:[[0,G],[.12,BEAT],[.22,EXT],[.46,LUNGE],[.76,LUNGE],[1,G]],o:[[0,G],[.12,G],[.18,BEATEN],[.46,BEATEN],[.56,REC],[.78,REC],[1,G]]},
+    double:{dur:950,hit:.42,s:[[0,G],[.18,EXT],[.42,DBL],[.74,DBL],[1,G]],o:[[0,G],[.18,EXT],[.42,DBL],[.74,DBL],[1,G]]}
+  };
+  const SAY={
+    chest:[['touché! lunge to the chest','straight lunge. clean'],['their lunge, to your chest','they lunged. you were late']],
+    mask:[['right on the mask','to the mask. bold'],['they hit your mask','to the mask. rude']],
+    foot:[['toe touch!','foot touch. never saw it coming'],['they took your foot','toe touch. watch the foot']],
+    wrist:[['straight to the wrist','wrist touch. surgical'],['they took your wrist','hit on the wrist']],
+    fleche:[['flèche! ran right past','flèche. all gas'],['their flèche. ran you over','flèche. too fast']],
+    parry:[['parry, riposte','parried it. riposte home'],['you got parried. riposte','they parried and riposted']],
+    stop:[['stop-hit to the arm','counter-attack. clean'],['stop-hit on your prep','caught on your prep']],
+    beat:[['beat, then lunge','beat the blade, then in'],['they beat your blade','beat-attack. got you']]
+  };
+  const KINDS=['chest','mask','foot','foot','wrist','fleche','fleche','parry','stop','beat'];
+  const ease=x=>x*x*(3-2*x);
+  const at=(tr,t)=>{let i=1;while(i<tr.length-1&&tr[i][0]<t)i++;const[t0,a]=tr[i-1],[t1,b]=tr[i];
+    const u=t1>t0?ease(Math.min(Math.max((t-t0)/(t1-t0),0),1)):1;return a.map((v,k)=>v+(b[k]-v)*u);};
+  const draw=(F,p)=>{
+    const X=k=>(F.mx?W-p[J[k]*2]:p[J[k]*2]).toFixed(1),Y=k=>p[J[k]*2+1].toFixed(1),pt=k=>X(k)+' '+Y(k);
+    F.bd.setAttribute('d',`M${pt('neck')} ${pt('hip')}M${pt('hip')} ${pt('bk')} ${pt('bf')}M${pt('hip')} ${pt('fk')} ${pt('ff')}M${pt('sh')} ${pt('se')} ${pt('hand')}M${pt('sh')} ${pt('oe')} ${pt('oh')}`);
+    F.hd.setAttribute('cx',X('head'));F.hd.setAttribute('cy',Y('head'));
+    F.bl.setAttribute('d',`M${pt('hand')} ${pt('tip')}`);
+    F.g.style.opacity=p[26];
+  };
+  const spark=(F,p,age)=>{
+    if(age<0||age>320){F.sp.style.opacity=0;return;}
+    const k=age/320;F.sp.setAttribute('cx',F.mx?W-p[20]:p[20]);F.sp.setAttribute('cy',p[21]);
+    F.sp.setAttribute('r',(1.5+k*3).toFixed(2));F.sp.style.opacity=(1-k).toFixed(2);
+  };
+  draw(ME,G);draw(OP,G);
   P.hidden=false;
   let s={a:0,b:0,w:0,l:0}; try{Object.assign(s,JSON.parse(localStorage.getItem('ae_bout'))||{});}catch(e){}
   const TO=5,save=()=>{try{localStorage.setItem('ae_bout',JSON.stringify(s));}catch(e){}};
   const show=()=>{aEl.textContent=s.a;bEl.textContent=s.b;wEl.textContent=s.w;lEl.textContent=s.l;};
   show();
-  const MINE=['touché!','allez!','straight to the wrist','point in line','beat, then lunge','counter-attack. clean.','that was a flick','toe touch','parry, riposte'];
-  const THEIRS=['they hit. stop-hit to the wrist','caught on your prep','they remised. reset','parried. their riposte','you fell short','they took the foot'];
   const pick=(arr,k)=>{let i;do{i=Math.floor(Math.random()*arr.length);}while(arr.length>1&&i===pick[k]);pick[k]=i;return arr[i];};
-  let t,done=s.a>=TO||s.b>=TO;
-  go.addEventListener('click',()=>{
-    if(done){s.a=s.b=0;done=false;save();show();P.classList.remove('me','op');say.textContent='new bout. en garde';return;}
-    const r=Math.random(),me=r<.55,dbl=r>=.87,op=!me&&!dbl;
+  let busy=false,lampT,done=s.a>=TO||s.b>=TO;
+  /* score the touch and light the lamps at the moment the point lands */
+  const land=(kind,side)=>{
     let line;
-    if(dbl&&s.a===TO-1&&s.b===TO-1) line='double at 4-4. annulled, fence on';
-    else if(dbl){s.a++;s.b++;line='double touch. both lights';}
-    else if(me){s.a++;line=pick(MINE,'m');}
-    else{s.b++;line=pick(THEIRS,'t');}
+    if(side==='dbl'&&s.a===TO-1&&s.b===TO-1) line='double at 4-4. annulled, fence on';
+    else if(side==='dbl'){s.a++;s.b++;line='double touch. both lights';}
+    else if(side==='me'){s.a++;line=pick(SAY[kind][0],'m');}
+    else{s.b++;line=pick(SAY[kind][1],'t');}
     if(s.a>=TO||s.b>=TO){
       done=true;
       if(s.a>s.b){s.w++;line=`V${s.a}-${s.b}. bout won`;}
@@ -71,8 +146,33 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     }
     save();show();say.textContent=line;
     P.classList.remove('me','op'); say.classList.remove('pop'); void P.offsetWidth;
-    if(me||dbl) P.classList.add('me'); if(op||dbl) P.classList.add('op'); say.classList.add('pop');
-    clearTimeout(t); t=setTimeout(()=>P.classList.remove('me','op'),dbl?700:560);
+    if(side!=='op') P.classList.add('me'); if(side!=='me') P.classList.add('op'); say.classList.add('pop');
+    clearTimeout(lampT); lampT=setTimeout(()=>P.classList.remove('me','op'),side==='dbl'?800:650);
+  };
+  const play=(kind,side)=>{
+    const r=Math.random();
+    side=side||(r<.55?'me':r<.87?'op':'dbl');
+    kind=side==='dbl'?'double':kind||pick(KINDS,'k');
+    const act=A[kind],sc=side==='op'?OP:ME,ot=sc===ME?OP:ME;
+    svg.appendChild(sc.g);                                             // the scorer is drawn on top
+    const trS=act.s,trO=act.o,both=side==='dbl';
+    if(REDUCED){draw(sc,at(trS,act.hit));draw(ot,at(trO,act.hit));land(kind,side);
+      setTimeout(()=>{draw(ME,G);draw(OP,G);},700);return;}
+    // timers own the score and the end, so a throttled tab can't stall the bout; frames only draw
+    busy=true;const t0=performance.now(),hitMs=act.hit*act.dur;let over=false;
+    setTimeout(()=>land(kind,side),hitMs);
+    setTimeout(()=>{over=true;busy=false;draw(ME,G);draw(OP,G);ME.sp.style.opacity=OP.sp.style.opacity=0;},act.dur);
+    (function step(now){
+      if(over) return;
+      const ms=now-t0,t=Math.min(ms/act.dur,1),pS=at(trS,t),pO=at(trO,t);
+      draw(sc,pS);draw(ot,pO);spark(sc,pS,ms-hitMs);spark(ot,pO,both?ms-hitMs:-1);
+      requestAnimationFrame(step);
+    })(t0);
+  };
+  go.addEventListener('click',()=>{
+    if(busy) return;
+    if(done){s.a=s.b=0;done=false;save();show();P.classList.remove('me','op');say.textContent='new bout. en garde';return;}
+    play();
   });
 })();
 {const top=document.getElementById('ftTop'); if(top) top.addEventListener('click',()=>scrollTo({top:0,behavior:REDUCED?'auto':'smooth'}));}

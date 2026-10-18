@@ -1741,16 +1741,7 @@ footer .ft-c{font-family:var(--mono)}
 .pst-op path,.pst-svg .pst-op circle{stroke:var(--dim)}
 .pst-svg .pst-op .pst-blade{stroke:var(--dim)}
 .pst-svg .pst-spark{stroke:none;fill:#e0453a;opacity:0}
-.pst-svg .pst-op .pst-spark{fill:#2fbf5b}
-.pst-lunge{opacity:0}
-.pst-guard{transform-box:fill-box;transform-origin:50% 100%}
-.piste.me .pst-me .pst-guard,.piste.op .pst-op .pst-guard{opacity:0}
-.piste.me .pst-me .pst-lunge,.piste.op .pst-op .pst-lunge{opacity:1}
-.piste.me.op .pst-lunge{transform:translateX(-14px)} /* a double: both lunge from further out, so they don't collide */
-.piste.me .pst-me .pst-spark,.piste.op .pst-op .pst-spark{animation:pst-spk .5s ease-out}
-.piste.me:not(.op) .pst-op .pst-guard,.piste.op:not(.me) .pst-me .pst-guard{animation:pst-wob .45s ease-out}
-@keyframes pst-wob{0%{transform:rotate(0)}30%{transform:rotate(-10deg)}60%{transform:rotate(4deg)}100%{transform:rotate(0)}}
-@keyframes pst-spk{0%{opacity:1;r:1.5}40%{opacity:1;r:3.4}100%{opacity:0;r:4}}
+.pst-svg .pst-op .pst-spark{fill:#2fbf5b;stroke:none}
 /* the scoring box: a dark machine, left lamp red and right lamp green as on the real thing */
 .pst-box{flex:none;width:100px;padding:5px 7px 4px;border-radius:6px;background:#10161f;border:1px solid #2a3442;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);font-family:var(--mono);user-select:none}
 .pbx-row{display:flex;align-items:center;justify-content:space-between}
@@ -1777,7 +1768,7 @@ footer .ft-c{font-family:var(--mono)}
 .ft-top:hover,.ft-top:focus-visible{color:var(--acc);outline:none}
 .ft-top:hover span,.ft-top:focus-visible span{transform:translateY(-4px)}
 @media(max-width:700px){footer{justify-content:center;text-align:center}.piste{order:-1;width:100%;justify-content:center;flex-wrap:wrap;gap:10px}.pst-txt{min-width:0;flex-basis:100%;text-align:center}}
-@media(prefers-reduced-motion:reduce){.pst-guard,.pst-spark,.pst-say.pop{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.pst-say.pop{animation:none}}
 
 /* ==================== HIVEMIND FILM (17 Oct): the Selected work lead card's player and chapters ==================== */
 .wk-vid{position:relative;aspect-ratio:16/9;background:#0e1420;overflow:hidden}
