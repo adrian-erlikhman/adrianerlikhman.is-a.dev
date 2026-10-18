@@ -1003,24 +1003,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   new IntersectionObserver(es=>es.forEach(en=>{ onScreen=en.isIntersecting; if(onScreen) arm(); else clearTimeout(timer); }),{threshold:.3}).observe(w);
 })();
 
-/* ================= RECEIPTS — a tapped number opens its note (what kind of number, where it comes from) ================= */
-(function(){
-  const tags=document.querySelectorAll('.rc[aria-controls]'); if(!tags.length) return;
-  const noteOf=b=>document.getElementById(b.getAttribute('aria-controls'));
-  const shut=b=>{ b.setAttribute('aria-expanded','false'); const n=noteOf(b); if(n) n.hidden=true; };
-  tags.forEach(b=>b.addEventListener('click',()=>{
-    const open=b.getAttribute('aria-expanded')!=='true', box=b.parentElement;
-    /* one note open per line: close the others in the same paragraph */
-    box.querySelectorAll('.rc[aria-expanded="true"]').forEach(o=>{ if(o!==b) shut(o); });
-    b.setAttribute('aria-expanded',String(open)); const n=noteOf(b); if(n) n.hidden=!open;
-  }));
-  document.addEventListener('keydown',e=>{
-    if(e.key!=='Escape') return;
-    const b=e.target.closest&&(e.target.closest('.rc')||(e.target.closest('.rc-n')&&document.querySelector(`.rc[aria-controls="${e.target.closest('.rc-n').id}"]`)));
-    if(b&&b.getAttribute('aria-expanded')==='true'){ shut(b); b.focus(); }
-  });
-})();
-
 // ASK ADRIAN: click a question, its file's lines appear one by one (the first answers itself)
 (function(){
   const box=document.getElementById('askBox');

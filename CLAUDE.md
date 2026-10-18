@@ -617,8 +617,10 @@ the rail and the ⌘K palette follow it.
   and dropped the six-row "what's here" guide (the nav covers it; `.guide`
   CSS still sits in site.css). Four whole-hero layouts (logo strip, facts
   band, six tiles, full-width name) were mocked up and not taken.
-- **Receipts lost their labels on 17 Oct** (Adrian, of the "scale" superscript: "remove all of these bs
-  things"): the `<sup>` tags are gone and every receipt is one dotted navy underline; the tap notes stay.
+- **Receipts are gone entirely (17 Oct).** First their "scale"/"measured" labels (Adrian: "remove all of these bs
+  things"), then, the same evening, every tap note too ("delete every single one of these... i dont like any of
+  them"): the numbers are plain text, and the `.rc`/`.rc-n` CSS and the RECEIPTS script are deleted. Don't bring
+  back numbers that open notes. The history below is what they were.
 - **Receipts (16 Oct, Adrian picked it from `_mock/feedback.html`):** thirteen key numbers in the
   Research findings and the Selected work cards are `.rc` buttons, underlined by type (`data-t`: m
   measured, s scale, o result, p plan, dashed), with a small sup label; a tap opens a dark note
