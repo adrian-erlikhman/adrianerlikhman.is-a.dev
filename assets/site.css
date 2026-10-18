@@ -1823,22 +1823,51 @@ footer .ft-c{font-family:var(--mono)}
 .aw-t[data-g="0"]{grid-column:span 4;aspect-ratio:.944}
 @media(max-width:700px){.aw-t[data-g="0"]{aspect-ratio:auto}.aw-t[data-g="0"] .aw-tg{font-size:7px}}
 
-/* THE LEMMA TRACK (17 Oct): a full-width panel under the Hivemind card: the track, then its three questions answered */
-.trk{grid-column:1/-1;margin-top:-8px;border:1px solid var(--line-strong);background:var(--panel);padding:24px 28px 26px}
-.trk-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.trk-logo{display:block;width:118px;height:auto}
+/* THE LEMMA TRACK (17 Oct): a full-width panel under the Hivemind card: SEPHacks' banner, the track, its three
+   questions answered, then the hosts' and sponsors' marks */
+.trk{grid-column:1/-1;margin-top:-8px;border:1px solid var(--line-strong);background:var(--panel);overflow:hidden}
+.trk-ban{display:block;background:#2a1a5e}
+.trk-ban img{display:block;width:100%;height:auto;aspect-ratio:1170/156;object-fit:cover}
+.trk-body{padding:22px 28px 22px}
+.trk-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
 .trk-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .trk-win{background:var(--acc);color:var(--acc-ink);padding:3px 7px;font-weight:600;letter-spacing:.12em}
 .trk-t h3{font-family:var(--serif);font-size:1.45rem;line-height:1.2;margin:8px 0 6px;color:var(--ink)}
-.trk-t p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.5}
+.trk-t p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.5;max-width:78ch}
 .trk-stat{text-align:right;padding-left:22px;border-left:1px solid var(--line)}
 .trk-stat b{display:block;font-family:var(--serif);font-size:2rem;line-height:1;color:var(--acc);white-space:nowrap}
 .trk-stat span{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--dim);max-width:13em;margin-left:auto}
 .trk-qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;counter-reset:q}
-.trk-qs li{counter-increment:q;padding-top:20px}
-.trk-q{font-family:var(--serif);font-weight:700;font-size:1.06rem;line-height:1.3;color:var(--ink);margin-bottom:8px}
-.trk-q::before{content:"Q" counter(q);display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--acc);margin-bottom:6px}
+.trk-qs li{counter-increment:q;padding-top:18px}
+.trk-q{font-family:var(--serif);font-weight:700;font-size:1.04rem;line-height:1.3;color:var(--ink);margin-bottom:6px}
+.trk-q::before{content:"Q" counter(q);display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--acc);margin-bottom:5px}
 .trk-qs p{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink)}
 .trk code{font-family:var(--mono);font-size:.84em;padding:1px 5px;border-radius:3px;background:color-mix(in srgb,var(--acc) 8%,transparent);color:var(--acc)}
-@media(max-width:900px){.trk-head{grid-template-columns:auto minmax(0,1fr)}.trk-stat{grid-column:1/-1;text-align:left;padding:14px 0 0;border-left:0;border-top:1px solid var(--line)}.trk-stat span{margin-left:0;max-width:none}.trk-qs{grid-template-columns:minmax(0,1fr);gap:0}}
-@media(max-width:600px){.trk{padding:18px 16px 20px}.trk-head{grid-template-columns:minmax(0,1fr);gap:12px}.trk-logo{width:96px}}
+.trk-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 30px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.trk-lg{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.trk-ll{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.trk-lg img{display:block;height:20px;width:auto;opacity:.8;transition:opacity .2s}
+.trk-lg img.sq{height:24px}
+.trk-lg img.tw{height:30px}
+.trk-lg img.on,.trk-lg img:hover{opacity:1}
+.trk-sep{font-family:var(--serif);font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:var(--ink)}
+@media(max-width:900px){.trk-head{grid-template-columns:minmax(0,1fr)}.trk-stat{text-align:left;padding:14px 0 0;border-left:0;border-top:1px solid var(--line)}.trk-stat span{margin-left:0;max-width:none}.trk-qs{grid-template-columns:minmax(0,1fr);gap:0}}
+@media(max-width:600px){.trk-body{padding:16px 16px 18px}.trk-lg{gap:10px 16px}.trk-lg img{height:17px}.trk-lg img.sq{height:21px}.trk-lg img.tw{height:26px}}
+
+/* the Hivemind badge's hand-drawn note (17 Oct, Adrian: "annotate it with the arrows like on the actual hivemind
+   website so it says click here to go to the live website"): Shantell Sans and a pencil arrow that draws itself in
+   once the card is revealed, as in the Hivemind site's notes.tsx */
+.wk-noted .wk-body{position:relative;padding-top:66px}
+.wk-noted .wk-head{position:relative}
+.hm-note{position:absolute;top:-54px;left:54px;display:flex;align-items:flex-start;gap:2px;color:#b9771a;text-decoration:none;z-index:2}
+.hm-note svg{width:36px;height:28px;flex:none;overflow:visible;margin-top:6px}
+.hm-note path{stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60}
+.hm-note span{font-family:'Shantell Sans',var(--mono);font-weight:500;font-size:15.5px;line-height:1.2;transform:rotate(-2deg);opacity:0;white-space:nowrap}
+.works.in .hm-note .st{animation:hmDraw .6s .5s ease-in-out forwards}
+.works.in .hm-note .hd{animation:hmDraw .25s 1.05s ease-out forwards}
+.works.in .hm-note span{animation:hmIn .5s .3s ease-out forwards}
+@keyframes hmDraw{to{stroke-dashoffset:0}}
+@keyframes hmIn{from{opacity:0;transform:translateY(4px) rotate(-2deg)}to{opacity:1;transform:rotate(-2deg)}}
+.hm-note:hover{color:#8e5a0f}
+@media(prefers-reduced-motion:reduce){.hm-note path{stroke-dashoffset:0}.hm-note span{opacity:1}.works.in .hm-note *{animation:none!important}}
+@media(max-width:600px){.wk-noted .wk-body{padding-top:58px}.hm-note{top:-50px;left:44px}.hm-note span{font-size:14px}}
