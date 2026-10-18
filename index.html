@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-lem">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-trk">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -652,9 +652,33 @@
             <div><dt>Built</dt><dd>With Michael Tarekegn. I built the website and web app, designed the terminal app, and made the film. Next.js, Supabase, Claude Haiku, MCP.</dd></div>
             <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-hmw">Won the Agent Behaviour Monitoring track</button>, judged by Lemma, at SEPHacks 2026. Claude Code passed <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-hm">36 of 36 eval runs</button> with it, 14 of 36 without.<span class="rc-n" id="rc-hmw" data-t="o" hidden><span class="rc-ty">Result</span>SEPHacks 2026, USC&rsquo;s AI hackathon and an official LA Tech Week event, 16&ndash;17 Oct. One of five prizes, among 28 submitted projects; the track is sponsored by Lemma, which builds production monitoring for AI agents, and pays $500. Announced at the closing ceremony on 17 Oct. <a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost</a></span><span class="rc-n" id="rc-hm" data-t="m" hidden><span class="rc-ty">Measured</span>Our eval: a TypeScript service with six team conventions written nowhere in the repo, and 12 tasks that each tempt the agent to break one. Headless Claude Code (Sonnet 5.5), 3 runs per task per condition, graded by regex checks tested on 16 hand-written cases. No memory 14 of 36; 12 unrelated lessons of the same length 15 of 36; Hivemind 36 of 36. Our tasks, one repo, one model.</span></dd></div>
           </dl>
-          <div class="wk-links"><a href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Open Hivemind ↗</a><a href="https://hivemind-q17i.onrender.com/app" target="_blank" rel="noopener">Try the app ↗</a><a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost ↗</a><a href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">YouTube ↗</a></div>
+          <div class="wk-links"><a href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Open Hivemind ↗</a><a href="https://hivemind-q17i.onrender.com/app" target="_blank" rel="noopener">Try the app ↗</a><a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost ↗</a><a href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">YouTube ↗</a><a href="#lemma-track">The Lemma track &darr;</a></div>
         </div>
       </article>
+
+      <!-- THE LEMMA TRACK (17 Oct, Adrian: "add specific stuff on the website about the track"). The three questions are the
+           Devpost form's, required for this track; the answers condense the team's submitted answer and docs/pitch/judge-qa.md
+           in the Hivemind repo. Devpost first called the prize "Continual Failure Detection". 22 -> 0 is the eval's rule
+           violations (14 of 36 no-memory runs passed, so 22 broke a rule; Hivemind 36 of 36). -->
+      <section class="trk" id="lemma-track" aria-labelledby="trk-h">
+        <div class="trk-head">
+          <img class="trk-logo" src="/img/logos/lemma.webp" width="529" height="120" loading="lazy" decoding="async" alt="Lemma">
+          <div class="trk-t">
+            <div class="trk-k"><span class="trk-win">Winner</span>SEPHacks 2026 &middot; one of five prizes &middot; 28 projects &middot; $500</div>
+            <h3 id="trk-h">The Agent Behaviour Monitoring track</h3>
+            <p>Sponsored and judged by Lemma, which builds production monitoring for AI agents (judge: Jerry Zhang). Entrants answered three questions.</p>
+          </div>
+          <div class="trk-stat"><b>22 &rarr; 0</b><span>eval runs that broke a team rule, of 36</span></div>
+        </div>
+        <ol class="trk-qs">
+          <li><div class="trk-q">How does your agent know it is failing?</div>
+            <p>After every edit, a hook tells the agent, inside its own loop, which locked rules govern that file and whether another engineer&rsquo;s agent edited it in the last 10 minutes. <code>hivemind watch</code> re-checks each changed file and shows a broken rule to the engineer in the next pane.</p></li>
+          <li><div class="trk-q">What counts as a failure?</div>
+            <p>Four things, each defined by people, not a model: an engineer correcting the agent; an edit that breaks a locked rule; two agents in one file within 10 minutes; a proposed lesson that contradicts a locked rule. Each correction becomes a lesson, so the same failure doesn&rsquo;t come back.</p></li>
+          <li><div class="trk-q">What guardrails are in place?</div>
+            <p>Agents can only propose lessons; a named lead approves them. Locked rules load first, never lose confidence, and block any lesson that contradicts them. <code>hivemind check --staged</code> fails a commit that breaks one, and <code>hivemind why</code> shows who set a rule and what it has blocked.</p></li>
+        </ol>
+      </section>
 
       <article class="wk" id="case-safejew">
         <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/safejew.webp" alt="" loading="lazy" decoding="async"><span>Incident Map | SafeJew</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">safejew.org</span><span class="pa">/map</span></span></div></div>
@@ -842,7 +866,7 @@
     <div class="aw-d" id="awPanel" aria-live="polite">
       <div class="aw-it" role="tabpanel" id="aw-p16" aria-labelledby="aw-t16"><div class="aw-ix"><span>01 / 17</span><span>Competition</span></div><div class="aw-body">
         <div class="aw-pl">Track winner</div><h3>SEPHacks 2026: Agent Behaviour Monitoring</h3><div class="aw-by">Judged by Lemma &middot; USC SEP &times; LA Tech Week</div><div class="aw-stats"><div><b>1 of 5</b><span>prizes, 28 projects</span></div><div><b>$500</b><span>track prize</span></div><div><b>36 / 36</b><span>eval runs passed</span></div></div>
-        <p>An overnight build at USC&rsquo;s AI hackathon, with Michael Tarekegn. Lemma, which builds production monitoring for AI agents, asked how an agent knows it is failing. Hivemind treats each correction as a failure, turns it into a lesson a lead approves, and gives it to every agent on the team. I built the website and web app, designed the terminal app, and made the launch film.</p><a class="aw-go" href="#case-hivemind">See Hivemind &uarr;</a></div></div>
+        <p>An overnight build at USC&rsquo;s AI hackathon, with Michael Tarekegn. Lemma, which builds production monitoring for AI agents, asked how an agent knows it is failing. Hivemind treats each correction as a failure, turns it into a lesson a lead approves, and gives it to every agent on the team. I built the website and web app, designed the terminal app, and made the launch film.</p><a class="aw-go" href="#lemma-track">The track &uarr;</a></div></div>
       <div class="aw-it" role="tabpanel" id="aw-p0" aria-labelledby="aw-t0"><div class="aw-ix"><span>02 / 17</span><span>Competition</span></div><div class="aw-body">
         <div class="aw-pl">1st place</div><h3>Decode the Ocean</h3><div class="aw-by">Lovable × United Nations · open build competition</div><div class="aw-stats"><div><b>1st</b><span>place</span></div><div><b>16.5M</b><span>DNA sequences indexed</span></div><div><b>1,529</b><span>taxa detected</span></div></div>
         <p>eDNAtlas reads environmental DNA, the cells everything leaves in a litre of seawater, and turns it into a map: one health score and one plain sentence per coastal site, with the evidence a click deeper. Its real-data view loads a published Monterey Bay study (Djurhuus et al., 2020, <i>Nature Communications</i>).</p><a class="aw-go" href="/eDNAtlas/" target="_blank">Open eDNAtlas &nearr;</a></div></div>
@@ -985,6 +1009,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-17-lem"></script>
+<script src="/assets/site.js?v=2026-10-17-trk"></script>
 </body>
 </html>

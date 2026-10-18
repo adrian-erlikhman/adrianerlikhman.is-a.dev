@@ -648,7 +648,13 @@ the rail and the ⌘K palette follow it.
   monitoring for AI agents"); 28 projects submitted. On the card's kicker and Result (receipt `rc-hmw`), a Winner
   tile first in Achievements' Builds row (Lemma's logotype, `img/logos/lemma.webp`, from Devpost's sponsor list;
   that row now holds five tiles on a 20-column grid, the others four), built.py, llms.txt, JSON-LD `award`, and
-  both résumés (the one-pager's line sits after the two 1st places). Link the Devpost winners page once it shows. Also in built.py, llms.txt, JSON-LD
+  both résumés (the one-pager's line sits after the two 1st places). Link the Devpost winners page once it shows.
+  **The Lemma track panel** (`#lemma-track`, `.trk`, 17 Oct, Adrian: "add specific stuff on the website about the
+  track") sits full width under the card: Lemma's logotype, Winner · one of five prizes · 28 projects · $500, the
+  judge (Jerry Zhang, Devpost's judges list), "22 → 0" eval runs that broke a team rule, and the track's three
+  required Devpost questions (how does your agent know it is failing / what counts as a failure / what guardrails)
+  answered from the team's submitted answer and `docs/pitch/judge-qa.md`. Devpost first named the prize "Continual
+  Failure Detection". The card's links and the Achievements panel point to it. Also in built.py, llms.txt, JSON-LD
   (VideoObject `#hivemind-film`) and sitemap. **On both résumés since 17 Oct** (his OK), last in the
   one-pager's Competitions (one line, [live] [devpost], no eval numbers) and after eDNAtlas in the long one (two
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
