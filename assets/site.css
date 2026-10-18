@@ -1686,32 +1686,6 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .aw-list:not(.one) li em{color:var(--acc);font-size:11px}
 @media(max-width:420px){.aw-list{grid-template-columns:1fr}}
 
-/* Receipts (16 Oct): key numbers carry an underline in their type's colour (measured, scale, result, plan);
-   a tap opens a note under the line saying what the number is and where it comes from. site.js RECEIPTS. */
-.rc{font:inherit;font-weight:700;color:var(--acc);background:none;border:0;border-bottom:1.5px solid var(--acc);padding:0;margin:0;cursor:pointer;text-align:inherit;line-height:inherit}
-.rc sup{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.04em;line-height:0;margin-left:2px;color:var(--acc)}
-.rc[data-t="s"]{border-bottom-color:#7a8594}.rc[data-t="s"] sup{color:#5a6472}
-.rc[data-t="o"]{border-bottom-color:var(--up)}.rc[data-t="o"] sup{color:var(--up)}
-.rc[data-t="p"]{border-bottom:1.5px dashed #9a5b13}.rc[data-t="p"] sup{color:#9a5b13}
-.rc:hover,.rc[aria-expanded="true"]{background:color-mix(in srgb,var(--acc) 8%,transparent)}
-.rc:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.rc-n{display:block;margin:10px 0 4px;padding:11px 14px 12px;background:var(--ink);color:#e9edf3;font-family:var(--mono);font-size:12px;font-weight:400;line-height:1.6;letter-spacing:0;text-transform:none;animation:rcIn .22s ease}
-.rc-n[hidden]{display:none}
-.rc-ty{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9db8e0;margin-bottom:3px}
-.rc-n[data-t="o"] .rc-ty{color:#9fd3b2}.rc-n[data-t="p"] .rc-ty{color:#e8b779}
-.rc-n a{color:#9db8e0;border-bottom:1px solid currentColor;margin-left:4px}
-@keyframes rcIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.rc-n{animation:none}}
-.rc-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin:-26px 0 30px;font-family:var(--mono);font-size:11px;color:var(--dim)}
-.rc-key i{font-style:normal;display:inline-flex;align-items:center;gap:6px}
-.rc-key i::before{content:"";width:14px;height:0;border-bottom:2px solid var(--acc)}
-.rc-key i[data-t="s"]::before{border-bottom-color:#7a8594}
-.rc-key i[data-t="o"]::before{border-bottom-color:var(--up)}
-.rc-key i[data-t="p"]::before{border-bottom:2px dashed #9a5b13}
-@media(max-width:600px){.rc-key{margin:-16px 0 24px}.rc-key span{width:100%}}
-.fact .fsrc{font-family:var(--mono);font-size:10px;line-height:1.4;color:var(--acc);margin-top:3px;padding-top:6px;border-top:1px dashed var(--line)}
-@media(max-width:480px){.fact .fsrc{font-size:9.5px}}
-
 /* ===== ASK ADRIAN (16 Oct): the hero's question terminal, in place of the stat box ===== */
 .ask{margin-top:30px;max-width:600px;background:#0f1726;color:#d7e1f0;font-family:var(--mono);font-size:13.5px;border-radius:7px;overflow:hidden;box-shadow:0 18px 34px -24px rgba(10,20,40,.8)}
 .ask-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#18233a}
@@ -1809,9 +1783,6 @@ footer .ft-c{font-family:var(--mono)}
 .wk-facts code{font-family:var(--mono);font-size:.86em;padding:1px 5px;border-radius:3px;background:color-mix(in srgb,var(--acc) 8%,transparent);color:var(--acc)}
 @media(max-width:600px){.wk-ch{grid-template-columns:minmax(0,1fr);padding:10px 10px 12px}.wk-play{left:10px;bottom:10px;padding:8px 12px 8px 10px;font-size:11px}}
 
-/* receipts without labels (17 Oct, Adrian: the "scale"/"measured" tags were noise): one plain dotted underline */
-.rc,.rc[data-t]{border-bottom:1.5px dotted color-mix(in srgb,var(--acc) 55%,transparent)}
-.rc sup{display:none}
 .wk-tlink{margin-left:auto;flex:none;font-family:var(--mono);font-size:11px;color:#9db8e0;padding:3px 9px;border:1px solid #2e3746;border-radius:999px;transition:background .2s,color .2s}
 .wk-tlink:hover,.wk-tlink:focus-visible{background:#1f3a5f;color:#fff;outline:none}
 @media(max-width:600px){.wk-tlink{font-size:10px}#case-hivemind .wk-tname{display:none}}
