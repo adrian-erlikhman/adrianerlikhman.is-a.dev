@@ -47,8 +47,8 @@
 <meta name="twitter:image:alt" content="Adrian Erlikhman, Los Angeles, California: ML/NLP researcher; software, ML, investment and venture intern; Team USA fencer. Behind the text, a photo of him lunging for Team USA at the Pan-American Championships.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-trk">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-17-trk2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -299,7 +299,7 @@
     <a href="#fencing">Fencing</a>
     <a href="#record">Achievements</a>
     <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-10-17-lm" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
+    <a href="resume.pdf?v=2026-10-17-tk" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
     <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
   </div>
   <!-- phones: the same sections as a strip under the bar (hidden above 900px, where .navset shows them) -->
@@ -333,7 +333,7 @@
     <div class="hero-cta">
       <a class="btn solid" href="#work">selected work ↓</a>
       <a class="btn" href="#record">achievements ↓</a>
-      <a class="btn" href="resume.pdf?v=2026-10-17-lm" target="_blank" data-cv-menu>résumé</a>
+      <a class="btn" href="resume.pdf?v=2026-10-17-tk" target="_blank" data-cv-menu>résumé</a>
     </div>
     <!-- AT A GLANCE (15 Oct): Adrian's three facts (the fourth, AIML-LI's summit students, came off at his ask the same day); each links to its section. Keep in step with the R cards, Fencing and Experience. -->
     <!-- ASK ADRIAN (16 Oct; Adrian picked "click a question" of four terminal takes): six plain questions,
@@ -628,7 +628,7 @@
            The film is the 1:20 ad cut (YouTube wmBzH3som4A, the Devpost video), re-encoded from the 4K master to 1080p
            (video/hivemind-ad.mp4, ~13 MB). It plays muted on screen; the button restarts it with sound; the chapter
            times are where each caption starts. Eval numbers are from the Devpost story (12 tasks x 3 runs per condition). -->
-      <article class="wk wk-wide" id="case-hivemind">
+      <article class="wk wk-wide wk-noted" id="case-hivemind">
         <div class="wk-term">
           <div class="wk-tbar"><span class="wk-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="wk-tname" aria-hidden="true">hivemind &mdash; launch film &middot; 1:20</span><a class="wk-tlink" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">hivemind-q17i.onrender.com&nbsp;↗</a></div>
           <div class="wk-vid" id="hmFilm">
@@ -645,40 +645,44 @@
           </ol>
         </div>
         <div class="wk-body">
-          <div class="wk-head"><a class="wk-badge" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener" aria-label="Open Hivemind"><img src="/img/logos/hivemind.svg" width="120" height="120" loading="lazy" decoding="async" alt=""></a><div class="wk-kick">Hivemind<span>&middot;</span>Winner, Lemma agent track<span>&middot;</span>SEPHacks 2026</div></div>
+          <div class="wk-head"><a class="hm-note" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 48 36" fill="none"><path class="st" d="M44 5C30 3 14 11 8 30"/><path class="hd" d="M3 22l5 9 7-6"/></svg><span>click here for the live site!</span></a><a class="wk-badge" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener" aria-label="Open Hivemind"><img src="/img/logos/hivemind.svg" width="120" height="120" loading="lazy" decoding="async" alt=""></a><div class="wk-kick">Hivemind<span>&middot;</span>Winner, Lemma agent track<span>&middot;</span>SEPHacks 2026</div></div>
           <h3 class="wk-title">Shared memory for a team&rsquo;s AI coding agents: correct one, a lead approves, and every agent has the rule.</h3>
           <dl class="wk-facts">
             <div><dt>What</dt><dd>A correction becomes a lesson; once approved, every agent loads it at its next session, in Claude Code, Cursor, Codex and three other tools.</dd></div>
             <div><dt>Built</dt><dd>With Michael Tarekegn. I built the website and web app, designed the terminal app, and made the film. Next.js, Supabase, Claude Haiku, MCP.</dd></div>
-            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-hmw">Won the Agent Behaviour Monitoring track</button>, judged by Lemma, at SEPHacks 2026. Claude Code passed <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-hm">36 of 36 eval runs</button> with it, 14 of 36 without.<span class="rc-n" id="rc-hmw" data-t="o" hidden><span class="rc-ty">Result</span>SEPHacks 2026, USC&rsquo;s AI hackathon and an official LA Tech Week event, 16&ndash;17 Oct. One of five prizes, among 28 submitted projects; the track is sponsored by Lemma, which builds production monitoring for AI agents, and pays $500. Announced at the closing ceremony on 17 Oct. <a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost</a></span><span class="rc-n" id="rc-hm" data-t="m" hidden><span class="rc-ty">Measured</span>Our eval: a TypeScript service with six team conventions written nowhere in the repo, and 12 tasks that each tempt the agent to break one. Headless Claude Code (Sonnet 5.5), 3 runs per task per condition, graded by regex checks tested on 16 hand-written cases. No memory 14 of 36; 12 unrelated lessons of the same length 15 of 36; Hivemind 36 of 36. Our tasks, one repo, one model.</span></dd></div>
+            <div><dt>Result</dt><dd><button type="button" class="rc" data-t="o" aria-expanded="false" aria-controls="rc-hmw">Won the Agent Behaviour Monitoring track</button>, judged by Lemma, at SEPHacks 2026. Claude Code passed <button type="button" class="rc" data-t="m" aria-expanded="false" aria-controls="rc-hm">36 of 36 eval runs</button> with it, 14 of 36 without.<span class="rc-n" id="rc-hmw" data-t="o" hidden><span class="rc-ty">Result</span>SEPHacks 2026, USC&rsquo;s AI hackathon and an official LA Tech Week event, 16&ndash;17 Oct. The track is sponsored and judged by Lemma, which builds production monitoring for AI agents. Announced at the closing ceremony on 17 Oct. <a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost</a></span><span class="rc-n" id="rc-hm" data-t="m" hidden><span class="rc-ty">Measured</span>Our eval: a TypeScript service with six team conventions written nowhere in the repo, and 12 tasks that each tempt the agent to break one. Headless Claude Code (Sonnet 5.5), 3 runs per task per condition, graded by regex checks tested on 16 hand-written cases. No memory 14 of 36; 12 unrelated lessons of the same length 15 of 36; Hivemind 36 of 36. Our tasks, one repo, one model.</span></dd></div>
           </dl>
           <div class="wk-links"><a href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Open Hivemind ↗</a><a href="https://hivemind-q17i.onrender.com/app" target="_blank" rel="noopener">Try the app ↗</a><a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost ↗</a><a href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">YouTube ↗</a><a href="#lemma-track">The Lemma track &darr;</a></div>
         </div>
       </article>
 
-      <!-- THE LEMMA TRACK (17 Oct, Adrian: "add specific stuff on the website about the track"). The three questions are the
+      <!-- THE LEMMA TRACK (17 Oct, Adrian: "add specific stuff on the website about the track"; then: the SEP and Tech Week
+           logos and every sponsor's, no prize money or project count, a concise description). Banner: SEPHacks' Devpost header. The three questions are the
            Devpost form's, required for this track; the answers condense the team's submitted answer and docs/pitch/judge-qa.md
            in the Hivemind repo. Devpost first called the prize "Continual Failure Detection". 22 -> 0 is the eval's rule
            violations (14 of 36 no-memory runs passed, so 22 broke a rule; Hivemind 36 of 36). -->
-      <section class="trk" id="lemma-track" aria-labelledby="trk-h">
-        <div class="trk-head">
-          <img class="trk-logo" src="/img/logos/lemma.webp" width="529" height="120" loading="lazy" decoding="async" alt="Lemma">
-          <div class="trk-t">
-            <div class="trk-k"><span class="trk-win">Winner</span>SEPHacks 2026 &middot; one of five prizes &middot; 28 projects &middot; $500</div>
-            <h3 id="trk-h">The Agent Behaviour Monitoring track</h3>
-            <p>Sponsored and judged by Lemma, which builds production monitoring for AI agents (judge: Jerry Zhang). Entrants answered three questions.</p>
+      <div class="trk" id="lemma-track" role="region" aria-labelledby="trk-h">
+        <a class="trk-ban" href="https://sephacks-2026.devpost.com/" target="_blank" rel="noopener"><img src="/img/cases/sephacks-banner.webp" width="1170" height="156" loading="lazy" decoding="async" alt="SEP Hacks, with the Tech Week mark"></a>
+        <div class="trk-body">
+          <div class="trk-head">
+            <div class="trk-t">
+              <div class="trk-k"><span class="trk-win">Winner</span>SEPHacks 2026 &middot; USC SEP &times; LA Tech Week</div>
+              <h3 id="trk-h">Agent Behaviour Monitoring, Lemma&rsquo;s track</h3>
+              <p>Lemma builds production monitoring for AI agents. Its track asked how an agent knows it is failing; Hivemind&rsquo;s answer is that people define failure, and every correction becomes a rule.</p>
+            </div>
+            <div class="trk-stat"><b>22 &rarr; 0</b><span>eval runs that broke a team rule, of 36</span></div>
           </div>
-          <div class="trk-stat"><b>22 &rarr; 0</b><span>eval runs that broke a team rule, of 36</span></div>
+          <ol class="trk-qs">
+            <li><div class="trk-q">How does your agent know it is failing?</div><p>After every edit, a hook tells it which locked rules cover that file, and <code>hivemind watch</code> flags a broken one.</p></li>
+            <li><div class="trk-q">What counts as a failure?</div><p>What people say: a correction, a broken locked rule, two agents in one file, a lesson that contradicts a rule.</p></li>
+            <li><div class="trk-q">What guardrails are in place?</div><p>Agents only propose; a lead approves. Locked rules can&rsquo;t be overridden, and a pre-commit check blocks a broken one.</p></li>
+          </ol>
+          <div class="trk-logos">
+            <div class="trk-lg"><span class="trk-ll">Hosted by</span><b class="trk-sep">USC SEP</b><img src="/img/logos/techweek.svg" width="814" height="513" loading="lazy" decoding="async" alt="LA Tech Week" class="tw"></div>
+            <div class="trk-lg"><span class="trk-ll">Sponsors</span><img src="/img/logos/afterquery.webp" width="117" height="96" loading="lazy" decoding="async" alt="AfterQuery" class="sq"><img src="/img/logos/sideshift.webp" width="559" height="96" loading="lazy" decoding="async" alt="SideShift"><img src="/img/logos/lemma.webp" width="529" height="120" loading="lazy" decoding="async" alt="Lemma" class="on"><img src="/img/logos/outcast.webp" width="195" height="96" loading="lazy" decoding="async" alt="Outcast Ventures" class="sq"><img src="/img/logos/figma.webp" width="64" height="96" loading="lazy" decoding="async" alt="Figma" class="sq"></div>
+          </div>
         </div>
-        <ol class="trk-qs">
-          <li><div class="trk-q">How does your agent know it is failing?</div>
-            <p>After every edit, a hook tells the agent, inside its own loop, which locked rules govern that file and whether another engineer&rsquo;s agent edited it in the last 10 minutes. <code>hivemind watch</code> re-checks each changed file and shows a broken rule to the engineer in the next pane.</p></li>
-          <li><div class="trk-q">What counts as a failure?</div>
-            <p>Four things, each defined by people, not a model: an engineer correcting the agent; an edit that breaks a locked rule; two agents in one file within 10 minutes; a proposed lesson that contradicts a locked rule. Each correction becomes a lesson, so the same failure doesn&rsquo;t come back.</p></li>
-          <li><div class="trk-q">What guardrails are in place?</div>
-            <p>Agents can only propose lessons; a named lead approves them. Locked rules load first, never lose confidence, and block any lesson that contradicts them. <code>hivemind check --staged</code> fails a commit that breaks one, and <code>hivemind why</code> shows who set a rule and what it has blocked.</p></li>
-        </ol>
-      </section>
+      </div>
 
       <article class="wk" id="case-safejew">
         <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/safejew.webp" alt="" loading="lazy" decoding="async"><span>Incident Map | SafeJew</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">safejew.org</span><span class="pa">/map</span></span></div></div>
@@ -865,7 +869,7 @@
     </div>
     <div class="aw-d" id="awPanel" aria-live="polite">
       <div class="aw-it" role="tabpanel" id="aw-p16" aria-labelledby="aw-t16"><div class="aw-ix"><span>01 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">Track winner</div><h3>SEPHacks 2026: Agent Behaviour Monitoring</h3><div class="aw-by">Judged by Lemma &middot; USC SEP &times; LA Tech Week</div><div class="aw-stats"><div><b>1 of 5</b><span>prizes, 28 projects</span></div><div><b>$500</b><span>track prize</span></div><div><b>36 / 36</b><span>eval runs passed</span></div></div>
+        <div class="aw-pl">Track winner</div><h3>SEPHacks 2026: Agent Behaviour Monitoring</h3><div class="aw-by">Judged by Lemma &middot; USC SEP &times; LA Tech Week</div><div class="aw-stats"><div><b>Winner</b><span>Lemma&rsquo;s track</span></div><div><b>36 / 36</b><span>eval runs passed</span></div><div><b>6</b><span>agent tools supported</span></div></div>
         <p>An overnight build at USC&rsquo;s AI hackathon, with Michael Tarekegn. Lemma, which builds production monitoring for AI agents, asked how an agent knows it is failing. Hivemind treats each correction as a failure, turns it into a lesson a lead approves, and gives it to every agent on the team. I built the website and web app, designed the terminal app, and made the launch film.</p><a class="aw-go" href="#lemma-track">The track &uarr;</a></div></div>
       <div class="aw-it" role="tabpanel" id="aw-p0" aria-labelledby="aw-t0"><div class="aw-ix"><span>02 / 17</span><span>Competition</span></div><div class="aw-body">
         <div class="aw-pl">1st place</div><h3>Decode the Ocean</h3><div class="aw-by">Lovable × United Nations · open build competition</div><div class="aw-stats"><div><b>1st</b><span>place</span></div><div><b>16.5M</b><span>DNA sequences indexed</span></div><div><b>1,529</b><span>taxa detected</span></div></div>
@@ -933,7 +937,7 @@
         <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag><img class="cl" src="/img/logos/github.svg" width="14" height="14" loading="lazy" decoding="async" alt="">GitHub</a>
         <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" data-mag><img class="cl" src="/img/logos/linkedin.webp" width="14" height="14" loading="lazy" decoding="async" alt="">LinkedIn</a>
         <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag><img class="cl" src="/img/logos/usafencing.webp" width="15" height="14" loading="lazy" decoding="async" alt="">Fencing</a>
-        <a href="resume.pdf?v=2026-10-17-lm" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
+        <a href="resume.pdf?v=2026-10-17-tk" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
       </div>
     </div>
   </div>
@@ -974,10 +978,10 @@
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">résumé <span>// pick a length</span></div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10-17-lm" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-10-17-tk" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">1 page</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10-17-lm" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-10-17-tk" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">3 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">typeset in LaTeX · source ↗</a>
@@ -1009,6 +1013,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-17-trk"></script>
+<script src="/assets/site.js?v=2026-10-17-trk2"></script>
 </body>
 </html>
