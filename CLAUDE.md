@@ -308,9 +308,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-17-hm"` should print 5
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-17-lm"` should print 5
   (the /demos/ three went with that page). Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-17-hm`.
+  used. Currently `?v=2026-10-17-lm`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -641,8 +641,14 @@ the rail and the ⌘K palette follow it.
   `img/cases/hivemind-ad.webp` (frame at 29 s), both `?v=2026-10-17`. It plays muted on screen; "Watch with sound"
   and six chapter buttons (caption start times) restart it with sound (site.js HIVEMIND FILM). Adrian's part, per
   the repo split: website, web app, the terminal app's design, the film; Michael's: engine, hooks, eval. Result is
-  the Devpost eval (36/36 vs 14/36, placebo 15/36), with its limits in the receipt. Results weren't out on 17 Oct:
-  add any prize to the kicker, llms.txt and Achievements once announced. Also in built.py, llms.txt, JSON-LD
+  the Devpost eval (36/36 vs 14/36, placebo 15/36), with its limits in the receipt.
+  **Won the Agent Behaviour Monitoring track** (Adrian, 17 Oct evening: "we won the lemma hack track for agents"),
+  announced in person at the closing ceremony; no email or Devpost winner badge yet. From Devpost: one of five
+  prizes ($3,300 total), this one $500 cash, one winner, sponsored and judged by Lemma (uselemma.ai, "production
+  monitoring for AI agents"); 28 projects submitted. On the card's kicker and Result (receipt `rc-hmw`), a Winner
+  tile first in Achievements' Builds row (Lemma's logotype, `img/logos/lemma.webp`, from Devpost's sponsor list;
+  that row now holds five tiles on a 20-column grid, the others four), built.py, llms.txt, JSON-LD `award`, and
+  both résumés (the one-pager's line sits after the two 1st places). Link the Devpost winners page once it shows. Also in built.py, llms.txt, JSON-LD
   (VideoObject `#hivemind-film`) and sitemap. **On both résumés since 17 Oct** (his OK), last in the
   one-pager's Competitions (one line, [live] [devpost], no eval numbers) and after eDNAtlas in the long one (two
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
@@ -717,7 +723,7 @@ the rail and the ⌘K palette follow it.
   the site says "Fjor Venture Capital", which is Adrian's wording; leave it
   unless he asks. **Achievements is a logo wall** (15 Oct; Adrian picked E of
   six mockups in `_mock/ach.html`, then "make sure everything there is really
-  tuff"): twelve tiles (`#awWall`, `.aw-t`), greyed marks that colour on
+  tuff"): twelve tiles (`#awWall`, `.aw-t`; seventeen since 17 Oct), greyed marks that colour on
   hover, and one panel at a time beside them (`#awPanel`, `.aw-it`) that steps
   every 6 s while on screen until touched (`site.js` ACHIEVEMENTS WALL);
   without JS every panel shows, stacked. **Rule: nothing on the wall repeats

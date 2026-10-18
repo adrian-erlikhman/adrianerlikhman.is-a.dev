@@ -1815,3 +1815,10 @@ footer .ft-c{font-family:var(--mono)}
 .wk-tlink{margin-left:auto;flex:none;font-family:var(--mono);font-size:11px;color:#9db8e0;padding:3px 9px;border:1px solid #2e3746;border-radius:999px;transition:background .2s,color .2s}
 .wk-tlink:hover,.wk-tlink:focus-visible{background:#1f3a5f;color:#fff;outline:none}
 @media(max-width:600px){.wk-tlink{font-size:10px}#case-hivemind .wk-tname{display:none}}
+
+/* Achievements wall (17 Oct): the Builds & competitions row holds five tiles (SEPHacks joined it), the others four.
+   A 20-column grid: row-0 tiles span 4, the rest span 5; row-0 tiles are narrower, so their aspect keeps the height. */
+.aw,.aw[class]{grid-template-columns:repeat(20,minmax(0,1fr))}
+.aw-t{grid-column:span 5}
+.aw-t[data-g="0"]{grid-column:span 4;aspect-ratio:.944}
+@media(max-width:700px){.aw-t[data-g="0"]{aspect-ratio:auto}.aw-t[data-g="0"] .aw-tg{font-size:7px}}
