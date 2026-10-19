@@ -11,6 +11,14 @@
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/fencing-1.jpg</image:loc><image:title>Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships</image:title></image:image>
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/img/ycs/yc-sign.jpg</image:loc><image:title>Adrian Erlikhman at Y Combinator Startup School 2026</image:title></image:image>
     <video:video>
+      <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/cases/monte-film.webp</video:thumbnail_loc>
+      <video:title>Monte — the right credit card at the register</video:title>
+      <video:description>The launch film for Monte, built by Adrian Erlikhman and Michael Tarekegn at ACM TrojanHacks 2026, 1st place in the Finance track.</video:description>
+      <video:content_loc>https://adrianerlikhman.is-a.dev/video/monte-film.mp4</video:content_loc>
+      <video:duration>77</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
       <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/cases/hivemind-ad.webp</video:thumbnail_loc>
       <video:title>Hivemind — shared memory for a team's AI coding agents</video:title>
       <video:description>The launch film for Hivemind, built by Adrian Erlikhman and Michael Tarekegn for SEPHacks 2026.</video:description>

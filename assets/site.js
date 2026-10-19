@@ -433,6 +433,137 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   }),{rootMargin:'200px 0px'}).observe(v);
 })();
 
+/* MONTE TAP (18 Oct): the tap-to-pay demo on the Monte card. The visitor moves every step; nothing is timed (Adrian, 18 Oct).
+   The numbers are the Monte engine's own tap() for Jordan, one of its synthetic people (Freedom Unlimited, Amex Gold, and an
+   Apple Card carrying $2,800), with his 18 October purchases counted against the caps; baked on 18 Oct from
+   michae6345-crypto/monte. Re-bake rather than editing them by hand. */
+(function(){
+  const root=document.getElementById('mtTap'); if(!root) return;
+  const NAME={amex_gold:'Amex Gold',chase_freedom_unlimited:'Freedom Unlimited',apple_card:'Apple Card'};
+  const WALLET=['chase_freedom_unlimited','amex_gold','apple_card'],BLOCKED={apple_card:'$2,800 balance'},HISTORY=18;
+  const STORES=[
+    {m:'Trader Joe’s',c:'groceries',a:64.20,mcc:'5411',r:[['amex_gold',2.57,'4×'],['apple_card',1.28,'2×'],['chase_freedom_unlimited',0.96,'1.5×']]},
+    {m:'Sweetgreen',c:'dining',a:16.50,mcc:'5812',r:[['amex_gold',0.66,'4×'],['chase_freedom_unlimited',0.49,'3×'],['apple_card',0.33,'2×']]},
+    {m:'Uber',c:'rideshare',a:22.40,mcc:'4121',r:[['apple_card',0.67,'3×'],['chase_freedom_unlimited',0.34,'1.5×'],['amex_gold',0.22,'1×']]},
+    {m:'Mobil',c:'gas',a:52.00,mcc:'5541',r:[['apple_card',1.56,'3×'],['chase_freedom_unlimited',0.78,'1.5×'],['amex_gold',0.52,'1×']]}
+  ];
+  const STEPS=[['reader sends the store code','r'],['opens your wallet','l'],['counts this month’s caps','r'],['ranks every card','l'],['pays with the winner','r']];
+  const $=s=>root.querySelector(s);
+  const dev=$('.mt-dev'),reader=$('.mt-reader'),leds=[...root.querySelectorAll('.mt-leds i')],rm=$('.mt-rm'),ra=$('.mt-ra'),rt=$('.mt-rt');
+  const mc=$('.mt-mc'),cimg=$('.mt-card img'),pill=$('.mt-pill'),ico=$('.mt-ico'),stt=$('.mt-stt'),peek=$('.mt-peek');
+  const L=$('.mt-l'),R=$('.mt-r'),storesEl=$('.mt-stores'),go=document.getElementById('mtGo'),bk=document.getElementById('mtBack');
+  const bars=[...root.querySelectorAll('.mt-bar button')];
+  const img=id=>'/img/monte/'+id+'.webp';
+  const usd=n=>'$'+n.toFixed(2);
+  const ARR='<svg class="mt-arr" viewBox="0 0 48 36" aria-hidden="true"><path d="M2 17c9-7 22 8 40 2"/><path d="M36 13l7 6-8 4"/></svg>';
+  const HOLD='<svg viewBox="0 0 48 48" aria-hidden="true"><g class="mt-hold"><rect x="15" y="20" width="18" height="26" rx="4"/><path d="M17 13a10 10 0 0 1 14 0"/><path d="M12 8a17 17 0 0 1 24 0"/></g></svg>';
+  const CHECK='<svg class="mt-chk" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="23"/><path d="M15 27l7.5 7.5L38 19"/></svg>';
+  let si=0,phase=-1,tick=0,timer=0,shown='';
+
+  storesEl.innerHTML=STORES.map((s,k)=>'<button type="button" data-i="'+k+'">'+s.m+'</button>').join('');
+  const S=()=>STORES[si];
+  const pickOf=s=>s.r.find(x=>!BLOCKED[x[0]]);
+
+  function body(k){
+    const s=S(),p=pickOf(s),max=s.r[0][1];
+    if(k===0) return '<span><span class="mt-chip k">'+s.mcc+'</span> → <span class="mt-chip">'+s.c+'</span><span class="mt-chip">'+usd(s.a)+'</span></span>';
+    if(k===1) return '<span class="mt-cards">'+WALLET.map(id=>'<span class="'+(BLOCKED[id]?'off':'ok')+'"><img src="'+img(id)+'" alt="'+NAME[id]+'">'+(BLOCKED[id]?'✕ balance':'✓')+'</span>').join('')+'</span>';
+    if(k===2) return '<span class="mt-big">'+HISTORY+'</span><span>purchases this month, replayed</span>';
+    if(k===3) return '<span class="mt-rank">'+s.r.map((x,i)=>{const cls=x[0]===p[0]?'win':BLOCKED[x[0]]?'blk':'';
+      const nm=BLOCKED[x[0]]?'<s>'+NAME[x[0]]+'</s>':NAME[x[0]];
+      return '<div class="'+cls+'"><span>'+nm+'</span><b>'+usd(x[1])+'</b><em><i style="--w:'+Math.round(x[1]/max*100)+'%;animation-delay:'+(.2+i*.3)+'s"></i></em></div>';}).join('')+'</span>';
+    const skipped=BLOCKED[s.r[0][0]]?'<span>skipped '+NAME[s.r[0][0]]+': '+BLOCKED[s.r[0][0]]+'</span>':'';
+    return '<span class="mt-big mt-gain">+'+usd(p[1])+'</span><span>'+NAME[p[0]]+' · '+p[2]+'</span>'+skipped;
+  }
+  function notes(){
+    const html={l:'',r:''};
+    STEPS.forEach(([t,side],k)=>{
+      if(phase<k&&!(phase>=5)) return;
+      const open=k===phase||(phase>=5&&k===4);
+      html[side]+=open
+        ?'<div class="mt-n"><div class="mt-nt"><div class="mt-nh"><small>0'+(k+1)+'</small>'+t+'</div><div class="mt-nv">'+body(k)+'</div></div>'+ARR+'</div>'
+        :'<button type="button" class="mt-done" data-k="'+k+'"><b>✓</b>'+t+'</button>';
+    });
+    if(phase<0) html.r='<div class="mt-n"><div class="mt-nt"><div class="mt-nh">tap to pay, step by step</div><div class="mt-nv"><span>Jordan at '+S().m+', '+usd(S().a)+'</span></div></div>'+ARR+'</div>';
+    const key=si+':'+phase;
+    if(key!==shown){ L.innerHTML=html.l; R.innerHTML=html.r; shown=key; }
+  }
+  function phone(){
+    const s=S(),p=pickOf(s),settled=phase>=4;
+    const top=settled?p[0]:(phase>=1&&phase<=3?WALLET[tick%WALLET.length]:'monte');
+    const cur=mc.hidden?cimg.dataset.id:'monte';
+    if(top!==cur){
+      const el=top==='monte'?mc:cimg;
+      mc.hidden=top!=='monte'; cimg.hidden=top==='monte';
+      if(top!=='monte'){ cimg.src=img(top); cimg.dataset.id=top; }
+      el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip');
+    }
+    pill.hidden=!settled; if(settled) pill.textContent='+'+usd(p[1])+' rewards';
+    const st=phase>=5?'done':phase>=0?'busy':'hold';
+    if(ico.dataset.st!==st){ ico.dataset.st=st; ico.innerHTML=st==='done'?CHECK:st==='busy'?'<span class="mt-spin"></span>':HOLD; }
+    stt.textContent=phase>=5?'Done':phase===4?NAME[p[0]]:phase>=0?'Choosing a card':'Hold Near Reader';
+    const rest=WALLET.filter(id=>!(settled&&id===p[0]));
+    peek.innerHTML=rest.map(id=>'<img src="'+img(id)+'" alt="">').join('');
+  }
+  function render(){
+    const s=S(),tapped=phase>=0,paid=phase>=5;
+    [...storesEl.children].forEach((b,k)=>b.classList.toggle('on',k===si));
+    reader.classList.toggle('on',tapped&&!paid); reader.classList.toggle('ok',paid);
+    const lit=paid?4:tapped?Math.min(4,phase+1):0; leds.forEach((l,k)=>l.classList.toggle('on',k<lit));
+    rm.textContent=s.m; ra.textContent=paid?'Approved':usd(s.a); rt.textContent=paid?usd(s.a):tapped?'Processing… hold card':'Tap, insert or swipe';
+    dev.classList.toggle('tapped',tapped&&!paid); dev.classList.toggle('paid',paid); dev.classList.toggle('busy',phase>=0&&phase<=3);
+    root.classList.toggle('mt-idle',phase<0);
+    go.querySelector('span').textContent=phase<0?'Tap to pay':paid?'Tap again':phase===4?'Pay →':'Next →';
+    bk.disabled=phase<=0;
+    bars.forEach((b,k)=>{ b.classList.toggle('done',paid||phase>k); b.classList.toggle('now',phase===k); });
+    phone(); notes();
+    clearInterval(timer);
+    if(phase>=1&&phase<=3&&!REDUCED) timer=setInterval(()=>{ tick++; phone(); },700);
+  }
+  function beep(){
+    try{ const C=window.AudioContext||window.webkitAudioContext,ctx=new C();
+      [0,.14].forEach(at=>{ const o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime+at;
+        o.frequency.value=1760; g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.06,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.11);
+        o.connect(g).connect(ctx.destination); o.start(t); o.stop(t+.12); });
+      setTimeout(()=>ctx.close(),600); }catch(e){}
+  }
+  const set=k=>{ const was=phase; phase=k; render(); if(phase>=5&&was<5) beep(); };
+  go.addEventListener('click',()=>set(phase<0||phase>=5?0:phase+1));
+  bk.addEventListener('click',()=>{ if(phase>0) set(phase-1); });
+  bars.forEach(b=>b.addEventListener('click',()=>set(+b.dataset.k)));
+  storesEl.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; si=+b.dataset.i; set(-1); });
+  [L,R].forEach(n=>n.addEventListener('click',e=>{ const b=e.target.closest('.mt-done'); if(b) set(+b.dataset.k); }));
+  root.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){ e.preventDefault(); set(phase<0||phase>=5?0:phase+1); }
+    else if(e.key==='ArrowLeft'&&phase>0){ e.preventDefault(); set(phase-1); }
+  });
+  render();
+})();
+
+/* Monte's tabs: the tap demo or the launch film. The film loads only when its tab opens, plays muted from the start, and
+   "watch with sound" or a chapter restarts it with sound and controls. */
+(function(){
+  const tabs=[document.getElementById('mtTabTap'),document.getElementById('mtTabFilm')]; if(!tabs[0]||!tabs[1]) return;
+  const views=[document.getElementById('mtTap'),document.getElementById('mtFilmBox')];
+  const box=document.getElementById('mtFilm'),v=box.querySelector('video'),btn=document.getElementById('mtPlay'),chs=[...document.querySelectorAll('#mtCh button')];
+  let loaded=false;
+  const load=()=>{ if(!loaded){ v.src=v.dataset.src; loaded=true; } };
+  const play=()=>{ const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+  const withSound=t=>{ load(); box.classList.add('sound'); v.muted=false; v.controls=true;
+    const go=()=>{ v.currentTime=t; play(); };
+    if(v.readyState>=1) go(); else v.addEventListener('loadedmetadata',go,{once:true}); };
+  const pick=k=>{
+    tabs.forEach((t,i)=>{ t.setAttribute('aria-selected',i===k); t.tabIndex=i===k?0:-1; views[i].hidden=i!==k; });
+    if(k===1){ load(); if(!REDUCED&&!(navigator.connection&&navigator.connection.saveData)&&v.muted) play(); } else if(loaded) v.pause();
+  };
+  tabs.forEach((t,i)=>{ t.addEventListener('click',()=>pick(i));
+    t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ e.preventDefault(); const k=1-i; pick(k); tabs[k].focus(); } }); });
+  btn.addEventListener('click',()=>withSound(0));
+  chs.forEach(b=>b.addEventListener('click',()=>withSound(+b.dataset.t)));
+  v.addEventListener('timeupdate',()=>{ let k=0; chs.forEach((b,i)=>{ if(v.currentTime>=+b.dataset.t-.05) k=i; });
+    chs.forEach((b,i)=>b.classList.toggle('on',i===k)); });
+})();
+
 /* timeline: spine fills + nodes ignite as you scroll through Experience */
 (function(){
   const tl=document.querySelector('.timeline'); if(!tl) return;
