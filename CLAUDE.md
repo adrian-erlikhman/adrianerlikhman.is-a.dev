@@ -671,6 +671,15 @@ the rail and the ⌘K palette follow it.
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
   long one lost Citadel's second bullet (what Terminal is), "(Andrew Ng" from the DL Specialization, and a few
   words in Citadel, YC, More builds and JSU. Both résumés now have no slack at all.
+- **Selected work is a node canvas of cover tiles** (18 Oct, Adrian: the cards were "way too big... minimize that shit
+  so people can choose to open each ones", "go to michelle lius portfolio and emulate that" (liumichelle.com, the UCLA
+  product designer: big rounded cover tiles with a "Name · year" pill), "but connect it with the lines like in the
+  videos i made"). Six tiles (`#wkCanvas`, `.wk-node`/`.wk-tile`) on the films' dotted canvas, each the project's own
+  screen blurred until hover, its mark in a frosted disc, a result tag, a pill and a one-line caption; site.js WORK
+  CANVAS draws rounded connector wires between the tiles' ports (row to row through the gutters), with navy pulses
+  once seen. A tile opens its full card in a panel (`.wk-x`, `#x-<key>`) under its row, one at a time, with a close
+  button; links to `#case-…`/`#lemma-track` open the right panel first; without JS every card shows. Narrow cards open
+  as rows (media left). Monte's panel is light and dotted too (Adrian: "make the background not a slop color").
 - **Monte sits second in Selected work** (18 Oct, Adrian: "WE WON... integrate this into my website in a really cool
   way", "be sure to add the apple pay tap demo as one of the main features"): **1st place, Finance track, ACM
   TrojanHacks 2026** (LA Tech Week), with Michael Tarekegn, announced in person; no email or Devpost badge yet, so
