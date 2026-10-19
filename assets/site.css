@@ -2036,6 +2036,9 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 .wk-x .wk:not(.wk-wide)>.wk-bar{grid-area:bar}
 .wk-x .wk:not(.wk-wide)>.wk-media{grid-area:media;border-bottom:0;aspect-ratio:auto}
 .wk-x .wk:not(.wk-wide)>.wk-media img{height:100%;object-fit:cover}
+.wk-x .wk:not(.wk-wide)>.wk-logos img{height:22px;width:auto;max-width:100%;object-fit:contain}
+.wk-x .wk:not(.wk-wide)>.wk-logos img.sq{height:28px}
+@media(max-width:600px){.wk-x .wk:not(.wk-wide)>.wk-logos img{height:18px}.wk-x .wk:not(.wk-wide)>.wk-logos img.sq{height:24px}}
 .wk-x .wk:not(.wk-wide)>.wk-body{grid-area:body;border-left:1px solid var(--line-strong)}
 .wk-x .trk{margin-top:0}
 @media(max-width:900px){
