@@ -2093,3 +2093,9 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 #case-monte .wk-ch button.on{background:#e4e7ec;color:#15171c}
 #case-monte .wk-ch button.on b{color:#b9771a}
 @media(min-width:901px){.wk-x .wk:not(.wk-wide) .wk-head{margin-top:0;align-items:center}.wk-x .wk:not(.wk-wide) .wk-head .wk-kick{margin-top:0}}
+
+/* the tap demo's auto-play timer (18 Oct): the current step's bar fills over its hold */
+.mt-bar button.now.run::before{background:linear-gradient(#e09a2b,#e09a2b) 0 0/0% 100% no-repeat #dde1e7;animation:mtFill var(--d,3s) linear forwards}
+@keyframes mtFill{to{background-size:100% 100%}}
+.mt-auto{font-size:9px;letter-spacing:-1px}
+.mt-auto.on{color:#15171c}
