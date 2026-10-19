@@ -564,88 +564,102 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     chs.forEach((b,i)=>b.classList.toggle('on',i===k)); });
 })();
 
-/* WORK CANVAS (18 Oct): Selected work as tiles on a node canvas. Each tile opens its full card in a panel under its row (one
-   at a time); the wires between the tiles' ports are redrawn whenever the canvas changes size. Links to #case-… or
-   #lemma-track elsewhere on the page open the right card first. */
+/* WORK CANVAS (18 Oct, second take): six staggered tiles joined down the middle by connector wires; a tile opens its full
+   card in a popup that closes with Esc, the Close button or a click outside. Links to #case-… or #lemma-track elsewhere
+   on the page open the right popup. Without JS the cards sit in the page under the tiles. */
 (function(){
   const cv=document.getElementById('wkCanvas'); if(!cv) return;
   const svg=cv.querySelector('.wk-wires'),nodes=[...cv.querySelectorAll('.wk-node')],xs=[...cv.querySelectorAll('.wk-x')];
   const NS='http://www.w3.org/2000/svg';
-  cv.classList.add('armed'); xs.forEach(x=>{ x.hidden=true; });
-  let open=null,state=0,raf=0;
-  const cols=()=>getComputedStyle(cv).gridTemplateColumns.split(' ').filter(Boolean).length;
-  const place=(x,k)=>{ const i=nodes.findIndex(n=>n.dataset.k===k),c=cols(),end=Math.min(nodes.length-1,Math.floor(i/c)*c+c-1); nodes[end].after(x); };
-  function show(k,scrollTo){
-    open=k;
+  /* the popup */
+  const modal=document.createElement('div');
+  modal.className='wk-modal'; modal.hidden=true; modal.setAttribute('role','dialog'); modal.setAttribute('aria-modal','true');
+  modal.innerHTML='<button type="button" class="wk-mclose"><span aria-hidden="true">&times;</span>Close<kbd aria-hidden="true">esc</kbd></button><div class="wk-mbox"></div>';
+  const box=modal.querySelector('.wk-mbox'),closeBtn=modal.querySelector('.wk-mclose');
+  xs.forEach(x=>{ x.hidden=true; box.appendChild(x); });
+  document.body.appendChild(modal);
+  cv.classList.add('armed');
+  const tileOf=k=>cv.querySelector('.wk-node[data-k="'+k+'"] .wk-tile');
+  const nameOf=k=>cv.querySelector('.wk-node[data-k="'+k+'"] .wk-pill b').textContent;
+  const keyOf=id=>{ if(!id) return null; const el=document.getElementById(id),x=el&&el.closest('.wk-x'); return x?x.dataset.k:null; };
+  let open=null,back=null,hideT=0;
+  function show(k,target){
+    clearTimeout(hideT); open=k;
     xs.forEach(x=>{ x.hidden=x.dataset.k!==k; });
-    nodes.forEach(n=>n.querySelector('.wk-tile').setAttribute('aria-expanded',n.dataset.k===k));
-    if(k){ const x=document.getElementById('x-'+k); place(x,k); x.classList.remove('in'); void x.offsetWidth; x.classList.add('in');
-      if(scrollTo) (scrollTo===true?x:scrollTo).scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'}); }
-    draw();
+    const x=document.getElementById('x-'+k); x.classList.remove('in'); void x.offsetWidth; x.classList.add('in');
+    modal.setAttribute('aria-label',nameOf(k)); modal.hidden=false; modal.scrollTop=0;
+    document.documentElement.classList.add('wk-lock');
+    requestAnimationFrame(()=>modal.classList.add('on'));
+    closeBtn.focus({preventScroll:true});
+    if(target&&target!==x&&!target.classList.contains('wk')) setTimeout(()=>target.scrollIntoView({block:'start'}),60);
   }
-  nodes.forEach(n=>n.querySelector('.wk-tile').addEventListener('click',()=>show(open===n.dataset.k?null:n.dataset.k,open===n.dataset.k?false:true)));
-  xs.forEach(x=>x.querySelector('.wk-xc').addEventListener('click',()=>{ const k=x.dataset.k; show(null);
-    const t=cv.querySelector('.wk-node[data-k="'+k+'"] .wk-tile'); t.focus({preventScroll:true}); t.scrollIntoView({block:'center',behavior:REDUCED?'auto':'smooth'}); }));
-  /* re-place the open panel when the column count changes */
-  let lastC=cols();
-  /* links into a card, from Achievements or a #hash */
-  const keyOf=id=>{ if(!id) return null; const el=document.getElementById(id); const x=el&&el.closest('.wk-x'); return x?x.dataset.k:null; };
-  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a) return; const id=a.getAttribute('href').slice(1),k=keyOf(id);
-    if(!k) return; if(open===k&&a.closest('.wk-x')) return; e.preventDefault(); show(k,document.getElementById(id)); history.replaceState(null,'','#'+id); });
+  function close(){
+    if(!open) return; open=null;
+    modal.classList.remove('on'); document.documentElement.classList.remove('wk-lock');
+    modal.querySelectorAll('video').forEach(v=>v.pause());
+    hideT=setTimeout(()=>{ modal.hidden=true; xs.forEach(x=>{ x.hidden=true; }); },260);
+    if(back) back.focus({preventScroll:true});
+    if(keyOf(location.hash.slice(1))) history.replaceState(null,'',location.pathname+location.search);
+  }
+  nodes.forEach(n=>{ const t=n.querySelector('.wk-tile'); t.addEventListener('click',()=>{ back=t; show(n.dataset.k); }); });
+  closeBtn.addEventListener('click',close);
+  modal.addEventListener('mousedown',e=>{ if(e.target===modal) close(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&open){ e.stopPropagation(); close(); } },true);
+  modal.addEventListener('keydown',e=>{ if(e.key!=='Tab') return;
+    const f=[...modal.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null||el===closeBtn);
+    if(!f.length) return; const first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); } });
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a) return; const id=a.getAttribute('href').slice(1),k=keyOf(id); if(!k) return;
+    e.preventDefault(); const t=document.getElementById(id);
+    if(open===k){ t.scrollIntoView({block:'start',behavior:REDUCED?'auto':'smooth'}); return; }
+    back=tileOf(k); show(k,t); });
 
-  /* wires: rounded orthogonal connectors, like the films' node canvas */
+  /* wires: rounded orthogonal connectors down the middle, like the films' node canvas */
   const round=(pts,r)=>{ let d='M'+pts[0][0]+' '+pts[0][1];
     for(let i=1;i<pts.length-1;i++){ const [x0,y0]=pts[i-1],[x1,y1]=pts[i],[x2,y2]=pts[i+1];
       const d1=Math.hypot(x1-x0,y1-y0)||1,d2=Math.hypot(x2-x1,y2-y1)||1,rr=Math.min(r,d1/2,d2/2);
       d+=' L'+(x1+(x0-x1)/d1*rr)+' '+(y1+(y0-y1)/d1*rr)+' Q'+x1+' '+y1+' '+(x1+(x2-x1)/d2*rr)+' '+(y1+(y2-y1)/d2*rr); }
     const L=pts[pts.length-1]; return d+' L'+L[0]+' '+L[1]; };
+  let state=0,raf=0;
+  const cols=()=>getComputedStyle(cv).gridTemplateColumns.split(' ').filter(Boolean).length;
   function draw(){
     raf=0;
-    const c=cols(); if(c!==lastC){ lastC=c; if(open) place(document.getElementById('x-'+open),open); }
     const R=cv.getBoundingClientRect(); if(!R.width) return;
     svg.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
-    cv.querySelectorAll('.wk-port.on').forEach(p=>p.classList.remove('on'));
-    const X=v=>v-R.left,Y=v=>v-R.top,paths=[];
+    const c=cols(),X=v=>v-R.left,Y=v=>v-R.top,wires=[];
     for(let i=0;i<nodes.length-1;i++){
-      const a=nodes[i].querySelector('.wk-tile'),b=nodes[i+1].querySelector('.wk-tile'),A=a.getBoundingClientRect(),B=b.getBoundingClientRect();
-      const na=nodes[i].getBoundingClientRect(),nb=nodes[i+1].getBoundingClientRect();
-      const ya=Y(A.top+A.height/2),yb=Y(B.top+B.height/2);
-      let pts,pa,pb;
-      if(c>1&&i%c!==c-1){ pts=[[X(A.right),ya],[X(B.left),yb]]; pa='pr'; pb='pl'; }
-      else if(c>1){ /* end of a row to the start of the next: out through the right gutter, across the gap, in from the left */
-        const gx1=X(A.right)+Math.min(24,(R.right-A.right)/2),gx2=X(B.left)-Math.min(24,(B.left-R.left)/2);
-        let gy=Y((na.bottom+nb.top)/2);
-        const ox=open&&nodes[i].nextElementSibling&&nodes[i].nextElementSibling.classList.contains('wk-x')?nodes[i].nextElementSibling.getBoundingClientRect():null;
-        if(ox) gy=Y(ox.bottom+(nb.top-ox.bottom)/2);
-        pts=[[X(A.right),ya],[gx1,ya],[gx1,gy],[gx2,gy],[gx2,yb],[X(B.left),yb]]; pa='pr'; pb='pl';
-      } else { /* one column: down the left gutter */
-        const gx=X(A.left)-Math.min(16,(A.left-R.left)/2);
-        pts=[[X(A.left),ya],[gx,ya],[gx,yb],[X(B.left),yb]]; pa='pl'; pb='pl';
-      }
-      a.querySelector('.wk-port.'+pa).classList.add('on'); b.querySelector('.wk-port.'+pb).classList.add('on');
-      paths.push(round(pts,c>1?16:9));
+      const A=nodes[i].querySelector('.wk-tile').getBoundingClientRect(),B=nodes[i+1].querySelector('.wk-tile').getBoundingClientRect();
+      const ya=Y(A.top+A.height*.64),yb=Y(B.top+B.height*.36);
+      let pts;
+      if(c>1){ const leftToRight=A.left<B.left;
+        const gx=leftToRight?X((A.right+B.left)/2):X((B.right+A.left)/2);
+        pts=leftToRight?[[X(A.right),ya],[gx,ya],[gx,yb],[X(B.left),yb]]:[[X(A.left),ya],[gx,ya],[gx,yb],[X(B.right),yb]];
+      } else { const gx=X(A.left)-Math.min(15,(A.left-R.left)/2); pts=[[X(A.left),ya],[gx,ya],[gx,yb],[X(B.left),yb]]; }
+      wires.push(pts);
     }
     svg.textContent='';
-    paths.forEach((d,i)=>{
-      const p=document.createElementNS(NS,'path'); p.setAttribute('d',d); svg.appendChild(p);
+    wires.forEach((pts,i)=>{
+      const d=round(pts,c>1?18:9),p=document.createElementNS(NS,'path'); p.setAttribute('d',d); svg.appendChild(p);
       const len=p.getTotalLength();
       if(state===0&&!REDUCED){ p.style.strokeDasharray=len; p.style.strokeDashoffset=len; }
+      [pts[0],pts[pts.length-1]].forEach(([x,y])=>{ const o=document.createElementNS(NS,'circle'); o.setAttribute('class','port'); o.setAttribute('cx',x); o.setAttribute('cy',y); o.setAttribute('r','5.5'); svg.appendChild(o); });
       if(state===2&&!REDUCED){
-        const dot=document.createElementNS(NS,'circle'); dot.setAttribute('r','3');
-        const m=document.createElementNS(NS,'animateMotion'); m.setAttribute('dur',Math.max(2.4,len/110).toFixed(2)+'s'); m.setAttribute('repeatCount','indefinite');
-        m.setAttribute('begin',(i*.7).toFixed(1)+'s'); m.setAttribute('path',d); dot.appendChild(m); svg.appendChild(dot);
+        const dot=document.createElementNS(NS,'circle'),m=document.createElementNS(NS,'animateMotion'); dot.setAttribute('class','pulse'); dot.setAttribute('r','3');
+        m.setAttribute('dur',Math.max(2.2,len/110).toFixed(2)+'s'); m.setAttribute('repeatCount','indefinite'); m.setAttribute('begin',(i*.6).toFixed(1)+'s'); m.setAttribute('path',d);
+        dot.appendChild(m); svg.insertBefore(dot,svg.firstChild.nextSibling);
       }
     });
   }
   const later=()=>{ if(!raf) raf=requestAnimationFrame(draw); };
   if('ResizeObserver' in window) new ResizeObserver(later).observe(cv); else addEventListener('resize',later);
-  const hk=keyOf(location.hash.slice(1)); if(hk) show(hk,false); else draw();
-  /* first sight: the wires draw themselves in, then the pulses start */
+  draw();
   new IntersectionObserver((es,io)=>es.forEach(e=>{ if(!e.isIntersecting) return; io.disconnect(); state=1;
     const ps=[...svg.querySelectorAll('path')];
-    ps.forEach((p,i)=>{ p.style.transition='stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) '+(.25+i*.18)+'s'; requestAnimationFrame(()=>{ p.style.strokeDashoffset='0'; }); });
-    setTimeout(()=>{ state=2; draw(); },REDUCED?0:1500+ps.length*180);
-  }),{threshold:.15}).observe(cv);
+    ps.forEach((p,i)=>{ p.style.transition='stroke-dashoffset 1s cubic-bezier(.65,0,.35,1) '+(.3+i*.22)+'s'; requestAnimationFrame(()=>{ p.style.strokeDashoffset='0'; }); });
+    setTimeout(()=>{ state=2; draw(); },REDUCED?0:1400+ps.length*220);
+  }),{threshold:0}).observe(cv);
+  const hk=keyOf(location.hash.slice(1)); if(hk){ back=tileOf(hk); show(hk,document.getElementById(location.hash.slice(1))); }
 })();
 
 /* timeline: spine fills + nodes ignite as you scroll through Experience */
