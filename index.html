@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-18-canvas">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-18-bubbles">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -635,65 +635,59 @@
 <section id="work" class="selected">
   <div class="wrap">
     <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
-    <!-- SELECTED WORK AS A NODE CANVAS (18 Oct, Adrian: the cards were "way too big... minimize that shit so people can
-         choose to open each ones", after Michelle Liu's portfolio (liumichelle.com: cover tiles with a "Name · year" pill),
-         "but connect it with the lines like in the videos i made"). Six tiles on a dotted canvas, joined by connector wires
-         drawn by site.js (WORK CANVAS) between the tiles' ports, like the node canvas in the Hivemind and Monte films. A tile
-         opens its full card in a panel under its row; without JS every card shows. Covers are each project's own screen,
-         blurred until hover, with its mark in a frosted disc. -->
+    <!-- SELECTED WORK (18 Oct). Adrian found the cards "way too big" and pointed at Michelle Liu's portfolio (liumichelle.com:
+         cover tiles with a "Name · year" pill), "connect it with the lines like in the videos i made"; then, of the first take
+         (one dotted box, blurred covers, cards opening below): "each one should be its own bubble that is connected by line
+         but also staggered", covers not blurred, and a popup "with an easy way to exit". Six floating tiles in two staggered
+         columns, wired down the middle by site.js (WORK CANVAS); a tile opens its card in a popup (Esc, Close, or a click
+         outside). Without JS the cards sit in the page under the tiles. -->
     <div class="works wk-canvas rv d1" id="wkCanvas">
       <svg class="wk-wires" aria-hidden="true"></svg>
       <div class="wk-node" data-k="hivemind">
         <div class="wk-nh" aria-hidden="true"><span>Hivemind</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-expanded="false" aria-controls="x-hivemind" style="--cv:url(/img/cases/hivemind-ad.webp?v=2026-10-17)">
-          <span class="wk-cv"></span><span class="wk-disc"><img src="/img/logos/hivemind.svg" alt="" loading="lazy" decoding="async"></span><span class="wk-tag">Winner</span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-hivemind">
+          <img class="wk-shot" src="/img/cases/hivemind-ad.webp?v=2026-10-17" width="1600" height="900" loading="lazy" decoding="async" alt="A frame of Hivemind's launch film"><span class="wk-mk"><img src="/img/logos/hivemind.svg" alt=""></span><span class="wk-tag">Winner</span>
           <span class="wk-pill"><b>Hivemind</b><em>&middot;</em>2026</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">Shared memory for a team&rsquo;s AI coding agents.</p>
       </div>
       <div class="wk-node" data-k="monte">
         <div class="wk-nh" aria-hidden="true"><span>Monte</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-expanded="false" aria-controls="x-monte" style="--cv:url(/img/cases/monte-film.webp?v=2026-10-18)">
-          <span class="wk-cv"></span><span class="wk-disc"><img src="/img/logos/monte.svg" alt="" loading="lazy" decoding="async"></span><span class="wk-tag">1st place</span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-monte">
+          <img class="wk-shot" src="/img/cases/monte-film.webp?v=2026-10-18" width="1600" height="900" loading="lazy" decoding="async" alt="Monte's mark on the node canvas of its launch film"><span class="wk-mk"><img src="/img/logos/monte.svg" alt=""></span><span class="wk-tag">1st place</span>
           <span class="wk-pill"><b>Monte</b><em>&middot;</em>2026</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">The right credit card at the register, with a tap-to-pay demo.</p>
       </div>
       <div class="wk-node" data-k="safejew">
         <div class="wk-nh" aria-hidden="true"><span>SafeJew</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-expanded="false" aria-controls="x-safejew" style="--cv:url(/img/cases/safejew-incident.webp)">
-          <span class="wk-cv"></span><span class="wk-disc"><img src="/img/logos/safejew.webp" alt="" loading="lazy" decoding="async"></span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-safejew">
+          <img class="wk-shot" src="/img/cases/safejew-incident.webp" width="1600" height="900" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles"><span class="wk-mk"><img src="/img/logos/safejew.webp" alt=""></span>
           <span class="wk-pill"><b>SafeJew</b><em>&middot;</em>2024&ndash;now</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">A live map of antisemitic incidents, with a source behind every pin.</p>
       </div>
       <div class="wk-node" data-k="aimlli">
         <div class="wk-nh" aria-hidden="true"><span>AIML-LI</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile wk-nocv" aria-expanded="false" aria-controls="x-aimlli">
-          <span class="wk-cv"></span><span class="wk-disc"><img src="/img/logos/aimlli-mark.webp" alt="" loading="lazy" decoding="async"></span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-aimlli">
+          <img class="wk-shot" src="/img/cases/aimlli-home.webp?v=2026-10-18" width="1600" height="900" loading="lazy" decoding="async" alt="AIML-LI's homepage, with the course's scholarship-screener lab"><span class="wk-mk"><img src="/img/logos/aimlli-mark.webp" alt=""></span>
           <span class="wk-pill"><b>AIML-LI</b><em>&middot;</em>2023&ndash;now</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">A free AI-literacy course for LA public schools.</p>
       </div>
       <div class="wk-node" data-k="ledger">
         <div class="wk-nh" aria-hidden="true"><span>Ledger</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-expanded="false" aria-controls="x-ledger" style="--cv:url(/img/cases/ledger-dashboard.webp)">
-          <span class="wk-cv"></span><span class="wk-disc app"><img src="/img/logos/ledger.svg" alt="" loading="lazy" decoding="async"></span><span class="wk-tag">1st place</span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-ledger">
+          <img class="wk-shot" src="/img/cases/ledger-dashboard.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Ledger's dashboard with a sample corner store loaded"><span class="wk-mk app"><img src="/img/logos/ledger.svg" alt=""></span><span class="wk-tag">1st place</span>
           <span class="wk-pill"><b>Ledger</b><em>&middot;</em>2026</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">Compliance software for corner stores.</p>
       </div>
       <div class="wk-node" data-k="saferoutes">
         <div class="wk-nh" aria-hidden="true"><span>Safe Routes</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-expanded="false" aria-controls="x-saferoutes" style="--cv:url(/img/cases/saferoutes-walk.webp)">
-          <span class="wk-cv"></span><span class="wk-disc app"><img src="/img/logos/walkhome.svg" alt="" loading="lazy" decoding="async"></span><span class="wk-tag">3rd place</span>
+        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-saferoutes">
+          <img class="wk-shot" src="/img/cases/saferoutes-walk.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Safe Routes to School's worked example of a walk to LACES"><span class="wk-mk app"><img src="/img/logos/walkhome.svg" alt=""></span><span class="wk-tag">3rd place</span>
           <span class="wk-pill"><b>Safe Routes</b><em>&middot;</em>2026</span>
-          <i class="wk-port pl"></i><i class="wk-port pr"></i><i class="wk-port pt"></i><i class="wk-port pb"></i>
         </button>
         <p class="wk-cap">Walking directions built from where students get robbed.</p>
       </div>
@@ -1135,6 +1129,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-18-canvas"></script>
+<script src="/assets/site.js?v=2026-10-18-bubbles"></script>
 </body>
 </html>
