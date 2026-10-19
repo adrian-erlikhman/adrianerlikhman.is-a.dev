@@ -308,9 +308,9 @@ from LaTeX in `resume/`.
   The `?v=` cache-buster lives in **eight places**: on the homepage the three
   triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
   options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-17-tk"` should print 5
+  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-18-mt"` should print 5
   (the /demos/ three went with that page). Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-17-tk`.
+  used. Currently `?v=2026-10-18-mt`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -671,6 +671,26 @@ the rail and the ⌘K palette follow it.
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
   long one lost Citadel's second bullet (what Terminal is), "(Andrew Ng" from the DL Specialization, and a few
   words in Citadel, YC, More builds and JSU. Both résumés now have no slack at all.
+- **Monte sits second in Selected work** (18 Oct, Adrian: "WE WON... integrate this into my website in a really cool
+  way", "be sure to add the apple pay tap demo as one of the main features"): **1st place, Finance track, ACM
+  TrojanHacks 2026** (LA Tech Week), with Michael Tarekegn, announced in person; no email or Devpost badge yet, so
+  link the winners page once it shows. A full-width `.wk-wide` card (`#case-monte`) under Hivemind's Lemma panel (his
+  pick: second, not first). Its dark panel has two tabs: **Tap to pay** (default) and the **Launch film · 1:17**
+  (`video/monte-film.mp4`, 1080p ~18 MB, from `~/Claude Code/monte-video-FINAL-v2.mp4`, the Devpost video
+  `youtu.be/Tn4YrpoLjh8`; poster `img/cases/monte-film.webp`, both `?v=2026-10-18`). The tap demo copies the live
+  site's (`ace/components/ace/tap-demo.tsx`) in vanilla JS (site.js MONTE TAP, `.mt-*` CSS): a countertop reader
+  with four contactless lights and a beep, an Apple Pay-style phone (Monte card, Hold Near Reader, cards flip, drawn
+  check), five steps with pencil notes, **never timed** (Adrian: "i want to be the one to go through this"), four
+  stores. Its numbers are the Monte engine's `tap()` for Jordan (synthetic person) baked on 18 Oct; re-bake from the
+  repo rather than editing. Uber and Mobil show the balance rule (Apple Card skipped). Card art in `img/monte/`
+  (issuer art from the Monte repo), badge `img/logos/monte.svg`. Ownership per the repo's SPEC: Adrian the
+  interface, tap demo, brand and film; Michael the backend, Monte Carlo and tests. Claims are Michael's verified
+  ones (29 cards' published terms, 36 tests). Live `ace-eta-beryl.vercel.app`, Devpost
+  `devpost.com/software/monte-calygj`, code `github.com/michae6345-crypto/monte`. Also a "1st" tile first in
+  Achievements' Builds row (now six tiles on a 60-column grid), built.py, llms.txt, JSON-LD award and VideoObject
+  `#monte-film`, sitemap. **Résumés (his OK, 18 Oct):** one line in the one-pager, one bullet in the long one. To fit,
+  the one-pager's Monte, Hivemind and Safe Routes lines lost their role clauses and parentheticals (Lemma, Young
+  Coders' Sphere, the 80% trip), and the long one lost the **More builds (Quant)** line. Ask before restoring any.
 - **Selected work** is four cards since 15 Oct (see the admissions pass); until
   then it was four case studies, each *the problem · my part · the
   hard call · where it stands*: SafeJew, AIML-LI, Ledger, Safe Routes to
