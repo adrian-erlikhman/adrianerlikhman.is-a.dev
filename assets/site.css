@@ -1885,7 +1885,7 @@ footer .ft-c{font-family:var(--mono)}
 .mt-bat{width:17px;height:8px;box-sizing:border-box;border:1px solid rgba(255,255,255,.55);border-radius:2.5px;padding:1px}
 .mt-bat i{display:block;width:76%;height:100%;border-radius:1px;background:#fff}
 .mt-isl{position:absolute;left:50%;top:5px;width:58px;height:18px;margin-left:-29px;border-radius:12px;background:#000;z-index:3;transition:width .35s,margin .35s}
-.mt-dev.busy .mt-isl{width:78px;margin-left:-39px;box-shadow:inset -14px 0 0 -10px #7aa7ff}
+.mt-dev.busy .mt-isl{width:66px;margin-left:-33px;box-shadow:inset -14px 0 0 -10px #7aa7ff}
 .mt-card{width:136px;margin:20px auto 0;aspect-ratio:1.586;perspective:600px}
 .mt-card img,.mt-mc{width:100%;height:100%;border-radius:7%/11%;display:block;box-shadow:0 12px 24px -10px rgba(0,0,0,.9)}
 .mt-card img[hidden],.mt-mc[hidden]{display:none}
@@ -1979,3 +1979,109 @@ footer .ft-c{font-family:var(--mono)}
 }
 @media(prefers-reduced-motion:reduce){.mt-phone,.mt-isl{transition:none}.mt-n,.mt-card .flip,.mt-hold,.mt-idle .mt-go{animation:none}.mt-arr path,.mt-chk circle,.mt-chk path{animation:none;stroke-dashoffset:0}.mt-rank em i{animation:none;width:var(--w)}}
 @media(max-width:600px){#case-monte .wk-tlink{display:none}}
+
+/* SELECTED WORK AS A NODE CANVAS (18 Oct): six cover tiles after Michelle Liu's portfolio (a "Name · year" pill on each),
+   on the dotted canvas of the Hivemind and Monte films, joined by connector wires that site.js draws between the tiles'
+   ports. A tile opens its full card in a panel under its row. */
+.wk-canvas{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:54px 72px;padding:40px 46px 46px;border:1px solid var(--line-strong);border-radius:24px;background:#f6f7f9 radial-gradient(circle,#cdd2d9 1px,transparent 1.3px) 0 0/22px 22px}
+.wk-wires{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+.wk-wires path{fill:none;stroke:#bfc5ce;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wk-wires circle{fill:#1f3a5f}
+.wk-node{position:relative;z-index:1;min-width:0}
+.wk-nh{display:flex;justify-content:space-between;align-items:center;margin:0 6px 9px;font:500 10.5px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#6b717c}
+.wk-nh i{font-style:normal;letter-spacing:0;font-size:13px;color:#a9afb8}
+.wk-tile{position:relative;display:block;width:100%;aspect-ratio:1.78;padding:0;border:1px solid rgba(21,23,28,.13);border-radius:20px;background:#fff;cursor:pointer;text-align:left;box-shadow:0 1px 2px rgba(21,23,28,.05),0 22px 44px -28px rgba(21,23,28,.4);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,border-color .3s}
+.wk-tile:hover,.wk-tile:focus-visible{transform:translateY(-4px);box-shadow:0 1px 2px rgba(21,23,28,.05),0 30px 50px -28px rgba(21,23,28,.5);outline:none}
+.wk-tile:focus-visible{border-color:var(--acc)}
+.wk-tile[aria-expanded="true"]{border-color:var(--acc);box-shadow:0 0 0 3px rgba(31,58,95,.18),0 22px 44px -28px rgba(21,23,28,.4)}
+.wk-cv{position:absolute;inset:0;border-radius:19px;overflow:hidden;background:#eef1f5}
+.wk-cv::before{content:"";position:absolute;inset:-28px;background:var(--cv) center/cover no-repeat;filter:blur(18px) saturate(1.3);transform:scale(1.04);transition:filter .6s,inset .6s,transform .6s}
+.wk-cv::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.62),rgba(255,255,255,.18) 58%,rgba(255,255,255,.4));transition:opacity .6s}
+.wk-nocv .wk-cv::before{background:linear-gradient(140deg,#f2f8fc,#d6e8f2 50%,#e8f0e9 85%);filter:none}
+.wk-tile:hover .wk-cv::before,.wk-tile:focus-visible .wk-cv::before{filter:none;inset:0;transform:none}
+.wk-tile:hover .wk-cv::after,.wk-tile:focus-visible .wk-cv::after{opacity:0}
+.wk-nocv:hover .wk-cv::after,.wk-nocv:focus-visible .wk-cv::after{opacity:1}
+.wk-disc{position:absolute;left:50%;top:46%;width:98px;height:98px;margin:-49px 0 0 -49px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -10px 20px rgba(255,255,255,.35),0 16px 32px -16px rgba(21,23,28,.4),0 0 0 1px rgba(255,255,255,.65);transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .4s}
+.wk-disc img{width:46px;height:46px;object-fit:contain}
+.wk-disc.app img{width:58px;height:58px;border-radius:15px}
+.wk-tile:not(.wk-nocv):hover .wk-disc,.wk-tile:not(.wk-nocv):focus-visible .wk-disc{opacity:0;transform:scale(.8)}
+.wk-tag{position:absolute;right:14px;top:14px;padding:6px 11px;border-radius:999px;background:rgba(21,23,28,.84);color:#f3d48a;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.wk-pill{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:baseline;gap:8px;padding:9px 16px 9px 15px;border-radius:999px;background:#fff;box-shadow:0 6px 18px -10px rgba(21,23,28,.4);color:#8a909a;font:400 13px/1 var(--mono)}
+.wk-pill b{font:700 16.5px/1 var(--serif);color:#15171c;letter-spacing:-.005em}
+.wk-pill em{font-style:normal;color:#b3b8bf}
+.wk-port{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;border:1.5px solid #b3bac4;z-index:2;opacity:0;transition:opacity .4s}
+.wk-port.on{opacity:1}
+.wk-port.pl{left:-7px;top:50%;margin-top:-6.5px}.wk-port.pr{right:-7px;top:50%;margin-top:-6.5px}
+.wk-port.pt{top:-7px;left:50%;margin-left:-6.5px}.wk-port.pb{bottom:-7px;left:50%;margin-left:-6.5px}
+.wk-cap{margin:13px 8px 0;font-size:15px;line-height:1.4;color:var(--dim);transition:color .3s}
+.wk-node:hover .wk-cap{color:var(--ink)}
+/* the open card */
+.wk-x{grid-column:1/-1;position:relative;z-index:2;display:grid;gap:18px;scroll-margin-top:84px}
+.wk-canvas.armed .wk-x[hidden]{display:none}
+.wk-x.in{animation:wkOpen .5s cubic-bezier(.16,1,.3,1)}
+@keyframes wkOpen{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.wk-x .wk{box-shadow:0 30px 60px -36px rgba(21,23,28,.45)}
+.wk-xc{display:none}
+.wk-canvas.armed .wk-xc{display:grid;place-items:center;position:absolute;right:-13px;top:-13px;z-index:6;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:#15171c;color:#fff;font-size:19px;line-height:1;cursor:pointer;box-shadow:0 8px 18px -8px rgba(0,0,0,.5);transition:background .2s,transform .2s}
+.wk-xc:hover,.wk-xc:focus-visible{background:var(--acc);transform:rotate(90deg);outline:none}
+.wk-x .wk:not(.wk-wide){display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto 1fr;grid-template-areas:"bar body" "media body"}
+.wk-x .wk:not(.wk-wide)>.wk-bar{grid-area:bar}
+.wk-x .wk:not(.wk-wide)>.wk-media{grid-area:media;border-bottom:0;aspect-ratio:auto}
+.wk-x .wk:not(.wk-wide)>.wk-media img{height:100%;object-fit:cover}
+.wk-x .wk:not(.wk-wide)>.wk-body{grid-area:body;border-left:1px solid var(--line-strong)}
+.wk-x .trk{margin-top:0}
+@media(max-width:1100px){.wk-canvas{gap:48px 54px;padding:34px 36px 40px}}
+@media(max-width:900px){
+  .wk-canvas{grid-template-columns:minmax(0,1fr);gap:38px;padding:26px 22px 30px 30px;border-radius:18px}
+  .wk-x .wk:not(.wk-wide){display:flex}
+  .wk-x .wk:not(.wk-wide)>.wk-media{aspect-ratio:16/9}
+  .wk-x .wk:not(.wk-wide)>.wk-body{border-left:0}
+  .wk-canvas.armed .wk-xc{right:-8px;top:-10px}
+}
+@media(max-width:600px){.wk-canvas{padding:22px 14px 26px 24px;margin:0 -6px}.wk-pill{left:11px;bottom:11px;padding:7px 12px}.wk-pill b{font-size:15px}.wk-disc{width:80px;height:80px;margin:-40px 0 0 -40px}.wk-disc img{width:38px;height:38px}.wk-disc.app img{width:48px;height:48px}.wk-tag{right:10px;top:10px}}
+@media(prefers-reduced-motion:reduce){.wk-tile,.wk-cv::before,.wk-cv::after,.wk-disc{transition:none}.wk-x.in{animation:none}}
+
+/* Monte's panel on the films' light dotted canvas (18 Oct, Adrian: "make the background not a slop color") */
+#case-monte .mt-term{background:#f6f7f9}
+#case-monte .wk-tbar{background:#fff;border-bottom:1px solid var(--line-strong)}
+#case-monte .mt-tabs button{color:#6b717c}
+#case-monte .mt-tabs button[aria-selected="true"]{background:#15171c;color:#fff}
+#case-monte .mt-tabs button:hover,#case-monte .mt-tabs button:focus-visible{color:#15171c}
+#case-monte .mt-tabs button[aria-selected="true"]:hover{color:#fff}
+#case-monte .wk-tlink{color:var(--acc);border-color:var(--line-strong)}
+#case-monte .wk-tlink:hover,#case-monte .wk-tlink:focus-visible{background:var(--acc);color:#fff}
+#mtTap{background:#f6f7f9 radial-gradient(circle,#cdd2d9 1px,transparent 1.3px) 0 0/22px 22px}
+.mt-stores button{border-color:var(--line-strong);background:#fff;color:#3b4049}
+.mt-stores button:hover,.mt-stores button:focus-visible{border-color:#15171c;color:#15171c}
+.mt-stores button.on{background:#15171c;border-color:#15171c;color:#fff}
+.mt-note,.mt-nh{color:#15171c}
+.mt-nh small{color:#b9771a}
+.mt-nv{color:#5c626c}
+.mt-arr{color:#7d8591}
+.mt-chip{background:#fff;color:#15171c;box-shadow:0 0 0 1px var(--line-strong)}
+.mt-chip.k{background:#15171c;color:#fff;box-shadow:none}
+.mt-big{color:#15171c}
+.mt-gain{color:#15803d}
+.mt-cards .off{color:#b42318}.mt-cards .ok{color:#15803d}
+.mt-rank s{color:#9aa0a8}
+.mt-rank em{background:#e2e5ea}
+.mt-rank em i{background:#9aa0a8}
+.mt-rank .win em i{background:#16a34a}.mt-rank .blk em i{background:#e3a7a9}
+.mt-rank .win b{color:#15803d}
+.mt-done{color:#8a919c}.mt-done b{color:#15803d}.mt-done:hover{color:#15171c}
+.mt-plain{color:#5c626c}
+.mt-go{background:#15171c;color:#fff}
+.mt-go:hover,.mt-go:focus-visible{background:var(--acc)}
+@keyframes mtPulse{50%{box-shadow:0 0 0 6px rgba(31,58,95,.16)}}
+.mt-bk{border-color:var(--line-strong);background:#fff;color:#3b4049}
+.mt-bar button{color:#8a919c}
+.mt-bar button::before{background:#dde1e7}
+.mt-bar button.done::before{background:var(--acc)}
+.mt-bar button.now,.mt-bar button:hover{color:#15171c}
+#case-monte .wk-ch button{color:#5c626c}
+#case-monte .wk-ch b{color:var(--acc)}
+#case-monte .wk-ch button:hover,#case-monte .wk-ch button:focus-visible{background:#eceef2;color:#15171c}
+#case-monte .wk-ch button.on{background:#e4e7ec;color:#15171c}
+#case-monte .wk-ch button.on b{color:#b9771a}
+@media(min-width:901px){.wk-x .wk:not(.wk-wide) .wk-head{margin-top:0;align-items:center}.wk-x .wk:not(.wk-wide) .wk-head .wk-kick{margin-top:0}}
+.wk-disc img[src*="aimlli"]{border-radius:10px}
