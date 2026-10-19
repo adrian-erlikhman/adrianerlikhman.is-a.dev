@@ -693,8 +693,10 @@ the rail and the ⌘K palette follow it.
   `youtu.be/Tn4YrpoLjh8`; poster `img/cases/monte-film.webp`, both `?v=2026-10-18`). The tap demo copies the live
   site's (`ace/components/ace/tap-demo.tsx`) in vanilla JS (site.js MONTE TAP, `.mt-*` CSS): a countertop reader
   with four contactless lights and a beep, an Apple Pay-style phone (Monte card, Hold Near Reader, cards flip, drawn
-  check), five steps with pencil notes, **never timed** (Adrian: "i want to be the one to go through this"), four
-  stores. Its numbers are the Monte engine's `tap()` for Jordan (synthetic person) baked on 18 Oct; re-bake from the
+  check), five steps with pencil notes, four stores. **On the site it plays itself** (Adrian, 18 Oct: "i want it to
+  go through automatically with the timer"): 3.2 s a step with the timer filling on the step bar, a rest once paid,
+  then the next store; only while on screen; a pause button, and Next/Back restart the timer. (The live Monte site's
+  own demo stays click-through: "i want to be the one to go through this" was for presenting.) Its numbers are the Monte engine's `tap()` for Jordan (synthetic person) baked on 18 Oct; re-bake from the
   repo rather than editing. Uber and Mobil show the balance rule (Apple Card skipped). Card art in `img/monte/`
   (issuer art from the Monte repo), badge `img/logos/monte.svg`. Ownership per the repo's SPEC: Adrian the
   interface, tap demo, brand and film; Michael the backend, Monte Carlo and tests. Claims are Michael's verified

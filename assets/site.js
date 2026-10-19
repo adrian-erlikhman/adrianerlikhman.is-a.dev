@@ -519,6 +519,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     phone(); notes();
     clearInterval(timer);
     if(phase>=1&&phase<=3&&!REDUCED) timer=setInterval(()=>{ tick++; phone(); },700);
+    schedule();
   }
   function beep(){
     try{ const C=window.AudioContext||window.webkitAudioContext,ctx=new C();
@@ -527,16 +528,32 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
         o.connect(g).connect(ctx.destination); o.start(t); o.stop(t+.12); });
       setTimeout(()=>ctx.close(),600); }catch(e){}
   }
-  const set=k=>{ const was=phase; phase=k; render(); if(phase>=5&&was<5) beep(); };
-  go.addEventListener('click',()=>set(phase<0||phase>=5?0:phase+1));
-  bk.addEventListener('click',()=>{ if(phase>0) set(phase-1); });
-  bars.forEach(b=>b.addEventListener('click',()=>set(+b.dataset.k)));
-  storesEl.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; si=+b.dataset.i; set(-1); });
-  [L,R].forEach(n=>n.addEventListener('click',e=>{ const b=e.target.closest('.mt-done'); if(b) set(+b.dataset.k); }));
+  /* auto-play (18 Oct, Adrian: "i want it to go through automatically with the timer"): each step holds STEP ms, its
+     timer filling on the step bar; a paid tap rests, then the next store plays. It runs only while the demo is on screen;
+     a manual step restarts the timer, and the pause button stops it. The beep only sounds on a tap the visitor made. */
+  const STEP=3200,IDLE=1400,REST=4200;
+  let auto=!REDUCED,onScreen=false,at=0;
+  const ab=document.createElement('button'); ab.type='button'; ab.className='mt-bk mt-auto'; bk.after(ab);
+  function schedule(){
+    clearTimeout(at); bars.forEach(b=>b.classList.remove('run'));
+    ab.textContent=auto?'❚❚':'▶'; ab.setAttribute('aria-label',auto?'Pause':'Play'); ab.classList.toggle('on',auto);
+    if(!auto||!onScreen) return;
+    const d=phase<0?IDLE:phase>=5?REST:STEP;
+    if(phase>=0&&phase<5){ const b=bars[phase]; b.style.setProperty('--d',d+'ms'); void b.offsetWidth; b.classList.add('run'); }
+    at=setTimeout(()=>{ if(phase>=5){ si=(si+1)%STORES.length; set(-1); } else set(phase<0?0:phase+1); },d);
+  }
+  ab.addEventListener('click',()=>{ auto=!auto; schedule(); });
+  const set=(k,manual)=>{ const was=phase; phase=k; render(); if(manual&&phase>=5&&was<5) beep(); };
+  go.addEventListener('click',()=>set(phase<0||phase>=5?0:phase+1,true));
+  bk.addEventListener('click',()=>{ if(phase>0) set(phase-1,true); });
+  bars.forEach(b=>b.addEventListener('click',()=>set(+b.dataset.k,true)));
+  storesEl.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; si=+b.dataset.i; set(-1,true); });
+  [L,R].forEach(n=>n.addEventListener('click',e=>{ const b=e.target.closest('.mt-done'); if(b) set(+b.dataset.k,true); }));
   root.addEventListener('keydown',e=>{
-    if(e.key==='ArrowRight'){ e.preventDefault(); set(phase<0||phase>=5?0:phase+1); }
-    else if(e.key==='ArrowLeft'&&phase>0){ e.preventDefault(); set(phase-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); set(phase<0||phase>=5?0:phase+1,true); }
+    else if(e.key==='ArrowLeft'&&phase>0){ e.preventDefault(); set(phase-1,true); }
   });
+  new IntersectionObserver(es=>es.forEach(e=>{ onScreen=e.isIntersecting; schedule(); }),{threshold:.35}).observe(root);
   render();
 })();
 
