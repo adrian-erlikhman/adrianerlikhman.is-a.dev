@@ -278,99 +278,75 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish(true);return;} /* plays on every load */
   if(HASH_TARGET){finish(true);return;}   /* arrived by a #section link: no intro */
 
+  /* SWARM (19 Oct): particles orbit, lock into the name (the cursor pushes them), then burst open onto the page */
   const cvs=document.getElementById('introCanvas'),ctx=cvs.getContext('2d');
   let W,H,DPR;
   const resize=()=>{DPR=Math.min(devicePixelRatio||1,2);W=cvs.width=innerWidth*DPR;H=cvs.height=innerHeight*DPR;};
-  resize();addEventListener('resize',resize);
+  resize();
   const css=getComputedStyle(document.documentElement);
-  const hexA=(h,a)=>{h=(h||'').trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;};
-  const ACChex=css.getPropertyValue('--acc').trim()||'#1f3a5f';
-  const INKhex=css.getPropertyValue('--ink').trim()||'#1a1c22';
-  const DIMhex=css.getPropertyValue('--dim').trim()||'#5d6470';
-  const ACC=ACChex, RED='#e5484d';
-
-  const isTouch=matchMedia('(pointer:coarse)').matches;
-  let mx=-1,my=-1,ready=false;
-  if(!isTouch) addEventListener('mousemove',e=>{mx=e.clientX*DPR;my=e.clientY*DPR;});
-
-  // interactive equity chart — candlesticks + close line + hover crosshair (no rain, no boot log)
-  const DOWN='#9aa3b2';                 // cool gray for down-moves
-  const N=60; let price=100; const candles=[];
-  for(let i=0;i<N;i++){const o=price;price=Math.max(30,price+(Math.random()-0.44)*3.8);const c=price;
-    candles.push({o,c,hi:Math.max(o,c)+Math.random()*1.8,lo:Math.min(o,c)-Math.random()*1.8});}
-  const pmin=Math.min(...candles.map(k=>k.lo)),pmax=Math.max(...candles.map(k=>k.hi));
-
-  const start=performance.now(),DUR=1500; let raf;
-  const bar=document.getElementById('introBar'),st=document.getElementById('introStatus');
-  const geo=()=>{const bx0=W*0.5-Math.min(W*0.44,560*DPR),bx1=W*0.5+Math.min(W*0.44,560*DPR),by0=H*0.6,by1=H*0.88;return {bx0,bx1,by0,by1,cw:(bx1-bx0)/N};};
-
-  function draw(now){
-    if(done) return;
-    const t=now-start, p=Math.min(t/DUR,1), e=1-Math.pow(1-p,3);
-    ctx.clearRect(0,0,W,H);
-    const {bx0,bx1,by0,by1,cw}=geo();
-    const yOf=v=>by1-((v-pmin)/(pmax-pmin))*(by1-by0);
-    const shown=Math.max(1,Math.floor(e*N));
-    // BARRIER: clip the tape to its own band so it can never draw over the text above
-    const barrier=by0-6*DPR;
-    ctx.save();
-    ctx.beginPath();ctx.rect(0,barrier,W,H-barrier);ctx.clip();
-    // candlesticks
-    ctx.lineWidth=1*DPR;
-    for(let i=0;i<shown;i++){
-      const k=candles[i],cx=bx0+cw*i+cw/2,up=k.c>=k.o;
-      ctx.strokeStyle=up?hexA(ACChex,.55):hexA(DOWN,.6);
-      ctx.fillStyle=up?hexA(ACChex,.14):hexA(DOWN,.14);
-      ctx.beginPath();ctx.moveTo(cx,yOf(k.hi));ctx.lineTo(cx,yOf(k.lo));ctx.stroke();
-      const bw=Math.max(2*DPR,cw*0.5),yo=yOf(k.o),yc=yOf(k.c),bh=Math.max(1.5*DPR,Math.abs(yc-yo));
-      ctx.fillRect(cx-bw/2,Math.min(yo,yc),bw,bh);ctx.strokeRect(cx-bw/2,Math.min(yo,yc),bw,bh);
-    }
-    // close line
-    if(shown>1){
-      ctx.beginPath();
-      for(let i=0;i<shown;i++){const cx=bx0+cw*i+cw/2,y=yOf(candles[i].c);i?ctx.lineTo(cx,y):ctx.moveTo(cx,y);}
-      ctx.strokeStyle=ACC;ctx.lineWidth=1.8*DPR;ctx.stroke();
-      const fx=bx0+cw*(shown-1)+cw/2,fy=yOf(candles[shown-1].c);
-      ctx.fillStyle=ACC;ctx.beginPath();ctx.arc(fx,fy,3*DPR,0,7);ctx.fill();
-    }
-    // interactive crosshair — active once the chart is fully drawn
-    if(p>=1 && !isTouch && mx>=bx0-30*DPR && mx<=bx1+30*DPR && my>=by0-30*DPR && my<=by1+30*DPR){
-      const priceAt=pmin+((by1-my)/(by1-by0))*(pmax-pmin);
-      let idx=Math.round((mx-bx0-cw/2)/cw); idx=Math.max(0,Math.min(N-1,idx));
-      const scx=bx0+cw*idx+cw/2, k=candles[idx];
-      ctx.setLineDash([4*DPR,4*DPR]); ctx.lineWidth=1*DPR; ctx.strokeStyle=hexA(INKhex,.4);
-      ctx.beginPath();ctx.moveTo(scx,by0-14*DPR);ctx.lineTo(scx,by1+14*DPR);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(bx0,my);ctx.lineTo(bx1,my);ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.font=(11*DPR)+'px "IBM Plex Mono",monospace';
-      const tag=priceAt.toFixed(2), tw=ctx.measureText(tag).width+16*DPR;
-      ctx.fillStyle=ACC;ctx.fillRect(bx1,my-9*DPR,tw,18*DPR);
-      ctx.fillStyle='#fff';ctx.fillText(tag,bx1+8*DPR,my+4*DPR);
-      ctx.fillStyle=ACC;ctx.beginPath();ctx.arc(scx,yOf(k.c),4*DPR,0,7);ctx.fill();
-      const chg=((k.c-k.o)/k.o*100), upC=chg>=0;
-      const rows=['#'+String(idx+1).padStart(2,'0'),'O '+k.o.toFixed(2),'H '+k.hi.toFixed(2),'L '+k.lo.toFixed(2),'C '+k.c.toFixed(2),(upC?'+':'')+chg.toFixed(2)+'%'];
-      const bw2=96*DPR,bh2=rows.length*15*DPR+12*DPR;
-      let bxp=scx+12*DPR; if(bxp+bw2>bx1) bxp=scx-12*DPR-bw2;
-      ctx.fillStyle=hexA(INKhex,.93);ctx.fillRect(bxp,by0,bw2,bh2);
-      ctx.strokeStyle=hexA(ACChex,.5);ctx.lineWidth=1*DPR;ctx.strokeRect(bxp,by0,bw2,bh2);
-      rows.forEach((ln,i)=>{ctx.fillStyle=i===0?ACC:(i===5?(upC?ACC:DOWN):'#eef1f5');ctx.fillText(ln,bxp+9*DPR,by0+18*DPR+i*15*DPR);});
-    }
-    ctx.restore();
-    // subtle rust rule marking the top of the tape region (the barrier)
-    ctx.strokeStyle=hexA(ACChex,.22);ctx.lineWidth=1*DPR;
-    ctx.beginPath();ctx.moveTo(bx0,by0);ctx.lineTo(bx1,by0);ctx.stroke();
-    if(bar) bar.style.width=(p*100)+'%';
-    if(!done) raf=requestAnimationFrame(draw);
+  const ACC=css.getPropertyValue('--acc').trim()||'#1f3a5f', BG=css.getPropertyValue('--bg').trim()||'#fbfaf7', LB='#9db8e0';
+  const NAME='adrian erlikhman', CY=.46;
+  let mx=-9e3,my=-9e3;
+  addEventListener('pointermove',e=>{mx=e.clientX*DPR;my=e.clientY*DPR;});
+  const ease=p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2, eo=p=>1-Math.pow(1-p,3), cl=x=>Math.max(0,Math.min(1,x)), rnd=(a,b)=>a+Math.random()*(b-a);
+  let P=[],start=0,burst=0,raf;
+  function targets(){
+    const o=document.createElement('canvas');o.width=W;o.height=H;const c=o.getContext('2d');
+    let fs=Math.min(W*.11,170*DPR);c.font=`700 ${fs}px "LM Roman",serif`;
+    while(c.measureText(NAME).width>W*.86){fs*=.95;c.font=`700 ${fs}px "LM Roman",serif`;}
+    c.textAlign='center';c.textBaseline='middle';c.fillText(NAME,W/2,H*CY);
+    const d=c.getImageData(0,0,W,H).data,step=Math.round((W<900*DPR?2.4:2.6)*DPR),pts=[];
+    for(let y=0;y<H;y+=step)for(let x=0;x<W;x+=step)if(d[(y*W+x)*4+3]>128)pts.push([x,y]);
+    return pts;
   }
-  raf=requestAnimationFrame(draw);
+  function build(){
+    P=targets().map(([tx,ty])=>({tx,ty,a:rnd(0,Math.PI*2),r:rnd(.15,.75)*Math.max(W,H)*.5,x:0,y:0,vx:0,vy:0,
+      d:rnd(0,.5),c:Math.random()<.12?LB:ACC,s:rnd(1.3,2.3)*DPR}));
+    start=performance.now();raf=requestAnimationFrame(draw);
+  }
+  function open(){ // the burst: the page shows through a growing hole while the swarm flies out
+    if(burst||done) return; burst=performance.now();
+    for(const p of P){const dx=p.x-W/2,dy=p.y-H*CY,m=Math.hypot(dx,dy)+1;p.vx=dx/m*rnd(4,14)*DPR;p.vy=dy/m*rnd(4,14)*DPR;}
+    intro.style.background='transparent';
+    finishAfterBurst();
+  }
+  function draw(now){
+    const t=(now-start)/1000;
+    ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+    const lock=cl((t-.5)/1.3);
+    for(const p of P){
+      if(!burst){
+        const k=ease(cl(lock*1.4-p.d*.8)),ang=p.a+t*(1.6-k)*(1.2+300/p.r);
+        const ox=W/2+Math.cos(ang)*p.r*(1-k*.2),oy=H/2+Math.sin(ang)*p.r*.55;
+        let x=ox+(p.tx-ox)*k,y=oy+(p.ty-oy)*k;
+        const dx=x-mx,dy=y-my,dd=dx*dx+dy*dy,R=90*DPR;
+        if(dd<R*R&&k>.9){const q=Math.sqrt(dd)+1,f=(1-q/R)*28*DPR;x+=dx/q*f;y+=dy/q*f;}
+        p.x+=(x-p.x)*(t<.05?1:.35);p.y+=(y-p.y)*(t<.05?1:.35);
+      }else{p.vx*=1.04;p.vy*=1.04;p.x+=p.vx;p.y+=p.vy;}
+      ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);
+    }
+    if(burst){const r=eo(cl((now-burst)/900))*Math.hypot(W,H)*.6;
+      ctx.save();ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(W/2,H*CY,r,0,7);ctx.fill();ctx.restore();
+      if(now-burst>1000){intro.style.display='none';return;}}
+    if(t>3.1&&!burst) open();
+    raf=requestAnimationFrame(draw);
+  }
+  function finishAfterBurst(){ // like finish(), but the canvas does the exit instead of the clip-path wipe
+    done=true;
+    try{sessionStorage.setItem('introSeen','1');}catch(e){}
+    if(siteDown){showOffline();return;}
+    document.body.classList.remove('intro-lock');window.scrollTo(0,0);
+    intro.style.pointerEvents='none';
+    document.querySelectorAll('.hero h1 .ln').forEach(l=>l.classList.remove('go'));
+    setTimeout(()=>document.querySelectorAll('.hero h1 .ln').forEach((l,i)=>setTimeout(()=>l.classList.add('go'),i*140)),320);
+  }
+  (document.fonts&&document.fonts.load?document.fonts.load(`700 40px "LM Roman"`).catch(()=>{}):Promise.resolve()).then(()=>{if(!done)build();});
 
-  setTimeout(()=>{ready=true;
-    if(st&&!done)st.textContent=isTouch?'tap anywhere to come in':'scrub the chart, then click anywhere to come in';},DUR+160);
-
-  document.getElementById('skip').addEventListener('click',()=>finish(false));
-  intro.addEventListener('click',()=>{if(ready)finish(false);});
-  addEventListener('keydown',e=>{if(e.key==='Enter'||e.key==='Escape')finish(false);});
-  setTimeout(()=>finish(false),3600); // failsafe — auto-enters if left alone
+  document.getElementById('skip').addEventListener('click',e=>{e.stopPropagation();open();});
+  intro.addEventListener('click',()=>{if(performance.now()-start>1500)open();});
+  addEventListener('keydown',e=>{if(e.key==='Enter'||e.key==='Escape')open();});
+  setTimeout(()=>{if(!P.length)finish(false);},2500); // fonts never loaded: fall back to the plain wipe
+  setTimeout(()=>{if(!done)open();},4200);          // failsafe
   /* crawlers and anything that never clicks must reach the content fast */
 })();
 
