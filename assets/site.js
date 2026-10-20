@@ -1181,7 +1181,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const echo=cmd=>print('<span class="tp">adrian@os:~$</span>'+cmd.replace(/</g,'&lt;'));
   const go=sel=>{const el=document.querySelector(sel); if(el)el.scrollIntoView({behavior:'smooth'});};
   const REPOS={lstm:'lstm-equity-forecaster',finbert:'finbert-sentiment-analyzer',fraud:'fraud-detection-system'};
-  const PAPERS={langllm:'/papers/langllm-poster-urtc2026.pdf',curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
+  const PAPERS={curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
