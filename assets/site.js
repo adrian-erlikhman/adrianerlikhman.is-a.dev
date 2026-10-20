@@ -1348,7 +1348,8 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(k){ e.preventDefault(); show((cur+k+qs.length)%qs.length,true); } });
   // closed until the visitor powers it on; then a short boot log, then the questions
   const boot=document.createElement('div'); boot.className='ask-boot';
-  boot.innerHTML='<button type="button" class="ask-pwr" aria-label="Power on ask adrian"><span class="ask-key" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></svg></span><span class="ask-hint"><b>ask-adrian</b><i>press to boot</i></span></button><div class="ask-crt" aria-hidden="true"><span class="ask-scan"></span><b>[ ae ]</b><span class="ask-bar2"><i></i></span></div>';
+  // 20 Oct (Adrian's pick, A of _mock/ask-boot2.html): the command types itself, then the Enter key glows and waits
+  boot.innerHTML='<div class="ask-cmd"><span class="ask-ps">~/</span><span class="ask-typed" aria-hidden="true"></span><span class="ask-cu" aria-hidden="true"></span><button type="button" class="ask-pwr ask-enter" aria-label="Run ask-adrian">&#8629; enter</button></div><div class="ask-crt" aria-hidden="true"><span class="ask-scan"></span><b>~/ ae</b><span class="ask-bar2"><i></i></span></div>';
   box.insertBefore(boot,box.querySelector('.ask-qs'));
   box.classList.add('ask-off');
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1366,6 +1367,12 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     (el.closest('section')||el).scrollIntoView({behavior:still?'auto':'smooth',block:'start'});
   });
   boot.querySelector('.ask-pwr').addEventListener('click',on,{once:true});
+  { const typed=boot.querySelector('.ask-typed'),key=boot.querySelector('.ask-enter'),CMD='ask-adrian';
+    const done=()=>{ typed.textContent=CMD; key.classList.add('glow'); };
+    if(still||!('IntersectionObserver' in window)) done();
+    else { const io=new IntersectionObserver(es=>{ if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
+        let i=0; const iv=setInterval(()=>{ typed.textContent=CMD.slice(0,++i); if(i>=CMD.length){ clearInterval(iv); key.classList.add('glow'); } },90);
+      },{threshold:.5}); io.observe(boot); } }
   addEventListener('resize',()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
 })();
