@@ -41,7 +41,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 /* year */
 {const yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();}
 /* footer piste: an épée pool bout to 5 against a grey opponent. Each click plays one action by either fencer:
-   lunge to the chest, wrist, mask or foot, flèche, parry-riposte, stop-hit, beat-lunge, or a double (no right
+   lunge to the chest, wrist, mask or foot, flèche, parry-riposte, stop-hit, beat-lunge, balestra-lunge, feint-disengage, remise, or a double (no right
    of way in épée, so both score, except at 4-4, where it's annulled). Both fencers are one jointed skeleton
    (the opponent mirrored at x=130), posed by keyframes. Score and lamps change at the moment of the hit.
    The bout and the W-L record live in localStorage when they can. */
@@ -85,6 +85,10 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   // beat: knock their blade down, then lunge
   const BEAT=ov(G,{se:[37,17],hand:[43,16],tip:[66,17]}),BEATEN=ov(G,{tip:[65,22]});
   const DBL=T(LUNGE,-13);
+  // balestra: a hop forward, land, and lunge off it
+  const HOP=ov(T(G,5,-7),{bf:[27,33],ff:[42,33]}),LAND=T(G,7);
+  // feint-disengage: threaten high, they parry the air, the point drops under to the wrist
+  const FEINT=ov(G,{se:[38,14],hand:[45,12],tip:[71,5]});
   /* each action: s = scorer's track, o = the other's, [time 0-1, pose]; hit = when the point lands */
   const lunge=(x,pre,rec)=>({dur:950,hit:.42,s:[[0,G],[.18,pre],[.42,x],[.74,x],[1,G]],o:[[0,G],[.42,G],[.52,rec],[.76,rec],[1,G]]});
   const A={
@@ -96,6 +100,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     parry:{dur:1250,hit:.54,s:[[0,G],[.3,G],[.4,PARRY],[.54,RIP],[.8,RIP],[1,G]],o:[[0,G],[.14,EXT],[.32,LS],[.4,DEFL],[.8,DEFL],[1,G]]},
     stop:{dur:1000,hit:.42,s:[[0,G],[.3,G],[.42,STOP],[.74,STOP],[1,G]],o:[[0,G],[.32,ADV],[.42,ADV],[.52,ADV_R],[.78,ADV_R],[1,G]]},
     beat:{dur:1100,hit:.46,s:[[0,G],[.12,BEAT],[.22,EXT],[.46,LUNGE],[.76,LUNGE],[1,G]],o:[[0,G],[.12,G],[.18,BEATEN],[.46,BEATEN],[.56,REC],[.78,REC],[1,G]]},
+    balestra:{dur:1100,hit:.6,s:[[0,G],[.18,HOP],[.32,LAND],[.44,EXT],[.6,LUNGE],[.82,LUNGE],[1,G]],o:[[0,G],[.36,G],[.6,G],[.7,REC],[.86,REC],[1,G]]},
+    feint:{dur:1200,hit:.58,s:[[0,G],[.2,FEINT],[.4,FEINT],[.58,WRIST],[.82,WRIST],[1,G]],o:[[0,G],[.24,G],[.38,PARRY],[.58,PARRY],[.68,REC_ARM],[.84,REC_ARM],[1,G]]},
+    remise:{dur:1300,hit:.62,s:[[0,G],[.14,EXT],[.32,LS],[.42,DEFL],[.62,LUNGE],[.84,LUNGE],[1,G]],o:[[0,G],[.3,G],[.42,PARRY],[.62,PARRY],[.72,REC],[.86,REC],[1,G]]},
     double:{dur:950,hit:.42,s:[[0,G],[.18,EXT],[.42,DBL],[.74,DBL],[1,G]],o:[[0,G],[.18,EXT],[.42,DBL],[.74,DBL],[1,G]]}
   };
   const SAY={
@@ -106,9 +113,12 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     fleche:[['flèche! ran right past','flèche. all gas'],['their flèche. ran you over','flèche. too fast']],
     parry:[['parry, riposte','parried it. riposte home'],['you got parried. riposte','they parried and riposted']],
     stop:[['stop-hit to the arm','counter-attack. clean'],['stop-hit on your prep','caught on your prep']],
+    balestra:[['balestra, lunge!','jumped in and lunged'],['their balestra got you','hop, lunge. too quick']],
+    feint:[['feint high, hit the wrist','feint, disengage. fooled them'],['they feinted. you bit','feint, disengage. got you']],
+    remise:[['remise! stayed down and hit','parried, but the remise lands'],['their remise got you','they stayed in. remise']],
     beat:[['beat, then lunge','beat the blade, then in'],['they beat your blade','beat-attack. got you']]
   };
-  const KINDS=['chest','mask','foot','foot','wrist','fleche','fleche','parry','stop','beat'];
+  const KINDS=['chest','mask','foot','foot','wrist','fleche','fleche','parry','stop','beat','balestra','feint','remise'];
   const ease=x=>x*x*(3-2*x);
   const at=(tr,t)=>{let i=1;while(i<tr.length-1&&tr[i][0]<t)i++;const[t0,a]=tr[i-1],[t1,b]=tr[i];
     const u=t1>t0?ease(Math.min(Math.max((t-t0)/(t1-t0),0),1)):1;return a.map((v,k)=>v+(b[k]-v)*u);};
