@@ -2162,7 +2162,6 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 .ask-cmd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:16px;color:#eaf0fa;min-height:40px}
 .ask-ps{color:#9db8e0}
 .ask-typed{min-width:10ch}
-.ask-cu{width:9px;height:18px;background:#9db8e0;animation:askCu 1s steps(1) infinite}
 @keyframes askCu{50%{opacity:0}}
 .ask-pwr.ask-enter{align-self:center;margin-left:4px;gap:0;font:600 12px var(--mono);color:#1a1c22;background:linear-gradient(#f4f6f9,#d9dee6);border-radius:6px;padding:7px 12px;
   box-shadow:0 3px 0 #8c95a5,0 4px 8px rgba(0,0,0,.4);transition:transform .08s,box-shadow .08s;white-space:nowrap}
@@ -2171,4 +2170,4 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 .ask-enter:active{transform:translateY(3px);box-shadow:0 0 0 #8c95a5,0 1px 3px rgba(0,0,0,.4);animation:none}
 .ask-enter:focus-visible{outline:2px solid #9db8e0;outline-offset:3px}
 .ask-boot.booting .ask-cmd{visibility:hidden}
-@media(prefers-reduced-motion:reduce){.ask-cu,.ask-enter.glow{animation:none}}
+@media(prefers-reduced-motion:reduce){.ask-enter.glow{animation:none}}
