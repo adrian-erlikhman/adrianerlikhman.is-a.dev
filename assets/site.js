@@ -1342,7 +1342,26 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   box.querySelector('.ask-qs').addEventListener('keydown',e=>{
     const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];
     if(k){ e.preventDefault(); show((cur+k+qs.length)%qs.length,true); } });
-  hold(); addEventListener('resize',hold);
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(hold);
-  show(0);
+  // closed until the visitor powers it on; then a short boot log, then the questions
+  const boot=document.createElement('div'); boot.className='ask-boot';
+  boot.innerHTML='<button type="button" class="ask-pwr" aria-label="Power on ask adrian"><span class="ask-key" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></svg></span><span class="ask-hint"><b>ask-adrian</b><i>press to boot</i></span></button><div class="ask-crt" aria-hidden="true"><span class="ask-scan"></span><b>[ ae ]</b><span class="ask-bar2"><i></i></span></div>';
+  box.insertBefore(boot,box.querySelector('.ask-qs'));
+  box.classList.add('ask-off');
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // CRT power-on: a line of light opens into the screen, the mark flickers in, a bar fills, then the questions
+  function on(){
+    boot.classList.add('booting');
+    setTimeout(()=>{ box.classList.remove('ask-off'); boot.remove(); hold(); show(0); qs[0].focus({preventScroll:true}); box.classList.add('ask-in'); },still?0:1150);
+  }
+  // links to a tab elsewhere on the page (a paper, an internship, an award) open that tab and scroll to it
+  box.addEventListener('click',e=>{
+    const a=e.target.closest('a.ask-lk'); if(!a) return;
+    const el=document.getElementById(a.getAttribute('href').slice(1));
+    if(!el||el.getAttribute('role')!=='tab') return;
+    e.preventDefault(); el.click();
+    (el.closest('section')||el).scrollIntoView({behavior:still?'auto':'smooth',block:'start'});
+  });
+  boot.querySelector('.ask-pwr').addEventListener('click',on,{once:true});
+  addEventListener('resize',()=>{ if(!box.classList.contains('ask-off')) hold(); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!box.classList.contains('ask-off')) hold(); });
 })();
