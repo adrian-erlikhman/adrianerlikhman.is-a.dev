@@ -1684,12 +1684,12 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#18233a}
 .ask-bar i{width:10px;height:10px;border-radius:50%;background:#3a4a66}
 .ask-bar span{margin-left:10px;font-size:11px;color:#8ea2c3;letter-spacing:.04em}
-.ask-qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:14px 14px 0}
+.ask-qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:14px}
 .ask-q{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:12.5px;line-height:1.35;color:#eaf0fa;border:1px solid #3a4f76;border-radius:5px;padding:9px 11px;transition:background .15s,border-color .15s}
 .ask-q::before{content:"? ";color:#9db8e0}
 .ask-q:hover,.ask-q[aria-selected=true]{background:#21345a;border-color:#9db8e0}
 .ask-q:focus-visible{outline:2px solid #9db8e0;outline-offset:2px}
-.ask-as{margin-top:14px;border-top:1px solid #22324f;padding-bottom:14px}
+.ask-as{margin-top:0;border-top:1px solid #22324f;padding-bottom:14px}
 .ask-p+.ask-p{margin-top:14px;border-top:1px dashed #22324f}
 .js-ask .ask-p+.ask-p{margin-top:0;border-top:0}
 .ask-p[hidden]{display:none}
@@ -1715,7 +1715,7 @@ a.rp-cover:hover::after,a.rp-cover:focus-visible::after{opacity:1;transform:none
 .ask-go:hover,.ask-go:focus-visible{color:#fff;border-color:#9db8e0}
 @media(prefers-reduced-motion:reduce){.js-ask .ask-p:not([hidden]) .ask-code .l{animation:none}}
 @media(max-width:700px){.ask-qs{grid-template-columns:1fr 1fr}}
-@media(max-width:420px){.ask-qs{gap:6px;padding:12px 12px 0}.ask-q{font-size:11.5px;padding:8px 9px}
+@media(max-width:420px){.ask-qs{gap:6px;padding:12px}.ask-q{font-size:11.5px;padding:8px 9px}
   .ask-code{font-size:11px;line-height:1.6}.ask-code .l{grid-template-columns:22px minmax(0,1fr);column-gap:9px;padding-right:10px}.ask-go{margin-left:31px}}
 
 /* ==================== FOOTER PISTE (17 Oct): a click-to-lunge fencer, épée scoring lights, back to top ==================== */
