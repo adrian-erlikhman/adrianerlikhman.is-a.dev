@@ -2151,3 +2151,9 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 @keyframes aeBlink{50%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.ae-mark .pc{animation:none}.ae-mark .pt{transition:none}}
 @media(max-width:600px){.ae-mark .nm.pr{font-size:14px}.ae-mark .pt{font-size:22px}}
+
+/* popup: the red traffic light closes it (19 Oct, Adrian); a dark × appears on hover, as on a Mac */
+.wk-modal .wk-red{position:relative;cursor:pointer;pointer-events:auto}
+.wk-modal .wk-red::before{content:"";position:absolute;inset:-6px}
+.wk-modal .wk-red::after{content:"\00d7";position:absolute;inset:0;display:grid;place-items:center;font:700 10px/1 var(--mono);color:#4d0000;opacity:0;transition:opacity .12s}
+.wk-modal .wk-dots:hover .wk-red::after{opacity:1}
