@@ -1349,7 +1349,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   // closed until the visitor powers it on; then a short boot log, then the questions
   const boot=document.createElement('div'); boot.className='ask-boot';
   // 20 Oct (Adrian's pick, A of _mock/ask-boot2.html): the command types itself, then the Enter key glows and waits
-  boot.innerHTML='<div class="ask-cmd"><span class="ask-ps">~/</span><span class="ask-typed" aria-hidden="true"></span><span class="ask-cu" aria-hidden="true"></span><button type="button" class="ask-pwr ask-enter" aria-label="Run ask-adrian">&#8629; enter</button></div><div class="ask-crt" aria-hidden="true"><span class="ask-scan"></span><b>~/ ae</b><span class="ask-bar2"><i></i></span></div>';
+  boot.innerHTML='<div class="ask-cmd"><span class="ask-ps">~/</span><span class="ask-typed" aria-hidden="true"></span><button type="button" class="ask-pwr ask-enter" aria-label="Run ask-adrian">&#8629; enter</button></div><div class="ask-crt" aria-hidden="true"><span class="ask-scan"></span><b>~/ ae</b><span class="ask-bar2"><i></i></span></div>';
   box.insertBefore(boot,box.querySelector('.ask-qs'));
   box.classList.add('ask-off');
   const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
