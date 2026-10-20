@@ -597,6 +597,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   nodes.forEach(n=>{ const t=n.querySelector('.wk-tile'); t.addEventListener('click',()=>{ back=t; show(n.dataset.k); }); });
   closeBtn.addEventListener('click',close);
   modal.addEventListener('mousedown',e=>{ if(e.target===modal) close(); });
+  /* the red traffic light on every window bar in the popup closes it, like a Mac window */
+  modal.querySelectorAll('.wk-dots i:first-child').forEach(d=>d.classList.add('wk-red'));
+  modal.addEventListener('click',e=>{ if(e.target.closest('.wk-red')) close(); });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&open){ e.stopPropagation(); close(); } },true);
   modal.addEventListener('keydown',e=>{ if(e.key!=='Tab') return;
     const f=[...modal.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null||el===closeBtn);
