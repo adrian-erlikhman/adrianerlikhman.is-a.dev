@@ -865,7 +865,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 /* ================= TOP-LEFT NAME — scrambles once on load, then up to 3 on hover ================= */
 (function(){
   const mark=document.getElementById('aeMark'); if(!mark) return;
-  const nm=mark.querySelector('.nm'); if(!nm) return;
+  const nm=mark.querySelector('.nm.blk'); if(!nm) return;
   const TARGET=nm.textContent, SC='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const FRAMES=15, STEP=42, MAX_HOVERS=3;
   let busy=false, hovers=0, loadPlayed=false;

@@ -2138,3 +2138,16 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.ask-scan,.ask-crt b,.ask-bar2,.ask-bar2 i,.ask.ask-in .ask-qs,.ask.ask-in .ask-as{animation:none;opacity:1;transform:none}}
 .about p a{color:var(--acc);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 35%,transparent);text-underline-offset:3px;transition:text-decoration-color .2s}
 .about p a:hover{text-decoration-color:var(--acc)}
+
+/* top-left mark (19 Oct, Adrian's pick: take 02 of _mock/logo2.html): a prompt, "~/ ae" and a blinking block;
+   on hover it types out the name in Reenie Beanie, the handwriting he chose */
+.ae-mark .nm.pr{font-family:var(--mono)!important;font-weight:500;font-size:15px;letter-spacing:0;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.ae-mark .pg{color:var(--acc)}
+.ae-mark .pt{font-family:'Reenie Beanie',cursive;font-size:24px;line-height:.6;color:var(--acc);overflow:hidden;white-space:nowrap;max-width:0;
+  transition:max-width .7s steps(17)}
+.ae-mark:hover .pt,.ae-mark:focus-visible .pt,.ae-mark.typed .pt{max-width:11em}
+.ae-mark .pc{width:8px;height:16px;background:var(--acc);animation:aeBlink 1s steps(1) infinite}
+.ae-mark:hover{opacity:1}
+@keyframes aeBlink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.ae-mark .pc{animation:none}.ae-mark .pt{transition:none}}
+@media(max-width:600px){.ae-mark .nm.pr{font-size:14px}.ae-mark .pt{font-size:22px}}
