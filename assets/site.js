@@ -1334,6 +1334,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   let cur=-1;
   function show(i,focus){
     if(i===cur) return; cur=i;
+    if(area.hidden){ area.hidden=false; hold(); }
     qs.forEach((q,j)=>{ q.setAttribute('aria-selected',j===i?'true':'false'); q.tabIndex=j===i?0:-1; });
     ps.forEach((p,j)=>{ p.hidden=j!==i; });
     if(focus) qs[i].focus();
@@ -1351,7 +1352,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   // CRT power-on: a line of light opens into the screen, the mark flickers in, a bar fills, then the questions
   function on(){
     boot.classList.add('booting');
-    setTimeout(()=>{ box.classList.remove('ask-off'); boot.remove(); hold(); show(0); qs[0].focus({preventScroll:true}); box.classList.add('ask-in'); },still?0:1150);
+    setTimeout(()=>{ box.classList.remove('ask-off'); boot.remove(); ps.forEach(p=>p.hidden=true); area.hidden=true; qs.forEach((q,j)=>{ q.setAttribute('aria-selected','false'); q.tabIndex=j?-1:0; }); qs[0].focus({preventScroll:true}); box.classList.add('ask-in'); },still?0:1150);
   }
   // links to a tab elsewhere on the page (a paper, an internship, an award) open that tab and scroll to it
   box.addEventListener('click',e=>{
@@ -1362,6 +1363,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     (el.closest('section')||el).scrollIntoView({behavior:still?'auto':'smooth',block:'start'});
   });
   boot.querySelector('.ask-pwr').addEventListener('click',on,{once:true});
-  addEventListener('resize',()=>{ if(!box.classList.contains('ask-off')) hold(); });
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!box.classList.contains('ask-off')) hold(); });
+  addEventListener('resize',()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
 })();
