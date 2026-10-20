@@ -787,7 +787,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     else if(e.key==='Home'||e.key==='End'){e.preventDefault();items[e.key==='Home'?0:items.length-1].focus();}
     else if(e.key==='Escape'){e.preventDefault();close(true);}
   });
-  menu.addEventListener('focusout',e=>{if(!menu.contains(e.relatedTarget)&&e.relatedTarget!==trigger) close(false);});
+  menu.addEventListener('focusout',e=>{if(e.relatedTarget&&!menu.contains(e.relatedTarget)&&e.relatedTarget!==trigger) close(false);});  // Safari doesn't focus clicked links (relatedTarget null): closing here ate the click on Macs; outside clicks close via the document listener
   document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!e.target.closest('[data-cv-menu]')) close(false);});
   addEventListener('keydown',e=>{if(e.key==='Escape') close(true);});
   addEventListener('resize',()=>close(false));
