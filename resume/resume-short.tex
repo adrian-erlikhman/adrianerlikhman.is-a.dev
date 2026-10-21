@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, SHORT version (one page)
 %%  Source of resume.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-10-20
+%%  Updated: 2026-10-21
 %%
 %%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
 %%  Menu > Compiler to XeLaTeX (what the site's PDFs are built with; the
@@ -70,7 +70,7 @@
   before=\small}
 % \paper{Title}{Link}{Status}
 \newcommand{\paper}[3]{\par\addvspace{4pt}\noindent
-  \ifblank{#2}{\textbf{#1}}{\href{#2}{\textbf{#1}}}\par\nopagebreak
+  \ifblank{#2}{\textbf{#1}}{\href{#2}{\textbf{\underline{#1}}}}\par\nopagebreak
   \noindent{\small\itshape #3}\par\nopagebreak}
 \pagestyle{empty}
 
@@ -131,24 +131,24 @@
 % =================================================================================
 \section{Research}
 
-\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{}{Preprint, arXiv forthcoming}
+\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{https://github.com/adrian-erlikhman/self-recognition-peer-baseline}{Preprint, arXiv forthcoming}
 \begin{itemize}
   \item \who{Co-first author, advised by Philo Juang (Google DeepMind)}Nine LLM judges, 1,270 texts: the usual self-recognition test flags 15 of 37 cases, 3 beat a peer baseline and none beats its strongest single peer; an 18-feature stylometric classifier (86.3\%) beats every judge.
 \end{itemize}
 
 \paper{Do LLM Fingerprints Survive Outside English?}{https://github.com/adrian-erlikhman/LangLLM}{Best Paper Finalist, IEEE BigData 2026 HS Symposium}
 \begin{itemize}
-  \item \who{Co-first author}840 essays from five models in seven languages: attribution holds at 59--72\% against 20\% chance, with no detected drop for low-resource languages, and survives Google Translate.\enspace\lnk{https://github.com/adrian-erlikhman/LangLLM}{code}
+  \item \who{Co-first author}840 essays from five models in seven languages: attribution holds at 59--72\% against 20\% chance, with no detected drop for low-resource languages, and survives Google Translate.
 \end{itemize}
 
 \paper{Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation}{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}{Accepted, ARRSI Workshop @ AACL-IJCNLP 2026}
 \begin{itemize}
-  \item \who{Sole author}A certificate for how much of a validation set can be removed before the chosen reward model or LLM judge changes: on RewardBench, 12 of 2,985 items.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}{pdf}\enspace\lnk{https://github.com/adrian-erlikhman/curated-to-win}{code}
+  \item \who{Sole author}A certificate for how much of a validation set can be removed before the chosen reward model or LLM judge changes: on RewardBench, 12 of 2,985 items.
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings?}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{Accepted with revisions, Journal of High School Science}
 \begin{itemize}
-  \item \who{Co-first author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{pdf}
+  \item \who{Co-first author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.
 \end{itemize}
 
 % =================================================================================
