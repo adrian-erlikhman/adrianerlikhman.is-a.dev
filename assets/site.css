@@ -1791,6 +1791,7 @@ footer .ft-c{font-family:var(--mono)}
 .aw,.aw[class]{grid-template-columns:repeat(60,minmax(0,1fr))}
 .aw-t{grid-column:span 15}
 .aw-t[data-g="0"]{grid-column:span 10;aspect-ratio:.787}
+.aw-t[data-g="1"]{grid-column:span 20;aspect-ratio:auto}  /* three tiles since the LAUSD challenge came off (21 Oct) */
 @media(max-width:700px){.aw-t[data-g="0"]{aspect-ratio:auto}.aw-t[data-g="0"] .aw-tg{font-size:7px}}
 
 /* THE LEMMA TRACK (17 Oct): a full-width panel under the Hivemind card: SEPHacks' banner, the track, its three
