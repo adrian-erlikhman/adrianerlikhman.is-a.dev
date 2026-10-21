@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, LONG version
 %%  Source of resume-long.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-10-20
+%%  Updated: 2026-10-21
 %%
 %%  The classic black-and-white LaTeX resume layout (Jake's Resume), 11pt.
 %%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
@@ -72,7 +72,7 @@
   before=\small}
 % \paper{Title}{Link}{Authors}{Status}
 \newcommand{\paper}[4]{\par\addvspace{4pt}\noindent
-  \ifblank{#2}{\textbf{#1}}{\href{#2}{\textbf{#1}}}\par\nopagebreak
+  \ifblank{#2}{\textbf{#1}}{\href{#2}{\textbf{\underline{#1}}}}\par\nopagebreak
   \noindent{\small\itshape #4\ifblank{#3}{}{\sep #3}}\par\nopagebreak}
 
 \pagestyle{fancy}
@@ -152,7 +152,7 @@
 % =================================================================================
 \section{Research}
 
-\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{}%
+\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{https://github.com/adrian-erlikhman/self-recognition-peer-baseline}%
   {Co-first author, with R.\ Erlikhman, M.\ Tarekegn; advised by Philo Juang (Google DeepMind)}%
   {Preprint, arXiv forthcoming}
 \begin{itemize}
@@ -167,7 +167,7 @@
 \begin{itemize}
   \item Collected 840 essays from five frontier models across seven languages, English to Hindi, and attributed them with 21 interpretable features computed from Universal Dependencies parses: 59--72\% accuracy in every language against a 20\% chance floor, with no decline detected as a language's resources fall.
   \item Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49\% against 41\%), and attribution still holds at 57--70\% on machine-translated text.
-  \item Across 4,195 judge calls, four of the five models attribute authorship at chance (20--25\%) while Claude's self-recognition holds even in Hindi.\enspace\lnk{https://github.com/adrian-erlikhman/LangLLM}{code}
+  \item Across 4,195 judge calls, four of the five models attribute authorship at chance (20--25\%) while Claude's self-recognition holds even in Hindi.
 \end{itemize}
 
 \paper{Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation}{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}%
@@ -175,7 +175,7 @@
   {Accepted, ARRSI Workshop @ AACL-IJCNLP 2026}
 \begin{itemize}
   \item Proposed a curation certificate for choosing a reward model or LLM judge by validation accuracy: how much of the set could be removed before the winner changes. In benchmark weight it is at least the top-two gap; counted in items it is exact.
-  \item RewardBench's leader survives the removal of any 11 of 2,985 items, and removing 12 particular items makes the runner-up the winner; linear programs show the bound is tight near the top of RewardBench and RewardBench 2. On 200-item RewardBench samples, picks with a top-two gap above 2 points match the full-benchmark winner 87\% of the time (43\% otherwise).\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}{pdf}\enspace\lnk{https://github.com/adrian-erlikhman/curated-to-win}{code}
+  \item RewardBench's leader survives the removal of any 11 of 2,985 items, and removing 12 particular items makes the runner-up the winner; linear programs show the bound is tight near the top of RewardBench and RewardBench 2. On 200-item RewardBench samples, picks with a top-two gap above 2 points match the full-benchmark winner 87\% of the time (43\% otherwise).
 \end{itemize}
 
 \paper{How Robust Are the Legatum Prosperity Index Rankings?\newline A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
@@ -183,14 +183,14 @@
   {Accepted with revisions, Journal of High School Science}
 \begin{itemize}
   \item Reproduced every published score for 167 countries exactly, then varied the choices the index hides: 10,000 draws under each of three weight priors, and a 131,072-run Sobol' design over weighting, normalization and aggregation.
-  \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq) -- the only part of a weight's influence that can actually reorder countries -- and showed it tracks Sobol' total effects (Spearman 0.91--0.99) at a fraction of the compute. The ranking holds as a whole (median Spearman \geqsym\ 0.9899) but not mid-table, where the median 90\% rank interval spans 36 places.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{pdf}
+  \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq) -- the only part of a weight's influence that can actually reorder countries -- and showed it tracks Sobol' total effects (Spearman 0.91--0.99) at a fraction of the compute. The ranking holds as a whole (median Spearman \geqsym\ 0.9899) but not mid-table, where the median 90\% rank interval spans 36 places.
 \end{itemize}
 
 \paper{Does Portfolio Optimization Beat Splitting Evenly? Markowitz vs.\ the 1/N Portfolio}{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}%
   {With Ryan Erlikhman}%
   {Accepted with revisions, Oxford Journal of Student Scholarship}
 \begin{itemize}
-  \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 against 0.51), about 3 points of return a year at equal risk. The loss traces to estimating expected returns, and shrinkage closes it only with roughly two decades of stationary data -- more history than most investors have.\enspace\lnk{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}{pdf}
+  \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 against 0.51), about 3 points of return a year at equal risk. The loss traces to estimating expected returns, and shrinkage closes it only with roughly two decades of stationary data -- more history than most investors have.
 \end{itemize}
 
 \role{Advanced Mathematics Research}{}{induction, number theory, combinatorics and game theory, with PhD candidate Kirill Kovalenko}{2022 -- Present}
