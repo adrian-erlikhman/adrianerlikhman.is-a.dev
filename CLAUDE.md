@@ -18,6 +18,17 @@ from LaTeX in `resume/`.
     `resume/resume-short.tex` and `resume/resume-long.tex`, then rebuild.
 
 ## Résumé
+- **Since 20-21 Oct 2026 both résumés are the classic black-and-white Jake's Resume
+  layout at 11pt** (Adrian: "the normal black and white latex format like the most
+  famous one", "make the font the size of the actual resume"; no navy, no colour).
+  Short is **2 pages**, long **4** (his pick over cutting content); `build.py`
+  checks those counts and reads small-caps heads case-insensitively. The section
+  is **Ventures** (was Ventures & Civic Technology). Paper titles are underlined
+  links (PDF if the site hosts one, else the repo); no [pdf]/[code] tags. Long's
+  Talks lists IEEE BigData HSS and ARRSI (his ask, 21 Oct); eDNAtlas is last in
+  Competitions. The LAUSD Student Innovation Challenge is gone everywhere (site
+  wall, résumés): don't re-add. The URTC abstract and poster are deleted. Notes
+  below about navy, 8.8pt, 1/3 pages and [tags] are history.
 - **Two versions, typeset in LaTeX** (since 17 Sept 2026):
   `resume/resume-short.tex` → `resume.pdf` (one page, the default link) and
   `resume/resume-long.tex` → `resume-long.pdf` (three pages). Both use the
