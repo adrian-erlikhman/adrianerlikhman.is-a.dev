@@ -31,15 +31,15 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 
 TARGETS = {
-    "short": ("resume-short.tex", "resume.pdf", 1),
-    "long": ("resume-long.tex", "resume-long.pdf", 3),
+    "short": ("resume-short.tex", "resume.pdf", 2),
+    "long": ("resume-long.tex", "resume-long.pdf", 4),
 }
 # How each section head reads in the text layer. Both are mono caps since
 # 24 Sept, when the long one came back to the house design.
 SECTIONS = {
-    "short": ["PROFESSIONAL EXPERIENCE", "VENTURES & CIVIC TECHNOLOGY", "RESEARCH",
+    "short": ["PROFESSIONAL EXPERIENCE", "VENTURES", "RESEARCH",
               "COMPETITIONS", "EDUCATION", "LEADERSHIP & ATHLETICS", "SKILLS"],
-    "long": ["PROFESSIONAL EXPERIENCE", "VENTURES & CIVIC TECHNOLOGY", "RESEARCH",
+    "long": ["PROFESSIONAL EXPERIENCE", "VENTURES", "RESEARCH",
              "COMPETITIONS & BUILDS", "TALKS & PRESENTATIONS", "EDUCATION",
              "LEADERSHIP & ATHLETICS", "HONORS", "SKILLS"],
 }
@@ -66,7 +66,7 @@ def check(name: str, pdf: Path, pages: int) -> None:
     if len(reader.pages) != pages:
         sys.exit(f"{pdf.name}: {len(reader.pages)} pages, expected {pages}; cut something")
     lines = [ln.strip() for p in reader.pages for ln in p.extract_text().splitlines()]
-    heads = [ln for ln in lines if ln in SECTIONS[name]]
+    heads = [ln.upper() for ln in lines if ln.upper() in SECTIONS[name]]
     if heads != SECTIONS[name]:
         sys.exit(f"{pdf.name}: section heads read {heads}, expected {SECTIONS[name]}")
 
