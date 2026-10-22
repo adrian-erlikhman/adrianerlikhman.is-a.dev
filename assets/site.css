@@ -2172,3 +2172,16 @@ html.wk-lock,html.wk-lock body{overflow:hidden}
 .ask-enter:focus-visible{outline:2px solid #9db8e0;outline-offset:3px}
 .ask-boot.booting .ask-cmd{visibility:hidden}
 @media(prefers-reduced-motion:reduce){.ask-enter.glow{animation:none}}
+
+/* HERO CALM-DOWN (22 Oct, Adrian): the headline on one line at ~60% size, the portrait without its hard frame and a
+   little smaller, Ask adrian moved into About beside the intro, Off the laptop on its own before Contact */
+.hero h1{font-size:clamp(2.3rem,6.2vw,4.8rem);line-height:1;white-space:nowrap}
+.hero h1 .out,.hero h1 .ln span .out{display:inline}
+@media(min-width:821px){header.hero{grid-template-columns:1.35fr .65fr}}
+.portrait{border:0;border-radius:18px;box-shadow:0 28px 60px -34px rgba(21,23,28,.4)}
+.portrait .ph-cap{display:none}
+.about .ask{margin-top:0;max-width:none;align-self:center;min-width:0}
+.about>*{min-width:0}
+#offclock{display:block}
+.oc-solo{padding-top:8px;padding-bottom:72px}
+@media(max-width:600px){.hero h1{white-space:normal}}
