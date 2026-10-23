@@ -2219,3 +2219,6 @@ header.hero.hero-paper{display:block;min-height:0;padding:110px 0 70px}
 .hero-paper .pp-h{font-size:14px;letter-spacing:.02em;text-transform:none;font-weight:700;margin-bottom:12px}
 .hero-paper .pp-kw{font-size:14px;color:var(--ink);line-height:1.5;text-align:left}
 .hero-paper .pp-kw b{font-weight:700}
+/* 22 Oct: the title block (name, affiliations, email) came off; the page opens on Figure 1 and the TL;DR */
+.hero-paper .pp-body{margin-top:0;padding-top:0;border-top:0}
+.hero-paper h1.pp-hi{font-size:clamp(1.9rem,3.4vw,2.6rem);white-space:normal}
