@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&family=Reenie+Beanie&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-22-herocalm">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-22-paper">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -326,33 +326,38 @@
 
 <!-- HERO -->
 <main id="main" tabindex="-1">
-<header class="hero wrap">
-  <div>
+<!-- HERO as a paper's title page (22 Oct, Adrian picked layout 6 of _mock/heroes.html, with "TL;DR" for the
+     abstract and a fuller photo): title, affiliation, then Figure 1 beside the TL;DR, whose line still swipes. -->
+<header class="hero hero-paper wrap">
+  <div class="pp rv">
     <h1 data-nosnippet>
-      <span class="ln"><span>hi, i'm <span class="out">adrian</span></span></span>
-      <span class="sr-only">Adrian Erlikhman</span>
+      <span class="ln"><span>Adrian Erlikhman</span></span>
     </h1>
-    <div class="story" id="heroStory" data-nosnippet>
+    <p class="pp-aff">Los Angeles Center for Enriched Studies &middot; Team USA &eacute;p&eacute;e &middot; Los Angeles, CA</p>
+    <div class="pp-body">
+      <figure class="pp-fig">
+        <div class="portrait">
+          <img src="adrian.jpg" width="800" height="600" fetchpriority="high" decoding="async" alt="Adrian Erlikhman" onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex'">
+          <div class="ph-fallback" style="display:none">
+      <div class="ic">⌾</div>
+      <small>Drop a photo named<br><b style="color:var(--ink)">adrian.jpg</b><br>next to this file</small>
+    </div>
+        </div>
+        <figcaption><b>Figure 1.</b> The author.</figcaption>
+      </figure>
+      <div class="pp-tldr">
+        <h2 class="pp-h">TL;DR</h2>
+        <p class="pp-hi" data-nosnippet>hi, i'm <span class="out">adrian</span>.</p>
+        <div class="story" id="heroStory" data-nosnippet>
       <p class="sl">i'm a senior in los angeles.</p>
       <p class="sl">i build <a href="#work">ML and full-stack tools for people</a>.</p>
       <p class="sl">i do <a href="#papers">ML / NLP research</a>.</p>
       <p class="sl">i fence &eacute;p&eacute;e for <a href="#fencing">team usa</a>.</p>
     </div>
-    <div class="story-dots" role="group" aria-label="Show a line"><button type="button" aria-label="Line 1"></button><button type="button" aria-label="Line 2"></button><button type="button" aria-label="Line 3"></button><button type="button" aria-label="Line 4"></button></div>
-    <!-- AT A GLANCE (15 Oct): Adrian's three facts (the fourth, AIML-LI's summit students, came off at his ask the same day); each links to its section. Keep in step with the R cards, Fencing and Experience. -->
-  </div>
-
-  <!-- PHOTO -->
-  <div class="portrait rv d1">
-    <span class="ph-id">SPEC // '27</span>
-    <span class="dotc tr"></span><span class="dotc bl"></span>
-    <!-- [EDIT] add adrian.jpg next to this file to show your photo -->
-    <img src="adrian.jpg" width="800" height="600" fetchpriority="high" decoding="async" alt="Adrian Erlikhman" onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex'">
-    <div class="ph-fallback" style="display:none">
-      <div class="ic">⌾</div>
-      <small>Drop a photo named<br><b style="color:var(--ink)">adrian.jpg</b><br>next to this file</small>
+        <div class="story-dots" role="group" aria-label="Show a line"><button type="button" aria-label="Line 1"></button><button type="button" aria-label="Line 2"></button><button type="button" aria-label="Line 3"></button><button type="button" aria-label="Line 4"></button></div>
+        <p class="pp-kw"><i>Keywords</i> &mdash; machine learning, NLP, LLM evaluation, full-stack, &eacute;p&eacute;e</p>
+      </div>
     </div>
-    <span class="ph-cap">adrian erlikhman · los angeles</span>
   </div>
 </header>
 

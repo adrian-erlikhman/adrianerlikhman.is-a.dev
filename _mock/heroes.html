@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hero layouts</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:LM;src:url(../fonts/lmroman10-regular.woff2)}
+@font-face{font-family:LM;font-weight:700;src:url(../fonts/lmroman10-bold.woff2)}
+@font-face{font-family:LM;font-style:italic;src:url(../fonts/lmroman9-italic.woff2)}
+:root{--bg:#fbfaf7;--ink:#1c1b19;--acc:#1f3a5f;--dim:#5b6068;--line:#e4e1da;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box;margin:0}
+body{background:#e9e6df;font-family:LM,serif;color:var(--ink);padding:28px 16px 60px}
+.w{max-width:1240px;margin:0 auto}
+h1.t{font-size:28px;margin-bottom:4px}.sub{font:12px var(--mono);color:var(--dim);margin-bottom:22px}
+.lab{font:600 12px var(--mono);color:var(--acc);margin:26px 0 8px;letter-spacing:.04em}
+.lab span{font-weight:400;color:var(--dim)}
+.f{background:var(--bg);border:1px solid #d6d2c8;height:620px;overflow:hidden;position:relative;box-shadow:0 20px 40px -30px rgba(0,0,0,.4)}
+.bar{height:48px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;font:12px var(--mono)}
+.bar nav{display:flex;gap:18px;color:var(--ink)}.bar b{font-weight:400;color:var(--acc)}
+.hi{font-weight:700;letter-spacing:-.01em;line-height:1}.hi i{font-style:normal;color:var(--acc)}
+.st{font-size:20px;color:var(--ink)}.st a{color:var(--acc);text-decoration:underline;text-decoration-color:#9db8e0;text-underline-offset:4px}
+.dots{display:flex;gap:6px;margin-top:22px}.dots i{width:30px;height:2px;background:#cfccc4}.dots i.on{background:var(--acc)}
+.ph{background:url(../adrian.jpg) center 30%/cover}
+/* 1 centered */
+.v1{display:flex;flex-direction:column;align-items:center;justify-content:center;height:572px;text-align:center}
+.v1 .ph{width:150px;height:150px;border-radius:50%;margin-bottom:26px;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.v1 .hi{font-size:64px}.v1 .st{margin-top:16px}.v1 .dots{justify-content:center}
+/* 2 flipped */
+.v2{display:grid;grid-template-columns:.65fr 1.35fr;gap:64px;align-items:center;padding:40px 70px;height:572px}
+.v2 .ph{height:440px;border-radius:18px;box-shadow:0 28px 60px -34px rgba(0,0,0,.45)}.v2 .hi{font-size:68px}.v2 .st{margin-top:22px}
+/* 3 full bleed */
+.v3{display:grid;grid-template-columns:1fr 1fr;height:572px}.v3>div:first-child{padding:0 70px;display:flex;flex-direction:column;justify-content:center}
+.v3 .hi{font-size:64px}.v3 .st{margin-top:20px}.v3 .ph{height:100%}
+/* 4 full-width name */
+.v4{padding:44px 70px;height:572px}.v4 .hi{font-size:150px;letter-spacing:-.03em;white-space:nowrap}
+.v4 .row{display:grid;grid-template-columns:1fr 300px;gap:40px;margin-top:30px;align-items:start}.v4 .ph{height:250px;border-radius:14px}
+.v4 .st{font-size:22px;margin-top:8px}
+/* 5 reel */
+.v5{position:relative;height:572px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 70px 70px;color:#fff;overflow:hidden}
+.v5 .bg{position:absolute;inset:0;background:url(../img/bouts/fence-loop.webp) center/cover}
+.v5 .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,34,58,.94) 0%,rgba(31,58,95,.72) 55%,rgba(31,58,95,.2))}
+.v5>*:not(.bg){position:relative}.v5 .hi{font-size:76px}.v5 .hi i{color:#9db8e0}.v5 .st{color:#fff;margin-top:16px}.v5 .st a{color:#fff}
+.v5 .tag{font:11px var(--mono);letter-spacing:.14em;color:#9db8e0;margin-bottom:14px}
+.v5 .dots i{background:rgba(255,255,255,.3)}.v5 .dots i.on{background:#fff}
+/* 6 paper */
+.v6{height:572px;display:flex;justify-content:center;align-items:center;background:#f3f1ec}
+.v6 .pg{width:620px;background:#fff;padding:46px 60px 40px;box-shadow:0 18px 40px -26px rgba(0,0,0,.35);text-align:center}
+.v6 .hi{font-size:40px;font-weight:700}.v6 .aff{font-size:15px;margin-top:10px;color:var(--dim)}.v6 .aff i{font-style:italic}
+.v6 .au{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:22px}.v6 .ph{width:84px;height:84px;border-radius:50%}
+.v6 .abs{margin-top:24px;text-align:justify;font-size:15px;line-height:1.55}.v6 .abs b{display:block;text-align:center;font-size:13px;margin-bottom:6px;letter-spacing:.06em}
+.v6 .abs a{color:var(--acc)}
+.v6 .kw{margin-top:14px;font-size:13px;color:var(--dim);text-align:left}
+</style></head><body><div class="w">
+<h1 class="t">Hero layouts</h1>
+<div class="sub">// six ways to arrange the first screen · same words, same photo · desktop frame</div>
+<div id="out"></div></div>
+<script>
+const bar=`<div class="bar"><span>~/ ae <b>▌</b></span><nav><span>About</span><span>Experience</span><span>Research</span><span>Selected work</span><span>Fencing</span><span>Achievements</span><span>Contact</span><b>Résumé ↗</b></nav></div>`;
+const st=`<p class="st">i do <a>ML / NLP research</a>.</p>`, dots=`<div class="dots"><i></i><i></i><i class="on"></i><i></i></div>`;
+const V=[
+ ['1 · Centered stack','calm, personal',`<div class="v1"><div class="ph"></div><h2 class="hi">hi, i'm <i>adrian</i></h2>${st}${dots}</div>`],
+ ['2 · Photo on the left','face first, then name',`<div class="v2"><div class="ph"></div><div><h2 class="hi">hi, i'm <i>adrian</i></h2>${st}${dots}</div></div>`],
+ ['3 · Full-bleed photo','editorial, magazine spread',`<div class="v3"><div><h2 class="hi">hi, i'm <i>adrian</i></h2>${st}${dots}</div><div class="ph"></div></div>`],
+ ['4 · Name across the width','the name is the headline',`<div class="v4"><h2 class="hi">hi, i'm <i>adrian</i></h2><div class="row"><div>${st}${dots}</div><div class="ph"></div></div></div>`],
+ ['5 · Fencing reel behind','most striking, busiest (the touch loops, muted)',`<div class="v5"><div class="bg"></div><div class="tag">LOS ANGELES · TEAM USA ÉPÉE</div><h2 class="hi">hi, i'm <i>adrian</i></h2>${st}${dots}</div>`],
+ ['6 · Paper title page','like page one of a LaTeX paper',`<div class="v6"><div class="pg"><h2 class="hi">Adrian Erlikhman</h2><p class="aff"><i>Los Angeles Center for Enriched Studies · Team USA épée</i></p><div class="au"><div class="ph"></div></div><div class="abs"><b>ABSTRACT</b>I'm a senior in Los Angeles. I build <a>ML and full-stack tools for people</a>, do <a>ML / NLP research</a>, and fence épée for <a>Team USA</a>.</div><p class="kw"><i>Keywords</i> — machine learning, NLP, LLM evaluation, fencing</p></div></div>`],
+];
+document.getElementById('out').innerHTML=V.map(([t,d,h])=>`<div class="lab">${t} <span>// ${d}</span></div><div class="f">${bar}${h}</div>`).join('');
+</script></body></html>
