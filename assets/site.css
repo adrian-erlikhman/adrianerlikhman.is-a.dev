@@ -2205,3 +2205,17 @@ header.hero.hero-paper{display:block;min-height:0;padding:110px 0 70px}
 .hero-paper .pp-kw{font-family:var(--serif);font-size:14px;color:var(--dim);margin-top:30px}
 @media(max-width:820px){.hero-paper .pp{padding:36px 22px 30px}.hero-paper .pp-body{grid-template-columns:1fr;gap:28px}
   .hero-paper .pp-fig{max-width:340px;margin:0 auto}.hero-paper .pp-aff{font-size:15px}}
+
+/* title page, second pass (22 Oct, Adrian: refine the italics and the "subscript"): set like LaTeX's \maketitle.
+   Superscript affiliation marks, affiliations on their own lines in italic, a typewriter email, "Figure 1:" captions,
+   an \abstract-style TL;DR head and IEEE's bold-italic Keywords lead-in. Everything stays in Latin Modern. */
+.hero-paper h1 .pp-m{font-size:.36em;font-weight:400;vertical-align:super;line-height:0;margin-left:.08em;color:var(--dim);letter-spacing:0}
+.hero-paper .pp-aff{display:flex;flex-direction:column;gap:3px;font-size:16px;font-style:italic;color:var(--ink);margin-top:16px;letter-spacing:0}
+.hero-paper .pp-aff sup{font-style:normal;font-size:.68em;margin-right:.18em;color:var(--dim)}
+.hero-paper .pp-mail{margin-top:8px;font-family:var(--serif);font-size:15px}
+.hero-paper .pp-mail a{color:var(--acc);text-decoration:none}
+.hero-paper .pp-mail a:hover{text-decoration:underline}
+.hero-paper figcaption{font-size:14px;color:var(--ink);text-align:center;font-style:normal}
+.hero-paper .pp-h{font-size:14px;letter-spacing:.02em;text-transform:none;font-weight:700;margin-bottom:12px}
+.hero-paper .pp-kw{font-size:14px;color:var(--ink);line-height:1.5;text-align:left}
+.hero-paper .pp-kw b{font-weight:700}
