@@ -2222,3 +2222,23 @@ header.hero.hero-paper{display:block;min-height:0;padding:110px 0 70px}
 /* 22 Oct: the title block (name, affiliations, email) came off; the page opens on Figure 1 and the TL;DR */
 .hero-paper .pp-body{margin-top:0;padding-top:0;border-top:0}
 .hero-paper h1.pp-hi{font-size:clamp(1.9rem,3.4vw,2.6rem);white-space:normal}
+
+/* ASK ADRIAN, COMPACT (23 Oct, Adrian: "i dont like how big this box becomes"). It opened at ~576px beside a ~346px
+   intro. Now the box takes the wider column, the questions are a two-column list of plain lines (not boxed buttons),
+   the jump link sits in the file's tab bar, and the code is a size smaller, so no line wraps at desktop width */
+@media(min-width:821px){#about .about{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px}}
+.ask-qs{grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 8px;padding:10px 10px 12px}
+.ask-q{font-size:12px;line-height:1.35;color:#b9c7dd;border:0;border-radius:4px;padding:5px 8px}
+.ask-q::before{color:#5f7598}
+.ask-q:hover{background:#18233a;color:#eaf0fa}
+.ask-q[aria-selected=true]{background:#21345a;color:#fff}
+.ask-q[aria-selected=true]::before{content:"\203A  ";color:#9db8e0}
+.ask-p{position:relative}
+.ask-tab em{display:none}
+.ask-go{position:absolute;top:0;right:14px;height:32px;display:flex;align-items:center;margin:0;padding:0;border:0;font-size:11px;color:#9db8e0}
+.ask-go:hover,.ask-go:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.ask-code{font-size:12px;line-height:1.55;margin-top:8px}
+.ask-code .l{grid-template-columns:24px minmax(0,1fr);column-gap:12px}
+.ask-as{padding-bottom:12px}
+@media(max-width:420px){.ask-qs{padding:8px}.ask-q{font-size:11.5px;padding:5px 6px}.ask-go{right:10px;font-size:10.5px}
+  .ask-code{font-size:11px}.ask-code .l{grid-template-columns:20px minmax(0,1fr);column-gap:8px}}

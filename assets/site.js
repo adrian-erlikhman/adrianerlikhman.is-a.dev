@@ -1340,10 +1340,12 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   if(!qs.length||qs.length!==ps.length) return;
   box.classList.add('js-ask');
   ps.forEach(p=>p.querySelectorAll('.ask-code .l').forEach((l,n)=>l.style.setProperty('--n',n)));
-  // hold the tallest answer's height so the hero doesn't jump as answers change
-  function hold(){ area.style.minHeight=''; let h=0;
+  // hold the tallest answer's height so the questions don't jump as answers change; on one-column screens the box
+  // just fits its answer (23 Oct: held, it left a tall empty box under the short ones)
+  const narrow=matchMedia('(max-width:820px)');
+  function hold(){ area.style.minHeight=''; if(narrow.matches) return; let h=0;
     ps.forEach(p=>{ const was=p.hidden; p.hidden=false; h=Math.max(h,p.offsetHeight); p.hidden=was; });
-    area.style.minHeight=(h+30)+'px'; }
+    area.style.minHeight=(h+parseFloat(getComputedStyle(area).paddingBottom))+'px'; }
   let cur=-1;
   function show(i,focus){
     if(i===cur) return; cur=i;
