@@ -515,6 +515,10 @@ the rail and the ⌘K palette follow it.
     `ask_v6.py` in that session); to edit by hand, keep the
     `<span class="l"><span class="c">` structure. Long lines soft-wrap beside
     their number on phones; on desktop no line wraps (check at 1280px).
+    **Compact since 23 Oct** (Adrian: "i dont like how big this box becomes"; it opened at ~576px beside a ~346px
+    intro): the box takes the wider About column (.9fr/1.1fr), the questions are a two-column list of plain lines,
+    the "→ jump to" link sits in the file's tab bar, the code is 12px, and the held height applies only above
+    820px. At 1280px it is ~377px tall and no line wraps; re-check that after adding a line.
     The `.facts` CSS is unused now. History of the stat box:
   - **At a glance** (`.facts`, under the hero buttons): three linked cells in a
     row, his wording (a fourth, "200+ LA public-school students", came off the
