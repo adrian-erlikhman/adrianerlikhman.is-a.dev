@@ -561,6 +561,11 @@ the rail and the ⌘K palette follow it.
     websites"):
     - **Research** was a publication list (`.paper` rows) for one day; it is
       now the cover shelf (see Research shelf).
+    - **Experience is a CV list since 24 Oct** (`.xpl`, `.xp-r`; Adrian: the files were "lowk too complicated, i just
+      need to immediately show my internships"; he picked B of `_mock/xp-simple.html`). All four show at once: dates,
+      role and linked company, an italic context line, three bullets with bold leads ("more impressive", every fact
+      from the long résumé or the old files), the mark on the right. No Current/Completed (his call). The tab script
+      is gone; the `.xf` CSS is unused. Ask adrian links to `#xp-firstness` etc. The notes below are history.
     - **Experience** is a set of **internship files** (`#xpFiles`, `.xf`), the
       fourth design that day. Adrian found the vertical list "mid", then the
       year-track board (`#xpBoard`, #150) not what he wanted, asked for "like

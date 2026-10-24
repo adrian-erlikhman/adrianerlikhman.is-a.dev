@@ -2250,3 +2250,24 @@ header.hero.hero-paper{display:block;min-height:0;padding:110px 0 70px}
 .ae-mark .nm.pgn{font-family:var(--serif)!important;font-weight:400;font-size:18px;letter-spacing:0;text-transform:none;color:var(--ink);white-space:nowrap}
 .ae-mark:hover{opacity:.7}
 @media(max-width:600px){.ae-mark .pgm{width:22px;height:22px}.ae-mark .nm.pgn{font-size:16.5px}}
+
+/* EXPERIENCE AS A CV LIST (24 Oct; Adrian picked B of _mock/xp-simple.html). All four internships at once: dates,
+   role and company, one italic line of context, three bullets, the company's mark on the right. The .xf file CSS
+   above is unused now */
+.xpl{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
+.xp-r{display:grid;grid-template-columns:120px minmax(0,1fr) 110px;gap:30px;padding:26px 0;border-top:1px solid var(--line);scroll-margin-top:110px}
+.xp-d{font-family:var(--mono);font-size:13px;line-height:1.5;color:var(--dim);padding-top:6px;white-space:nowrap}
+.xp-m h3{font-family:var(--serif);font-weight:700;font-size:23px;line-height:1.25;letter-spacing:0;text-transform:none;color:var(--ink)}
+.xp-m h3 a{font-weight:400;color:var(--acc);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 35%,transparent);text-underline-offset:4px;transition:text-decoration-color .2s}
+.xp-m h3 a:hover{text-decoration-color:var(--acc)}
+.xp-s{font-family:var(--serif);font-style:italic;font-size:16.5px;line-height:1.45;color:var(--dim);margin-top:4px}
+.xp-m ul{list-style:none;margin:12px 0 0;padding:0}
+.xp-m li{position:relative;font-family:var(--serif);font-size:16.5px;line-height:1.48;color:var(--ink);padding-left:22px;max-width:90ch}
+.xp-m li+li{margin-top:5px}
+.xp-m li::before{content:"\2022";position:absolute;left:4px;top:0;color:var(--acc)}
+.xp-m li b{font-weight:700}
+.xp-m li a{color:var(--acc);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 35%,transparent);text-underline-offset:3px}
+.xp-lg{justify-self:end;width:auto;height:26px;max-width:110px;object-fit:contain;margin-top:3px}
+@media(max-width:760px){.xp-r{grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:24px 0}
+  .xp-d{grid-column:1;grid-row:1;padding-top:2px}.xp-lg{grid-column:2;grid-row:1;height:22px;margin-top:0}
+  .xp-m{grid-column:1/-1}.xp-m h3{font-size:20px}.xp-s{font-size:15.5px}.xp-m li{font-size:16px;padding-left:18px}.xp-m li::before{left:2px}}
