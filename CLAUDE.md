@@ -367,12 +367,15 @@ from LaTeX in `resume/`.
   `robots.txt` blocks Googlebot-Image from the seven outdoor `life-*.jpg`
   photos and `img/ycs/main-stage.jpg` (he isn't in it). Delete those robots lines
   to let them back into image search.
-- **Icons** are the `[ ae ]` mark, regenerated 5 Oct in IBM Plex Mono Bold
-  (from the Tectonic cache), recoloured 15 Oct from rust to navy `#1F3A5F`
-  (pixel remap; the SVG's two fills edited): `favicon.svg` (outlined paths),
-  `favicon.ico`, `favicon-48/96.png`, `icon-192/512.png`,
-  `apple-touch-icon.png`, plus `site.webmanifest`. Google had been showing
-  the August glitch "AE", which survived in `apple-touch-icon.png`.
+- **Icons and the top-left mark are the page mark since 23 Oct 2026.** Adrian called the [a/e] squircle
+  (#234) "booty" and off-theme, picked E (italic a with a subscript e) and G (a dog-eared page) from eight
+  Latin Modern takes (`_mock/logo-paper.html`), then take 1 of four combinations (`_mock/logo-eg.html`): a white
+  page outlined in navy with a<sub>e</sub> on it in Latin Modern italic. `python tools/make_icons.py` writes
+  `favicon.svg` (outlined paths), `img/logos/ae-mark.svg`, `favicon.ico`, `favicon-48/96.png`,
+  `icon-192/512.png` (transparent) and `apple-touch-icon.png` (on `#fbfaf7`). The head links carry
+  `?v=2026-10-23-page`; bump it when the icons change. The bar shows the page and "Adrian Erlikhman" in
+  Latin Modern (`.ae-mark .pgm`, `.nm.pgn`); the `~/ae` prompt and its Reenie Beanie name are gone. Earlier
+  marks (the `[ ae ]` block, the squircle) are history.
 - **LinkedIn is `linkedin.com/in/adrian-erlikhman-78a262414`** (8 Oct). Until
   then the site, both résumés, llms.txt, the ⌘K palette and the GitHub README
   linked `…-55489620b`, a separate, empty "Adrian Erlikhman" account (no photo,
@@ -874,10 +877,7 @@ the rail and the ⌘K palette follow it.
   `.fr-txt`) and `mit-logo.svg` are kept for when he brings something back.
   Contact's Fencing link and the JSON-LD `sameAs` still point to
   fencingtracker.
-- **The top-left mark is option 40** (Adrian picked it from three sheets of
-  mockups, 22 Sept): a rust block reading `[ ae ]` in mono, with the full name
-  beside it as `.sr-only` so screen readers and crawlers still get it. It
-  hovers to ink. Same on all three pages; `.ae-mark .nm.blk` in site.css.
+- **The top-left mark** is the page mark since 23 Oct (see Icons under SEO).
 - **Company and competition marks** (`img/logos/`, since 22 Sept). Adrian asked
   for them and told Claude to fetch them ("search them on google you got it and
   download them yourself"). Each came from the organisation's own site that
