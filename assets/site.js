@@ -720,36 +720,6 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   },3800);
 })();
 
-/* ================= EXPERIENCE — internship files: tabs switch the open file, and it stays open until the visitor picks
-   another (arrows, Home and End too). Without JS all four files show. ================= */
-(function(){
-  const b=document.getElementById('xpFiles'); if(!b) return;
-  const tabs=[...b.querySelectorAll('.xf-tab')], panels=[...b.querySelectorAll('.xf-p')];
-  b.classList.add('js');
-  let cur=0;
-  function set(i,focus){
-    cur=(i+tabs.length)%tabs.length;
-    tabs.forEach((t,j)=>{t.setAttribute('aria-selected',j===cur?'true':'false');t.tabIndex=j===cur?0:-1;});
-    panels.forEach((p,j)=>{p.hidden=j!==cur;p.classList.remove('in');});
-    void panels[cur].offsetWidth; panels[cur].classList.add('in');
-    const pr=tabs[cur].querySelector('.xf-prog'); if(pr){pr.style.animation='none';void pr.offsetWidth;pr.style.animation='';}
-    if(focus) tabs[cur].focus();
-  }
-  const takeOver=()=>b.classList.remove('auto');
-  tabs.forEach((t,j)=>{
-    t.addEventListener('click',()=>{takeOver();set(j);});
-    t.addEventListener('keydown',e=>{
-      const k={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];
-      if(k){e.preventDefault();takeOver();set(cur+k,true);}
-      else if(e.key==='Home'){e.preventDefault();takeOver();set(0,true);}
-      else if(e.key==='End'){e.preventDefault();takeOver();set(tabs.length-1,true);}
-    });
-    const pr=t.querySelector('.xf-prog'); if(pr) pr.addEventListener('animationend',()=>{ if(b.classList.contains('auto')) set(cur+1); });
-  });
-  set(0);
-  /* no auto-advance (Adrian, 15 Oct: "not timed... they can stay on the tab for as long as they want") */
-})();
-
 /* ================= RÉSUMÉ PICKER (short / long) ================= */
 (function(){
   const menu=document.getElementById('cvMenu'); if(!menu) return;
