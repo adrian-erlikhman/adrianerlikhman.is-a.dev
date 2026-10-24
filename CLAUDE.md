@@ -694,6 +694,13 @@ the rail and the ⌘K palette follow it.
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
   long one lost Citadel's second bullet (what Terminal is), "(Andrew Ng" from the DL Specialization, and a few
   words in Citadel, YC, More builds and JSU. Both résumés now have no slack at all.
+- **Selected work, loosened (24 Oct).** Adrian: "too symmetric. i want it to flow well, but be a bit more interactive".
+  Above 900px the six tiles sit loose on a 12-column grid in three sizes (Hivemind 7 cols; the rest 4-6, indented and
+  dropped by different amounts; `grid-area` per `data-k` in site.css), numbered 01-06. The wire router picks the first
+  channel clear of the other tiles' label, tile and caption, so after moving a tile check that no wire crosses a card.
+  Drag a tile by its grip (`.wk-nh`, mouse only) and its wires follow; Reset layout puts them back. Hovering a tile
+  lights its two wires and fades the others, and the tiles drift at slightly different speeds with the scroll
+  (`--py`, SPEED in site.js). Phones keep the one column with the left rail.
 - **Selected work is six staggered bubbles wired like the films** (18 Oct). Adrian: the cards were "way too big...
   minimize that shit so people can choose to open each ones", "go to michelle lius portfolio and emulate that"
   (liumichelle.com, the UCLA product designer: big rounded cover tiles with a "Name · year" pill), "but connect it with
