@@ -2272,43 +2272,52 @@ header.hero.hero-paper{display:block;min-height:0;padding:110px 0 70px}
   .xp-d{grid-column:1;grid-row:1;padding-top:2px}.xp-lg{grid-column:2;grid-row:1;height:22px;margin-top:0}
   .xp-m{grid-column:1/-1}.xp-m h3{font-size:20px}.xp-s{font-size:15.5px}.xp-m li{font-size:16px;padding-left:18px}.xp-m li::before{left:2px}}
 
-/* SELECTED WORK, LOOSENED (24 Oct, Adrian: "too symmetric. i want it to flow well, but be a bit more interactive...
-   make some edits that make it cooler"). Wide screens: the six tiles sit loose on a 12-column grid in three sizes,
-   numbered 01-06 so the wires read as a path; drag a tile by its grip (Reset puts them back), the hovered tile lights
-   its wires while the others step back, and the tiles drift at slightly different speeds as the page scrolls */
+/* SELECTED WORK AS A HUB (24 Oct; Adrian picked 2b of _mock/wk-it.html, "with the background from 2c but make it
+   smooth", annotated "click on any one!"). Wide screens: the page mark in the middle and the six builds around it
+   (01 top left, then clockwise), every wire running out from the centre, on a dot grid that fades out at its edges.
+   Hovering a build lights its wire and names it in the hub. Phones keep the one column with the left rail */
 .wk-canvas{counter-reset:wk}
 .wk-nh span::before{counter-increment:wk;content:counter(wk,decimal-leading-zero);margin-right:12px;color:var(--acc);letter-spacing:.08em}
-@media(min-width:901px){
-  .wk-canvas{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;row-gap:0;padding:44px 0 80px}
-  .wk-node[data-k]{transform:none}
-  .wk-canvas.flow .wk-node{transform:translate3d(0,var(--py,0px),0)}
-  .wk-node[data-k="hivemind"]{grid-area:1/1/2/8}
-  .wk-node[data-k="monte"]{grid-area:1/9/2/13;margin-top:110px}
-  .wk-node[data-k="safejew"]{grid-area:2/1/3/6;margin-top:36px}
-  .wk-node[data-k="aimlli"]{grid-area:2/8/3/12;margin-top:200px}
-  .wk-node[data-k="ledger"]{grid-area:3/2/4/6;margin-top:24px}
-  .wk-node[data-k="saferoutes"]{grid-area:3/7/4/13;margin-top:120px}
-  .wk-node[data-k="hivemind"] .wk-cap{font-size:16.5px}
-}
-.wk-wires path{transition:stroke .25s,stroke-width .25s}
+.wk-canvas::before{content:"";position:absolute;inset:-40px -60px;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(31,58,95,.17) 1px,transparent 1.5px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse 58% 56% at 50% 50%,#000 35%,transparent 100%);mask-image:radial-gradient(ellipse 58% 56% at 50% 50%,#000 35%,transparent 100%)}
+.wk-hub,.wk-ring{display:none}
+.wk-wires path{transition:stroke .3s,stroke-width .3s}
 .wk-wires path.hot{stroke:var(--acc);stroke-width:2.2}
-.wk-wires .port{transition:fill .25s,stroke .25s}
+.wk-wires .port{transition:fill .3s,stroke .3s}
 .wk-wires .port.hot{fill:var(--acc);stroke:var(--acc)}
-.wk-node .wk-tile{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,opacity .3s,filter .3s}
-.wk-node .wk-cap{transition:color .3s,opacity .3s}
-.wk-canvas.focus .wk-node:not(.hot) .wk-tile{opacity:.66;filter:saturate(.5)}
-.wk-canvas.focus .wk-node:not(.hot) .wk-cap{opacity:.6}
-.wk-canvas.can-drag .wk-nh{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
-.wk-canvas.can-drag .wk-nh i{color:var(--acc);font-size:15px;transition:transform .2s}
-.wk-canvas.can-drag .wk-nh:hover i{transform:scale(1.25)}
-.wk-node.dragging{z-index:6}
-.wk-node.dragging .wk-nh{cursor:grabbing}
-.wk-node.dragging .wk-tile{transform:translateY(-8px) rotate(-.8deg);box-shadow:0 0 0 1px rgba(21,23,28,.14),0 46px 70px -30px rgba(21,23,28,.6)}
-.wk-canvas.settling .wk-node{transition:translate .6s cubic-bezier(.16,1,.3,1)}
-.wk-hint{display:none;position:absolute;top:4px;right:0;margin:0;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--dim)}
-.wk-hint b{color:var(--acc);font-weight:500;margin-right:6px}
-.wk-canvas.can-drag .wk-hint{display:block}
-.wk-reset{position:absolute;top:-6px;left:0;z-index:7;display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);color:var(--ink);font:500 11.5px/1 var(--mono);cursor:pointer;box-shadow:0 10px 24px -16px rgba(21,23,28,.5);transition:background .2s,color .2s}
-.wk-reset:hover,.wk-reset:focus-visible{background:var(--acc);color:#fff;outline:none}
-.wk-reset[hidden]{display:none}
-@media(prefers-reduced-motion:reduce){.wk-canvas.flow .wk-node{transform:none}.wk-canvas.settling .wk-node{transition:none}}
+.wk-node .wk-tile{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,opacity .35s,filter .35s}
+.wk-node .wk-cap{transition:color .3s,opacity .35s}
+.wk-canvas.focus .wk-node:not(.hot) .wk-tile{opacity:.62;filter:saturate(.5)}
+.wk-canvas.focus .wk-node:not(.hot) .wk-cap{opacity:.55}
+@media(min-width:901px){
+  .wk-canvas{grid-template-columns:minmax(0,320px) minmax(0,1fr) minmax(0,320px);column-gap:40px;row-gap:56px;padding:76px 0 40px}
+  .wk-node[data-k]{transform:none}
+  .wk-node[data-k="hivemind"]{grid-area:1/1}
+  .wk-node[data-k="monte"]{grid-area:1/3}
+  .wk-node[data-k="safejew"]{grid-area:2/3;transform:translateX(34px)}
+  .wk-node[data-k="aimlli"]{grid-area:3/3}
+  .wk-node[data-k="ledger"]{grid-area:3/1}
+  .wk-node[data-k="saferoutes"]{grid-area:2/1;transform:translateX(-34px)}
+  .wk-hub{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;position:absolute;left:50%;top:calc(50% + 18px);
+    width:160px;height:160px;margin:-80px 0 0 -80px;border-radius:50%;background:#fff;z-index:3;
+    box-shadow:0 0 0 1px var(--line),0 26px 54px -30px rgba(21,23,28,.5);transition:box-shadow .35s,transform .45s cubic-bezier(.16,1,.3,1)}
+  .wk-hub img{width:56px;height:56px}
+  .wk-hl{font:500 10px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:center;max-width:124px;transition:color .3s}
+  .wk-canvas.focus .wk-hub{box-shadow:0 0 0 2px var(--acc),0 26px 54px -30px rgba(21,23,28,.5);transform:scale(1.05)}
+  .wk-canvas.focus .wk-hl{color:var(--acc)}
+  .wk-ring{display:block;position:absolute;left:50%;top:calc(50% + 18px);border:1px dashed rgba(31,58,95,.2);border-radius:50%;transform:translate(-50%,-50%);z-index:0;pointer-events:none}
+  .wk-ring.r1{width:440px;height:440px}
+  .wk-ring.r2{width:740px;height:740px}
+}
+/* the note, in the hand of the Hivemind card's: it draws itself in once the section is on screen */
+.wk-note{position:absolute;top:10px;right:6px;display:flex;align-items:flex-start;gap:4px;margin:0;color:#b9771a;z-index:4;pointer-events:none}
+.wk-note svg{width:44px;height:33px;flex:none;overflow:visible;margin-top:8px}
+.wk-note path{stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:70;stroke-dashoffset:70}
+.wk-note span{font-family:'Shantell Sans',var(--mono);font-weight:500;font-size:18px;line-height:1.2;transform:rotate(-3deg);opacity:0;white-space:nowrap}
+.works.in .wk-note .st{animation:hmDraw .6s 1.1s ease-in-out forwards}
+.works.in .wk-note .hd{animation:hmDraw .25s 1.65s ease-out forwards}
+.works.in .wk-note span{animation:hmIn .5s .9s ease-out forwards}
+@media(min-width:901px){.wk-note{top:84px;left:50%;right:auto;transform:translateX(-58%)}}
+@media(max-width:900px){.wk-canvas::before{inset:-20px -16px}.wk-note{top:-16px;right:30px}.wk-note span{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.wk-note path{stroke-dashoffset:0}.wk-note span{opacity:1}.works.in .wk-note *{animation:none!important}}

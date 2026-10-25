@@ -694,13 +694,15 @@ the rail and the ⌘K palette follow it.
   bullets with the 36/36). To fit, the one-pager's SafeJew bullet lost "Next.js, TypeScript, Supabase" and the
   long one lost Citadel's second bullet (what Terminal is), "(Andrew Ng" from the DL Specialization, and a few
   words in Citadel, YC, More builds and JSU. Both résumés now have no slack at all.
-- **Selected work, loosened (24 Oct).** Adrian: "too symmetric. i want it to flow well, but be a bit more interactive".
-  Above 900px the six tiles sit loose on a 12-column grid in three sizes (Hivemind 7 cols; the rest 4-6, indented and
-  dropped by different amounts; `grid-area` per `data-k` in site.css), numbered 01-06. The wire router picks the first
-  channel clear of the other tiles' label, tile and caption, so after moving a tile check that no wire crosses a card.
-  Drag a tile by its grip (`.wk-nh`, mouse only) and its wires follow; Reset layout puts them back. Hovering a tile
-  lights its two wires and fades the others, and the tiles drift at slightly different speeds with the scroll
-  (`--py`, SPEED in site.js). Phones keep the one column with the left rail.
+- **Selected work is a hub since 24 Oct.** The loose 12-column layout (#243) lasted an hour: Adrian disliked the
+  mixed sizes, asked for five versions (`_mock/wk5.html`), then iterations of the snake and constellation
+  (`_mock/wk-it.html`), and picked **2b, the hub**: the page mark in a white circle in the middle, the six same-size
+  builds around it (01 Hivemind top left, then clockwise; the middle two pushed out 34px), every wire running out from
+  the centre with pulses, two dashed rings, on **2c's dot grid made smooth** (a radial mask fades it out, no border).
+  His note, "click on any one!", is in the Hivemind note's hand (Shantell Sans, drawn-in arrow). Hovering a build lights
+  its wire, fades the rest and names it in the hub ("03 · SafeJew"). Drag, Reset and scroll drift are gone. Phones
+  keep the one column and left rail, with the dots and the note. site.css `.wk-hub`, `.wk-ring`, `.wk-note`; site.js
+  WORK CANVAS builds hub wires above 900px and rail wires below.
 - **Selected work is six staggered bubbles wired like the films** (18 Oct). Adrian: the cards were "way too big...
   minimize that shit so people can choose to open each ones", "go to michelle lius portfolio and emulate that"
   (liumichelle.com, the UCLA product designer: big rounded cover tiles with a "Name · year" pill), "but connect it with
