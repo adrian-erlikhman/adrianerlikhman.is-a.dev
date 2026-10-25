@@ -710,7 +710,7 @@ the rail and the ⌘K palette follow it.
   opening below): "each one should be its own bubble that is connected by line but also staggered", covers **not
   blurred**, and the card in a **popup** "with an easy way to exit". So: six floating tiles (`#wkCanvas`, `.wk-node`,
   `.wk-tile`), two columns with the right one shifted down (`translateY(44%)`), each its project's sharp screenshot
-  (AIML-LI's is its homepage, `img/cases/aimlli-home.webp`, captured 18 Oct) with its mark, a result tag, a pill, a
+  (AIML-LI's is, since 24 Oct and at Adrian's ask, the "Summit partners" rows on the live aiml-initiative.org, `img/cases/aimlli-partners.webp`: 700x394 at 2.29x, fixed nav and the #summit section hidden so the tile's badge and pill sit on blank space; it was the homepage before) with its mark, a result tag, a pill, a
   caption, and "Open ↗" on hover. site.js WORK CANVAS draws rounded connector wires with ports down the middle, with
   navy pulses once seen. A tile opens its card in a popup (`.wk-modal`, built by site.js; `.wk-x` panels move into it):
   Esc, the Close button or a click outside closes it, focus stays inside and returns to the tile. Links to
