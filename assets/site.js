@@ -621,38 +621,21 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     if(open===k){ t.scrollIntoView({block:'start',behavior:REDUCED?'auto':'smooth'}); return; }
     back=tileOf(k); show(k,t); });
 
-  /* wires: rounded orthogonal connectors between consecutive tiles, like the films' node canvas. 24 Oct (Adrian: "too
-     symmetric... flow well, but be a bit more interactive"): the tiles sit loose on a 12-column grid, so the router
-     takes either side, or loops round when two tiles overlap across; tiles drag by their grip (the wires follow), the
-     hovered tile lights its wires, and on wide screens the tiles drift a little at different speeds as the page scrolls */
+  /* wires. 24 Oct (Adrian picked 2b of _mock/wk-it.html, the hub): on wide screens every wire runs out from the page
+     mark in the middle to one build, and hovering a build lights its wire and names it in the hub. On one-column
+     screens the wires run down the left rail between consecutive builds, as before */
   const round=(pts,r)=>{ let d='M'+pts[0][0]+' '+pts[0][1];
     for(let i=1;i<pts.length-1;i++){ const [x0,y0]=pts[i-1],[x1,y1]=pts[i],[x2,y2]=pts[i+1];
       const d1=Math.hypot(x1-x0,y1-y0)||1,d2=Math.hypot(x2-x1,y2-y1)||1,rr=Math.min(r,d1/2,d2/2);
       d+=' L'+(x1+(x0-x1)/d1*rr)+' '+(y1+(y0-y1)/d1*rr)+' Q'+x1+' '+y1+' '+(x1+(x2-x1)/d2*rr)+' '+(y1+(y2-y1)/d2*rr); }
     const L=pts[pts.length-1]; return d+' L'+L[0]+' '+L[1]; };
-  const wide=matchMedia('(min-width:901px)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
-  let state=0,raf=0,paths=[],ports=[],pulsed=false;
-  const cols=()=>getComputedStyle(cv).gridTemplateColumns.split(' ').filter(Boolean).length;
-  // obstacles are the other tiles' whole nodes (label, tile and caption); a wire runs in the first clear channel
-  const hitV=(x,y1,y2,obs)=>obs.some(o=>x>o.left-10&&x<o.right+10&&Math.max(y1,y2)>o.top-6&&Math.min(y1,y2)<o.bottom+6);
-  const hitH=(y,x1,x2,obs)=>obs.some(o=>y>o.top-6&&y<o.bottom+6&&Math.max(x1,x2)>o.left-10&&Math.min(x1,x2)<o.right+10);
-  function route(A,B,c,obs){
-    const ya=A.top+A.height*.64,yb=B.top+B.height*.36;
-    if(c===1){ const gx=A.left-Math.min(15,A.left/2); return [[A.left,ya],[gx,ya],[gx,yb],[B.left,yb]]; }
-    const right=B.left+B.right>=A.left+A.right,xa=right?A.right:A.left,xb=right?B.left:B.right;
-    if(Math.abs(xb-xa)>=36&&(right?xb>xa:xb<xa)){
-      const lo=Math.min(xa,xb)+14,hi=Math.max(xa,xb)-14,mid=(lo+hi)/2,cands=[mid];
-      for(let d=6;d<=(hi-lo)/2;d+=6) cands.push(mid-d,mid+d);
-      const gx=cands.find(x=>!hitV(x,ya,yb,obs)&&!hitH(ya,xa,x,obs)&&!hitH(yb,x,xb,obs));
-      const g=gx===undefined?mid:gx; return [[xa,ya],[g,ya],[g,yb],[xb,yb]];
-    }
-    // the tiles overlap across (only after a drag): loop out the side B leans to
-    if(right){ const ox=Math.max(A.right,B.right)+34; return [[A.right,ya],[ox,ya],[ox,yb],[B.right,yb]]; }
-    const ox=Math.min(A.left,B.left)-34; return [[A.left,ya],[ox,ya],[ox,yb],[B.left,yb]];
-  }
+  const wide=matchMedia('(min-width:901px)'),hub=cv.querySelector('.wk-hub'),hl=cv.querySelector('.wk-hl'),hl0=hl?hl.textContent:'';
+  let state=0,raf=0,paths=[],ports=[],pulsed=false,mode='';
+  const want=()=>wide.matches&&hub?'hub':'rail';
   function build(){
-    svg.textContent=''; paths=[]; ports=[]; pulsed=false;
-    for(let i=0;i<nodes.length-1;i++){
+    mode=want(); svg.textContent=''; paths=[]; ports=[]; pulsed=false;
+    const n=mode==='hub'?nodes.length:nodes.length-1;
+    for(let i=0;i<n;i++){
       const p=document.createElementNS(NS,'path'); p.id='wkw'+i; svg.appendChild(p); paths.push(p);
       ports.push([0,1].map(()=>{ const o=document.createElementNS(NS,'circle'); o.setAttribute('class','port'); o.setAttribute('r','5.5'); return o; }));
     }
@@ -663,86 +646,53 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     paths.forEach((p,i)=>{
       const dot=document.createElementNS(NS,'circle'),m=document.createElementNS(NS,'animateMotion'),mp=document.createElementNS(NS,'mpath');
       dot.setAttribute('class','pulse'); dot.setAttribute('r','3');
-      m.setAttribute('dur',Math.max(2.2,p.getTotalLength()/110).toFixed(2)+'s'); m.setAttribute('repeatCount','indefinite'); m.setAttribute('begin',(i*.6).toFixed(1)+'s');
+      m.setAttribute('dur',Math.max(2.2,p.getTotalLength()/110).toFixed(2)+'s'); m.setAttribute('repeatCount','indefinite'); m.setAttribute('begin',(i*.5).toFixed(1)+'s');
       mp.setAttribute('href','#'+p.id); m.appendChild(mp); dot.appendChild(m); svg.insertBefore(dot,ports[0][0]);
     });
   }
   function draw(){
     raf=0;
+    if(want()!==mode){ build(); if(state===2) pulses(); }
     const R=cv.getBoundingClientRect(); if(!R.width) return;
     svg.setAttribute('viewBox','0 0 '+R.width+' '+R.height);
-    const c=cols(),rel=r=>({left:r.left-R.left,right:r.right-R.left,top:r.top-R.top,bottom:r.bottom-R.top,height:r.height});
-    const boxes=nodes.map(n=>rel(n.getBoundingClientRect()));
-    for(let i=0;i<paths.length;i++){
-      const A=rel(nodes[i].querySelector('.wk-tile').getBoundingClientRect()),B=rel(nodes[i+1].querySelector('.wk-tile').getBoundingClientRect());
-      const pts=route(A,B,c,boxes.filter((_,j)=>j!==i&&j!==i+1)),p=paths[i];
-      p.setAttribute('d',round(pts,c>1?18:9));
+    const rel=r=>({left:r.left-R.left,right:r.right-R.left,top:r.top-R.top,height:r.height,width:r.width});
+    const T=nodes.map(n=>rel(n.querySelector('.wk-tile').getBoundingClientRect()));
+    const set=(i,pts,d)=>{ const p=paths[i]; p.setAttribute('d',d);
       if(state===0&&!REDUCED){ const len=p.getTotalLength(); p.style.strokeDasharray=len; p.style.strokeDashoffset=len; }
-      [pts[0],pts[pts.length-1]].forEach(([x,y],j)=>{ ports[i][j].setAttribute('cx',x); ports[i][j].setAttribute('cy',y); });
+      pts.forEach(([x,y],j)=>{ ports[i][j].setAttribute('cx',x); ports[i][j].setAttribute('cy',y); }); };
+    if(mode==='hub'){
+      const H=rel(hub.getBoundingClientRect()),cx=H.left+H.width/2,cy=H.top+H.height/2,rad=H.width/2+12;
+      T.forEach((t,i)=>{
+        const left=t.left+t.width/2<cx,ex=left?t.right:t.left,ey=t.top+t.height/2;
+        const a=Math.atan2((ey-cy)*.6,ex-cx),hx=cx+Math.cos(a)*rad,hy=cy+Math.sin(a)*rad,mx=(hx+ex)/2;
+        set(i,[[hx,hy],[ex,ey]],'M'+hx+' '+hy+' C'+mx+' '+hy+' '+mx+' '+ey+' '+ex+' '+ey);
+      });
+    } else {
+      for(let i=0;i<paths.length;i++){ const A=T[i],B=T[i+1],ya=A.top+A.height*.64,yb=B.top+B.height*.36,gx=A.left-Math.min(15,A.left/2);
+        const pts=[[A.left,ya],[gx,ya],[gx,yb],[B.left,yb]]; set(i,[pts[0],pts[3]],round(pts,9)); }
     }
   }
   const later=()=>{ if(!raf) raf=requestAnimationFrame(draw); };
   build();
   if('ResizeObserver' in window) new ResizeObserver(later).observe(cv); else addEventListener('resize',later);
+  wide.addEventListener('change',later);
   draw();
   new IntersectionObserver((es,io)=>es.forEach(e=>{ if(!e.isIntersecting) return; io.disconnect(); state=1;
-    paths.forEach((p,i)=>{ p.style.transition='stroke-dashoffset 1s cubic-bezier(.65,0,.35,1) '+(.3+i*.22)+'s'; requestAnimationFrame(()=>{ p.style.strokeDashoffset='0'; }); });
-    setTimeout(()=>{ state=2; paths.forEach(p=>{ p.style.transition=''; p.style.strokeDasharray=''; p.style.strokeDashoffset=''; }); pulses(); draw(); },REDUCED?0:1400+paths.length*220);
+    paths.forEach((p,i)=>{ p.style.transition='stroke-dashoffset .9s cubic-bezier(.65,0,.35,1) '+(.25+i*.12)+'s'; requestAnimationFrame(()=>{ p.style.strokeDashoffset='0'; }); });
+    setTimeout(()=>{ state=2; paths.forEach(p=>{ p.style.transition=''; p.style.strokeDasharray=''; p.style.strokeDashoffset=''; }); pulses(); draw(); },REDUCED?0:1300+paths.length*120);
   }),{threshold:0}).observe(cv);
 
-  /* hover: the tile's own wires and ports light up, and the other tiles step back */
+  /* hover: the build's wire and ports light up, the hub names it, and the other builds step back */
   const hot=(i,on)=>{
     cv.classList.toggle('focus',on); nodes[i].classList.toggle('hot',on);
-    [i-1,i].forEach(w=>{ if(w<0||w>=paths.length) return; paths[w].classList.toggle('hot',on); ports[w].forEach(o=>o.classList.toggle('hot',on)); });
+    const ws=mode==='hub'?[i]:[i-1,i];
+    ws.forEach(w=>{ if(w<0||w>=paths.length) return; paths[w].classList.toggle('hot',on); ports[w].forEach(o=>o.classList.toggle('hot',on)); });
+    if(hl&&mode==='hub') hl.textContent=on?String(i+1).padStart(2,'0')+' · '+nameOf(nodes[i].dataset.k):hl0;
   };
   nodes.forEach((n,i)=>{
-    n.addEventListener('pointerenter',e=>{ if(e.pointerType==='mouse'&&wide.matches&&!cv.querySelector('.dragging')) hot(i,true); });
-    n.addEventListener('pointerleave',()=>{ if(!n.classList.contains('dragging')) hot(i,false); });
+    n.addEventListener('pointerenter',e=>{ if(e.pointerType==='mouse'&&wide.matches) hot(i,true); });
+    n.addEventListener('pointerleave',()=>hot(i,false));
   });
-
-  /* drag a tile by its grip and the wires follow; Reset puts every tile back. Wide screens with a mouse only */
-  const reset=document.createElement('button'); reset.type='button'; reset.className='wk-reset'; reset.hidden=true;
-  reset.innerHTML='<span aria-hidden="true">&#8634;</span> Reset layout'; cv.appendChild(reset);
-  const hint=document.createElement('p'); hint.className='wk-hint'; hint.setAttribute('aria-hidden','true');
-  hint.innerHTML='<b>&#10303;</b> drag a card to rearrange &middot; click one to open it'; cv.appendChild(hint);
-  const pos=new Map();
-  const follow=ms=>{ const t0=performance.now(); const f=t=>{ draw(); if(t-t0<ms) requestAnimationFrame(f); }; requestAnimationFrame(f); };
-  function canDrag(){ const ok=wide.matches&&fine.matches; cv.classList.toggle('can-drag',ok); return ok; }
-  function doReset(){ if(!pos.size) return; cv.classList.add('settling'); pos.clear();
-    nodes.forEach(n=>{ n.style.translate=''; }); reset.hidden=true; follow(700); setTimeout(()=>cv.classList.remove('settling'),700); }
-  canDrag();
-  wide.addEventListener('change',()=>{ if(!canDrag()) doReset(); later(); });
-  fine.addEventListener('change',canDrag);
-  reset.addEventListener('click',doReset);
-  nodes.forEach((n,i)=>{
-    const h=n.querySelector('.wk-nh'); if(!h) return;
-    h.addEventListener('pointerdown',e=>{
-      if(e.button!==0||!canDrag()) return; e.preventDefault();
-      const [bx,by]=pos.get(n)||[0,0],sx=e.clientX,sy=e.clientY,C=cv.getBoundingClientRect(),N=n.getBoundingClientRect();
-      n.classList.add('dragging'); hot(i,true); h.setPointerCapture(e.pointerId);
-      const move=ev=>{
-        let x=bx+ev.clientX-sx,y=by+ev.clientY-sy;
-        x=Math.max(C.left-N.left+bx-24,Math.min(C.right-N.right+bx+24,x));   // keep it on the canvas
-        y=Math.max(C.top-N.top+by-24,Math.min(C.bottom-N.bottom+by+24,y));
-        n.style.translate=x+'px '+y+'px'; pos.set(n,[x,y]); later(); };
-      const up=()=>{ h.removeEventListener('pointermove',move); n.classList.remove('dragging'); hot(i,false);
-        reset.hidden=![...pos.values()].some(([x,y])=>x||y); later(); };
-      h.addEventListener('pointermove',move); h.addEventListener('pointerup',up,{once:true}); h.addEventListener('pointercancel',up,{once:true});
-    });
-  });
-
-  /* drift: on wide screens each tile rides the scroll at its own speed, a few dozen pixels at most */
-  if(!REDUCED){
-    const SPEED={hivemind:0,monte:-.05,safejew:.035,aimlli:-.06,ledger:.04,saferoutes:-.045};
-    let tick=false,near=false;
-    new IntersectionObserver(es=>{ near=es.some(e=>e.isIntersecting); },{rootMargin:'200px 0px'}).observe(cv);
-    const drift=()=>{ tick=false;
-      if(!wide.matches){ nodes.forEach(n=>n.style.removeProperty('--py')); return; }
-      const r=cv.getBoundingClientRect(),mid=r.top+r.height/2-innerHeight/2;
-      nodes.forEach(n=>n.style.setProperty('--py',(mid*(SPEED[n.dataset.k]||0)).toFixed(1)+'px')); draw(); };
-    addEventListener('scroll',()=>{ if(near&&!tick){ tick=true; requestAnimationFrame(drift); } },{passive:true});
-    cv.classList.add('flow'); drift();
-  }
   const hk=keyOf(location.hash.slice(1)); if(hk){ back=tileOf(hk); show(hk,document.getElementById(location.hash.slice(1))); }
 })();
 

@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&family=Reenie+Beanie&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-24-wkflow">
+<link rel="stylesheet" href="/assets/site.css?v=2026-10-24-wkhub">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -583,8 +583,13 @@
          but also staggered", covers not blurred, and a popup "with an easy way to exit". Six floating tiles in two staggered
          columns, wired down the middle by site.js (WORK CANVAS); a tile opens its card in a popup (Esc, Close, or a click
          outside). Without JS the cards sit in the page under the tiles. -->
+    <!-- 24 Oct: the hub (Adrian picked 2b of _mock/wk-it.html): the page mark in the middle, the six builds around it,
+         on a dot grid that fades out; the note is his words. -->
     <div class="works wk-canvas rv d1" id="wkCanvas">
       <svg class="wk-wires" aria-hidden="true"></svg>
+      <span class="wk-ring r1" aria-hidden="true"></span><span class="wk-ring r2" aria-hidden="true"></span>
+      <div class="wk-hub" aria-hidden="true"><img src="/img/logos/ae-mark.svg?v=2026-10-23" width="56" height="56" alt=""><span class="wk-hl">six builds</span></div>
+      <p class="wk-note" aria-hidden="true"><svg viewBox="0 0 48 36" fill="none"><path class="st" d="M44 5C30 3 14 11 8 30"/><path class="hd" d="M3 22l5 9 7-6"/></svg><span>click on any one!</span></p>
       <div class="wk-node" data-k="hivemind">
         <div class="wk-nh" aria-hidden="true"><span>Hivemind</span><i>&#10303;</i></div>
         <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-hivemind">
@@ -1103,6 +1108,6 @@
 </div>
 
 
-<script src="/assets/site.js?v=2026-10-24-wkflow"></script>
+<script src="/assets/site.js?v=2026-10-24-wkhub"></script>
 </body>
 </html>
