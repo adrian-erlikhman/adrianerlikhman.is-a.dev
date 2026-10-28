@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-clean`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-about`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -492,8 +492,10 @@ with "a lot of updates" still to come. What shipped:
   SafeJew what's on the map, Safe Routes how it routes. Esc, Close or a click outside closes it. Copy is the old case cards' and paper panels'
   (d7a3a82), so keep the two in step with the Firstness/Kiddom/Ledger/Safe Routes rules below.
 - **Sections (round 8, quiet), his order:** each has a plain serif title over a rule and a small count on the right.
-  About (photo, three short paragraphs in his voice, School / Interested in) · Experience (**a plain list, no logos**:
-  company, role, one sentence, dates; "no logos for the experience section. make it chill") · Research (**a publication
+  About (photo and **his own three paragraphs, 28 Oct**, no School / Interested-in rows: "dont need to add school";
+  the research sentence was made "chill" at his ask) · Experience (**a plain list, no logos**: company, role, one
+  sentence, dates; "no logos for the experience section. make it chill"; each company name is an underlined navy link
+  with a small ↗ so it reads as a link, his ask) · Research (**a publication
   list**, all five, each opening its PDF or repo) · Selected work (six screenshots with plain text under them, his
   "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
   good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off

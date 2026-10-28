@@ -93,7 +93,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .xl{list-style:none}
 .xl li{display:grid;grid-template-columns:200px minmax(0,1fr) 110px;gap:28px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--hair);scroll-margin-top:90px}
 .xl .co{font:400 21px/1.2 var(--serif)}
-.xl .co a:hover{color:var(--acc)}
+.xl .co a{color:var(--acc);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 35%,transparent);text-decoration-thickness:1px;text-underline-offset:4px;transition:text-decoration-color .2s}
+.xl .co a:hover{text-decoration-color:var(--acc)}
+.xl .co .nw{white-space:nowrap}
+.xl .co .ext{font:500 13px var(--sans);margin-left:4px;vertical-align:3px;text-decoration:none;display:inline-block}
 .xl h3{font:600 15.5px/1.35 var(--sans)}
 .xl p{font:15px/1.55 var(--sans);color:var(--dim);margin-top:4px;max-width:600px}
 .xl p a{color:var(--acc)}
