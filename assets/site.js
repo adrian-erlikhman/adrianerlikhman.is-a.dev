@@ -1568,9 +1568,12 @@ const BIG=(function(){
     const after=()=>{to.innerHTML=F[s].r;if(!paused)next=setTimeout(()=>run((step+1)%N),RM?4200:2600);};
     if(RM){q.innerHTML=F[s].q;after();return;}
     q.innerHTML='<span class="cur"></span>';next=setTimeout(()=>type(F[s].q,after),800);}
-  /* a person moved it: show that one at once, then pick the cycle back up after 8 s */
-  function show(i){ hold(); step=(i%N+N)%N; place(step); mark(step); q.innerHTML=F[step].q; to.innerHTML=F[step].r;
-    if(!paused) next=setTimeout(()=>run((step+1)%N),8000); }
+  /* a person moved it: the frame moves at once and its problem types in (Adrian: "i still want it to type up"),
+     then the cycle picks back up 8 s after the line finishes */
+  function show(i){ hold(); step=(i%N+N)%N; const s=step; place(s); mark(s); to.innerHTML='&nbsp;';
+    const after=()=>{ to.innerHTML=F[s].r; if(!paused) next=setTimeout(()=>run((step+1)%N),8000); };
+    if(RM){ q.innerHTML=F[s].q; after(); return; }
+    type(F[s].q,after); }
   function openBig(i,from){ if(!BIG) return; hold(); paused=true;
     if(i!==step){ step=i; place(i); mark(i); } q.innerHTML=F[i].q; to.innerHTML=F[i].r;
     BIG.open(F[i].k,from,()=>{ paused=false; next=setTimeout(()=>run((step+1)%N),4000); }); }

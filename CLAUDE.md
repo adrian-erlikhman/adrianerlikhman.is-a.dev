@@ -482,7 +482,8 @@ with "a lot of updates" still to come. What shipped:
   sense to him. Seven frames: R.01, Hivemind, R.02, Monte (`img/cases/monte-home.webp`, the live site's hero), SafeJew,
   AIML-LI, Safe Routes. **No Ledger in the hero** (it stays a Selected work card). It cycles on its own, and since 28 Oct
   **a person can move it** ("let the person swipe"): swipe on a phone, drag with a mouse, ‹ › buttons, clickable dots,
-  arrow keys, or a click on a side frame; the cycle resumes 8 s later. **A click on the middle frame, or Open, opens the
+  arrow keys, or a click on a side frame; the new problem **types in** then too, never just appears (his ask), and the
+  cycle resumes 8 s after it finishes. **A click on the middle frame, or Open, opens the
   big view.** Data in site.js HOME HERO.
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
