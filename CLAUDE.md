@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-home`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-quiet`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -472,23 +472,32 @@ with "a lot of updates" still to come. What shipped:
 - **Kept on his word:** the swarm intro ("i like the loading page"), the MIT "In active recruitment" bar with the Full
   USA Fencing record button (back from #142: "add back the mit stuff"), the Fencing section's own content (ranks, A26
   line, all results, both photos) and the three bouts as inline players ("keep the fencing videos").
-- **Top:** a Fuser announcement bar (Best Paper Finalist) and a floating rounded nav (About, Experience, Research,
-  Work, Fencing, Achievements, Résumé).
-- **Hero:** a carousel of device frames (notched tab with three dots, side ports). **Every frame is his work** and the
-  prompt box types **the problem it answers** ("Give a team's AI coding agents one shared memory." over Hivemind);
-  he said mixed pictures (group photo, terminal, portrait, logos) didn't make sense. Seven frames: R.01, Hivemind,
-  R.02, Monte (`img/cases/monte-home.webp`, the live site's hero, 28 Oct), SafeJew, AIML-LI, Safe Routes. **No Ledger in
-  the hero** (his call; it stays a Selected work card). ✦ See it scrolls to that card. Data lives in site.js HOME HERO.
-- **Sections, his order:** About (new: photo frame, three short paragraphs in his voice, Based in / School / Interested
-  in) · Experience (**all four at once**, 2×2; "dont make them click side to side") · Research (**all five at once**,
-  three language-model cards and two journal cards wired like nodes, each opening its PDF or repo) · Selected work (six
-  photo cards opening the live projects) · Fencing · Achievements (**eight tiles and one plain "Also" line**: shorter
-  than the wall and "i dont like the little bubbles") · Contact card. Old ids kept: `#papers`, `#record`, `#contact`,
-  `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
+- **Top:** a floating rounded nav (About, Experience, Research, Work, Fencing, Achievements, Résumé). The Fuser
+  announcement bar went the same evening ("delete this").
+- **No emoji and no pills anywhere** (Adrian, 28 Oct: "i dont like any weird ass emojis and bubble stuff"): no ✦ or ★,
+  buttons are 8px-radius rectangles (`.btn`, `.btn.solid`), statuses are plain navy text.
+- **Hero (he chose "the og way" over five reworks, `_mock/landing8.html`):** a carousel of device frames (notched tab with
+  three dots, side ports). **Every frame is his work** and the prompt box types **the problem it answers** ("Give a
+  team's AI coding agents one shared memory." over Hivemind); mixed pictures (group photo, portrait, logos) didn't make
+  sense to him. Seven frames: R.01, Hivemind, R.02, Monte (`img/cases/monte-home.webp`, the live site's hero), SafeJew,
+  AIML-LI, Safe Routes. **No Ledger in the hero** (it stays a Selected work card). It cycles on its own; **a click on a
+  frame, or Open, opens the big view** and pauses the cycle until it closes. Data in site.js HOME HERO.
+- **Big view (`#dv`, site.js BIG VIEW):** "once you click on it, it should open up a bigger page". A panel over the page
+  with the project's kind, name, one-line description and result, a large frame (Hivemind's and Monte's launch films,
+  otherwise the screenshot; the two papers show their first page beside the finding and abstract), What / What I built /
+  Result, facts, and links. Esc, Close or a click outside closes it. Copy is the old case cards' and paper panels'
+  (d7a3a82), so keep the two in step with the Firstness/Kiddom/Ledger/Safe Routes rules below.
+- **Sections (round 8, quiet), his order:** each has a plain serif title over a rule and a small count on the right.
+  About (photo, three short paragraphs in his voice, School / Interested in) · Experience (**a plain list, no logos**:
+  company, role, one sentence, dates; "no logos for the experience section. make it chill") · Research (**a publication
+  list**, all five, each opening its PDF or repo) · Selected work (six screenshots with plain text under them, his
+  "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
+  good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off
+  the logo strip.** Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
 - **Off the homepage now (git history, last commit with them d7a3a82):** Ask adrian, the Off-the-laptop photo viewer,
   the Selected work hub and its popups (Hivemind film and Lemma panel, Monte tap demo and film), the achievements
-  wall's panels, the research shelf, the footer piste game, the terminal and the math notes viewer. The JSON-LD still
-  lists the two films as VideoObjects and the sitemap their files; tidy those if they don't come back.
+  wall's panels, the research shelf, the footer piste game, the terminal and the math notes viewer. The two launch
+  films are back inside the big view, so their JSON-LD VideoObjects and sitemap entries still match the page.
 - Notes below about the homepage's layout are history unless they describe content or wording rules.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
