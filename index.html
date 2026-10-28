@@ -47,8 +47,8 @@
 <meta name="twitter:image:alt" content="Adrian Erlikhman, Los Angeles, California: ML/NLP researcher; software, ML, investment and venture intern; Team USA fencer. Behind the text, a photo of him lunging for Team USA at the Pan-American Championships.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shantell+Sans:wght@500&family=Reenie+Beanie&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2026-10-24-wkhub">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-28-home">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -269,11 +269,11 @@
 <body class="intro-lock">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- INTRO / BOOT SEQUENCE -->
+<!-- INTRO: the swarm forms the name, then bursts open onto the page (site.js INTRO; Adrian kept it, 28 Oct) -->
 <div id="intro">
   <canvas id="introCanvas"></canvas>
   <div class="sr-only">Adrian Erlikhman</div>
-  <button id="skip">enter ↵</button>
+  <button id="skip" type="button">enter ↵</button>
 </div>
 
 <!-- OFFLINE / MAINTENANCE SCREEN (shown when status.json says live:false) -->
@@ -287,787 +287,165 @@
   </div>
 </div>
 
-<div class="bg-grid"></div>
-<div class="blueprint"></div>
-<svg class="bg-lines" aria-hidden="true"></svg>
-<div class="bg-vignette"></div>
-<div class="cur"></div>
-<div id="topbar"></div>
+<!-- HOMEPAGE (28 Oct 2026): Fuser's structure in Adrian's warm white + navy. Sections in his order: About, Experience,
+     Research, Selected work, Fencing, Achievements. Ids stay the old ones (#papers, #record, #contact, #case-*, #rs-t*,
+     #xp-*, #bouts) so links from the palette, llms.txt and elsewhere still land. Styles: /assets/home.css. -->
+<div class="bgfx" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="ann"><span>✦ <b>Best Paper Finalist</b> at IEEE BigData 2026</span><span class="sep"></span><a href="#rs-t1">Read the paper ›</a></div>
+  <header class="nav">
+    <a class="me" href="#top" aria-label="Adrian Erlikhman, back to top"><img src="/img/logos/ae-mark.svg?v=2026-10-23" width="24" height="24" alt="">Adrian Erlikhman</a>
+    <nav aria-label="Sections"><a href="#about">About</a><a href="#experience">Experience</a><a href="#papers">Research</a><a href="#work">Work</a><a href="#fencing">Fencing</a><a href="#record">Achievements</a></nav>
+    <a class="cta" href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" data-cv-menu>Résumé ›</a>
+  </header>
 
-<!-- HUD -->
-<div class="hud">
-  <div class="b">
-    <a class="wordmark ae-mark" href="#" id="aeMark" aria-label="Adrian Erlikhman — back to top">
-      <img class="pgm" src="/img/logos/ae-mark.svg?v=2026-10-23" alt="" width="26" height="26"><span class="nm pgn">Adrian Erlikhman</span>
-    </a>
-  </div>
-  <div class="navset">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#papers">Research</a>
-    <a href="#work">Selected work</a>
-    <a href="#fencing">Fencing</a>
-    <a href="#record">Achievements</a>
-    <a href="#contact">Contact</a>
-    <a href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" class="navcv" data-cv-menu data-mag>Résumé ↗</a>
-    <button class="kbtn" id="kbtn" aria-label="Command menu">⌘K</button>
-  </div>
-  <!-- phones: the same sections as a strip under the bar (hidden above 900px, where .navset shows them) -->
-  <nav class="secnav" aria-label="Sections">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#papers">Research</a>
-    <a href="#work">Work</a>
-    <a href="#fencing">Fencing</a>
-    <a href="#record">Achievements</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</div>
-
-<!-- HERO -->
 <main id="main" tabindex="-1">
-<!-- HERO as a paper's title page (22 Oct, Adrian picked layout 6 of _mock/heroes.html, with "TL;DR" for the
-     abstract and a fuller photo): title, affiliation, then Figure 1 beside the TL;DR, whose line still swipes. -->
-<header class="hero hero-paper wrap">
-  <div class="pp rv">
-    <div class="pp-body">
-      <figure class="pp-fig">
-        <div class="portrait">
-          <img src="adrian.jpg" width="800" height="600" fetchpriority="high" decoding="async" alt="Adrian Erlikhman" onerror="this.style.display='none';this.parentNode.querySelector('.ph-fallback').style.display='flex'">
-          <div class="ph-fallback" style="display:none">
-      <div class="ic">⌾</div>
-      <small>Drop a photo named<br><b style="color:var(--ink)">adrian.jpg</b><br>next to this file</small>
+  <!-- HERO: every frame is something Adrian made; the prompt types the problem it answers (site.js HOME HERO) -->
+  <section class="hero" id="top">
+    <div class="trk" id="trk" aria-hidden="true"></div>
+    <div class="prompt"><div class="q" id="q" aria-live="polite"></div><div class="row"><span class="to" id="to">&nbsp;</span><button class="go" id="go" type="button">✦ See it</button></div></div>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <div class="hl">
+      <h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: </span>Researcher, builder, and <em>Team USA</em> fencer.</h1>
+      <p data-nosnippet>I research how language models write and how they judge writing, build ML and full-stack tools for people who need them, and fence épée.</p>
     </div>
-        </div>
-        <figcaption>Figure 1: The author, Los Angeles, 2026.</figcaption>
-      </figure>
-      <div class="pp-tldr">
-        <h2 class="pp-h">TL;DR</h2>
-        <h1 class="pp-hi" data-nosnippet><span class="ln"><span>hi, i'm <span class="out">adrian</span>.</span></span><span class="sr-only">Adrian Erlikhman</span></h1>
-        <div class="story" id="heroStory" data-nosnippet>
-      <p class="sl">i'm a senior in los angeles.</p>
-      <p class="sl">i build <a href="#work">ML and full-stack tools for people</a>.</p>
-      <p class="sl">i do <a href="#papers">ML / NLP research</a>.</p>
-      <p class="sl">i fence &eacute;p&eacute;e for <a href="#fencing">team usa</a>.</p>
-    </div>
-        <div class="story-dots" role="group" aria-label="Show a line"><button type="button" aria-label="Line 1"></button><button type="button" aria-label="Line 2"></button><button type="button" aria-label="Line 3"></button><button type="button" aria-label="Line 4"></button></div>
-        <p class="pp-kw"><b><i>Keywords</i></b>&mdash;machine learning, natural language processing, LLM evaluation, full-stack engineering, &eacute;p&eacute;e.</p>
-      </div>
-    </div>
+  </section>
+
+  <div class="in used"><span class="lb">Interned, published and selected at</span>
+    <div class="lg"><img src="/img/logos/firstness.svg" alt="Firstness" loading="lazy"><img src="/img/logos/kiddom.svg" alt="Kiddom" loading="lazy"><img src="/img/logos/fjor.webp" alt="Fjor" loading="lazy"><img src="/img/logos/alliance.webp" alt="Alliance for SoCal Innovation" loading="lazy"><img src="/img/logos/ieee.webp" alt="IEEE" loading="lazy"><img src="/img/logos/yc.svg" alt="Y Combinator" loading="lazy"><img src="/img/logos/citadel.webp" alt="Citadel" loading="lazy"><img src="/img/logos/lemma.webp" alt="Lemma" loading="lazy"></div>
   </div>
-</header>
 
-<!-- ABOUT: the short version, then the life off the laptop -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[01]</span><h2>About me</h2></div>
-    <div class="about">
-      <div class="mod rv d1">
-        <p><b>I'm a senior at the Los Angeles Center for Enriched Studies (LACES),</b> applying to college now (fingers crossed). I build software for problems I care about, for people who need it, and I want to make that my career.</p>
-        <p><a href="#work">Selected work</a> has some of my builds. <a href="#papers">My research</a> shows my more technical interests: natural language processing, recursive self-improvement and quantitative finance. <a href="#experience">My internships</a> are the real-world experience I&rsquo;ve had so far in the fields I&rsquo;ll pursue: machine learning, software and finance.</p>
-        <p>Outside of that, I'm an internationally ranked <a href="#fencing">Team USA épée fencer</a> who loves to eat, solve puzzles, be outdoors, and nap.</p>
-      </div>
-    <!-- ASK ADRIAN (16 Oct; moved from the hero into About 22 Oct, Adrian's ask): six plain questions, each answer a
-         small code file. Without JS every answer shows, stacked. Copy is Adrian's edit. -->
-    <div class="ask rv d1" id="askBox">
-      <div class="ask-bar" aria-hidden="true"><i></i><i></i><i></i><span>ask adrian</span></div>
-      <div class="ask-qs" role="tablist" aria-label="Ask about Adrian">
-        <button type="button" role="tab" class="ask-q" id="ask-t0" aria-controls="ask-p0" aria-selected="true">What research has he done?</button>
-        <button type="button" role="tab" class="ask-q" id="ask-t1" aria-controls="ask-p1" aria-selected="false" tabindex="-1">What has he built?</button>
-        <button type="button" role="tab" class="ask-q" id="ask-t2" aria-controls="ask-p2" aria-selected="false" tabindex="-1">Does he really fence for Team USA?</button>
-        <button type="button" role="tab" class="ask-q" id="ask-t3" aria-controls="ask-p3" aria-selected="false" tabindex="-1">Where has he interned?</button>
-        <button type="button" role="tab" class="ask-q" id="ask-t4" aria-controls="ask-p4" aria-selected="false" tabindex="-1">What else stands out?</button>
-        <button type="button" role="tab" class="ask-q" id="ask-t5" aria-controls="ask-p5" aria-selected="false" tabindex="-1">What is he interested in?</button>
-      </div>
-      <div class="ask-as" aria-live="polite">
-        <div class="ask-p" role="tabpanel" id="ask-p0" aria-labelledby="ask-t0"><div class="ask-tab"><span>publications.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">publications</span> <span class="p">=</span> <span class="p">{</span></span></span><span class="l"><span class="c">    <span class="com"># best paper finalist, top 16 of 130 accepted</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#rs-t1">"IEEE"</a><span class="p">:</span>  <span class="str">"LLM stylometry across a language gradient"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="com"># sole author</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#rs-t2">"AACL"</a><span class="p">:</span>  <span class="str">"Reward-model evals for recursive self-improvement"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#rs-t4">"OJSS"</a><span class="p">:</span>  <span class="str">"Portfolio optimization vs. splitting evenly"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#rs-t5">"JHSS"</a><span class="p">:</span>  <span class="str">"How robust global prosperity rankings are"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#rs-t3">"arXiv"</a><span class="p">:</span> <span class="str">"LLM judges and self-recognition"</span><span class="p">,</span>  <span class="com"># preprint</span></span></span><span class="l"><span class="c"><span class="p">}</span></span></span></pre><a class="ask-go" href="#papers">&rarr; jump to research</a></div>
-        <div class="ask-p" role="tabpanel" id="ask-p1" aria-labelledby="ask-t1"><div class="ask-tab"><span>built.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">built</span> <span class="p">=</span> <span class="p">{</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-hivemind">"Hivemind"</a><span class="p">:</span>    <span class="str">"won Lemma&rsquo;s agent track, SEPHacks"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-monte">"Monte"</a><span class="p">:</span>       <span class="str">"1st place, Finance track, TrojanHacks"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-safejew">"SafeJew"</a><span class="p">:</span>     <span class="str">"live map of 1,300+ antisemitic incidents"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-aimlli">"AIML-LI"</a><span class="p">:</span>     <span class="str">"free AI course, piloting with LAUSD"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#xp-kiddom">"Why Wrong"</a><span class="p">:</span>   <span class="str">"finds the misconception in wrong answers"</span><span class="p">,</span></span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#aw-t0">"eDNAtlas"</a><span class="p">:</span>    <span class="str">"1st place, Decode the Ocean"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-ledger">"Ledger"</a><span class="p">:</span>      <span class="str">"1st place, VISION HACK: South LA"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#case-saferoutes">"Safe Routes"</a><span class="p">:</span> <span class="str">"3rd place internationally"</span><span class="p">,</span></span></span><span class="l"><span class="c"><span class="p">}</span></span></span></pre><a class="ask-go" href="#work">&rarr; jump to projects</a></div>
-        <div class="ask-p" role="tabpanel" id="ask-p2" aria-labelledby="ask-t2"><div class="ask-tab"><span>fencing.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">fencing</span> <span class="p">=</span> <span class="p">{</span></span></span><span class="l"><span class="c">    <span class="key">"team"</span><span class="p">:</span>    <span class="str">"Team USA, épée"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="key">"pan_ams"</span><span class="p">:</span> <span class="str">"6th, Cadet Pan-American Championships"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="key">"peak"</span><span class="p">:</span>    <span class="str">"No. 17 in the U.S., Cadet"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="key">"now"</span><span class="p">:</span>     <span class="p">[</span><span class="str">"No. 49 Junior"</span><span class="p">,</span> <span class="str">"No. 78 Senior"</span><span class="p">]</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="key">"rating"</span><span class="p">:</span>  <span class="str">"A26"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="key">"honors"</span><span class="p">:</span>  <a class="str ask-lk" href="#aw-t8">"3x All-American"</a><span class="p">,</span></span></span><span class="l"><span class="c"><span class="p">}</span></span></span></pre><a class="ask-go" href="#fencing">&rarr; jump to fencing</a></div>
-        <div class="ask-p" role="tabpanel" id="ask-p3" aria-labelledby="ask-t3"><div class="ask-tab"><span>internships.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">internships</span> <span class="p">=</span> <span class="p">{</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#xp-firstness">"Firstness"</a><span class="p">:</span> <span class="str">"ML &amp; software on an AI research engine"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#xp-kiddom">"Kiddom"</a><span class="p">:</span>    <span class="str">"built Why Wrong"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#xp-fjor">"Fjor"</a><span class="p">:</span>      <span class="str">"scored 134 YC startups for a $15M fund"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="key ask-lk" href="#xp-alliance">"Alliance"</a><span class="p">:</span>  <span class="str">"investor matching: days -&gt; under a minute"</span><span class="p">,</span></span></span><span class="l"><span class="c"><span class="p">}</span></span></span></pre><a class="ask-go" href="#experience">&rarr; jump to internships</a></div>
-        <div class="ask-p" role="tabpanel" id="ask-p4" aria-labelledby="ask-t4"><div class="ask-tab"><span>highlights.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">highlights</span> <span class="p">=</span> <span class="p">[</span></span></span><span class="l"><span class="c">    <a class="str ask-lk" href="#aw-t5">"Y Combinator Startup School 2026"</a><span class="p">,</span>  <span class="com"># sub-5% acceptance</span></span></span><span class="l"><span class="c">    <a class="str ask-lk" href="#aw-t3">"Citadel Terminal finalist"</a><span class="p">,</span>  <span class="com"># 1,000+ applied; top 8 of 45 teams</span></span></span><span class="l"><span class="c">    <a class="str ask-lk" href="#case-aimlli">"AI summit &amp; hackathon, 500+ LA students"</a><span class="p">,</span></span></span><span class="l"><span class="c">    <a class="str ask-lk" href="#aw-t4">"National Merit Semifinalist"</a><span class="p">,</span></span></span><span class="l"><span class="c"><span class="p">]</span></span></span><span class="l"><span class="c"><span class="var">upcoming</span> <span class="p">=</span> <span class="p">[</span><a class="str ask-lk" href="#rs-t2">"Hengqin 10 Nov"</a><span class="p">,</span> <a class="str ask-lk" href="#aw-t6">"San Diego 2 Dec"</a><span class="p">,</span> <a class="str ask-lk" href="#rs-t1">"Phoenix 17 Dec"</a><span class="p">]</span></span></span></pre><a class="ask-go" href="#record">&rarr; jump to achievements</a></div>
-        <div class="ask-p" role="tabpanel" id="ask-p5" aria-labelledby="ask-t5"><div class="ask-tab"><span>interests.py</span><em>python</em></div><pre class="ask-code"><span class="l"><span class="c"><span class="var">interests</span> <span class="p">=</span> <span class="p">[</span></span></span><span class="l"><span class="c">    <span class="str">"machine learning"</span><span class="p">,</span> <span class="str">"NLP"</span><span class="p">,</span> <span class="str">"AI evals &amp; infra"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="str">"data science"</span><span class="p">,</span> <span class="str">"quantitative finance"</span><span class="p">,</span></span></span><span class="l"><span class="c">    <span class="str">"startups"</span><span class="p">,</span> <span class="str">"venture capital"</span><span class="p">,</span> <span class="str">"AI in education"</span><span class="p">,</span></span></span><span class="l"><span class="c"><span class="p">]</span></span></span></pre><a class="ask-go" href="#about">&rarr; jump to about me</a></div>
+  <!-- ABOUT -->
+  <section class="in sec" id="about">
+    <div class="ab">
+      <div class="dev"><span class="tab"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><img src="/adrian.jpg" width="800" height="600" alt="Adrian Erlikhman"></div></div>
+      <div>
+        <div class="eb">About</div>
+        <h2>hi, i&rsquo;m <em>adrian</em>.</h2>
+        <p>I&rsquo;m a senior at the <b>Los Angeles Center for Enriched Studies</b>. I build software for problems I care about, for people who need it, and I want to make that my career.</p>
+        <p>Most of my research is about language models: how to tell which one wrote a text, and whether the tests we rank them by can be trusted. I&rsquo;ve also interned in machine learning, software and venture capital.</p>
+        <p>Off the laptop, I fence épée for <b>Team USA</b>, and I like eating, puzzles, the outdoors and naps.</p>
+        <dl class="facts"><dt>Based in</dt><dd>Los Angeles, California</dd><dt>School</dt><dd>LACES, class of 2027</dd><dt>Interested in</dt><dd>ML and NLP, AI evals, quantitative finance, startups, AI in education</dd></dl>
       </div>
     </div>
-    </div>
-  </div>
-</section>
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[02]</span><h2>Experience</h2><span class="note">// four internships, 2024 &ndash; now</span></div>
-    <!-- EXPERIENCE as a CV list (24 Oct; Adrian picked B of _mock/xp-simple.html: the internship files were "lowk too
-         complicated, i just need to immediately show my internships"; no Current/Completed, bullets "more impressive").
-         Every bullet's facts are on the long résumé or were in the old files; Firstness and Kiddom follow CLAUDE.md. -->
-    <ol class="xpl rv d1">
-      <li class="xp-r" id="xp-firstness">
-        <div class="xp-d">2026 &ndash; now</div>
-        <div class="xp-m">
-          <h3>Software Engineering &amp; ML Intern, <a href="https://firstness.ai" target="_blank" rel="noopener">Firstness</a></h3>
-          <p class="xp-s">AI research engine &middot; working 1:1 with the founder, a UC Berkeley- and UCSF-affiliated neuroscientist</p>
-          <ul>
-            <li><b>Software and ML on an AI research engine</b> that turns a research question into branching hypotheses, cites every sentence to the literature, and checks each idea against prior work.</li>
-            <li><b>Building API connectors</b> that put the engine inside the tools scientists already use for literature, data and analysis.</li>
-            <li><b>Turning the founder&rsquo;s LLM research into product demos</b> that show a new user what the engine does and how to check any claim against its source.</li>
-          </ul>
-        </div>
-        <img class="xp-lg" src="/img/logos/firstness.svg" width="26" height="26" loading="lazy" decoding="async" alt="">
-      </li>
-      <li class="xp-r" id="xp-kiddom">
-        <div class="xp-d">2026 &ndash; now</div>
-        <div class="xp-m">
-          <h3>Machine Learning Internship &amp; Mentorship, <a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom</a></h3>
-          <p class="xp-s">K&ndash;12 EdTech &middot; mentored by Kiddom&rsquo;s Director of Data Science</p>
-          <ul>
-            <li><b>Built <a href="https://adrian-erlikhman.github.io/why-wrong/" target="_blank" rel="noopener">Why Wrong</a></b>, an ML tool that names the misconception behind every wrong answer on a class&rsquo;s test: naive Bayes over answer patterns, then clustering on the residual errors.</li>
-            <li><b>0.87 F1 on planted misconceptions</b>, and it groups the class by shared mistake, so a teacher sees which students to reteach together.</li>
-            <li><b>Designing its first classroom evaluation</b> with an LAUSD teacher: teacher-reviewed labels, a pilot on one class&rsquo;s de-identified answers, and a write-up of where the tool and the teacher disagree.</li>
-          </ul>
-        </div>
-        <img class="xp-lg" src="/img/logos/kiddom.svg" width="92" height="26" loading="lazy" decoding="async" alt="">
-      </li>
-      <li class="xp-r" id="xp-fjor">
-        <div class="xp-d">2024 &ndash; 2026</div>
-        <div class="xp-m">
-          <h3>Investment &amp; Software Engineering Intern, <a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital</a></h3>
-          <p class="xp-s">$15M early-stage fund &middot; with Managing Director Tatiana Janko</p>
-          <ul>
-            <li><b>Led the fund&rsquo;s screen of Y Combinator&rsquo;s Summer 2025 batch</b>: built the classifier and scoring models that ranked all 134 startups into a shortlist.</li>
-            <li><b>Diligenced 20+ AI startups</b> across enterprise SaaS, fintech and deep tech, and wrote 10+ investment memos for partner-level decisions.</li>
-            <li><b>Built the fund&rsquo;s internal software</b> for its deal flow, and drafted its monthly LP updates.</li>
-          </ul>
-        </div>
-        <img class="xp-lg" src="/img/logos/fjor.webp" width="83" height="26" loading="lazy" decoding="async" alt="">
-      </li>
-      <li class="xp-r" id="xp-alliance">
-        <div class="xp-d">2024 &ndash; 2026</div>
-        <div class="xp-m">
-          <h3>Venture &amp; Data Strategy Intern, <a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation</a></h3>
-          <p class="xp-s">SoCal startup-ecosystem nonprofit &middot; with the Chief Innovation Officer</p>
-          <ul>
-            <li><b>Built a Python/SQL investor-matching engine</b> over 10K contacts at 250+ VC firms, angel syndicates and accelerators, matching startups to investors by investment history and company profile.</li>
-            <li><b>Cut founder-to-investor lookups from days to under a minute</b> by deduplicating and standardizing the contact database.</li>
-            <li><b>Led outreach to 80+ founders</b>, mapped SoCal deep tech, and redesigned the venture pipeline&rsquo;s backend and founder intake.</li>
-          </ul>
-        </div>
-        <img class="xp-lg" src="/img/logos/alliance.webp" width="49" height="26" loading="lazy" decoding="async" alt="">
-      </li>
-    </ol>
-  </div>
-</section>
-<!-- RESEARCH / PAPERS -->
-<section id="papers">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[03]</span><h2>Research</h2><span class="note">// five papers · four accepted</span></div>
-    <!-- RESEARCH as a shelf of front pages (15 Oct, Adrian: the list was "too long to scroll through"; he wanted each
-         paper's front page in a small clickable shelf, then where it was accepted and who worked on it). Covers are page 1
-         of each PDF (img/papers/, rendered with pypdfium2); LangLLM's is the BigData paper's, shown as an image only until the
-         camera-ready is posted. Authors are each paper's own author list (Adrian's call, 15 Oct). Without JS every panel shows. -->
-    <div class="rshelf rv d1" role="tablist" aria-label="Papers">
-      <button type="button" class="rs-b" role="tab" id="rs-t1" aria-controls="rs-p1" aria-selected="true"><span class="rs-c"><img src="/img/papers/r01-langllm.webp" width="640" height="829" loading="lazy" decoding="async" alt=""></span><span class="rs-v">IEEE BigData 2026</span><span class="rs-v2">HSS · Phoenix</span><span class="rs-t">Do LLM Fingerprints Survive Outside English?</span><span class="rs-m"><span class="rs-s" title="Accepted; Best Paper Finalist">&starf; Best Paper Finalist</span><span class="rs-r">Co-first author</span></span></button>
-      <button type="button" class="rs-b" role="tab" id="rs-t2" aria-controls="rs-p2" aria-selected="false" tabindex="-1"><span class="rs-c"><img src="/img/papers/r02-curated-to-win.webp" width="640" height="905" loading="lazy" decoding="async" alt=""></span><span class="rs-v">AACL-IJCNLP 2026</span><span class="rs-v2">Workshop on Autonomous Research &amp; Recursive Self-Improvement · Hengqin, China</span><span class="rs-t">Curated to Win</span><span class="rs-m"><span class="rs-s">Accepted</span><span class="rs-r">Sole author</span></span></button>
-      <button type="button" class="rs-b" role="tab" id="rs-t3" aria-controls="rs-p3" aria-selected="false" tabindex="-1"><span class="rs-c"><img src="/img/papers/r03-compllm.webp" width="640" height="829" loading="lazy" decoding="async" alt=""></span><span class="rs-v">Preprint</span><span class="rs-v2">arXiv forthcoming</span><span class="rs-t">Whose Line Is It Anyway?</span><span class="rs-m"><span class="rs-s rs-o">Preprint</span><span class="rs-r">Co-first author</span></span></button>
-      <button type="button" class="rs-b" role="tab" id="rs-t4" aria-controls="rs-p4" aria-selected="false" tabindex="-1"><span class="rs-c"><img src="/img/papers/r04-portfolio.webp" width="640" height="829" loading="lazy" decoding="async" alt=""></span><span class="rs-v">Oxford Journal of Student Scholarship</span><span class="rs-t">Does Portfolio Optimization Beat Splitting Evenly?</span><span class="rs-m"><span class="rs-s">Accepted with revisions</span><span class="rs-r">Co-first author</span></span></button>
-      <button type="button" class="rs-b" role="tab" id="rs-t5" aria-controls="rs-p5" aria-selected="false" tabindex="-1"><span class="rs-c"><img src="/img/papers/r05-legatum.webp" width="640" height="829" loading="lazy" decoding="async" alt=""></span><span class="rs-v">Journal of High School Science</span><span class="rs-t">How Robust Are the Legatum Prosperity Index Rankings?</span><span class="rs-m"><span class="rs-s">Accepted with revisions</span><span class="rs-r">Co-first author</span></span></button>
-      <button type="button" class="rs-b" role="tab" id="rs-t6" aria-controls="rs-p6" aria-selected="false" tabindex="-1"><span class="rs-c rs-notes" aria-hidden="true"><b>Session notes</b><i>induction · number theory · combinatorics · game theory</i><em>R.06</em></span><span class="rs-v">With a PhD mentor</span><span class="rs-t">Advanced Mathematics Research</span><span class="rs-m"><span class="rs-s rs-o">Ongoing</span><span class="rs-r">Ongoing study</span></span></button>
-    </div>
+  </section>
 
-    <div class="rpanels">
-      <article class="rp" id="rs-p1" role="tabpanel" aria-labelledby="rs-t1">
-        <a class="rp-cover" href="papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" aria-label="Open the IEEE BigData paper PDF"><img src="/img/papers/r01-langllm.webp?v=2026-10-21" width="640" height="829" loading="lazy" decoding="async" alt="First page of the IEEE BigData paper, by Adrian Erlikhman, Michael Tarekegn and Philo Juang"></a>
-        <div class="rp-body">
-          <div class="rp-st"><img class="vl" src="/img/logos/ieee.webp" width="45" height="13" loading="lazy" decoding="async" alt=""><span class="st">Accepted</span><span class="st">&starf; Best Paper Finalist</span></div>
-          <h3>Do LLM Fingerprints Survive Outside English?</h3>
-          <dl class="rp-facts">
-            <div><dt>Venue</dt><dd>IEEE BigData 2026 High School Symposium</dd></div>
-            <div><dt>Award</dt><dd>Best Paper Finalist: one of 12 papers, top 16 of 130 accepted</dd></div>
-            <div><dt>Presenting</dt><dd>Phoenix, AZ · 17 Dec 2026</dd></div>
-            <div><dt>Authors</dt><dd>Adrian Erlikhman, Michael Tarekegn, Philo Juang</dd></div>
-            <div><dt>My role</dt><dd>Co-first author</dd></div>
-          </dl>
-          <p class="find">A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.</p>
-          <p class="abstract">Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models (GPT-5.5, Claude Opus 4.7, Gemini 3.5 Flash, Grok 4.3, DeepSeek V4 Pro) in seven languages from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language against 20% chance, and we detect no decline as a language's resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text, while the five models, asked which of them wrote each text, score only 20–25%.</p>
-          <div class="plinks"><a class="pl" href="papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank">PDF ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></div>
-        </div>
-      </article>
-
-      <article class="rp" id="rs-p2" role="tabpanel" aria-labelledby="rs-t2">
-        <a class="rp-cover" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" aria-label="Open the Curated to Win PDF"><img src="/img/papers/r02-curated-to-win.webp" width="640" height="905" loading="lazy" decoding="async" alt="First page of Curated to Win, by Adrian Erlikhman"></a>
-        <div class="rp-body">
-          <div class="rp-st"><span class="st" title="Workshop on Autonomous Research and Recursive Self-Improvement, at AACL-IJCNLP 2026">Accepted</span></div>
-          <h3>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</h3>
-          <dl class="rp-facts">
-            <div><dt>Venue</dt><dd>ARRSI, the Workshop on Autonomous Research and Recursive Self-Improvement, at AACL-IJCNLP 2026</dd></div>
-            <div><dt>Where</dt><dd>Hengqin, China · 10 Nov 2026</dd></div>
-            <div><dt>Authors</dt><dd>Adrian Erlikhman</dd></div>
-            <div><dt>My role</dt><dd>Sole author</dd></div>
-          </dl>
-          <p class="find">RewardBench's leader survives the removal of any 11 of its 2,985 items. Removing 12 particular items makes the runner-up the winner.</p>
-          <p class="abstract">Automated research and self-improvement pipelines pick a reward model or LLM judge by its accuracy on a validation set, and that set is often curated by the pipeline or its designers. The paper's curation certificate says how much of the set could be removed before the winner changes. In benchmark weight it is at least the gap between the top two models; in items it is exact, from one sort per challenger. Linear programs show the bound is tight near the top of RewardBench (118 models) and RewardBench 2 (188). RewardBench's leader survives any 11 removed items, and RewardBench 2's any 42. On 200-item RewardBench validation sets, picks whose top two are more than 2 points apart match the full-benchmark winner 87% of the time, against 43% for the rest.</p>
-          <div class="plinks"><a class="pl" href="papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank">PDF ↓</a><a class="pl" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code + data ↗</a></div>
-        </div>
-      </article>
-
-      <article class="rp" id="rs-p3" role="tabpanel" aria-labelledby="rs-t3">
-        <div class="rp-cover"><img src="/img/papers/r03-compllm.webp" width="640" height="829" loading="lazy" decoding="async" alt="First page of Whose Line Is It Anyway?, by Adrian Erlikhman, Michael Tarekegn and Philo Juang"></div>
-        <div class="rp-body">
-          <div class="rp-st"><span class="st st-open">Preprint</span></div>
-          <h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3>
-          <dl class="rp-facts">
-            <div><dt>Status</dt><dd>Preprint · arXiv forthcoming</dd></div>
-            <div><dt>Authors</dt><dd>Adrian Erlikhman, Michael Tarekegn, Philo Juang</dd></div>
-            <div><dt>My role</dt><dd>Co-first author</dd></div>
-          </dl>
-          <p class="find">The usual test flags self-recognition in 15 of 37 cases. 8 survive a false-alarm control, 3 beat the pooled peers, and none beats its strongest single peer.</p>
-          <p class="abstract">LLM judges are anonymized on the assumption that they cannot tell who wrote a text. The usual check is whether a judge names itself on its own writing more often than chance. We add two controls from the same experiment: how often the judge names itself on text it did not write, and how often the other judges name it on its text. Across nine judges, 1,270 texts and over 19,000 judgments, the usual check flags 15 of 37 cases. In 7 the judge names itself as often on others' text. Of the other 8, all frontier models, 3 beat the pooled peers and none beats its strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32. The authorship signal is in the text (a style classifier attributes 86% of the essays); the judges' answers do not follow it.</p>
-          <div class="plinks"><a class="pl" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a><!-- [EDIT] swap for the arXiv link once it is posted --><span class="pl pl-soon">PDF · arXiv soon</span></div>
-        </div>
-      </article>
-
-      <article class="rp" id="rs-p4" role="tabpanel" aria-labelledby="rs-t4">
-        <a class="rp-cover" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" aria-label="Open the portfolio optimization PDF"><img src="/img/papers/r04-portfolio.webp" width="640" height="829" loading="lazy" decoding="async" alt="First page of Does Portfolio Optimization Beat Splitting Evenly?, by Adrian and Ryan Erlikhman"></a>
-        <div class="rp-body">
-          <div class="rp-st"><img class="vl sq" src="/img/logos/ojss.webp" width="14" height="16" loading="lazy" decoding="async" alt=""><span class="st">Accepted with revisions</span></div>
-          <h3>Does Portfolio Optimization Beat Splitting Evenly?</h3>
-          <dl class="rp-facts">
-            <div><dt>Venue</dt><dd>Oxford Journal of Student Scholarship</dd></div>
-            <div><dt>Status</dt><dd>Accepted with revisions · revision submitted</dd></div>
-            <div><dt>Authors</dt><dd>Adrian Erlikhman, Ryan Erlikhman (LACES)</dd></div>
-            <div><dt>My role</dt><dd>Co-first author</dd></div>
-          </dl>
-          <p class="find">Splitting evenly beat the Markowitz portfolio in 74% of 250 calibrated simulations (Sharpe 0.70 against 0.51).</p>
-          <p class="abstract">Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk — the Markowitz portfolio. We compare it to simply holding equal amounts of each asset (1/N) on a factor model calibrated to real market data. Across 250 simulations the 1/N portfolio earns a higher Sharpe (0.70 vs 0.51) and wins 74% of the time, a gap worth about 3 points of return a year at the same risk. Given the true covariance but estimated means, the optimizer still loses; given true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.</p>
-          <div class="plinks"><a class="pl" href="papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank">PDF ↓</a></div>
-        </div>
-      </article>
-
-      <article class="rp" id="rs-p5" role="tabpanel" aria-labelledby="rs-t5">
-        <a class="rp-cover" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" aria-label="Open the Legatum robustness PDF"><img src="/img/papers/r05-legatum.webp" width="640" height="829" loading="lazy" decoding="async" alt="First page of How Robust Are the Legatum Prosperity Index Rankings?, by Adrian and Ryan Erlikhman"></a>
-        <div class="rp-body">
-          <div class="rp-st"><span class="st">Accepted with revisions</span></div>
-          <h3>How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3>
-          <dl class="rp-facts">
-            <div><dt>Venue</dt><dd>Journal of High School Science</dd></div>
-            <div><dt>Status</dt><dd>Accepted with revisions · in revision</dd></div>
-            <div><dt>Authors</dt><dd>Adrian Erlikhman, Ryan Erlikhman (LACES)</dd></div>
-            <div><dt>My role</dt><dd>Co-first author</dd></div>
-          </dl>
-          <p class="find">The ranking holds as a whole (median Spearman ≥ 0.99) but not mid-table, where the median 90% rank interval spans 36 places.</p>
-          <p class="abstract">The Legatum Prosperity Index ranks 167 countries by an equal-weighted mean of twelve pillar scores. We reproduce every published score and rank exactly, then vary the weights, normalization and aggregation: 10,000 draws under each of three weight priors and a 131,072-run Sobol' design. The ranking holds as a whole (median Spearman ≥ 0.9899) but not in mid-table: the median 90% rank interval is 22 places overall and 36 for ranks 68–100. The paper's new result is rank leverage, c²(1 − ρ²): a weight can reorder countries only through the share of its pillar's variance that the composite doesn't share, times the pillar's squared relative spread. With arithmetic aggregation it tracks the weights' total effects under all four normalizations (Spearman 0.91–0.99), and equal weights of 1/12 give leverages that differ sixfold.</p>
-          <div class="plinks"><a class="pl" href="papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank">PDF ↓</a></div>
-        </div>
-      </article>
-
-      <article class="rp" id="rs-p6" role="tabpanel" aria-labelledby="rs-t6">
-        <div class="rp-cover"><span class="rs-notes" aria-hidden="true"><b>Session notes</b><i>induction · number theory · combinatorics · game theory</i><em>R.06</em></span></div>
-        <div class="rp-body">
-          <div class="rp-st"><span class="st st-open">Ongoing</span></div>
-          <h3>Advanced Mathematics Research</h3>
-          <dl class="rp-facts">
-            <div><dt>With</dt><dd>PhD candidate Kirill Kovalenko</dd></div>
-            <div><dt>Topics</dt><dd>Induction, number theory, combinatorics, game theory</dd></div>
-          </dl>
-          <p class="abstract">Ongoing study of induction, number theory, combinatorics, and game theory with a PhD mentor, applied to algorithmic problem-solving and computational mathematics. My working session notes are below.</p>
-          <div class="plinks"><button class="pl notes-open" id="openNotes">Read the notes ↗</button></div>
-        </div>
-      </article>
+  <!-- EXPERIENCE: all four at once (Adrian: no clicking side to side). Firstness and Kiddom wording follows CLAUDE.md. -->
+  <section class="in sec" id="experience">
+    <div class="hd"><div class="eb">Experience</div><h2>Four internships, <em>2024 to now.</em></h2><p class="sb">Machine learning, software and venture capital.</p></div>
+    <div class="xg">
+      <div class="dev xc" id="xp-firstness"><span class="tab"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr">
+        <div class="xh"><a href="https://firstness.ai" target="_blank" rel="noopener"><img src="/img/logos/firstness.svg" alt="Firstness" loading="lazy"></a><span>2026 – now</span></div>
+        <h3>Software Engineering &amp; ML Intern</h3><p class="co"><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness</a> · AI research engine · working 1:1 with the founder</p>
+        <ul><li><b>Software and ML</b> on an engine that turns a research question into hypotheses, each cited to the literature.</li><li><b>Connectors</b> into the tools scientists already use for literature, data and analysis.</li><li><b>Product demos</b> built from the founder&rsquo;s LLM research.</li></ul></div></div>
+      <div class="dev xc" id="xp-kiddom"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><div class="scr">
+        <div class="xh"><a href="https://www.kiddom.co" target="_blank" rel="noopener"><img src="/img/logos/kiddom.svg" alt="Kiddom" loading="lazy"></a><span>2026 – now</span></div>
+        <h3>Machine Learning Internship &amp; Mentorship</h3><p class="co"><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom</a> · K–12 EdTech · mentored by the Director of Data Science</p>
+        <ul><li><b>Built <a href="https://adrian-erlikhman.github.io/why-wrong/" target="_blank" rel="noopener">Why Wrong</a></b>, which names the misconception behind each wrong answer on a test.</li><li><b>0.87 F1</b> on planted misconceptions; it groups a class by shared mistake.</li><li><b>Designing its first classroom evaluation</b> with an LAUSD teacher.</li></ul></div></div>
+      <div class="dev xc" id="xp-fjor"><span class="tab"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr">
+        <div class="xh"><a href="https://www.fjor.co" target="_blank" rel="noopener"><img src="/img/logos/fjor.webp" alt="Fjor" loading="lazy"></a><span>2024 – 2026</span></div>
+        <h3>Investment &amp; Software Engineering Intern</h3><p class="co"><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital</a> · $15M early-stage fund</p>
+        <ul><li><b>Led the screen of YC&rsquo;s Summer 2025 batch</b>: scoring models that ranked all 134 startups.</li><li><b>Diligenced 20+ AI startups</b> and wrote 10+ investment memos.</li><li><b>Built the fund&rsquo;s internal software</b> for its deal flow.</li></ul></div></div>
+      <div class="dev xc" id="xp-alliance"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><div class="scr">
+        <div class="xh"><a href="https://alliancesocal.org" target="_blank" rel="noopener"><img src="/img/logos/alliance.webp" alt="Alliance for SoCal Innovation" loading="lazy"></a><span>2024 – 2026</span></div>
+        <h3>Venture &amp; Data Strategy Intern</h3><p class="co"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation</a> · startup-ecosystem nonprofit</p>
+        <ul><li><b>Built an investor-matching engine</b> over 10K contacts at 250+ firms.</li><li><b>Cut founder-to-investor lookups</b> from days to under a minute.</li><li><b>Led outreach to 80+ founders</b> and mapped SoCal deep tech.</li></ul></div></div>
     </div>
-  </div>
-</section>
-<!-- SELECTED WORK: four case studies. Each says the problem, my part, the hard call, and what exists now. -->
-<section id="work" class="selected">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[04]</span><h2>Selected work</h2></div>
-    <!-- SELECTED WORK (18 Oct). Adrian found the cards "way too big" and pointed at Michelle Liu's portfolio (liumichelle.com:
-         cover tiles with a "Name · year" pill), "connect it with the lines like in the videos i made"; then, of the first take
-         (one dotted box, blurred covers, cards opening below): "each one should be its own bubble that is connected by line
-         but also staggered", covers not blurred, and a popup "with an easy way to exit". Six floating tiles in two staggered
-         columns, wired down the middle by site.js (WORK CANVAS); a tile opens its card in a popup (Esc, Close, or a click
-         outside). Without JS the cards sit in the page under the tiles. -->
-    <!-- 24 Oct: the hub (Adrian picked 2b of _mock/wk-it.html): the page mark in the middle, the six builds around it,
-         on a dot grid that fades out; the note is his words. -->
-    <div class="works wk-canvas rv d1" id="wkCanvas">
-      <svg class="wk-wires" aria-hidden="true"></svg>
-      <span class="wk-ring r1" aria-hidden="true"></span><span class="wk-ring r2" aria-hidden="true"></span>
-      <div class="wk-hub" aria-hidden="true"><img src="/img/logos/ae-mark.svg?v=2026-10-23" width="56" height="56" alt=""><span class="wk-hl">six builds</span></div>
-      <p class="wk-note" aria-hidden="true"><svg viewBox="0 0 48 36" fill="none"><path class="st" d="M44 5C30 3 14 11 8 30"/><path class="hd" d="M3 22l5 9 7-6"/></svg><span>click on any one!</span></p>
-      <div class="wk-node" data-k="hivemind">
-        <div class="wk-nh" aria-hidden="true"><span>Hivemind</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-hivemind">
-          <img class="wk-shot" src="/img/cases/hivemind-ad.webp?v=2026-10-17" width="1600" height="900" loading="lazy" decoding="async" alt="A frame of Hivemind's launch film"><span class="wk-mk"><img src="/img/logos/hivemind.svg" alt=""></span><span class="wk-tag">Winner</span>
-          <span class="wk-pill"><b>Hivemind</b><em>&middot;</em>2026</span>
-        </button>
-        <p class="wk-cap">Shared memory for a team&rsquo;s AI coding agents.</p>
-      </div>
-      <div class="wk-node" data-k="monte">
-        <div class="wk-nh" aria-hidden="true"><span>Monte</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-monte">
-          <img class="wk-shot" src="/img/cases/monte-film.webp?v=2026-10-18" width="1600" height="900" loading="lazy" decoding="async" alt="Monte's mark on the node canvas of its launch film"><span class="wk-mk"><img src="/img/logos/monte.svg" alt=""></span><span class="wk-tag">1st place</span>
-          <span class="wk-pill"><b>Monte</b><em>&middot;</em>2026</span>
-        </button>
-        <p class="wk-cap">The right credit card at the register, with a tap-to-pay demo.</p>
-      </div>
-      <div class="wk-node" data-k="safejew">
-        <div class="wk-nh" aria-hidden="true"><span>SafeJew</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-safejew">
-          <img class="wk-shot" src="/img/cases/safejew-incident.webp" width="1600" height="900" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles"><span class="wk-mk"><img src="/img/logos/safejew.webp" alt=""></span>
-          <span class="wk-pill"><b>SafeJew</b><em>&middot;</em>2024&ndash;now</span>
-        </button>
-        <p class="wk-cap">A live map of antisemitic incidents, with a source behind every pin.</p>
-      </div>
-      <div class="wk-node" data-k="aimlli">
-        <div class="wk-nh" aria-hidden="true"><span>AIML-LI</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-aimlli">
-          <img class="wk-shot" src="/img/cases/aimlli-home.webp?v=2026-10-18" width="1600" height="900" loading="lazy" decoding="async" alt="AIML-LI's homepage, with the course's scholarship-screener lab"><span class="wk-mk"><img src="/img/logos/aimlli-mark.webp" alt=""></span>
-          <span class="wk-pill"><b>AIML-LI</b><em>&middot;</em>2023&ndash;now</span>
-        </button>
-        <p class="wk-cap">A free AI-literacy course for LA public schools.</p>
-      </div>
-      <div class="wk-node" data-k="ledger">
-        <div class="wk-nh" aria-hidden="true"><span>Ledger</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-ledger">
-          <img class="wk-shot" src="/img/cases/ledger-dashboard.webp?v=2026-10-19" width="1600" height="900" loading="lazy" decoding="async" alt="Ledger's dashboard with a sample corner store loaded"><span class="wk-mk app"><img src="/img/logos/ledger.svg" alt=""></span><span class="wk-tag">1st place</span>
-          <span class="wk-pill"><b>Ledger</b><em>&middot;</em>2026</span>
-        </button>
-        <p class="wk-cap">Compliance software for corner stores.</p>
-      </div>
-      <div class="wk-node" data-k="saferoutes">
-        <div class="wk-nh" aria-hidden="true"><span>Safe Routes</span><i>&#10303;</i></div>
-        <button type="button" class="wk-tile" aria-haspopup="dialog" aria-controls="x-saferoutes">
-          <img class="wk-shot" src="/img/cases/saferoutes-walk.webp?v=2026-10-19" width="1600" height="900" loading="lazy" decoding="async" alt="Safe Routes to School's worked example of a walk to LACES"><span class="wk-mk app"><img src="/img/logos/walkhome.svg?v=2026-10-19" alt=""></span><span class="wk-tag">3rd place</span>
-          <span class="wk-pill"><b>Safe Routes</b><em>&middot;</em>2026</span>
-        </button>
-        <p class="wk-cap">Walking directions built from where students get robbed.</p>
-      </div>
-      <div class="wk-x" id="x-hivemind" data-k="hivemind">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <!-- HIVEMIND (17 Oct, Adrian: "put it as one of my first selected works, include the really good video"). Full width, first.
-           The film is the 1:20 ad cut (YouTube wmBzH3som4A, the Devpost video), re-encoded from the 4K master to 1080p
-           (video/hivemind-ad.mp4, ~13 MB). It plays muted on screen; the button restarts it with sound; the chapter
-           times are where each caption starts. Eval numbers are from the Devpost story (12 tasks x 3 runs per condition). -->
-      <article class="wk wk-wide wk-noted" id="case-hivemind">
-        <div class="wk-term">
-          <div class="wk-tbar"><span class="wk-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="wk-tname" aria-hidden="true">hivemind &mdash; launch film &middot; 1:20</span><a class="wk-tlink" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">hivemind-q17i.onrender.com&nbsp;↗</a></div>
-          <div class="wk-vid" id="hmFilm">
-            <video playsinline muted loop preload="none" poster="/img/cases/hivemind-ad.webp?v=2026-10-17" data-src="/video/hivemind-ad.mp4?v=2026-10-17" aria-label="Hivemind launch film, 1 minute 20 seconds: one engineer corrects their AI coding agent, the team lead approves the lesson, and the next engineer's agent gets it right without being told."></video>
-            <button type="button" class="wk-play" id="hmPlay"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L12.6 8z"/></svg><span>Watch with sound</span><em>1:20</em></button>
-          </div>
-          <ol class="wk-ch" id="hmCh" aria-label="Chapters">
-            <li><button type="button" data-t="0"><b>0:00</b>the problem</button></li>
-            <li><button type="button" data-t="21"><b>0:21</b>an engineer corrects the agent</button></li>
-            <li><button type="button" data-t="31"><b>0:31</b>the lead approves</button></li>
-            <li><button type="button" data-t="39"><b>0:39</b>every agent knows</button></li>
-            <li><button type="button" data-t="50"><b>0:50</b>locked rules</button></li>
-            <li><button type="button" data-t="68"><b>1:08</b>bad lessons blocked</button></li>
-          </ol>
-        </div>
-        <div class="wk-body">
-          <div class="wk-head"><a class="hm-note" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 48 36" fill="none"><path class="st" d="M44 5C30 3 14 11 8 30"/><path class="hd" d="M3 22l5 9 7-6"/></svg><span>click here for the live site!</span></a><a class="wk-badge" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener" aria-label="Open Hivemind"><img src="/img/logos/hivemind.svg" width="120" height="120" loading="lazy" decoding="async" alt=""></a><div class="wk-kick">Hivemind<span>&middot;</span>Winner, Lemma agent track<span>&middot;</span>SEPHacks 2026</div></div>
-          <h3 class="wk-title">Shared memory for a team&rsquo;s AI coding agents.</h3>
-          <dl class="wk-facts">
-            <div><dt>What</dt><dd>When an engineer corrects an agent, Hivemind saves the correction as a lesson. After a team lead approves it, every agent on the team loads it at the start of its next session. Works with Claude Code, Cursor, Codex and three other tools.</dd></div>
-            <div><dt>Built</dt><dd>With Michael Tarekegn. I built the website and web app, designed the terminal app, and made the film. Next.js, Supabase, Claude Haiku, MCP.</dd></div>
-            <div><dt>Result</dt><dd>Won the Agent Behaviour Monitoring track, judged by Lemma, at SEPHacks 2026. Claude Code passed 36 of 36 eval runs with it, 14 of 36 without.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Open Hivemind ↗</a><a href="https://hivemind-q17i.onrender.com/app" target="_blank" rel="noopener">Try the app ↗</a><a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost ↗</a><a href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">YouTube ↗</a><a href="#lemma-track">The Lemma track &darr;</a></div>
-        </div>
-      </article>
+  </section>
 
-      <!-- THE LEMMA TRACK (17 Oct, Adrian: "add specific stuff on the website about the track"; then: the SEP and Tech Week
-           logos and every sponsor's, no prize money or project count, a concise description). Banner: SEPHacks' Devpost header. The three questions are the
-           Devpost form's, required for this track; the answers condense the team's submitted answer and docs/pitch/judge-qa.md
-           in the Hivemind repo. Devpost first called the prize "Continual Failure Detection". 22 -> 0 is the eval's rule
-           violations (14 of 36 no-memory runs passed, so 22 broke a rule; Hivemind 36 of 36). -->
-      <div class="trk" id="lemma-track" role="region" aria-labelledby="trk-h">
-        <a class="trk-ban" href="https://sephacks-2026.devpost.com/" target="_blank" rel="noopener"><img src="/img/cases/sephacks-banner.webp" width="1170" height="156" loading="lazy" decoding="async" alt="SEP Hacks, with the Tech Week mark"></a>
-        <div class="trk-body">
-          <div class="trk-head">
-            <div class="trk-t">
-              <div class="trk-k"><span class="trk-win">Winner</span>SEPHacks 2026 &middot; USC SEP &times; LA Tech Week</div>
-              <h3 id="trk-h">Agent Behaviour Monitoring track</h3>
-              <p>Sponsored and judged by Lemma, which makes monitoring software for AI agents. The track&rsquo;s three questions and our answers:</p>
-            </div>
-          </div>
-          <ol class="trk-qs">
-            <li><div class="trk-q">How does your agent know it is failing?</div><p>A hook runs after each edit and returns the locked rules that apply to the edited file. <code>hivemind watch</code> shows any rule the file breaks.</p></li>
-            <li><div class="trk-q">What counts as a failure?</div><p>An engineer correcting the agent, an edit that breaks a locked rule, two agents editing the same file within 10 minutes, or a proposed lesson that contradicts a locked rule.</p></li>
-            <li><div class="trk-q">What guardrails are in place?</div><p>Agents can propose lessons but not approve them; a team lead approves. Locked rules can&rsquo;t be overridden, and <code>hivemind check --staged</code> fails a commit that breaks one.</p></li>
-          </ol>
-          <div class="trk-logos">
-            <div class="trk-lg"><span class="trk-ll">Hosted by</span><b class="trk-sep">USC SEP</b><img src="/img/logos/techweek.svg" width="814" height="513" loading="lazy" decoding="async" alt="LA Tech Week" class="tw"></div>
-            <div class="trk-lg"><span class="trk-ll">Sponsors</span><img src="/img/logos/afterquery.webp" width="117" height="96" loading="lazy" decoding="async" alt="AfterQuery" class="sq"><img src="/img/logos/sideshift.webp" width="559" height="96" loading="lazy" decoding="async" alt="SideShift"><img src="/img/logos/lemma.webp" width="529" height="120" loading="lazy" decoding="async" alt="Lemma" class="on"><img src="/img/logos/outcast.webp" width="195" height="96" loading="lazy" decoding="async" alt="Outcast Ventures" class="sq"><img src="/img/logos/figma.webp" width="64" height="96" loading="lazy" decoding="async" alt="Figma" class="sq"></div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="wk-x" id="x-monte" data-k="monte">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <!-- MONTE (18 Oct, Adrian: 1st place, Finance track, ACM TrojanHacks 2026; "integrate this into my website in a really cool
-           way", with "the apple pay tap demo as one of the main features"). Full width, under Hivemind. The panel opens on the tap
-           demo, a copy of the live site's: a reader and a phone, five steps the visitor clicks through, never timed (Adrian:
-           "i want to be the one to go through this"). Its numbers are the Monte engine's own tap() for Jordan, one of the
-           demo's synthetic people, baked into site.js (MONTE TAP). The film is the 1:17 launch film (monte-video-FINAL-v2,
-           the Devpost video), 1080p. Split per the repo's SPEC: Adrian the interface and brand, Michael the backend,
-           Monte Carlo and tests. -->
-      <article class="wk wk-wide" id="case-monte">
-        <div class="wk-term mt-term">
-          <div class="wk-tbar"><span class="wk-dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="mt-tabs" role="tablist" aria-label="Monte"><button type="button" role="tab" aria-selected="true" aria-controls="mtTap" id="mtTabTap">Tap to pay</button><button type="button" role="tab" aria-selected="false" aria-controls="mtFilmBox" id="mtTabFilm" tabindex="-1">Launch film &middot; 1:17</button></div><a class="wk-tlink" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener">ace-eta-beryl.vercel.app&nbsp;↗</a></div>
-          <div class="mt-view" id="mtTap" role="tabpanel" aria-labelledby="mtTabTap">
-            <div class="mt-stores" role="group" aria-label="Where Jordan is paying"></div>
-            <div class="mt-scene">
-              <div class="mt-note mt-l" aria-live="polite"></div>
-              <div class="mt-dev">
-                <div class="mt-reader" aria-hidden="true">
-                  <div class="mt-leds"><i></i><i></i><i></i><i></i></div>
-                  <div class="mt-rs"><span class="mt-rm">Trader Joe&rsquo;s</span><b class="mt-ra">$64.20</b><span class="mt-rt">Tap, insert or swipe</span></div>
-                  <div class="mt-nfc"><svg viewBox="0 0 24 24"><path d="M8.5 9.5a4 4 0 0 1 0 5M12 7a7.5 7.5 0 0 1 0 10M15.5 4.5a11 11 0 0 1 0 15"/></svg></div>
-                </div>
-                <div class="mt-phone" aria-hidden="true">
-                  <div class="mt-scr">
-                    <div class="mt-sb"><span>12:04</span><span class="mt-bat"><i></i></span></div>
-                    <div class="mt-isl"></div>
-                    <div class="mt-card"><div class="mt-mc"><b>[ monte ]</b><i></i><span>routes to your best card</span></div><img alt="" hidden></div>
-                    <div class="mt-pill" hidden></div>
-                    <div class="mt-st"><span class="mt-ico"></span><span class="mt-stt">Hold Near Reader</span></div>
-                    <div class="mt-peek"></div>
-                    <div class="mt-home"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-note mt-r" aria-live="polite">
-                <ol class="mt-plain"><li>The reader sends the store&rsquo;s merchant code.</li><li>Monte opens the wallet.</li><li>It counts this month&rsquo;s spending caps.</li><li>It ranks every card for the purchase.</li><li>It pays with the winner, never a card carrying a balance.</li></ol>
-              </div>
-            </div>
-            <div class="mt-ctl">
-              <button type="button" class="mt-go" id="mtGo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 9.5a4 4 0 0 1 0 5M12 7a7.5 7.5 0 0 1 0 10M15.5 4.5a11 11 0 0 1 0 15"/></svg><span>Tap to pay</span></button>
-              <button type="button" class="mt-bk" id="mtBack" aria-label="Back" disabled>&lsaquo;</button>
-              <ol class="mt-bar" aria-label="Steps"><li><button type="button" data-k="0">01 code</button></li><li><button type="button" data-k="1">02 wallet</button></li><li><button type="button" data-k="2">03 caps</button></li><li><button type="button" data-k="3">04 rank</button></li><li><button type="button" data-k="4">05 pay</button></li></ol>
-            </div>
-          </div>
-          <div class="mt-view" id="mtFilmBox" role="tabpanel" aria-labelledby="mtTabFilm" hidden>
-            <div class="wk-vid" id="mtFilm">
-              <video playsinline muted preload="none" poster="/img/cases/monte-film.webp?v=2026-10-18" data-src="/video/monte-film.mp4?v=2026-10-18" aria-label="Monte launch film, 1 minute 17 seconds: credit cards rain down, each promising something, until Monte clears them and its features connect on a canvas."></video>
-              <button type="button" class="wk-play" id="mtPlay"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L12.6 8z"/></svg><span>Watch with sound</span><em>1:17</em></button>
-            </div>
-            <ol class="wk-ch" id="mtCh" aria-label="Chapters">
-              <li><button type="button" data-t="0"><b>0:00</b>every card promises something</button></li>
-              <li><button type="button" data-t="16"><b>0:16</b>which card do I use?</button></li>
-              <li><button type="button" data-t="28"><b>0:28</b>monte</button></li>
-              <li><button type="button" data-t="30"><b>0:30</b>what it does</button></li>
-              <li><button type="button" data-t="67"><b>1:07</b>the whole picture</button></li>
-            </ol>
-          </div>
-        </div>
-        <div class="wk-body">
-          <div class="wk-head"><a class="wk-badge" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener" aria-label="Open Monte"><img src="/img/logos/monte.svg" width="100" height="100" loading="lazy" decoding="async" alt=""></a><div class="wk-kick">Monte<span>&middot;</span>1st place, Finance track<span>&middot;</span>TrojanHacks 2026</div></div>
-          <h3 class="wk-title">Picks the right credit card at the register, and adds up what each card really costs.</h3>
-          <dl class="wk-facts">
-            <div><dt>What</dt><dd>At each purchase Monte reads the store&rsquo;s merchant code, ranks every card in the wallet by what it pays there, and never picks a card that carries a balance. Over a year it sets each card&rsquo;s rewards and perks against its fees and interest.</dd></div>
-            <div><dt>Built</dt><dd>With Michael Tarekegn at ACM TrojanHacks, LA Tech Week. I built the interface, the tap-to-pay demo and the brand, and made the film; Michael built the backend, the Monte Carlo and the tests. Next.js, TypeScript, Plaid.</dd></div>
-            <div><dt>Result</dt><dd>1st place in the Finance track at TrojanHacks 2026. The engine follows 29 cards&rsquo; published terms, each with its source, and passes 36 tests.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener">Open Monte ↗</a><a href="https://ace-eta-beryl.vercel.app/#tap-demo" target="_blank" rel="noopener">Full tap demo ↗</a><a href="https://devpost.com/software/monte-calygj" target="_blank" rel="noopener">Devpost ↗</a><a href="https://youtu.be/Tn4YrpoLjh8" target="_blank" rel="noopener">YouTube ↗</a><a href="https://github.com/michae6345-crypto/monte" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-      </div>
-      <div class="wk-x" id="x-safejew" data-k="safejew">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <article class="wk" id="case-safejew">
-        <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/safejew.webp" alt="" loading="lazy" decoding="async"><span>Incident Map | SafeJew</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">safejew.org</span><span class="pa">/map</span></span></div></div>
-        <a class="wk-media" href="https://safejew.org/map" target="_blank" rel="noopener" aria-label="Open the SafeJew map"><img src="/img/cases/safejew-incident.webp" width="1600" height="900" loading="lazy" decoding="async" alt="SafeJew's live map of antisemitic incidents across Greater Los Angeles, with one incident open beside it: its date, neighborhood, description and source."></a>
-        <div class="wk-body">
-          <div class="wk-head"><span class="wk-badge"><img src="/img/logos/safejew.webp" width="127" height="120" loading="lazy" decoding="async" alt=""></span><div class="wk-kick">SafeJew<span>·</span>co-founder<span>·</span>2024&ndash;now</div></div>
-          <h3 class="wk-title">A live map of antisemitic incidents across Greater Los Angeles and U.S. college campuses, with a source behind every pin.</h3>
-          <dl class="wk-facts">
-            <div><dt>Built</dt><dd>The LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. Rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.</dd></div>
-            <div><dt>Backed by</dt><dd><span class="wk-grant"><img src="/img/logos/tig-seal.webp" width="176" height="176" loading="lazy" decoding="async" alt="The Julie Beren Platt Teen Innovation Grants seal"><span>A <b>Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles (JFEDLA).</span></span></dd></div>
-            <div><dt>Result</dt><dd>Live at safejew.org: 1,300+ incidents tracked across Greater LA, including 33 college campuses nationwide.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://safejew.org/map" target="_blank" rel="noopener">Open the map ↗</a><a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-      </div>
-      <div class="wk-x" id="x-aimlli" data-k="aimlli">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <article class="wk" id="case-aimlli">
-        <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/aimlli-mark.webp" alt="" loading="lazy" decoding="async"><span>AIML-LI · AI/ML Literacy Initiative</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">aiml-initiative.org</span><span class="pa"></span></span></div></div>
-        <a class="wk-media wk-logos" href="https://aiml-initiative.org" target="_blank" rel="noopener" aria-label="Open aiml-initiative.org">
-          <span class="wl-h">summit partners &amp; speakers</span>
-          <span class="wl-grid"><img src="/img/sponsors/deepmind.webp" alt="Google DeepMind" loading="lazy" decoding="async"><img src="/img/sponsors/microsoft.webp" alt="Microsoft" loading="lazy" decoding="async"><img src="/img/sponsors/google.webp" alt="Google" loading="lazy" decoding="async"><img src="/img/sponsors/snap.webp" alt="Snap" class="sq" loading="lazy" decoding="async"><img src="/img/sponsors/janestreet.webp" alt="Jane Street" loading="lazy" decoding="async"><img src="/img/sponsors/mongodb.webp" alt="MongoDB" loading="lazy" decoding="async"><img src="/img/sponsors/confluent.webp" alt="Confluent" loading="lazy" decoding="async"><img src="/img/sponsors/discovery.webp" alt="Discovery Education" loading="lazy" decoding="async"><img src="/img/sponsors/hackerfund.webp" alt="Hacker Fund" loading="lazy" decoding="async"></span>
-        </a>
-        <div class="wk-body">
-          <div class="wk-head"><span class="wk-badge"><img src="/img/logos/aimlli-mark.webp" width="192" height="192" loading="lazy" decoding="async" alt=""></span><div class="wk-kick">AIML-LI<span>·</span>co-founder &amp; lead<span>·</span>2023&ndash;now</div></div>
-          <h3 class="wk-title">A free AI-literacy course, built for the public-school classroom that actually exists.</h3>
-          <dl class="wk-facts">
-            <div><dt>Built</dt><dd>Co-founded AIML-LI with Michael Tarekegn and co-wrote a free, open-source <b>12-week course</b> in six units: foundations, building models, prediction and error, neural networks, language and bias, and a capstone project students ship. Real notebooks, aligned to state standards, on the school&rsquo;s Chromebooks.</dd></div>
-            <div><dt>Worked with</dt><dd>Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD&rsquo;s Ed Tech &amp; Innovation office.</dd></div>
-                        <div><dt>Result</dt><dd>Taught a 4-week version in LACES AP Computer Science (spring 2026); now piloting with LAUSD, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for 500+ LA public-school students with nine committed partners. aiEDU student panel at NCSS 2026.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">aiml-initiative.org ↗</a></div>
-        </div>
-      </article>
-      </div>
-      <div class="wk-x" id="x-ledger" data-k="ledger">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <article class="wk" id="case-ledger">
-        <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/ledger.svg" alt="" loading="lazy" decoding="async"><span>Dashboard · Ledger</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">visionhack-nu.vercel.app</span><span class="pa">/dashboard</span></span></div></div>
-        <a class="wk-media" href="https://visionhack-nu.vercel.app/dashboard" target="_blank" rel="noopener" aria-label="Open the Ledger dashboard"><img src="/img/cases/ledger-dashboard.webp?v=2026-10-19" width="1600" height="900" loading="lazy" decoding="async" alt="Ledger's dashboard for a sample corner market: 63 percent ready, the order-record scan, and each license with its agency, renewal date and status, worst first." style="object-position:0 0"></a>
-        <div class="wk-body">
-          <div class="wk-head"><span class="wk-badge app"><img src="/img/logos/ledger.svg" width="64" height="64" loading="lazy" decoding="async" alt=""></span><div class="wk-kick">Ledger<span>·</span>1st place, VISION HACK: South LA<span>·</span>Sep 2026</div></div>
-          <h3 class="wk-title">Compliance software for corner stores: every license on one screen, and a photo of an order checked against the SNAP stocking rule.</h3>
-          <dl class="wk-facts">
-            <div><dt>What</dt><dd>Ledger covers <b>eighteen</b> federal, state and local programs a South LA corner store can answer to. It puts each license, its agency and its renewal date on one dashboard, worst first, with reminders before each deadline, in English and Spanish.</dd></div>
-            <div><dt>How</dt><dd>The owner photographs a wholesale order record. Two vision passes read each line; a rule engine counts varieties and units per food category against the SNAP rule (7 varieties and 21 units in each of four categories) and lists every line it could not count, with the reason, instead of guessing.</dd></div>
-            <div><dt>Built</dt><dd>Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.</dd></div>
-            <div><dt>Result</dt><dd>1st place, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team&rsquo;s 24 test records, the rule engine matches every hand-scored verdict, with no false passes.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Open the demo ↗</a><a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-      </div>
-      <div class="wk-x" id="x-saferoutes" data-k="saferoutes">
-        <button type="button" class="wk-xc" aria-label="Close">&times;</button>
-      <article class="wk" id="case-saferoutes">
-        <div class="wk-bar" aria-hidden="true"><div class="wk-tabs"><span class="wk-dots"><i></i><i></i><i></i></span><span class="wk-tab"><img src="/img/logos/walkhome.svg?v=2026-10-19" alt="" loading="lazy" decoding="async"><span>WalkHome LA / the safer way home from school</span><b>×</b></span></div><div class="wk-tool"><span class="wk-nav"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg><svg viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5v3h-3"/></svg></span><span class="wk-omni"><svg class="lk" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg><span class="d">safe-routes-la.github.io</span><span class="pa"></span></span></div></div>
-        <a class="wk-media" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener" aria-label="Open Safe Routes to School"><img src="/img/cases/saferoutes-walk.webp?v=2026-10-19" width="1600" height="900" loading="lazy" decoding="async" alt="Safe Routes to School's worked example on a map of Mid-City Los Angeles: shortest, balanced and safest routes over the block-risk layer, with why the route was chosen."></a>
-        <div class="wk-body">
-          <div class="wk-head"><span class="wk-badge app"><img src="/img/logos/walkhome.svg?v=2026-10-19" width="32" height="32" loading="lazy" decoding="async" alt=""></span><div class="wk-kick">Safe Routes to School<span>·</span>3rd place internationally<span>·</span>2026</div></div>
-          <h3 class="wk-title">Walking directions built from where students actually get robbed, not just from distance.</h3>
-          <dl class="wk-facts">
-            <div><dt>Why</dt><dd>From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.</dd></div>
-            <div><dt>Built</dt><dd>With Michael Tarekegn: a pipeline that scores 431,599 LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.</dd></div>
-            <div><dt>Result</dt><dd>3rd place internationally, Young Coders&rsquo; Sphere Code for Transportation. On one modeled trip to LACES, from Exposition &amp; Normandie, two buses instead of a 118-minute walk cut modeled exposure by 80%.</dd></div>
-          </dl>
-          <div class="wk-links"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Try it ↗</a><a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-      </div>
-
+  <!-- RESEARCH: all five at once (Adrian: no clicking between papers). Each card opens its PDF or repo. -->
+  <section class="in sec" id="papers">
+    <div class="hd"><div class="eb">Research</div><h2>Five papers. <em>Four accepted.</em></h2><p class="sb">Three on language models, two in finance and economics.</p></div>
+    <div class="sub">Language models</div>
+    <div class="chain c3">
+      <a class="dev pp" id="rs-t1" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><div class="cv"><img src="/img/papers/r01-langllm.webp" alt="First page of the paper" loading="lazy"></div><div class="bd"><span class="st win">★ Best Paper Finalist</span><h3>Do LLM Fingerprints Survive Outside English?</h3><p class="vn">IEEE BigData 2026 · Phoenix, 17 Dec</p><p class="fd">Style features tell which model wrote an essay across languages better than n-grams do; LLM judges stay near chance.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div></div></a>
+      <a class="dev pp" id="rs-t2" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><div class="cv"><img src="/img/papers/r02-curated-to-win.webp" alt="First page of the paper" loading="lazy"></div><div class="bd"><span class="st">Accepted · sole author</span><h3>Curated to Win</h3><p class="vn">ARRSI Workshop @ AACL-IJCNLP 2026 · 10 Nov</p><p class="fd">On RewardBench, the top reward model holds against any 11 of 2,985 items; 12 are enough to flip it.</p><p class="au">Adrian Erlikhman</p></div></div></a>
+      <a class="dev pp" id="rs-t3" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><div class="cv"><img src="/img/papers/r03-compllm.webp" alt="First page of the paper" loading="lazy"></div><div class="bd"><span class="st open">Preprint · arXiv forthcoming</span><h3>Whose Line Is It Anyway?</h3><p class="vn">Self- and other-recognition in LLM judges</p><p class="fd">15 of 37 cases look like self-recognition; none beats the judge&rsquo;s strongest single peer.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div></div></a>
     </div>
-  </div>
-</section>
-<!-- FENCING -->
-<section id="fencing">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[05]</span><h2>Fencing</h2><span class="note">// épée · team usa</span></div>
-    <!-- six seconds of the team relay leg ending on Adrian's touch to 6-8 ("A"; he is on the right, black mask): Boutcaster's 1080p original (hqvideos.boutcaster.com/c0669e4a....mp4) from 56.6 s, cropped 1920x580 from y=124 so the name boxes and score bar are out, no audio. site.js plays it only on screen, never under reduced motion -->
-    <figure class="reel rv d1">
-      <video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp?v=2026-10-15-a" data-src="/video/fence-loop.mp4?v=2026-10-15-a" aria-hidden="true" tabindex="-1"></video>
-      <figcaption><span class="rk">Team USA · épée</span><span class="rt">Senior team relay, Summer Nationals 2026 · I&rsquo;m on the right</span><a href="#bouts">full bouts &darr;</a></figcaption>
-    </figure>
-    <div class="fence">
-      <div class="fence-main rv d1">
-        <div class="fence-ranks">
-          <div class="fr"><span class="v">No.&nbsp;49</span><span class="k">U.S. Junior<i>national ranking, U20</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;78</span><span class="k">U.S. Senior<i>national ranking, open</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;17</span><span class="k">U.S. Cadet<i>peak national ranking, U17</i></span></div>
-          <div class="fr"><span class="v">No.&nbsp;1</span><span class="k">Region 4<i>regional ranking</i></span></div>
+    <div class="sub">Finance &amp; economics</div>
+    <div class="chain c2">
+      <a class="dev pp h" id="rs-t4" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><div class="cv"><img src="/img/papers/r04-portfolio.webp" alt="First page of the paper" loading="lazy"></div><div class="bd"><span class="st">Accepted with revisions</span><h3>Does Portfolio Optimization Beat Splitting Evenly?</h3><p class="vn">Oxford Journal of Student Scholarship</p><p class="fd">Markowitz optimization against an equal 1/N split, out of sample.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div></div></a>
+      <a class="dev pp h" id="rs-t5" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener"><span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><div class="cv"><img src="/img/papers/r05-legatum.webp" alt="First page of the paper" loading="lazy"></div><div class="bd"><span class="st">Accepted with revisions</span><h3>How Robust Are the Legatum Prosperity Index Rankings?</h3><p class="vn">Journal of High School Science</p><p class="fd">Monte Carlo and Sobol&rsquo; sensitivity analysis of the index&rsquo;s weights and aggregation.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div></div></a>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK: six cards, each opens the live project -->
+  <section class="in sec" id="work">
+    <div class="hd"><div class="eb">Selected work</div><h2>Six builds. <em>Four placed at hackathons.</em></h2><p class="sb">Each one is live. Click a card to open it.</p></div>
+    <div class="cards">
+      <a class="cd" id="case-hivemind" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener"><img class="bg" src="/img/cases/hivemind-ad.webp" alt="Hivemind" loading="lazy"><span class="tl"><img src="/img/logos/hivemind.svg" alt="">Hivemind</span><div class="bt"><p>Shared memory for a team&rsquo;s AI coding agents.</p><span>Won Lemma&rsquo;s track · SEPHacks</span></div></a>
+      <a class="cd" id="case-monte" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener"><img class="bg" src="/img/cases/monte-home.webp" alt="Monte" loading="lazy"><span class="tl"><img src="/img/logos/monte.svg" alt="">Monte</span><div class="bt"><p>The right credit card at the register.</p><span>1st · Finance · TrojanHacks</span></div></a>
+      <a class="cd" id="case-safejew" href="https://safejew.org/map" target="_blank" rel="noopener"><img class="bg" src="/img/cases/safejew-incident.webp" alt="SafeJew" loading="lazy"><span class="tl"><img src="/img/logos/safejew.webp" alt="">SafeJew</span><div class="bt"><p>A live map of 1,300+ antisemitic incidents.</p><span>JFEDLA Teen Innovation Grant</span></div></a>
+      <a class="cd" id="case-aimlli" href="https://aiml-initiative.org" target="_blank" rel="noopener"><img class="bg" src="/img/cases/aimlli-home.webp" alt="AIML-LI" loading="lazy"><span class="tl"><img src="/img/logos/aimlli-mark.webp" alt="">AIML-LI</span><div class="bt"><p>A free AI-literacy course for LA public schools.</p><span>Summit for 500+ students</span></div></a>
+      <a class="cd" id="case-ledger" href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener"><img class="bg" src="/img/cases/ledger-dashboard.webp" alt="Ledger" loading="lazy"><span class="tl"><img src="/img/logos/ledger.svg" alt="">Ledger</span><div class="bt"><p>Compliance software for corner stores.</p><span>1st · VISION HACK</span></div></a>
+      <a class="cd" id="case-saferoutes" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener"><img class="bg" src="/img/cases/saferoutes-walk.webp" alt="Safe Routes to School" loading="lazy"><span class="tl"><img src="/img/logos/walkhome.svg" alt="">Safe Routes</span><div class="bt"><p>Walking directions built from where students get robbed.</p><span>3rd · Code for Transportation</span></div></a>
+    </div>
+  </section>
+
+  <!-- FENCING: the section's own content, the MIT bar back (Adrian, 28 Oct), the bouts playable -->
+  <section class="in sec" id="fencing">
+    <div class="hd"><div class="eb">Fencing</div><h2>Team USA <em>épée.</em></h2><p class="sb">Nationally ranked in three age groups. I train at LA International Fencing Center.</p></div>
+    <div class="mit"><div class="l"><img src="/mit-logo.svg" width="71" height="40" alt="Massachusetts Institute of Technology" loading="lazy"><span><b>In active recruitment</b><i>Massachusetts Institute of Technology</i></span></div><a class="cta" href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener me">Full USA Fencing record ↗</a></div>
+    <!-- six seconds of the team relay leg ending on Adrian's touch to 6-8; site.js plays it only on screen, never under reduced motion -->
+    <div class="dev reel"><span class="tab"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span><div class="scr"><video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp?v=2026-10-15-a" data-src="/video/fence-loop.mp4?v=2026-10-15-a" aria-hidden="true" tabindex="-1"></video><span class="cap">Senior team relay, Summer Nationals 2026 · I&rsquo;m on the right</span></div></div>
+    <div class="fg">
+      <div>
+        <div class="ranks">
+          <div class="rk"><b>No. 49</b><span>U.S. Junior</span><i>national, U20</i></div>
+          <div class="rk"><b>No. 78</b><span>U.S. Senior</span><i>national, open</i></div>
+          <div class="rk"><b>No. 17</b><span>U.S. Cadet</span><i>peak national, U17</i></div>
+          <div class="rk"><b>No. 1</b><span>Region 4</span><i>regional</i></div>
         </div>
-        <div class="fence-line"><img class="fencl" src="/img/logos/usafencing.webp" width="20" height="19" loading="lazy" decoding="async" alt=""><b>A26</b> · highest USA Fencing rating awarded &nbsp;|&nbsp; Épée &nbsp;|&nbsp; Team USA &nbsp;|&nbsp; LA International Fencing Center</div>
-        <div class="results">
-          <div class="res hot"><span class="pl">6th</span><span class="ev">Cadet (U17) · Pan-American Championships — <b>Team USA</b>, Bogotá, Colombia</span></div>
-          <div class="res"><span class="pl">Top 8</span><span class="ev">Cadet (U17) · Super Junior &amp; Cadet Circuit (SJCC)</span></div>
-          <div class="res"><span class="pl">Top 16</span><span class="ev">Cadet (U17) · October North American Cup</span></div>
-          <div class="res"><span class="pl">Top 16</span><span class="ev">Y14 (U14) · Summer Nationals 2023</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Div I · National Championships — April North American Cup</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Junior (U20) · Summer Nationals 2026</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · Summer Nationals 2025</span></div>
-          <div class="res"><span class="pl">Top 32</span><span class="ev">Cadet (U17) · November North American Cup</span></div>
-          <div class="res"><span class="pl">Top 64</span><span class="ev">Junior (U20) · North American Cup</span></div>
-          <div class="res"><span class="pl">4×</span><span class="ev">Junior (U20) · Regional Champion</span></div>
-        </div>
+        <div class="fline"><img src="/img/logos/usafencing.webp" width="20" height="19" alt="" loading="lazy"><b>A26</b> · highest USA Fencing rating awarded · Épée · Team USA · LA International Fencing Center</div>
+        <div class="dev res"><span class="tab"><i></i><i></i><i></i></span><div class="scr">
+          <div class="r hot"><span class="p">6th</span><span>Cadet (U17) · Pan-American Championships, <b>Team USA</b>, Bogotá, Colombia</span></div>
+          <div class="r"><span class="p">Top 8</span><span>Cadet (U17) · Super Junior &amp; Cadet Circuit (SJCC)</span></div>
+          <div class="r"><span class="p">Top 16</span><span>Cadet (U17) · October North American Cup</span></div>
+          <div class="r"><span class="p">Top 16</span><span>Y14 (U14) · Summer Nationals 2023</span></div>
+          <div class="r"><span class="p">Top 32</span><span>Div I · National Championships, April North American Cup</span></div>
+          <div class="r"><span class="p">Top 32</span><span>Junior (U20) · Summer Nationals 2026</span></div>
+          <div class="r"><span class="p">Top 32</span><span>Cadet (U17) · Summer Nationals 2025</span></div>
+          <div class="r"><span class="p">Top 32</span><span>Cadet (U17) · November North American Cup</span></div>
+          <div class="r"><span class="p">Top 64</span><span>Junior (U20) · North American Cup</span></div>
+          <div class="r"><span class="p">4×</span><span>Junior (U20) · Regional Champion</span></div>
+        </div></div>
       </div>
-      <div class="fence-gallery rv d2">
-        <figure class="fpho"><img src="fencing-1.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships in Bogotá, Colombia" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-1.jpg</div><figcaption class="fcap">Pan American Championships · Team USA, Bogotá</figcaption></figure>
-        <figure class="fpho"><img src="fencing-2.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman on the podium with a USA Fencing medal" onerror="this.style.display='none';this.parentNode.querySelector('.fpb').style.display='flex'"><div class="fpb" style="display:none"><span>＋</span>fencing-2.jpg</div><figcaption class="fcap">USA Fencing · podium</figcaption></figure>
+      <div class="fph">
+        <figure class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><img src="/fencing-1.jpg" width="800" height="600" loading="lazy" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships in Bogotá, Colombia"><figcaption>Pan-American Championships · Team USA, Bogotá</figcaption></div></figure>
+        <figure class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><img src="/fencing-2.jpg" width="600" height="800" loading="lazy" alt="Adrian Erlikhman on the podium with a USA Fencing medal" style="object-position:center 30%"><figcaption>USA Fencing · podium</figcaption></div></figure>
       </div>
     </div>
-    <!-- three recorded bouts, Summer Nationals 2026 (Boutcaster), cut to start just before the clock runs, 540p, name boxes covered; in the team leg Adrian is on the right and Boutcaster had the boxes swapped, so both are relabelled -->
-    <div class="bouts rv d1" id="bouts">
-      <div class="recog-h">Bouts · Summer Nationals 2026</div>
-      <div class="bouts-grid">
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/team-afm.webp"><source src="/video/bout-team-afm.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>+6</b><span>Senior team relay leg, 8&ndash;2 · vs. a U.S. cadet travel-team fencer · team top 8</span></figcaption>
-        </figure>
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/harvard.webp"><source src="/video/bout-harvard.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>5&ndash;2</b><img class="bl" src="/img/logos/harvard.svg" width="22" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a Harvard fencer</span></figcaption>
-        </figure>
-        <figure class="bout">
-          <video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/ucsd.webp"><source src="/video/bout-ucsd.mp4?v=2026-10-04" type="video/mp4"></video>
-          <figcaption><b>4&ndash;3</b><img class="bl" src="/img/logos/ucsd.svg" width="25" height="22" loading="lazy" decoding="async" alt=""><span>Div I pool win · vs. a UCSD fencer</span></figcaption>
-        </figure>
-      </div>
+    <!-- three recorded bouts, Summer Nationals 2026 (Boutcaster), name boxes covered; in the team leg Adrian is on the right -->
+    <div class="sub" id="bouts">Bouts · Summer Nationals 2026</div>
+    <div class="bt3">
+      <figure class="dev bout"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/team-afm.webp"><source src="/video/bout-team-afm.mp4?v=2026-10-04" type="video/mp4"></video><figcaption class="cp"><b>+6</b><span>Senior team relay leg, 8–2 · vs. a U.S. cadet travel-team fencer · team top 8</span></figcaption></div></figure>
+      <figure class="dev bout"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/harvard.webp"><source src="/video/bout-harvard.mp4?v=2026-10-04" type="video/mp4"></video><figcaption class="cp"><b>5–2</b><img src="/img/logos/harvard.svg" width="22" height="22" alt="" loading="lazy"><span>Div I pool win · vs. a Harvard fencer</span></figcaption></div></figure>
+      <figure class="dev bout"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><video controls preload="none" playsinline width="960" height="540" poster="/img/bouts/ucsd.webp"><source src="/video/bout-ucsd.mp4?v=2026-10-04" type="video/mp4"></video><figcaption class="cp"><b>4–3</b><img src="/img/logos/ucsd.svg" width="25" height="22" alt="" loading="lazy"><span>Div I pool win · vs. a UCSD fencer</span></figcaption></div></figure>
     </div>
-  </div>
-</section>
-<!-- ACHIEVEMENTS: a wall of the organisations, one panel per honour (15 Oct; Adrian picked the logo wall).
-     Nothing here repeats Selected work, Research or Fencing. Without JS every panel shows, stacked. -->
-<section id="record">
-  <div class="wrap">
-    <div class="sec-label rv"><span class="idx">[06]</span><h2>Achievements</h2><span class="note">// awards · programs · leadership · academics</span></div>
+  </section>
 
-    <div class="aw-wrap rv d1">
-    <div class="aw" id="awWall" role="tablist" aria-label="Achievements">
-      <div class="aw-gl" role="presentation">Builds &amp; competitions</div>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t17" aria-controls="aw-p17" aria-selected="true"><span class="aw-md gold">1st</span><span class="aw-lo"><img class="sq" src="/img/logos/acm-usc.webp" alt="ACM@USC"></span><span class="aw-tg">TrojanHacks</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t16" aria-controls="aw-p16" aria-selected="false" tabindex="-1"><span class="aw-md gold">Winner</span><span class="aw-lo"><img class="sq" src="/img/logos/sephacks.webp" alt="SEP Hacks"></span><span class="aw-tg">SEPHacks</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t0" aria-controls="aw-p0" aria-selected="false" tabindex="-1"><span class="aw-md gold">1st</span><span class="aw-lo"><img class="sq" src="/img/logos/lovable.svg" alt="Lovable"></span><span class="aw-tg">Decode the Ocean</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t1" aria-controls="aw-p1" aria-selected="false" tabindex="-1"><span class="aw-md gold">1st</span><span class="aw-lo"><img src="/img/logos/visionlab.webp" alt="Vision Lab @ South LA"></span><span class="aw-tg">VISION HACK</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t2" aria-controls="aw-p2" aria-selected="false" tabindex="-1"><span class="aw-md">3rd</span><span class="aw-lo"><img class="sq" src="/img/logos/ycs.webp" alt="Young Coders&rsquo; Sphere"></span><span class="aw-tg">Code for Transportation</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="0" role="tab" id="aw-t3" aria-controls="aw-p3" aria-selected="false" tabindex="-1"><span class="aw-md">Finalist</span><span class="aw-lo"><img src="/img/logos/citadel.webp" alt="Citadel" style="max-height:17px"></span><span class="aw-tg">Terminal</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <div class="aw-gl" role="presentation">Selected &amp; invited</div>
-      <button type="button" class="aw-t" data-g="1" role="tab" id="aw-t4" aria-controls="aw-p4" aria-selected="false" tabindex="-1"><span class="aw-md">Semifinalist</span><span class="aw-lo"><img src="/img/logos/nmsc.webp" alt="National Merit Scholarship Corporation"></span><span class="aw-tg">National Merit</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="1" role="tab" id="aw-t5" aria-controls="aw-p5" aria-selected="false" tabindex="-1"><span class="aw-md">Admitted</span><span class="aw-lo"><img class="sq" src="/img/logos/yc.svg" alt="Y Combinator"></span><span class="aw-tg">Startup School</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="1" role="tab" id="aw-t6" aria-controls="aw-p6" aria-selected="false" tabindex="-1"><span class="aw-md">Invited speaker</span><span class="aw-lo"><img src="/img/logos/ncss.webp" alt="NCSS"></span><span class="aw-tg">NCSS 2026</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <div class="aw-gl" role="presentation">Academics &amp; athletics</div>
-      <button type="button" class="aw-t" data-g="2" role="tab" id="aw-t8" aria-controls="aw-p8" aria-selected="false" tabindex="-1"><span class="aw-md">3× First Team</span><span class="aw-lo"><img class="sq" src="/img/logos/usafencing.webp" alt="USA Fencing" style="max-height:42px"></span><span class="aw-tg">All-American</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="2" role="tab" id="aw-t9" aria-controls="aw-p9" aria-selected="false" tabindex="-1"><span class="aw-md">3× First Team</span><span class="aw-lo"><img class="sq" src="/img/logos/usafencing.webp" alt="USA Fencing" style="max-height:42px"></span><span class="aw-tg">All-Academic</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="2" role="tab" id="aw-t10" aria-controls="aw-p10" aria-selected="false" tabindex="-1"><span class="aw-md">2× Distinction</span><span class="aw-lo"><img class="sq" src="/img/logos/collegeboard.webp" alt="College Board"></span><span class="aw-tg">AP Scholar</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="2" role="tab" id="aw-t11" aria-controls="aw-p11" aria-selected="false" tabindex="-1"><span class="aw-md">LACES &rsquo;27</span><span class="aw-lo"><img class="sq" src="/img/logos/laces.webp" alt="LACES"></span><span class="aw-tg">GPA · SAT · courses</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <div class="aw-gl" role="presentation">Finance, funding &amp; leadership</div>
-      <button type="button" class="aw-t" data-g="3" role="tab" id="aw-t12" aria-controls="aw-p12" aria-selected="false" tabindex="-1"><span class="aw-md">Top 5%</span><span class="aw-lo"><img src="/img/logos/sifma.svg" alt="SIFMA"></span><span class="aw-tg">Stock Market Game</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="3" role="tab" id="aw-t13" aria-controls="aw-p13" aria-selected="false" tabindex="-1"><span class="aw-md">Grant</span><span class="aw-lo"><img src="/img/logos/jfedla.webp" alt="Jewish Federation Los Angeles"></span><span class="aw-tg">Teen Innovation Grant</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="3" role="tab" id="aw-t14" aria-controls="aw-p14" aria-selected="false" tabindex="-1"><span class="aw-md">President</span><span class="aw-lo"><img src="/img/logos/jsu.webp" alt="Jewish Student Union"></span><span class="aw-tg">50+ members</span><i class="aw-bar" aria-hidden="true"></i></button>
-      <button type="button" class="aw-t" data-g="3" role="tab" id="aw-t15" aria-controls="aw-p15" aria-selected="false" tabindex="-1"><span class="aw-md">Co-founder</span><span class="aw-lo"><img src="/img/logos/stemsters.webp" alt="STEMsters"></span><span class="aw-tg">30+ volunteers</span><i class="aw-bar" aria-hidden="true"></i></button>
+  <!-- ACHIEVEMENTS: eight tiles and one plain line (Adrian: shorter than the wall, no pills). Nothing repeats another section. -->
+  <section class="in sec" id="record">
+    <div class="hd"><div class="eb">Achievements</div><h2>Selected, ranked and <em>invited.</em></h2></div>
+    <div class="ag">
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Selective program</span><img src="/img/logos/yc.svg" alt="" loading="lazy"></div><b>Admitted</b><h3>Y Combinator Startup School 2026</h3><p>Admitted as AIML-LI&rsquo;s founder; under 5% acceptance.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">National honor</span></div><b>Semifinalist</b><h3>National Merit Scholarship</h3><p>About 16,000 of 1.3M+ entrants; 2027 program.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Competition</span><img src="/img/logos/citadel.webp" alt="" loading="lazy"></div><b>Finalist</b><h3>Citadel High School Terminal</h3><p>Top 8 of 45 teams; 1,000+ applied.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Competition</span><img src="/img/logos/lovable.svg" alt="" loading="lazy"></div><b>1st place</b><h3>Decode the Ocean</h3><p>eDNAtlas turns 16.5M DNA sequences into a coastal health map.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Invited talk</span><img src="/img/logos/ncss.webp" alt="" loading="lazy"></div><b>Speaker</b><h3>NCSS 2026, San Diego</h3><p>aiEDU&rsquo;s student panel on AI, 2 Dec.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">National honor</span><img src="/img/logos/usafencing.webp" alt="" loading="lazy"></div><b>3× First Team</b><h3>USA Fencing All-American</h3><p>Three seasons running, and 3× All-Academic.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Leadership</span><img src="/img/logos/jsu.webp" alt="" loading="lazy"></div><b>President</b><h3>Jewish Student Union</h3><p>50+ members; two years as president.</p></div></div>
+      <div class="dev at"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><div class="tp"><span class="k">Leadership</span><img src="/img/logos/stemsters.webp" alt="" loading="lazy"></div><b>Co-founder</b><h3>STEMsters, LACES chapter</h3><p>30+ volunteers teaching at 4 elementary schools.</p></div></div>
     </div>
-    <div class="aw-d" id="awPanel" aria-live="polite">
-      <div class="aw-it" role="tabpanel" id="aw-p17" aria-labelledby="aw-t17"><div class="aw-ix"><span>1 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">1st place</div><h3>TrojanHacks 2026: Finance track</h3><div class="aw-by">ACM at USC &middot; LA Tech Week</div><div class="aw-stats"><div><b>1st</b><span>Finance track</span></div><div><b>29</b><span>cards&rsquo; terms, sourced</span></div><div><b>36</b><span>tests</span></div></div>
-        <p>Built overnight with Michael Tarekegn at ACM TrojanHacks. Monte picks the card that pays most for each purchase, never one carrying a balance, and adds up what each card earned and cost over a year. I built the interface, the tap-to-pay demo and the brand, and made the launch film.</p><a class="aw-go" href="#case-monte">See Monte &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p16" aria-labelledby="aw-t16"><div class="aw-ix"><span>2 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">Track winner</div><h3>SEPHacks 2026: Agent Behaviour Monitoring</h3><div class="aw-by">Judged by Lemma &middot; USC SEP &times; LA Tech Week</div><div class="aw-stats"><div><b>Winner</b><span>Lemma&rsquo;s track</span></div><div><b>36 / 36</b><span>eval runs passed</span></div><div><b>6</b><span>agent tools supported</span></div></div>
-        <p>Built overnight with Michael Tarekegn at SEPHacks, USC&rsquo;s AI hackathon. Hivemind saves an engineer&rsquo;s correction to an AI coding agent as a lesson; after a team lead approves it, every agent on the team loads it. I built the website and web app, designed the terminal app, and made the launch film.</p><a class="aw-go" href="#lemma-track">The track &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p0" aria-labelledby="aw-t0"><div class="aw-ix"><span>3 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">1st place</div><h3>Decode the Ocean</h3><div class="aw-by">Lovable × United Nations · open build competition</div><div class="aw-stats"><div><b>1st</b><span>place</span></div><div><b>16.5M</b><span>DNA sequences indexed</span></div><div><b>1,529</b><span>taxa detected</span></div></div>
-        <p>eDNAtlas reads environmental DNA, the cells everything leaves in a litre of seawater, and turns it into a map: one health score and one plain sentence per coastal site, with the evidence a click deeper. Its real-data view loads a published Monterey Bay study (Djurhuus et al., 2020, <i>Nature Communications</i>).</p><a class="aw-go" href="/eDNAtlas/" target="_blank">Open eDNAtlas &nearr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p1" aria-labelledby="aw-t1"><div class="aw-ix"><span>4 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">1st place</div><h3>VISION HACK: South LA</h3><div class="aw-by">Hacker Fund × City of LA Vision Lab</div><div class="aw-stats"><div><b>1st</b><span>CD 9 Champion, Under 18</span></div><div><b>12 h</b><span>build, team of 3</span></div><div><b>24 / 24</b><span>test records scored right</span></div></div>
-        <p>A 12-hour build in South LA. Ledger tracks the eighteen programs a corner store answers to, in English and Spanish, and scores a photo of an order against the SNAP stocking rule. I led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. The rule engine matches hand scoring on all 24 test records, with no false passes.</p><a class="aw-go" href="#case-ledger">See Ledger &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p2" aria-labelledby="aw-t2"><div class="aw-ix"><span>5 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">3rd place internationally</div><h3>Code for Transportation</h3><div class="aw-by">Young Coders&rsquo; Sphere · international</div><div class="aw-stats"><div><b>3rd</b><span>internationally</span></div><div><b>431,599</b><span>LA blocks scored</span></div><div><b>85,634</b><span>LAPD incidents</span></div></div>
-        <p>Safe Routes to School, built with Michael Tarekegn after friends were robbed waiting for the bus. It keeps the public-space crime in 85,634 LAPD incidents, scores 431,599 street blocks, adds streetlight and transit data, and runs A* routing in the browser for all 668 LAUSD schools. On one modeled trip to LACES, the bus cut exposure by 80%.</p><a class="aw-go" href="#case-saferoutes">See Safe Routes &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p3" aria-labelledby="aw-t3"><div class="aw-ix"><span>6 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">Finalist</div><h3>Citadel High School Terminal</h3><div class="aw-by">Citadel | Citadel Securities, hosted by Correlation One</div><div class="aw-stats"><div><b>1,000+</b><span>applied</span></div><div><b>Top 8</b><span>of 45 teams</span></div><div><b>3</b><span>on the team</span></div></div>
-        <p>Terminal is Correlation One&rsquo;s algorithmic tower-defense game: two bots build walls, turrets and supports and send mobile units at each other&rsquo;s defenses. Our bot, &ldquo;dunerscore&rdquo;, is written in Python. The three of us reviewed match replays and rewrote the strategy between rounds, and made the finals.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p4" aria-labelledby="aw-t4"><div class="aw-ix"><span>7 / 17</span><span>Selective</span></div><div class="aw-body">
-        <div class="aw-pl">Semifinalist</div><h3>National Merit Scholarship Program</h3><div class="aw-by">2027 program · named September 2026</div><div class="aw-stats"><div><b>Top 1%</b><span>in California</span></div><div><b>1.3M+</b><span>entrants</span></div><div><b>~16,000</b><span>semifinalists</span></div></div>
-        <p>Named in September 2026 from the junior-year PSAT/NMSQT. Semifinalists are chosen state by state: about 16,000 of more than 1.3 million entrants nationwide.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p5" aria-labelledby="aw-t5"><div class="aw-ix"><span>8 / 17</span><span>Selective program</span></div><div class="aw-body">
-        <div class="aw-pl">Admitted</div><h3>Y Combinator Startup School 2026</h3><div class="aw-by">Admitted as AIML-LI&rsquo;s founder</div><div class="aw-stats"><div><b>&lt;5%</b><span>acceptance</span></div><div><b>$30K+</b><span>partner credits</span></div></div>
-        <p>Worked through the curriculum on founder fundamentals, product-market fit and fundraising, used it to sharpen how we pitch AIML-LI to LAUSD and our sponsors, and met edtech founders in the cohort.</p><div class="aw-ph"><figure><img src="/img/ycs/yc-sign.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman with two other attendees at Y Combinator Startup School 2026" style="object-position:50% 72%"><figcaption>Startup School</figcaption></figure><figure><img src="/img/ycs/main-stage.jpg" width="600" height="800" loading="lazy" decoding="async" alt="The main stage at Y Combinator Startup School 2026, seen by Adrian Erlikhman from the stands" style="object-position:50% 45%"><figcaption>Main stage</figcaption></figure><figure><img src="/img/ycs/deepmind-yc.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman with another attendee at a DeepMind × Y Combinator event in San Francisco" style="object-position:50% 40%"><figcaption>DeepMind × YC event</figcaption></figure></div></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p6" aria-labelledby="aw-t6"><div class="aw-ix"><span>9 / 17</span><span>Invited talk</span></div><div class="aw-body">
-        <div class="aw-pl">Invited speaker</div><h3>NCSS 2026</h3><div class="aw-by">aiEDU&rsquo;s student panel on AI · National Consortium of STEM Schools</div><div class="aw-stats"><div><b>~100</b><span>educators in the room</span></div><div><b>2 Dec</b><span>San Diego</span></div></div>
-        <p>With Michael Tarekegn, on the student panel in aiEDU&rsquo;s pre-conference session &ldquo;Transform Your School&rsquo;s AI Readiness&rdquo; at the National Consortium of STEM Schools conference, San Diego, 2&ndash;5 December 2026.</p><a class="aw-go" href="#case-aimlli">See AIML-LI &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p8" aria-labelledby="aw-t8"><div class="aw-ix"><span>10 / 17</span><span>National honor</span></div><div class="aw-body">
-        <div class="aw-pl">3× First Team</div><h3>USA Fencing All-American</h3><div class="aw-by">USA Fencing · three seasons running</div><div class="aw-stats"><div><b>3×</b><span>First Team</span></div><div><b>No. 17</b><span>peak U.S. Cadet</span></div><div><b>A26</b><span>rating</span></div></div>
-        <p>First Team goes to the top national finishers in an age group over a full season. Around it: Team USA at the 2026 Cadet Pan American Championships (6th), top 32 at Division I Nationals, and four Junior regional titles.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p9" aria-labelledby="aw-t9"><div class="aw-ix"><span>11 / 17</span><span>National honor</span></div><div class="aw-body">
-        <div class="aw-pl">3× First Team</div><h3>USA Fencing All-Academic</h3><div class="aw-by">USA Fencing · three seasons running</div><div class="aw-stats"><div><b>3×</b><span>First Team</span></div><div><b>3.85+</b><span>GPA bar</span></div><div><b>18–20</b><span>hours a week training</span></div></div>
-        <p>A qualifying national result plus a 3.85+ GPA, earned three seasons running while training 18&ndash;20 hours a week and missing two to four school days for most national events.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p10" aria-labelledby="aw-t10"><div class="aw-ix"><span>12 / 17</span><span>National honor</span></div><div class="aw-body">
-        <div class="aw-pl">2×</div><h3>AP Scholar with Distinction</h3><div class="aw-by">College Board · 2025 and 2026</div><div class="aw-stats"><div><b>17</b><span>AP courses</span></div><div><b>11</b><span>exams through junior year</span></div><div><b>2×</b><span>Distinction</span></div></div>
-        <p>A 3.5+ average across five or more exams, earned in 2025 and again in 2026. Every exam so far a 4 or 5.</p><div class="aw-list"><div><span class="aw-lk">Taken · 11 <em>&#9733; = 5</em></span><ul><li>Calculus AB <em>&#9733;</em></li><li>Precalculus <em>&#9733;</em></li><li>Statistics</li><li>Physics 1</li><li>Biology</li><li>Computer Science A</li><li>Computer Science Principles</li><li>English Language <em>&#9733;</em></li><li>Seminar</li><li>U.S. History <em>&#9733;</em></li><li>World History</li></ul></div><div><span class="aw-lk">This year · 6</span><ul><li>Calculus BC</li><li>English Literature</li><li>Environmental Science</li><li>U.S. Government</li><li>Psychology</li><li>Research</li></ul></div></div></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p11" aria-labelledby="aw-t11"><div class="aw-ix"><span>13 / 17</span><span>Academics</span></div><div class="aw-body">
-        <div class="aw-pl">4.0 · 1520</div><h3>Unweighted GPA · SAT</h3><div class="aw-by">Los Angeles Center for Enriched Studies, class of 2027</div><div class="aw-stats"><div><b>4.0</b><span>unweighted</span></div><div><b>5.2</b><span>weighted</span></div><div><b>1520</b><span>SAT</span></div></div>
-        <p>4.0 unweighted, 5.2 weighted, at a LAUSD magnet school. SAT 1520: Math 770, Reading and Writing 750. On top of 17 APs, college courses through dual enrollment:</p><div class="aw-list one"><div><span class="aw-lk">Dual enrollment · LACCD</span><ul><li>Linear Algebra <em>MATH 270, L.A. Southwest College</em></li><li>Programming in Python <em>CS 119</em></li><li>Python for Data Science and Machine Learning <em>CS 121, planned</em></li></ul></div></div></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p12" aria-labelledby="aw-t12"><div class="aw-ix"><span>14 / 17</span><span>Competition</span></div><div class="aw-body">
-        <div class="aw-pl">Top 5%</div><h3>SIFMA Stock Market Game</h3><div class="aw-by">Statewide · as a solo entrant</div><div class="aw-stats"><div><b>Top 5%</b><span>statewide</span></div><div><b>Solo</b><span>entered against teams</span></div></div>
-        <p>A simulated portfolio traded on live market data, entered solo against teams, finishing in the top 5% statewide.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p13" aria-labelledby="aw-t13"><div class="aw-ix"><span>15 / 17</span><span>Grant</span></div><div class="aw-body">
-        <div class="aw-pl">Grant</div><h3>JFEDLA Teen Innovation Grant</h3><div class="aw-by">Jewish Federation Los Angeles · for SafeJew</div><div class="aw-stats"><div><b>$1,000</b><span>grant</span></div><div><b>1,394</b><span>incidents mapped</span></div><div><b>33</b><span>campuses</span></div></div>
-        <p>Funded SafeJew, the live map I co-founded: 800 antisemitic incidents across Greater Los Angeles and 594 more on 33 university campuses, each pin with its source, distributed through the Federation&rsquo;s Community Security Initiative.</p><a class="aw-go" href="#case-safejew">See SafeJew &uarr;</a></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p14" aria-labelledby="aw-t14"><div class="aw-ix"><span>16 / 17</span><span>Leadership</span></div><div class="aw-body">
-        <div class="aw-pl">President</div><h3>Jewish Student Union</h3><div class="aw-by">LACES · with NCSY</div><div class="aw-stats"><div><b>50+</b><span>members</span></div><div><b>2</b><span>years as president</span></div></div>
-        <p>Secretary in 10th grade, president since. Weekly programming with NCSY and the JSU board, and a school-wide Holocaust Remembrance assembly with a survivor, with antisemitism lessons from StandWithUs.</p></div></div>
-      <div class="aw-it" role="tabpanel" id="aw-p15" aria-labelledby="aw-t15"><div class="aw-ix"><span>17 / 17</span><span>Leadership</span></div><div class="aw-body">
-        <div class="aw-pl">Co-founder &amp; President</div><h3>STEMsters</h3><div class="aw-by">Co-founded chapter · LACES volunteers</div><div class="aw-stats"><div><b>30+</b><span>volunteers</span></div><div><b>4</b><span>elementary schools</span></div></div>
-        <p>Co-founded our school&rsquo;s chapter of a student-run program. I wrote the lesson plans and ran scheduling and volunteer placement: model cars, mechanical hands, intro coding and robotics, for kids whose schools offer no STEM enrichment.</p></div></div>
-      <div class="aw-nav" aria-hidden="true"><button type="button" tabindex="-1" data-d="-1">&larr; prev</button><button type="button" tabindex="-1" data-d="1">next &rarr;</button></div>
-    </div>
-    </div>
+    <p class="also"><b>Also</b><span>/</span>2× AP Scholar with Distinction, 17 APs<span>/</span>4.0 unweighted, 1520 SAT<span>/</span>SIFMA Stock Market Game, top 5% statewide</p>
+  </section>
 
-  </div>
-</section>
-<div class="wrap oc-solo">
-    <!-- OFF THE LAPTOP: a topo card that opens one big photo frame with a numbered list (Adrian picked both, 7 Oct).
-         Since 22 Oct it sits on its own before Contact (Adrian moved Ask adrian into About). -->
-    <div id="offclock">
-      <div class="oc-card rv d1" role="button" tabindex="0" aria-expanded="false" aria-controls="ocPanel">
-        <div class="oc-txt">
-          <div><div class="oc-k">Off the laptop</div><p class="oc-line">Climbing, backpacking, cycling, surfing, and swimming in freezing lakes.</p></div>
-          <span class="oc-btn"><span class="oc-lbl">have a look</span> <span class="n" aria-hidden="true">&darr;</span></span>
-        </div>
-        <svg class="oc-topo" viewBox="0 0 300 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><polygon class="pk" points="170,86 175,95 165,95"/></svg>
-      </div>
-      <div class="oc-panel" id="ocPanel"><div><div class="oc-inner">
-        <div class="viewer" id="lifeViewer" tabindex="-1">
-          <div class="v-main">
-            <img src="life-climb.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman rock climbing" class="on">
-            <img src="life-backpack.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman backpacking at an alpine lake">
-            <img src="life-hike.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Adrian Erlikhman hiking a foggy ridge">
-            <img src="life-cycle.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Adrian Erlikhman road cycling">
-            <img src="life-swim.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman swimming in an alpine lake">
-            <img src="life-trips.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on a backpacking trip">
-            <img src="life-sunset.jpg" width="800" height="533" loading="lazy" decoding="async" alt="Adrian Erlikhman on the coast at dusk">
-            <div class="v-cap"><span class="vc" aria-live="polite">01 / 07 · Climbing</span><span class="arr"><button type="button" class="vp" aria-label="Previous photo">&larr;</button><button type="button" class="vn" aria-label="Next photo">&rarr;</button></span></div>
-          </div>
-          <ol class="v-list" aria-label="Photos">
-            <li><button type="button" data-c="Climbing" aria-current="true"><span class="no">01</span><img src="life-climb.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Climbing</span></button></li>
-            <li><button type="button" data-c="Backpacking" aria-current="false"><span class="no">02</span><img src="life-backpack.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Backpacking</span></button></li>
-            <li><button type="button" data-c="Hiking" aria-current="false"><span class="no">03</span><img src="life-hike.jpg" width="600" height="800" loading="lazy" decoding="async" alt=""><span class="t">Hiking</span></button></li>
-            <li><button type="button" data-c="Cycling" aria-current="false"><span class="no">04</span><img src="life-cycle.jpg" width="800" height="600" loading="lazy" decoding="async" alt=""><span class="t">Cycling</span></button></li>
-            <li><button type="button" data-c="Alpine lake" aria-current="false"><span class="no">05</span><img src="life-swim.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Alpine lake</span></button></li>
-            <li><button type="button" data-c="Trips" aria-current="false"><span class="no">06</span><img src="life-trips.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Trips</span></button></li>
-            <li><button type="button" data-c="Coast at dusk" aria-current="false"><span class="no">07</span><img src="life-sunset.jpg" width="800" height="533" loading="lazy" decoding="async" alt=""><span class="t">Coast at dusk</span></button></li>
-          </ol>
-        </div>
-      </div></div></div>
-    </div>
-</div>
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap">
-    <div class="contact mod rv">
-      <div class="idx">[07] // OPEN_CHANNEL</div>
-      <h2>Let's<br><a href="mailto:erlikhman.adrian@gmail.com" data-mag>connect →</a></h2>
-      <p>I respond quick. Usually the same day.</p>
-      <div class="links">
-        <a href="mailto:erlikhman.adrian@gmail.com" data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.2" y="3.2" width="13.6" height="9.6" rx="1.2"/><path d="M1.6 4.3 8 8.9l6.4-4.6"/></svg>Email</a>
-        <a href="https://github.com/adrian-erlikhman" target="_blank" data-mag><img class="cl" src="/img/logos/github.svg" width="14" height="14" loading="lazy" decoding="async" alt="">GitHub</a>
-        <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" data-mag><img class="cl" src="/img/logos/linkedin.webp" width="14" height="14" loading="lazy" decoding="async" alt="">LinkedIn</a>
-        <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener" data-mag><img class="cl" src="/img/logos/usafencing.webp" width="15" height="14" loading="lazy" decoding="async" alt="">Fencing</a>
-        <a href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" data-cv-menu data-mag><svg class="cg" viewBox="0 0 16 16" aria-hidden="true"><path d="M9.2 1.4H4.2a1.2 1.2 0 0 0-1.2 1.2v10.8a1.2 1.2 0 0 0 1.2 1.2h7.6a1.2 1.2 0 0 0 1.2-1.2V5.2z"/><path d="M9.2 1.4v3.8h3.8M5.6 8.6h4.8M5.6 11.2h4.8"/></svg>Résumé</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- CONTACT -->
+  <section class="in end" id="contact"><div><div class="k">Contact</div><h3>erlikhman.adrian@gmail.com</h3><p>The résumé has everything, in two pages or four.</p></div>
+    <div class="ctas"><a class="cta" href="mailto:erlikhman.adrian@gmail.com">Email</a><a class="cta" href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn ↗</a><a class="cta" href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub ↗</a><a class="cta" href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" data-cv-menu>Résumé ›</a></div></section>
 </main>
-
-<footer>
-  <span class="ft-c">© <span id="yr"></span> Adrian Erlikhman</span>
-  <!-- FOOTER PISTE: an épée pool bout to 5. Each click plays one action (lunge to chest, wrist, mask or foot,
-       flèche, parry-riposte, stop-hit, beat-lunge) by either fencer, or a double.
-       The scoring box shows the lamps (left fencer red, right green, as on a real machine) and the score;
-       the bout and the W-L record live in localStorage. Hidden without JS. -->
-  <div class="piste" id="piste" hidden>
-    <button type="button" class="pst-go" id="pstGo" aria-label="Lunge: fence the next touch">
-      <svg class="pst-svg" viewBox="0 0 130 42" aria-hidden="true">
-        <line class="pst-strip" x1="2" y1="39" x2="128" y2="39"/>
-        <!-- two jointed fencers; site.js poses them every frame (the opponent is the same skeleton, mirrored) -->
-        <g class="pst-f pst-op"><path class="pst-bd"/><circle class="pst-hd" r="4"/><path class="pst-blade"/><circle class="pst-spark" r="0"/></g>
-        <g class="pst-f pst-me"><path class="pst-bd"/><circle class="pst-hd" r="4"/><path class="pst-blade"/><circle class="pst-spark" r="0"/></g>
-      </svg>
-    </button>
-    <div class="pst-box" aria-hidden="true">
-      <div class="pbx-row"><i class="pbx-lamp pbx-r"></i><span class="pbx-cap">pool · to 5</span><i class="pbx-lamp pbx-g"></i></div>
-      <div class="pbx-row pbx-sc"><b class="pbx-n pbx-nr" id="pstA">0</b><span class="pbx-sep">:</span><b class="pbx-n pbx-ng" id="pstB">0</b></div>
-      <div class="pbx-row pbx-who"><span>you</span><span>opp</span></div>
-    </div>
-    <span class="pst-txt"><span class="pst-say" id="pstSay" aria-live="polite">en garde. click to lunge</span><span class="pst-n">bouts <b id="pstW">0</b>W <b id="pstL">0</b>L</span></span>
-  </div>
-  <button type="button" class="ft-top" id="ftTop">back to top <span aria-hidden="true">↑</span></button>
-</footer>
+  <footer class="foot">© <span id="yr">2026</span> Adrian Erlikhman · Los Angeles</footer>
+</div>
 
 <!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
@@ -1094,20 +472,6 @@
   </div>
 </div>
 
-
-
-<!-- MATH RESEARCH NOTES -->
-<div id="notes" class="notesview" hidden>
-  <div class="nv-panel">
-    <div class="nv-bar"><span class="nv-title">advanced mathematics · session notes</span><span class="nv-count" id="nvCount"></span><button class="nv-x" id="nvClose">esc ✕</button></div>
-    <div class="nv-body">
-      <nav class="nv-index" id="nvIndex"></nav>
-      <div class="nv-content" id="nvContent"></div>
-    </div>
-  </div>
-</div>
-
-
-<script src="/assets/site.js?v=2026-10-24-wkhub"></script>
+<script src="/assets/site.js?v=2026-10-28-home"></script>
 </body>
 </html>
