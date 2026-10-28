@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-about`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-swipe`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -480,23 +480,26 @@ with "a lot of updates" still to come. What shipped:
   three dots, side ports). **Every frame is his work** and the prompt box types **the problem it answers** ("Give a
   team's AI coding agents one shared memory." over Hivemind); mixed pictures (group photo, portrait, logos) didn't make
   sense to him. Seven frames: R.01, Hivemind, R.02, Monte (`img/cases/monte-home.webp`, the live site's hero), SafeJew,
-  AIML-LI, Safe Routes. **No Ledger in the hero** (it stays a Selected work card). It cycles on its own; **a click on a
-  frame, or Open, opens the big view** and pauses the cycle until it closes. Data in site.js HOME HERO.
+  AIML-LI, Safe Routes. **No Ledger in the hero** (it stays a Selected work card). It cycles on its own, and since 28 Oct
+  **a person can move it** ("let the person swipe"): swipe on a phone, drag with a mouse, ‹ › buttons, clickable dots,
+  arrow keys, or a click on a side frame; the cycle resumes 8 s later. **A click on the middle frame, or Open, opens the
+  big view.** Data in site.js HOME HERO.
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
-- **Big view (`#dv`, site.js BIG VIEW):** "once you click on it, it should open up a bigger page". A panel over the page
-  with the project's kind, name, one-line description and result, a large frame (Hivemind's and Monte's launch films,
-  otherwise the screenshot; the two papers show their first page beside the finding and abstract), What / What I built /
-  Result, facts, and links, with the project's mark in a tile beside the title ("still clean and has the logos ... and
-  more descriptions"): Hivemind adds the Lemma track's three questions and answers, Monte the five steps of a tap,
-  SafeJew what's on the map, Safe Routes how it routes. Esc, Close or a click outside closes it. Copy is the old case cards' and paper panels'
-  (d7a3a82), so keep the two in step with the Firstness/Kiddom/Ledger/Safe Routes rules below.
+- **Big view (`#dv`, site.js BIG VIEW):** opened from a hero frame, a Selected work card or **a Research row** (all five
+  papers; ctrl/cmd-click still follows the PDF or repo). Adrian asked for it "more interesting and concise but also more
+  impressive" (28 Oct), so each one is: the mark, kicker and title; **the problem it answers** (builds, in the hero's
+  words) or **the question** (papers); **three headline numbers**; the film (Hivemind, Monte, with the live Monte site as
+  its poster) or screenshot, or for papers the first page beside **a small bar chart of the main result** and a short
+  summary; two short columns (What it does / My part, or Why for Safe Routes); one extra where it earns its place
+  (Hivemind's three Lemma-track answers, Monte's five steps of a tap, AIML-LI's six units, Ledger's SNAP rule); facts
+  and links. Every number is from the papers or the old case cards and paper panels (d7a3a82); keep them in step.
 - **Sections (round 8, quiet), his order:** each has a plain serif title over a rule and a small count on the right.
   About (photo and **his own three paragraphs, 28 Oct**, no School / Interested-in rows: "dont need to add school";
   the research sentence was made "chill" at his ask) · Experience (**a plain list, no logos**: company, role, one
   sentence, dates; "no logos for the experience section. make it chill"; each company name is an underlined navy link
   with a small ↗ so it reads as a link, his ask) · Research (**a publication
-  list**, all five, each opening its PDF or repo) · Selected work (six screenshots with plain text under them, his
+  list**, all five, each opening the big view) · Selected work (six screenshots with plain text under them, his
   "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
   good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off
   the logo strip.** Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.

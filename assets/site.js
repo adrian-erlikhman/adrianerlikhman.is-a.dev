@@ -1387,82 +1387,131 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
 })();
 
-/* ================= BIG VIEW (28 Oct): one project or paper, opened from a hero frame or a Selected work card ================= */
+/* ================= BIG VIEW (28 Oct): a project or paper, opened from the hero, Selected work or Research =================
+   Each one: the problem (or question) it answers, three headline numbers, the film, screenshot or first page, two short
+   columns, facts and links. Every number is from the paper or the old case cards (d7a3a82); keep them in step with both. */
 const BIG=(function(){
   const dv=document.getElementById('dv'); if(!dv) return null;
   const $=id=>document.getElementById(id);
-  const V=(src,poster)=>`<div class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><video controls playsinline preload="metadata" poster="${poster}" src="${src}"></video></div></div>`;
-  const I=(src,alt)=>`<div class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><img src="${src}" alt="${alt}"></div></div>`;
+  const frame=inner=>`<div class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr">${inner}</div></div>`;
+  const V=(src,poster)=>frame(`<video controls playsinline preload="metadata" poster="${poster}" src="${src}"></video>`);
+  const I=(src,alt)=>frame(`<img src="${src}" alt="${alt}">`);
   const L=(href,label,solid)=>`<a class="btn${solid?' solid':''}" href="${href}" target="_blank" rel="noopener">${label}</a>`;
+  /* a small horizontal bar chart: one series in navy, comparisons in grey, values labelled at the bar's end */
+  function chart(o){
+    const pc=x=>x/o.max*100, lw=o.lw||190;
+    const rows=o.rows.map(r=>{const lo=r.lo==null?0:r.lo,hi=r.lo==null?r.v:r.hi;
+      return `<div class="ch-r"><span class="ch-l">${r.l}</span><span class="ch-t"><i class="${r.hl?'':'ref'}${r.lo!=null?' rg':''}" style="left:${pc(lo)}%;width:${Math.max(pc(hi)-pc(lo),.8)}%" title="${r.l}: ${r.t}"></i><b style="left:${pc(hi)}%">${r.t}</b></span></div>`;}).join('');
+    const grid=o.ticks.map(t=>`<i style="left:${pc(t)}%"></i>`).join('');
+    const ref=o.ref?`<span class="ch-ref" style="left:${pc(o.ref.v)}%"><em>${o.ref.t}</em></span>`:'';
+    const ax=o.ticks.map(t=>`<span style="left:${pc(t)}%">${o.fmt(t)}</span>`).join('');
+    return `<figure class="ch" style="--lw:${lw}px"><h4>${o.h}</h4><div class="ch-g"><div class="ch-ov">${grid}${ref}</div>${rows}</div><div class="ch-ax">${ax}</div><figcaption>${o.cap}</figcaption></figure>`;
+  }
+  const pct=t=>t+'%';
   const D={
-    hivemind:{lg:'/img/logos/hivemind.svg',k:'Hackathon build · SEPHacks 2026',t:'Hivemind',g:'Shared memory for a team’s AI coding agents.',r:'Won the Agent Behaviour Monitoring track, judged by Lemma',
+    hivemind:{lg:'/img/logos/hivemind.svg',k:'Hackathon build · SEPHacks 2026',t:'Hivemind',q:'Give a team’s AI coding agents one shared memory.',
+      s:[['36 / 36','eval runs passed with Hivemind, against 14 / 36 without'],['Winner','Lemma’s agent-monitoring track'],['6','coding-agent tools it works with']],
       m:V('/video/hivemind-ad.mp4?v=2026-10-17','/img/cases/hivemind-ad.webp?v=2026-10-17'),
-      b:[['What','When an engineer corrects an agent, Hivemind saves the correction as a lesson. After a team lead approves it, every agent on the team loads it at the start of its next session. Works with Claude Code, Cursor, Codex and three other tools.'],
-         ['How it catches failures',['<b>How does an agent know it is failing?</b> A hook runs after each edit and returns the locked rules that apply to the edited file; hivemind watch shows any rule the file breaks.','<b>What counts as a failure?</b> An engineer correcting the agent, an edit that breaks a locked rule, two agents editing the same file within 10 minutes, or a proposed lesson that contradicts a locked rule.','<b>What are the guardrails?</b> Agents can propose lessons but not approve them; a team lead approves. Locked rules can’t be overridden, and hivemind check --staged fails a commit that breaks one.'],'ul'],
-         ['What I built','With Michael Tarekegn. I built the website and web app, designed the terminal app, and made the film. Next.js, Supabase, Claude Haiku, MCP.'],
-         ['Result','Won the Agent Behaviour Monitoring track, judged by Lemma, at SEPHacks 2026 (USC SEP × LA Tech Week). Claude Code passed 36 of 36 eval runs with it, 14 of 36 without.']],
-      f:[['When','October 2026'],['Team','with Michael Tarekegn']],
+      c:[['What it does','When an engineer corrects an agent, Hivemind saves the correction as a lesson. Once a team lead approves it, every agent on the team loads it at the start of its next session.'],
+         ['My part','The website, the web app, the terminal app’s design and the launch film. Built overnight with Michael Tarekegn.']],
+      x:`<div class="dv-x"><h4>How it catches failures</h4><div class="dv-3"><div><b>Knowing it’s failing</b><p>A hook after each edit returns the locked rules for that file; hivemind watch shows any rule it breaks.</p></div><div><b>What counts as a failure</b><p>A correction, a broken locked rule, or two agents editing one file within 10 minutes.</p></div><div><b>Guardrails</b><p>Agents propose lessons, a team lead approves them, and a commit that breaks a locked rule fails.</p></div></div></div>`,
+      f:[['Team','with Michael Tarekegn'],['Built with','Next.js, Supabase, Claude Haiku, MCP'],['When','October 2026']],
       l:[['https://hivemind-q17i.onrender.com/','Open Hivemind',1],['https://hivemind-q17i.onrender.com/app','Try the app'],['https://devpost.com/software/hivemind-v7rwgx','Devpost'],['https://youtu.be/wmBzH3som4A','Film on YouTube']]},
-    monte:{lg:'/img/logos/monte.svg',k:'Hackathon build · ACM TrojanHacks 2026',t:'Monte',g:'Picks the right credit card at the register, and adds up what each card really costs.',r:'1st place, Finance track',
-      m:V('/video/monte-film.mp4?v=2026-10-18','/img/cases/monte-film.webp?v=2026-10-18'),
-      b:[['What','At each purchase Monte reads the store’s merchant code, ranks every card in the wallet by what it pays there, and never picks a card that carries a balance. Over a year it sets each card’s rewards and perks against its fees and interest.'],
-         ['At the register',['The reader sends the store’s merchant code.','Monte opens the wallet.','It counts this month’s spending caps.','It ranks every card for the purchase.','It pays with the winner, never a card carrying a balance.'],'ol'],
-         ['What I built','With Michael Tarekegn at ACM TrojanHacks, LA Tech Week. I built the interface, the tap-to-pay demo and the brand, and made the film; Michael built the backend, the Monte Carlo and the tests. Next.js, TypeScript, Plaid.'],
-         ['Result','1st place in the Finance track at TrojanHacks 2026. The engine follows 29 cards’ published terms, each with its source, and passes 36 tests.']],
-      f:[['When','October 2026'],['Team','with Michael Tarekegn']],
+    monte:{lg:'/img/logos/monte.svg',k:'Hackathon build · ACM TrojanHacks 2026',t:'Monte',q:'Pick the card that pays the most for every purchase.',
+      s:[['1st','Finance track, TrojanHacks 2026'],['29','cards’ published terms, each with its source'],['36','engine tests passing']],
+      m:V('/video/monte-film.mp4?v=2026-10-18','/img/cases/monte-home.webp'),
+      c:[['What it does','At checkout it reads the store’s merchant code and pays with the card that earns the most there, never one carrying a balance. Over a year it sets each card’s rewards against its fees and interest.'],
+         ['My part','The interface, the tap-to-pay demo, the brand and the launch film. Michael Tarekegn built the backend, the Monte Carlo and the tests.']],
+      x:`<div class="dv-x"><h4>One tap at the register</h4><ol class="dv-steps"><li><b>Merchant code</b><span>The reader sends it.</span></li><li><b>Wallet</b><span>Monte opens it.</span></li><li><b>Caps</b><span>This month’s spending caps.</span></li><li><b>Rank</b><span>Every card, for this purchase.</span></li><li><b>Pay</b><span>The winner, never a card with a balance.</span></li></ol></div>`,
+      f:[['Team','with Michael Tarekegn'],['Built with','Next.js, TypeScript, Plaid'],['When','October 2026']],
       l:[['https://ace-eta-beryl.vercel.app/','Open Monte',1],['https://ace-eta-beryl.vercel.app/#tap-demo','Tap-to-pay demo'],['https://devpost.com/software/monte-calygj','Devpost'],['https://github.com/michae6345-crypto/monte','Code']]},
-    safejew:{lg:'/img/logos/safejew.webp',k:'Co-founder · 2024 to now',t:'SafeJew',g:'A live map of antisemitic incidents across Greater Los Angeles and U.S. college campuses, with a source behind every pin.',r:'1,300+ incidents mapped',
+    safejew:{lg:'/img/logos/safejew.webp',k:'Co-founder · 2024 to now',t:'SafeJew',q:'Map antisemitic incidents across LA, with a source for each.',
+      s:[['1,300+','incidents mapped, each with its source'],['33','U.S. college campuses covered'],['Daily','new incidents added automatically']],
       m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
-      b:[['What I built','The LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. I rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.'],
-         ['What’s on the map','800 incidents across Greater Los Angeles and 594 more on 33 university campuses, each pin with its source, updated daily.'],
-         ['Backed by','A Teen Innovation Grant from the Jewish Federation of Greater Los Angeles (JFEDLA).'],
-         ['Result','Live at safejew.org: 1,300+ incidents tracked across Greater LA, including 33 college campuses nationwide.']],
-      f:[['Since','2024'],['Role','co-founder']],
+      c:[['What it does','A live map of antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses. Every pin links to the report behind it.'],
+         ['My part','Built the LA gazetteer that turns a place named in a news story into coordinates, so a daily GitHub Action can add new incidents. Rebuilt the platform as V2 for a pitch to Hillel International.']],
+      f:[['Role','co-founder'],['Backed by','JFEDLA Teen Innovation Grant'],['Built with','Next.js, TypeScript, Supabase']],
       l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code']]},
-    aimlli:{lg:'/img/logos/aimlli-mark.webp',k:'Co-founder & lead · 2023 to now',t:'AIML-LI',g:'A free AI-literacy course, built for the public-school classroom that actually exists.',r:'Summit and hackathon for 500+ LA public-school students',
+    aimlli:{lg:'/img/logos/aimlli-mark.webp',k:'Co-founder & lead · 2023 to now',t:'AIML-LI',q:'Teach LA public-school students how AI actually works.',
+      s:[['12 weeks','a free, open-source AI course in six units'],['500+','LA public-school students at the summit'],['9','committed summit partners']],
       m:I('/img/cases/aimlli-home.webp','aiml-initiative.org'),
-      b:[['What I built','Co-founded AIML-LI with Michael Tarekegn and co-wrote a free, open-source 12-week course in six units: foundations, building models, prediction and error, neural networks, language and bias, and a capstone project students ship. Real notebooks, aligned to state standards, on the school’s Chromebooks.'],
-         ['Worked with','Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD’s Ed Tech & Innovation office.'],
-         ['Result','Taught a 4-week version in LACES AP Computer Science (spring 2026); now piloting with LAUSD, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for 500+ LA public-school students with nine committed partners.']],
-      f:[['Since','2023'],['Role','co-founder and lead']],
+      c:[['What it does','Real notebooks, aligned to state standards, that run on the school’s Chromebooks, ending in a project students ship.'],
+         ['My part','Co-founded it with Michael Tarekegn and co-wrote the course. Taught a 4-week version in LACES AP Computer Science; now piloting with LAUSD, working toward a standing elective.']],
+      x:`<div class="dv-x"><h4>The six units</h4><ol class="dv-steps six"><li><b>Foundations</b></li><li><b>Building models</b></li><li><b>Prediction &amp; error</b></li><li><b>Neural networks</b></li><li><b>Language &amp; bias</b></li><li><b>Capstone</b></li></ol></div>`,
+      f:[['Role','co-founder and lead'],['Worked with','engineers at Google DeepMind and Microsoft, a UCLA professor, a YC-backed founder, Arm, PhET, aiEDU and LAUSD’s Ed Tech & Innovation office']],
       l:[['https://aiml-initiative.org','aiml-initiative.org',1]]},
-    ledger:{lg:'/img/logos/ledger.svg',k:'Hackathon build · VISION HACK: South LA · Sep 2026',t:'Ledger',g:'Compliance software for corner stores: every license on one screen, and a photo of an order checked against the SNAP stocking rule.',r:'1st place, Council District 9 Champion (Under 18)',
+    ledger:{lg:'/img/logos/ledger.svg',k:'Hackathon build · VISION HACK: South LA',t:'Ledger',q:'Keep a corner store compliant, from its licenses to SNAP stocking.',
+      s:[['1st','Council District 9 Champion, Under 18'],['18','programs a corner store answers to'],['24 / 24','test records the rule engine scored right']],
       m:I('/img/cases/ledger-dashboard.webp','Ledger’s dashboard'),
-      b:[['What','Ledger covers eighteen federal, state and local programs a South LA corner store can answer to. It puts each license, its agency and its renewal date on one dashboard, worst first, with reminders before each deadline, in English and Spanish.'],
-         ['How','The owner photographs a wholesale order record. Two vision passes read each line; a rule engine counts varieties and units per food category against the SNAP rule and lists every line it could not count, with the reason, instead of guessing.'],
-         ['What I built','Led the twelve-hour build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback. With Arthur Tunyan and Michael Tarekegn.'],
-         ['Result','1st place, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team’s 24 test records, the rule engine matches every hand-scored verdict, with no false passes.']],
-      f:[['When','September 2026'],['Team','with Arthur Tunyan and Michael Tarekegn']],
+      c:[['What it does','Puts every license a South LA corner store holds on one dashboard, worst first, with renewal reminders in English and Spanish, and checks a photo of a wholesale order against the SNAP stocking rule.'],
+         ['My part','Led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.']],
+      x:`<div class="dv-x"><h4>The rule it checks</h4><p class="dv-p1">7 varieties and 21 units in each of 4 food categories, with a perishable in 3 of them. Lines it can’t count are listed with the reason, never guessed.</p></div>`,
+      f:[['Team','with Arthur Tunyan and Michael Tarekegn'],['Build','12 hours'],['When','September 2026']],
       l:[['https://visionhack-nu.vercel.app/','Open the demo',1],['https://github.com/michae6345-crypto/visionhack','Code']]},
-    saferoutes:{lg:'/img/logos/walkhome.svg',k:'Hackathon build · 2026',t:'Safe Routes to School',g:'Walking directions built from where students actually get robbed, not just from distance.',r:'3rd place internationally, Young Coders’ Sphere Code for Transportation',
+    saferoutes:{lg:'/img/logos/walkhome.svg',k:'Hackathon build · Young Coders’ Sphere',t:'Safe Routes to School',q:'Route students home around where robberies happen.',
+      s:[['3rd','internationally, Code for Transportation'],['431,599','LA blocks scored, hour by hour'],['80%','less modeled exposure on one trip to LACES']],
       m:I('/img/cases/saferoutes-walk.webp','Safe Routes’ worked example'),
-      b:[['Why','From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.'],
-         ['What I built','With Michael Tarekegn: a pipeline that scores 431,599 LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.'],
-         ['How it routes','Every LA block gets a street-crime exposure score for each hour of the day. The router weighs distance against that exposure, so a trip can come back as the shortest walk, a balanced one, or the safest, with a bus leg when riding is calmer than walking.'],
-         ['Result','3rd place internationally. On one modeled trip to LACES, from Exposition & Normandie, two buses instead of a 118-minute walk cut modeled exposure by 80%.']],
-      f:[['When','2026'],['Team','with Michael Tarekegn']],
+      c:[['Why','From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them during the school commute. My friends are in that number.'],
+         ['What it does','Scores every block for street-crime exposure by hour, then routes students around it, taking the bus when riding is calmer. Built with Michael Tarekegn; works offline, in English and Spanish.']],
+      f:[['Team','with Michael Tarekegn'],['Data','85,634 LAPD incidents'],['Router','A*, in the browser']],
       l:[['https://safe-routes-la.github.io/','Try it',1],['https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place','Write-up'],['https://github.com/safe-routes-la/safe-routes-la.github.io','Code']]},
-    langllm:{lg:'/img/logos/ieee.webp',k:'Research · IEEE BigData 2026 High School Symposium',t:'Do LLM Fingerprints Survive Outside English?',g:'Phoenix, AZ · 17 Dec 2026',r:'Best Paper Finalist: one of 12 papers, top 16 of 130 accepted',paper:'/img/papers/r01-langllm.webp',
-      lead:'A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.',
-      abs:'Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models in seven languages, from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language, and we detect no decline as a language’s resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text.',
-      f:[['Authors','Adrian Erlikhman, Michael Tarekegn, Philo Juang'],['My role','co-first author'],['Status','accepted']],
+    langllm:{paper:1,lg:'/img/logos/ieee.webp',k:'Research · IEEE BigData 2026 · Best Paper Finalist',t:'Do LLM Fingerprints Survive Outside English?',q:'Can you still tell which AI model wrote an essay once it leaves English?',
+      s:[['59–72%','how often the classifier names the model, in all seven languages'],['20–25%','how often the models themselves get it right'],['Top 16','of 130 accepted papers, one of 12 Best Paper finalists']],
+      pg:'/img/papers/r01-langllm.webp',href:'/papers/langllm-bigdata2026.pdf?v=2026-10-21',
+      ch:chart({h:'Five-way attribution accuracy',max:100,ticks:[0,25,50,75,100],fmt:pct,ref:{v:20,t:'chance'},rows:[
+        {l:'Classifier, original essays',lo:59,hi:72,t:'59–72%',hl:1},{l:'Classifier, machine-translated',lo:57,hi:70,t:'57–70%',hl:1},{l:'The five models, asked',lo:20,hi:25,t:'20–25%'}],
+        cap:'840 essays from five frontier models in seven languages, English to Hindi. Ranges span the languages.'}),
+      sum:'Attribution has been studied almost only in English. We attribute essays with 21 interpretable features from Universal Dependencies parses and find no decline as a language’s resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%).',
+      f:[['Authors','Adrian Erlikhman, Michael Tarekegn, Philo Juang'],['My role','co-first author'],['Presenting','Phoenix, AZ · 17 Dec 2026']],
       l:[['/papers/langllm-bigdata2026.pdf?v=2026-10-21','Read the paper',1],['https://github.com/adrian-erlikhman/LangLLM','Code + data']]},
-    curated:{k:'Research · ARRSI Workshop @ AACL-IJCNLP 2026',t:'Curated to Win',g:'Certifying reward-model and judge selection against evaluation-set curation · Hengqin, China, 10 Nov 2026',r:'Accepted · sole author',paper:'/img/papers/r02-curated-to-win.webp',
-      lead:'RewardBench’s leader survives the removal of any 11 of its 2,985 items. Removing 12 particular items makes the runner-up the winner.',
-      abs:'Automated research and self-improvement pipelines pick a reward model or LLM judge by its accuracy on a validation set, and that set is often curated by the pipeline or its designers. The paper’s curation certificate says how much of the set could be removed before the winner changes. Linear programs show the bound is tight near the top of RewardBench (118 models) and RewardBench 2 (188). On 200-item RewardBench validation sets, picks whose top two are more than 2 points apart match the full-benchmark winner 87% of the time, against 43% for the rest.',
-      f:[['Author','Adrian Erlikhman'],['My role','sole author'],['Status','accepted']],
-      l:[['/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12','Read the paper',1],['https://github.com/adrian-erlikhman/curated-to-win','Code + data']]}
+    curated:{paper:1,k:'Research · ARRSI @ AACL-IJCNLP 2026 · sole author',t:'Curated to Win',q:'How few test items does it take to change which reward model wins?',
+      s:[['11','of 2,985 items: remove any 11 and the leader still wins'],['12','the right 12 removed make the runner-up the winner'],['87% vs 43%','how often a small sample picks the true winner']],
+      pg:'/img/papers/r02-curated-to-win.webp',href:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',
+      ch:chart({h:'200-item samples that pick the full benchmark’s winner',max:100,ticks:[0,25,50,75,100],fmt:pct,rows:[
+        {l:'Top two more than 2 points apart',v:87,t:'87%',hl:1},{l:'Top two closer than that',v:43,t:'43%'}],
+        cap:'RewardBench validation sets of 200 items, split by the gap between their top two models.'}),
+      sum:'Self-improvement pipelines pick a reward model or LLM judge by its score on a validation set, often one they curated. The paper’s curation certificate says how much of that set could be removed before the winner changes. Linear programs show it is tight near the top of RewardBench (118 models) and RewardBench 2 (188), where the leader survives any 42 items.',
+      f:[['Author','Adrian Erlikhman, sole author'],['Venue','ARRSI Workshop, AACL-IJCNLP 2026'],['Where','Hengqin, China · 10 Nov 2026']],
+      l:[['/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12','Read the paper',1],['https://github.com/adrian-erlikhman/curated-to-win','Code + data']]},
+    compllm:{paper:1,k:'Research · preprint',t:'Whose Line Is It Anyway?',q:'Do LLM judges really recognize their own writing?',
+      s:[['15 of 37','cases the usual test flags as self-recognition'],['8','survive a false-alarm control'],['0','beat the judge’s strongest single peer']],
+      pg:'/img/papers/r03-compllm.webp',href:'https://github.com/adrian-erlikhman/self-recognition-peer-baseline',
+      ch:chart({h:'How many self-recognition cases survive each control',max:37,ticks:[0,10,20,30],fmt:t=>t,lw:210,rows:[
+        {l:'Cases checked',v:37,t:'37',hl:1},{l:'Flagged by the usual test',v:15,t:'15',hl:1},{l:'Survive the false-alarm control',v:8,t:'8',hl:1},{l:'Beat the pooled peers',v:3,t:'3',hl:1},{l:'Beat the strongest single peer',v:0,t:'0',hl:1}],
+        cap:'Nine judges, 1,270 texts, 19,000+ judgments. Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32.'}),
+      sum:'LLM judges are anonymized on the assumption that they can’t tell who wrote a text. We add two controls to the usual check: how often a judge names itself on text it didn’t write, and how often the other judges name it. The authorship signal is in the text, since a style classifier attributes 86% of the essays, but the judges’ answers don’t follow it.',
+      f:[['Authors','Adrian Erlikhman, Michael Tarekegn, Philo Juang'],['My role','co-first author'],['Status','preprint, arXiv forthcoming']],
+      l:[['https://github.com/adrian-erlikhman/self-recognition-peer-baseline','Code + data',1]]},
+    portfolio:{paper:1,lg:'/img/logos/ojss.webp',k:'Research · Oxford Journal of Student Scholarship',t:'Does Portfolio Optimization Beat Splitting Evenly?',q:'Does textbook portfolio optimization beat just splitting your money evenly?',
+      s:[['74%','of 250 simulations won by splitting evenly'],['0.70 vs 0.51','Sharpe ratio, even split against Markowitz'],['~3 points','of return a year at the same risk']],
+      pg:'/img/papers/r04-portfolio.webp',href:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02',
+      ch:chart({h:'Sharpe ratio across 250 calibrated simulations',max:.8,ticks:[0,.2,.4,.6,.8],fmt:t=>t.toFixed(1),rows:[
+        {l:'Split evenly (1/N)',v:.70,t:'0.70',hl:1},{l:'Markowitz portfolio',v:.51,t:'0.51'}],
+        cap:'A factor model calibrated to real market data.'}),
+      sum:'Modern portfolio theory says to hold assets in the proportions that maximize reward-to-risk. Given the true covariance but estimated means, the optimizer still loses; given the true means, it is nearly optimal. Estimating expected returns is the whole problem, and shrinkage only fixes it with about two decades of stationary data.',
+      f:[['Authors','Adrian Erlikhman, Ryan Erlikhman'],['My role','co-first author'],['Status','accepted with revisions']],
+      l:[['/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02','Read the paper',1]]},
+    legatum:{paper:1,k:'Research · Journal of High School Science',t:'How Robust Are the Legatum Prosperity Index Rankings?',q:'How much do global prosperity rankings depend on arbitrary choices?',
+      s:[['167','countries, every published score reproduced exactly'],['0.99','median rank correlation: the ranking holds as a whole'],['36 places','median 90% rank interval in mid-table']],
+      pg:'/img/papers/r05-legatum.webp',href:'/papers/legatum-robustness-audit.pdf?v=2026-09-13',
+      ch:chart({h:'Median 90% rank interval when the method varies',max:40,ticks:[0,10,20,30,40],fmt:t=>t,rows:[
+        {l:'All 167 countries',v:22,t:'22 places'},{l:'Mid-table, ranks 68–100',v:36,t:'36 places',hl:1}],
+        cap:'From 10,000 draws under each of three weight priors and a 131,072-run Sobol’ design.'}),
+      sum:'The index ranks countries by an equal-weighted mean of twelve pillar scores. The paper’s new result is rank leverage, c²(1 − ρ²): a weight can reorder countries only through the part of its pillar the composite doesn’t share. With equal weights of 1/12, the pillars’ leverages differ sixfold.',
+      f:[['Authors','Adrian Erlikhman, Ryan Erlikhman'],['My role','co-first author'],['Status','accepted with revisions']],
+      l:[['/papers/legatum-robustness-audit.pdf?v=2026-09-13','Read the paper',1]]}
   };
   let back=null,onClose=null;
   function open(key,from,closed){
     const d=D[key]; if(!d) return false;
-    $('dvK').textContent=d.k;$('dvT').textContent=d.t;$('dvG').textContent=d.g;$('dvR').textContent=d.r;
     const lg=$('dvLg'); lg.hidden=!d.lg; if(d.lg) lg.querySelector('img').src=d.lg;
-    const m=$('dvM');
-    if(d.paper){ m.className='dv-m paper'; m.innerHTML=I(d.paper,'First page of the paper')+`<div class="abs"><b>${d.lead}</b>${d.abs}</div>`; $('dvB').innerHTML=''; }
-    else{ m.className='dv-m'; m.innerHTML=d.m; $('dvB').innerHTML=d.b.map(([h,p,t])=>`<h4>${h}</h4>`+(Array.isArray(p)?`<${t}>${p.map(x=>`<li>${x}</li>`).join('')}</${t}>`:`<p>${p}</p>`)).join(''); }
-    $('dvF').innerHTML=d.f.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
-    $('dvL').innerHTML=d.l.map(x=>L(x[0],x[1],x[2])).join('');
+    $('dvK').textContent=d.k; $('dvT').textContent=d.t;
+    let h=`<p class="dv-q"><span>${d.paper?'Question':'Problem'}</span>${d.q}</p>`
+      +`<div class="dv-s">${d.s.map(([v,l])=>`<div><b>${v}</b><span>${l}</span></div>`).join('')}</div>`;
+    if(d.paper) h+=`<div class="dv-pp"><a class="dv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a><div>${d.ch}<p class="dv-sum">${d.sum}</p></div></div>`;
+    else h+=`<div class="dv-m">${d.m}</div><div class="dv-c">${d.c.map(([a,b])=>`<div><h4>${a}</h4><p>${b}</p></div>`).join('')}</div>${d.x||''}`;
+    h+=`<dl class="dv-f">${d.f.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl><div class="dv-ln">${d.l.map(x=>L(x[0],x[1],x[2])).join('')}</div>`;
+    $('dvIn').innerHTML=h;
     back=from||document.activeElement; onClose=closed||null;
     dv.hidden=false; document.body.classList.add('dv-open'); dv.querySelector('.dv-p').scrollTop=0;
     dv.querySelector('.btn[data-close]').focus({preventScroll:true});
@@ -1475,7 +1524,7 @@ const BIG=(function(){
     if(e.key==='Escape'){ e.preventDefault(); close(); }
     else if(e.key==='Tab'){ const f=[...dv.querySelectorAll('a[href],button,video[controls]')].filter(x=>x.offsetParent!==null); if(!f.length) return;
       const a=f[0],z=f[f.length-1]; if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); } else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); } } });
-  /* Selected work: a click opens the big view; ctrl/cmd-click still opens the live site */
+  /* Selected work and Research: a click opens the big view; ctrl/cmd-click still follows the link */
   document.querySelectorAll('[data-dv]').forEach(c=>c.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
     if(open(c.dataset.dv,c)) e.preventDefault(); }));
@@ -1483,10 +1532,11 @@ const BIG=(function(){
 })();
 
 /* ================= HOME HERO (28 Oct): Fuser-style frames of Adrian's work; the prompt types the problem each one answers.
-   It cycles on its own; a click on a frame, or Open, shows that one in the big view and pauses the cycle until it closes. ================= */
+   It cycles on its own. Swipe or drag it, use the arrows, dots or arrow keys, or click a side frame to move; a click on the
+   middle frame, or Open, shows it in the big view. Any of these pauses the cycle; it picks up again 8 s after the last one. ================= */
 (function(){
   const trk=document.getElementById('trk'); if(!trk) return;
-  const q=document.getElementById('q'),to=document.getElementById('to'),dots=document.getElementById('dots'),go=document.getElementById('go');
+  const hero=trk.closest('.hero'),q=document.getElementById('q'),to=document.getElementById('to'),dots=document.getElementById('dots'),go=document.getElementById('go');
   const F=[
     {k:'langllm',n:'Do LLM Fingerprints Survive Outside English?',img:'/img/papers/r01-langllm.webp',q:'Tell which AI model wrote an essay, even outside English.',r:'<b>Research</b> · Best Paper Finalist, IEEE BigData'},
     {k:'hivemind',n:'Hivemind',img:'/img/cases/hivemind-ad.webp',q:'Give a team’s AI coding agents one shared memory.',r:'<b>Hivemind</b> · won Lemma’s track, SEPHacks'},
@@ -1498,26 +1548,48 @@ const BIG=(function(){
   ];
   const N=F.length,H=Math.floor(N/2),RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ports='<span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span>';
-  let step=0,timer=null,next=null,paused=false;
-  function openBig(i,from){ if(!BIG) return; paused=true; clearTimeout(next); clearInterval(timer);
-    if(i!==step){ step=i; place(i); mark(i); }
-    q.innerHTML=F[i].q; to.innerHTML=F[i].r;
-    BIG.open(F[i].k,from,()=>{ paused=false; next=setTimeout(()=>run((step+1)%N),2600); }); }
-  F.forEach((f,i)=>{const d=document.createElement('button');d.type='button';d.className='dev fr';d.setAttribute('aria-label','Open '+f.n);
-    d.innerHTML=ports+`<div class="scr"><img src="${f.img}" alt="" decoding="async"${i>2&&i<N-1?' loading="lazy"':''}></div>`;
-    d.addEventListener('click',()=>openBig(i,d));trk.appendChild(d);dots.insertAdjacentHTML('beforeend','<i></i>');});
+  let step=0,timer=null,next=null,paused=false,moved=false;
+  F.forEach((f,i)=>{
+    const d=document.createElement('button');d.type='button';d.className='dev fr';d.setAttribute('aria-label',f.n);
+    d.innerHTML=ports+`<div class="scr"><img src="${f.img}" alt="" decoding="async" draggable="false"${i>2&&i<N-1?' loading="lazy"':''}></div>`;
+    d.addEventListener('click',()=>{ if(moved){moved=false;return;} if(i===step) openBig(i,d); else show(i); });
+    trk.appendChild(d);
+    const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+f.n);b.addEventListener('click',()=>show(i));dots.appendChild(b);
+  });
   const frs=[...trk.children];
-  function place(c){const sp=innerWidth<860?240:390;frs.forEach((el,i)=>{const o=((i-c)%N+N+H)%N-H,a=Math.abs(o);
-    const s=a===0?1.06:a===1?.8:.7,y=a===0?-6:a===1?26:40;
-    el.style.transform=`translateX(${o*sp}px) translateY(${y}px) scale(${s})`;el.style.opacity=a>2?0:a===2?.5:1;
-    el.style.zIndex=10-a;el.style.filter=a===0?'none':'saturate(.75) brightness(.97)';el.tabIndex=a<=1?0:-1;});}
-  function mark(s){[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===s));}
+  function place(c,off){ off=off||0; const sp=innerWidth<860?240:390;
+    frs.forEach((el,i)=>{const o=((i-c)%N+N+H)%N-H,a=Math.abs(o);const s=a===0?1.06:a===1?.8:.7,y=a===0?-6:a===1?26:40;
+      el.style.transform=`translateX(${o*sp+off}px) translateY(${y}px) scale(${s})`;el.style.opacity=a>2?0:a===2?.5:1;
+      el.style.zIndex=10-a;el.style.filter=a===0?'none':'saturate(.75) brightness(.97)';el.tabIndex=a<=1?0:-1;el.classList.toggle('ctr',a===0);});}
+  function mark(s){[...dots.children].forEach((d,k)=>{d.classList.toggle('on',k===s);d.setAttribute('aria-current',k===s?'true':'false');});}
+  const hold=()=>{clearTimeout(next);clearInterval(timer);};
   const type=(text,done)=>{let n=0;clearInterval(timer);timer=setInterval(()=>{n++;q.innerHTML=text.slice(0,n)+'<span class="cur"></span>';if(n>=text.length){clearInterval(timer);done&&done();}},34);};
-  function run(s){ if(paused) return; clearTimeout(next);clearInterval(timer);step=s;place(s);mark(s);to.innerHTML='&nbsp;';
+  function run(s){ if(paused) return; hold();step=s;place(s);mark(s);to.innerHTML='&nbsp;';
     const after=()=>{to.innerHTML=F[s].r;if(!paused)next=setTimeout(()=>run((step+1)%N),RM?4200:2600);};
     if(RM){q.innerHTML=F[s].q;after();return;}
     q.innerHTML='<span class="cur"></span>';next=setTimeout(()=>type(F[s].q,after),800);}
+  /* a person moved it: show that one at once, then pick the cycle back up after 8 s */
+  function show(i){ hold(); step=(i%N+N)%N; place(step); mark(step); q.innerHTML=F[step].q; to.innerHTML=F[step].r;
+    if(!paused) next=setTimeout(()=>run((step+1)%N),8000); }
+  function openBig(i,from){ if(!BIG) return; hold(); paused=true;
+    if(i!==step){ step=i; place(i); mark(i); } q.innerHTML=F[i].q; to.innerHTML=F[i].r;
+    BIG.open(F[i].k,from,()=>{ paused=false; next=setTimeout(()=>run((step+1)%N),4000); }); }
   go.addEventListener('click',()=>openBig(step,go));
+  document.getElementById('hPrev').addEventListener('click',()=>show(step-1));
+  document.getElementById('hNext').addEventListener('click',()=>show(step+1));
+  hero.addEventListener('keydown',e=>{ if(e.target.closest('.prompt')) return;
+    if(e.key==='ArrowLeft'){e.preventDefault();show(step-1);} else if(e.key==='ArrowRight'){e.preventDefault();show(step+1);} });
+  /* swipe on phones, drag with a mouse: the frames follow the pointer, then settle on the next one */
+  let down=false,drag=false,sx=0,sy=0,dx=0;
+  hero.addEventListener('pointerdown',e=>{ if(e.target.closest('.prompt,.hctl')) return; if(e.pointerType==='mouse'&&e.button!==0) return;
+    down=true;drag=false;moved=false;sx=e.clientX;sy=e.clientY;dx=0; });
+  hero.addEventListener('pointermove',e=>{ if(!down) return; const x=e.clientX-sx,y=e.clientY-sy;
+    if(!drag){ if(Math.abs(x)>8&&Math.abs(x)>Math.abs(y)){ drag=true;moved=true;hold();trk.classList.add('drag');try{hero.setPointerCapture(e.pointerId);}catch(_){} }
+      else if(Math.abs(y)>10){ down=false; return; } }
+    if(drag){ dx=x; place(step,dx); } });
+  const end=()=>{ if(!down) return; down=false; if(!drag) return; drag=false; trk.classList.remove('drag');
+    const th=Math.min(80,innerWidth*.12); if(dx<-th) show(step+1); else if(dx>th) show(step-1); else show(step); };
+  hero.addEventListener('pointerup',end); hero.addEventListener('pointercancel',end);
   addEventListener('resize',()=>place(step));
   /* wait for the intro to clear before the first prompt types */
   const start=()=>run(0);

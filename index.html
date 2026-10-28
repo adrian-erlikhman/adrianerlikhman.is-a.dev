@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-10-28-about">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-28-swipe">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -304,7 +304,7 @@
   <section class="hero" id="top">
     <div class="trk" id="trk"></div>
     <div class="prompt"><div class="q" id="q" aria-live="polite"></div><div class="row"><span class="to" id="to">&nbsp;</span><button class="btn solid" id="go" type="button">Open</button></div></div>
-    <div class="dots" id="dots" aria-hidden="true"></div>
+    <div class="hctl"><button class="hb" id="hPrev" type="button" aria-label="Previous">&#8249;</button><div class="dots" id="dots"></div><button class="hb" id="hNext" type="button" aria-label="Next">&#8250;</button></div>
     <div class="hl">
       <h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: </span>Researcher, builder, and <em>Team USA</em> fencer.</h1>
     </div>
@@ -330,14 +330,14 @@
       <li id="xp-alliance"><div class="co"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal <span class="nw">Innovation<span class="ext" aria-hidden="true">↗</span></span></a></div><div><h3>Venture &amp; Data Strategy Intern</h3><p>Built an investor-matching engine over 10K contacts at 250+ firms, cutting founder-to-investor lookups from days to under a minute.</p></div><div class="dt">2024 – 2026</div></li>
     </ul></section>
 
-  <!-- RESEARCH: a publication list; each row opens its PDF or repo -->
+  <!-- RESEARCH: a publication list; a click opens the paper in the big view (ctrl/cmd-click: its PDF or repo) -->
   <section class="in sec" id="papers"><div class="sh"><h2>Research</h2></div>
     <ol class="pl">
-      <li id="rs-t1"><a href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r01-langllm.webp" alt="First page" loading="lazy"></div><div><h3>Do LLM Fingerprints Survive Outside English?</h3><p class="vn">IEEE BigData 2026, High School Symposium · Phoenix, 17 Dec</p><p class="fd">A 21-feature classifier names which of five frontier models wrote an essay 59–72% of the time in all seven languages; the models themselves score 20–25%.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div><div class="st">Best Paper Finalist<i>accepted</i></div></a></li>
-      <li id="rs-t2"><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r02-curated-to-win.webp" alt="First page" loading="lazy"></div><div><h3>Curated to Win</h3><p class="vn">ARRSI Workshop @ AACL-IJCNLP 2026 · Hengqin, 10 Nov</p><p class="fd">RewardBench&rsquo;s leader survives the removal of any 11 of its 2,985 items; removing 12 particular items makes the runner-up the winner.</p><p class="au">Adrian Erlikhman</p></div><div class="st">Accepted<i>sole author</i></div></a></li>
-      <li id="rs-t3"><a href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r03-compllm.webp" alt="First page" loading="lazy"></div><div><h3>Whose Line Is It Anyway?</h3><p class="vn">Auditing self- and other-recognition in LLM judges</p><p class="fd">15 of 37 cases look like self-recognition; none beats the judge&rsquo;s strongest single peer.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div><div class="st">Preprint<i>arXiv forthcoming</i></div></a></li>
-      <li id="rs-t4"><a href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r04-portfolio.webp" alt="First page" loading="lazy"></div><div><h3>Does Portfolio Optimization Beat Splitting Evenly?</h3><p class="vn">Oxford Journal of Student Scholarship</p><p class="fd">Markowitz optimization against an equal 1/N split, out of sample.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div><div class="st">Accepted with revisions</div></a></li>
-      <li id="rs-t5"><a href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r05-legatum.webp" alt="First page" loading="lazy"></div><div><h3>How Robust Are the Legatum Prosperity Index Rankings?</h3><p class="vn">Journal of High School Science</p><p class="fd">Monte Carlo and Sobol&rsquo; sensitivity analysis of the index&rsquo;s weighting, normalization and aggregation.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div><div class="st">Accepted with revisions</div></a></li>
+      <li id="rs-t1"><a data-dv="langllm" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r01-langllm.webp" alt="First page" loading="lazy"></div><div><h3>Do LLM Fingerprints Survive Outside English?</h3><p class="vn">IEEE BigData 2026, High School Symposium · Phoenix, 17 Dec</p><p class="fd">A 21-feature classifier names which of five frontier models wrote an essay 59–72% of the time in all seven languages; the models themselves score 20–25%.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div><div class="st">Best Paper Finalist<i>accepted</i></div></a></li>
+      <li id="rs-t2"><a data-dv="curated" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r02-curated-to-win.webp" alt="First page" loading="lazy"></div><div><h3>Curated to Win</h3><p class="vn">ARRSI Workshop @ AACL-IJCNLP 2026 · Hengqin, 10 Nov</p><p class="fd">RewardBench&rsquo;s leader survives the removal of any 11 of its 2,985 items; removing 12 particular items makes the runner-up the winner.</p><p class="au">Adrian Erlikhman</p></div><div class="st">Accepted<i>sole author</i></div></a></li>
+      <li id="rs-t3"><a data-dv="compllm" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r03-compllm.webp" alt="First page" loading="lazy"></div><div><h3>Whose Line Is It Anyway?</h3><p class="vn">Auditing self- and other-recognition in LLM judges</p><p class="fd">15 of 37 cases look like self-recognition; none beats the judge&rsquo;s strongest single peer.</p><p class="au">Adrian Erlikhman, Michael Tarekegn, Philo Juang</p></div><div class="st">Preprint<i>arXiv forthcoming</i></div></a></li>
+      <li id="rs-t4"><a data-dv="portfolio" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r04-portfolio.webp" alt="First page" loading="lazy"></div><div><h3>Does Portfolio Optimization Beat Splitting Evenly?</h3><p class="vn">Oxford Journal of Student Scholarship</p><p class="fd">Markowitz optimization against an equal 1/N split, out of sample.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div><div class="st">Accepted with revisions</div></a></li>
+      <li id="rs-t5"><a data-dv="legatum" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r05-legatum.webp" alt="First page" loading="lazy"></div><div><h3>How Robust Are the Legatum Prosperity Index Rankings?</h3><p class="vn">Journal of High School Science</p><p class="fd">Monte Carlo and Sobol&rsquo; sensitivity analysis of the index&rsquo;s weighting, normalization and aggregation.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div><div class="st">Accepted with revisions</div></a></li>
     </ol></section>
 
   <!-- SELECTED WORK: a click opens the big view; without JS each card goes to the live project -->
@@ -395,9 +395,8 @@
 <div id="dv" class="dv" hidden>
   <div class="dv-bg" data-close></div>
   <div class="dv-p" role="dialog" aria-modal="true" aria-labelledby="dvT">
-    <div class="dv-h"><div class="dv-hd"><div class="dv-lg" id="dvLg" hidden><img alt=""></div><div><div class="dv-k" id="dvK"></div><h2 class="dv-t" id="dvT"></h2><p class="dv-g" id="dvG"></p><p class="dv-r" id="dvR"></p></div></div><button class="btn" type="button" data-close>Close</button></div>
-    <div class="dv-m" id="dvM"></div>
-    <div class="dv-b"><div id="dvB"></div><div><dl id="dvF"></dl><div class="dv-ln" id="dvL"></div></div></div>
+    <div class="dv-h"><div class="dv-hd"><div class="dv-lg" id="dvLg" hidden><img alt=""></div><div><div class="dv-k" id="dvK"></div><h2 class="dv-t" id="dvT"></h2></div></div><button class="btn" type="button" data-close>Close</button></div>
+    <div class="dv-in" id="dvIn"></div>
   </div>
 </div>
 
@@ -426,6 +425,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-28-about"></script>
+<script src="/assets/site.js?v=2026-10-28-swipe"></script>
 </body>
 </html>
