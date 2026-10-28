@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-swipe`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-captions`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -485,6 +485,12 @@ with "a lot of updates" still to come. What shipped:
   arrow keys, or a click on a side frame; the new problem **types in** then too, never just appears (his ask), and the
   cycle resumes 8 s after it finishes. **A click on the middle frame, or Open, opens the
   big view.** Data in site.js HOME HERO.
+  **Captions under the prompt (`r`, 28 Oct, Adrian: "i dont like these ones. make them better"):** one pattern for all
+  seven, the result in bold, then where: *Best Paper Finalist · IEEE BigData 2026*, *Won Lemma’s agent track · SEPHacks
+  2026*, *Accepted, sole author · ARRSI @ AACL-IJCNLP*, *1st, Finance track · TrojanHacks 2026*, *1,300+ incidents
+  mapped · JFEDLA-funded*, *Piloting with LAUSD · 500+ at the summit*, *3rd internationally · Code for Transportation*.
+  No "Research" category label (copy rule). Markup is `<b>result</b><span class="d"> · </span><span class="v">where</span>`;
+  at <=860px the bold sits on its own line and the dot hides, so the venue never splits mid-name.
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
 - **Big view (`#dv`, site.js BIG VIEW):** opened from a hero frame, a Selected work card or **a Research row** (all five

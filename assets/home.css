@@ -62,7 +62,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes bl{50%{opacity:0}}
 .prompt .row{position:absolute;left:20px;right:16px;bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .prompt .to{font:13px var(--sans);color:var(--dim)}
-.prompt .to b{font-weight:600;color:var(--acc)}
+.prompt .to b{font-weight:600;color:var(--acc)}.prompt .to .v{white-space:nowrap}
 .hctl{position:absolute;left:50%;top:404px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:41}
 .hb{width:32px;height:32px;border-radius:8px;border:1px solid var(--edge);background:#fff;color:var(--acc);font:18px/1 var(--sans);display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s}
 .hb:hover{border-color:var(--acc)}
@@ -254,7 +254,7 @@ body.dv-open{overflow:hidden}
   .nav nav{display:none}
   .hero{height:540px}.trk{top:40px}
   .fr{width:300px;height:192px;margin-left:-150px}
-  .prompt{width:calc(100% - 32px);top:196px;height:150px}.prompt .q{font-size:15.5px}.prompt .to{font-size:12px;max-width:56%}
+  .prompt{width:calc(100% - 32px);top:196px;height:150px}.prompt .q{font-size:15.5px}.prompt .to{font-size:12px;max-width:56%}.prompt .to b{display:block}.prompt .to .d{display:none}
   .hctl{top:352px}.hl{top:390px}.hl h1{font-size:32px}.hl p{font-size:15.5px}
   .sec{margin-top:80px}.sh h2{font-size:28px}
   .ab{grid-template-columns:1fr;gap:24px}.ab>img{width:100%;max-width:300px;height:320px}

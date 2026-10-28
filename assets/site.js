@@ -1538,13 +1538,13 @@ const BIG=(function(){
   const trk=document.getElementById('trk'); if(!trk) return;
   const hero=trk.closest('.hero'),q=document.getElementById('q'),to=document.getElementById('to'),dots=document.getElementById('dots'),go=document.getElementById('go');
   const F=[
-    {k:'langllm',n:'Do LLM Fingerprints Survive Outside English?',img:'/img/papers/r01-langllm.webp',q:'Tell which AI model wrote an essay, even outside English.',r:'<b>Research</b> · Best Paper Finalist, IEEE BigData'},
-    {k:'hivemind',n:'Hivemind',img:'/img/cases/hivemind-ad.webp',q:'Give a team’s AI coding agents one shared memory.',r:'<b>Hivemind</b> · won Lemma’s track, SEPHacks'},
-    {k:'curated',n:'Curated to Win',img:'/img/papers/r02-curated-to-win.webp',q:'Find how few test questions it takes to flip a leaderboard.',r:'<b>Research</b> · sole author, AACL workshop'},
-    {k:'monte',n:'Monte',img:'/img/cases/monte-home.webp',q:'Pick the card that pays the most for every purchase.',r:'<b>Monte</b> · 1st, Finance, TrojanHacks'},
-    {k:'safejew',n:'SafeJew',img:'/img/cases/safejew-incident.webp',q:'Map antisemitic incidents across LA, with a source for each.',r:'<b>SafeJew</b> · 1,300+ incidents mapped'},
-    {k:'aimlli',n:'AIML-LI',img:'/img/cases/aimlli-home.webp',q:'Teach LA public-school students how AI actually works.',r:'<b>AIML-LI</b> · summit for 500+ students'},
-    {k:'saferoutes',n:'Safe Routes to School',img:'/img/cases/saferoutes-walk.webp',q:'Route students home around where robberies happen.',r:'<b>Safe Routes</b> · 3rd, Code for Transportation'}
+    {k:'langllm',n:'Do LLM Fingerprints Survive Outside English?',img:'/img/papers/r01-langllm.webp',q:'Tell which AI model wrote an essay, even outside English.',r:'<b>Best Paper Finalist</b><span class="d"> · </span><span class="v">IEEE BigData 2026</span>'},
+    {k:'hivemind',n:'Hivemind',img:'/img/cases/hivemind-ad.webp',q:'Give a team’s AI coding agents one shared memory.',r:'<b>Won Lemma’s agent track</b><span class="d"> · </span><span class="v">SEPHacks 2026</span>'},
+    {k:'curated',n:'Curated to Win',img:'/img/papers/r02-curated-to-win.webp',q:'Find how few test questions it takes to flip a leaderboard.',r:'<b>Accepted, sole author</b><span class="d"> · </span><span class="v">ARRSI @ AACL-IJCNLP</span>'},
+    {k:'monte',n:'Monte',img:'/img/cases/monte-home.webp',q:'Pick the card that pays the most for every purchase.',r:'<b>1st, Finance track</b><span class="d"> · </span><span class="v">TrojanHacks 2026</span>'},
+    {k:'safejew',n:'SafeJew',img:'/img/cases/safejew-incident.webp',q:'Map antisemitic incidents across LA, with a source for each.',r:'<b>1,300+ incidents mapped</b><span class="d"> · </span><span class="v">JFEDLA-funded</span>'},
+    {k:'aimlli',n:'AIML-LI',img:'/img/cases/aimlli-home.webp',q:'Teach LA public-school students how AI actually works.',r:'<b>Piloting with LAUSD</b><span class="d"> · </span><span class="v">500+ at the summit</span>'},
+    {k:'saferoutes',n:'Safe Routes to School',img:'/img/cases/saferoutes-walk.webp',q:'Route students home around where robberies happen.',r:'<b>3rd internationally</b><span class="d"> · </span><span class="v">Code for Transportation</span>'}
   ];
   const N=F.length,H=Math.floor(N/2),RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ports='<span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span>';
