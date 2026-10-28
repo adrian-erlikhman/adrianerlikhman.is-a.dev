@@ -1386,3 +1386,46 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   addEventListener('resize',()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
 })();
+
+/* ================= HOME HERO (28 Oct): Fuser-style frames of Adrian's work; the prompt types the problem each one answers ================= */
+(function(){
+  const trk=document.getElementById('trk'); if(!trk) return;
+  const q=document.getElementById('q'),to=document.getElementById('to'),dots=document.getElementById('dots'),go=document.getElementById('go');
+  const F=[
+    {img:'/img/papers/r01-langllm.webp',q:'Tell which AI model wrote an essay, even outside English.',r:'<b>Research</b> · ★ Best Paper Finalist, IEEE BigData',to:'rs-t1'},
+    {img:'/img/cases/hivemind-ad.webp',q:'Give a team’s AI coding agents one shared memory.',r:'<b>Hivemind</b> · won Lemma’s track, SEPHacks',to:'case-hivemind'},
+    {img:'/img/papers/r02-curated-to-win.webp',q:'Find how few test questions it takes to flip a leaderboard.',r:'<b>Research</b> · sole author, AACL workshop',to:'rs-t2'},
+    {img:'/img/cases/monte-home.webp',q:'Pick the card that pays the most for every purchase.',r:'<b>Monte</b> · 1st, Finance, TrojanHacks',to:'case-monte'},
+    {img:'/img/cases/safejew-incident.webp',q:'Map antisemitic incidents across LA, with a source for each.',r:'<b>SafeJew</b> · 1,300+ incidents mapped',to:'case-safejew'},
+    {img:'/img/cases/aimlli-home.webp',q:'Teach LA public-school students how AI actually works.',r:'<b>AIML-LI</b> · summit for 500+ students',to:'case-aimlli'},
+    {img:'/img/cases/saferoutes-walk.webp',q:'Route students home around where robberies happen.',r:'<b>Safe Routes</b> · 3rd, Code for Transportation',to:'case-saferoutes'}
+  ];
+  const N=F.length,H=Math.floor(N/2),RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ports='<span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span>';
+  F.forEach((f,i)=>{const d=document.createElement('div');d.className='dev fr';
+    d.innerHTML=ports+`<div class="scr"><img src="${f.img}" alt="" decoding="async"${i>2&&i<N-1?' loading="lazy"':''}></div>`;
+    d.addEventListener('click',()=>run(i,true));trk.appendChild(d);dots.insertAdjacentHTML('beforeend','<i></i>');});
+  const frs=[...trk.children];
+  const place=c=>{const sp=innerWidth<860?240:390;frs.forEach((el,i)=>{const o=((i-c)%N+N+H)%N-H,a=Math.abs(o);
+    const s=a===0?1.06:a===1?.8:.7,y=a===0?-6:a===1?26:40;
+    el.style.transform=`translateX(${o*sp}px) translateY(${y}px) scale(${s})`;el.style.opacity=a>2?0:a===2?.5:1;
+    el.style.zIndex=10-a;el.style.filter=a===0?'none':'saturate(.75) brightness(.97)';});};
+  let step=0,timer=null,next=null,paused=false;
+  const type=(text,done)=>{let n=0;clearInterval(timer);timer=setInterval(()=>{n++;q.innerHTML=text.slice(0,n)+'<span class="cur"></span>';if(n>=text.length){clearInterval(timer);done&&done();}},34);};
+  function run(s,manual){clearTimeout(next);clearInterval(timer);step=s;place(s);
+    [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===s));to.innerHTML='&nbsp;';
+    const after=()=>{to.innerHTML='→ '+F[s].r;if(!manual&&!paused)next=setTimeout(()=>run((step+1)%N),RM?4200:2600);};
+    if(RM){q.innerHTML=F[s].q;after();return;}
+    q.innerHTML='<span class="cur"></span>';next=setTimeout(()=>type(F[s].q,after),800);}
+  go.addEventListener('click',()=>{const el=document.getElementById(F[step].to);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});});
+  addEventListener('resize',()=>place(step));
+  /* wait for the intro to clear before the first prompt types */
+  const start=()=>run(0);
+  place(0);[...dots.children][0].classList.add('on');
+  if(!document.body.classList.contains('intro-lock')) setTimeout(start,300);
+  else{const w=setInterval(()=>{if(!document.body.classList.contains('intro-lock')){clearInterval(w);setTimeout(start,500);}},150);}
+  /* the nav marks the section in view */
+  const links=[...document.querySelectorAll('.nav nav a[href^="#"]')];
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}),{rootMargin:'-45% 0px -50% 0px'});
+  links.forEach(l=>{const s=document.querySelector(l.getAttribute('href'));if(s)spy.observe(s);});
+})();

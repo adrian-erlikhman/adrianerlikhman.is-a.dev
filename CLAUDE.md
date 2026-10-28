@@ -316,12 +316,9 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **eight places**: on the homepage the three
-  triggers (nav `.navcv`, the hero's résumé button, Contact) and the two picker
-  options, and on `/demos/` a nav trigger and two picker options
-  (root-absolute, `/resume.pdf`). `grep -c "v=2026-10-18-mt"` should print 5
-  (the /demos/ three went with that page). Bump all eight whenever either PDF changes, to a value nobody else has
-  used. Currently `?v=2026-10-18-mt`.
+  The `?v=` cache-buster lives in **four places** since the 28 Oct homepage: the nav's Résumé button, Contact's
+  Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf" index.html` should print 4. Bump all
+  four whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -419,6 +416,10 @@ from LaTeX in `resume/`.
   its own dark neon design.
 
 ## Shared assets
+- **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
+  the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
+  maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-home`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -460,6 +461,35 @@ from LaTeX in `resume/`.
   Ledger and Safe Routes card links, the 80% receipt's link). Older demo CSS still sits unused in
   site.css. Git history has all of it (last commit with the page: ae30c60). Notes elsewhere in this
   file that mention /demos/ are history; don't bring any of it back unless he asks.
+
+## Homepage redesign (28 Oct 2026, current)
+Adrian rejected the paper-page, newspaper, LaTeX-editor, contents-page and "bubbly" sidebar takes ("mid... AI slop"),
+then asked to emulate **Fuser** (fuser.studio) "to make it more unique", **but not its black background**: Fuser's
+structure in his warm white + navy. He reviewed it as a private artifact mock (`_mock/landing6.html`) and said push it,
+with "a lot of updates" still to come. What shipped:
+- **Fonts:** Latin Modern (`'LM Roman'`) for display and titles, **Geist** (Google Fonts) for reading, nav and buttons
+  ("some of the fonts are kinda mid"), Plex Mono only in the prompt and small meta.
+- **Kept on his word:** the swarm intro ("i like the loading page"), the MIT "In active recruitment" bar with the Full
+  USA Fencing record button (back from #142: "add back the mit stuff"), the Fencing section's own content (ranks, A26
+  line, all results, both photos) and the three bouts as inline players ("keep the fencing videos").
+- **Top:** a Fuser announcement bar (Best Paper Finalist) and a floating rounded nav (About, Experience, Research,
+  Work, Fencing, Achievements, Résumé).
+- **Hero:** a carousel of device frames (notched tab with three dots, side ports). **Every frame is his work** and the
+  prompt box types **the problem it answers** ("Give a team's AI coding agents one shared memory." over Hivemind);
+  he said mixed pictures (group photo, terminal, portrait, logos) didn't make sense. Seven frames: R.01, Hivemind,
+  R.02, Monte (`img/cases/monte-home.webp`, the live site's hero, 28 Oct), SafeJew, AIML-LI, Safe Routes. **No Ledger in
+  the hero** (his call; it stays a Selected work card). ✦ See it scrolls to that card. Data lives in site.js HOME HERO.
+- **Sections, his order:** About (new: photo frame, three short paragraphs in his voice, Based in / School / Interested
+  in) · Experience (**all four at once**, 2×2; "dont make them click side to side") · Research (**all five at once**,
+  three language-model cards and two journal cards wired like nodes, each opening its PDF or repo) · Selected work (six
+  photo cards opening the live projects) · Fencing · Achievements (**eight tiles and one plain "Also" line**: shorter
+  than the wall and "i dont like the little bubbles") · Contact card. Old ids kept: `#papers`, `#record`, `#contact`,
+  `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
+- **Off the homepage now (git history, last commit with them d7a3a82):** Ask adrian, the Off-the-laptop photo viewer,
+  the Selected work hub and its popups (Hivemind film and Lemma panel, Monte tap demo and film), the achievements
+  wall's panels, the research shelf, the footer piste game, the terminal and the math notes viewer. The JSON-LD still
+  lists the two films as VideoObjects and the sitemap their files; tidy those if they don't come back.
+- Notes below about the homepage's layout are history unless they describe content or wording rules.
 
 ## Site structure (homepage `index.html`, rebuilt 21–22 Sept after a design review)
 Hero · `[01]` About me (`about`, with the photos in `#offclock`) ·
