@@ -491,6 +491,8 @@ with "a lot of updates" still to come. What shipped:
   mapped · JFEDLA-funded*, *Piloting with LAUSD · 500+ at the summit*, *3rd internationally · Code for Transportation*.
   No "Research" category label (copy rule). Markup is `<b>result</b><span class="d"> · </span><span class="v">where</span>`;
   at <=860px the bold sits on its own line and the dot hides, so the venue never splits mid-name.
+  **Font (same day, he picked D of four):** LaTeX serif (`--serif`), the result upright bold navy, the venue in italic
+  grey, 15px (13px on phones). Geist there was what he didn't like ("i dont like the font").
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
 - **Big view (`#dv`, site.js BIG VIEW):** opened from a hero frame, a Selected work card or **a Research row** (all five
