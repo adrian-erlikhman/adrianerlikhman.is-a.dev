@@ -1395,35 +1395,38 @@ const BIG=(function(){
   const I=(src,alt)=>`<div class="dev"><span class="tab"><i></i><i></i><i></i></span><div class="scr"><img src="${src}" alt="${alt}"></div></div>`;
   const L=(href,label,solid)=>`<a class="btn${solid?' solid':''}" href="${href}" target="_blank" rel="noopener">${label}</a>`;
   const D={
-    hivemind:{k:'Hackathon build · SEPHacks 2026',t:'Hivemind',g:'Shared memory for a team’s AI coding agents.',r:'Won the Agent Behaviour Monitoring track, judged by Lemma',
+    hivemind:{lg:'/img/logos/hivemind.svg',k:'Hackathon build · SEPHacks 2026',t:'Hivemind',g:'Shared memory for a team’s AI coding agents.',r:'Won the Agent Behaviour Monitoring track, judged by Lemma',
       m:V('/video/hivemind-ad.mp4?v=2026-10-17','/img/cases/hivemind-ad.webp?v=2026-10-17'),
       b:[['What','When an engineer corrects an agent, Hivemind saves the correction as a lesson. After a team lead approves it, every agent on the team loads it at the start of its next session. Works with Claude Code, Cursor, Codex and three other tools.'],
+         ['How it catches failures',['<b>How does an agent know it is failing?</b> A hook runs after each edit and returns the locked rules that apply to the edited file; hivemind watch shows any rule the file breaks.','<b>What counts as a failure?</b> An engineer correcting the agent, an edit that breaks a locked rule, two agents editing the same file within 10 minutes, or a proposed lesson that contradicts a locked rule.','<b>What are the guardrails?</b> Agents can propose lessons but not approve them; a team lead approves. Locked rules can’t be overridden, and hivemind check --staged fails a commit that breaks one.'],'ul'],
          ['What I built','With Michael Tarekegn. I built the website and web app, designed the terminal app, and made the film. Next.js, Supabase, Claude Haiku, MCP.'],
          ['Result','Won the Agent Behaviour Monitoring track, judged by Lemma, at SEPHacks 2026 (USC SEP × LA Tech Week). Claude Code passed 36 of 36 eval runs with it, 14 of 36 without.']],
       f:[['When','October 2026'],['Team','with Michael Tarekegn']],
       l:[['https://hivemind-q17i.onrender.com/','Open Hivemind',1],['https://hivemind-q17i.onrender.com/app','Try the app'],['https://devpost.com/software/hivemind-v7rwgx','Devpost'],['https://youtu.be/wmBzH3som4A','Film on YouTube']]},
-    monte:{k:'Hackathon build · ACM TrojanHacks 2026',t:'Monte',g:'Picks the right credit card at the register, and adds up what each card really costs.',r:'1st place, Finance track',
+    monte:{lg:'/img/logos/monte.svg',k:'Hackathon build · ACM TrojanHacks 2026',t:'Monte',g:'Picks the right credit card at the register, and adds up what each card really costs.',r:'1st place, Finance track',
       m:V('/video/monte-film.mp4?v=2026-10-18','/img/cases/monte-film.webp?v=2026-10-18'),
       b:[['What','At each purchase Monte reads the store’s merchant code, ranks every card in the wallet by what it pays there, and never picks a card that carries a balance. Over a year it sets each card’s rewards and perks against its fees and interest.'],
+         ['At the register',['The reader sends the store’s merchant code.','Monte opens the wallet.','It counts this month’s spending caps.','It ranks every card for the purchase.','It pays with the winner, never a card carrying a balance.'],'ol'],
          ['What I built','With Michael Tarekegn at ACM TrojanHacks, LA Tech Week. I built the interface, the tap-to-pay demo and the brand, and made the film; Michael built the backend, the Monte Carlo and the tests. Next.js, TypeScript, Plaid.'],
          ['Result','1st place in the Finance track at TrojanHacks 2026. The engine follows 29 cards’ published terms, each with its source, and passes 36 tests.']],
       f:[['When','October 2026'],['Team','with Michael Tarekegn']],
       l:[['https://ace-eta-beryl.vercel.app/','Open Monte',1],['https://ace-eta-beryl.vercel.app/#tap-demo','Tap-to-pay demo'],['https://devpost.com/software/monte-calygj','Devpost'],['https://github.com/michae6345-crypto/monte','Code']]},
-    safejew:{k:'Co-founder · 2024 to now',t:'SafeJew',g:'A live map of antisemitic incidents across Greater Los Angeles and U.S. college campuses, with a source behind every pin.',r:'1,300+ incidents mapped',
+    safejew:{lg:'/img/logos/safejew.webp',k:'Co-founder · 2024 to now',t:'SafeJew',g:'A live map of antisemitic incidents across Greater Los Angeles and U.S. college campuses, with a source behind every pin.',r:'1,300+ incidents mapped',
       m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
       b:[['What I built','The LA gazetteer that turns a place named in a news story into coordinates, so a GitHub Action adds new incidents every day. I rebuilt the platform as V2 for a pitch to Hillel International. Next.js, TypeScript, Supabase.'],
+         ['What’s on the map','800 incidents across Greater Los Angeles and 594 more on 33 university campuses, each pin with its source, updated daily.'],
          ['Backed by','A Teen Innovation Grant from the Jewish Federation of Greater Los Angeles (JFEDLA).'],
          ['Result','Live at safejew.org: 1,300+ incidents tracked across Greater LA, including 33 college campuses nationwide.']],
       f:[['Since','2024'],['Role','co-founder']],
       l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code']]},
-    aimlli:{k:'Co-founder & lead · 2023 to now',t:'AIML-LI',g:'A free AI-literacy course, built for the public-school classroom that actually exists.',r:'Summit and hackathon for 500+ LA public-school students',
+    aimlli:{lg:'/img/logos/aimlli-mark.webp',k:'Co-founder & lead · 2023 to now',t:'AIML-LI',g:'A free AI-literacy course, built for the public-school classroom that actually exists.',r:'Summit and hackathon for 500+ LA public-school students',
       m:I('/img/cases/aimlli-home.webp','aiml-initiative.org'),
       b:[['What I built','Co-founded AIML-LI with Michael Tarekegn and co-wrote a free, open-source 12-week course in six units: foundations, building models, prediction and error, neural networks, language and bias, and a capstone project students ship. Real notebooks, aligned to state standards, on the school’s Chromebooks.'],
          ['Worked with','Engineers at Google DeepMind and Microsoft, a UCLA professor and a Y Combinator-backed founder on the course; Arm and PhET (CU Boulder) on curriculum feedback; aiEDU on mentorship; LAUSD’s Ed Tech & Innovation office.'],
          ['Result','Taught a 4-week version in LACES AP Computer Science (spring 2026); now piloting with LAUSD, working toward a standing AI-literacy elective. Organizing a free AI summit and hackathon for 500+ LA public-school students with nine committed partners.']],
       f:[['Since','2023'],['Role','co-founder and lead']],
       l:[['https://aiml-initiative.org','aiml-initiative.org',1]]},
-    ledger:{k:'Hackathon build · VISION HACK: South LA · Sep 2026',t:'Ledger',g:'Compliance software for corner stores: every license on one screen, and a photo of an order checked against the SNAP stocking rule.',r:'1st place, Council District 9 Champion (Under 18)',
+    ledger:{lg:'/img/logos/ledger.svg',k:'Hackathon build · VISION HACK: South LA · Sep 2026',t:'Ledger',g:'Compliance software for corner stores: every license on one screen, and a photo of an order checked against the SNAP stocking rule.',r:'1st place, Council District 9 Champion (Under 18)',
       m:I('/img/cases/ledger-dashboard.webp','Ledger’s dashboard'),
       b:[['What','Ledger covers eighteen federal, state and local programs a South LA corner store can answer to. It puts each license, its agency and its renewal date on one dashboard, worst first, with reminders before each deadline, in English and Spanish.'],
          ['How','The owner photographs a wholesale order record. Two vision passes read each line; a rule engine counts varieties and units per food category against the SNAP rule and lists every line it could not count, with the reason, instead of guessing.'],
@@ -1431,14 +1434,15 @@ const BIG=(function(){
          ['Result','1st place, VISION HACK: South LA, Council District 9 Champion (Under 18). On the team’s 24 test records, the rule engine matches every hand-scored verdict, with no false passes.']],
       f:[['When','September 2026'],['Team','with Arthur Tunyan and Michael Tarekegn']],
       l:[['https://visionhack-nu.vercel.app/','Open the demo',1],['https://github.com/michae6345-crypto/visionhack','Code']]},
-    saferoutes:{k:'Hackathon build · 2026',t:'Safe Routes to School',g:'Walking directions built from where students actually get robbed, not just from distance.',r:'3rd place internationally, Young Coders’ Sphere Code for Transportation',
+    saferoutes:{lg:'/img/logos/walkhome.svg',k:'Hackathon build · 2026',t:'Safe Routes to School',g:'Walking directions built from where students actually get robbed, not just from distance.',r:'3rd place internationally, Young Coders’ Sphere Code for Transportation',
       m:I('/img/cases/saferoutes-walk.webp','Safe Routes’ worked example'),
       b:[['Why','From 2020 to 2024, 1,838 children aged 10 to 18 were robbed on LA streets, 56% during the school commute. My friends are in that number.'],
          ['What I built','With Michael Tarekegn: a pipeline that scores 431,599 LA blocks by hour from 85,634 LAPD incidents, and an in-browser A* router that weighs distance against exposure and takes the bus when riding is calmer. Runs offline, in English and Spanish.'],
+         ['How it routes','Every LA block gets a street-crime exposure score for each hour of the day. The router weighs distance against that exposure, so a trip can come back as the shortest walk, a balanced one, or the safest, with a bus leg when riding is calmer than walking.'],
          ['Result','3rd place internationally. On one modeled trip to LACES, from Exposition & Normandie, two buses instead of a 118-minute walk cut modeled exposure by 80%.']],
       f:[['When','2026'],['Team','with Michael Tarekegn']],
       l:[['https://safe-routes-la.github.io/','Try it',1],['https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place','Write-up'],['https://github.com/safe-routes-la/safe-routes-la.github.io','Code']]},
-    langllm:{k:'Research · IEEE BigData 2026 High School Symposium',t:'Do LLM Fingerprints Survive Outside English?',g:'Phoenix, AZ · 17 Dec 2026',r:'Best Paper Finalist: one of 12 papers, top 16 of 130 accepted',paper:'/img/papers/r01-langllm.webp',
+    langllm:{lg:'/img/logos/ieee.webp',k:'Research · IEEE BigData 2026 High School Symposium',t:'Do LLM Fingerprints Survive Outside English?',g:'Phoenix, AZ · 17 Dec 2026',r:'Best Paper Finalist: one of 12 papers, top 16 of 130 accepted',paper:'/img/papers/r01-langllm.webp',
       lead:'A 21-feature classifier names the model 59–72% of the time in all seven languages, against 20% chance. Asked the same question, the models score 20–25%.',
       abs:'Attributing text to a specific model has been studied almost only in English. We collect 840 essays from five frontier models in seven languages, from English to Hindi, and attribute them with 21 interpretable features computed from Universal Dependencies parses. A five-way classifier reaches 59–72% in every language, and we detect no decline as a language’s resources fall. Character n-grams are more accurate within a language, but the interpretable features transfer between languages better (49% against 41%). Attribution holds at 57–70% on machine-translated text.',
       f:[['Authors','Adrian Erlikhman, Michael Tarekegn, Philo Juang'],['My role','co-first author'],['Status','accepted']],
@@ -1453,9 +1457,10 @@ const BIG=(function(){
   function open(key,from,closed){
     const d=D[key]; if(!d) return false;
     $('dvK').textContent=d.k;$('dvT').textContent=d.t;$('dvG').textContent=d.g;$('dvR').textContent=d.r;
+    const lg=$('dvLg'); lg.hidden=!d.lg; if(d.lg) lg.querySelector('img').src=d.lg;
     const m=$('dvM');
     if(d.paper){ m.className='dv-m paper'; m.innerHTML=I(d.paper,'First page of the paper')+`<div class="abs"><b>${d.lead}</b>${d.abs}</div>`; $('dvB').innerHTML=''; }
-    else{ m.className='dv-m'; m.innerHTML=d.m; $('dvB').innerHTML=d.b.map(([h,p])=>`<h4>${h}</h4><p>${p}</p>`).join(''); }
+    else{ m.className='dv-m'; m.innerHTML=d.m; $('dvB').innerHTML=d.b.map(([h,p,t])=>`<h4>${h}</h4>`+(Array.isArray(p)?`<${t}>${p.map(x=>`<li>${x}</li>`).join('')}</${t}>`:`<p>${p}</p>`)).join(''); }
     $('dvF').innerHTML=d.f.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('');
     $('dvL').innerHTML=d.l.map(x=>L(x[0],x[1],x[2])).join('');
     back=from||document.activeElement; onClose=closed||null;
