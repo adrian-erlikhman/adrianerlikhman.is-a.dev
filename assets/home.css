@@ -121,6 +121,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pl li a:hover h3{color:var(--acc)}
 .pl .vn{font:14.5px var(--sans);color:var(--dim);margin-top:4px}
 .pl .fd{font:14.5px/1.5 var(--sans);color:var(--body);margin-top:8px;max-width:560px}
+.pl .fd b{font-weight:600;color:var(--ink)}
+.pl h3{text-wrap:balance}
 .pl .au{font:12px var(--mono);color:var(--mute);margin-top:8px}
 .pl .st{font:600 14px/1.4 var(--sans);color:var(--acc);text-align:right;padding-top:2px}
 .pl .st i{display:block;font-style:normal;font-weight:400;color:var(--mute);font-size:13px}

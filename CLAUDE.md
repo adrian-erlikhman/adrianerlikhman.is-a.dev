@@ -512,6 +512,9 @@ with "a lot of updates" still to come. What shipped:
   "dunderscore"**, as the game spells it; older notes said "dunerscore". It shows as a panel under the Selected work grid
   (`#case-citadel`), a hero frame (the board), and a big view (the viewer, shown whole, in the browser window). The
   Achievements cell opens the same big view.
+- **Research titles and copy (29 Oct, second pass: "research descriptions still suck ... have the full titles"):** every
+  paper shows its full official title (from the PDFs), and its description leads with the headline result in bold, then
+  the scale (essays, models, judgments, simulations) and the recognition. Same titles in the big view and llms.txt.
 - **Copy pass (29 Oct, "i dont like how you describe all of the stuff"):** Experience lines in the first person, saying
   for whom and with what result; each Research finding as a plain question or sentence a non-specialist gets, numbers
   kept. **Achievements** ("the bottom section sucks") is a 4×3 board of twelve honors, most selective first (National
