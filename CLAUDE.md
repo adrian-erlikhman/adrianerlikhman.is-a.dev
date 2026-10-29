@@ -516,7 +516,7 @@ with "a lot of updates" still to come. What shipped:
   `ojss-lockup.webp` (the full lockup from oxfordjss.org's Wix header; `ojss.webp` is the bare O used on R cards) and
   `jhss.webp` (jhss.scholasticahq.com's white-on-blue logo turned to ink). Sizes are balanced by class (`.w` 16px,
   `.w2`/`.w3` 32px). **About's text is Adrian's own (28 Oct, late)**, typos fixed only: "build software" links
-  `#work`, "research" links `#papers` (underlined navy, like Experience); "which one" became "which language model"
+  `#work`, "research" links `#papers`, the internships clause `#experience` and "fence épée for Team USA" `#fencing` (underlined navy, like Experience); "which one" became "which language model"
   because the sentence no longer names models before it. Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
 - **Off the homepage now (git history, last commit with them d7a3a82):** Ask adrian, the Off-the-laptop photo viewer,
   the Selected work hub and its popups (Hivemind film and Lemma panel, Monte tap demo and film), the achievements
