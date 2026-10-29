@@ -184,8 +184,8 @@ from LaTeX in `resume/`.
     submitted paper (Adrian, Michael, Philo). Since 15 Oct the site's R.01
     panel and llms.txt list the paper's real authors (Adrian Erlikhman,
     Michael Tarekegn, Philo Juang); both résumés still just say "Co-first
-    author" (see the credit rule below). The site keeps the
-    friendlier title "Do LLM Fingerprints Survive Outside English?" unless he asks.
+    author" (see the credit rule below). Since 29 Oct (his ask, "have the full titles") the site
+  uses the paper's own title, "Interpretable Multilingual Attribution of Frontier LLMs".
 - **Legatum's title carries a deliberate line break** in the long one (after
   the question mark, with `\newline`). Without it the title filled the line and
   the italic venue was stranded alone on the next one. Keep the break if you
