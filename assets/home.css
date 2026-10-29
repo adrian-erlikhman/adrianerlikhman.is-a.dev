@@ -241,6 +241,37 @@ body.dv-open{overflow:hidden}
 .ch-ax span{position:absolute;top:0;transform:translateX(-50%);font:11px var(--mono);color:var(--mute)}
 .ch figcaption{font:13px/1.45 var(--sans);color:var(--dim);margin-top:10px}
 
+/* Citadel Terminal, under the Selected work grid: Adrian's own screenshot of the replay viewer, the story beside it */
+.tm{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:64px;padding-top:40px;border-top:1px solid var(--hair);scroll-margin-top:90px}
+.tm-v{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--edge);background:#1c1b21;box-shadow:0 24px 50px -30px rgba(21,23,28,.55);cursor:zoom-in;transition:transform .3s}
+.tm-v:hover{transform:translateY(-3px)}
+.tm-v img{width:100%;height:auto;display:block}
+.tm-k{display:flex;align-items:center;gap:10px}
+.tm-k img{height:20px;width:auto}
+.tm-k span{font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.tm h3{font:400 34px/1.1 var(--serif);letter-spacing:-.01em;margin-top:12px}
+.tm .rz{font:600 15px/1.45 var(--sans);color:var(--acc);margin-top:10px}
+.tm p:not(.rz){font:15.5px/1.6 var(--sans);color:var(--body);margin-top:12px}
+.tm .btn{margin-top:18px}
+/* achievements: twelve honors on one board, hairline cells, the honor in large serif */
+.hon{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.hon li{padding:20px 20px 22px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);background:color-mix(in srgb,#fff 55%,transparent);transition:background .25s}
+.hon li:hover{background:#fff}
+.hk{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px}
+.hk span{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.hk img{height:22px;max-width:70px;object-fit:contain;order:2}
+.hon b{display:block;font:400 26px/1.1 var(--serif);color:var(--acc);margin-top:14px}
+.hon h3{font:600 15px/1.3 var(--sans);margin-top:8px}
+.hon h3 a{color:var(--ink);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 40%,transparent);text-underline-offset:3px}
+.hon h3 a:hover{color:var(--acc)}
+.hon p{font:13.5px/1.45 var(--sans);color:var(--dim);margin-top:4px}
+/* contact: a closing card */
+.cc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:40px;align-items:center;padding:40px 44px;border:1px solid var(--edge);border-radius:18px;background:#fff;box-shadow:0 24px 50px -36px rgba(31,58,95,.45)}
+.cc h2{font:400 44px/1.05 var(--serif);letter-spacing:-.015em;margin-top:10px}
+.cc p{font:15.5px/1.5 var(--sans);color:var(--dim);margin-top:10px}
+.cc-em{display:block;font:400 30px/1.2 var(--serif);color:var(--acc);word-break:break-word;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc) 30%,transparent);text-underline-offset:6px}
+.cc-em:hover{text-decoration-color:var(--acc)}
+.cc-b{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 @media(max-width:860px){
   .nav nav{display:none}
   .hero{height:540px}.trk{top:40px}
@@ -253,6 +284,9 @@ body.dv-open{overflow:hidden}
   .pl li a{grid-template-columns:64px minmax(0,1fr);gap:16px}.pl .cv{width:64px;height:83px}.pl .st{grid-column:2;text-align:left}
   .wg,.fg,.bt,.al{grid-template-columns:minmax(0,1fr)}
   .rk{grid-template-columns:1fr 1fr}
+  .tm{grid-template-columns:1fr;gap:22px;margin-top:48px}.tm h3{font-size:28px}
+  .hon{grid-template-columns:1fr 1fr}.hon li{padding:16px 14px 18px}.hon b{font-size:22px}
+  .cc{grid-template-columns:1fr;gap:22px;padding:26px 20px}.cc h2{font-size:34px}.cc-em{font-size:22px}
   .dv{padding:0}.dv-p{max-height:100vh;height:100%;border-radius:0}
   .dv-g{grid-template-columns:1fr}.dv-md{border-right:0;border-bottom:1px solid var(--hair);border-radius:0;padding:58px 16px 22px}
   .dv-g.pp .dv-md{padding:58px 16px 30px}.dv-pg{width:min(220px,62%)}
