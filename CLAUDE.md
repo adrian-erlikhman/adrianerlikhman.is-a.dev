@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-captions`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-strip`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -511,7 +511,13 @@ with "a lot of updates" still to come. What shipped:
   list**, all five, each opening the big view) · Selected work (six screenshots with plain text under them, his
   "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
   good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off
-  the logo strip.** Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
+  the logo strip.** **The strip gained AACL-IJCNLP, OJSS and JHSS on 28 Oct** (his ask), after IEEE: `aacl.webp`
+  (the "AACL-IJCNLP" wordmark cut from 2026.aaclnet.org's `aacl-2026-logo-v2.png`, no "2026", no skyline),
+  `ojss-lockup.webp` (the full lockup from oxfordjss.org's Wix header; `ojss.webp` is the bare O used on R cards) and
+  `jhss.webp` (jhss.scholasticahq.com's white-on-blue logo turned to ink). Sizes are balanced by class (`.w` 16px,
+  `.w2`/`.w3` 32px). **About's text is Adrian's own (28 Oct, late)**, typos fixed only: "build software" links
+  `#work`, "research" links `#papers` (underlined navy, like Experience); "which one" became "which language model"
+  because the sentence no longer names models before it. Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
 - **Off the homepage now (git history, last commit with them d7a3a82):** Ask adrian, the Off-the-laptop photo viewer,
   the Selected work hub and its popups (Hivemind film and Lemma panel, Monte tap demo and film), the achievements
   wall's panels, the research shelf, the footer piste game, the terminal and the math notes viewer. The two launch
