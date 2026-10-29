@@ -442,7 +442,7 @@ from LaTeX in `resume/`.
   `/work/` are history.
 - What it held that the homepage lacked moved into Achievements (Adrian: "add
   everything that should be added to the main page achievement page"): the
-  Citadel bot's name ("dunerscore", team of three), StandWithUs on the JSU
+  Citadel bot's name ("dunderscore", team of three), StandWithUs on the JSU
   assembly, the AP split (11 taken, 6 this year), and one Academics row each
   for Kaggle x Google, the Deep Learning Specialization and NVIDIA DLI. The
   DeepLearning.AI and NVIDIA marks were tried on those rows and dropped as
@@ -506,6 +506,18 @@ with "a lot of updates" still to come. What shipped:
   button to the site or PDF, then the rest. A square × closes it (8px radius, no pill). No numbers row, chart, columns
   or extras. All eleven fit one desktop screen (1440x900). Facts come from the first take (6cf89dc) and the old cards
   (d7a3a82); keep them in step. Ledger's My part keeps its fixed wording.
+- **Citadel Terminal (29 Oct, his ask: "take screenshots from citadel's terminal ... make it hella tuff").** Terminal's site
+  needs his GitHub sign-in, so he pasted two screenshots of its replay viewer (round 41, his bot **DUNDERSCORE4_2** in
+  teal, team "Claude's Plan"): `img/terminal/viewer.webp` (the whole viewer) and `board.webp` (the board). **The bot is
+  "dunderscore"**, as the game spells it; older notes said "dunerscore". It shows as a panel under the Selected work grid
+  (`#case-citadel`), a hero frame (the board), and a big view (the viewer, shown whole, in the browser window). The
+  Achievements cell opens the same big view.
+- **Copy pass (29 Oct, "i dont like how you describe all of the stuff"):** Experience lines in the first person, saying
+  for whom and with what result; each Research finding as a plain question or sentence a non-specialist gets, numbers
+  kept. **Achievements** ("the bottom section sucks") is a 4×3 board of twelve honors, most selective first (National
+  Merit, YC, Citadel, All-American, All-Academic, Decode the Ocean, NCSS, AP Scholar, 4.0/1520, SIFMA, JSU, STEMsters),
+  each the honor in large serif, its name and one line, no list and no pills. **Contact** is a closing card: "Let's
+  talk.", the email large, Email / Résumé / LinkedIn / GitHub buttons.
 - **Sections (round 8, quiet), his order:** each has a plain serif title over a rule and a small count on the right.
   About (photo and **his own three paragraphs, 28 Oct**, no School / Interested-in rows: "dont need to add school";
   the research sentence was made "chill" at his ask) · Experience (**a plain list, no logos**: company, role, one
