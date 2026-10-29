@@ -515,6 +515,15 @@ with "a lot of updates" still to come. What shipped:
 - **Research titles and copy (29 Oct, second pass: "research descriptions still suck ... have the full titles"):** every
   paper shows its full official title (from the PDFs), and its description leads with the headline result in bold, then
   the scale (essays, models, judgments, simulations) and the recognition. Same titles in the big view and llms.txt.
+- **Ledger is a receipt (29 Oct; Adrian: the dashboard screenshot "deadass looks horrendous... unAIslop it... a cool theme
+  that is different from the rest").** He picked A (Receipt) of three takes in `_mock/ledger-themes.html` (B green-bar ledger
+  paper, C LED window sign), then "too blue": the field is `#3355a8`, not Ledger's own `#1b4dff`. The tile (`.lgr`, `.rcp` in
+  home.css) is static HTML: a receipt rising out of a printer slot with the SNAP check by category and NOT MET. The big view
+  (site.js BIG VIEW, `LG`) prints the whole check line by line out of a printer, with Print again. Both are **test record 18**
+  from Ledger's suite (a weekly order, Corner Stop Market, VWF-885502: dairy and protein 4/7, grains and produce 7/7), from the
+  old walkthrough JSON (`git show 6abd0ac^:assets/ledger-walkthrough.json`); the printer says "Test record 18", and it shows
+  the rule engine, not the vision model. Tile lines: "1st place, VISION HACK: South LA" / "Tracks a corner store's licenses
+  and checks its stock for SNAP." `img/cases/ledger-dashboard.webp` is no longer used on the homepage.
 - **Copy pass (29 Oct, "i dont like how you describe all of the stuff"):** Experience lines in the first person, saying
   for whom and with what result; each Research finding as a plain question or sentence a non-specialist gets, numbers
   kept. **Achievements** ("the bottom section sucks") is a 4×3 board of twelve honors, most selective first (National
