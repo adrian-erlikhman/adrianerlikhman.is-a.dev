@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-swipe`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-cards`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -485,16 +485,27 @@ with "a lot of updates" still to come. What shipped:
   arrow keys, or a click on a side frame; the new problem **types in** then too, never just appears (his ask), and the
   cycle resumes 8 s after it finishes. **A click on the middle frame, or Open, opens the
   big view.** Data in site.js HOME HERO.
+  **Captions under the prompt (`r`, 28 Oct, Adrian: "i dont like these ones. make them better"):** one pattern for all
+  seven, the result in bold, then where: *Best Paper Finalist · IEEE BigData 2026*, *Won Lemma’s agent track · SEPHacks
+  2026*, *Accepted, sole author · ARRSI @ AACL-IJCNLP*, *1st, Finance track · TrojanHacks 2026*, *1,300+ incidents
+  mapped · JFEDLA-funded*, *Piloting with LAUSD · 500+ at the summit*, *3rd internationally · Code for Transportation*.
+  No "Research" category label (copy rule). Markup is `<b>result</b><span class="d"> · </span><span class="v">where</span>`;
+  at <=860px the bold sits on its own line and the dot hides, so the venue never splits mid-name.
+  **Font (same day, he picked D of four):** LaTeX serif (`--serif`), the result upright bold navy, the venue in italic
+  grey, 15px (13px on phones). Geist there was what he didn't like ("i dont like the font").
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
-- **Big view (`#dv`, site.js BIG VIEW):** opened from a hero frame, a Selected work card or **a Research row** (all five
-  papers; ctrl/cmd-click still follows the PDF or repo). Adrian asked for it "more interesting and concise but also more
-  impressive" (28 Oct), so each one is: the mark, kicker and title; **the problem it answers** (builds, in the hero's
-  words) or **the question** (papers); **three headline numbers**; the film (Hivemind, Monte, with the live Monte site as
-  its poster) or screenshot, or for papers the first page beside **a small bar chart of the main result** and a short
-  summary; two short columns (What it does / My part, or Why for Safe Routes); one extra where it earns its place
-  (Hivemind's three Lemma-track answers, Monte's five steps of a tap, AIML-LI's six units, Ledger's SNAP rule); facts
-  and links. Every number is from the papers or the old case cards and paper panels (d7a3a82); keep them in step.
+- **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
+  three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
+  interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
+  achievement, show the technicality in a couple lines". So it is the bubble-era orientation: **media left** on a light
+  navy dot grid (builds in a browser window whose address bar is the live site and links there; papers as the first page
+  with a sheet behind it), **text right**: mark, name and a mono meta line; **the achievement** in navy serif bold over an
+  italic venue, with a navy rule (the hero caption style); one precise sentence (papers: the question and its answer);
+  **How it works** in two or three lines with the stack; My part (Why for Safe Routes, Authors for papers); a solid
+  button to the site or PDF, then the rest. A square × closes it (8px radius, no pill). No numbers row, chart, columns
+  or extras. All eleven fit one desktop screen (1440x900). Facts come from the first take (6cf89dc) and the old cards
+  (d7a3a82); keep them in step. Ledger's My part keeps its fixed wording.
 - **Sections (round 8, quiet), his order:** each has a plain serif title over a rule and a small count on the right.
   About (photo and **his own three paragraphs, 28 Oct**, no School / Interested-in rows: "dont need to add school";
   the research sentence was made "chill" at his ask) · Experience (**a plain list, no logos**: company, role, one
@@ -503,7 +514,13 @@ with "a lot of updates" still to come. What shipped:
   list**, all five, each opening the big view) · Selected work (six screenshots with plain text under them, his
   "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
   good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off
-  the logo strip.** Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
+  the logo strip.** **The strip gained AACL-IJCNLP, OJSS and JHSS on 28 Oct** (his ask), after IEEE: `aacl.webp`
+  (the "AACL-IJCNLP" wordmark cut from 2026.aaclnet.org's `aacl-2026-logo-v2.png`, no "2026", no skyline),
+  `ojss-lockup.webp` (the full lockup from oxfordjss.org's Wix header; `ojss.webp` is the bare O used on R cards) and
+  `jhss.webp` (jhss.scholasticahq.com's white-on-blue logo turned to ink). Sizes are balanced by class (`.w` 16px,
+  `.w2`/`.w3` 32px). **About's text is Adrian's own (28 Oct, late)**, typos fixed only: "build software" links
+  `#work`, "research" links `#papers`, the internships clause `#experience` and "fence épée for Team USA" `#fencing` (underlined navy, like Experience); "which one" became "which language model"
+  because the sentence no longer names models before it. Old ids kept: `#papers`, `#record`, `#contact`, `#case-*`, `#rs-t1..5`, `#xp-*`, `#bouts`.
 - **Off the homepage now (git history, last commit with them d7a3a82):** Ask adrian, the Off-the-laptop photo viewer,
   the Selected work hub and its popups (Hivemind film and Lemma panel, Monte tap demo and film), the achievements
   wall's panels, the research shelf, the footer piste game, the terminal and the math notes viewer. The two launch
