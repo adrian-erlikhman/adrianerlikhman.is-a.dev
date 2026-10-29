@@ -255,6 +255,41 @@ body.dv-open{overflow:hidden}
 .tm .rz{font:600 15px/1.45 var(--sans);color:var(--acc);margin-top:10px}
 .tm p:not(.rz){font:15.5px/1.6 var(--sans);color:var(--body);margin-top:12px}
 .tm .btn{margin-top:18px}
+/* LEDGER (29 Oct): a receipt printer on blue instead of the dashboard screenshot. Adrian picked take A ("Receipt") of three
+   in _mock/ledger-themes.html, then took the blue down from Ledger's #1b4dff ("too blue") to #3355a8. The tile is static
+   HTML whose sizes follow its width (cqw); the big view prints the SNAP check line by line (site.js BIG VIEW, LEDGER). */
+.lgr{--lb:#3355a8;--lb2:#1d3166;--lb3:#101c40;--pp:#fdfdf9;--pk:#25272c;--prd:#d42a20}
+.wg .im.lgr{position:relative;background:var(--lb);border-color:transparent;container-type:inline-size}
+.lgr .feed{position:absolute;inset:0 0 7.6cqw;overflow:hidden}
+.lgr .slot{position:absolute;left:50%;bottom:3.8cqw;transform:translateX(-50%);width:72%;height:5.1cqw;border-radius:1.6cqw;background:var(--lb3);box-shadow:inset 0 3px 4px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.22)}
+.lgr .slot::after{content:"";position:absolute;left:2.5cqw;right:2.5cqw;top:45%;height:2px;border-radius:2px;background:#000}
+.rcp{position:absolute;left:50%;bottom:-1.9cqw;width:60%;transform:translateX(-50%);background:var(--pp);color:var(--pk);padding:1.4em 1.5em 1.6em;font:500 8.6px/1.55 var(--mono);font-size:2.75cqw;letter-spacing:.02em;filter:drop-shadow(0 12px 16px rgba(8,16,48,.4));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.rcp::before{content:"";position:absolute;left:0;right:0;top:-.7em;height:.7em;background:linear-gradient(45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x,linear-gradient(-45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x}
+.wg a:hover .rcp{transform:translate(-50%,-2.2cqw)}
+.rcp .hd{display:flex;align-items:center;justify-content:center;gap:.45em;font-weight:700;font-size:1.5em;line-height:1;letter-spacing:.12em}
+.wg .lgr .rcp .hd img,.rcp .hd img{width:1.1em;height:1.1em;object-fit:contain;transform:none;transition:none}
+.rcp .c{text-align:center}.rcp .dim{opacity:.7}
+.rcp .ds{border-top:1px dashed currentColor;margin:.7em 0;opacity:.55}
+.rcp .dd{border-top:3px double currentColor;margin:.8em 0;opacity:.8}
+.rcp .row{display:flex;gap:.9em}.rcp .row>span:first-child{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.rcp .n{min-width:3.2ch;text-align:right}.rcp .w4{min-width:4ch;text-align:right}.rcp .w7{width:7ch}
+.rcp .w55{min-width:5.5ch;text-align:right}.rcp .w8{min-width:8ch;text-align:right}
+.rcp .no{color:var(--prd);font-weight:700}.rcp .ok{font-weight:700}
+.rcp .x{opacity:.42;text-decoration:line-through}
+.rcp .big{font-weight:700;font-size:1.63em;line-height:1.2;letter-spacing:.14em;text-align:center}
+.rcp .bar{height:2.3em;margin:.7em auto 0;width:84%;background:repeating-linear-gradient(90deg,var(--pk) 0 2px,transparent 2px 3px,var(--pk) 3px 4px,transparent 4px 7px,var(--pk) 7px 10px,transparent 10px 11px,var(--pk) 11px 12px,transparent 12px 15px)}
+/* big view: the receipt rises out of a printer as each line prints */
+.dv-g.lgr .dv-md{position:relative;overflow:hidden;padding:0;border-right:0;background:var(--lb)}
+.lg-feed{position:absolute;inset:0 0 70px;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 90px);mask-image:linear-gradient(transparent,#000 90px)}
+.dv-g.lgr .rcp{bottom:-4px;width:min(372px,82%);padding:18px 20px 16px;font-size:11.2px;line-height:1.62;transition:none}
+.rcp .ln{overflow:hidden;animation:lgpr .16s ease-out backwards}
+@keyframes lgpr{from{max-height:0;opacity:.2}to{max-height:4em;opacity:1}}
+.lg-pr{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:min(440px,92%);height:62px;border-radius:12px;background:var(--lb2);box-shadow:0 18px 30px -16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.14);display:flex;align-items:center;gap:12px;padding:8px 14px 0 20px}
+.lg-pr::before{content:"";position:absolute;left:24px;right:24px;top:-4px;height:12px;border-radius:4px;background:var(--lb3);box-shadow:inset 0 3px 3px rgba(0,0,0,.6)}
+.lg-pr span{flex:1;min-width:0;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#b4c3ec;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lg-pr i{flex:none;width:7px;height:7px;border-radius:50%;background:#3cff8a;box-shadow:0 0 6px #3cff8a}
+.lg-again{flex:none;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:6px;padding:7px 10px;transition:border-color .2s}
+.lg-again:hover{border-color:#fff}
 /* achievements: twelve honors on one board, hairline cells, the honor in large serif */
 .hon{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
 .hon li{padding:20px 20px 22px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);background:color-mix(in srgb,#fff 55%,transparent);transition:background .25s}
@@ -292,10 +327,11 @@ body.dv-open{overflow:hidden}
   .dv{padding:0}.dv-p{max-height:100vh;height:100%;border-radius:0}
   .dv-g{grid-template-columns:1fr}.dv-md{border-right:0;border-bottom:1px solid var(--hair);border-radius:0;padding:58px 16px 22px}
   .dv-g.pp .dv-md{padding:58px 16px 30px}.dv-pg{width:min(220px,62%)}
+  .dv-g.lgr .dv-md{height:460px;padding:0}.dv-g.lgr .rcp{width:88%;padding:16px 16px 14px;font-size:10px}
   .dv-tx{padding:20px 18px 30px}.dv-t{font-size:18px}.dv-a b{font-size:18px}
   .ch{--lw:120px!important}.ch-ov,.ch-t{right:52px}.ch-t{margin-right:52px}.ch-ax{margin-right:52px}
 }
-@media(prefers-reduced-motion:reduce){.fr{transition:none}.prompt .cur{animation:none}.dv-bg,.dv-p{animation:none}}
+@media(prefers-reduced-motion:reduce){.fr{transition:none}.prompt .cur{animation:none}.dv-bg,.dv-p{animation:none}.rcp,.rcp .ln{transition:none;animation:none}}
 
 /* ---- kept from site.css: a11y helpers, the intro, ⌘K and toasts, the maintenance screen, the résumé picker ---- */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

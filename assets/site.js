@@ -1401,6 +1401,36 @@ const BIG=(function(){
   const V=(src,poster)=>`<video controls playsinline preload="metadata" poster="${poster}" src="${src}"></video>`;
   const I=(src,alt)=>`<img src="${src}" alt="${alt}">`;
   const L=(href,label,solid)=>`<a class="btn${solid?' solid':''}" href="${href}" target="_blank" rel="noopener">${label}${/^https?:/.test(href)||/\.pdf/.test(href)?' <span aria-hidden="true">↗</span>':''}</a>`;
+  /* LEDGER: the SNAP check prints up out of a receipt printer (Adrian picked the receipt of three takes, 29 Oct). The order is
+     test record 18 from Ledger's suite (eval/fixtures in michae6345-crypto/visionhack; exported for the old walkthrough, last
+     in 6abd0ac^): a weekly order, with each line's category and units the eval's hand labels, which the shipped pipeline
+     matches on all 319 test lines and 24 records. It shows the rule engine, not the vision model. Re-export, don't edit. */
+  const LG=(function(){
+    const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const T=[['WHL MLK GALLON','DAIRY',8],['TILLAMOOK MED CHEDDAR BLOCK 8 OZ','DAIRY',12],['DANNON PLAIN LOWFAT YOGURT 32 OZ','DAIRY',12],['DAISY SOUR CREAM 16 OZ','DAIRY',12],
+      ['MISSION FLR TORT SOFT TACO 10 CT','GRAINS',24],['MISSION CORN TORT 30 CT','GRAINS',12],['MAHATMA X-LONG GRAIN WHITE RICE 2 LB','GRAINS',12],['BARILLA SPAGHETTI 16 OZ','GRAINS',20],
+      ['QUAKER OLD FASHION OATS 18 OZ','GRAINS',12],['MASECA INST CORN MASA 4.4 LB','GRAINS',10],['BIMBO SOFT WHITE BREAD 20 OZ','GRAINS',16],['STARKIST CHUNK LT TUNA WTR 5 OZ','PROTEIN',48],
+      ['GRADE A LARGE EGGS 12 CT','PROTEIN',30],['BAR-S CLASSIC BOLOGNA 12 OZ','PROTEIN',16],['SKIPPY CREAMY PEANUT BUTTER 16.3 OZ','PROTEIN',12],['BANANAS PETITE','PRODUCE',150],
+      ['RUSSET POTATO 5 LB BAG','PRODUCE',20],['COOKING ONION','PRODUCE',16],['LETTUCE HEAD 24 CT CELLO WRAP','PRODUCE',24],['LIMES PERSIAN','PRODUCE',200],
+      ['DEL MONTE WHL KERNEL CORN 15.25 OZ','PRODUCE',24],['CARROTS 2 LB BAG','PRODUCE',12],['COCA COLA 12 OZ CAN'],['LAYS CLASSIC CHIPS 1 OZ']];
+    const C=[['DAIRY',4,44],['GRAINS',7,106],['PROTEIN',4,106],['PRODUCE',7,446]];
+    let tm=[];
+    const lines=()=>{
+      const L=['<div class="hd"><img src="/img/logos/ledger.svg" alt="">LEDGER</div>','<div class="c">SNAP STOCKING CHECK</div>','<div class="c">CORNER STOP MARKET</div>','<div class="c">ORDER VWF-885502 · 09/18/26</div>','<div class="ds"></div>'];
+      T.forEach(([t,c,u])=>L.push(c?`<div class="row"><span>${t}</span><span class="w7">${c}</span><span class="n">${u}</span></div>`:`<div class="row x"><span>${t}</span><span>NOT A STAPLE</span></div>`));
+      L.push('<div class="ds"></div>','<div class="c dim">NEED 7 VARIETIES + 21 UNITS EACH</div>','<div class="ds"></div>');
+      C.forEach(([c,v,u])=>{const ok=v>=7&&u>=21;L.push(`<div class="row"><span>${c}</span><span>${v}/7</span><span class="w4">${u}</span><span class="w8 ${ok?'ok':'no'}">${ok?'OK':'SHORT '+(7-v)}</span></div>`);});
+      L.push('<div class="row"><span>PERISHABLES</span><span>4 OF 4</span><span class="w8 ok">OK</span></div>','<div class="dd"></div>','<div class="big no">NOT MET</div>',
+        `<div class="c no">${C.filter(x=>x[1]<7||x[2]<21).length} CATEGORIES SHORT</div>`,'<div class="bar"></div>');
+      return L; };
+    const html=()=>'<div class="lg-feed"><div class="rcp" id="lgRc" aria-label="Ledger’s SNAP stocking check on test record 18"></div></div>'
+      +'<div class="lg-pr"><span>Test record 18 · a weekly order</span><i aria-hidden="true"></i><button class="lg-again" type="button">Print again</button></div>';
+    function stop(){ tm.forEach(clearTimeout); tm=[]; }
+    function run(){ stop(); const el=document.getElementById('lgRc'); if(!el) return; const L=lines();
+      if(RM){ el.innerHTML=L.map(h=>`<div class="ln">${h}</div>`).join(''); return; }
+      el.innerHTML=''; L.forEach((h,i)=>tm.push(setTimeout(()=>el.insertAdjacentHTML('beforeend',`<div class="ln">${h}</div>`),300+i*85))); }
+    return {html,run,stop};
+  })();
   const D={
     hivemind:{lg:'/img/logos/hivemind.svg',n:'Hivemind',k:'Hackathon build · October 2026',
       a:['Won Lemma’s agent-monitoring track','SEPHacks 2026, USC'],
@@ -1442,7 +1472,7 @@ const BIG=(function(){
       t:'Keeps a South LA corner store compliant: every license on one dashboard, worst first, with renewal reminders in English and Spanish.',
       h:'A two-pass vision pipeline reads a photo of a wholesale order, and a rule engine checks it against SNAP’s stocking rule; the rule engine scored all 24 test records right.',
       p:['My part','Led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.'],
-      site:'https://visionhack-nu.vercel.app/',m:I('/img/cases/ledger-dashboard.webp','Ledger’s dashboard'),
+      site:'https://visionhack-nu.vercel.app/',rc:1,
       l:[['https://visionhack-nu.vercel.app/','Open the demo',1],['https://github.com/michae6345-crypto/visionhack','Code']]},
     saferoutes:{lg:'/img/logos/walkhome.svg',n:'Safe Routes to School',k:'Hackathon build · with Michael Tarekegn',
       a:['3rd internationally','Code for Transportation'],
@@ -1490,20 +1520,21 @@ const BIG=(function(){
   let back=null,onClose=null;
   function open(key,from,closed){
     const d=D[key]; if(!d) return false;
-    const media=d.paper?`<a class="dv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a>`:W(d.site,d.m);
+    const media=d.paper?`<a class="dv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a>`:d.rc?LG.html():W(d.site,d.m);
     const id=`<div class="dv-id">${d.lg?`<span class="dv-lg"><img src="${d.lg}" alt=""></span>`:''}<div><div class="dv-n">${d.n}</div><div class="dv-k">${d.k}</div></div></div>`;
-    $('dvIn').innerHTML=`<div class="dv-g${d.paper?' pp':''}"><div class="dv-md">${media}</div><div class="dv-tx">${id}`
+    LG.stop(); $('dvIn').innerHTML=`<div class="dv-g${d.paper?' pp':''}${d.rc?' lgr':''}"><div class="dv-md">${media}</div><div class="dv-tx">${id}`
       +`<p class="dv-a"><b>${d.a[0]}</b><i>${d.a[1]}</i></p>`
       +`<h2 class="dv-t" id="dvT">${d.t}</h2>`
       +`<div class="dv-r"><h4>${d.paper?'How':'How it works'}</h4><p>${d.h}</p></div>`
       +`<div class="dv-r"><h4>${d.p[0]}</h4><p>${d.p[1]}</p></div>`
       +`<div class="dv-ln">${d.l.map(x=>L(x[0],x[1],x[2])).join('')}</div></div></div>`;
+    if(d.rc){ LG.run(); dv.querySelector('.lg-again').addEventListener('click',LG.run); }
     back=from||document.activeElement; onClose=closed||null;
     dv.hidden=false; document.body.classList.add('dv-open'); dv.querySelector('.dv-p').scrollTop=0;
     dv.querySelector('.dv-x').focus({preventScroll:true});
     return true;
   }
-  function close(){ if(dv.hidden) return; dv.querySelectorAll('video').forEach(v=>v.pause());
+  function close(){ if(dv.hidden) return; dv.querySelectorAll('video').forEach(v=>v.pause()); LG.stop();
     dv.hidden=true; document.body.classList.remove('dv-open'); if(back&&back.focus) back.focus({preventScroll:true}); if(onClose) onClose(); }
   dv.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
   addEventListener('keydown',e=>{ if(dv.hidden) return;
