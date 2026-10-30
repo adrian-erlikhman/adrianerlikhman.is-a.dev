@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-29-allchat`).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-29-nofoot`, site.js `2026-10-29-allchat`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -497,6 +497,8 @@ with "a lot of updates" still to come. What shipped:
   are compacted to the 820px column and speak Geist (`.cg-a{--serif:var(--sans)}`); `.cg .btn` restores the button style
   that the chat's button reset would strip. Styles at the end of home.css; site.js CHAT SITE (the CHAT HERO script is
   gone). The section notes below still hold for content and wording; their layout notes are history.
+  **No line under the composer** (Adrian, 29 Oct: remove the "© 2026 Adrian Erlikhman · Los Angeles · every answer here
+  is my own work" line). He is now going through the conversations one at a time.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
