@@ -1392,8 +1392,8 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
    project opens in a panel on the right, as ChatGPT's canvas does, and the chat stays on the left with the clicked card
    outlined. The panel speaks the chat's Geist: name and an Open button on top, the live site or film large, then the
    result, one precise sentence, How it works and His part. Under 1000px it covers the screen. Papers open here too,
-   from Research's list (also his pick of three, later that day) or a typed question. Every fact is from the paper or
-   the old case cards (d7a3a82, 6cf89dc); keep them in step with both, and with Research's rows in index.html. */
+   from a typed question that names one (Research shows each paper in full). Every fact is from the paper or
+   the old case cards (d7a3a82, 6cf89dc); keep them in step with both, and with Research's cards in index.html. */
 const BIG=(function(){
   const dv=document.getElementById('dv'); if(!dv) return null;
   const $=id=>document.getElementById(id);
@@ -1535,7 +1535,7 @@ const BIG=(function(){
       +`<div class="cv-ln">${d.l.map((x,i)=>L(x[0],x[1],!i).replace('class="btn',`class="${i?'':'cv-go '}btn`)).join('')}</div></div></div>`;
     if(d.rc){ LG.run(); dv.querySelector('.lg-again').addEventListener('click',LG.run); }
     if(src) src.classList.remove('cv-src');
-    src=from&&from.closest?(from.closest('.wg>a,.rl-r')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
+    src=from&&from.closest?(from.closest('.wg>a')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
     if(src) src.classList.add('cv-src');
     if(dv.hidden) back=from||document.activeElement;
     onClose=closed||null;
@@ -1597,7 +1597,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.rl';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.rqs';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1819,7 +1819,7 @@ const BIG=(function(){
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="/papers/"][href*=".pdf"]'); if(!a||!inlinePDF||a.hasAttribute('data-dv')) return;
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
     e.preventDefault(); e.stopPropagation(); stopAuto();
-    const card=a.closest('.cv'), t=card&&card.querySelector('.cv-ti,.cv-id b');
+    const card=a.closest('.cv,.rq'), t=card&&card.querySelector('.cv-ti,.cv-id b,.rq h3');
     rd.querySelector('b').textContent=t?t.textContent:'Paper';
     rd.querySelector('.cg-rd-o').href=a.getAttribute('href');
     rdF.src=a.getAttribute('href')+'#view=FitH'; rd._from=a; rd.hidden=false; rd.querySelector('.cg-rd-x').focus(); },true);
