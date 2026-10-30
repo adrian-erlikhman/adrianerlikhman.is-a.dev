@@ -1545,80 +1545,196 @@ const BIG=(function(){
   document.querySelectorAll('[data-dv]').forEach(c=>c.addEventListener('click',e=>{
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
     if(open(c.dataset.dv,c)) e.preventDefault(); }));
-  return {open,close};
+  return {open,close,D};
 })();
 
-/* ================= HOME HERO (28 Oct): Fuser-style frames of Adrian's work; the prompt types the problem each one answers.
-   It cycles on its own. Swipe or drag it, use the arrows, dots or arrow keys, or click a side frame to move; a click on the
-   middle frame, or Open, shows it in the big view. Any of these pauses the cycle; it picks up again 8 s after the last one. ================= */
+/* ================= CHAT HERO (29 Oct, Adrian: "make the landing page look exactly like chatgpt"): the first screen is a chat
+   app. A question types itself into the composer and sends, "Thinking" shimmers, and the answer streams in word by word with
+   cards that open the big view. It walks through six questions while the hero is on screen, and stops for good the moment a
+   visitor clicks, taps or types. Typed questions get the closest answer: a project or paper by name (built from the big
+   view's own facts), else a topic, else a short list of what it can answer. Every fact here is already on the page. ================= */
 (function(){
-  const trk=document.getElementById('trk'); if(!trk) return;
-  const hero=trk.closest('.hero'),q=document.getElementById('q'),to=document.getElementById('to'),dots=document.getElementById('dots'),go=document.getElementById('go');
-  const F=[
-    {k:'langllm',n:'Interpretable Multilingual Attribution of Frontier LLMs',img:'/img/papers/r01-langllm.webp',q:'Tell which AI model wrote an essay, even outside English.',r:'<b>Best Paper Finalist</b><span class="d"> · </span><span class="v">IEEE BigData 2026</span>'},
-    {k:'hivemind',n:'Hivemind',img:'/img/cases/hivemind-ad.webp',q:'Give a team’s AI coding agents one shared memory.',r:'<b>Won Lemma’s agent track</b><span class="d"> · </span><span class="v">SEPHacks 2026</span>'},
-    {k:'curated',n:'Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation',img:'/img/papers/r02-curated-to-win.webp',q:'Find how few test questions it takes to flip a leaderboard.',r:'<b>Accepted, sole author</b><span class="d"> · </span><span class="v">ARRSI @ AACL-IJCNLP</span>'},
-    {k:'monte',n:'Monte',img:'/img/cases/monte-home.webp',q:'Pick the card that pays the most for every purchase.',r:'<b>1st, Finance track</b><span class="d"> · </span><span class="v">TrojanHacks 2026</span>'},
-    {k:'citadel',n:'dunderscore, Citadel Terminal',img:'/img/terminal/board.webp?v=2026-10-29',q:'Code a bot that beats other bots at tower defense.',r:'<b>Finalist, top 8 of 45</b><span class="d"> · </span><span class="v">Citadel Terminal</span>'},
-    {k:'safejew',n:'SafeJew',img:'/img/cases/safejew-incident.webp',q:'Map antisemitic incidents across LA, with a source for each.',r:'<b>1,300+ incidents mapped</b><span class="d"> · </span><span class="v">JFEDLA-funded</span>'},
-    {k:'aimlli',n:'AIML-LI',img:'/img/cases/aimlli-home.webp',q:'Teach LA public-school students how AI actually works.',r:'<b>Piloting with LAUSD</b><span class="d"> · </span><span class="v">500+ at the summit</span>'},
-    {k:'saferoutes',n:'Safe Routes to School',img:'/img/cases/saferoutes-walk.webp',q:'Route students home around where robberies happen.',r:'<b>3rd internationally</b><span class="d"> · </span><span class="v">Code for Transportation</span>'}
-  ];
-  const N=F.length,H=Math.floor(N/2),RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ports='<span class="tab"><i></i><i></i><i></i></span><span class="pt l"><i></i><i></i><i></i></span><span class="pt r"><i></i><i></i><i></i></span>';
-  let step=0,timer=null,next=null,paused=false,moved=false;
-  F.forEach((f,i)=>{
-    const d=document.createElement('button');d.type='button';d.className='dev fr';d.setAttribute('aria-label',f.n);
-    d.innerHTML=ports+`<div class="scr"><img src="${f.img}" alt="" decoding="async" draggable="false"${i>2&&i<N-1?' loading="lazy"':''}></div>`;
-    d.addEventListener('click',()=>{ if(moved){moved=false;return;} if(i===step) openBig(i,d); else show(i); });
-    trk.appendChild(d);
-    const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+f.n);b.addEventListener('click',()=>show(i));dots.appendChild(b);
+  const root=document.getElementById('top'); if(!root||!root.classList.contains('cg')) return;
+  const $=id=>document.getElementById(id);
+  const col=$('cgCol'),thread=$('cgThread'),inp=$('cgIn'),send=$('cgSend'),form=$('cgForm');
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const P=k=>`<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">${k}</svg>`;
+  const IC={copy:'<path d="M7 7V4.5A1.5 1.5 0 0 1 8.5 3h7A1.5 1.5 0 0 1 17 4.5v7a1.5 1.5 0 0 1-1.5 1.5H13"/><rect x="3" y="7" width="10" height="10" rx="1.5"/>',
+    ok:'<path d="M4 10.5l4 4 8-9"/>',up:'<path d="M6 9l3-6a2 2 0 0 1 2 2v3h4.5a1.5 1.5 0 0 1 1.5 1.7l-1 5.5A1.5 1.5 0 0 1 14.5 16.5H6zM6 9H3.5v7.5H6"/>',
+    down:'<path d="M14 11l-3 6a2 2 0 0 1-2-2v-3H4.5A1.5 1.5 0 0 1 3 10.3l1-5.5A1.5 1.5 0 0 1 5.5 3.5H14zM14 11h2.5V3.5H14"/>',
+    again:'<path d="M16 10a6 6 0 1 1-1.8-4.3M16 3.5v3.5h-3.5"/>',search:'<circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/>'};
+  const FT='https://fencingtracker.com/p/100253463/Adrian-Erlikhman';
+  /* the six questions the demo walks through; cards with dv open the big view */
+  const A={
+    who:{q:'Who is Adrian?',chip:'Who is Adrian?',side:'Who is Adrian?',b:[
+      {p:'Adrian Erlikhman is a senior at the Los Angeles Center for Enriched Studies. He builds software for problems he cares about, does machine-learning research on language models, and fences épée for Team USA.'},
+      {ul:['<b>Research:</b> five papers, four accepted, including a Best Paper Finalist at IEEE BigData 2026 and a sole-author paper at an AACL-IJCNLP 2026 workshop.','<b>Building:</b> six products people use. Four placed at hackathons, two of them this October.','<b>Internships:</b> four, across machine learning, software and venture capital.','<b>Fencing:</b> Team USA épée, No. 49 in the U.S. for Juniors and 6th at the Cadet Pan-American Championships.','<b>Honors:</b> National Merit Semifinalist, Y Combinator Startup School 2026, Citadel Terminal finalist.']},
+      {cards:[['/adrian.jpg','About Adrian','Senior, LACES · Los Angeles','#about'],['/img/papers/r01-langllm.webp','Best Paper Finalist','IEEE BigData 2026','#rs-t1','langllm'],['/fencing-1.jpg','Team USA épée','Cadet Pan-Americans, Bogotá','#fencing']]},
+      {src:[['About','#about'],['Experience','#experience'],['Research','#papers']]}]},
+    built:{q:'What has Adrian built?',chip:'What he’s built',side:'What I’ve built',b:[
+      {p:'Six things people use. Four of them placed at hackathons:'},
+      {ul:['<b>Hivemind</b>: shared memory for a team’s AI coding agents. Won Lemma’s agent-monitoring track at SEPHacks 2026.','<b>Monte</b>: pays with the credit card that earns the most at each store. 1st place, Finance track, TrojanHacks 2026.','<b>Ledger</b>: compliance software for corner stores. 1st place, VISION HACK: South LA.','<b>Safe Routes to School</b>: walking routes around where students get robbed. 3rd place internationally.','<b>SafeJew</b>: a live map of 1,300+ antisemitic incidents, each with its source.','<b>AIML-LI</b>: a free AI course for LA public schools, now piloting with LAUSD.']},
+      {cards:[['/img/cases/hivemind-ad.webp','Hivemind','Won Lemma’s agent track','#case-hivemind','hivemind'],['/img/cases/monte-home.webp','Monte','1st, Finance, TrojanHacks','#case-monte','monte'],['/img/cases/safejew-incident.webp','SafeJew','1,300+ incidents mapped','#case-safejew','safejew']]},
+      {p:'He also co-wrote <b>dunderscore</b>, a bot that made the finals of Citadel’s Terminal: top 8 of 45 teams, from 1,000+ applicants.'},
+      {src:[['Selected work','#work'],['Citadel Terminal','#case-citadel']]}]},
+    research:{q:'What research has he done?',chip:'His research',side:'Research: 5 papers',b:[
+      {p:'Five papers, four accepted:'},
+      {ol:['<b>Interpretable Multilingual Attribution of Frontier LLMs</b>: Best Paper Finalist, IEEE BigData 2026. His classifier names which AI wrote an essay 59–72% of the time in seven languages; the models themselves barely beat chance.','<b>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</b>: sole author, accepted at the ARRSI workshop at AACL-IJCNLP 2026. The right 12 of 2,985 test questions flip an AI leaderboard.','<b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b>: a preprint. Across 19,000+ judgments, no AI judge recognizes its own writing better than its strongest single peer.','<b>Does Portfolio Optimization Beat Splitting Evenly?</b>: accepted with revisions, Oxford Journal of Student Scholarship. The even split won 74% of 250 simulations.','<b>How Robust Are the Legatum Prosperity Index Rankings?</b>: accepted with revisions, Journal of High School Science. A mid-table country can move across a median 36-place range.']},
+      {cards:[['/img/papers/r01-langllm.webp','IEEE BigData 2026','Best Paper Finalist','#rs-t1','langllm'],['/img/papers/r02-curated-to-win.webp','ARRSI @ AACL-IJCNLP','Sole author','#rs-t2','curated'],['/img/papers/r03-compllm.webp','Whose Line Is It Anyway?','Preprint','#rs-t3','compllm']]},
+      {src:[['Research','#papers'],['Code on GitHub','https://github.com/adrian-erlikhman']]}]},
+    fencing:{q:'Does he really fence for Team USA?',chip:'Team USA fencing',side:'Team USA épée',b:[
+      {p:'Yes. He fences épée for Team USA:'},
+      {ul:['<b>6th</b> at the Cadet Pan-American Championships in Bogotá','<b>No. 49</b> in the U.S. for Juniors and <b>No. 78</b> for Seniors; his peak was <b>No. 17</b> as a Cadet','An <b>A26</b> rating, and <b>3×</b> USA Fencing All-American','In active recruitment with <b>MIT</b>']},
+      {cards:[['/fencing-1.jpg','Pan-American Championships','Team USA, Bogotá','#fencing'],['/img/bouts/team-afm.webp','Senior team relay','Summer Nationals 2026, +6','#bouts'],['/fencing-2.jpg','USA Fencing','Podium','#fencing']]},
+      {src:[['Fencing','#fencing'],['Full USA Fencing record',FT]]}]},
+    intern:{q:'Where has he interned?',chip:'Internships',side:'Internships',b:[
+      {p:'Four internships across machine learning, software and venture capital:'},
+      {ul:['<b>Firstness</b>, Software Engineering & ML Intern: software and ML on an AI research engine, one-on-one with the founder.','<b>Kiddom</b>, ML Internship & Mentorship: built Why Wrong, which names the misconception behind each wrong answer on a test (0.87 F1).','<b>Fjor Venture Capital</b>, Investment & Software Engineering Intern: built the models a $15M fund used to rank all 134 startups in Y Combinator’s Summer 2025 batch, and led the screen.','<b>Alliance for SoCal Innovation</b>, Venture & Data Strategy Intern: an investor-matching engine over 10,000 contacts that cut a founder’s search from days to under a minute.']},
+      {src:[['Experience','#experience']]}]},
+    honors:{q:'What else stands out?',chip:'What else stands out',side:'Honors',b:[
+      {p:'A few things beyond the papers and the builds:'},
+      {ul:['<b>National Merit Semifinalist</b>: about 16,000 of 1.3 million+ entrants.','<b>Y Combinator Startup School 2026</b>, admitted as AIML-LI’s founder; under 5% acceptance.','<b>Citadel High School Terminal finalist</b>: his team’s bot, dunderscore, made the top 8 of 45 teams from 1,000+ applicants.','<b>3× USA Fencing All-American</b> and 3× All-Academic.','<b>1st place</b> at Decode the Ocean, and an invited speaker at NCSS 2026 in San Diego.','<b>2× AP Scholar with Distinction</b> across 17 APs; 4.0 unweighted, 1520 SAT.']},
+      {cards:[['/img/terminal/board.webp?v=2026-10-29','Citadel Terminal','Finalist, top 8 of 45','#case-citadel','citadel'],['/img/ycs/yc-sign.jpg','Y Combinator','Startup School 2026','#record']]},
+      {p:'Coming up: AACL-IJCNLP in Hengqin (10 Nov), NCSS in San Diego (2 Dec) and IEEE BigData in Phoenix (17 Dec).'},
+      {src:[['Achievements','#record']]}]},
+    contact:{q:'',b:[
+      {p:'Email him at <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>; he usually answers the same day. His résumé comes in two lengths.'},
+      {src:[['Contact','#contact'],['LinkedIn','https://www.linkedin.com/in/adrian-erlikhman-78a262414'],['GitHub','https://github.com/adrian-erlikhman']]}]},
+    help:{q:'',b:[{p:'I can answer questions about Adrian’s research, what he’s built, his internships, his fencing and his honors. Try one of these:'},{sugg:['who','built','research','fencing','intern','honors']}]}
+  };
+  const ORDER=['who','built','research','fencing','intern','honors'];
+  /* a project or paper asked by name: built from the big view's facts, with its card */
+  const IMG={hivemind:'/img/cases/hivemind-ad.webp',monte:'/img/cases/monte-home.webp',safejew:'/img/cases/safejew-incident.webp',aimlli:'/img/cases/aimlli-home.webp',
+    ledger:'/img/cases/ledger-dashboard.webp',saferoutes:'/img/cases/saferoutes-walk.webp',citadel:'/img/terminal/board.webp?v=2026-10-29',
+    langllm:'/img/papers/r01-langllm.webp',curated:'/img/papers/r02-curated-to-win.webp',compllm:'/img/papers/r03-compllm.webp',portfolio:'/img/papers/r04-portfolio.webp',legatum:'/img/papers/r05-legatum.webp'};
+  const ANCH={hivemind:'#case-hivemind',monte:'#case-monte',safejew:'#case-safejew',aimlli:'#case-aimlli',ledger:'#case-ledger',saferoutes:'#case-saferoutes',citadel:'#case-citadel',
+    langllm:'#rs-t1',curated:'#rs-t2',compllm:'#rs-t3',portfolio:'#rs-t4',legatum:'#rs-t5'};
+  function entity(k){
+    const d=BIG&&BIG.D&&BIG.D[k]; if(!d) return null;
+    const paper=!!d.paper, b=[{p:`<b>${d.n}</b>: ${d.a[0]}, ${d.a[1]}.`},{p:d.t}];
+    if(d.h) b.push({p:`<b>${paper?'How':'How it works'}.</b> ${d.h}`});
+    if(d.p) b.push({p:`<b>${d.p[0]}.</b> ${d.p[1]}`});
+    b.push({cards:[[IMG[k],d.n.split(':')[0],d.a[0],ANCH[k],k]]});
+    const ext=(d.l||[]).filter(x=>/^https?:|\.pdf/.test(x[0])).slice(0,2).map(x=>[x[1],x[0]]);
+    b.push({src:[[paper?'Research':'Selected work',paper?'#papers':'#work'],...ext]});
+    return {b};
+  }
+  const ENT=[['hivemind',/hivemind|shared memory|coding agent/],['monte',/\bmonte\b|credit card|tap to pay|trojanhack/],['safejew',/safejew|antisemit/],
+    ['aimlli',/aiml|ai literacy|ai course|summit/],['ledger',/ledger|corner store|\bsnap\b|vision ?hack/],['saferoutes',/safe ?routes|walkhome|robb|commute/],
+    ['citadel',/citadel|terminal|dunderscore|tower.?defen/],['langllm',/ieee|bigdata|multilingual|attribution|fingerprint|which (ai|model) wrote|langllm|best paper/],
+    ['curated',/curated|reward.?model|rewardbench|leaderboard|sole.?author|aacl|arrsi/],['compllm',/whose line|self.?recogni|own writing|llm judge|\bjudges?\b/],
+    ['portfolio',/portfolio|markowitz|1\/n|ojss|splitting evenly|sharpe/],['legatum',/legatum|prosperity|jhss/]];
+  const TOP=[['contact',/e-?mail|contact|reach (him|out)|r[eé]sum[eé]|\bcv\b|linkedin|github|hire/],['fencing',/fenc|[ée]p[ée]e|team usa|sport|athlet|\bmit\b|pan.?am|ranking/],
+    ['research',/research|paper|publish|study|studies|journal|arxiv/],['built',/built|\bbuild|project|\bapps?\b|product|hackathon|\bcode\b|software/],
+    ['intern',/intern|experience|\bjobs?\b|worked (at|for)|firstness|kiddom|fjor|alliance|venture|\bfund\b/],
+    ['honors',/honou?r|award|achiev|stand ?out|merit|y ?combinator|\byc\b|startup school|\bsat\b|\bgpa\b|\bap\b/],
+    ['who',/\bwho\b|about|tell me|himself|school|laces|senior|background|^adrian\??$/]];
+  function match(t){ t=t.toLowerCase();
+    for(const [k,re] of TOP.slice(0,1)) if(re.test(t)) return A[k];
+    for(const [k,re] of ENT) if(re.test(t)){ const e=entity(k); if(e) return e; }
+    for(const [k,re] of TOP.slice(1)) if(re.test(t)) return A[k];
+    return A.help; }
+
+  /* the page around the chat: chips, sidebar chats, the model menu, the mobile sidebar */
+  const chip=k=>`<button class="cg-chip" type="button" data-ask="${k}">${P(IC.search).replace('width="18" height="18"','width="16" height="16"')}${A[k].chip}</button>`;
+  $('cgChips').innerHTML=ORDER.map(chip).join('');
+  $('cgList').innerHTML=ORDER.map(k=>`<button class="cg-si" type="button" data-ask="${k}" data-side="${k}">${A[k].side}</button>`).join('');
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  let busy=false,auto=true,visible=true,run=0,typing=false;
+  const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
+  /* a visitor acts: the demo stops for good, and whatever it was writing is cut off, as when you stop a reply */
+  const interrupt=()=>{ stopAuto(); if(busy){ run++; busy=false; } };
+  const near=()=>thread.scrollHeight-thread.scrollTop-thread.clientHeight<140;
+  const pin=force=>{ if(force||near()) thread.scrollTop=thread.scrollHeight; };
+  function setSide(k){ root.querySelectorAll('[data-side]').forEach(b=>b.classList.toggle('on',b.dataset.side===k)); }
+  async function stream(el,html,my){ // word by word, tags kept whole
+    if(RM){ el.innerHTML=html; return; }
+    const parts=html.match(/<[^>]+>|[^<\s]+|\s+/g)||[]; let out='';
+    for(const p of parts){ if(my!==run) return; out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; pin(); await sleep(20); } }
+    el.innerHTML=html;
+  }
+  function card(c,i){ const [img,t,s,href,dv]=c;
+    return `<a class="cg-card" href="${href}"${dv?` data-cgdv="${dv}"`:''} style="animation-delay:${i*.1}s"><img src="${img}" alt="" loading="lazy"><div class="t"><b>${t}</b><span>${s}</span></div></a>`; }
+  const ext=h=>/^https?:/.test(h);
+  async function render(box,a,my){
+    box.innerHTML='';
+    for(const b of a.b){ if(my!==run) return;
+      if(b.p){ const p=document.createElement('p'); box.appendChild(p); await stream(p,b.p,my); }
+      else if(b.ul||b.ol){ const l=document.createElement(b.ul?'ul':'ol'); box.appendChild(l); for(const t of (b.ul||b.ol)){ const li=document.createElement('li'); l.appendChild(li); await stream(li,t,my); } }
+      else if(b.cards){ box.insertAdjacentHTML('beforeend',`<div class="cg-cards">${b.cards.map(card).join('')}</div>`); pin(); await sleep(RM?0:450); }
+      else if(b.src){ box.insertAdjacentHTML('beforeend',`<div class="cg-src"><span>Sources</span>${b.src.map(([t,h])=>`<a href="${h}"${ext(h)?' target="_blank" rel="noopener"':''}>${t}${ext(h)?' ↗':' ↓'}</a>`).join('')}</div>`); pin(); }
+      else if(b.sugg){ box.insertAdjacentHTML('beforeend',`<div class="cg-sugg">${b.sugg.map(chip).join('')}</div>`); pin(); }
+    }
+  }
+  async function ask(a,text,key){
+    if(busy) return; busy=true; const my=++run;
+    if(!root.classList.contains('chatting')) root.classList.add('chatting');
+    setSide(key||''); inp.value=''; send.classList.add('cg-off');
+    col.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div>`); col.lastElementChild.firstElementChild.textContent=text;
+    const box=document.createElement('div'); box.className='cg-a'; col.appendChild(box);
+    box.innerHTML='<span class="cg-think">Thinking</span>'; pin(true);
+    await sleep(RM?150:850); if(my!==run){ busy=false; return; }
+    await render(box,a,my);
+    if(my===run){
+      box.insertAdjacentHTML('afterend',`<div class="cg-acts2"><button class="cg-ib" type="button" data-act="copy" aria-label="Copy">${P(IC.copy)}</button><button class="cg-ib" type="button" data-act="up" aria-label="Good answer">${P(IC.up)}</button><button class="cg-ib" type="button" data-act="down" aria-label="Bad answer">${P(IC.down)}</button><button class="cg-ib" type="button" data-act="again" aria-label="Answer again">${P(IC.again)}</button></div>`);
+      box.nextElementSibling._a=a; pin();
+    }
+    busy=false;
+  }
+  async function typeIn(text){ typing=true; inp.value=''; send.classList.remove('cg-off');
+    for(const ch of text){ if(!auto) return false; inp.value+=ch; await sleep(RM?0:36); }
+    await sleep(RM?0:360); typing=false; return auto; }
+  function reset(){ run++; busy=false; col.innerHTML=''; root.classList.remove('chatting'); setSide(''); inp.value=''; send.classList.add('cg-off'); }
+
+  /* visitors */
+  root.addEventListener('click',e=>{
+    const q=e.target.closest('[data-ask]'); if(q){ interrupt(); closeSide(); const k=q.dataset.ask; ask(A[k],A[k].q,k); return; }
+    const c=e.target.closest('[data-cgdv]'); if(c&&BIG&&!(e.metaKey||e.ctrlKey||e.shiftKey)){ e.preventDefault(); BIG.open(c.dataset.cgdv,c); return; }
+    const act=e.target.closest('[data-act]'); if(act){ const row=act.parentElement,box=row.previousElementSibling;
+      if(act.dataset.act==='copy'){ const done=()=>{ act.innerHTML=P(IC.ok); setTimeout(()=>act.innerHTML=P(IC.copy),1500); };
+        try{ navigator.clipboard.writeText(box.innerText).then(done,done); }catch(_){ done(); } }
+      else if(act.dataset.act==='again'){ interrupt(); if(!busy){ busy=true; const my=++run; render(box,row._a,my).then(()=>{busy=false;}); } }
+      else { act.classList.toggle('on'); const other=row.querySelector(`[data-act="${act.dataset.act==='up'?'down':'up'}"]`); other.classList.remove('on'); }
+      return; }
   });
-  const frs=[...trk.children];
-  function place(c,off){ off=off||0; const sp=innerWidth<860?240:390;
-    frs.forEach((el,i)=>{const o=((i-c)%N+N+H)%N-H,a=Math.abs(o);const s=a===0?1.06:a===1?.8:.7,y=a===0?-6:a===1?26:40;
-      el.style.transform=`translateX(${o*sp+off}px) translateY(${y}px) scale(${s})`;el.style.opacity=a>2?0:a===2?.5:1;
-      el.style.zIndex=10-a;el.style.filter=a===0?'none':'saturate(.75) brightness(.97)';el.tabIndex=a<=1?0:-1;el.classList.toggle('ctr',a===0);});}
-  function mark(s){[...dots.children].forEach((d,k)=>{d.classList.toggle('on',k===s);d.setAttribute('aria-current',k===s?'true':'false');});}
-  const hold=()=>{clearTimeout(next);clearInterval(timer);};
-  const type=(text,done)=>{let n=0;clearInterval(timer);timer=setInterval(()=>{n++;q.innerHTML=text.slice(0,n)+'<span class="cur"></span>';if(n>=text.length){clearInterval(timer);done&&done();}},34);};
-  function run(s){ if(paused) return; hold();step=s;place(s);mark(s);to.innerHTML='&nbsp;';
-    const after=()=>{to.innerHTML=F[s].r;if(!paused)next=setTimeout(()=>run((step+1)%N),RM?4200:2600);};
-    if(RM){q.innerHTML=F[s].q;after();return;}
-    q.innerHTML='<span class="cur"></span>';next=setTimeout(()=>type(F[s].q,after),800);}
-  /* a person moved it: the frame moves at once and its problem types in (Adrian: "i still want it to type up"),
-     then the cycle picks back up 8 s after the line finishes */
-  function show(i){ hold(); step=(i%N+N)%N; const s=step; place(s); mark(s); to.innerHTML='&nbsp;';
-    const after=()=>{ to.innerHTML=F[s].r; if(!paused) next=setTimeout(()=>run((step+1)%N),8000); };
-    if(RM){ q.innerHTML=F[s].q; after(); return; }
-    type(F[s].q,after); }
-  function openBig(i,from){ if(!BIG) return; hold(); paused=true;
-    if(i!==step){ step=i; place(i); mark(i); } q.innerHTML=F[i].q; to.innerHTML=F[i].r;
-    BIG.open(F[i].k,from,()=>{ paused=false; next=setTimeout(()=>run((step+1)%N),4000); }); }
-  go.addEventListener('click',()=>openBig(step,go));
-  document.getElementById('hPrev').addEventListener('click',()=>show(step-1));
-  document.getElementById('hNext').addEventListener('click',()=>show(step+1));
-  hero.addEventListener('keydown',e=>{ if(e.target.closest('.prompt')) return;
-    if(e.key==='ArrowLeft'){e.preventDefault();show(step-1);} else if(e.key==='ArrowRight'){e.preventDefault();show(step+1);} });
-  /* swipe on phones, drag with a mouse: the frames follow the pointer, then settle on the next one */
-  let down=false,drag=false,sx=0,sy=0,dx=0;
-  hero.addEventListener('pointerdown',e=>{ if(e.target.closest('.prompt,.hctl')) return; if(e.pointerType==='mouse'&&e.button!==0) return;
-    down=true;drag=false;moved=false;sx=e.clientX;sy=e.clientY;dx=0; });
-  hero.addEventListener('pointermove',e=>{ if(!down) return; const x=e.clientX-sx,y=e.clientY-sy;
-    if(!drag){ if(Math.abs(x)>8&&Math.abs(x)>Math.abs(y)){ drag=true;moved=true;hold();trk.classList.add('drag');try{hero.setPointerCapture(e.pointerId);}catch(_){} }
-      else if(Math.abs(y)>10){ down=false; return; } }
-    if(drag){ dx=x; place(step,dx); } });
-  const end=()=>{ if(!down) return; down=false; if(!drag) return; drag=false; trk.classList.remove('drag');
-    const th=Math.min(80,innerWidth*.12); if(dx<-th) show(step+1); else if(dx>th) show(step-1); else show(step); };
-  hero.addEventListener('pointerup',end); hero.addEventListener('pointercancel',end);
-  addEventListener('resize',()=>place(step));
-  /* wait for the intro to clear before the first prompt types */
-  const start=()=>run(0);
-  place(0);mark(0);
-  if(!document.body.classList.contains('intro-lock')) setTimeout(start,300);
-  else{const w=setInterval(()=>{if(!document.body.classList.contains('intro-lock')){clearInterval(w);setTimeout(start,500);}},150);}
-  /* the nav marks the section in view */
-  const links=[...document.querySelectorAll('.nav nav a[href^="#"]')];
+  root.addEventListener('pointerdown',e=>{ if(!e.target.closest('.cg-thread')||e.target.closest('a,button')) stopAuto(); });
+  inp.addEventListener('focus',stopAuto);
+  inp.addEventListener('input',()=>send.classList.toggle('cg-off',!inp.value.trim()));
+  form.addEventListener('submit',e=>{ e.preventDefault(); const t=inp.value.trim(); if(!t) return; interrupt(); ask(match(t),t); });
+  $('cgNew').addEventListener('click',()=>{ interrupt(); reset(); closeSide(); inp.focus(); });
+  $('cgSearch').addEventListener('click',()=>{ stopAuto(); closeSide(); inp.focus(); });
+  $('cgPlus').addEventListener('click',()=>{ interrupt(); ask(A.help,'What can I ask?'); });
+  const model=$('cgModel'),pop=$('cgPop');
+  const popOpen=o=>{ pop.hidden=!o; model.setAttribute('aria-expanded',o?'true':'false'); };
+  model.addEventListener('click',e=>{ e.stopPropagation(); popOpen(pop.hidden); });
+  pop.addEventListener('click',e=>{ if(e.target.closest('a')) popOpen(false); });
+  document.addEventListener('click',e=>{ if(!pop.hidden&&!e.target.closest('.cg-mw')) popOpen(false); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'){ popOpen(false); closeSide(); } });
+  function closeSide(){ root.classList.remove('side-open'); }
+  $('cgMenu').addEventListener('click',()=>root.classList.add('side-open'));
+  $('cgClose').addEventListener('click',closeSide);
+  $('cgScrim').addEventListener('click',closeSide);
+
+  /* the demo: after the intro, the six questions in turn, only while the hero is on screen */
+  new IntersectionObserver(es=>es.forEach(e=>visible=e.isIntersecting),{threshold:.35}).observe(root);
+  async function demo(){
+    await sleep(900);
+    for(const k of ORDER){
+      while(auto&&!visible) await sleep(400);
+      if(!auto) return;
+      if(!(await typeIn(A[k].q))) return;
+      await ask(A[k],A[k].q,k);
+      if(RM) return;
+      await sleep(2600);
+    }
+  }
+  if(!document.body.classList.contains('intro-lock')) demo();
+  else{ const w=setInterval(()=>{ if(!document.body.classList.contains('intro-lock')){ clearInterval(w); demo(); } },150); }
+})();
+
+/* ================= NAV: the section in view is underlined ================= */
+(function(){
+  const links=[...document.querySelectorAll('.nav nav a[href^="#"]')]; if(!links.length) return;
   const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}),{rootMargin:'-45% 0px -50% 0px'});
   links.forEach(l=>{const s=document.querySelector(l.getAttribute('href'));if(s)spy.observe(s);});
 })();
