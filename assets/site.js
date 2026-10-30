@@ -800,7 +800,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 (function(){
   const overlay=document.getElementById('cmdk'),input=document.getElementById('cmdkInput'),list=document.getElementById('cmdkList');
   if(!overlay) return;
-  const go=h=>{close();const el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth'});else location.href='/'+h;};
+  const go=h=>{close();if(window.cgOpen&&window.cgOpen(h))return;const el=document.querySelector(h);if(el)el.scrollIntoView({behavior:'smooth'});else location.href='/'+h;};
   const ext=u=>{close();window.open(u,'_blank');};
   const cv=k=>document.querySelector(`#cvMenu [data-cv="${k}"]`).getAttribute('href');
   const fold=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();  // "resume" finds "Résumé"
@@ -1548,166 +1548,144 @@ const BIG=(function(){
   return {open,close,D};
 })();
 
-/* ================= CHAT HERO (29 Oct, Adrian: "make the landing page look exactly like chatgpt"): the first screen is a chat
-   app. A question types itself into the composer and sends, "Thinking" shimmers, and the answer streams in word by word with
-   cards that open the big view. It walks through six questions while the hero is on screen, and stops for good the moment a
-   visitor clicks, taps or types. Typed questions get the closest answer: a project or paper by name (built from the big
-   view's own facts), else a topic, else a short list of what it can answer. Every fact here is already on the page. ================= */
+/* ================= CHAT SITE (29 Oct): the whole homepage is one chat app (Adrian: "have every section be a part of the
+   chatgpt"). Each section is a conversation (article.cg-conv in index.html, the section's own markup inside). Opening one the
+   first time plays it: "Thinking", the answer's opening line streams in word by word, then its blocks build in one after
+   another (lists and grids item by item). Opened again, it shows at once. After the intro, "Who are you?" types itself into
+   the composer and plays; it stops for good if the visitor does anything first. A typed question opens the matching
+   conversation, or answers about a project or paper by name from the big view's facts (BIG.D), or lists what it can answer.
+   #links into a conversation (#papers, #case-hivemind, #rs-t2, …) open it and scroll to that spot. ================= */
 (function(){
   const root=document.getElementById('top'); if(!root||!root.classList.contains('cg')) return;
+  root.classList.add('cg-js'); root.classList.remove('chatting');
   const $=id=>document.getElementById(id);
   const col=$('cgCol'),thread=$('cgThread'),inp=$('cgIn'),send=$('cgSend'),form=$('cgForm');
   const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const convs={}; col.querySelectorAll('.cg-conv').forEach(c=>convs[c.dataset.conv]=c);
+  const Q={}; Object.entries(convs).forEach(([k,c])=>Q[k]=c.querySelector('.cg-u div').textContent);
   const P=k=>`<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">${k}</svg>`;
   const IC={copy:'<path d="M7 7V4.5A1.5 1.5 0 0 1 8.5 3h7A1.5 1.5 0 0 1 17 4.5v7a1.5 1.5 0 0 1-1.5 1.5H13"/><rect x="3" y="7" width="10" height="10" rx="1.5"/>',
     ok:'<path d="M4 10.5l4 4 8-9"/>',up:'<path d="M6 9l3-6a2 2 0 0 1 2 2v3h4.5a1.5 1.5 0 0 1 1.5 1.7l-1 5.5A1.5 1.5 0 0 1 14.5 16.5H6zM6 9H3.5v7.5H6"/>',
     down:'<path d="M14 11l-3 6a2 2 0 0 1-2-2v-3H4.5A1.5 1.5 0 0 1 3 10.3l1-5.5A1.5 1.5 0 0 1 5.5 3.5H14zM14 11h2.5V3.5H14"/>',
     again:'<path d="M16 10a6 6 0 1 1-1.8-4.3M16 3.5v3.5h-3.5"/>',search:'<circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/>'};
-  const FT='https://fencingtracker.com/p/100253463/Adrian-Erlikhman';
-  /* the six questions the demo walks through; cards with dv open the big view */
-  const A={
-    who:{q:'Who is Adrian?',chip:'Who is Adrian?',side:'Who is Adrian?',b:[
-      {p:'Adrian Erlikhman is a senior at the Los Angeles Center for Enriched Studies. He builds software for problems he cares about, does machine-learning research on language models, and fences épée for Team USA.'},
-      {ul:['<b>Research:</b> five papers, four accepted, including a Best Paper Finalist at IEEE BigData 2026 and a sole-author paper at an AACL-IJCNLP 2026 workshop.','<b>Building:</b> six products people use. Four placed at hackathons, two of them this October.','<b>Internships:</b> four, across machine learning, software and venture capital.','<b>Fencing:</b> Team USA épée, No. 49 in the U.S. for Juniors and 6th at the Cadet Pan-American Championships.','<b>Honors:</b> National Merit Semifinalist, Y Combinator Startup School 2026, Citadel Terminal finalist.']},
-      {cards:[['/adrian.jpg','About Adrian','Senior, LACES · Los Angeles','#about'],['/img/papers/r01-langllm.webp','Best Paper Finalist','IEEE BigData 2026','#rs-t1','langllm'],['/fencing-1.jpg','Team USA épée','Cadet Pan-Americans, Bogotá','#fencing']]},
-      {src:[['About','#about'],['Experience','#experience'],['Research','#papers']]}]},
-    built:{q:'What has Adrian built?',chip:'What he’s built',side:'What I’ve built',b:[
-      {p:'Six things people use. Four of them placed at hackathons:'},
-      {ul:['<b>Hivemind</b>: shared memory for a team’s AI coding agents. Won Lemma’s agent-monitoring track at SEPHacks 2026.','<b>Monte</b>: pays with the credit card that earns the most at each store. 1st place, Finance track, TrojanHacks 2026.','<b>Ledger</b>: compliance software for corner stores. 1st place, VISION HACK: South LA.','<b>Safe Routes to School</b>: walking routes around where students get robbed. 3rd place internationally.','<b>SafeJew</b>: a live map of 1,300+ antisemitic incidents, each with its source.','<b>AIML-LI</b>: a free AI course for LA public schools, now piloting with LAUSD.']},
-      {cards:[['/img/cases/hivemind-ad.webp','Hivemind','Won Lemma’s agent track','#case-hivemind','hivemind'],['/img/cases/monte-home.webp','Monte','1st, Finance, TrojanHacks','#case-monte','monte'],['/img/cases/safejew-incident.webp','SafeJew','1,300+ incidents mapped','#case-safejew','safejew']]},
-      {p:'He also co-wrote <b>dunderscore</b>, a bot that made the finals of Citadel’s Terminal: top 8 of 45 teams, from 1,000+ applicants.'},
-      {src:[['Selected work','#work'],['Citadel Terminal','#case-citadel']]}]},
-    research:{q:'What research has he done?',chip:'His research',side:'Research: 5 papers',b:[
-      {p:'Five papers, four accepted:'},
-      {ol:['<b>Interpretable Multilingual Attribution of Frontier LLMs</b>: Best Paper Finalist, IEEE BigData 2026. His classifier names which AI wrote an essay 59–72% of the time in seven languages; the models themselves barely beat chance.','<b>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</b>: sole author, accepted at the ARRSI workshop at AACL-IJCNLP 2026. The right 12 of 2,985 test questions flip an AI leaderboard.','<b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b>: a preprint. Across 19,000+ judgments, no AI judge recognizes its own writing better than its strongest single peer.','<b>Does Portfolio Optimization Beat Splitting Evenly?</b>: accepted with revisions, Oxford Journal of Student Scholarship. The even split won 74% of 250 simulations.','<b>How Robust Are the Legatum Prosperity Index Rankings?</b>: accepted with revisions, Journal of High School Science. A mid-table country can move across a median 36-place range.']},
-      {cards:[['/img/papers/r01-langllm.webp','IEEE BigData 2026','Best Paper Finalist','#rs-t1','langllm'],['/img/papers/r02-curated-to-win.webp','ARRSI @ AACL-IJCNLP','Sole author','#rs-t2','curated'],['/img/papers/r03-compllm.webp','Whose Line Is It Anyway?','Preprint','#rs-t3','compllm']]},
-      {src:[['Research','#papers'],['Code on GitHub','https://github.com/adrian-erlikhman']]}]},
-    fencing:{q:'Does he really fence for Team USA?',chip:'Team USA fencing',side:'Team USA épée',b:[
-      {p:'Yes. He fences épée for Team USA:'},
-      {ul:['<b>6th</b> at the Cadet Pan-American Championships in Bogotá','<b>No. 49</b> in the U.S. for Juniors and <b>No. 78</b> for Seniors; his peak was <b>No. 17</b> as a Cadet','An <b>A26</b> rating, and <b>3×</b> USA Fencing All-American','In active recruitment with <b>MIT</b>']},
-      {cards:[['/fencing-1.jpg','Pan-American Championships','Team USA, Bogotá','#fencing'],['/img/bouts/team-afm.webp','Senior team relay','Summer Nationals 2026, +6','#bouts'],['/fencing-2.jpg','USA Fencing','Podium','#fencing']]},
-      {src:[['Fencing','#fencing'],['Full USA Fencing record',FT]]}]},
-    intern:{q:'Where has he interned?',chip:'Internships',side:'Internships',b:[
-      {p:'Four internships across machine learning, software and venture capital:'},
-      {ul:['<b>Firstness</b>, Software Engineering & ML Intern: software and ML on an AI research engine, one-on-one with the founder.','<b>Kiddom</b>, ML Internship & Mentorship: built Why Wrong, which names the misconception behind each wrong answer on a test (0.87 F1).','<b>Fjor Venture Capital</b>, Investment & Software Engineering Intern: built the models a $15M fund used to rank all 134 startups in Y Combinator’s Summer 2025 batch, and led the screen.','<b>Alliance for SoCal Innovation</b>, Venture & Data Strategy Intern: an investor-matching engine over 10,000 contacts that cut a founder’s search from days to under a minute.']},
-      {src:[['Experience','#experience']]}]},
-    honors:{q:'What else stands out?',chip:'What else stands out',side:'Honors',b:[
-      {p:'A few things beyond the papers and the builds:'},
-      {ul:['<b>National Merit Semifinalist</b>: about 16,000 of 1.3 million+ entrants.','<b>Y Combinator Startup School 2026</b>, admitted as AIML-LI’s founder; under 5% acceptance.','<b>Citadel High School Terminal finalist</b>: his team’s bot, dunderscore, made the top 8 of 45 teams from 1,000+ applicants.','<b>3× USA Fencing All-American</b> and 3× All-Academic.','<b>1st place</b> at Decode the Ocean, and an invited speaker at NCSS 2026 in San Diego.','<b>2× AP Scholar with Distinction</b> across 17 APs; 4.0 unweighted, 1520 SAT.']},
-      {cards:[['/img/terminal/board.webp?v=2026-10-29','Citadel Terminal','Finalist, top 8 of 45','#case-citadel','citadel'],['/img/ycs/yc-sign.jpg','Y Combinator','Startup School 2026','#record']]},
-      {p:'Coming up: AACL-IJCNLP in Hengqin (10 Nov), NCSS in San Diego (2 Dec) and IEEE BigData in Phoenix (17 Dec).'},
-      {src:[['Achievements','#record']]}]},
-    contact:{q:'',b:[
-      {p:'Email him at <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>; he usually answers the same day. His résumé comes in two lengths.'},
-      {src:[['Contact','#contact'],['LinkedIn','https://www.linkedin.com/in/adrian-erlikhman-78a262414'],['GitHub','https://github.com/adrian-erlikhman']]}]},
-    help:{q:'',b:[{p:'I can answer questions about Adrian’s research, what he’s built, his internships, his fencing and his honors. Try one of these:'},{sugg:['who','built','research','fencing','intern','honors']}]}
-  };
-  const ORDER=['who','built','research','fencing','intern','honors'];
-  /* a project or paper asked by name: built from the big view's facts, with its card */
+  const acts=()=>`<div class="cg-acts2"><button class="cg-ib" type="button" data-act="copy" aria-label="Copy">${P(IC.copy)}</button><button class="cg-ib" type="button" data-act="up" aria-label="Good answer">${P(IC.up)}</button><button class="cg-ib" type="button" data-act="down" aria-label="Bad answer">${P(IC.down)}</button><button class="cg-ib" type="button" data-act="again" aria-label="Answer again">${P(IC.again)}</button></div>`;
+  Object.values(convs).forEach(c=>c.insertAdjacentHTML('beforeend',acts()));
+  const chipHTML=k=>{ const b=root.querySelector(`#cgChips [data-conv="${k}"]`); return b?b.outerHTML:''; };
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  let cur=null,run=0,busy=false,auto=true,typing=false,played=new Set();
+
+  /* ---- showing and playing a conversation ---- */
+  function mark(k){ root.querySelectorAll('.cg-list [data-conv]').forEach(b=>b.classList.toggle('on',b.dataset.conv===k)); }
+  function select(k){ root.classList.add('chatting'); Object.entries(convs).forEach(([n,c])=>c.classList.toggle('on',n===k)); cur=k; mark(k); }
+  async function streamSay(el,html,my){
+    if(RM){ el.innerHTML=html; return; }
+    const parts=html.match(/<[^>]+>|[^<\s]+|\s+/g)||[]; let out='';
+    for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
+    el.innerHTML=html;
+  }
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b';
+  function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
+    gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
+  async function play(k){
+    const my=++run; busy=true; const c=convs[k], a=c.querySelector('.cg-a'), row=c.querySelector('.cg-acts2');
+    const blocks=[...a.children];
+    if(RM||played.has(k)){ blocks.forEach(b=>b.classList.remove('cg-wait')); row.classList.remove('cg-wait'); busy=false; return; }
+    played.add(k);
+    const says=[...a.querySelectorAll('.cg-say')].map(e=>[e,e.innerHTML]); says.forEach(([e])=>e.innerHTML='');
+    blocks.forEach(b=>b.classList.add('cg-wait')); row.classList.add('cg-wait');
+    a.insertAdjacentHTML('afterbegin','<span class="cg-think">Thinking</span>');
+    await sleep(800); const th=a.querySelector('.cg-think'); if(th) th.remove();
+    for(const b of blocks){
+      if(my!==run) break;
+      b.classList.remove('cg-wait');
+      const inner=says.filter(([e])=>b===e||b.contains(e));
+      if(inner.length){ for(const [e,h] of inner) await streamSay(e,h,my); }
+      else { stagger(b); await sleep(b.matches('.cg-follow')?0:260); }
+    }
+    says.forEach(([e,h])=>{ if(!e.innerHTML) e.innerHTML=h; });
+    blocks.forEach(b=>b.classList.remove('cg-wait')); row.classList.remove('cg-wait');
+    if(my===run) busy=false;
+  }
+  async function open(k,{to,instant}={}){
+    if(!convs[k]) return false;
+    if(busy){ run++; busy=false; Object.values(convs).forEach(c=>{ c.querySelectorAll('.cg-wait').forEach(e=>e.classList.remove('cg-wait')); c.querySelectorAll('.cg-think').forEach(e=>e.remove()); }); }
+    closeSide(); select(k);
+    if(instant) played.add(k);
+    thread.scrollTop=0;
+    const p=play(k);
+    if(to){ const el=document.getElementById(to); if(el&&el!==convs[k]) requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); }
+    return p;
+  }
+
+  /* ---- answers to typed questions that aren't a whole conversation: a project or paper by name, or help ---- */
   const IMG={hivemind:'/img/cases/hivemind-ad.webp',monte:'/img/cases/monte-home.webp',safejew:'/img/cases/safejew-incident.webp',aimlli:'/img/cases/aimlli-home.webp',
     ledger:'/img/cases/ledger-dashboard.webp',saferoutes:'/img/cases/saferoutes-walk.webp',citadel:'/img/terminal/board.webp?v=2026-10-29',
     langllm:'/img/papers/r01-langllm.webp',curated:'/img/papers/r02-curated-to-win.webp',compllm:'/img/papers/r03-compllm.webp',portfolio:'/img/papers/r04-portfolio.webp',legatum:'/img/papers/r05-legatum.webp'};
-  const ANCH={hivemind:'#case-hivemind',monte:'#case-monte',safejew:'#case-safejew',aimlli:'#case-aimlli',ledger:'#case-ledger',saferoutes:'#case-saferoutes',citadel:'#case-citadel',
-    langllm:'#rs-t1',curated:'#rs-t2',compllm:'#rs-t3',portfolio:'#rs-t4',legatum:'#rs-t5'};
-  function entity(k){
-    const d=BIG&&BIG.D&&BIG.D[k]; if(!d) return null;
-    const paper=!!d.paper, b=[{p:`<b>${d.n}</b>: ${d.a[0]}, ${d.a[1]}.`},{p:d.t}];
-    if(d.h) b.push({p:`<b>${paper?'How':'How it works'}.</b> ${d.h}`});
-    if(d.p) b.push({p:`<b>${d.p[0]}.</b> ${d.p[1]}`});
-    b.push({cards:[[IMG[k],d.n.split(':')[0],d.a[0],ANCH[k],k]]});
-    const ext=(d.l||[]).filter(x=>/^https?:|\.pdf/.test(x[0])).slice(0,2).map(x=>[x[1],x[0]]);
-    b.push({src:[[paper?'Research':'Selected work',paper?'#papers':'#work'],...ext]});
-    return {b};
+  const OF={hivemind:'work',monte:'work',safejew:'work',aimlli:'work',ledger:'work',saferoutes:'work',citadel:'work',langllm:'research',curated:'research',compllm:'research',portfolio:'research',legatum:'research'};
+  function entityHTML(k){ const d=BIG&&BIG.D&&BIG.D[k]; if(!d) return null; const paper=!!d.paper;
+    return `<p class="cg-say"><b>${d.n}</b>: ${d.a[0]}, ${d.a[1]}.</p><p class="cg-say">${d.t}</p>`+(d.h?`<p class="cg-say"><b>${paper?'How':'How it works'}.</b> ${d.h}</p>`:'')+(d.p?`<p class="cg-say"><b>${d.p[0]}.</b> ${d.p[1]}</p>`:'')
+      +`<div class="cg-cards"><a class="cg-card" href="#" data-cgdv="${k}"><img src="${IMG[k]}" alt="" loading="lazy"><div class="t"><b>${d.n.split(':')[0]}</b><span>${d.a[0]}</span></div></a></div>`
+      +`<div class="cg-follow">${chipHTML(OF[k])}</div>`; }
+  const helpHTML=()=>`<p class="cg-say">I can tell you about my research, what I’ve built, my internships, my fencing and my honors. Try one of these:</p><div class="cg-follow">${Object.keys(convs).map(chipHTML).join('')}</div>`;
+  async function reply(text,html){
+    if(busy){ run++; busy=false; }
+    const my=++run; busy=true;
+    if(!cur){ select('about'); played.add('about'); }      // a typed question with nothing open lands under "Who are you?"
+    const c=convs[cur];
+    c.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div><div class="cg-a cg-extra"></div>`);
+    const kids=c.children,u=kids[kids.length-2].firstElementChild,a=kids[kids.length-1]; u.textContent=text;
+    thread.scrollTop=u.parentElement.offsetTop-12;
+    a.innerHTML='<span class="cg-think">Thinking</span>'; await sleep(RM?100:800); if(my!==run) return;
+    const tmp=document.createElement('div'); tmp.innerHTML=html;
+    a.innerHTML=''; for(const el of [...tmp.children]){ if(my!==run) break; a.appendChild(el);
+      if(el.matches('.cg-say')){ const h=el.innerHTML; await streamSay(el,h,my); } else { stagger(el); await sleep(220); } }
+    a.insertAdjacentHTML('afterend',acts()); busy=false;
   }
   const ENT=[['hivemind',/hivemind|shared memory|coding agent/],['monte',/\bmonte\b|credit card|tap to pay|trojanhack/],['safejew',/safejew|antisemit/],
     ['aimlli',/aiml|ai literacy|ai course|summit/],['ledger',/ledger|corner store|\bsnap\b|vision ?hack/],['saferoutes',/safe ?routes|walkhome|robb|commute/],
     ['citadel',/citadel|terminal|dunderscore|tower.?defen/],['langllm',/ieee|bigdata|multilingual|attribution|fingerprint|which (ai|model) wrote|langllm|best paper/],
     ['curated',/curated|reward.?model|rewardbench|leaderboard|sole.?author|aacl|arrsi/],['compllm',/whose line|self.?recogni|own writing|llm judge|\bjudges?\b/],
     ['portfolio',/portfolio|markowitz|1\/n|ojss|splitting evenly|sharpe/],['legatum',/legatum|prosperity|jhss/]];
-  const TOP=[['contact',/e-?mail|contact|reach (him|out)|r[eé]sum[eé]|\bcv\b|linkedin|github|hire/],['fencing',/fenc|[ée]p[ée]e|team usa|sport|athlet|\bmit\b|pan.?am|ranking/],
-    ['research',/research|paper|publish|study|studies|journal|arxiv/],['built',/built|\bbuild|project|\bapps?\b|product|hackathon|\bcode\b|software/],
-    ['intern',/intern|experience|\bjobs?\b|worked (at|for)|firstness|kiddom|fjor|alliance|venture|\bfund\b/],
-    ['honors',/honou?r|award|achiev|stand ?out|merit|y ?combinator|\byc\b|startup school|\bsat\b|\bgpa\b|\bap\b/],
-    ['who',/\bwho\b|about|tell me|himself|school|laces|senior|background|^adrian\??$/]];
-  function match(t){ t=t.toLowerCase();
-    for(const [k,re] of TOP.slice(0,1)) if(re.test(t)) return A[k];
-    for(const [k,re] of ENT) if(re.test(t)){ const e=entity(k); if(e) return e; }
-    for(const [k,re] of TOP.slice(1)) if(re.test(t)) return A[k];
-    return A.help; }
+  const TOP=[['contact',/e-?mail|contact|reach|r[eé]sum[eé]|\bcv\b|linkedin|github|hire/],['fencing',/fenc|[ée]p[ée]e|team usa|sport|athlet|\bmit\b|pan.?am|ranking|bout/],
+    ['research',/research|paper|publish|study|studies|journal|arxiv/],['work',/built|\bbuild|project|\bapps?\b|product|hackathon|\bcode\b|software|made/],
+    ['experience',/intern|experience|\bjobs?\b|worked (at|for)|firstness|kiddom|fjor|alliance|venture|\bfund\b/],
+    ['record',/honou?r|award|achiev|stand ?out|merit|y ?combinator|\byc\b|startup school|\bsat\b|\bgpa\b|\bap\b/],
+    ['about',/\bwho\b|about you|yourself|tell me|school|laces|senior|background|^adrian\??$/]];
+  function answer(t){ const l=t.toLowerCase();
+    if(TOP[0][1].test(l)) return open('contact');
+    for(const [k,re] of ENT) if(re.test(l)){ const h=entityHTML(k); if(h) return reply(t,h); }
+    for(const [k,re] of TOP.slice(1)) if(re.test(l)) return open(k);
+    return reply(t,helpHTML()); }
 
-  /* the page around the chat: chips, sidebar chats, the model menu, the mobile sidebar */
-  const chip=k=>`<button class="cg-chip" type="button" data-ask="${k}">${P(IC.search).replace('width="18" height="18"','width="16" height="16"')}${A[k].chip}</button>`;
-  $('cgChips').innerHTML=ORDER.map(chip).join('');
-  $('cgList').innerHTML=ORDER.map(k=>`<button class="cg-si" type="button" data-ask="${k}" data-side="${k}">${A[k].side}</button>`).join('');
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  let busy=false,auto=true,visible=true,run=0,typing=false;
+  /* ---- the visitor ---- */
   const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
-  /* a visitor acts: the demo stops for good, and whatever it was writing is cut off, as when you stop a reply */
-  const interrupt=()=>{ stopAuto(); if(busy){ run++; busy=false; } };
-  const near=()=>thread.scrollHeight-thread.scrollTop-thread.clientHeight<140;
-  const pin=force=>{ if(force||near()) thread.scrollTop=thread.scrollHeight; };
-  function setSide(k){ root.querySelectorAll('[data-side]').forEach(b=>b.classList.toggle('on',b.dataset.side===k)); }
-  async function stream(el,html,my){ // word by word, tags kept whole
-    if(RM){ el.innerHTML=html; return; }
-    const parts=html.match(/<[^>]+>|[^<\s]+|\s+/g)||[]; let out='';
-    for(const p of parts){ if(my!==run) return; out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; pin(); await sleep(20); } }
-    el.innerHTML=html;
-  }
-  function card(c,i){ const [img,t,s,href,dv]=c;
-    return `<a class="cg-card" href="${href}"${dv?` data-cgdv="${dv}"`:''} style="animation-delay:${i*.1}s"><img src="${img}" alt="" loading="lazy"><div class="t"><b>${t}</b><span>${s}</span></div></a>`; }
-  const ext=h=>/^https?:/.test(h);
-  async function render(box,a,my){
-    box.innerHTML='';
-    for(const b of a.b){ if(my!==run) return;
-      if(b.p){ const p=document.createElement('p'); box.appendChild(p); await stream(p,b.p,my); }
-      else if(b.ul||b.ol){ const l=document.createElement(b.ul?'ul':'ol'); box.appendChild(l); for(const t of (b.ul||b.ol)){ const li=document.createElement('li'); l.appendChild(li); await stream(li,t,my); } }
-      else if(b.cards){ box.insertAdjacentHTML('beforeend',`<div class="cg-cards">${b.cards.map(card).join('')}</div>`); pin(); await sleep(RM?0:450); }
-      else if(b.src){ box.insertAdjacentHTML('beforeend',`<div class="cg-src"><span>Sources</span>${b.src.map(([t,h])=>`<a href="${h}"${ext(h)?' target="_blank" rel="noopener"':''}>${t}${ext(h)?' ↗':' ↓'}</a>`).join('')}</div>`); pin(); }
-      else if(b.sugg){ box.insertAdjacentHTML('beforeend',`<div class="cg-sugg">${b.sugg.map(chip).join('')}</div>`); pin(); }
-    }
-  }
-  async function ask(a,text,key){
-    if(busy) return; busy=true; const my=++run;
-    if(!root.classList.contains('chatting')) root.classList.add('chatting');
-    setSide(key||''); inp.value=''; send.classList.add('cg-off');
-    col.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div>`); col.lastElementChild.firstElementChild.textContent=text;
-    const box=document.createElement('div'); box.className='cg-a'; col.appendChild(box);
-    box.innerHTML='<span class="cg-think">Thinking</span>'; pin(true);
-    await sleep(RM?150:850); if(my!==run){ busy=false; return; }
-    await render(box,a,my);
-    if(my===run){
-      box.insertAdjacentHTML('afterend',`<div class="cg-acts2"><button class="cg-ib" type="button" data-act="copy" aria-label="Copy">${P(IC.copy)}</button><button class="cg-ib" type="button" data-act="up" aria-label="Good answer">${P(IC.up)}</button><button class="cg-ib" type="button" data-act="down" aria-label="Bad answer">${P(IC.down)}</button><button class="cg-ib" type="button" data-act="again" aria-label="Answer again">${P(IC.again)}</button></div>`);
-      box.nextElementSibling._a=a; pin();
-    }
-    busy=false;
-  }
-  async function typeIn(text){ typing=true; inp.value=''; send.classList.remove('cg-off');
-    for(const ch of text){ if(!auto) return false; inp.value+=ch; await sleep(RM?0:36); }
-    await sleep(RM?0:360); typing=false; return auto; }
-  function reset(){ run++; busy=false; col.innerHTML=''; root.classList.remove('chatting'); setSide(''); inp.value=''; send.classList.add('cg-off'); }
-
-  /* visitors */
   root.addEventListener('click',e=>{
-    const q=e.target.closest('[data-ask]'); if(q){ interrupt(); closeSide(); const k=q.dataset.ask; ask(A[k],A[k].q,k); return; }
-    const c=e.target.closest('[data-cgdv]'); if(c&&BIG&&!(e.metaKey||e.ctrlKey||e.shiftKey)){ e.preventDefault(); BIG.open(c.dataset.cgdv,c); return; }
-    const act=e.target.closest('[data-act]'); if(act){ const row=act.parentElement,box=row.previousElementSibling;
+    const q=e.target.closest('[data-conv]'); if(q){ e.preventDefault(); stopAuto(); open(q.dataset.conv); return; }
+    const c=e.target.closest('[data-cgdv]'); if(c&&BIG){ e.preventDefault(); stopAuto(); BIG.open(c.dataset.cgdv,c); return; }
+    const act=e.target.closest('[data-act]'); if(act){ stopAuto(); const row=act.parentElement,box=row.previousElementSibling;
       if(act.dataset.act==='copy'){ const done=()=>{ act.innerHTML=P(IC.ok); setTimeout(()=>act.innerHTML=P(IC.copy),1500); };
         try{ navigator.clipboard.writeText(box.innerText).then(done,done); }catch(_){ done(); } }
-      else if(act.dataset.act==='again'){ interrupt(); if(!busy){ busy=true; const my=++run; render(box,row._a,my).then(()=>{busy=false;}); } }
-      else { act.classList.toggle('on'); const other=row.querySelector(`[data-act="${act.dataset.act==='up'?'down':'up'}"]`); other.classList.remove('on'); }
+      else if(act.dataset.act==='again'){ const conv=act.closest('.cg-conv'); if(conv&&row===conv.querySelector('.cg-acts2')){ played.delete(conv.dataset.conv); open(conv.dataset.conv); } }
+      else { act.classList.toggle('on'); row.querySelector(`[data-act="${act.dataset.act==='up'?'down':'up'}"]`).classList.remove('on'); }
       return; }
   });
-  root.addEventListener('pointerdown',e=>{ if(!e.target.closest('.cg-thread')||e.target.closest('a,button')) stopAuto(); });
+  /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
+  function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }
+  window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); return true; };
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a||a.closest('#cgPop')) return;
+    const id=decodeURIComponent(a.getAttribute('href').slice(1)); if(!id||id==='top') return; const k=convOf(id); if(!k) return;
+    e.preventDefault(); stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); history.replaceState(null,'','#'+id); });
+  root.addEventListener('pointerdown',e=>{ if(!e.target.closest('.cg-thread')||e.target.closest('a,button,video')) stopAuto(); });
   inp.addEventListener('focus',stopAuto);
   inp.addEventListener('input',()=>send.classList.toggle('cg-off',!inp.value.trim()));
-  form.addEventListener('submit',e=>{ e.preventDefault(); const t=inp.value.trim(); if(!t) return; interrupt(); ask(match(t),t); });
-  $('cgNew').addEventListener('click',()=>{ interrupt(); reset(); closeSide(); inp.focus(); });
+  form.addEventListener('submit',e=>{ e.preventDefault(); const t=inp.value.trim(); if(!t) return; stopAuto(); inp.value=''; send.classList.add('cg-off'); answer(t); });
+  $('cgNew').addEventListener('click',()=>{ stopAuto(); run++; busy=false; root.classList.remove('chatting'); Object.values(convs).forEach(c=>c.classList.remove('on')); cur=null; mark(''); closeSide(); inp.focus(); });
   $('cgSearch').addEventListener('click',()=>{ stopAuto(); closeSide(); inp.focus(); });
-  $('cgPlus').addEventListener('click',()=>{ interrupt(); ask(A.help,'What can I ask?'); });
+  $('cgPlus').addEventListener('click',()=>{ stopAuto(); reply('What can I ask?',helpHTML()); });
   const model=$('cgModel'),pop=$('cgPop');
   const popOpen=o=>{ pop.hidden=!o; model.setAttribute('aria-expanded',o?'true':'false'); };
   model.addEventListener('click',e=>{ e.stopPropagation(); popOpen(pop.hidden); });
-  pop.addEventListener('click',e=>{ if(e.target.closest('a')) popOpen(false); });
+  pop.addEventListener('click',()=>popOpen(false));
   document.addEventListener('click',e=>{ if(!pop.hidden&&!e.target.closest('.cg-mw')) popOpen(false); });
   addEventListener('keydown',e=>{ if(e.key==='Escape'){ popOpen(false); closeSide(); } });
   function closeSide(){ root.classList.remove('side-open'); }
@@ -1715,21 +1693,18 @@ const BIG=(function(){
   $('cgClose').addEventListener('click',closeSide);
   $('cgScrim').addEventListener('click',closeSide);
 
-  /* the demo: after the intro, the six questions in turn, only while the hero is on screen */
-  new IntersectionObserver(es=>es.forEach(e=>visible=e.isIntersecting),{threshold:.35}).observe(root);
+  /* ---- landing: a #link opens its conversation at once; otherwise "Who are you?" types itself in and plays ---- */
+  const hid=decodeURIComponent(location.hash.slice(1)), hk=hid&&convOf(hid);
+  if(hk){ auto=false; open(hk,{to:hid,instant:true}); }
   async function demo(){
-    await sleep(900);
-    for(const k of ORDER){
-      while(auto&&!visible) await sleep(400);
-      if(!auto) return;
-      if(!(await typeIn(A[k].q))) return;
-      await ask(A[k],A[k].q,k);
-      if(RM) return;
-      await sleep(2600);
-    }
+    await sleep(700); if(!auto) return;
+    typing=true; inp.value=''; send.classList.remove('cg-off');
+    for(const ch of Q.about){ if(!auto) return; inp.value+=ch; await sleep(RM?0:40); }
+    await sleep(RM?0:380); if(!auto) return; typing=false; auto=false;
+    inp.value=''; send.classList.add('cg-off'); open('about');
   }
-  if(!document.body.classList.contains('intro-lock')) demo();
-  else{ const w=setInterval(()=>{ if(!document.body.classList.contains('intro-lock')){ clearInterval(w); demo(); } },150); }
+  if(!hk){ if(!document.body.classList.contains('intro-lock')) demo();
+    else{ const w=setInterval(()=>{ if(!document.body.classList.contains('intro-lock')){ clearInterval(w); demo(); } },150); } }
 })();
 
 /* ================= NAV: the section in view is underlined ================= */
