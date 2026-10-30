@@ -388,7 +388,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
 
 /* fencing reel: a six-second muted loop, fetched when it comes near and playing only while on screen */
 (function(){
-  const v=document.querySelector('.reel video'); if(!v) return;
+  const v=document.querySelector('.reel video,.cg-reel video'); if(!v) return;
   if(REDUCED||(navigator.connection&&navigator.connection.saveData)) return;   /* the poster stays */
   let loaded=false;
   new IntersectionObserver(es=>es.forEach(e=>{
@@ -1583,7 +1583,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1779,12 +1779,18 @@ const BIG=(function(){
   });
   /* photos in an answer (About, the outdoors, Team USA) open large on a click, as ChatGPT's image results do */
   const lb=document.createElement('div'); lb.className='cg-lb'; lb.hidden=true;
-  lb.innerHTML=`<button class="cg-ib cg-lbx" type="button" aria-label="Close">${P('<path d="M5 5l10 10M15 5L5 15"/>')}</button><img alt=""><p></p>`;
-  document.body.appendChild(lb); const lbImg=lb.querySelector('img');
-  const lbClose=()=>{ if(lb.hidden) return; lb.hidden=true; if(lb._from) lb._from.focus(); };
-  lb.addEventListener('click',lbClose);
-  root.addEventListener('click',e=>{ const b=e.target.closest('.cg-imgs button'); if(!b) return; e.preventDefault(); stopAuto();
-    const im=b.querySelector('img'); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; lb.querySelector('p').textContent=b.dataset.cap||'';
+  lb.innerHTML=`<button class="cg-ib cg-lbx" type="button" aria-label="Close">${P('<path d="M5 5l10 10M15 5L5 15"/>')}</button><img alt=""><video controls playsinline hidden></video><p></p>`;
+  document.body.appendChild(lb); const lbImg=lb.querySelector('img'),lbVid=lb.querySelector('video');
+  const lbClose=()=>{ if(lb.hidden) return; lb.hidden=true; lbVid.pause(); lbVid.removeAttribute('src'); lbVid.load(); if(lb._from) lb._from.focus(); };
+  lb.addEventListener('click',e=>{ if(e.target!==lbVid) lbClose(); });
+  /* the bouts' video cards play here too, with sound and controls */
+  root.addEventListener('click',e=>{ const b=e.target.closest('.cg-imgs button,.cg-media button,[data-video]'); if(!b) return;
+    if(b.matches('a')&&(e.metaKey||e.ctrlKey||e.shiftKey)) return;
+    e.preventDefault(); stopAuto(); const vid=b.matches('[data-video]');
+    lbImg.hidden=vid; lbVid.hidden=!vid;
+    if(vid){ lbVid.src=b.getAttribute('href'); lbVid.poster=b.querySelector('img').src; const p=lbVid.play(); if(p&&p.catch) p.catch(()=>{}); }
+    else { const im=b.querySelector('img'); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; }
+    lb.querySelector('p').textContent=b.dataset.cap||'';
     lb._from=b; lb.hidden=false; lb.querySelector('.cg-lbx').focus(); });
   /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
   function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }

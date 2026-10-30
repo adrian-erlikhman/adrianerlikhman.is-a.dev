@@ -12,8 +12,8 @@ from LaTeX in `resume/`.
 - Épée · **A26 rating** · Region 4 No. 1 · Team USA
 - Public record: https://fencingtracker.com/p/100253463/Adrian-Erlikhman
 - Update in three places when these change:
-  - Site: `index.html`, the `.fence-ranks` cells (Fencing section, `[05]`), and the
-    hero's "Top 20 · U.S. épée" fact (`.facts`), which rests on the peak cadet No. 17.
+  - Site (since 30 Oct): `index.html`, the rankings table (`.cg-rk`) in the Team USA épée conversation, and the
+    ranking and results answers in site.js `KB`; `llms.txt` too.
   - Both résumés: the fencing lines under LEADERSHIP & ATHLETICS in
     `resume/resume-short.tex` and `resume/resume-long.tex`, then rebuild.
 
@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-30-honph`, site.js `2026-10-29-kb`).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-hf`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -521,6 +521,16 @@ with "a lot of updates" still to come. What shipped:
   A question typed on the empty screen starts its own thread (`#c-ask`, cleared by New chat); typed inside a
   conversation it follows on there. Add an answer rather than stretching a pattern, and run a batch of questions
   through `best(norm(q))` in node after any change: "about" contains "bout", "leaderboard" contains "leader".
+  **Honors and Fencing (30 Oct).** He asked for both to change ("you just copied the page, make it a little better
+  integrated") and picked from `_mock/hf.html`: **Honors A**, one ranked table (`.cg-tb.cg-hon`: honor with its mark,
+  result in navy, how selective; most selective first; rows stack on phones; National Merit has no mark, its lamp reads
+  as a black bar), over sections, cards and a spotlight; **Fencing A**, one answer (a lead with Pan-Ams 6th, A26, MIT and
+  the club; `.cg-media` with the six-second touch looping large and the two photos; "Where he ranks" as a table; all ten
+  results as a list; "Watch him fence" (`#bouts`) as three video cards, `[data-video]`, that play in the photo viewer
+  with sound; a fencingtracker source chip and an MIT badge), over a three-question back-and-forth.
+  **Underlines (30 Oct, "way too many underlines in the research section ... literally everything"):** the chat
+  underlines links, and a paper row is one big link, so every line of it was underlined. Links that wrap a whole row
+  or card (`.pl`, `.wg`, `.tm`, `.cc`, `.cg-vids`, `.cg-src`, `.btn`) now carry none; only links inside a sentence do.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
