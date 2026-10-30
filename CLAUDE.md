@@ -313,12 +313,19 @@ from LaTeX in `resume/`.
   both résumés and on the site: the AIML-LI case study, the homepage's
   Recognition list. After 2 Dec, reword anything
   that reads as upcoming.
+- **aiEDU podcast (29 Oct 2026):** Christian Pinedo (aiEDU VP, External Affairs & Advocacy) introduced
+  Adrian to Lange Luntao (Chief of Staff), who produces aiEDU's podcast, hosted by CEO Alex Kotran, about
+  being a guest (Gmail "Connecting aiEDU <> LAUSD Student"); Adrian said yes the same day and added
+  Michael. No date or format yet, so it is "invited guest" everywhere: the one-pager's AIML-LI bullet
+  ("Invited by aiEDU:", shared with NCSS), the long one's Talks (`\role{aiEDU Podcast}`), the Honors board's
+  NCSS tile ("NCSS 2026 · aiEDU podcast"), llms.txt, and one sentence in the Common App doc's Additional
+  Info (261/300 words; he pastes it into the portal). Date it once it records; link the episode once it airs.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **five places** since the 29 Oct all-chat homepage: the chat's sidebar Résumé link and
-  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf"
-  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
+  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-10-29-aiedu"
+  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-29-aiedu`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
