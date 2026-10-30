@@ -548,3 +548,29 @@ body{overflow:hidden}
 
 .cg .btn{border:1px solid var(--edge);background:#fff;color:var(--acc)}
 .cg .btn.solid{background:var(--acc);color:#fff;border-color:var(--acc)}
+
+/* photos in an answer, ChatGPT-style (29 Oct): About's grid, one large and four small; .row is a single strip in typed answers.
+   A click opens .cg-lb. Typed answers' lists are .cg-ul. */
+.cg-imgs{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:132px 132px;gap:6px;margin:4px 0 20px;border-radius:18px;overflow:hidden}
+.cg-imgs button{display:block;padding:0;border:0;background:#eee;overflow:hidden;cursor:zoom-in;min-width:0}
+.cg-imgs .big{grid-row:span 2}
+.cg-imgs img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.cg-imgs .big img{object-position:center 30%}
+.cg-imgs button:hover img{transform:scale(1.04)}
+.cg-imgs.row{display:flex;grid-template:none;height:150px;max-width:640px}
+.cg-imgs.row button{flex:1 1 0}
+.cg-a .cg-ul{margin:0 0 14px;padding-left:22px}
+.cg-a .cg-ul li{margin:6px 0}
+.cg-card.noimg .t{padding:14px 14px 15px}
+.cg-lb{position:fixed;inset:0;z-index:300;background:rgba(14,14,14,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:56px 20px 28px;cursor:zoom-out;animation:cgin .25s ease both}
+.cg-lb[hidden]{display:none}
+.cg-lb img{max-width:min(92vw,1100px);max-height:78vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.cg-lb p{margin:0;color:#e8e8e8;font:14px/1.4 var(--sans);text-align:center}
+.cg-lb .cg-lbx{position:absolute;top:14px;right:14px;color:#fff;background:rgba(255,255,255,.12)}
+.cg-lb .cg-lbx:hover{background:rgba(255,255,255,.22)}
+@media(max-width:860px){
+  .cg-imgs{grid-template-columns:1.25fr 1fr;grid-template-rows:100px 100px}
+  .cg-imgs button:nth-child(n+4){display:none}
+  .cg-imgs.row{height:110px}
+  .cg-imgs.row button:nth-child(n+4){display:block}
+}

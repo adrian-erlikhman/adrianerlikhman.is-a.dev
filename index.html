@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-10-29-nofoot">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-29-kb">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -290,7 +290,7 @@
 <!-- HOMEPAGE (29 Oct 2026): the whole site is one chat app in ChatGPT's layout (Adrian: "what if it is like only the
      chatgpt ... have every section be a part of the chatgpt"). Every section is a conversation in the sidebar: a question,
      then the answer, whose opening line streams in and whose content (the section's own markup, ids kept) builds in block by
-     block. After the intro, "Who are you?" types itself in and plays; the rest open from the sidebar, the chips, the
+     block. After the intro, "Who is Adrian?" types itself in and plays; the rest open from the sidebar, the chips, the
      "Adrian" menu or a typed question. Links to #papers, #case-hivemind and the like open the right conversation. Without
      JS every conversation shows, one after another. site.js CHAT SITE; styles .cg-* in home.css. No OpenAI marks or names. -->
 <main id="main" tabindex="-1">
@@ -304,10 +304,10 @@
     </div>
     <div class="cg-h">Chats</div>
     <div class="cg-list">
-        <button class="cg-si" type="button" data-conv="about">About me</button>
+        <button class="cg-si" type="button" data-conv="about">About Adrian</button>
         <button class="cg-si" type="button" data-conv="experience">Internships</button>
         <button class="cg-si" type="button" data-conv="research">Research · 5 papers</button>
-        <button class="cg-si" type="button" data-conv="work">What I’ve built</button>
+        <button class="cg-si" type="button" data-conv="work">What he’s built</button>
         <button class="cg-si" type="button" data-conv="fencing">Team USA épée</button>
         <button class="cg-si" type="button" data-conv="record">Honors</button>
         <button class="cg-si" type="button" data-conv="contact">Contact</button>
@@ -319,28 +319,39 @@
     <div class="cg-bar">
       <button class="cg-ib cg-menu" id="cgMenu" type="button" aria-label="Open sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M3.5 6h13M3.5 10h13M3.5 14h9"/></svg></button>
       <div class="cg-mw"><button class="cg-model" id="cgModel" type="button" aria-haspopup="true" aria-expanded="false">Adrian <small>⌄</small></button>
-        <div class="cg-pop" id="cgPop" hidden><div class="cg-pop-h">Ask about</div><button type="button" data-conv="about"><b>About me</b><span>Who are you?</span></button><button type="button" data-conv="experience"><b>Internships</b><span>Where have you interned?</span></button><button type="button" data-conv="research"><b>Research · 5 papers</b><span>What research have you done?</span></button><button type="button" data-conv="work"><b>What I’ve built</b><span>What have you built?</span></button><button type="button" data-conv="fencing"><b>Team USA épée</b><span>Do you really fence for Team USA?</span></button><button type="button" data-conv="record"><b>Honors</b><span>What else stands out?</span></button><button type="button" data-conv="contact"><b>Contact</b><span>How can I reach you?</span></button></div></div>
+        <div class="cg-pop" id="cgPop" hidden><div class="cg-pop-h">Ask about</div><button type="button" data-conv="about"><b>About Adrian</b><span>Who is Adrian?</span></button><button type="button" data-conv="experience"><b>Internships</b><span>Where has he interned?</span></button><button type="button" data-conv="research"><b>Research · 5 papers</b><span>What research has he done?</span></button><button type="button" data-conv="work"><b>What he’s built</b><span>What has he built?</span></button><button type="button" data-conv="fencing"><b>Team USA épée</b><span>Does he really fence for Team USA?</span></button><button type="button" data-conv="record"><b>Honors</b><span>What else stands out?</span></button><button type="button" data-conv="contact"><b>Contact</b><span>How can I reach him?</span></button></div></div>
       <div class="cg-r"><a class="cg-pill cg-mail" href="mailto:erlikhman.adrian@gmail.com">Email</a><a class="cg-pill" href="resume.pdf?v=2026-10-29-aiedu" target="_blank" data-cv-menu>Résumé</a></div>
     </div>
     <div class="cg-stage">
-      <div class="cg-empty"><h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: ML researcher, builder and Team USA fencer. </span>What do you want to know about me?</h1></div>
+      <div class="cg-empty"><h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: ML researcher, builder and Team USA fencer. </span>What do you want to know about Adrian?</h1></div>
       <div class="cg-thread" id="cgThread"><div class="cg-col" id="cgCol">
       <article class="cg-conv" data-conv="about" id="c-about">
-        <div class="cg-u"><div>Who are you?</div></div>
+        <div class="cg-u"><div>Who is Adrian?</div></div>
         <div class="cg-a">
         <div class="cg-blk" id="about">
-    <div class="ab"><img src="/adrian.jpg" width="800" height="600" alt="Adrian Erlikhman"><div>
-      <p class="cg-say">I&rsquo;m a senior (in high school) at the <b>Los Angeles Center for Enriched Studies</b>. I <a href="#work">build software</a> for problems I care about, for people who need it, and I want to continue through college and my professional life.</p>
-      <p class="cg-say">My <a href="#papers">research</a> is centred on machine learning, specifically natural language processing: telling which language model wrote a piece of text, and checking whether the tests we rank them with actually hold up. I&rsquo;ve also <a href="#experience">interned across machine learning, software engineering and venture capital</a>.</p>
-      <p class="cg-say">Off the laptop, I <a href="#fencing">fence épée for <b>Team USA</b></a>, and I like eating, puzzles, the outdoors and napping.</p></div></div>
+    <!-- ABOUT (29 Oct, Adrian: "be like Adrian is this ... switch the tense. maybe it should have photos"): the chat answers
+         about him in the third person, his own three paragraphs turned around, under a ChatGPT-style photo grid; a click on a
+         photo opens it large (site.js CHAT SITE). -->
+    <div class="cg-imgs">
+      <button type="button" class="big" data-cap="Adrian Erlikhman"><img src="/adrian.jpg" width="800" height="600" alt="Adrian Erlikhman"></button>
+      <button type="button" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/fencing-1.jpg" width="800" height="600" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
+      <button type="button" data-cap="Y Combinator Startup School 2026"><img src="/img/ycs/yc-sign.jpg" width="600" height="800" alt="Adrian Erlikhman with two other attendees under the Y Combinator sign at Startup School 2026"></button>
+      <button type="button" data-cap="Rock climbing"><img src="/life-climb.jpg" width="800" height="533" loading="lazy" alt="Adrian Erlikhman rock climbing"></button>
+      <button type="button" data-cap="Road cycling"><img src="/life-cycle.jpg" width="800" height="600" loading="lazy" alt="Adrian Erlikhman road cycling"></button>
+    </div>
+      <p class="cg-say">Adrian is a senior (in high school) at the <b>Los Angeles Center for Enriched Studies</b>. He <a href="#work">builds software</a> for problems he cares about, for people who need it, and wants to keep doing that through college and his professional life.</p>
+      <p class="cg-say">His <a href="#papers">research</a> is centred on machine learning, specifically natural language processing: telling which language model wrote a piece of text, and checking whether the tests used to rank them actually hold up. He&rsquo;s also <a href="#experience">interned across machine learning, software engineering and venture capital</a>.</p>
+      <p class="cg-say">Off the laptop, he <a href="#fencing">fences épée for <b>Team USA</b></a>, and he likes eating, puzzles, the outdoors and napping.</p>
+        </div>
+        <div class="cg-blk">
       <div class="lg-h">Interned, published and selected at</div>
       <div class="lg"><img src="/img/logos/firstness.svg" alt="Firstness" loading="lazy"><img src="/img/logos/kiddom.svg" alt="Kiddom" loading="lazy"><img src="/img/logos/fjor.webp" alt="Fjor" loading="lazy"><img src="/img/logos/alliance.webp" alt="Alliance for SoCal Innovation" loading="lazy"><img src="/img/logos/ieee.webp" alt="IEEE" loading="lazy"><img class="w" src="/img/logos/aacl.webp" alt="AACL-IJCNLP" loading="lazy"><img class="w2" src="/img/logos/ojss-lockup.webp" alt="Oxford Journal of Student Scholarship" loading="lazy"><img class="w3" src="/img/logos/jhss.webp" alt="Journal of High School Science" loading="lazy"><img src="/img/logos/yc.svg" alt="Y Combinator" loading="lazy"><img src="/img/logos/citadel.webp" alt="Citadel" loading="lazy"></div>
         </div>
-        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="experience"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Internships</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What you’ve built</button></div>
+        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="experience"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Internships</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What he’s built</button></div>
         </div>
       </article>
       <article class="cg-conv" data-conv="experience" id="c-experience">
-        <div class="cg-u"><div>Where have you interned?</div></div>
+        <div class="cg-u"><div>Where has he interned?</div></div>
         <div class="cg-a">
         <p class="cg-say">Four internships so far, across machine learning, software and venture capital.</p>
         <div class="cg-blk" id="experience">
@@ -351,11 +362,11 @@
       <li id="xp-alliance"><div class="co"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal <span class="nw">Innovation<span class="ext" aria-hidden="true">↗</span></span></a></div><div><h3>Venture &amp; Data Strategy Intern</h3><p>I built a Python/SQL engine that matches startups to investors across 10,000 contacts at 250+ VC firms, angel groups and accelerators, cutting a founder&rsquo;s search from days to under a minute. I also led outreach to 80+ founders and mapped Southern California&rsquo;s deep-tech startups.</p></div><div class="dt">2024 – 2026</div></li>
     </ul>
         </div>
-        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What you’ve built</button></div>
+        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What he’s built</button></div>
         </div>
       </article>
       <article class="cg-conv" data-conv="research" id="c-research">
-        <div class="cg-u"><div>What research have you done?</div></div>
+        <div class="cg-u"><div>What research has he done?</div></div>
         <div class="cg-a">
         <p class="cg-say">Five papers, four of them accepted. Click any one for the details.</p>
         <div class="cg-blk" id="papers">
@@ -367,11 +378,11 @@
       <li id="rs-t5"><a data-dv="legatum" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener"><div class="cv"><img src="/img/papers/r05-legatum.webp" alt="First page" loading="lazy"></div><div><h3>How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3><p class="vn">Journal of High School Science</p><p class="fd"><b>We rebuilt a ranking of 167 countries exactly, then stress-tested it with 30,000 alternative weightings and a 131,072-run sensitivity analysis.</b> The ranking holds as a whole, but a mid-table country can move across a median 36-place range. We also derive rank leverage, a formula for how much each weight can reorder countries.</p><p class="au">Adrian Erlikhman, Ryan Erlikhman</p></div><div class="st">Accepted with revisions</div></a></li>
     </ol>
         </div>
-        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What you’ve built</button><button class="cg-chip" type="button" data-conv="record"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What else stands out</button></div>
+        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What he’s built</button><button class="cg-chip" type="button" data-conv="record"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What else stands out</button></div>
         </div>
       </article>
       <article class="cg-conv" data-conv="work" id="c-work">
-        <div class="cg-u"><div>What have you built?</div></div>
+        <div class="cg-u"><div>What has he built?</div></div>
         <div class="cg-a">
         <p class="cg-say">Six things people use, and four of them placed at hackathons. Click any one to open it.</p>
         <div class="cg-blk" id="work">
@@ -402,14 +413,14 @@
         </div>
       </article>
       <article class="cg-conv" data-conv="fencing" id="c-fencing">
-        <div class="cg-u"><div>Do you really fence for Team USA?</div></div>
+        <div class="cg-u"><div>Does he really fence for Team USA?</div></div>
         <div class="cg-a">
-        <p class="cg-say">Yes. I fence épée for Team USA, and I’m in active recruitment with MIT.</p>
+        <p class="cg-say">Yes. Adrian fences épée for Team USA, and he’s in active recruitment with MIT.</p>
         <div class="cg-blk" id="fencing">
     <div class="mit"><div class="l"><img src="/mit-logo.svg" width="71" height="40" alt="Massachusetts Institute of Technology" loading="lazy"><div><b>In active recruitment</b><i>Massachusetts Institute of Technology</i></div></div><a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener me">Full USA Fencing record &rarr;</a></div>
     <!-- six seconds of the team relay leg ending on Adrian's touch to 6-8; site.js plays it only on screen, never under reduced motion -->
     <div class="reel"><video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp?v=2026-10-15-a" data-src="/video/fence-loop.mp4?v=2026-10-15-a" aria-hidden="true" tabindex="-1"></video></div>
-    <p class="cap">Senior team relay, Summer Nationals 2026. I&rsquo;m on the right.</p>
+    <p class="cap">Senior team relay, Summer Nationals 2026. He&rsquo;s on the right.</p>
     <div class="fg"><div>
       <div class="rk"><div><b>No. 49</b><span>U.S. Junior</span><i>national, U20</i></div><div><b>No. 78</b><span>U.S. Senior</span><i>national, open</i></div><div><b>No. 17</b><span>U.S. Cadet</span><i>peak, U17</i></div><div><b>No. 1</b><span>Region 4</span><i>regional</i></div></div>
       <p class="fl"><b>A26</b>, the highest USA Fencing rating · LA International Fencing Center</p>
@@ -448,26 +459,26 @@
       <li><div class="hk"><img src="/img/logos/stemsters.webp" alt="" loading="lazy"><span>Leadership</span></div><b>Co-founder</b><h3>STEMsters, LACES chapter</h3><p>30+ volunteers at 4 elementary schools</p></li>
     </ul>
         </div>
-        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="contact"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Contact</button><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who are you?</button></div>
+        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="contact"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Contact</button><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who is Adrian?</button></div>
         </div>
       </article>
       <article class="cg-conv" data-conv="contact" id="c-contact">
-        <div class="cg-u"><div>How can I reach you?</div></div>
+        <div class="cg-u"><div>How can I reach him?</div></div>
         <div class="cg-a">
-        <p class="cg-say">Email is best; I usually answer the same day.</p>
+        <p class="cg-say">Email is best; he usually answers the same day.</p>
         <div class="cg-blk" id="contact">
     <div class="cc">
       <div class="cc-r"><a class="cc-em" href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>
         <div class="cc-b"><a class="btn solid" href="mailto:erlikhman.adrian@gmail.com">Email me</a><a class="btn" href="resume.pdf?v=2026-10-29-aiedu" target="_blank" data-cv-menu>Résumé</a><a class="btn" href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub ↗</a></div></div>
     </div>
         </div>
-        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who are you?</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button></div>
+        <div class="cg-follow"><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who is Adrian?</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button></div>
         </div>
       </article>
       </div></div>
       <div class="cg-cw">
-        <form class="cg-comp" id="cgForm"><button class="cg-ib" id="cgPlus" type="button" aria-label="What can I ask?"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button><label class="sr-only" for="cgIn">Ask Adrian</label><input id="cgIn" placeholder="Ask anything" autocomplete="off" enterkeyhint="send"><button class="cg-send cg-off" id="cgSend" type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 16V4M5 9l5-5 5 5"/></svg></button></form>
-        <div class="cg-chips" id="cgChips"><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who are you?</button><button class="cg-chip" type="button" data-conv="experience"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Internships</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What you’ve built</button><button class="cg-chip" type="button" data-conv="fencing"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Team USA fencing</button><button class="cg-chip" type="button" data-conv="record"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What else stands out</button><button class="cg-chip" type="button" data-conv="contact"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Contact</button></div>
+        <form class="cg-comp" id="cgForm"><button class="cg-ib" id="cgPlus" type="button" aria-label="What can I ask?"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button><label class="sr-only" for="cgIn">Ask about Adrian</label><input id="cgIn" placeholder="Ask anything" autocomplete="off" enterkeyhint="send"><button class="cg-send cg-off" id="cgSend" type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M10 16V4M5 9l5-5 5 5"/></svg></button></form>
+        <div class="cg-chips" id="cgChips"><button class="cg-chip" type="button" data-conv="about"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Who is Adrian?</button><button class="cg-chip" type="button" data-conv="experience"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Internships</button><button class="cg-chip" type="button" data-conv="research"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Research</button><button class="cg-chip" type="button" data-conv="work"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What he’s built</button><button class="cg-chip" type="button" data-conv="fencing"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Team USA fencing</button><button class="cg-chip" type="button" data-conv="record"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>What else stands out</button><button class="cg-chip" type="button" data-conv="contact"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Contact</button></div>
       </div>
     </div>
   </div>
@@ -508,6 +519,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-29-allchat"></script>
+<script src="/assets/site.js?v=2026-10-29-kb"></script>
 </body>
 </html>

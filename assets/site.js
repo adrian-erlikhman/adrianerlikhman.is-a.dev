@@ -1551,9 +1551,9 @@ const BIG=(function(){
 /* ================= CHAT SITE (29 Oct): the whole homepage is one chat app (Adrian: "have every section be a part of the
    chatgpt"). Each section is a conversation (article.cg-conv in index.html, the section's own markup inside). Opening one the
    first time plays it: "Thinking", the answer's opening line streams in word by word, then its blocks build in one after
-   another (lists and grids item by item). Opened again, it shows at once. After the intro, "Who are you?" types itself into
-   the composer and plays; it stops for good if the visitor does anything first. A typed question opens the matching
-   conversation, or answers about a project or paper by name from the big view's facts (BIG.D), or lists what it can answer.
+   another (lists and grids item by item). Opened again, it shows at once. After the intro, "Who is Adrian?" types itself
+   into the composer and plays; it stops for good if the visitor does anything first. The chat speaks about Adrian in the
+   third person (his ask, 29 Oct). A typed question gets a written answer from KB below, or opens a whole conversation.
    #links into a conversation (#papers, #case-hivemind, #rs-t2, …) open it and scroll to that spot. ================= */
 (function(){
   const root=document.getElementById('top'); if(!root||!root.classList.contains('cg')) return;
@@ -1583,7 +1583,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1599,7 +1599,7 @@ const BIG=(function(){
       if(my!==run) break;
       b.classList.remove('cg-wait');
       const inner=says.filter(([e])=>b===e||b.contains(e));
-      if(inner.length){ for(const [e,h] of inner) await streamSay(e,h,my); }
+      if(inner.length){ stagger(b); for(const [e,h] of inner) await streamSay(e,h,my); }
       else { stagger(b); await sleep(b.matches('.cg-follow')?0:260); }
     }
     says.forEach(([e,h])=>{ if(!e.innerHTML) e.innerHTML=h; });
@@ -1617,45 +1617,153 @@ const BIG=(function(){
     return p;
   }
 
-  /* ---- answers to typed questions that aren't a whole conversation: a project or paper by name, or help ---- */
+  /* ---- typed questions (29 Oct, Adrian: "make it so that you can type literally anything and it will answer"; he chose
+     written answers over a live AI). KB is ~90 answers, all from llms.txt and the page, in the third person. A question is
+     scored against every entry's patterns (weight 3 for a specific fact, 2 for a whole topic, which opens its conversation)
+     and the best entry over 2 answers; ties go to the earlier entry, so the specific ones come first. Anything else gets
+     an honest "I don't have that one" with the topics and his email. Keep these in step with the sections and llms.txt. ---- */
   const IMG={hivemind:'/img/cases/hivemind-ad.webp',monte:'/img/cases/monte-home.webp',safejew:'/img/cases/safejew-incident.webp',aimlli:'/img/cases/aimlli-home.webp',
-    ledger:'/img/cases/ledger-dashboard.webp',saferoutes:'/img/cases/saferoutes-walk.webp',citadel:'/img/terminal/board.webp?v=2026-10-29',
+    saferoutes:'/img/cases/saferoutes-walk.webp',citadel:'/img/terminal/board.webp?v=2026-10-29',
     langllm:'/img/papers/r01-langllm.webp',curated:'/img/papers/r02-curated-to-win.webp',compllm:'/img/papers/r03-compllm.webp',portfolio:'/img/papers/r04-portfolio.webp',legatum:'/img/papers/r05-legatum.webp'};
-  const OF={hivemind:'work',monte:'work',safejew:'work',aimlli:'work',ledger:'work',saferoutes:'work',citadel:'work',langllm:'research',curated:'research',compllm:'research',portfolio:'research',legatum:'research'};
-  function entityHTML(k){ const d=BIG&&BIG.D&&BIG.D[k]; if(!d) return null; const paper=!!d.paper;
-    return `<p class="cg-say"><b>${d.n}</b>: ${d.a[0]}, ${d.a[1]}.</p><p class="cg-say">${d.t}</p>`+(d.h?`<p class="cg-say"><b>${paper?'How':'How it works'}.</b> ${d.h}</p>`:'')+(d.p?`<p class="cg-say"><b>${d.p[0]}.</b> ${d.p[1]}</p>`:'')
-      +`<div class="cg-cards"><a class="cg-card" href="#" data-cgdv="${k}"><img src="${IMG[k]}" alt="" loading="lazy"><div class="t"><b>${d.n.split(':')[0]}</b><span>${d.a[0]}</span></div></a></div>`
-      +`<div class="cg-follow">${chipHTML(OF[k])}</div>`; }
-  const helpHTML=()=>`<p class="cg-say">I can tell you about my research, what I’ve built, my internships, my fencing and my honors. Try one of these:</p><div class="cg-follow">${Object.keys(convs).map(chipHTML).join('')}</div>`;
+  const S=(id,t)=>`<a href="#${id}">${t}</a>`, X=(u,t)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+  const MAIL='<a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>';
+  const ul=items=>`<ul class="cg-ul">${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  const say=(...ps)=>ps.map(p=>`<p class="cg-say">${p}</p>`).join('');
+  const PICS={climb:['/life-climb.jpg','Adrian Erlikhman rock climbing','Rock climbing'],backpack:['/life-backpack.jpg','Adrian Erlikhman backpacking at an alpine lake','Backpacking at an alpine lake'],
+    cycle:['/life-cycle.jpg','Adrian Erlikhman road cycling','Road cycling'],hike:['/life-hike.jpg','Adrian Erlikhman hiking a foggy ridge','Hiking a foggy ridge'],
+    lunge:['/fencing-1.jpg','Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá','Team USA, Cadet Pan-American Championships, Bogotá'],
+    podium:['/fencing-2.jpg','Adrian Erlikhman on the podium with a USA Fencing medal','USA Fencing podium'],
+    yc:['/img/ycs/yc-sign.jpg','Adrian Erlikhman with two other attendees under the Y Combinator sign at Startup School 2026','Y Combinator Startup School 2026']};
+  const pics=(...ks)=>`<div class="cg-imgs row">${ks.map(k=>`<button type="button" data-cap="${PICS[k][2]}"><img src="${PICS[k][0]}" alt="${PICS[k][1]}" loading="lazy"></button>`).join('')}</div>`;
+  const K=(re,w=3)=>[re,w];
+  const KB=[
+    /* projects and papers by name: a short answer and a card that opens the big view */
+    {k:[K(/hivemind|shared memory|coding agents?|lemma|sephacks/)],dv:'hivemind',f:['work'],a:say(`<b>Hivemind</b> won Lemma’s Agent Behaviour Monitoring track at SEPHacks 2026 (USC SEP × LA Tech Week), built with Michael Tarekegn.`,`It is shared memory for a team’s AI coding agents: an engineer’s correction becomes a lesson, a team lead approves it, and every agent on the team loads it at its next session. In their eval, Claude Code passed 36 of 36 runs with Hivemind and 14 of 36 without.`,`Adrian designed and built the website, the web app and the terminal app’s design, and made the launch film.`)},
+    {k:[K(/\bmonte\b|credit cards?|tap to pay|apple pay|trojanhacks?/)],dv:'monte',f:['work'],a:say(`<b>Monte</b> took 1st place in the Finance track at ACM TrojanHacks 2026, built with Michael Tarekegn.`,`It picks the credit card that pays most for each purchase, from the store’s merchant code and 29 cards’ published terms, and never picks a card carrying a balance. Over a year it weighs each card’s rewards against its fees and interest.`,`Adrian built the interface, the tap-to-pay demo and the brand, and made the launch film.`)},
+    {k:[K(/safe ?jew|antisemit|incident map/)],dv:'safejew',f:['work'],a:say(`<b>SafeJew</b>, which Adrian co-founded, is a live map of antisemitic incidents across Greater Los Angeles, each with its source: 800 across LA and 594 on 33 university campuses, updated daily. It is funded by a JFEDLA Teen Innovation Grant.`,`He built the LA gazetteer that turns a place named in a news story into coordinates, so a daily job adds new incidents on its own.`)},
+    {k:[K(/aiml|ai literacy|literacy|ai course|summit|chromebook/)],dv:'aimlli',f:['work'],a:say(`<b>AIML-LI</b>, the AI & Machine Learning Literacy Initiative, is a free AI-literacy course for LA public schools that Adrian co-founded and has led since 2023: six units of Python notebooks that run on school Chromebooks, from foundations to neural networks.`,`It also puts on a free AI summit and hackathon for 500+ LA public-school students.`)},
+    {k:[K(/ledger|corner stores?|\bsnap\b|vision ?hack/)],dv:'ledger',f:['work'],a:say(`<b>Ledger</b> took 1st place at VISION HACK: South LA (Council District 9 Champion, Under 18) in September 2026. It tracks a corner store’s license renewals and checks its stock against SNAP’s stocking rule.`,`Adrian led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.`)},
+    {k:[K(/safe ?routes|walkhome|robb|walk(ing)? (home|to school)|code for transportation/)],dv:'saferoutes',f:['work'],a:say(`<b>Safe Routes to School</b> placed 3rd internationally at Young Coders’ Sphere’s Code for Transportation, built with Michael Tarekegn.`,`It gives LA students walking directions routed around street robbery: 431,599 blocks scored by hour from 85,634 LAPD incidents, routed in the browser, offline, in English and Spanish.`)},
+    {k:[K(/citadel|terminal|dunderscore|tower.?defen|correlation one/)],dv:'citadel',f:['work','record'],a:say(`<b>dunderscore</b> is the Python bot Adrian’s team of three wrote for Citadel High School Terminal, a tower-defense game where every move is code.`,`They were finalists: top 8 of 45 teams, from 1,000+ applicants. They rewrote its strategy between rounds from match replays.`)},
+    {k:[K(/ednatlas|decode the ocean|environmental dna|\bedna\b|ocean|lovable/)],f:['work'],a:say(`<b>eDNAtlas</b> won 1st place at Decode the Ocean (Lovable × United Nations): a live map that scores coastal sites from environmental DNA, built from 16.5M DNA sequences. ${X('/eDNAtlas/','Open eDNAtlas')}`)},
+    {k:[K(/why wrong|misconception|wrong answers/)],f:['experience'],a:say(`<b>${X('https://adrian-erlikhman.github.io/why-wrong/','Why Wrong')}</b> reads a whole class’s wrong answers and names the misconception behind each one: 0.87 F1 on planted misconceptions, with students grouped by shared mistake.`,`Adrian built it in his ${S('xp-kiddom','Kiddom')} ML mentorship and is designing its classroom evaluation with an LAUSD teacher.`)},
+    {k:[K(/games unlimited|linkedin games|puzzles?|crossword|wordle|sudoku/)],f:['about'],a:say(`Adrian likes puzzles enough to have built ${X('/linkedin-games-unlimited/','Games Unlimited')}: unlimited practice versions of the LinkedIn daily puzzle games.`)},
+    {k:[K(/ieee|bigdata|big data|multilingual|attribution|which (ai|model|llm) wrote|langllm|best paper|stylometr|seven languages/)],dv:'langllm',f:['research'],a:say(`<b>Interpretable Multilingual Attribution of Frontier LLMs</b> is accepted at the IEEE BigData 2026 High School Symposium (Phoenix, 17 Dec) and is a <b>Best Paper Finalist</b>: one of 12 papers, top 16 of 130 accepted.`,`A classifier built on 21 interpretable features names which of five frontier models wrote an essay 59–72% of the time in all seven languages, against 20% chance; the models themselves do little better than chance. Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
+    {k:[K(/curated|reward.?models?|rewardbench|leaderboard|sole.?author|aacl|arrsi|benchmark/)],dv:'curated',f:['research'],a:say(`<b>Curated to Win</b> is Adrian’s sole-author paper, accepted at the ARRSI workshop at AACL-IJCNLP 2026.`,`It certifies when picking a reward model or AI judge by its score on a test set can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 questions, but removing 12 particular ones makes the runner-up the winner.`)},
+    {k:[K(/whose line|self.?recogni|own writing|llm judges?|ai judges?|\bjudges?\b|preprint|arxiv/)],dv:'compllm',f:['research'],a:say(`<b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b> asks whether AI judges recognize their own writing.`,`Across nine judges and 1,270 texts, the usual test flags 15 of 37 cases; with two controls added, none beats the judge’s strongest single peer. It is a preprint, arXiv forthcoming; Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
+    {k:[K(/portfolio optim|markowitz|1\/n|ojss|oxford|splitting (money )?evenly|equal.?weight|sharpe/)],dv:'portfolio',f:['research'],a:say(`<b>Does Portfolio Optimization Beat Splitting Evenly?</b> is accepted with revisions at the Oxford Journal of Student Scholarship.`,`Splitting money evenly beat the Markowitz-optimal portfolio in 74% of 250 market simulations. Adrian is co-first author with his brother, Ryan Erlikhman.`)},
+    {k:[K(/legatum|prosperity|jhss|countries|monte carlo|sensitivity/)],dv:'legatum',f:['research'],a:say(`<b>How Robust Are the Legatum Prosperity Index Rankings?</b> is accepted with revisions at the Journal of High School Science.`,`It rebuilds the index’s ranking of 167 countries exactly, then stress-tests it with 30,000 alternative weightings and a 131,072-run sensitivity analysis. Adrian is co-first author with Ryan Erlikhman.`)},
+
+    /* internships */
+    {k:[K(/firstness|research engine|hypothes/)],f:['experience'],a:say(`At ${S('xp-firstness','<b>Firstness</b>')}, an AI research engine that turns a scientist’s question into hypotheses cited to the literature, Adrian is a Software Engineering & ML Intern (2026 to now).`,`He works one-on-one with the founder, a UC Berkeley- and UCSF-affiliated neuroscientist, connecting the platform to the tools scientists already use for literature, data and analysis, and turning the founder’s research into product demos.`)},
+    {k:[K(/kiddom|flora|k.?12|edtech|education company/)],f:['experience'],a:say(`At ${S('xp-kiddom','<b>Kiddom</b>')}, Adrian is in a Machine Learning Internship & Mentorship (2026 to now) with Kiddom’s Director of Data Science.`,`He built ${X('https://adrian-erlikhman.github.io/why-wrong/','Why Wrong')}, which names the misconception behind each wrong answer on a class’s answer sheets, and is designing its classroom evaluation with an LAUSD teacher.`)},
+    {k:[K(/fjor|\$15m|15 ?million|yc (batch|startups)|134|investment memo|diligen/)],f:['experience'],a:say(`At ${S('xp-fjor','<b>Fjor Venture Capital</b>')}, a $15M early-stage fund, Adrian was an Investment & Software Engineering Intern (2024 to 2026).`,`He built the classifier and scoring models that ranked all 134 startups in Y Combinator’s Summer 2025 batch and led the screen, diligenced 20+ AI startups, wrote 10+ investment memos for partner-level decisions, and built the fund’s internal deal-flow software.`)},
+    {k:[K(/alliance|socal|investor.?match|matching engine|deep.?tech/)],f:['experience'],a:say(`At ${S('xp-alliance','<b>Alliance for SoCal Innovation</b>')}, Adrian was a Venture & Data Strategy Intern (2024 to 2026).`,`He built a Python/SQL engine that matches startups to investors across 10,000 contacts at 250+ VC firms, angel groups and accelerators, cutting a founder’s search from days to under a minute. He also led outreach to 80+ founders and mapped Southern California’s deep-tech startups.`)},
+    {k:[K(/venture|\bvc\b|invest|startups?(?! school)|entrepreneur/)],f:['experience','work'],a:say(`On the venture side: at ${S('xp-fjor','Fjor')} he built the models that ranked all 134 startups in YC’s Summer 2025 batch and wrote 10+ investment memos, and at ${S('xp-alliance','Alliance for SoCal Innovation')} he built the engine that matches startups to investors.`,`He went through Y Combinator’s Startup School 2026, and he co-founded ${S('case-safejew','SafeJew')} and ${S('case-aimlli','AIML-LI')}.`)},
+    {k:[K(/financ|quant|stocks?|trading|sifma|stock market|econ/)],f:['research','experience'],a:say(`Finance runs through a lot of his work:`)+ul([`${S('rs-t4','<b>A journal paper</b>')} showing that splitting money evenly beat the Markowitz-optimal portfolio in 74% of 250 simulations`,`${S('case-monte','<b>Monte</b>')}, 1st place in TrojanHacks’ Finance track`,`${S('xp-fjor','<b>Fjor</b>')}, where he built the models that screened YC’s Summer 2025 batch`,`<b>Top 5% statewide</b> in the SIFMA Stock Market Game, entered solo against teams`])},
+
+    /* school and numbers */
+    {k:[K(/\bgpa\b|\bgrades\b|grade point|unweighted|\bweighted\b|transcript/)],f:['record'],a:say(`Adrian has a <b>4.0 unweighted GPA</b> (5.2 weighted) at the Los Angeles Center for Enriched Studies.`)},
+    {k:[K(/\bsat\b|\bact\b|test scores?|standardi[sz]ed/)],f:['record'],a:say(`He scored <b>1520 on the SAT</b>, with a 770 in Math.`)},
+    {k:[K(/national merit|\bpsat\b|nmsqt|merit (scholar|semi)/)],f:['record'],a:say(`He is a <b>National Merit Semifinalist</b> (2027 program): about 16,000 of 1.3 million+ entrants.`)},
+    {k:[K(/\baps?\b|advanced placement|ap scholar/),K(/math class|math course|classes|courses|coursework|dual enroll|college (class|course)|linear algebra|calculus|community college/,3)],f:['record'],a:say(`<b>17 AP courses</b>: 11 taken so far, every exam a 4 or 5, and 6 more this year. He is a 2× AP Scholar with Distinction.`,`He also takes college classes through LACCD dual enrollment: Linear Algebra (MATH 270, L.A. Southwest College) and Programming in Python (CS 119), with Python Programming for Data Science and Machine Learning (CS 121) next.`)},
+    {k:[K(/what grade|which grade|\bsenior\b|class of|graduat|what year/)],f:['about'],a:say(`He is a high-school senior, class of 2027.`)},
+    {k:[K(/how old|\bage\b|birthday|born/)],f:['about'],a:say(`The site doesn’t list his age. He is a high-school senior, class of 2027.`)},
+    {k:[K(/\bschool\b|laces|enriched studies|magnet|go to school/)],f:['about'],a:say(`He is a senior at the <b>Los Angeles Center for Enriched Studies (LACES)</b>, an LAUSD magnet school in Los Angeles, class of 2027.`)},
+    {k:[K(/\blives?\b|hometown|where.*\bfrom\b|based (in|out)|located|which city|what city|\bstate\b/)],f:['about'],a:say(`Los Angeles, California.`)},
+
+    /* who he is, off the laptop */
+    {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping/)],f:['fencing','about'],a:say(`Off the laptop he fences épée for Team USA, and he likes eating, puzzles, the outdoors and naps.`,`The outdoors means rock climbing, backpacking, hiking, road cycling and swimming in alpine lakes.`)+pics('climb','backpack','cycle','hike')},
+    {k:[K(/\bfood\b|\beat\b|eating|favou?rite (meal|dish|restaurant|snack)|cook/)],f:['about'],a:say(`Eating is on his own list of hobbies, right after fencing. The site doesn’t name a favorite food; that one you’d have to ask him: ${MAIL}`)},
+    {k:[K(/\bnaps?\b|napping|sleep/)],f:['about'],a:say(`Yes, naps are on his own list of hobbies, next to eating, puzzles and the outdoors.`)},
+    {k:[K(/brother|sibling|ryan|family/)],f:['research'],a:say(`His brother, Ryan Erlikhman, is his co-author on two papers: ${S('rs-t4','the portfolio paper')} (Oxford Journal of Student Scholarship) and ${S('rs-t5','the Legatum robustness audit')} (Journal of High School Science).`)},
+    {k:[K(/jewish|\bjsu\b|judaism|religio/)],f:['record'],a:say(`He is president of the <b>Jewish Student Union</b> at LACES (50+ members, two years) and co-founded ${S('case-safejew','SafeJew')}, a live map of antisemitic incidents across Greater Los Angeles.`)},
+    {k:[K(/interest|passion|care about|what is he into|fields?|major|study in college|want to (study|do|be)|career|future|goals?|dream/)],f:['research','work'],a:say(`His fields are machine learning and NLP, AI evaluation, data science, quantitative finance, startups and AI in education.`,`In his own words, he builds software for problems he cares about, for people who need it, and wants to keep doing that through college and his professional life.`)},
+    {k:[K(/college|universit|appl(y|ying|ication)|admission|\bmit\b|recruit|harvard|stanford|ivy/)],f:['fencing'],a:say(`He is in <b>active recruitment with MIT</b> for fencing. The site doesn’t list where else he is applying.`)},
+    {k:[K(/why (should|admit|hire|him)|impressive|special|stand ?out|highlights?|summary|summari[sz]e|tl.?dr|in short|sum (him|it) up|accomplish|proud|best (thing|work)|resume summary|in a nutshell/)],f:['research','work','fencing'],a:say(`In short:`)+ul([`<b>Four accepted papers</b>, one a Best Paper Finalist at IEEE BigData and one sole-authored, at an AACL-IJCNLP workshop`,`<b>Team USA épée</b>: 6th at the Cadet Pan-American Championships, and a peak of No. 17 nationally as a Cadet`,`<b>Four internships</b> in machine learning, software and venture capital`,`<b>Four hackathon wins</b>: TrojanHacks, SEPHacks, VISION HACK and Decode the Ocean`,`<b>National Merit Semifinalist</b>, with a 4.0 unweighted GPA and a 1520 SAT`])},
+    {k:[K(/right now|currently|these days|working on|up to|upcoming|coming up|this (fall|month|winter)/)],f:['experience','research'],a:say(`Right now he is interning at ${S('xp-firstness','Firstness')} and in ${S('xp-kiddom','Kiddom’s')} ML mentorship.`,`Coming up: ${S('rs-t2','Curated to Win')}’s workshop (ARRSI at AACL-IJCNLP, 10 Nov), aiEDU’s student panel at NCSS in San Diego (2 Dec), and IEEE BigData in Phoenix (17 Dec), where ${S('rs-t1','his multilingual attribution paper')} is a Best Paper Finalist.`)},
+
+    /* research in general */
+    {k:[K(/how many (papers|publications)|publications?|published|peer.?review|list (of )?(his )?papers/)],f:['research'],a:say(`Five papers: four accepted and one preprint.`)+ul([`${S('rs-t1','<b>Interpretable Multilingual Attribution of Frontier LLMs</b>')}: IEEE BigData 2026 High School Symposium, Best Paper Finalist`,`${S('rs-t2','<b>Curated to Win</b>')}: ARRSI workshop at AACL-IJCNLP 2026, sole author`,`${S('rs-t3','<b>Whose Line Is It Anyway?</b>')}: preprint, arXiv forthcoming`,`${S('rs-t4','<b>Does Portfolio Optimization Beat Splitting Evenly?</b>')}: accepted with revisions, Oxford Journal of Student Scholarship`,`${S('rs-t5','<b>How Robust Are the Legatum Prosperity Index Rankings?</b>')}: accepted with revisions, Journal of High School Science`])},
+    {k:[K(/journals?/)],f:['research'],a:say(`Two journal papers, both accepted with revisions and both with his brother Ryan: ${S('rs-t4','the portfolio paper')} at the Oxford Journal of Student Scholarship and ${S('rs-t5','the Legatum robustness audit')} at the Journal of High School Science.`)},
+    {k:[K(/co.?authors?|collaborat|michael|tarekegn|philo|juang|who (does|did) he work with|teammates?/)],f:['research','work'],a:ul([`<b>Michael Tarekegn</b>: co-author on both LLM papers, and his teammate on Hivemind, Monte and Safe Routes`,`<b>Philo Juang</b>: co-author on both LLM papers`,`<b>Ryan Erlikhman</b>, his brother: co-author on the two journal papers`])+say(`${S('rs-t2','Curated to Win')} is his alone.`)},
+    {k:[K(/mentor|advis|supervis|professor|\bphd\b/)],f:['research'],a:say(`His two LLM papers are co-authored with Philo Juang. At ${S('xp-kiddom','Kiddom')} he is mentored by the Director of Data Science, and his advanced mathematics research is with a PhD mentor.`)},
+    {k:[K(/\bmath|number theory|combinator|game theory|induction|olympiad/)],f:['research'],a:say(`Alongside the ML work, he is doing advanced mathematics research with a PhD mentor: induction, number theory, combinatorics and game theory.`)},
+    {k:[K(/languages? (does|do|can) he speak|speak (any )?(other |foreign )?languages|spanish|russian|hebrew|bilingual|fluent/,4)],f:['about'],a:say(`The site doesn’t list the languages he speaks. Ask him directly: ${MAIL}`)},
+    {k:[K(/conferences?|present|\btalks?\b|speak(er|ing)?|panel|podcast|phoenix|san diego|hengqin|china|ncss|aiedu/)],f:['research','record'],a:say(`He will present at the IEEE BigData 2026 High School Symposium in Phoenix (17 Dec), where ${S('rs-t1','his multilingual attribution paper')} is a Best Paper Finalist, and speak on aiEDU’s student panel on AI at NCSS 2026, the National Consortium of STEM Schools, in San Diego (2 Dec).`,`${S('rs-t2','Curated to Win')} is accepted at the ARRSI workshop at AACL-IJCNLP 2026 (Hengqin, China, 10 Nov), and aiEDU has invited him onto its podcast, hosted by its CEO, Alex Kotran.`)},
+
+    /* skills */
+    {k:[K(/programming|coding|tech ?stack|\bstack\b|python|javascript|typescript|react|next\.?js|\bsql\b|skills|code in|frameworks?|what tools/)],f:['work'],a:ul([`<b>Python</b> for ML and data: his papers, the Citadel bot, Alliance’s investor-matching engine and AIML-LI’s notebooks`,`<b>TypeScript and JavaScript</b>, with Next.js and Supabase, for the web: Hivemind, Monte and SafeJew`,`<b>SQL</b> for data work, as in the investor-matching engine`])},
+    {k:[K(/hackathons?|\bhacks?\b|\bwon\b|\bwins?\b|winning|first place|1st place|placed/)],f:['work'],a:say(`Four wins and a 3rd:`)+ul([`<b>1st, Finance track</b>, ACM TrojanHacks 2026: ${S('case-monte','Monte')}`,`<b>Won Lemma’s agent track</b>, SEPHacks 2026: ${S('case-hivemind','Hivemind')}`,`<b>1st, Council District 9 Champion, Under 18</b>, VISION HACK: South LA: ${S('case-ledger','Ledger')}`,`<b>1st</b>, Decode the Ocean (Lovable × United Nations): eDNAtlas`,`<b>3rd internationally</b>, Code for Transportation: ${S('case-saferoutes','Safe Routes')}`])},
+    {k:[K(/\bgrants?\b|funded|funding|jfedla|federation/)],f:['work'],a:say(`${S('case-safejew','SafeJew')} is funded by a <b>Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles (JFEDLA).`)},
+
+    /* fencing */
+    {k:[K(/what is (an )?[ée]p[ée]e|what'?s (an )?[ée]p[ée]e|weapons?|\bfoil\b|sabre|saber/,4)],f:['fencing'],a:say(`Épée is one of fencing’s three weapons. The whole body is target, touches land with the point, and there is no right-of-way, so both fencers can score at once.`)},
+    {k:[K(/\branks?\b|ranked|ranking|number one|\bno\.? ?\d|how good|national(ly)?|standing/)],f:['fencing'],a:say(`Nationally he is <b>No. 49 in U.S. Junior (U20)</b> and <b>No. 78 in U.S. Senior</b> épée, with a peak of <b>No. 17 as a Cadet (U17)</b>. He is No. 1 in Region 4. ${X('https://fencingtracker.com/p/100253463/Adrian-Erlikhman','Full record')}`)},
+    {k:[K(/rating|\ba26\b|a.?rated/)],f:['fencing'],a:say(`<b>A26</b>: an A, the highest USA Fencing rating, earned in 2026.`)},
+    {k:[K(/team usa|pan.?am|bogot|represent|international|\busa\b|what team/)],f:['fencing'],a:say(`He fenced for <b>Team USA</b> at the Cadet Pan-American Championships in Bogotá and placed 6th.`)+pics('lunge','podium')},
+    {k:[K(/\bclub\b|coach|\btrain(s|ing)?\b|practice|fencing center/)],f:['fencing'],a:say(`He trains at LA International Fencing Center.`)},
+    {k:[K(/results?|medals?|tournaments?|nationals|\bnac\b|north american cup|podium|best finish/)],f:['fencing'],a:say(`His best results:`)+ul([`<b>6th</b>, Cadet Pan-American Championships, for Team USA (Bogotá)`,`<b>Top 8</b>, Super Junior & Cadet Circuit`,`<b>Top 16</b>, Cadet, October North American Cup`,`<b>Top 32</b>, Div I, National Championships`,`<b>4× Junior Regional Champion</b>`])},
+    {k:[K(/all.?american|all.?academic/)],f:['fencing','record'],a:say(`He is a <b>3× All-American</b> and a <b>3× All-Academic</b>, both First Team, from USA Fencing. All-Academic takes a national result and a 3.85+ GPA.`)},
+    {k:[K(/\bvideos?\b|\bwatch\b|\bbouts?\b|footage|\bclips?\b/)],go:'fencing',to:'bouts'},
+
+    /* honors */
+    {k:[K(/y ?combinator|\byc\b|startup school/,4)],f:['record'],a:say(`He was admitted to <b>Y Combinator’s Startup School 2026</b>, which takes under 5% of applicants.`)+pics('yc')},
+    {k:[K(/stemsters|volunteer|elementary|community service|tutor/)],f:['record'],a:say(`He co-founded and is president of <b>STEMsters</b> at LACES: 30+ volunteers in four elementary schools.`)},
+    {k:[K(/\bleader(ship)?s?\b|president|\blead(s|ing)?\b|co.?found|founded/)],f:['record','work'],a:ul([`<b>President</b>, Jewish Student Union at LACES (50+ members, two years)`,`<b>Co-founder and president</b>, STEMsters (30+ volunteers in four elementary schools)`,`<b>Co-founder and lead</b>, ${S('case-aimlli','AIML-LI')}, since 2023`,`<b>Co-founder</b>, ${S('case-safejew','SafeJew')}`])},
+
+    /* reaching him */
+    {k:[K(/phone|call him|text him|\bcell\b/)],f:['contact'],a:say(`Email is the way to reach him: ${MAIL}. He usually answers the same day.`)},
+    {k:[K(/linkedin/)],f:['contact'],a:say(`${X('https://www.linkedin.com/in/adrian-erlikhman-78a262414','linkedin.com/in/adrian-erlikhman-78a262414')}`)},
+    {k:[K(/github|\brepos?\b|repositor|open.?source|source code|\bcode\b/)],f:['contact'],a:say(`His code is on GitHub: ${X('https://github.com/adrian-erlikhman','github.com/adrian-erlikhman')}. The public repos include the code and data for ${X('https://github.com/adrian-erlikhman/LangLLM','his multilingual attribution paper')}, ${X('https://github.com/adrian-erlikhman/curated-to-win','Curated to Win')} and ${X('https://github.com/adrian-erlikhman/self-recognition-peer-baseline','Whose Line Is It Anyway?')}.`)},
+    {k:[K(/r[eé]sum[eé]|\bcv\b/)],f:['contact'],a:say(`Here is his résumé: <a href="resume.pdf" target="_blank" data-cv-menu>open it</a> (one page, or three).`)},
+    {k:[K(/instagram|twitter|tiktok|social media|socials/)],f:['contact'],a:say(`He is on ${X('https://www.linkedin.com/in/adrian-erlikhman-78a262414','LinkedIn')} and ${X('https://github.com/adrian-erlikhman','GitHub')}; those are the ones on the site.`)},
+    {k:[K(/e-?mail|contact|reach|get in touch|message him|talk to him|hire|hiring/)],go:'contact'},
+
+    /* whole topics: these open their conversation */
+    {k:[K(/intern|experience|\bjobs?\b|worked|employ|work history/,2)],go:'experience'},
+    {k:[K(/research|papers?|study|studies|scien/,2)],go:'research'},
+    {k:[K(/built|\bbuild|projects?|\bapps?\b|products?|\bmade\b|creat|software/,2)],go:'work'},
+    {k:[K(/fenc|[ée]p[ée]e|sports?|athlet/,2)],go:'fencing'},
+    {k:[K(/honou?rs?|awards?|achiev|recogni|prizes?|accolade/,2)],go:'record'},
+    {k:[K(/\bwho\b|about (him|adrian)|tell me about|introduc|background|\bbio\b|what does (he|adrian) do|^adrian\??$|^him\??$/,2)],go:'about'},
+
+    /* the chat itself */
+    {k:[K(/are you (an? )?(ai|bot|robot|real|human|chat ?gpt|gpt|claude|llm|person)|is this (an? )?(ai|chat ?gpt|gpt|real|bot)|who am i (talking|speaking)|chat ?bot|chat ?gpt/,4)],f:['about'],a:say(`There is no AI model here. This is Adrian’s site, laid out like a chat, and every answer is written ahead of time from his record, so it can’t make anything up.`)},
+    {k:[K(/this (site|website|page)|the (site|website)|how was this (made|built)/)],f:['about'],a:say(`It is Adrian’s own site: plain HTML, CSS and JavaScript on GitHub Pages, laid out like a chat. Every answer is written ahead of time from his record.`)},
+    {k:[K(/^(hi|hello|hey|yo|sup|hiya|howdy|good (morning|afternoon|evening))\b/)],f:['about','research','work'],a:say(`Hi! Ask anything about Adrian: his research, what he has built, his internships, his fencing or his honors.`)},
+    {k:[K(/how are you|how'?s it going|what'?s up/)],f:['about'],a:say(`Doing well, thanks. Ask anything about Adrian.`)},
+    {k:[K(/thanks?|thx|appreciate|\bcool\b|\bnice\b|awesome|\bgreat\b|\bwow\b/,2)],f:['contact'],a:say(`Glad that helped. Anything else about Adrian?`)},
+    {k:[K(/\bhelp\b|what can (i|you)|what do you know|options|\bmenu\b/)],help:1}
+  ];
+  const norm=t=>t.toLowerCase().replace(/[’‘`]/g,"'").replace(/\s+/g,' ').trim();
+  function best(t){ let top=null,s=0; for(const e of KB){ let v=0; for(const [re,w] of e.k) if(re.test(t)) v+=w; if(v>s){ s=v; top=e; } } return s>=2?top:null; }
+  const chips=ks=>`<div class="cg-follow">${ks.map(chipHTML).join('')}</div>`;
+  const card=k=>{ const d=BIG&&BIG.D&&BIG.D[k]; if(!d) return '';
+    return `<div class="cg-cards"><a class="cg-card${IMG[k]?'':' noimg'}" href="#" data-cgdv="${k}">${IMG[k]?`<img src="${IMG[k]}" alt="" loading="lazy">`:''}<div class="t"><b>${d.n.split(':')[0]}</b><span>${d.a[0]}</span></div></a></div>`; };
+  const helpHTML=()=>say(`I can tell you about Adrian’s research, what he has built, his internships, his fencing and his honors, and most smaller things too: his GPA, his school, his rankings, how to reach him. Try one of these:`)+chips(Object.keys(convs));
+  const missHTML=()=>say(`I don’t have an answer for that one. I only know about Adrian: his research, what he has built, his internships, his fencing and his honors.`,`If it’s about him and I missed it, ask him directly: ${MAIL}.`)+chips(['about','research','work','fencing']);
+  /* a typed answer goes under the open conversation, as a follow-up; from the empty screen it starts a fresh thread ("ask") */
+  function askConv(){ if(!convs.ask){ col.insertAdjacentHTML('beforeend','<article class="cg-conv" data-conv="ask" id="c-ask"></article>'); convs.ask=col.lastElementChild; } return 'ask'; }
   async function reply(text,html){
     if(busy){ run++; busy=false; }
     const my=++run; busy=true;
-    if(!cur){ select('about'); played.add('about'); }      // a typed question with nothing open lands under "Who are you?"
+    if(!cur) select(askConv());
     const c=convs[cur];
     c.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div><div class="cg-a cg-extra"></div>`);
     const kids=c.children,u=kids[kids.length-2].firstElementChild,a=kids[kids.length-1]; u.textContent=text;
     thread.scrollTop=u.parentElement.offsetTop-12;
-    a.innerHTML='<span class="cg-think">Thinking</span>'; await sleep(RM?100:800); if(my!==run) return;
-    const tmp=document.createElement('div'); tmp.innerHTML=html;
-    a.innerHTML=''; for(const el of [...tmp.children]){ if(my!==run) break; a.appendChild(el);
+    a.innerHTML='<span class="cg-think">Thinking</span>'; await sleep(RM?100:800);
+    const tmp=document.createElement('div'); tmp.innerHTML=html;     // a newer question cuts the animation, never the answer
+    a.innerHTML=''; for(const el of [...tmp.children]){ a.appendChild(el); if(my!==run) continue;
       if(el.matches('.cg-say')){ const h=el.innerHTML; await streamSay(el,h,my); } else { stagger(el); await sleep(220); } }
-    a.insertAdjacentHTML('afterend',acts()); busy=false;
+    a.insertAdjacentHTML('afterend',acts()); if(my===run) busy=false;
   }
-  const ENT=[['hivemind',/hivemind|shared memory|coding agent/],['monte',/\bmonte\b|credit card|tap to pay|trojanhack/],['safejew',/safejew|antisemit/],
-    ['aimlli',/aiml|ai literacy|ai course|summit/],['ledger',/ledger|corner store|\bsnap\b|vision ?hack/],['saferoutes',/safe ?routes|walkhome|robb|commute/],
-    ['citadel',/citadel|terminal|dunderscore|tower.?defen/],['langllm',/ieee|bigdata|multilingual|attribution|fingerprint|which (ai|model) wrote|langllm|best paper/],
-    ['curated',/curated|reward.?model|rewardbench|leaderboard|sole.?author|aacl|arrsi/],['compllm',/whose line|self.?recogni|own writing|llm judge|\bjudges?\b/],
-    ['portfolio',/portfolio|markowitz|1\/n|ojss|splitting evenly|sharpe/],['legatum',/legatum|prosperity|jhss/]];
-  const TOP=[['contact',/e-?mail|contact|reach|r[eé]sum[eé]|\bcv\b|linkedin|github|hire/],['fencing',/fenc|[ée]p[ée]e|team usa|sport|athlet|\bmit\b|pan.?am|ranking|bout/],
-    ['research',/research|paper|publish|study|studies|journal|arxiv/],['work',/built|\bbuild|project|\bapps?\b|product|hackathon|\bcode\b|software|made/],
-    ['experience',/intern|experience|\bjobs?\b|worked (at|for)|firstness|kiddom|fjor|alliance|venture|\bfund\b/],
-    ['record',/honou?r|award|achiev|stand ?out|merit|y ?combinator|\byc\b|startup school|\bsat\b|\bgpa\b|\bap\b/],
-    ['about',/\bwho\b|about you|yourself|tell me|school|laces|senior|background|^adrian\??$/]];
-  function answer(t){ const l=t.toLowerCase();
-    if(TOP[0][1].test(l)) return open('contact');
-    for(const [k,re] of ENT) if(re.test(l)){ const h=entityHTML(k); if(h) return reply(t,h); }
-    for(const [k,re] of TOP.slice(1)) if(re.test(l)) return open(k);
-    return reply(t,helpHTML()); }
+  function answer(t){ const e=best(norm(t));
+    if(!e) return reply(t,missHTML());
+    if(e.go) return open(e.go,e.to?{to:e.to,instant:true}:{});
+    if(e.help) return reply(t,helpHTML());
+    return reply(t,e.a+(e.dv?card(e.dv):'')+(e.f?chips(e.f):'')); }
 
   /* ---- the visitor ---- */
   const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
@@ -1665,10 +1773,19 @@ const BIG=(function(){
     const act=e.target.closest('[data-act]'); if(act){ stopAuto(); const row=act.parentElement,box=row.previousElementSibling;
       if(act.dataset.act==='copy'){ const done=()=>{ act.innerHTML=P(IC.ok); setTimeout(()=>act.innerHTML=P(IC.copy),1500); };
         try{ navigator.clipboard.writeText(box.innerText).then(done,done); }catch(_){ done(); } }
-      else if(act.dataset.act==='again'){ const conv=act.closest('.cg-conv'); if(conv&&row===conv.querySelector('.cg-acts2')){ played.delete(conv.dataset.conv); open(conv.dataset.conv); } }
+      else if(act.dataset.act==='again'){ const conv=act.closest('.cg-conv'); if(conv&&conv.dataset.conv!=='ask'&&row===conv.querySelector('.cg-acts2')){ played.delete(conv.dataset.conv); open(conv.dataset.conv); } }
       else { act.classList.toggle('on'); row.querySelector(`[data-act="${act.dataset.act==='up'?'down':'up'}"]`).classList.remove('on'); }
       return; }
   });
+  /* photos in an answer (About, the outdoors, Team USA) open large on a click, as ChatGPT's image results do */
+  const lb=document.createElement('div'); lb.className='cg-lb'; lb.hidden=true;
+  lb.innerHTML=`<button class="cg-ib cg-lbx" type="button" aria-label="Close">${P('<path d="M5 5l10 10M15 5L5 15"/>')}</button><img alt=""><p></p>`;
+  document.body.appendChild(lb); const lbImg=lb.querySelector('img');
+  const lbClose=()=>{ if(lb.hidden) return; lb.hidden=true; if(lb._from) lb._from.focus(); };
+  lb.addEventListener('click',lbClose);
+  root.addEventListener('click',e=>{ const b=e.target.closest('.cg-imgs button'); if(!b) return; e.preventDefault(); stopAuto();
+    const im=b.querySelector('img'); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; lb.querySelector('p').textContent=b.dataset.cap||'';
+    lb._from=b; lb.hidden=false; lb.querySelector('.cg-lbx').focus(); });
   /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
   function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }
   window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); return true; };
@@ -1679,7 +1796,7 @@ const BIG=(function(){
   inp.addEventListener('focus',stopAuto);
   inp.addEventListener('input',()=>send.classList.toggle('cg-off',!inp.value.trim()));
   form.addEventListener('submit',e=>{ e.preventDefault(); const t=inp.value.trim(); if(!t) return; stopAuto(); inp.value=''; send.classList.add('cg-off'); answer(t); });
-  $('cgNew').addEventListener('click',()=>{ stopAuto(); run++; busy=false; root.classList.remove('chatting'); Object.values(convs).forEach(c=>c.classList.remove('on')); cur=null; mark(''); closeSide(); inp.focus(); });
+  $('cgNew').addEventListener('click',()=>{ stopAuto(); run++; busy=false; if(convs.ask) convs.ask.innerHTML=''; root.classList.remove('chatting'); Object.values(convs).forEach(c=>c.classList.remove('on')); cur=null; mark(''); closeSide(); inp.focus(); });
   $('cgSearch').addEventListener('click',()=>{ stopAuto(); closeSide(); inp.focus(); });
   $('cgPlus').addEventListener('click',()=>{ stopAuto(); reply('What can I ask?',helpHTML()); });
   const model=$('cgModel'),pop=$('cgPop');
@@ -1687,7 +1804,7 @@ const BIG=(function(){
   model.addEventListener('click',e=>{ e.stopPropagation(); popOpen(pop.hidden); });
   pop.addEventListener('click',()=>popOpen(false));
   document.addEventListener('click',e=>{ if(!pop.hidden&&!e.target.closest('.cg-mw')) popOpen(false); });
-  addEventListener('keydown',e=>{ if(e.key==='Escape'){ popOpen(false); closeSide(); } });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'){ popOpen(false); closeSide(); lbClose(); } });
   function closeSide(){ root.classList.remove('side-open'); }
   $('cgMenu').addEventListener('click',()=>root.classList.add('side-open'));
   $('cgClose').addEventListener('click',closeSide);

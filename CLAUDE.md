@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-29-nofoot`, site.js `2026-10-29-allchat`).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-29-kb`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -506,6 +506,21 @@ with "a lot of updates" still to come. What shipped:
   gone). The section notes below still hold for content and wording; their layout notes are history.
   **No line under the composer** (Adrian, 29 Oct: remove the "© 2026 Adrian Erlikhman · Los Angeles · every answer here
   is my own work" line). He is now going through the conversations one at a time.
+  **Third person and typed answers (29 Oct, later).** Adrian: "be like Adrian is this, right, switch the tense. maybe it
+  should have photos". The chat now speaks about him: the questions are "Who is Adrian?", "Where has he interned?", "What
+  has he built?", "Does he really fence for Team USA?", "How can I reach him?"; the sidebar says About Adrian and What
+  he's built; About is his three paragraphs turned to "Adrian is... He builds...", under a ChatGPT-style photo grid
+  (`.cg-imgs`: headshot large, then the Pan-Ams lunge, the YC sign, climbing, cycling; a click opens `.cg-lb`). The
+  Internships and Research text still says "I"/"we": switch them when he reviews those. **"Type literally anything"**: he
+  chose written answers over a live AI model. site.js `KB` holds ~90 answers in the third person, every fact from
+  llms.txt or the page (GPA, SAT, APs and dual enrollment, school, age not listed, hobbies with photos, brother, JSU,
+  fields, MIT, a summary, what's next, each internship, each paper and project with a card that opens the big view, the
+  paper list, co-authors, skills, hackathons, rankings, rating, Team USA, club, results, YC, leadership, contact, "is
+  this AI" (no model, written ahead of time), greetings). Scoring: weight 3 for a fact, 2 for a whole topic (which opens
+  its conversation instead), ties to the earlier entry; under 2 it says it doesn't have that one and gives his email.
+  A question typed on the empty screen starts its own thread (`#c-ask`, cleared by New chat); typed inside a
+  conversation it follows on there. Add an answer rather than stretching a pattern, and run a batch of questions
+  through `best(norm(q))` in node after any change: "about" contains "bout", "leaderboard" contains "leader".
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
