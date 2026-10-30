@@ -1391,9 +1391,9 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
    30 Oct, Adrian picked A of three takes (_mock/bv.html?take=a|b|c; B put it in the thread, C was a tidier popup): the
    project opens in a panel on the right, as ChatGPT's canvas does, and the chat stays on the left with the clicked card
    outlined. The panel speaks the chat's Geist: name and an Open button on top, the live site or film large, then the
-   result, one precise sentence, How it works and His part. Under 1000px it covers the screen. A paper named in a typed
-   question goes to its panel in Research instead, which keeps the old big view's look (.dv-*, his pick). Every fact is
-   from the paper or the old case cards (d7a3a82, 6cf89dc); keep them in step with both. */
+   result, one precise sentence, How it works and His part. Under 1000px it covers the screen. Papers open here too,
+   from Research's list (also his pick of three, later that day) or a typed question. Every fact is from the paper or
+   the old case cards (d7a3a82, 6cf89dc); keep them in step with both, and with Research's rows in index.html. */
 const BIG=(function(){
   const dv=document.getElementById('dv'); if(!dv) return null;
   const $=id=>document.getElementById(id);
@@ -1524,20 +1524,18 @@ const BIG=(function(){
   let back=null,onClose=null,src=null;
   function open(key,from,closed){
     const d=D[key]; if(!d) return false;
-    const pp=d.paper&&document.querySelector(`.cg-pp[data-pp="${key}"]`);
-    if(pp&&window.cgOpen) return window.cgOpen(pp.id);
     const media=d.paper?`<a class="cv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a>`:d.rc?LG.html():W(d.site,d.m);
     const go=d.l[0];
     dv.querySelectorAll('video').forEach(v=>v.pause()); LG.stop();
-    dv.innerHTML=`<header class="cv-top">${d.lg?`<span class="cv-lg"><img src="${d.lg}" alt=""></span>`:''}<div class="cv-id"><b>${d.n}</b><span>${d.k}</span></div>`
+    dv.innerHTML=`<header class="cv-top">${d.lg?`<span class="cv-lg"><img src="${d.lg}" alt=""></span>`:''}<div class="cv-id"><b>${d.paper?d.n.split(':')[0]:d.n}</b><span>${d.k}</span></div>`
       +`${go?L(go[0],go[1],1):''}<button class="cv-x" type="button" data-close aria-label="Close">${X}</button></header>`
       +`<div class="cv-body"><div class="cv-md${d.paper?' pp':''}${d.rc?' lgr':''}">${media}</div><div class="cv-tx">`
-      +`<p class="cv-win"><b>${d.a[0]}</b> · ${d.a[1]}</p><h2 class="cv-t" id="dvT">${d.t}</h2>`
+      +`${d.paper?`<p class="cv-ti">${d.n}</p>`:''}<p class="cv-win"><b>${d.a[0]}</b> · ${d.a[1]}</p><h2 class="cv-t" id="dvT">${d.t}</h2>`
       +`<dl class="cv-dl"><dt>${d.paper?'How':'How it works'}</dt><dd>${d.h}</dd><dt>${d.p[0]}</dt><dd>${d.p[1]}</dd></dl>`
       +`<div class="cv-ln">${d.l.map((x,i)=>L(x[0],x[1],!i).replace('class="btn',`class="${i?'':'cv-go '}btn`)).join('')}</div></div></div>`;
     if(d.rc){ LG.run(); dv.querySelector('.lg-again').addEventListener('click',LG.run); }
     if(src) src.classList.remove('cv-src');
-    src=from&&from.closest?(from.closest('.wg>a')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
+    src=from&&from.closest?(from.closest('.wg>a,.rl-r')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
     if(src) src.classList.add('cv-src');
     if(dv.hidden) back=from||document.activeElement;
     onClose=closed||null;
@@ -1599,7 +1597,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.cg-pps';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.rl';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1818,10 +1816,10 @@ const BIG=(function(){
   const rdClose=()=>{ if(rd.hidden) return; rd.hidden=true; rdF.removeAttribute('src'); if(rd._from) rd._from.focus({preventScroll:true}); };
   rd.addEventListener('click',e=>{ if(e.target===rd||e.target.closest('.cg-rd-x')) rdClose(); });
   addEventListener('keydown',e=>{ if(e.key==='Escape'&&!rd.hidden){ e.stopImmediatePropagation(); rdClose(); } },true);
-  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="/papers/"][href*=".pdf"]'); if(!a||!inlinePDF) return;
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="/papers/"][href*=".pdf"]'); if(!a||!inlinePDF||a.hasAttribute('data-dv')) return;
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
     e.preventDefault(); e.stopPropagation(); stopAuto();
-    const card=a.closest('.cg-pp,.dv-g'), t=card&&card.querySelector('.dv-n');
+    const card=a.closest('.cv'), t=card&&card.querySelector('.cv-ti,.cv-id b');
     rd.querySelector('b').textContent=t?t.textContent:'Paper';
     rd.querySelector('.cg-rd-o').href=a.getAttribute('href');
     rdF.src=a.getAttribute('href')+'#view=FitH'; rd._from=a; rd.hidden=false; rd.querySelector('.cg-rd-x').focus(); },true);
