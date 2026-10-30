@@ -630,3 +630,38 @@ body{overflow:hidden}
    sentence do (Adrian, 30 Oct: "way too many underlines in the research section ... literally everything") */
 .cg-a .pl a,.cg-a .wg>a,.cg-a .tm a,.cg-a .cc a,.cg-a .cg-vids a,.cg-a .cg-src a,.cg-a .btn{text-decoration:none}
 .cg-a .pl li a:hover h3{color:var(--acc)}
+
+/* Research as the big view, inline (30 Oct): each paper a panel, the first page on the navy dot grid at left, the big
+   view's words at right in Latin Modern, five in a column. .cg-rd is the reader that shows a whole PDF over the page. */
+.cg-pps{display:flex;flex-direction:column;gap:16px;margin:4px 0 8px}
+.cg-a .cg-pp{--serif:'LM Roman','Latin Modern Roman',Georgia,serif;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);background:var(--bg);border:1px solid var(--edge);border-radius:18px;overflow:hidden;scroll-margin-top:16px}
+.cg-pp .dv-md{padding:34px 26px;border-radius:0}
+.cg-pp .dv-pg{width:min(230px,86%)}
+.cg-pp .dv-tx{padding:26px 28px 24px}
+.cg-pp .dv-id{padding-right:0}
+.cg-pp .dv-lg{width:34px;height:34px;padding:6px;border-radius:9px}
+.cg-a .cg-pp .dv-n{font:700 18px/1.25 var(--serif);color:var(--ink);margin:0;text-wrap:balance}
+.cg-a .cg-pp .dv-a{margin:18px 0 0}
+.cg-a .cg-pp .dv-a b{font:700 18px/1.25 var(--serif);color:var(--acc)}
+.cg-a .cg-pp .dv-a i{font:italic 15px/1.35 var(--serif)}
+.cg-a .cg-pp .dv-t{font:400 17.5px/1.45 var(--serif);color:var(--ink);margin:16px 0 0;text-wrap:pretty}
+.cg-a .cg-pp .dv-r{margin-top:14px}
+.cg-a .cg-pp .dv-r h4{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
+.cg-a .cg-pp .dv-r p{font:14px/1.55 var(--sans);color:var(--body);margin:4px 0 0}
+.cg-pp .dv-ln{margin-top:18px}
+.cg-pp .dv-ln .btn{padding:8px 13px;font-size:13.5px}
+.cg-rd{position:fixed;inset:0;z-index:9600;background:rgba(21,23,28,.55);display:flex;align-items:stretch;justify-content:center;padding:22px}
+.cg-rd[hidden]{display:none}
+.cg-rd-p{display:flex;flex-direction:column;width:min(1000px,100%);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(21,23,28,.6)}
+.cg-rd-b{display:flex;align-items:center;gap:14px;padding:10px 12px 10px 20px;border-bottom:1px solid var(--cg-line,#e5e5e5);font:14px var(--sans)}
+.cg-rd-b b{flex:1;min-width:0;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cg-rd-o{color:var(--acc);white-space:nowrap;font-weight:500}
+.cg-rd-x{color:#5d5d5d}
+.cg-rd iframe{flex:1;width:100%;border:0;background:#525659}
+@media(max-width:860px){
+  .cg-a .cg-pp{grid-template-columns:1fr}
+  .cg-pp .dv-md{padding:22px;border-right:0;border-bottom:1px solid var(--hair)}
+  .cg-pp .dv-pg{width:min(170px,60%)}
+  .cg-pp .dv-tx{padding:20px 18px}
+}
+.cg-a a.btn,.cg-a .cg-pp a{text-decoration:none}

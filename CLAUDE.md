@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-hf`).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rs`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -531,6 +531,18 @@ with "a lot of updates" still to come. What shipped:
   **Underlines (30 Oct, "way too many underlines in the research section ... literally everything"):** the chat
   underlines links, and a paper row is one big link, so every line of it was underlined. Links that wrap a whole row
   or card (`.pl`, `.wg`, `.tm`, `.cc`, `.cg-vids`, `.cg-src`, `.btn`) now carry none; only links inside a sentence do.
+  **Research (30 Oct, later; Adrian: "like when you clicked on the research in the older version of the site. it should
+  allow them to open the whole paper and the format you have it in is sucky ... dont say 5 papers, just say research").**
+  The sidebar and the "Adrian" menu say just "Research". The answer is the big view's layout inline, all five papers in a
+  column (he dislikes clicking to see the next one, 28 Oct): `.cg-pp` panels with the first page on the navy dot grid
+  and, in Latin Modern, the title, venue, the result over its venue with the navy rule, the question-and-answer
+  sentence, How, Authors and the buttons. Ids `#rs-t1..5` are on the panels. **The words are site.js BIG VIEW `D`'s**:
+  the panels are static HTML built from `D` by a scratch script (dump `D` with node, write `.cg-pps`), so edit `D` and
+  the panel together. "Read the paper" and the first page open **the whole PDF in `.cg-rd`**, a reader over the page
+  using the browser's own PDF viewer (title, "Open in a new tab", ×, Esc); it takes every `/papers/*.pdf` link,
+  including the big view's. Under 760px, where `navigator.pdfViewerEnabled` is false, or on ctrl/cmd-click, the PDF
+  opens in a new tab instead. Whose Line has no hosted PDF (arXiv forthcoming), so its page and button go to the
+  repo. Headless Chrome can't paint a PDF inside a frame: test the reader's state, not its pixels.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
