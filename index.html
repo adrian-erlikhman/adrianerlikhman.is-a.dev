@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-10-29-receipt">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-29-chat">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -287,12 +287,49 @@
   </div>
 </div>
 
-<!-- HOMEPAGE (28 Oct 2026). The hero keeps Fuser's frames and prompt (Adrian: "i like the og way of the landing page");
+<!-- HOMEPAGE (28 Oct 2026; the hero is a chat app since 29 Oct, see below).
      the sections under it are quiet (round 8: plain titles, lists, no pills, no emoji). A click on a hero frame or a
      Selected work card opens the big view (#dv, site.js BIG VIEW). Ids stay the old ones (#papers, #record, #contact,
      #case-*, #rs-t*, #xp-*, #bouts) so links from the palette, llms.txt and elsewhere still land. Styles: /assets/home.css. -->
 <div class="bgfx" aria-hidden="true"></div>
 <div class="wrap">
+  <!-- HERO (29 Oct, Adrian: "make the landing page look exactly like chatgpt ... this is the way to go"): the first screen is a
+       chat app in ChatGPT's layout (sidebar of chats, a model picker that jumps to sections, the empty "what do you want to
+       know" screen, a rounded composer). A question types itself in and sends, "Thinking" shimmers, and the answer streams in
+       with cards that open the big view. Visitors can click a suggestion or type their own; site.js CHAT HERO answers from the
+       site's own facts. No OpenAI marks or names. The site's nav sits under it and sticks once you scroll. Styles: .cg-*. -->
+  <section class="cg" id="top" aria-label="Ask about Adrian">
+    <aside class="cg-side" aria-label="Chats">
+      <div class="cg-st"><a class="cg-logo" href="#about" aria-label="About Adrian"><img src="/img/logos/ae-mark.svg?v=2026-10-23" width="26" height="26" alt=""></a><button class="cg-ib cg-close" id="cgClose" type="button" aria-label="Close sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+      <div class="cg-acts">
+        <button class="cg-si" id="cgNew" type="button"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M11 3.5H5.5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V9"/><path d="M14.6 2.9l2.5 2.5-7 7-3.1.6.6-3.1z"/></svg>New chat</button>
+        <button class="cg-si" id="cgSearch" type="button"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="5.5"/><path d="M13 13l4 4"/></svg>Search chats</button>
+        <a class="cg-si" href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" data-cv-menu><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 2.5h7l3.5 3.5v11.5h-10.5z"/><path d="M12 2.5V6h3.5M7.5 10h5M7.5 13h5"/></svg>Résumé</a>
+      </div>
+      <div class="cg-h">Chats</div>
+      <div class="cg-list" id="cgList"></div>
+      <a class="cg-acc" href="#about"><img src="/adrian.jpg" width="800" height="600" alt=""><div><b>Adrian Erlikhman</b><span>Senior, LACES · Los Angeles</span></div></a>
+    </aside>
+    <button class="cg-scrim" id="cgScrim" type="button" aria-label="Close sidebar"></button>
+    <div class="cg-main">
+      <div class="cg-bar">
+        <button class="cg-ib cg-menu" id="cgMenu" type="button" aria-label="Open sidebar"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.5 6h13M3.5 10h13M3.5 14h9"/></svg></button>
+        <div class="cg-mw"><button class="cg-model" id="cgModel" type="button" aria-haspopup="true" aria-expanded="false">Adrian <small>⌄</small></button>
+          <div class="cg-pop" id="cgPop" hidden><div class="cg-pop-h">Jump to</div>
+            <a href="#about"><b>About</b><span>Who he is, in his words</span></a><a href="#experience"><b>Experience</b><span>Four internships</span></a><a href="#papers"><b>Research</b><span>Five papers, four accepted</span></a><a href="#work"><b>Selected work</b><span>What he has built</span></a><a href="#fencing"><b>Fencing</b><span>Team USA épée</span></a><a href="#record"><b>Achievements</b><span>Twelve honors</span></a><a href="#contact"><b>Contact</b><span>Email and links</span></a></div></div>
+        <div class="cg-r"><a class="cg-pill cg-mail" href="mailto:erlikhman.adrian@gmail.com">Email</a><a class="cg-pill" href="resume.pdf?v=2026-10-21-r01pdf" target="_blank" data-cv-menu>Résumé</a></div>
+      </div>
+      <div class="cg-stage">
+        <div class="cg-empty"><h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: ML researcher, builder and Team USA fencer. </span>What do you want to know about Adrian?</h1></div>
+        <div class="cg-thread" id="cgThread"><div class="cg-col" id="cgCol"></div></div>
+        <div class="cg-cw">
+          <form class="cg-comp" id="cgForm"><button class="cg-ib" id="cgPlus" type="button" aria-label="What can I ask?"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg></button><label class="sr-only" for="cgIn">Ask about Adrian</label><input id="cgIn" placeholder="Ask anything" autocomplete="off" enterkeyhint="send"><button class="cg-send cg-off" id="cgSend" type="submit" aria-label="Send"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16V4M5 9l5-5 5 5"/></svg></button></form>
+          <div class="cg-chips" id="cgChips"></div>
+          <div class="cg-foot">Every answer links to where it comes from. Scroll down for the whole site.</div>
+        </div>
+      </div>
+    </div>
+  </section>
   <header class="nav">
     <a class="me" href="#top" aria-label="Adrian Erlikhman, back to top"><img src="/img/logos/ae-mark.svg?v=2026-10-23" width="24" height="24" alt="">Adrian Erlikhman</a>
     <nav aria-label="Sections"><a href="#about">About</a><a href="#experience">Experience</a><a href="#papers">Research</a><a href="#work">Work</a><a href="#fencing">Fencing</a><a href="#record">Achievements</a></nav>
@@ -300,15 +337,6 @@
   </header>
 
 <main id="main" tabindex="-1">
-  <!-- HERO: every frame is something Adrian made; the prompt types the problem it answers. Click a frame, or Open, for the big view. -->
-  <section class="hero" id="top">
-    <div class="trk" id="trk"></div>
-    <div class="prompt"><div class="q" id="q" aria-live="polite"></div><div class="row"><span class="to" id="to">&nbsp;</span><button class="btn solid" id="go" type="button">Open</button></div></div>
-    <div class="hctl"><button class="hb" id="hPrev" type="button" aria-label="Previous">&#8249;</button><div class="dots" id="dots"></div><button class="hb" id="hNext" type="button" aria-label="Next">&#8250;</button></div>
-    <div class="hl">
-      <h1 data-nosnippet><span class="sr-only">Adrian Erlikhman: </span>Researcher, builder, and <em>Team USA</em> fencer.</h1>
-    </div>
-  </section>
 
   <div class="in strip"><div class="lb">Interned, published and selected at</div>
     <div class="lg"><img src="/img/logos/firstness.svg" alt="Firstness" loading="lazy"><img src="/img/logos/kiddom.svg" alt="Kiddom" loading="lazy"><img src="/img/logos/fjor.webp" alt="Fjor" loading="lazy"><img src="/img/logos/alliance.webp" alt="Alliance for SoCal Innovation" loading="lazy"><img src="/img/logos/ieee.webp" alt="IEEE" loading="lazy"><img class="w" src="/img/logos/aacl.webp" alt="AACL-IJCNLP" loading="lazy"><img class="w2" src="/img/logos/ojss-lockup.webp" alt="Oxford Journal of Student Scholarship" loading="lazy"><img class="w3" src="/img/logos/jhss.webp" alt="Journal of High School Science" loading="lazy"><img src="/img/logos/yc.svg" alt="Y Combinator" loading="lazy"><img src="/img/logos/citadel.webp" alt="Citadel" loading="lazy"></div>
@@ -448,6 +476,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-29-receipt"></script>
+<script src="/assets/site.js?v=2026-10-29-chat"></script>
 </body>
 </html>

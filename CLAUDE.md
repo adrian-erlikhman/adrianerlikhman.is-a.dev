@@ -316,9 +316,9 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **four places** since the 28 Oct homepage: the nav's Résumé button, Contact's
-  Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf" index.html` should print 4. Bump all
-  four whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
+  The `?v=` cache-buster lives in **six places** since the 29 Oct chat hero: the chat's sidebar Résumé link and Résumé
+  pill, the nav's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf"
+  index.html` should print 6. Bump all six whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -419,7 +419,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-28-cards`).
+  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-29-chat`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -476,6 +476,25 @@ with "a lot of updates" still to come. What shipped:
   announcement bar went the same evening ("delete this").
 - **No emoji and no pills anywhere** (Adrian, 28 Oct: "i dont like any weird ass emojis and bubble stuff"): no ✦ or ★,
   buttons are 8px-radius rectangles (`.btn`, `.btn.solid`), statuses are plain navy text.
+- **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
+  the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
+  screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
+  layout: grey sidebar (New chat, Search chats, Résumé, six "chats", his photo and name as the account chip), "Adrian ⌄"
+  as the model picker (a Jump-to menu of the sections), Email and Résumé pills, the empty screen "What do you want to
+  know about Adrian?", the rounded "Ask anything" composer with a black send button, six suggestion chips, and under it
+  "Every answer links to where it comes from. Scroll down for the whole site." **No OpenAI logo, name or marks**: his
+  page mark and "Adrian" instead (a copy of their branding on an admissions site would read as a knockoff).
+  site.js CHAT HERO: after the intro, it types six questions in turn (Who is Adrian? · What has Adrian built? · research
+  · fencing · internships · What else stands out?), each with a "Thinking" shimmer, a word-by-word streamed answer
+  (paragraphs, lists, three screenshot cards, a Sources row of pills to the sections, then copy/thumbs/again icons). It
+  runs only while the hero is on screen and stops for good on any click, tap or keystroke, cutting off a reply mid-stream.
+  Cards with a big view open it (`BIG.open`; BIG now exposes `D`). A typed question gets: contact for email/résumé words;
+  else **a project or paper by name, built from the big view's own `D` entry** (hivemind, monte, citadel/dunderscore,
+  ieee, curated, portfolio, legatum…); else a topic; else a short "I can answer…" with the six chips. Every answer uses
+  facts already on the page; keep them in step with the sections and `D`. Phones: the sidebar slides out from ☰, cards
+  scroll sideways. Under reduced motion answers appear at once and only the first runs. In headless Chrome the intro
+  swarm never finishes (rAF), so test with `/#top`, which skips it. Styles `.cg-*` at the end of home.css. The old
+  frames carousel (below) is gone, with its CSS and the HOME HERO script; its notes are history.
 - **Hero (he chose "the og way" over five reworks, `_mock/landing8.html`):** a carousel of device frames (notched tab with
   three dots, side ports). **Every frame is his work** and the prompt box types **the problem it answers** ("Give a
   team's AI coding agents one shared memory." over Hivemind); mixed pictures (group photo, portrait, logos) didn't make
