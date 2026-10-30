@@ -1583,7 +1583,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.cg-pps';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1792,6 +1792,23 @@ const BIG=(function(){
     else { const im=b.querySelector('img'); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; }
     lb.querySelector('p').textContent=b.dataset.cap||'';
     lb._from=b; lb.hidden=false; lb.querySelector('.cg-lbx').focus(); });
+  /* the paper reader: a link to one of the site's PDFs opens the whole paper over the page, in the browser's own PDF viewer
+     (zoom, search, download). Where the browser can't show a PDF inline (most phones), or on ctrl/cmd-click, the link
+     opens the PDF in a new tab as before. */
+  const rd=document.createElement('div'); rd.className='cg-rd'; rd.hidden=true;
+  rd.innerHTML=`<div class="cg-rd-p" role="dialog" aria-modal="true" aria-label="Paper"><div class="cg-rd-b"><b></b><a class="cg-rd-o" target="_blank" rel="noopener">Open in a new tab ↗</a><button class="cg-ib cg-rd-x" type="button" aria-label="Close">${P('<path d="M5 5l10 10M15 5L5 15"/>')}</button></div><iframe title="Paper"></iframe></div>`;
+  document.body.appendChild(rd); const rdF=rd.querySelector('iframe');
+  const inlinePDF=navigator.pdfViewerEnabled!==false&&matchMedia('(min-width:760px)').matches;
+  const rdClose=()=>{ if(rd.hidden) return; rd.hidden=true; rdF.removeAttribute('src'); if(rd._from) rd._from.focus({preventScroll:true}); };
+  rd.addEventListener('click',e=>{ if(e.target===rd||e.target.closest('.cg-rd-x')) rdClose(); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'&&!rd.hidden){ e.stopImmediatePropagation(); rdClose(); } },true);
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="/papers/"][href*=".pdf"]'); if(!a||!inlinePDF) return;
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
+    e.preventDefault(); e.stopPropagation(); stopAuto();
+    const card=a.closest('.cg-pp,.dv-g'), t=card&&card.querySelector('.dv-n');
+    rd.querySelector('b').textContent=t?t.textContent:'Paper';
+    rd.querySelector('.cg-rd-o').href=a.getAttribute('href');
+    rdF.src=a.getAttribute('href')+'#view=FitH'; rd._from=a; rd.hidden=false; rd.querySelector('.cg-rd-x').focus(); },true);
   /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
   function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }
   window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); return true; };
