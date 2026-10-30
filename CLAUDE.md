@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-canvas`).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-30-canvas`, site.js `2026-10-30-copy`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -593,6 +593,16 @@ with "a lot of updates" still to come. What shipped:
   Safe Routes' "His friends are in that number"). The Selected work opening line is "Three of these won at hackathons
   this fall, and one placed 3rd internationally." (it replaced "Six things people use...", which he disliked), and the
   Citadel tile says "He and two teammates wrote it". The notes below describe the popup this replaced.
+  **Copy, later the same day** (Adrian: "make the proejct descirptions mroe impressive", the look stays): each build
+  leads with scale and outcome, all from the résumés and project notes: Hivemind works in Claude Code, Cursor, Codex
+  and three other tools, eval 36/36 vs 14/36 and a 15/36 placebo; Monte prices each card net of fees and interest,
+  29 cards, 36 tests; SafeJew 1,394 incidents (800 LA + 594 campus), distributed through JFEDLA's Community Security
+  Initiative; AIML-LI's LAUSD path to the Chief Academic and Chief Information Officers, the summit's keynotes, the
+  NCSS and podcast invites; Ledger's 18 programs across three levels of government, 24 test records with no false
+  passes, twelve hours; Safe Routes to all 668 LAUSD schools over LA Metro's 5,395 stops. The answer opens "Hivemind
+  and Monte won at two USC hackathons on the same weekend, Ledger won VISION HACK: South LA, and Safe Routes placed
+  3rd internationally." Not used, from his college apps: the FBI/LAPD/ADL work on SafeJew, Lemma's internships, a16z
+  and the ex-Uber judge on Monte, Safe Routes' mentor, the Mayor's Office showcase. Ask before adding them.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
