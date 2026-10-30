@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-10-30-canvas">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-30-rlist">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -368,70 +368,19 @@
       <article class="cg-conv" data-conv="research" id="c-research">
         <div class="cg-u"><div>What research has he done?</div></div>
         <div class="cg-a">
-        <p class="cg-say">Five papers, four of them accepted. Each one opens in full.</p>
+        <p class="cg-say">Five papers: a Best Paper Finalist at IEEE BigData, a sole-author paper at an AACL-IJCNLP workshop, two accepted with revisions in student journals, and a preprint.</p>
         <div class="cg-blk" id="papers">
-    <!-- RESEARCH (30 Oct, Adrian: "like when you clicked on the research in the older version ... allow them to open the
-         whole paper ... the format you have it in is sucky"): every paper laid out as the big view showed it (first page
-         on the dot grid; title, venue, the result, one sentence, How, Authors), all five in a row so nobody has to click
-         to see the next. "Read the paper" and the first page open the whole PDF in the page's reader (site.js CHAT SITE);
-         without JS, or where the browser can't show a PDF inline, they open it in a new tab. The words are the big view's
-         (site.js BIG VIEW, D): change them there and rebuild this. -->
-    <div class="cg-pps">
-      <article class="cg-pp" id="rs-t1" data-pp="langllm">
-        <div class="dv-md"><a class="dv-pg" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener" data-pdf aria-label="Read Interpretable Multilingual Attribution of Frontier LLMs"><img src="/img/papers/r01-langllm.webp" alt="First page of Interpretable Multilingual Attribution of Frontier LLMs" loading="lazy"></a></div>
-        <div class="dv-tx">
-          <div class="dv-id"><span class="dv-lg"><img src="/img/logos/ieee.webp" alt=""></span><div><h3 class="dv-n">Interpretable Multilingual Attribution of Frontier LLMs</h3><div class="dv-k">Paper · IEEE BigData 2026 · Phoenix, 17 Dec</div></div></div>
-          <p class="dv-a"><b>Best Paper Finalist</b><i>one of 12, from 130 accepted papers</i></p>
-          <p class="dv-t">Can you still tell which AI model wrote an essay once it leaves English? Yes: an interpretable classifier names the model 59–72% of the time in all seven languages, while the models themselves manage 20–25%.</p>
-          <div class="dv-r"><h4>How</h4><p>21 features from Universal Dependencies parses, on 840 essays from five frontier models. They transfer between languages better than character n-grams (49% against 41%).</p></div>
-          <div class="dv-r"><h4>Authors</h4><p>Adrian Erlikhman, Michael Tarekegn, Philo Juang · co-first author</p></div>
-          <div class="dv-ln"><a class="btn solid" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener" data-pdf>Read the paper <span aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </article>
-      <article class="cg-pp" id="rs-t2" data-pp="curated">
-        <div class="dv-md"><a class="dv-pg" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" data-pdf aria-label="Read Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation"><img src="/img/papers/r02-curated-to-win.webp" alt="First page of Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation" loading="lazy"></a></div>
-        <div class="dv-tx">
-          <div class="dv-id"><div><h3 class="dv-n">Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</h3><div class="dv-k">Paper · ARRSI @ AACL-IJCNLP 2026 · Hengqin, 10 Nov</div></div></div>
-          <p class="dv-a"><b>Accepted, sole author</b><i>ARRSI Workshop, AACL-IJCNLP 2026</i></p>
-          <p class="dv-t">How few test items does it take to change which reward model wins? RewardBench’s leader survives the removal of any 11 of its 2,985 items; removing the right 12 makes the runner-up the winner.</p>
-          <div class="dv-r"><h4>How</h4><p>A curation certificate, solved as linear programs over 118 RewardBench and 188 RewardBench 2 models; on RewardBench 2 the leader survives any 42 items.</p></div>
-          <div class="dv-r"><h4>Author</h4><p>Adrian Erlikhman, sole author</p></div>
-          <div class="dv-ln"><a class="btn solid" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" data-pdf>Read the paper <span aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code + data <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </article>
-      <article class="cg-pp" id="rs-t3" data-pp="compllm">
-        <div class="dv-md"><a class="dv-pg" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" aria-label="Open Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges"><img src="/img/papers/r03-compllm.webp" alt="First page of Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges" loading="lazy"></a></div>
-        <div class="dv-tx">
-          <div class="dv-id"><div><h3 class="dv-n">Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3><div class="dv-k">Paper · preprint</div></div></div>
-          <p class="dv-a"><b>Preprint</b><i>arXiv forthcoming</i></p>
-          <p class="dv-t">Do LLM judges really recognize their own writing? The usual test flags 15 of 37 cases; 8 survive a false-alarm control, and none beats the judge’s strongest single peer.</p>
-          <div class="dv-r"><h4>How</h4><p>Nine judges, 1,270 texts and 19,000+ judgments, plus two controls: how often a judge names itself on text it didn’t write, and how often its peers name it.</p></div>
-          <div class="dv-r"><h4>Authors</h4><p>Adrian Erlikhman, Michael Tarekegn, Philo Juang · co-first author</p></div>
-          <div class="dv-ln"><a class="btn solid" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </article>
-      <article class="cg-pp" id="rs-t4" data-pp="portfolio">
-        <div class="dv-md"><a class="dv-pg" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener" data-pdf aria-label="Read Does Portfolio Optimization Beat Splitting Evenly?"><img src="/img/papers/r04-portfolio.webp" alt="First page of Does Portfolio Optimization Beat Splitting Evenly?" loading="lazy"></a></div>
-        <div class="dv-tx">
-          <div class="dv-id"><span class="dv-lg"><img src="/img/logos/ojss.webp" alt=""></span><div><h3 class="dv-n">Does Portfolio Optimization Beat Splitting Evenly?</h3><div class="dv-k">Paper · Oxford Journal of Student Scholarship</div></div></div>
-          <p class="dv-a"><b>Accepted with revisions</b><i>Oxford Journal of Student Scholarship</i></p>
-          <p class="dv-t">Does textbook portfolio optimization beat splitting your money evenly? No: the even split won 74% of 250 simulations, with a Sharpe ratio of 0.70 against Markowitz’s 0.51.</p>
-          <div class="dv-r"><h4>How</h4><p>250 simulations of a factor model calibrated to real market data. Given the true means the optimizer nearly wins, so estimating expected returns is the whole problem.</p></div>
-          <div class="dv-r"><h4>Authors</h4><p>Adrian Erlikhman, Ryan Erlikhman · co-first author</p></div>
-          <div class="dv-ln"><a class="btn solid" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener" data-pdf>Read the paper <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </article>
-      <article class="cg-pp" id="rs-t5" data-pp="legatum">
-        <div class="dv-md"><a class="dv-pg" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener" data-pdf aria-label="Read How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation"><img src="/img/papers/r05-legatum.webp" alt="First page of How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation" loading="lazy"></a></div>
-        <div class="dv-tx">
-          <div class="dv-id"><div><h3 class="dv-n">How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3><div class="dv-k">Paper · Journal of High School Science</div></div></div>
-          <p class="dv-a"><b>Accepted with revisions</b><i>Journal of High School Science</i></p>
-          <p class="dv-t">How much do global prosperity rankings depend on arbitrary choices? The ranking holds as a whole (median rank correlation 0.99), but a mid-table country’s 90% rank interval spans a median of 36 places.</p>
-          <div class="dv-r"><h4>How</h4><p>Every published score for 167 countries reproduced exactly, then 10,000 draws under three weight priors and a 131,072-run Sobol’ design. New result: rank leverage, c²(1 − ρ²).</p></div>
-          <div class="dv-r"><h4>Authors</h4><p>Adrian Erlikhman, Ryan Erlikhman · co-first author</p></div>
-          <div class="dv-ln"><a class="btn solid" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener" data-pdf>Read the paper <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </article>
+    <!-- RESEARCH (30 Oct, later; Adrian on the inline panels: "looks like booty"; he picked A of three, _mock/rs.html):
+         a list in the chat's own style. Each row shows the first page, the result and venue, the title, the finding and
+         the authors, so nobody has to click to see the next paper; a click opens the paper in the canvas (site.js BIG
+         VIEW), where "Read the paper" opens the whole PDF in the reader. Without JS a row opens the PDF (Whose Line: the
+         repo). The words are BIG VIEW D's, written out by a scratch script: change D, then rebuild these rows. -->
+    <div class="rl">
+      <a class="rl-r" id="rs-t1" data-dv="langllm" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener"><img src="/img/papers/r01-langllm.webp" alt="First page of the paper" loading="lazy"><div><p class="rl-st"><b>Best Paper Finalist</b> &middot; IEEE BigData 2026 &middot; Phoenix, 17 Dec</p><h3>Interpretable Multilingual Attribution of Frontier LLMs</h3><p class="rl-f">Can you still tell which AI model wrote an essay once it leaves English? Yes: an interpretable classifier names the model 59&ndash;72% of the time in all seven languages, while the models themselves manage 20&ndash;25%.</p><p class="rl-au">Adrian Erlikhman, Michael Tarekegn, Philo Juang &middot; co-first author</p></div><svg class="ch" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg></a>
+      <a class="rl-r" id="rs-t2" data-dv="curated" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener"><img src="/img/papers/r02-curated-to-win.webp" alt="First page of the paper" loading="lazy"><div><p class="rl-st"><b>Accepted, sole author</b> &middot; ARRSI @ AACL-IJCNLP 2026 &middot; Hengqin, 10 Nov</p><h3>Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</h3><p class="rl-f">How few test items does it take to change which reward model wins? RewardBench&rsquo;s leader survives the removal of any 11 of its 2,985 items; removing the right 12 makes the runner-up the winner.</p><p class="rl-au">Adrian Erlikhman, sole author</p></div><svg class="ch" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg></a>
+      <a class="rl-r" id="rs-t3" data-dv="compllm" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener"><img src="/img/papers/r03-compllm.webp" alt="First page of the paper" loading="lazy"><div><p class="rl-st"><b>Preprint</b> &middot; arXiv forthcoming</p><h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3><p class="rl-f">Do LLM judges really recognize their own writing? The usual test flags 15 of 37 cases; 8 survive a false-alarm control, and none beats the judge&rsquo;s strongest single peer.</p><p class="rl-au">Adrian Erlikhman, Michael Tarekegn, Philo Juang &middot; co-first author</p></div><svg class="ch" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg></a>
+      <a class="rl-r" id="rs-t4" data-dv="portfolio" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-02" target="_blank" rel="noopener"><img src="/img/papers/r04-portfolio.webp" alt="First page of the paper" loading="lazy"><div><p class="rl-st"><b>Accepted with revisions</b> &middot; Oxford Journal of Student Scholarship</p><h3>Does Portfolio Optimization Beat Splitting Evenly?</h3><p class="rl-f">Does textbook portfolio optimization beat splitting your money evenly? No: the even split won 74% of 250 simulations, with a Sharpe ratio of 0.70 against Markowitz&rsquo;s 0.51.</p><p class="rl-au">Adrian Erlikhman, Ryan Erlikhman &middot; co-first author</p></div><svg class="ch" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg></a>
+      <a class="rl-r" id="rs-t5" data-dv="legatum" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener"><img src="/img/papers/r05-legatum.webp" alt="First page of the paper" loading="lazy"><div><p class="rl-st"><b>Accepted with revisions</b> &middot; Journal of High School Science</p><h3>How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</h3><p class="rl-f">How much do global prosperity rankings depend on arbitrary choices? The ranking holds as a whole (median rank correlation 0.99), but a mid-table country&rsquo;s 90% rank interval spans a median of 36 places.</p><p class="rl-au">Adrian Erlikhman, Ryan Erlikhman &middot; co-first author</p></div><svg class="ch" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5l5 5-5 5"/></svg></a>
     </div>
 
         </div>
@@ -597,6 +546,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-30-copy"></script>
+<script src="/assets/site.js?v=2026-10-30-rlist"></script>
 </body>
 </html>

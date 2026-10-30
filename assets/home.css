@@ -627,25 +627,8 @@ body{overflow:hidden}
 .cg-a .pl a,.cg-a .wg>a,.cg-a .tm a,.cg-a .cc a,.cg-a .cg-vids a,.cg-a .cg-src a,.cg-a .btn{text-decoration:none}
 .cg-a .pl li a:hover h3{color:var(--acc)}
 
-/* Research as the big view, inline (30 Oct): each paper a panel, the first page on the navy dot grid at left, the big
-   view's words at right in Latin Modern, five in a column. .cg-rd is the reader that shows a whole PDF over the page. */
-.cg-pps{display:flex;flex-direction:column;gap:16px;margin:4px 0 8px}
-.cg-a .cg-pp{--serif:'LM Roman','Latin Modern Roman',Georgia,serif;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);background:var(--bg);border:1px solid var(--edge);border-radius:18px;overflow:hidden;scroll-margin-top:16px}
-.cg-pp .dv-md{padding:34px 26px;border-radius:0}
-.cg-pp .dv-pg{width:min(230px,86%)}
-.cg-pp .dv-tx{padding:26px 28px 24px}
-.cg-pp .dv-id{padding-right:0}
-.cg-pp .dv-lg{width:34px;height:34px;padding:6px;border-radius:9px}
-.cg-a .cg-pp .dv-n{font:700 18px/1.25 var(--serif);color:var(--ink);margin:0;text-wrap:balance}
-.cg-a .cg-pp .dv-a{margin:18px 0 0}
-.cg-a .cg-pp .dv-a b{font:700 18px/1.25 var(--serif);color:var(--acc)}
-.cg-a .cg-pp .dv-a i{font:italic 15px/1.35 var(--serif)}
-.cg-a .cg-pp .dv-t{font:400 17.5px/1.45 var(--serif);color:var(--ink);margin:16px 0 0;text-wrap:pretty}
-.cg-a .cg-pp .dv-r{margin-top:14px}
-.cg-a .cg-pp .dv-r h4{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
-.cg-a .cg-pp .dv-r p{font:14px/1.55 var(--sans);color:var(--body);margin:4px 0 0}
-.cg-pp .dv-ln{margin-top:18px}
-.cg-pp .dv-ln .btn{padding:8px 13px;font-size:13.5px}
+/* Research as a list (30 Oct, later; Adrian picked A of three): a row per paper, a click opens it in the canvas.
+   .cg-rd is the reader that shows a whole PDF over the page. */
 .cg-rd{position:fixed;inset:0;z-index:9600;background:rgba(21,23,28,.55);display:flex;align-items:stretch;justify-content:center;padding:22px}
 .cg-rd[hidden]{display:none}
 .cg-rd-p{display:flex;flex-direction:column;width:min(1000px,100%);background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(21,23,28,.6)}
@@ -654,13 +637,25 @@ body{overflow:hidden}
 .cg-rd-o{color:var(--acc);white-space:nowrap;font-weight:500}
 .cg-rd-x{color:#5d5d5d}
 .cg-rd iframe{flex:1;width:100%;border:0;background:#525659}
+.cg-a a.btn,.cg-a .rl a{text-decoration:none}
+.rl{border:1px solid #e5e5e5;border-radius:16px;overflow:hidden;margin:4px 0 8px;background:#fff}
+.rl-r{display:grid;grid-template-columns:62px minmax(0,1fr) 20px;gap:18px;align-items:start;padding:18px 20px;border-top:1px solid #ececec;color:inherit;scroll-margin-top:16px;transition:background .15s}
+.rl-r:first-child{border-top:0}
+.rl-r:hover,.rl-r.cv-src{background:#f6f6f6}
+.rl-r.cv-src{outline:0;box-shadow:inset 3px 0 0 #0d0d0d;border-radius:0}
+.rl-r img{display:block;width:100%;border:1px solid #e5e5e5;border-radius:3px;background:#fff;box-shadow:0 6px 14px -10px rgba(0,0,0,.35)}
+.cg-a .rl-r p{margin:0}
+.cg-a .rl-st{font-size:13.5px;line-height:1.4;color:#5d5d5d}
+.rl-st b{color:var(--acc)}
+.cg-a .rl-r h3{font-size:16px;font-weight:600;line-height:1.35;margin:3px 0 0;text-wrap:pretty}
+.cg-a .rl-f{font-size:14.5px;line-height:1.55;color:#3a3a3a;margin-top:6px}
+.cg-a .rl-au{font-size:13px;line-height:1.45;color:#8f8f8f;margin-top:6px}
+.rl-r .ch{align-self:center;color:#b4b4b4;transition:color .15s,transform .15s}
+.rl-r:hover .ch{color:#0d0d0d;transform:translateX(2px)}
+.cv-ti{font-size:17px;font-weight:600;line-height:1.35;margin-bottom:8px;text-wrap:pretty}
 @media(max-width:860px){
-  .cg-a .cg-pp{grid-template-columns:1fr}
-  .cg-pp .dv-md{padding:22px;border-right:0;border-bottom:1px solid var(--hair)}
-  .cg-pp .dv-pg{width:min(170px,60%)}
-  .cg-pp .dv-tx{padding:20px 18px}
+  .rl-r{grid-template-columns:48px minmax(0,1fr);gap:14px;padding:16px}.rl-r .ch{display:none}
 }
-.cg-a a.btn,.cg-a .cg-pp a{text-decoration:none}
 
 /* the canvas (30 Oct; Adrian picked A of three, _mock/bv.html): a build opens in a panel beside the chat, as ChatGPT's
    canvas does. The sidebar folds away and the chat keeps the left; under 1000px the panel covers the screen. */

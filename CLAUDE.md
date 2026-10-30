@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-30-canvas`, site.js `2026-10-30-copy`).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rlist` for both).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -543,6 +543,15 @@ with "a lot of updates" still to come. What shipped:
   including the big view's. Under 760px, where `navigator.pdfViewerEnabled` is false, or on ctrl/cmd-click, the PDF
   opens in a new tab instead. Whose Line has no hosted PDF (arXiv forthcoming), so its page and button go to the
   repo. Headless Chrome can't paint a PDF inside a frame: test the reader's state, not its pixels.
+  **Since the same night Research is a list** (Adrian on those panels: "looks like booty"; he picked **A of three**,
+  `_mock/rs.html?rtake=a|b|c`, over B, cards like the builds, and C, the panels restyled). One bordered list in the
+  chat's Geist (`.rl`, `.rl-r`): per paper the first page, the result in navy and its venue, the title, the finding
+  (`D.t`) and the authors, so all five read without a click. A row opens the paper in the canvas (BIG VIEW, as builds
+  do; the row gets a dark left bar): full title, result, finding, How, Authors, "Read the paper" into `.cg-rd`. Rows
+  keep `#rs-t1..5`; without JS a row opens the PDF (Whose Line: the repo); the reader leaves `[data-dv]` rows to the
+  canvas. The answer opens "Five papers: a Best Paper Finalist at IEEE BigData, a sole-author paper at an AACL-IJCNLP
+  workshop, two accepted with revisions in student journals, and a preprint." Rows are still written from `D` by a
+  scratch script (node evals `D`, Python writes `.rl`): change `D`, then the row. The `.cg-pp` notes above are history.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
