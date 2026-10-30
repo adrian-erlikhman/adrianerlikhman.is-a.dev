@@ -316,9 +316,9 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **six places** since the 29 Oct chat hero: the chat's sidebar Résumé link and Résumé
-  pill, the nav's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf"
-  index.html` should print 6. Bump all six whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
+  The `?v=` cache-buster lives in **five places** since the 29 Oct all-chat homepage: the chat's sidebar Résumé link and
+  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-10-21-r01pdf"
+  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-21-r01pdf`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -418,8 +418,8 @@ from LaTeX in `resume/`.
 ## Shared assets
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
-  maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its new HOME HERO block runs the
-  hero carousel and the nav's section highlight. Both links carry `?v=` (currently `2026-10-29-chat`).
+  maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
+  homepage (see below). Both links carry `?v=` (currently `2026-10-29-allchat`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -476,6 +476,27 @@ with "a lot of updates" still to come. What shipped:
   announcement bar went the same evening ("delete this").
 - **No emoji and no pills anywhere** (Adrian, 28 Oct: "i dont like any weird ass emojis and bubble stuff"): no ✦ or ★,
   buttons are 8px-radius rectangles (`.btn`, `.btn.solid`), statuses are plain navy text.
+- **The whole homepage is the chat since 29 Oct (evening)** (Adrian, the day the chat hero shipped: "what if it is like only
+  the chatgpt. it doenst make sense for it do be both. jksut have eveyrt seciton be a par tof the chatgpt"). There is no
+  nav, logo strip band, section list or footer any more: the page is one full-screen `section.cg#top` (body doesn't
+  scroll; the thread does). **Every section is a conversation** (`article.cg-conv[data-conv]`) in the sidebar's Chats:
+  About me ("Who are you?"), Internships ("Where have you interned?"), Research · 5 papers, What I've built, Team USA
+  épée, Honors ("What else stands out?"), Contact. Each is the visitor's question in a bubble, then the answer: an
+  opening line (`.cg-say`, streamed word by word; About's are his own three paragraphs), then the section's **own
+  markup, unchanged, with its old id** (`.cg-blk#about`, `#experience`, `#papers`, `#work`, `#fencing`, `#record`,
+  `#contact`, and inside them `#rs-t*`, `#case-*`, `#xp-*`, `#bouts`), then follow-up chips and copy/thumbs/again icons.
+  The logo strip sits at the end of About under "Interned, published and selected at"; Contact's card lost its "Let's
+  talk" column (the lead line says it). After the intro, "Who are you?" types itself in and About plays (Thinking, then
+  the blocks build in, list items staggered); every other conversation plays the first time it is opened, from the
+  sidebar, the "Adrian ⌄" menu (now "Ask about"), the chips, the logo or the account chip. New chat goes back to the
+  empty screen. **Links to an old id open its conversation and scroll to it** (in-page `#…` links, a landing hash like
+  `/#rs-t2`, and the ⌘K palette through `window.cgOpen`), so llms.txt, the sitemap and old links still work. Typed
+  questions: contact words open Contact; a project or paper by name gets a short reply card from the big view's `D`
+  (it appends to the open conversation); a topic opens its conversation; anything else gets "I can answer…" with chips.
+  Without JS every conversation shows, one after another (the static `chatting` class). Inside an answer the sections
+  are compacted to the 820px column and speak Geist (`.cg-a{--serif:var(--sans)}`); `.cg .btn` restores the button style
+  that the chat's button reset would strip. Styles at the end of home.css; site.js CHAT SITE (the CHAT HERO script is
+  gone). The section notes below still hold for content and wording; their layout notes are history.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's

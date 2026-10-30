@@ -477,3 +477,76 @@ body.intro-lock{overflow:hidden}
   .cg-card{scroll-snap-align:start}
 }
 @media(prefers-reduced-motion:reduce){.cg-think,.cg-cur{animation:none}.cg-card{animation:none}.cg-side{transition:none}}
+
+/* the whole site is the chat (29 Oct): one screen, nothing under it; each section's markup sits inside its conversation */
+html,body{height:100%}
+body{overflow:hidden}
+.cg{height:100vh;height:100dvh;max-height:none;min-height:0;border-bottom:0}
+.cg-col{width:820px}
+.cg-js .cg-conv{display:none}
+.cg-js .cg-conv.on{display:block}
+.cg-conv+.cg-conv{margin-top:40px}
+.cg-wait{display:none!important}
+.cg-js .cg-a>*,.cg-pop-in{animation:cgin .38s ease both}
+.cg-logo{display:block;border-radius:8px}
+.cg-acc{width:100%;text-align:left}
+.cg-pop button{display:flex;flex-direction:column;align-items:flex-start;width:100%;padding:8px 10px;border-radius:10px;text-align:left}
+.cg-pop button:hover,.cg-pop button:focus-visible{background:var(--cg-bub);outline:none}
+.cg-follow{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+.cg-follow .cg-chip{height:36px;font-size:13.5px}
+.cg-a .cg-blk{margin:6px 0 4px;scroll-margin-top:16px}
+.cg-a .cg-blk [id]{scroll-margin-top:16px}
+/* inside an answer everything speaks ChatGPT's sans; sizes come down to the thread's 820px column */
+.cg-a{--serif:var(--sans)}
+.cg-a .ab{grid-template-columns:150px minmax(0,1fr);gap:24px;margin-top:4px;align-items:start}
+.cg-a .ab>img{width:150px;height:180px;border-radius:14px}
+.cg-a .ab p{font:16px/1.75 var(--sans);color:var(--cg-ink);margin:0 0 12px;max-width:none}
+.cg-a .lg-h{font-size:13px;color:var(--cg-mute);margin:18px 0 10px}
+.cg-a .lg{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
+.cg-a .lg img{height:22px;max-width:110px;object-fit:contain;filter:grayscale(1) opacity(.6);transition:filter .3s}
+.cg-a .lg img:hover{filter:none}.cg-a .lg img.w{height:14px;max-width:140px}.cg-a .lg img.w2{height:28px;max-width:130px}.cg-a .lg img.w3{height:28px;max-width:80px}
+.cg-a .xl li{grid-template-columns:170px minmax(0,1fr) 92px;gap:20px;padding:16px 0}
+.cg-a .xl li:first-child{padding-top:4px}
+.cg-a .xl .co{font:600 16px/1.35 var(--sans)}
+.cg-a .xl h3{font:500 15px/1.35 var(--sans);color:var(--cg-dim)}
+.cg-a .xl p{font:15.5px/1.6 var(--sans);color:var(--cg-ink)}
+.cg-a .xl .dt{font:12.5px var(--mono)}
+.cg-a .pl li a{grid-template-columns:64px minmax(0,1fr) 150px;gap:18px;padding:16px 0}
+.cg-a .pl li:first-child a{padding-top:4px}
+.cg-a .pl .cv{width:64px;height:83px}
+.cg-a .pl h3{font:600 16px/1.35 var(--sans)}
+.cg-a .pl .fd{font:15px/1.6 var(--sans);color:var(--cg-ink)}
+.cg-a .pl .st{font-size:13.5px}
+.cg-a .wg{gap:24px 18px;margin-top:4px}
+.cg-a .wg .im{border-radius:14px}
+.cg-a .wg h3{font-size:15.5px;margin-top:10px}
+.cg-a .wg p{font-size:14px}
+.cg-a .tm{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:26px;margin-top:34px;padding-top:28px}
+.cg-a .tm h3{font:600 22px/1.2 var(--sans)}
+.cg-a .tm p:not(.rz){font-size:15px}
+.cg-a .mit{padding:12px 0}
+.cg-a .reel{margin-top:16px;border-radius:14px}
+.cg-a .fg{gap:24px;margin-top:20px}
+.cg-a .rk b{font:600 22px/1 var(--sans)}
+.cg-a .rs li{font-size:14px}
+.cg-a .ph img{border-radius:14px}
+.cg-a .bt{gap:14px}
+.cg-a .bt video{border-radius:12px}
+.cg-a .bt p b{font:600 16px var(--sans)}
+.cg-a .hon{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:4px;border-radius:14px;overflow:hidden;border:1px solid var(--cg-line)}
+.cg-a .hon li{border-color:var(--cg-line);background:#fff;padding:16px 16px 18px}
+.cg-a .hon{border-top:1px solid var(--cg-line);border-left:1px solid var(--cg-line)}
+.cg-a .hon b{font:600 19px/1.2 var(--sans)}
+.cg-a .cc{grid-template-columns:1fr;padding:22px 24px;margin-top:4px;box-shadow:none;border-radius:16px}
+.cg-a .cc-em{font:600 24px/1.25 var(--sans)}
+@media(max-width:860px){
+  .cg-a .ab{grid-template-columns:96px minmax(0,1fr);gap:16px}.cg-a .ab>img{width:96px;height:118px}
+  .cg-a .xl li{grid-template-columns:1fr;gap:4px}
+  .cg-a .pl li a{grid-template-columns:52px minmax(0,1fr);gap:14px}.cg-a .pl .cv{width:52px;height:68px}.cg-a .pl .st{grid-column:2;text-align:left}
+  .cg-a .wg,.cg-a .tm,.cg-a .fg,.cg-a .bt{grid-template-columns:minmax(0,1fr)}
+  .cg-a .hon{grid-template-columns:1fr 1fr}
+  .cg-a .rk{grid-template-columns:1fr 1fr}
+}
+
+.cg .btn{border:1px solid var(--edge);background:#fff;color:var(--acc)}
+.cg .btn.solid{background:var(--acc);color:#fff;border-color:var(--acc)}
