@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rs`).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-canvas`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -581,6 +581,18 @@ with "a lot of updates" still to come. What shipped:
   grey, 15px (13px on phones). Geist there was what he didn't like ("i dont like the font").
   **The hero has no sentence under the headline and the section titles have no side notes** (Adrian, 28 Oct: "delete
   all of the weird middle descriptions"; he picked those two from four options and kept the Selected work card lines).
+- **Builds open in a canvas since 30 Oct** (Adrian on the popup below: "i dont like the format once you click on it";
+  he picked **A of three takes**, `_mock/bv.html?take=a|b|c`, over B, the project as the next answer in the thread, and
+  C, a tidier popup). `#dv` is now `aside.cv`: a panel on the right, as ChatGPT's canvas does. Above 1000px the sidebar
+  folds away and the chat keeps the left (`.cg.cv-on`), with the clicked card outlined (`.cv-src`); at 1000px and below
+  it covers the screen. Top bar: mark, name, meta, the first link as a solid button, ×. Body: the live site or film in a
+  browser window (Ledger's receipt prints there), the result in navy over its venue, one sentence, then How it works and
+  His part as two rows, then the other links. All Geist, no serif, no dot grid. Esc or × closes it; so does moving to
+  another conversation or New chat. A paper named in a typed question opens its Research panel instead (`.cg-pp`, which
+  still uses the `.dv-*` rules below). `D` speaks in the third person now ("His part", "He built the LA gazetteer",
+  Safe Routes' "His friends are in that number"). The Selected work opening line is "Three of these won at hackathons
+  this fall, and one placed 3rd internationally." (it replaced "Six things people use...", which he disliked), and the
+  Citadel tile says "He and two teammates wrote it". The notes below describe the popup this replaced.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the

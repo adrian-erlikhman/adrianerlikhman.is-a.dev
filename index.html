@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-10-30-rs">
+<link rel="stylesheet" href="/assets/home.css?v=2026-10-30-canvas">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -441,7 +441,7 @@
       <article class="cg-conv" data-conv="work" id="c-work">
         <div class="cg-u"><div>What has he built?</div></div>
         <div class="cg-a">
-        <p class="cg-say">Six things people use, and four of them placed at hackathons. Click any one to open it.</p>
+        <p class="cg-say">Three of these won at hackathons this fall, and one placed 3rd internationally.</p>
         <div class="cg-blk" id="work">
     <div class="wg">
       <a id="case-hivemind" data-dv="hivemind" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener"><div class="im"><img src="/img/cases/hivemind-ad.webp" alt="Hivemind" loading="lazy"></div><h3><img src="/img/logos/hivemind.svg" alt="">Hivemind</h3><p class="rz">Won Lemma&rsquo;s track, SEPHacks 2026</p><p>Shared memory for a team&rsquo;s AI coding agents.</p></a>
@@ -461,7 +461,7 @@
         <div class="tm-k"><img src="/img/logos/citadel.webp" alt="Citadel" loading="lazy"><span>Competition</span></div>
         <h3>dunderscore</h3>
         <p class="rz">Finalist, Citadel High School Terminal: top 8 of 45 teams, from 1,000+ applicants.</p>
-        <p>A Python bot for Terminal, Citadel&rsquo;s tower-defense game where every move is code. Three of us wrote it and rewrote its strategy between rounds from match replays.</p>
+        <p>A Python bot for Terminal, Citadel&rsquo;s tower-defense game where every move is code. He and two teammates wrote it and rewrote its strategy between rounds from match replays.</p>
         <button class="btn" type="button" data-dv="citadel">More</button>
       </div>
     </div>
@@ -569,13 +569,8 @@
 </main>
 
 <!-- BIG VIEW: one project or paper, opened from the hero or Selected work (site.js BIG VIEW fills it) -->
-<div id="dv" class="dv" hidden>
-  <div class="dv-bg" data-close></div>
-  <div class="dv-p" role="dialog" aria-modal="true" aria-labelledby="dvT">
-    <button class="dv-x" type="button" data-close aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
-    <div class="dv-in" id="dvIn"></div>
-  </div>
-</div>
+<!-- the canvas: a build opened from the chat (site.js BIG VIEW fills it) -->
+<aside id="dv" class="cv" role="dialog" aria-labelledby="dvT" hidden></aside>
 
 <!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
      Bump ?v= on all four résumé hrefs (two triggers, two options) whenever a PDF changes. -->
@@ -602,6 +597,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-10-30-rs"></script>
+<script src="/assets/site.js?v=2026-10-30-canvas"></script>
 </body>
 </html>

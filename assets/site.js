@@ -1387,11 +1387,13 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>{ if(!area.hidden&&!box.classList.contains('ask-off')) hold(); });
 })();
 
-/* ================= BIG VIEW (28 Oct, second take): a project or paper, opened from the hero, Selected work or Research =================
-   Adrian: the stacked version ("problem" bar, three numbers, a big screenshot, columns) was "lame"; he wanted it like the
-   bubble-era popup (media left, text right), "interesting to look at, but not doing too much": the achievement first, one
-   precise sentence, the technical part in a couple of lines, and a clear way to the live site. Every fact is from the
-   paper or the old case cards (d7a3a82, 6cf89dc); keep them in step with both. */
+/* ================= BIG VIEW: a build opens in a canvas beside the chat =================
+   30 Oct, Adrian picked A of three takes (_mock/bv.html?take=a|b|c; B put it in the thread, C was a tidier popup): the
+   project opens in a panel on the right, as ChatGPT's canvas does, and the chat stays on the left with the clicked card
+   outlined. The panel speaks the chat's Geist: name and an Open button on top, the live site or film large, then the
+   result, one precise sentence, How it works and His part. Under 1000px it covers the screen. A paper named in a typed
+   question goes to its panel in Research instead, which keeps the old big view's look (.dv-*, his pick). Every fact is
+   from the paper or the old case cards (d7a3a82, 6cf89dc); keep them in step with both. */
 const BIG=(function(){
   const dv=document.getElementById('dv'); if(!dv) return null;
   const $=id=>document.getElementById(id);
@@ -1436,49 +1438,49 @@ const BIG=(function(){
       a:['Won Lemma’s agent-monitoring track','SEPHacks 2026, USC'],
       t:'Shared memory for a team’s AI coding agents. When an engineer corrects an agent, the correction becomes a lesson that every agent on the team loads once a lead approves it.',
       h:'A hook after each edit hands the agent the team’s locked rules for that file, and <code>hivemind watch</code> flags any it breaks. Next.js, Supabase, Claude Haiku and MCP; 36 of 36 eval runs passed with it, 14 without.',
-      p:['My part','The website, the web app, the terminal app’s design and the launch film, built overnight with Michael Tarekegn.'],
+      p:['His part','The website, the web app, the terminal app’s design and the launch film, built overnight with Michael Tarekegn.'],
       site:'https://hivemind-q17i.onrender.com/',m:V('/video/hivemind-ad.mp4?v=2026-10-17','/img/cases/hivemind-ad.webp?v=2026-10-17'),
       l:[['https://hivemind-q17i.onrender.com/','Open Hivemind',1],['https://hivemind-q17i.onrender.com/app','Try the app'],['https://devpost.com/software/hivemind-v7rwgx','Devpost'],['https://youtu.be/wmBzH3som4A','Film']]},
     monte:{lg:'/img/logos/monte.svg',n:'Monte',k:'Hackathon build · October 2026',
       a:['1st place, Finance track','ACM TrojanHacks 2026'],
       t:'Pays with the card that earns the most at each store, and never with one that carries a balance.',
       h:'Reads the store’s merchant code at checkout and checks this month’s caps against 29 cards’ published terms; a Monte Carlo weighs a year of rewards against fees and interest. Next.js, TypeScript, Plaid.',
-      p:['My part','The interface, the tap-to-pay demo, the brand and the film. Michael Tarekegn built the backend, the Monte Carlo and the tests.'],
+      p:['His part','The interface, the tap-to-pay demo, the brand and the film. Michael Tarekegn built the backend, the Monte Carlo and the tests.'],
       site:'https://ace-eta-beryl.vercel.app/',m:V('/video/monte-film.mp4?v=2026-10-18','/img/cases/monte-home.webp'),
       l:[['https://ace-eta-beryl.vercel.app/','Open Monte',1],['https://ace-eta-beryl.vercel.app/#tap-demo','Tap-to-pay demo'],['https://devpost.com/software/monte-calygj','Devpost'],['https://github.com/michae6345-crypto/monte','Code']]},
     citadel:{lg:'/img/logos/citadel.webp',n:'dunderscore',k:'Competition · Citadel High School Terminal',
       a:['Finalist, top 8 of 45 teams','from 1,000+ applicants'],
       t:'A Python bot for Terminal, Citadel’s tower-defense game where no one plays live: every move is code.',
       h:'Each turn the bot spends one resource on walls, turrets and supports and another on scouts, demolishers and interceptors that it sends at the other bot’s defenses. In this round-41 replay it is the teal side.',
-      p:['My part','One of three who wrote it. Between rounds we reviewed match replays and rewrote the strategy, and we made the finals.'],
+      p:['His part','One of three who wrote it. Between rounds they reviewed match replays and rewrote the strategy, and made the finals.'],
       site:'https://terminal.c1games.com/',m:'<img src="/img/terminal/viewer.webp?v=2026-10-29" alt="Terminal’s replay viewer at round 41, dunderscore in teal" style="object-fit:contain;background:#1c1b21">',
       l:[['https://terminal.c1games.com/','About Terminal',1]]},
     safejew:{lg:'/img/logos/safejew.webp',n:'SafeJew',k:'Co-founder · 2024 to now',
       a:['1,300+ incidents mapped','backed by a JFEDLA Teen Innovation Grant'],
       t:'A live map of antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, with the report behind every pin.',
-      h:'I built the LA gazetteer that turns a place named in a news story into coordinates, so a daily GitHub Action adds new incidents on its own. Next.js, TypeScript and Supabase.',
-      p:['My part','The gazetteer, and the V2 rebuild of the platform for a pitch to Hillel International.'],
+      h:'He built the LA gazetteer that turns a place named in a news story into coordinates, so a daily GitHub Action adds new incidents on its own. Next.js, TypeScript and Supabase.',
+      p:['His part','The gazetteer, and the V2 rebuild of the platform for a pitch to Hillel International.'],
       site:'https://safejew.org/map',m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
       l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code']]},
     aimlli:{lg:'/img/logos/aimlli-mark.webp',n:'AIML-LI',k:'Co-founder & lead · 2023 to now',
       a:['Piloting with LAUSD','summit for 500+ LA public-school students'],
       t:'A free, open-source 12-week AI course for LA public-school students, aligned to state standards.',
       h:'Six units of real Python notebooks that run on school Chromebooks, from foundations to neural networks, language and bias, ending in a capstone students ship.',
-      p:['My part','Co-founded it with Michael Tarekegn and co-wrote the course; taught a 4-week version in LACES AP Computer Science.'],
+      p:['His part','Co-founded it with Michael Tarekegn and co-wrote the course; taught a 4-week version in LACES AP Computer Science.'],
       site:'https://aiml-initiative.org',m:I('/img/cases/aimlli-home.webp','aiml-initiative.org'),
       l:[['https://aiml-initiative.org','Open aiml-initiative.org',1]]},
     ledger:{lg:'/img/logos/ledger.svg',n:'Ledger',k:'Hackathon build · September 2026',
       a:['1st, Council District 9 Champion, Under 18','VISION HACK: South LA'],
       t:'Keeps a South LA corner store compliant: every license on one dashboard, worst first, with renewal reminders in English and Spanish.',
       h:'A two-pass vision pipeline reads a photo of a wholesale order, and a rule engine checks it against SNAP’s stocking rule; the rule engine scored all 24 test records right.',
-      p:['My part','Led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.'],
+      p:['His part','Led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.'],
       site:'https://visionhack-nu.vercel.app/',rc:1,
       l:[['https://visionhack-nu.vercel.app/','Open the demo',1],['https://github.com/michae6345-crypto/visionhack','Code']]},
     saferoutes:{lg:'/img/logos/walkhome.svg',n:'Safe Routes to School',k:'Hackathon build · with Michael Tarekegn',
       a:['3rd internationally','Code for Transportation'],
       t:'Routes LA students home around where street robberies happen, taking the bus when riding is calmer.',
       h:'Scores 431,599 LA blocks by hour from 85,634 LAPD incidents and routes with A* in the browser, offline, in English and Spanish. One trip to LACES: 80% less modeled exposure.',
-      p:['Why','From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the school commute. My friends are in that number.'],
+      p:['Why','From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the school commute. His friends are in that number.'],
       site:'https://safe-routes-la.github.io/',m:I('/img/cases/saferoutes-walk.webp','Safe Routes’ worked example'),
       l:[['https://safe-routes-la.github.io/','Try it',1],['https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place','Write-up'],['https://github.com/safe-routes-la/safe-routes-la.github.io','Code']]},
     langllm:{paper:1,lg:'/img/logos/ieee.webp',n:'Interpretable Multilingual Attribution of Frontier LLMs',k:'Paper · IEEE BigData 2026 · Phoenix, 17 Dec',
@@ -1517,29 +1519,43 @@ const BIG=(function(){
       pg:'/img/papers/r05-legatum.webp',href:'/papers/legatum-robustness-audit.pdf?v=2026-09-13',
       l:[['/papers/legatum-robustness-audit.pdf?v=2026-09-13','Read the paper',1]]}
   };
-  let back=null,onClose=null;
+  const cg=document.querySelector('.cg'), full=matchMedia('(max-width:1000px)');
+  const X='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>';
+  let back=null,onClose=null,src=null;
   function open(key,from,closed){
     const d=D[key]; if(!d) return false;
-    const media=d.paper?`<a class="dv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a>`:d.rc?LG.html():W(d.site,d.m);
-    const id=`<div class="dv-id">${d.lg?`<span class="dv-lg"><img src="${d.lg}" alt=""></span>`:''}<div><div class="dv-n">${d.n}</div><div class="dv-k">${d.k}</div></div></div>`;
-    LG.stop(); $('dvIn').innerHTML=`<div class="dv-g${d.paper?' pp':''}${d.rc?' lgr':''}"><div class="dv-md">${media}</div><div class="dv-tx">${id}`
-      +`<p class="dv-a"><b>${d.a[0]}</b><i>${d.a[1]}</i></p>`
-      +`<h2 class="dv-t" id="dvT">${d.t}</h2>`
-      +`<div class="dv-r"><h4>${d.paper?'How':'How it works'}</h4><p>${d.h}</p></div>`
-      +`<div class="dv-r"><h4>${d.p[0]}</h4><p>${d.p[1]}</p></div>`
-      +`<div class="dv-ln">${d.l.map(x=>L(x[0],x[1],x[2])).join('')}</div></div></div>`;
+    const pp=d.paper&&document.querySelector(`.cg-pp[data-pp="${key}"]`);
+    if(pp&&window.cgOpen) return window.cgOpen(pp.id);
+    const media=d.paper?`<a class="cv-pg" href="${d.href}" target="_blank" rel="noopener"><img src="${d.pg}" alt="First page of the paper"></a>`:d.rc?LG.html():W(d.site,d.m);
+    const go=d.l[0];
+    dv.querySelectorAll('video').forEach(v=>v.pause()); LG.stop();
+    dv.innerHTML=`<header class="cv-top">${d.lg?`<span class="cv-lg"><img src="${d.lg}" alt=""></span>`:''}<div class="cv-id"><b>${d.n}</b><span>${d.k}</span></div>`
+      +`${go?L(go[0],go[1],1):''}<button class="cv-x" type="button" data-close aria-label="Close">${X}</button></header>`
+      +`<div class="cv-body"><div class="cv-md${d.paper?' pp':''}${d.rc?' lgr':''}">${media}</div><div class="cv-tx">`
+      +`<p class="cv-win"><b>${d.a[0]}</b> · ${d.a[1]}</p><h2 class="cv-t" id="dvT">${d.t}</h2>`
+      +`<dl class="cv-dl"><dt>${d.paper?'How':'How it works'}</dt><dd>${d.h}</dd><dt>${d.p[0]}</dt><dd>${d.p[1]}</dd></dl>`
+      +`<div class="cv-ln">${d.l.map((x,i)=>L(x[0],x[1],!i).replace('class="btn',`class="${i?'':'cv-go '}btn`)).join('')}</div></div></div>`;
     if(d.rc){ LG.run(); dv.querySelector('.lg-again').addEventListener('click',LG.run); }
-    back=from||document.activeElement; onClose=closed||null;
-    dv.hidden=false; document.body.classList.add('dv-open'); dv.querySelector('.dv-p').scrollTop=0;
-    dv.querySelector('.dv-x').focus({preventScroll:true});
+    if(src) src.classList.remove('cv-src');
+    src=from&&from.closest?(from.closest('.wg>a')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
+    if(src) src.classList.add('cv-src');
+    if(dv.hidden) back=from||document.activeElement;
+    onClose=closed||null;
+    dv.hidden=false; cg&&cg.classList.add('cv-on'); document.body.classList.add('cv-open');
+    dv.querySelector('.cv-body').scrollTop=0;
+    if(src) requestAnimationFrame(()=>src.scrollIntoView({block:'nearest'}));
+    dv.querySelector('.cv-x').focus({preventScroll:true});
     return true;
   }
-  function close(){ if(dv.hidden) return; dv.querySelectorAll('video').forEach(v=>v.pause()); LG.stop();
-    dv.hidden=true; document.body.classList.remove('dv-open'); if(back&&back.focus) back.focus({preventScroll:true}); if(onClose) onClose(); }
-  dv.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
+  /* quiet: the visitor moved to another conversation, so focus stays where they are */
+  function close(quiet){ if(dv.hidden) return; dv.querySelectorAll('video').forEach(v=>v.pause()); LG.stop();
+    dv.hidden=true; dv.innerHTML=''; cg&&cg.classList.remove('cv-on'); document.body.classList.remove('cv-open');
+    if(src){ src.classList.remove('cv-src'); src=null; }
+    if(quiet!==true&&back&&back.focus) back.focus({preventScroll:true}); if(onClose) onClose(); }
+  dv.addEventListener('click',e=>{ if(e.target.closest('[data-close]')) close(); });
   addEventListener('keydown',e=>{ if(dv.hidden) return;
     if(e.key==='Escape'){ e.preventDefault(); close(); }
-    else if(e.key==='Tab'){ const f=[...dv.querySelectorAll('a[href],button,video[controls]')].filter(x=>x.offsetParent!==null); if(!f.length) return;
+    else if(e.key==='Tab'&&full.matches){ const f=[...dv.querySelectorAll('a[href],button,video[controls]')].filter(x=>x.offsetParent!==null); if(!f.length) return;
       const a=f[0],z=f[f.length-1]; if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); } else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); } } });
   /* Selected work and Research: a click opens the big view; ctrl/cmd-click still follows the link */
   document.querySelectorAll('[data-dv]').forEach(c=>c.addEventListener('click',e=>{
@@ -1768,7 +1784,7 @@ const BIG=(function(){
   /* ---- the visitor ---- */
   const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
   root.addEventListener('click',e=>{
-    const q=e.target.closest('[data-conv]'); if(q){ e.preventDefault(); stopAuto(); open(q.dataset.conv); return; }
+    const q=e.target.closest('[data-conv]'); if(q){ e.preventDefault(); stopAuto(); if(BIG&&q.dataset.conv!==cur) BIG.close(true); open(q.dataset.conv); return; }
     const c=e.target.closest('[data-cgdv]'); if(c&&BIG){ e.preventDefault(); stopAuto(); BIG.open(c.dataset.cgdv,c); return; }
     const act=e.target.closest('[data-act]'); if(act){ stopAuto(); const row=act.parentElement,box=row.previousElementSibling;
       if(act.dataset.act==='copy'){ const done=()=>{ act.innerHTML=P(IC.ok); setTimeout(()=>act.innerHTML=P(IC.copy),1500); };
@@ -1811,15 +1827,15 @@ const BIG=(function(){
     rdF.src=a.getAttribute('href')+'#view=FitH'; rd._from=a; rd.hidden=false; rd.querySelector('.cg-rd-x').focus(); },true);
   /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
   function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }
-  window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); return true; };
+  window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(true); open(k,{to:id,instant:true}); return true; };
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a||a.closest('#cgPop')) return;
     const id=decodeURIComponent(a.getAttribute('href').slice(1)); if(!id||id==='top') return; const k=convOf(id); if(!k) return;
-    e.preventDefault(); stopAuto(); if(BIG) BIG.close(); open(k,{to:id,instant:true}); history.replaceState(null,'','#'+id); });
+    e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); open(k,{to:id,instant:true}); history.replaceState(null,'','#'+id); });
   root.addEventListener('pointerdown',e=>{ if(!e.target.closest('.cg-thread')||e.target.closest('a,button,video')) stopAuto(); });
   inp.addEventListener('focus',stopAuto);
   inp.addEventListener('input',()=>send.classList.toggle('cg-off',!inp.value.trim()));
   form.addEventListener('submit',e=>{ e.preventDefault(); const t=inp.value.trim(); if(!t) return; stopAuto(); inp.value=''; send.classList.add('cg-off'); answer(t); });
-  $('cgNew').addEventListener('click',()=>{ stopAuto(); run++; busy=false; if(convs.ask) convs.ask.innerHTML=''; root.classList.remove('chatting'); Object.values(convs).forEach(c=>c.classList.remove('on')); cur=null; mark(''); closeSide(); inp.focus(); });
+  $('cgNew').addEventListener('click',()=>{ stopAuto(); if(BIG) BIG.close(true); run++; busy=false; if(convs.ask) convs.ask.innerHTML=''; root.classList.remove('chatting'); Object.values(convs).forEach(c=>c.classList.remove('on')); cur=null; mark(''); closeSide(); inp.focus(); });
   $('cgSearch').addEventListener('click',()=>{ stopAuto(); closeSide(); inp.focus(); });
   $('cgPlus').addEventListener('click',()=>{ stopAuto(); reply('What can I ask?',helpHTML()); });
   const model=$('cgModel'),pop=$('cgPop');
