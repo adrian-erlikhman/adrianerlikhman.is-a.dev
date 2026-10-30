@@ -542,7 +542,7 @@ body{overflow:hidden}
   .cg-a .xl li{grid-template-columns:1fr;gap:4px}
   .cg-a .pl li a{grid-template-columns:52px minmax(0,1fr);gap:14px}.cg-a .pl .cv{width:52px;height:68px}.cg-a .pl .st{grid-column:2;text-align:left}
   .cg-a .wg,.cg-a .tm,.cg-a .fg,.cg-a .bt{grid-template-columns:minmax(0,1fr)}
-  .cg-a .hon{grid-template-columns:1fr 1fr}
+  .cg-a .hon{grid-template-columns:repeat(2,minmax(0,1fr))}.cg-a .hk img{min-width:0}.cg-a .hk span{flex-shrink:100}
   .cg-a .rk{grid-template-columns:1fr 1fr}
 }
 
