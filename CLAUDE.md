@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rlist` for both).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rqa` for both).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -552,6 +552,16 @@ with "a lot of updates" still to come. What shipped:
   canvas. The answer opens "Five papers: a Best Paper Finalist at IEEE BigData, a sole-author paper at an AACL-IJCNLP
   workshop, two accepted with revisions in student journals, and a preprint." Rows are still written from `D` by a
   scratch script (node evals `D`, Python writes `.rl`): change `D`, then the row. The `.cg-pp` notes above are history.
+  **Since later that night Research is question-first cards** (Adrian on the list: "hard to read each paper"; of
+  three more takes, D chat answer, E question first, F result first, he said "more like e, but do the actual questions
+  and make the shit really nice"). One card per paper (`.rqs`, `.rq`): the venue's mark (IEEE, AACL-IJCNLP, OJSS's O;
+  JHSS's is muddy at 17px and Whose Line has none), the result in navy, the venue on its own line, the full title, a
+  grey line with co-authors and scale, the first page at the right (opens the PDF), then **the paper's own research
+  questions**, numbered, each answered verdict first in bold ("Yes.", "Partly.", "No decline found"), then the buttons.
+  LangLLM's six are its RQ1-RQ6 (intro) answered from its RQ summary table; Curated to Win, Whose Line, the portfolio
+  paper and Legatum have three or four each, taken from their abstracts and introductions, with their own numbers.
+  The questions live only in index.html (not in `D`); when a paper changes, update the card, `D` and llms.txt. Ids
+  `#rs-t1..5` are on the cards; a paper opens in the canvas only from a typed question now. The `.rl` notes are history.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
