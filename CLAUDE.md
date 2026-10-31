@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-rqa` for both).
+  homepage (see below). Both links carry `?v=` (currently `2026-10-30-refine` for both).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -510,8 +510,9 @@ with "a lot of updates" still to come. What shipped:
   should have photos". The chat now speaks about him: the questions are "Who is Adrian?", "Where has he interned?", "What
   has he built?", "Does he really fence for Team USA?", "How can I reach him?"; the sidebar says About Adrian and What
   he's built; About is his three paragraphs turned to "Adrian is... He builds...", under a ChatGPT-style photo grid
-  (`.cg-imgs`: headshot large, then the Pan-Ams lunge, the YC sign, climbing, cycling; a click opens `.cg-lb`). The
-  Internships and Research text still says "I"/"we": switch them when he reviews those. **"Type literally anything"**: he
+  (`.cg-imgs`; since 30 Oct, his ask, "i like the fencing. then headshot, maybe the YC. choose two more good ones. the
+  climbing photo is fine": the Pan-Ams lunge large, then the headshot, the YC sign, the podium with his medal, climbing;
+  cycling is out; a click opens `.cg-lb`). Internships are in the third person since 30 Oct (see the refine pass). **"Type literally anything"**: he
   chose written answers over a live AI model. site.js `KB` holds ~90 answers in the third person, every fact from
   llms.txt or the page (GPA, SAT, APs and dual enrollment, school, age not listed, hobbies with photos, brother, JSU,
   fields, MIT, a summary, what's next, each internship, each paper and project with a card that opens the big view, the
@@ -562,6 +563,16 @@ with "a lot of updates" still to come. What shipped:
   paper and Legatum have three or four each, taken from their abstracts and introductions, with their own numbers.
   The questions live only in index.html (not in `D`); when a paper changes, update the card, `D` and llms.txt. Ids
   `#rs-t1..5` are on the cards; a paper opens in the canvas only from a typed question now. The `.rl` notes are history.
+  **Since 30 Oct (late) Research asks which paper** (Adrian: "ask which paper they want to see, give them the five
+  options. and then present it ... akin to how chat would do it, with the options to open the paper"). The answer ends
+  "Which one do you want to see?" over a list of five (`.pk`: first page, full title, a plain question, result · venue).
+  A pick asks for it as the visitor's next question ("Tell me about Curated to Win") and the chat answers in its own
+  style (`.pa`): result and venue, title, authors, a plain-language paragraph, "What the paper asks" with the same
+  research questions as a numbered list, then the paper and its code as file tiles (`.pa-f`; the PDF opens in the reader;
+  Whose Line's PDF tile is a dashed "coming soon", marked `[EDIT]`), then the other four papers as chips. The answers
+  wait in `.pas` (hidden with JS) and are moved into the thread when picked (site.js CHAT SITE `pickPaper`), so
+  `#rs-t1..5` stay unique and a link to one picks it at once; picked twice, the thread scrolls back. Without JS all five
+  show under the list. The `.rq` card notes above are history; the questions and numbers carried over unchanged.
 - **The hero is a chat app since 29 Oct** (Adrian: "make the landing page look exactly like chatgpt. so when they type in
   the stuff it is like chatgpt"; on the mock, `_mock/chat.html`: "this is really cool ... this is the way to go"). The first
   screen (`section.cg#top`, full viewport, before the site nav, which now sticks once you scroll past it) is ChatGPT's
@@ -622,6 +633,22 @@ with "a lot of updates" still to come. What shipped:
   and Monte won at two USC hackathons on the same weekend, Ledger won VISION HACK: South LA, and Safe Routes placed
   3rd internationally." Not used, from his college apps: the FBI/LAPD/ADL work on SafeJew, Lemma's internships, a16z
   and the ex-Uber judge on Monte, Safe Routes' mentor, the Mayor's Office showcase. Ask before adding them.
+  **Refine pass (30 Oct, late), his notes on each conversation:** (1) **Clicks no longer jump to the top.** Every
+  `article.cg-conv` carries `data-conv`, so the click handler's `closest('[data-conv]')` matched the article itself: any
+  click in an answer reopened it at scrollTop 0 and blocked its links (Code + data, the copy and thumbs icons, typed
+  answers' cards). It now matches `[data-conv]:not(.cg-conv)`, and the #link handler skips clicks already handled.
+  (2) **SafeJew says who funds it:** its card's result line is "Funded by a JFEDLA Teen Innovation Grant", the canvas
+  leads with it, and the opening line adds "SafeJew, his live map of antisemitic incidents, is funded by the Jewish
+  Federation of Greater Los Angeles (JFEDLA)." (3) **Every build has its links under the card** (`.wc` > `.wcard` + `.wl`:
+  Live site / Live map / Live demo, Devpost, Film, Write-up, Code, as in `D`); the card itself still opens the canvas.
+  Citadel's panel adds About Terminal beside More. (4) **The résumé picker** (`#cvMenu`) wears the chat's menu style
+  (white, 16px radius, Geist, "Résumé" header); it was the old mono caps ("the resume tab has a different font").
+  (5) **"Tell me more about his work"** is a suggestion chip (`data-ask`, typed as the visitor's question) on the empty
+  screen and under About; its KB answer gives research, building and internships, each linked. (6) **Internships in
+  the third person**, plain for admissions readers: Firstness explained in a sentence, Kiddom's 0.87 F1 glossed "(1.0 is
+  perfect)", Fjor's "machine-learning models" and "investment memos for the partners' decisions", Alliance as "this
+  nonprofit for Southern California's startups". (7) **Still open:** he asked for a "what is his favorite [blank]"
+  option; it waits on his list of favorites (nothing on record says what they are). Don't invent any.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the

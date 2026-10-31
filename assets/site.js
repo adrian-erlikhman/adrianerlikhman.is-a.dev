@@ -1456,8 +1456,8 @@ const BIG=(function(){
       site:'https://terminal.c1games.com/',m:'<img src="/img/terminal/viewer.webp?v=2026-10-29" alt="Terminal’s replay viewer at round 41, dunderscore in teal" style="object-fit:contain;background:#1c1b21">',
       l:[['https://terminal.c1games.com/','About Terminal',1]]},
     safejew:{lg:'/img/logos/safejew.webp',n:'SafeJew',k:'Co-founder · 2024 to now',
-      a:['1,394 incidents mapped','funded by a JFEDLA Teen Innovation Grant'],
-      t:'A live map of antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, each tied to its source, distributed through the Jewish Federation of Los Angeles’ Community Security Initiative.',
+      a:['Funded by a JFEDLA Teen Innovation Grant','the Jewish Federation of Greater Los Angeles'],
+      t:'A live map of 1,394 antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, each tied to its source, distributed through the Jewish Federation of Los Angeles’ Community Security Initiative.',
       h:'He wrote a dependency-free LA gazetteer that finds the most specific place a news story names and geocodes it, so a daily GitHub Action adds new incidents with no one in the loop. 800 incidents across LA and 594 on campuses, from ADL records and cited news reports. Next.js, TypeScript, Supabase.',
       p:['His part','Co-founded it, wrote the gazetteer and rebuilt the platform as V2 for a pitch to Hillel International.'],
       site:'https://safejew.org/map',m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
@@ -1535,7 +1535,7 @@ const BIG=(function(){
       +`<div class="cv-ln">${d.l.map((x,i)=>L(x[0],x[1],!i).replace('class="btn',`class="${i?'':'cv-go '}btn`)).join('')}</div></div></div>`;
     if(d.rc){ LG.run(); dv.querySelector('.lg-again').addEventListener('click',LG.run); }
     if(src) src.classList.remove('cv-src');
-    src=from&&from.closest?(from.closest('.wg>a')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
+    src=from&&from.closest?(from.closest('.wg .wcard')||(from.closest('.tm')&&from.closest('.tm').querySelector('.tm-v'))):null;
     if(src) src.classList.add('cv-src');
     if(dv.hidden) back=from||document.activeElement;
     onClose=closed||null;
@@ -1597,15 +1597,15 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.rqs';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.pk,.pa-qa,.pa-fs';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
     const my=++run; busy=true; const c=convs[k], a=c.querySelector('.cg-a'), row=c.querySelector('.cg-acts2');
-    const blocks=[...a.children];
+    const blocks=[...a.children].filter(b=>!b.matches('.pas'));     // Research's unpicked papers stay out of the build
     if(RM||played.has(k)){ blocks.forEach(b=>b.classList.remove('cg-wait')); row.classList.remove('cg-wait'); busy=false; return; }
     played.add(k);
-    const says=[...a.querySelectorAll('.cg-say')].map(e=>[e,e.innerHTML]); says.forEach(([e])=>e.innerHTML='');
+    const says=[...a.querySelectorAll('.cg-say')].filter(e=>!e.closest('.pas')).map(e=>[e,e.innerHTML]); says.forEach(([e])=>e.innerHTML='');
     blocks.forEach(b=>b.classList.add('cg-wait')); row.classList.add('cg-wait');
     a.insertAdjacentHTML('afterbegin','<span class="cg-think">Thinking</span>');
     await sleep(800); const th=a.querySelector('.cg-think'); if(th) th.remove();
@@ -1627,8 +1627,27 @@ const BIG=(function(){
     if(instant) played.add(k);
     thread.scrollTop=0;
     const p=play(k);
-    if(to){ const el=document.getElementById(to); if(el&&el!==convs[k]) requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); }
+    if(to){ const el=document.getElementById(to);
+      if(el&&el.matches('.pa')) pickPaper(to,{instant:true});
+      else if(el&&el!==convs[k]) requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); }
     return p;
+  }
+
+  /* ---- Research asks which paper first (30 Oct, Adrian: "ask which paper they want to see, give them the five options. and
+     then present it ... akin to how chat would do it, with the options to open the paper"). The five answers (.pa, ids
+     #rs-t1..5) wait in .pas, hidden with JS; a pick from the list or a chip asks for it as the visitor's next question and
+     moves that answer into the reply, with the other papers as chips. Picked again, the thread goes back to it. A link to
+     #rs-t3 from anywhere picks it at once. Without JS all five show under the list. ---- */
+  const PK={}; root.querySelectorAll('.pk [data-pk]').forEach(a=>PK[a.dataset.pk]={q:a.dataset.q,n:a.dataset.n});
+  const SV=P(IC.search).replace(/18/g,'16');
+  function pickPaper(id,{instant}={}){
+    const pa=document.getElementById(id); if(!pa||!pa.matches('.pa')) return false;
+    if(cur!=='research') open('research',{instant:true});
+    if(!pa.closest('.pas')){ const u=pa.closest('.cg-a').previousElementSibling; thread.scrollTop=u.offsetTop-12; return true; }
+    const more=document.createElement('div'); more.className='cg-follow';
+    more.innerHTML=Object.keys(PK).filter(k=>k!==id).map(k=>`<button class="cg-chip" type="button" data-pk="${k}">${SV}${PK[k].n}</button>`).join('')+chipHTML('work');
+    reply(PK[id].q,[pa,more],{instant});
+    return true;
   }
 
   /* ---- typed questions (29 Oct, Adrian: "make it so that you can type literally anything and it will answer"; he chose
@@ -1665,7 +1684,7 @@ const BIG=(function(){
     {k:[K(/ieee|bigdata|big data|multilingual|attribution|which (ai|model|llm) wrote|langllm|best paper|stylometr|seven languages/)],dv:'langllm',f:['research'],a:say(`<b>Interpretable Multilingual Attribution of Frontier LLMs</b> is accepted at the IEEE BigData 2026 High School Symposium (Phoenix, 17 Dec) and is a <b>Best Paper Finalist</b>: one of 12 papers, top 16 of 130 accepted.`,`A classifier built on 21 interpretable features names which of five frontier models wrote an essay 59–72% of the time in all seven languages, against 20% chance; the models themselves do little better than chance. Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
     {k:[K(/curated|reward.?models?|rewardbench|leaderboard|sole.?author|aacl|arrsi|benchmark/)],dv:'curated',f:['research'],a:say(`<b>Curated to Win</b> is Adrian’s sole-author paper, accepted at the ARRSI workshop at AACL-IJCNLP 2026.`,`It certifies when picking a reward model or AI judge by its score on a test set can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 questions, but removing 12 particular ones makes the runner-up the winner.`)},
     {k:[K(/whose line|self.?recogni|own writing|llm judges?|ai judges?|\bjudges?\b|preprint|arxiv/)],dv:'compllm',f:['research'],a:say(`<b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b> asks whether AI judges recognize their own writing.`,`Across nine judges and 1,270 texts, the usual test flags 15 of 37 cases; with two controls added, none beats the judge’s strongest single peer. It is a preprint, arXiv forthcoming; Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
-    {k:[K(/portfolio optim|markowitz|1\/n|ojss|oxford|splitting (money )?evenly|equal.?weight|sharpe/)],dv:'portfolio',f:['research'],a:say(`<b>Does Portfolio Optimization Beat Splitting Evenly?</b> is accepted with revisions at the Oxford Journal of Student Scholarship.`,`Splitting money evenly beat the Markowitz-optimal portfolio in 74% of 250 market simulations. Adrian is co-first author with his brother, Ryan Erlikhman.`)},
+    {k:[K(/portfolio (optim|paper)|markowitz|1\/n|ojss|oxford|splitting (money )?evenly|equal.?weight|sharpe/)],dv:'portfolio',f:['research'],a:say(`<b>Does Portfolio Optimization Beat Splitting Evenly?</b> is accepted with revisions at the Oxford Journal of Student Scholarship.`,`Splitting money evenly beat the Markowitz-optimal portfolio in 74% of 250 market simulations. Adrian is co-first author with his brother, Ryan Erlikhman.`)},
     {k:[K(/legatum|prosperity|jhss|countries|monte carlo|sensitivity/)],dv:'legatum',f:['research'],a:say(`<b>How Robust Are the Legatum Prosperity Index Rankings?</b> is accepted with revisions at the Journal of High School Science.`,`It rebuilds the index’s ranking of 167 countries exactly, then stress-tests it with 30,000 alternative weightings and a 131,072-run sensitivity analysis. Adrian is co-first author with Ryan Erlikhman.`)},
 
     /* internships */
@@ -1696,6 +1715,9 @@ const BIG=(function(){
     {k:[K(/college|universit|appl(y|ying|ication)|admission|\bmit\b|recruit|harvard|stanford|ivy/)],f:['fencing'],a:say(`He is in <b>active recruitment with MIT</b> for fencing. The site doesn’t list where else he is applying.`)},
     {k:[K(/why (should|admit|hire|him)|impressive|special|stand ?out|highlights?|summary|summari[sz]e|tl.?dr|in short|sum (him|it) up|accomplish|proud|best (thing|work)|resume summary|in a nutshell/)],f:['research','work','fencing'],a:say(`In short:`)+ul([`<b>Four accepted papers</b>, one a Best Paper Finalist at IEEE BigData and one sole-authored, at an AACL-IJCNLP workshop`,`<b>Team USA épée</b>: 6th at the Cadet Pan-American Championships, and a peak of No. 17 nationally as a Cadet`,`<b>Four internships</b> in machine learning, software and venture capital`,`<b>Four hackathon wins</b>: TrojanHacks, SEPHacks, VISION HACK and Decode the Ocean`,`<b>National Merit Semifinalist</b>, with a 4.0 unweighted GPA and a 1520 SAT`])},
     {k:[K(/right now|currently|these days|working on|up to|upcoming|coming up|this (fall|month|winter)/)],f:['experience','research'],a:say(`Right now he is interning at ${S('xp-firstness','Firstness')} and in ${S('xp-kiddom','Kiddom’s')} ML mentorship.`,`Coming up: ${S('rs-t2','Curated to Win')}’s workshop (ARRSI at AACL-IJCNLP, 10 Nov), aiEDU’s student panel at NCSS in San Diego (2 Dec), and IEEE BigData in Phoenix (17 Dec), where ${S('rs-t1','his multilingual attribution paper')} is a Best Paper Finalist.`)},
+
+    /* "Tell me more about his work" (a suggestion chip, Adrian's ask, 30 Oct): the three strands, each a way in */
+    {k:[K(/\b(his|adrian'?s) work\b(?! (experience|history))|what (does|has|did) he work(ed)? on/)],f:['research','work','experience'],a:say(`Adrian’s work runs along three lines:`)+ul([`<b>Research.</b> ${S('papers','Five papers')} on telling which AI model wrote a text and on whether the tests used to rank AI models hold up. One is a Best Paper Finalist at IEEE BigData; another, which he wrote alone, is accepted at an AACL-IJCNLP workshop.`,`<b>Building.</b> Software people use: ${S('case-safejew','SafeJew')}, a live map of antisemitic incidents funded by the Jewish Federation of Greater Los Angeles, and ${S('case-aimlli','AIML-LI')}, a free AI course for LA public schools. Since September, ${S('case-hivemind','Hivemind')}, ${S('case-monte','Monte')} and ${S('case-ledger','Ledger')} have won at three hackathons.`,`<b>Internships.</b> Machine learning at ${S('xp-firstness','Firstness')} and ${S('xp-kiddom','Kiddom')}, and venture capital at ${S('xp-fjor','Fjor')} and ${S('xp-alliance','Alliance for SoCal Innovation')}, where he built the models and tools the teams used.`])+say(`Which one do you want to go deeper on?`)},
 
     /* research in general */
     {k:[K(/how many (papers|publications)|publications?|published|peer.?review|list (of )?(his )?papers/)],f:['research'],a:say(`Five papers: four accepted and one preprint.`)+ul([`${S('rs-t1','<b>Interpretable Multilingual Attribution of Frontier LLMs</b>')}: IEEE BigData 2026 High School Symposium, Best Paper Finalist`,`${S('rs-t2','<b>Curated to Win</b>')}: ARRSI workshop at AACL-IJCNLP 2026, sole author`,`${S('rs-t3','<b>Whose Line Is It Anyway?</b>')}: preprint, arXiv forthcoming`,`${S('rs-t4','<b>Does Portfolio Optimization Beat Splitting Evenly?</b>')}: accepted with revisions, Oxford Journal of Student Scholarship`,`${S('rs-t5','<b>How Robust Are the Legatum Prosperity Index Rankings?</b>')}: accepted with revisions, Journal of High School Science`])},
@@ -1759,18 +1781,26 @@ const BIG=(function(){
   const missHTML=()=>say(`I don’t have an answer for that one. I only know about Adrian: his research, what he has built, his internships, his fencing and his honors.`,`If it’s about him and I missed it, ask him directly: ${MAIL}.`)+chips(['about','research','work','fencing']);
   /* a typed answer goes under the open conversation, as a follow-up; from the empty screen it starts a fresh thread ("ask") */
   function askConv(){ if(!convs.ask){ col.insertAdjacentHTML('beforeend','<article class="cg-conv" data-conv="ask" id="c-ask"></article>'); convs.ask=col.lastElementChild; } return 'ask'; }
-  async function reply(text,html){
+  /* html is a string, or nodes to move in (a Research paper); instant skips Thinking and the build, for #links */
+  async function reply(text,html,{instant}={}){
     if(busy){ run++; busy=false; }
     const my=++run; busy=true;
     if(!cur) select(askConv());
     const c=convs[cur];
+    c.querySelectorAll('.cg-extra').forEach(x=>x.style.minHeight='');
     c.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div><div class="cg-a cg-extra"></div>`);
     const kids=c.children,u=kids[kids.length-2].firstElementChild,a=kids[kids.length-1]; u.textContent=text;
+    a.style.minHeight=Math.max(0,thread.clientHeight-u.parentElement.offsetHeight-210)+'px';   // room below, so the question can sit at the top as the answer builds
     thread.scrollTop=u.parentElement.offsetTop-12;
+    const tmp=document.createElement('div'); if(typeof html==='string') tmp.innerHTML=html; else tmp.append(...html);
+    if(instant){ a.append(...tmp.children); a.insertAdjacentHTML('afterend',acts()); busy=false; return; }
     a.innerHTML='<span class="cg-think">Thinking</span>'; await sleep(RM?100:800);
-    const tmp=document.createElement('div'); tmp.innerHTML=html;     // a newer question cuts the animation, never the answer
-    a.innerHTML=''; for(const el of [...tmp.children]){ a.appendChild(el); if(my!==run) continue;
-      if(el.matches('.cg-say')){ const h=el.innerHTML; await streamSay(el,h,my); } else { stagger(el); await sleep(220); } }
+    a.innerHTML=''; for(const el of [...tmp.children]){ a.appendChild(el); if(my!==run) continue;     // a newer question cuts the animation, never the answer
+      if(el.matches('.cg-say')){ const h=el.innerHTML; await streamSay(el,h,my); }
+      else if(el.matches('.pa')){ const ks=[...el.children]; ks.forEach(k=>k.classList.add('cg-wait'));
+        for(const k of ks){ k.classList.remove('cg-wait'); if(my!==run) continue; k.classList.add('cg-pop-in');
+          if(k.matches('.cg-say')) await streamSay(k,k.innerHTML,my); else { stagger(k); await sleep(160); } } }
+      else { stagger(el); await sleep(220); } }
     a.insertAdjacentHTML('afterend',acts()); if(my===run) busy=false;
   }
   function answer(t){ const e=best(norm(t));
@@ -1782,7 +1812,12 @@ const BIG=(function(){
   /* ---- the visitor ---- */
   const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
   root.addEventListener('click',e=>{
-    const q=e.target.closest('[data-conv]'); if(q){ e.preventDefault(); stopAuto(); if(BIG&&q.dataset.conv!==cur) BIG.close(true); open(q.dataset.conv); return; }
+    const pk=e.target.closest('[data-pk]'); if(pk){ e.preventDefault(); stopAuto(); pickPaper(pk.dataset.pk); return; }
+    const ak=e.target.closest('[data-ask]'); if(ak){ e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); answer(ak.dataset.ask); return; }
+    /* a chip, the sidebar or the menu, never the conversation itself: the article carries data-conv too, and matching it made
+       every click inside an answer reopen it at the top and swallow its links (Adrian, 30 Oct: "if you click somewhere it
+       immediately sends you to the top") */
+    const q=e.target.closest('[data-conv]:not(.cg-conv)'); if(q){ e.preventDefault(); stopAuto(); if(BIG&&q.dataset.conv!==cur) BIG.close(true); open(q.dataset.conv); return; }
     const c=e.target.closest('[data-cgdv]'); if(c&&BIG){ e.preventDefault(); stopAuto(); BIG.open(c.dataset.cgdv,c); return; }
     const act=e.target.closest('[data-act]'); if(act){ stopAuto(); const row=act.parentElement,box=row.previousElementSibling;
       if(act.dataset.act==='copy'){ const done=()=>{ act.innerHTML=P(IC.ok); setTimeout(()=>act.innerHTML=P(IC.copy),1500); };
@@ -1819,14 +1854,14 @@ const BIG=(function(){
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="/papers/"][href*=".pdf"]'); if(!a||!inlinePDF||a.hasAttribute('data-dv')) return;
     if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0) return;
     e.preventDefault(); e.stopPropagation(); stopAuto();
-    const card=a.closest('.cv,.rq'), t=card&&card.querySelector('.cv-ti,.cv-id b,.rq h3');
+    const card=a.closest('.cv,.pa'), t=card&&card.querySelector('.cv-ti,.cv-id b,.pa-ti');
     rd.querySelector('b').textContent=t?t.textContent:'Paper';
     rd.querySelector('.cg-rd-o').href=a.getAttribute('href');
     rdF.src=a.getAttribute('href')+'#view=FitH'; rd._from=a; rd.hidden=false; rd.querySelector('.cg-rd-x').focus(); },true);
   /* #links anywhere (the About paragraph, the big view, the palette) open the conversation that holds the target */
   function convOf(id){ const el=document.getElementById(id); const c=el&&el.closest('.cg-conv'); return c?c.dataset.conv:null; }
   window.cgOpen=h=>{ const id=(h||'').replace(/^#/,''); const k=convOf(id); if(!k) return false; stopAuto(); if(BIG) BIG.close(true); open(k,{to:id,instant:true}); return true; };
-  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a||a.closest('#cgPop')) return;
+  document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="#"]'); if(!a||e.defaultPrevented||a.closest('#cgPop')) return;
     const id=decodeURIComponent(a.getAttribute('href').slice(1)); if(!id||id==='top') return; const k=convOf(id); if(!k) return;
     e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); open(k,{to:id,instant:true}); history.replaceState(null,'','#'+id); });
   root.addEventListener('pointerdown',e=>{ if(!e.target.closest('.cg-thread')||e.target.closest('a,button,video')) stopAuto(); });

@@ -100,10 +100,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* selected work: a screenshot, plain text under it; a click opens the big view */
 .wg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px;margin-top:28px}
-.wg a{display:block;scroll-margin-top:90px;cursor:zoom-in}
+.wg .wcard{display:block;scroll-margin-top:90px;cursor:zoom-in}
 .wg .im{aspect-ratio:16/10;border:1px solid var(--edge);border-radius:10px;overflow:hidden;background:#fff}
 .wg .im img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
-.wg a:hover .im img{transform:scale(1.03)}
+.wg .wcard:hover .im img{transform:scale(1.03)}
 .wg h3{display:flex;align-items:center;gap:8px;font:600 16.5px var(--sans);margin-top:14px}
 .wg h3 img{width:18px;height:18px;object-fit:contain}
 .wg .rz{font:500 14px var(--sans);color:var(--acc);margin-top:4px}
@@ -234,7 +234,7 @@ body.dv-open{overflow:hidden}
 .lgr .slot::after{content:"";position:absolute;left:2.5cqw;right:2.5cqw;top:45%;height:2px;border-radius:2px;background:#000}
 .rcp{position:absolute;left:50%;bottom:-1.9cqw;width:60%;transform:translateX(-50%);background:var(--pp);color:var(--pk);padding:1.4em 1.5em 1.6em;font:500 8.6px/1.55 var(--mono);font-size:2.75cqw;letter-spacing:.02em;filter:drop-shadow(0 12px 16px rgba(8,16,48,.4));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .rcp::before{content:"";position:absolute;left:0;right:0;top:-.7em;height:.7em;background:linear-gradient(45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x,linear-gradient(-45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x}
-.wg a:hover .rcp{transform:translate(-50%,-2.2cqw)}
+.wg .wcard:hover .rcp{transform:translate(-50%,-2.2cqw)}
 .rcp .hd{display:flex;align-items:center;justify-content:center;gap:.45em;font-weight:700;font-size:1.5em;line-height:1;letter-spacing:.12em}
 .wg .lgr .rcp .hd img,.rcp .hd img{width:1.1em;height:1.1em;object-fit:contain;transform:none;transition:none}
 .rcp .c{text-align:center}.rcp .dim{opacity:.7}
@@ -350,16 +350,17 @@ body.intro-lock{overflow:hidden}
 .cmdk-prompt,.cv-file{color:var(--acc)}
 .cmdk-list li.sel{background:color-mix(in srgb,var(--acc) 12%,transparent);color:var(--acc)}
 .cv-code,.cv-file,.cmdk-prompt,.cmdk-list li,.term,.term *{font-family:var(--mono)}
-.cvmenu{position:fixed;z-index:9991;width:min(330px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line-strong);box-shadow:0 24px 60px -18px rgba(21,23,28,.45);padding:4px 6px 6px;animation:cmdkIn .16s ease}
+/* the résumé picker, in the chat's own menu style since 30 Oct (Adrian: "the resume tab has a different font"; it was the old
+   site's mono caps on a square panel) */
+.cvmenu{position:fixed;z-index:9991;width:min(260px,calc(100vw - 32px));background:#fff;border:1px solid #e5e5e5;border-radius:16px;box-shadow:0 14px 40px -12px rgba(0,0,0,.22);padding:8px;font-family:var(--sans);color:#0d0d0d;animation:cmdkIn .16s ease}
 .cvmenu[hidden]{display:none}
-.cvm-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding:9px 10px 8px}
-.cvm-h span{color:var(--dim)}
-.cvm-opt{display:grid;grid-template-columns:1fr auto;gap:3px 12px;padding:11px 10px 12px;border-top:1px solid var(--line);color:var(--ink);text-decoration:none;transition:background .2s}
-.cvm-opt:hover,.cvm-opt:focus-visible{background:color-mix(in srgb,var(--acc) 11%,transparent);outline:none}
-.cvm-k{font-family:var(--sans);font-weight:600;font-size:15px;line-height:1.2}
-.cvm-p{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);align-self:center}
-.cvm-src{display:block;border-top:1px solid var(--line);padding:9px 10px 4px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim);text-decoration:none}
-.cvm-src:hover,.cvm-src:focus-visible{color:var(--acc);outline:none}
+.cvm-h{font-size:12.5px;color:#8f8f8f;padding:6px 10px 4px}
+.cvm-opt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:9px 10px;border-radius:10px;color:inherit;text-decoration:none}
+.cvm-opt:hover,.cvm-opt:focus-visible{background:#f4f4f4;outline:none}
+.cvm-k{font-size:14.5px;font-weight:500}
+.cvm-p{font-size:12.5px;color:#8f8f8f}
+.cvm-src{display:block;margin-top:4px;border-top:1px solid #ececec;padding:10px 10px 4px;font-size:12.5px;color:#8f8f8f;text-decoration:none}
+.cvm-src:hover,.cvm-src:focus-visible{color:#0d0d0d;outline:none}
 
 /* hero (29 Oct, Adrian: "make the landing page look exactly like chatgpt ... this is the way to go"): the first screen is a
    chat app in ChatGPT's layout. White app, grey sidebar, Geist, black send button; no OpenAI marks or names. site.js CHAT HERO. */
@@ -624,7 +625,7 @@ body{overflow:hidden}
 }
 /* a link that wraps a whole row or card (a paper, a build, a bout, a button) carries no underline; only links inside a
    sentence do (Adrian, 30 Oct: "way too many underlines in the research section ... literally everything") */
-.cg-a .pl a,.cg-a .wg>a,.cg-a .tm a,.cg-a .cc a,.cg-a .cg-vids a,.cg-a .cg-src a,.cg-a .btn{text-decoration:none}
+.cg-a .pl a,.cg-a .wg .wcard,.cg-a .tm a,.cg-a .pk a,.cg-a .pa-f,.cg-a .cc a,.cg-a .cg-vids a,.cg-a .cg-src a,.cg-a .btn{text-decoration:none}
 .cg-a .pl li a:hover h3{color:var(--acc)}
 
 /* .cg-rd is the reader that shows a whole PDF over the page. */
@@ -638,36 +639,58 @@ body{overflow:hidden}
 .cg-rd iframe{flex:1;width:100%;border:0;background:#525659}
 .cg-a a.btn{text-decoration:none}
 .cv-ti{font-size:17px;font-weight:600;line-height:1.35;margin-bottom:8px;text-wrap:pretty}
-/* Research (30 Oct, latest): question-first cards, each paper's own research questions answered verdict first. */
-.rqs{display:flex;flex-direction:column;gap:18px;margin:6px 0 8px}
-.rq{border:1px solid #e5e5e5;border-radius:20px;background:#fff;padding:26px 30px 24px;box-shadow:0 1px 2px rgba(0,0,0,.03);scroll-margin-top:16px}
-.cg-a .rq p{margin:0}
-.cg-a .rq a{text-decoration:none}
-.rq-h{display:grid;grid-template-columns:minmax(0,1fr) 68px;gap:24px;align-items:start}
-.cg-a .rq-st{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:13.5px;line-height:1.4;color:#8f8f8f}
-.rq-lg{height:17px;width:auto;max-width:130px;object-fit:contain;object-position:left center;margin-right:2px}
-.rq-st b{font-weight:600;color:var(--acc)}
-.rq-st span{flex-basis:100%}
-.cg-a .rq h3{font-size:20px;font-weight:600;line-height:1.3;letter-spacing:-.012em;margin:10px 0 0;text-wrap:pretty}
-.cg-a .rq-m{font-size:13.5px;line-height:1.5;color:#8f8f8f;margin-top:6px}
-.rq-pg{display:block;transition:transform .25s}
-.rq-pg img{display:block;width:100%;border:1px solid #e5e5e5;border-radius:3px;background:#fff;box-shadow:0 10px 22px -14px rgba(0,0,0,.45)}
-.rq-pg:hover{transform:translateY(-2px) rotate(-1deg)}
-.cg-a .rq-qa{list-style:none;counter-reset:rq;margin:20px 0 0;padding:0;border-top:1px solid #ececec}
-.cg-a .rq-qa li{counter-increment:rq;position:relative;margin:0;padding:16px 0 16px 34px;border-bottom:1px solid #f0f0f0}
-.cg-a .rq-qa li:last-child{border-bottom:0}
-.rq-qa li::before{content:counter(rq);position:absolute;left:0;top:17px;width:22px;height:22px;border-radius:6px;background:#f2f4f8;color:var(--acc);font-size:12px;font-weight:600;line-height:22px;text-align:center}
-.cg-a .rq-q{font-size:16.5px;font-weight:600;line-height:1.45;color:#0d0d0d;text-wrap:pretty}
-.cg-a .rq-a{font-size:15px;line-height:1.65;color:#4a4a4a;margin-top:4px;text-wrap:pretty}
-.rq-a b{font-weight:600;color:#0d0d0d}
-.rq-a sup{font-size:.72em;line-height:0}
-.rq-ln{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.rq-ln .btn{padding:8px 13px;font-size:13.5px}
+/* Research (30 Oct, later): the chat asks which paper and lists all five (.pk); a pick answers in the chat's own style (.pa):
+   result and venue, title, authors, a paragraph, the paper's research questions as a numbered list, then the paper and its
+   code as files (.pa-f). .pas holds the answers not yet picked (hidden with JS). */
+.cg-a .pk{list-style:none;margin:4px 0 6px;padding:0;border:1px solid #e5e5e5;border-radius:16px;overflow:hidden;background:#fff}
+.cg-a .pk li{margin:0;padding:0;border-top:1px solid #ececec}
+.cg-a .pk li:first-child{border-top:0}
+.cg-a .pk a{display:grid;grid-template-columns:40px minmax(0,1fr) 18px;gap:16px;align-items:center;padding:14px 16px 14px 14px;color:inherit;transition:background .15s}
+.cg-a .pk a:hover{background:#f7f7f7}
+.pk-pg{width:40px;height:52px;object-fit:cover;object-position:top;border:1px solid #e5e5e5;border-radius:3px;background:#fff}
+.pk-t{display:flex;flex-direction:column;min-width:0}
+.pk-t b{font-size:15px;font-weight:600;line-height:1.35;text-wrap:pretty}
+.pk-q{font-size:14px;line-height:1.45;color:#5d5d5d;margin-top:2px}
+.pk-r{font-size:12.5px;line-height:1.4;color:#8f8f8f;margin-top:4px}
+.pk-r em{font-style:normal;font-weight:600;color:var(--acc)}
+.pk-c{color:#8f8f8f;transition:transform .15s}
+.cg-a .pk a:hover .pk-c{transform:translateX(2px);color:#0d0d0d}
+.cg-js .cg-a>.pas{display:none}
+.pas .pa+.pa{margin-top:36px;padding-top:28px;border-top:1px solid #ececec}
+.pa{scroll-margin-top:16px}
+.cg-a .pa-st{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;font-size:13.5px;line-height:1.4;color:#8f8f8f;margin:0 0 6px}
+.pa-lg{height:17px;width:auto;max-width:130px;object-fit:contain;object-position:left center}
+.pa-st b{font-weight:600;color:var(--acc)}
+.cg-a .pa-ti{font-size:21px;font-weight:600;line-height:1.3;letter-spacing:-.012em;margin:0;text-wrap:pretty}
+.cg-a .pa-by{font-size:13.5px;line-height:1.5;color:#8f8f8f;margin:6px 0 16px}
+.cg-a .pa-qa{padding-left:22px;margin:0 0 18px}
+.cg-a .pa-qa li{margin:0 0 12px;padding-left:6px;line-height:1.65}
+.pa-qa li::marker{font-weight:600;color:#5d5d5d}
+.pa-q{display:block;font-weight:600}
+.pa-qa sup{font-size:.72em;line-height:0}
+.pa-fs{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 6px}
+.pa-f{display:flex;align-items:center;gap:12px;min-width:250px;padding:10px 18px 10px 10px;border:1px solid #e5e5e5;border-radius:14px;background:#fff;color:inherit;transition:background .15s,border-color .15s}
+a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
+.pa-f>img{width:38px;height:50px;object-fit:cover;object-position:top;border:1px solid #e5e5e5;border-radius:3px}
+.pa-gh{display:flex;align-items:center;justify-content:center;width:38px;height:50px;border-radius:8px;background:#f4f4f4;color:#0d0d0d}
+.pa-f>span{display:flex;flex-direction:column;min-width:0}
+.pa-f b{font-size:14.5px;font-weight:600;line-height:1.3}
+.pa-f small{font-size:12.5px;line-height:1.4;color:#8f8f8f;margin-top:2px;overflow-wrap:anywhere}
+.pa-f.soon{border-style:dashed;color:#8f8f8f}
+.pa-f.soon>img{opacity:.55}
+/* a build's links under its card (30 Oct, Adrian: "they should have the options to go to the live sites and stuff") */
+.wl{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.cg .wl .btn{gap:5px;padding:5px 10px;font-size:13px;border-color:#e5e5e5}
+.cg .wl .btn:hover{border-color:var(--acc)}
+.tm .wl{margin-top:16px}.tm .wl .btn{margin-top:0}
+/* About's photos (30 Oct): the lunge leads, cropped to the fencer; portrait shots keep the faces */
+.cg-imgs .lunge img{object-position:74% center}
+.cg-imgs .tall img{object-position:center 22%}
 @media(max-width:860px){
-  .rq{padding:20px 18px 18px;border-radius:16px}
-  .rq-h{grid-template-columns:minmax(0,1fr) 52px;gap:14px}
-  .cg-a .rq h3{font-size:18px}
-  .cg-a .rq-qa li{padding-left:30px}.cg-a .rq-q{font-size:16px}
+  .cg-a .pk a{grid-template-columns:34px minmax(0,1fr) 16px;gap:12px;padding:12px}
+  .pk-pg{width:34px;height:44px}
+  .cg-a .pa-ti{font-size:19px}
+  .pa-f{min-width:0;flex:1 1 100%}
 }
 
 /* the canvas (30 Oct; Adrian picked A of three, _mock/bv.html): a build opens in a panel beside the chat, as ChatGPT's
