@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently `2026-10-30-refine` for both).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-30-refine`, site.js `2026-10-30-fav`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -647,8 +647,15 @@ with "a lot of updates" still to come. What shipped:
   screen and under About; its KB answer gives research, building and internships, each linked. (6) **Internships in
   the third person**, plain for admissions readers: Firstness explained in a sentence, Kiddom's 0.87 F1 glossed "(1.0 is
   perfect)", Fjor's "machine-learning models" and "investment memos for the partners' decisions", Alliance as "this
-  nonprofit for Southern California's startups". (7) **Still open:** he asked for a "what is his favorite [blank]"
-  option; it waits on his list of favorites (nothing on record says what they are). Don't invent any.
+  nonprofit for Southern California's startups". (7) **"What's his favorite…"** (his "what is his favorite [blank]") is a
+  chip (`data-fill`) that types "What's his favorite " into the composer for the visitor to finish; on the empty screen
+  and under About. His favorites, in his words (30 Oct): food "soviet food from grandma", movie *Good Will Hunting*,
+  music Rachmaninoff ("specifically musical moment #6", i.e. Moment Musical No. 6) and Chopin's "Revolutionary" Étude,
+  class "Math and CS, but logic is my fav", place "my bed or anywhere in nature"; **book: skip** (none, on his word).
+  KB has one answer each, plus a list for any other favorite ("favorite color") ending in his email; "favorite sport",
+  "paper" or "project" still open their conversations. Nothing says he plays piano, so "does he play piano" gets the
+  honest miss. (8) Typed answers leave blank room under the newest turn (`.cg-sp`) so its question sits at the top while
+  it builds, then shrink it to fit.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
