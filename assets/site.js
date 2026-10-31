@@ -1707,7 +1707,14 @@ const BIG=(function(){
 
     /* who he is, off the laptop */
     {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping/)],f:['fencing','about'],a:say(`Off the laptop he fences épée for Team USA, and he likes eating, puzzles, the outdoors and naps.`,`The outdoors means rock climbing, backpacking, hiking, road cycling and swimming in alpine lakes.`)+pics('climb','backpack','cycle','hike')},
-    {k:[K(/\bfood\b|\beat\b|eating|favou?rite (meal|dish|restaurant|snack)|cook/)],f:['about'],a:say(`Eating is on his own list of hobbies, right after fencing. The site doesn’t name a favorite food; that one you’d have to ask him: ${MAIL}`)},
+    /* his favorites, in his words (30 Oct): "food: soviet food from grandma, book: skip, movie: good will hunting, artist:
+       rachmaninov (specifically musical moment #6, but also chopin revolutionary etude), class: Math and CS, but logic is my
+       fav. place: my bed or anywhere in nature". No book, on his word. The "What's his favorite…" chip fills the composer. */
+    {k:[K(/\bfood\b|\beat\b|eating|favou?rite (meal|dish|restaurant|snack|cuisine)|cook|grandm|soviet|russian food/,4)],f:['about'],a:say(`His favorite food is the Soviet cooking his grandma makes. Eating is also on his own list of hobbies, right after fencing.`)},
+    {k:[K(/\bmovies?\b|favou?rite (film|show|tv)|good will hunting|\bcinema\b/)],f:['about'],a:say(`His favorite movie is <i>Good Will Hunting</i>.`)},
+    {k:[K(/\bmusic|\bsongs?\b|composers?|classical|rach?man|chopin|\bartists?\b|\bbands?\b|\bsingers?\b|listen/)],f:['about'],a:say(`Rachmaninoff, and Moment Musical No. 6 above all. He also loves Chopin’s “Revolutionary” Étude.`)},
+    {k:[K(/favou?rite .{0,15}(class|subject|course|topic)|\bsubjects?\b|\blogic\b/,4)],f:['record','research'],a:say(`Math and computer science, and logic most of all.`,`He takes both at college level too, through LACCD dual enrollment: Linear Algebra and Programming in Python.`)},
+    {k:[K(/favou?rite (place|spot)|happy place|where does he (like|love) to (be|go)|\bnature\b|\bbed\b/)],f:['about'],a:say(`His bed, or anywhere in nature.`)+pics('backpack','climb')},
     {k:[K(/\bnaps?\b|napping|sleep/)],f:['about'],a:say(`Yes, naps are on his own list of hobbies, next to eating, puzzles and the outdoors.`)},
     {k:[K(/brother|sibling|ryan|family/)],f:['research'],a:say(`His brother, Ryan Erlikhman, is his co-author on two papers: ${S('rs-t4','the portfolio paper')} (Oxford Journal of Student Scholarship) and ${S('rs-t5','the Legatum robustness audit')} (Journal of High School Science).`)},
     {k:[K(/jewish|\bjsu\b|judaism|religio/)],f:['record'],a:say(`He is president of the <b>Jewish Student Union</b> at LACES (50+ members, two years) and co-founded ${S('case-safejew','SafeJew')}, a live map of antisemitic incidents across Greater Los Angeles.`)},
@@ -1763,6 +1770,9 @@ const BIG=(function(){
     {k:[K(/fenc|[ée]p[ée]e|sports?|athlet/,2)],go:'fencing'},
     {k:[K(/honou?rs?|awards?|achiev|recogni|prizes?|accolade/,2)],go:'record'},
     {k:[K(/\bwho\b|about (him|adrian)|tell me about|introduc|background|\bbio\b|what does (he|adrian) do|^adrian\??$|^him\??$/,2)],go:'about'},
+    /* any other favorite ("what's his favorite?", "favorite color"): the ones he has shared; after the topics, so "favorite
+       sport" or "favorite paper" still opens its conversation */
+    {k:[K(/favou?rites?|\bfavs?\b/,2)],f:['about'],a:say(`The favorites he has shared:`)+ul([`<b>Food:</b> the Soviet cooking his grandma makes`,`<b>Movie:</b> <i>Good Will Hunting</i>`,`<b>Music:</b> Rachmaninoff, above all Moment Musical No. 6, and Chopin’s “Revolutionary” Étude`,`<b>Subjects:</b> math and computer science, and logic most of all`,`<b>Place:</b> his bed, or anywhere in nature`])+say(`For any other favorite, ask him: ${MAIL}`)},
 
     /* the chat itself */
     {k:[K(/are you (an? )?(ai|bot|robot|real|human|chat ?gpt|gpt|claude|llm|person)|is this (an? )?(ai|chat ?gpt|gpt|real|bot)|who am i (talking|speaking)|chat ?bot|chat ?gpt/,4)],f:['about'],a:say(`There is no AI model here. This is Adrian’s site, laid out like a chat, and every answer is written ahead of time from his record, so it can’t make anything up.`)},
@@ -1787,13 +1797,16 @@ const BIG=(function(){
     const my=++run; busy=true;
     if(!cur) select(askConv());
     const c=convs[cur];
-    c.querySelectorAll('.cg-extra').forEach(x=>x.style.minHeight='');
-    c.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div><div class="cg-a cg-extra"></div>`);
-    const kids=c.children,u=kids[kids.length-2].firstElementChild,a=kids[kids.length-1]; u.textContent=text;
-    a.style.minHeight=Math.max(0,thread.clientHeight-u.parentElement.offsetHeight-210)+'px';   // room below, so the question can sit at the top as the answer builds
+    /* blank room under the newest turn (.cg-sp), so its question sits at the top while the answer builds, as ChatGPT does;
+       once the answer is in, the room shrinks by the answer's height and the icons sit right under it */
+    c.querySelectorAll('.cg-sp').forEach(x=>x.remove());
+    c.insertAdjacentHTML('beforeend',`<div class="cg-u"><div></div></div><div class="cg-a cg-extra"></div><div class="cg-sp" aria-hidden="true"></div>`);
+    const kids=c.children,u=kids[kids.length-3].firstElementChild,a=kids[kids.length-2],sp=kids[kids.length-1]; u.textContent=text;
+    const room=Math.max(0,thread.clientHeight-u.parentElement.offsetHeight-210); sp.style.height=room+'px';
     thread.scrollTop=u.parentElement.offsetTop-12;
+    const fit=()=>{ sp.style.height=Math.max(0,room-a.offsetHeight-a.nextElementSibling.offsetHeight)+'px'; };
     const tmp=document.createElement('div'); if(typeof html==='string') tmp.innerHTML=html; else tmp.append(...html);
-    if(instant){ a.append(...tmp.children); a.insertAdjacentHTML('afterend',acts()); busy=false; return; }
+    if(instant){ a.append(...tmp.children); a.insertAdjacentHTML('afterend',acts()); fit(); busy=false; return; }
     a.innerHTML='<span class="cg-think">Thinking</span>'; await sleep(RM?100:800);
     a.innerHTML=''; for(const el of [...tmp.children]){ a.appendChild(el); if(my!==run) continue;     // a newer question cuts the animation, never the answer
       if(el.matches('.cg-say')){ const h=el.innerHTML; await streamSay(el,h,my); }
@@ -1801,7 +1814,7 @@ const BIG=(function(){
         for(const k of ks){ k.classList.remove('cg-wait'); if(my!==run) continue; k.classList.add('cg-pop-in');
           if(k.matches('.cg-say')) await streamSay(k,k.innerHTML,my); else { stagger(k); await sleep(160); } } }
       else { stagger(el); await sleep(220); } }
-    a.insertAdjacentHTML('afterend',acts()); if(my===run) busy=false;
+    a.insertAdjacentHTML('afterend',acts()); fit(); if(my===run) busy=false;
   }
   function answer(t){ const e=best(norm(t));
     if(!e) return reply(t,missHTML());
@@ -1814,6 +1827,8 @@ const BIG=(function(){
   root.addEventListener('click',e=>{
     const pk=e.target.closest('[data-pk]'); if(pk){ e.preventDefault(); stopAuto(); pickPaper(pk.dataset.pk); return; }
     const ak=e.target.closest('[data-ask]'); if(ak){ e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); answer(ak.dataset.ask); return; }
+    /* "What's his favorite…" (Adrian: "what is his favorite [blank]"): the chip starts the question and the visitor finishes it */
+    const fl=e.target.closest('[data-fill]'); if(fl){ e.preventDefault(); stopAuto(); inp.value=fl.dataset.fill; send.classList.remove('cg-off'); inp.focus(); inp.setSelectionRange(inp.value.length,inp.value.length); return; }
     /* a chip, the sidebar or the menu, never the conversation itself: the article carries data-conv too, and matching it made
        every click inside an answer reopen it at the top and swallow its links (Adrian, 30 Oct: "if you click somewhere it
        immediately sends you to the top") */
