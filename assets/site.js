@@ -323,7 +323,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   function draw(now){
     const t=(now-start)/1000;
     ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
-    const lock=cl((t-.5)/1.3);
+    const lock=cl((t-.25)/.85);
     for(const p of P){
       if(!burst){
         const k=ease(cl(lock*1.4-p.d*.8)),ang=p.a+t*(1.6-k)*(1.2+300/p.r);
@@ -335,10 +335,10 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
       }else{p.vx*=1.04;p.vy*=1.04;p.x+=p.vx;p.y+=p.vy;}
       ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);
     }
-    if(burst){const r=eo(cl((now-burst)/900))*Math.hypot(W,H)*.6;
+    if(burst){const r=eo(cl((now-burst)/700))*Math.hypot(W,H)*.6;
       ctx.save();ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(W/2,H*CY,r,0,7);ctx.fill();ctx.restore();
-      if(now-burst>1000){intro.style.display='none';return;}}
-    if(t>3.1&&!burst) open();
+      if(now-burst>800){intro.style.display='none';return;}}
+    if(t>1.7&&!burst) open();   /* 31 Oct: the name forms by 1.1 s and bursts at 1.7 s (was 1.8 and 3.1), so admissions readers reach the page in about 2 s */
     raf=requestAnimationFrame(draw);
   }
   function finishAfterBurst(){ // like finish(), but the canvas does the exit instead of the clip-path wipe
@@ -1597,7 +1597,7 @@ const BIG=(function(){
     for(const p of parts){ if(my!==run){ el.innerHTML=html; return; } out+=p; if(!p.startsWith('<')&&p.trim()){ el.innerHTML=out+'<span class="cg-cur"></span>'; await sleep(18); } }
     el.innerHTML=html;
   }
-  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.pk,.pa-qa,.pa-fs';
+  const GRIDS='.xl,.pl,.wg,.hon,.rs,.bt,.rk,.lg,.ph,.cc-b,.cg-imgs,.cg-hl,.cg-ul,.cg-tb tbody,.cg-media,.cg-vids,.pk,.pa-qa,.pa-fs';
   function stagger(el){ const gs=el.matches(GRIDS)?[el]:[...el.querySelectorAll(GRIDS)];
     gs.forEach(g=>[...g.children].forEach((ch,i)=>{ ch.style.animationDelay=(i*.07)+'s'; ch.classList.add('cg-pop-in'); })); }
   async function play(k){
@@ -1902,7 +1902,7 @@ const BIG=(function(){
   const hid=decodeURIComponent(location.hash.slice(1)), hk=hid&&convOf(hid);
   if(hk){ auto=false; open(hk,{to:hid,instant:true}); }
   async function demo(){
-    await sleep(700); if(!auto) return;
+    await sleep(400); if(!auto) return;
     typing=true; inp.value=''; send.classList.remove('cg-off');
     for(const ch of Q.about){ if(!auto) return; inp.value+=ch; await sleep(RM?0:40); }
     await sleep(RM?0:380); if(!auto) return; typing=false; auto=false;
