@@ -533,7 +533,7 @@ body{overflow:hidden}
 .cg-a .hon{border-top:1px solid var(--cg-line);border-left:1px solid var(--cg-line)}
 .cg-a .hon b{font:600 19px/1.2 var(--sans)}
 .cg-a .cc{grid-template-columns:1fr;padding:22px 24px;margin-top:4px;box-shadow:none;border-radius:16px}
-.cg-a .cc-em{font:600 24px/1.25 var(--sans)}
+.cg-a .cc-em{font:600 clamp(16px,4.9vw,24px)/1.25 var(--sans)}
 @media(max-width:860px){
   .cg-a .ab{grid-template-columns:96px minmax(0,1fr);gap:16px}.cg-a .ab>img{width:96px;height:118px}
   .cg-a .xl li{grid-template-columns:1fr;gap:4px}
