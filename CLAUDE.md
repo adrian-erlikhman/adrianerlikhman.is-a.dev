@@ -426,7 +426,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-31-ao`, site.js `2026-10-31-ao`).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-31-hl`, site.js `2026-10-31-hl`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -656,6 +656,22 @@ with "a lot of updates" still to come. What shipped:
   "paper" or "project" still open their conversations. Nothing says he plays piano, so "does he play piano" gets the
   honest miss. (8) Typed answers leave blank room under the newest turn (`.cg-sp`) so its question sits at the top while
   it builds, then shrink it to fit.
+  **Admissions pass (31 Oct; Adrian: "how else can we refine the site for an AO", then yes to the first idea).**
+  (1) **About's highlights** (`.cg-hl`): one bordered row of four under the photos, before his paragraphs, each a link to
+  its conversation: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
+  Pan-Ams (`#fencing`), National Merit / Semifinalist (`#record`), 4 hackathon wins / and a 3rd internationally (`#work`;
+  TrojanHacks, SEPHacks, VISION HACK, Decode the Ocean, plus Safe Routes' 3rd). 2×2 on phones. Keep it in step with
+  those conversations. (2) **"The 30-second version"** is the first chip on the empty screen (`data-ask`, the KB
+  summary). (3) **The intro is ~2 s, not ~4**: the name forms by 1.1 s, bursts at 1.7 s and is gone by 2.5 s (was
+  1.8 / 3.1 / 4.1), and "Who is Adrian?" starts typing 0.4 s after the page unlocks (was 0.7). The swarm itself is
+  unchanged ("i like the loading page"). (4) KB fixes found by ~50 admissions-style questions: "econ" matched inside
+  "second" (finance now needs `\becon`); class rank has its own answer (not listed; gives the GPA) instead of the
+  fencing ranking; "spike", "what makes him different" and "30-second" go to the summary; "did AI write these" to
+  the no-AI answer; "started a company" to the co-founder list. (5) The Contact email scales on phones
+  (`clamp(16px,4.9vw,24px)`) and can only break at the @. Ideas offered and not yet done: say visibly that no AI writes
+  the answers (he removed the composer line on 29 Oct), a "why he does this" chat in his own words, his own lines for
+  college plans, a challenge and summers, past tense and photos after 10 Nov, 2 Dec and 17 Dec, and outside proof
+  links (BigData program, Devpost winners, ARRSI accepted list) once posted.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
@@ -875,7 +891,7 @@ the rail and the ⌘K palette follow it.
       lines are gone. The **Ledger walkthrough and the AIML-LI Unit 1 lab moved
       to /demos/** as `[03]` (`#ledger-sec`) and `[04]` (`#ailab-sec`); the
       cards link there.
-  - The intro overlay was left as is; it costs a first-time visitor up to 3.6 s.
+  - The intro overlay was left as is then; it cost a first-time visitor up to 3.6 s (about 2 s since 31 Oct).
 - **Hero** (Adrian's shape, 22 Sept: name left, photo right): "hi, i'm
   adrian", then the **hero story**: four lines that swipe sideways on their
   own every 3.2s, always leaving left and entering right, with four clickable

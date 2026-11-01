@@ -556,6 +556,13 @@ body{overflow:hidden}
 .cg-imgs button:hover img{transform:scale(1.04)}
 .cg-imgs.row{display:flex;grid-template:none;height:150px;max-width:640px}
 .cg-imgs.row button{flex:1 1 0}
+/* About's highlights (31 Oct): four results in one bordered row under the photos, each a link to its conversation */
+.cg-hl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--cg-line);border-radius:14px;overflow:hidden;margin:-6px 0 20px}
+.cg-a .cg-hl a{display:block;padding:12px 14px 13px;color:var(--cg-ink);text-decoration:none;transition:background .2s}
+.cg-hl a+a{border-left:1px solid var(--cg-line)}
+.cg-hl a:hover{background:#f7f7f7}
+.cg-hl b{display:block;font:600 15px/1.3 var(--sans);color:var(--acc)}
+.cg-hl span{display:block;margin-top:3px;font-size:13px;line-height:1.35;color:var(--cg-dim)}
 .cg-a .cg-ul{margin:0 0 14px;padding-left:22px}
 .cg-a .cg-ul li{margin:6px 0}
 .cg-card.noimg .t{padding:14px 14px 15px}
@@ -572,6 +579,9 @@ body{overflow:hidden}
   .cg-imgs button:nth-child(n+4){display:none}
   .cg-imgs.row{height:110px}
   .cg-imgs.row button:nth-child(n+4){display:block}
+  .cg-hl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cg-hl a:nth-child(3){border-left:0}
+  .cg-hl a:nth-child(n+3){border-top:1px solid var(--cg-line)}
 }
 
 /* Honors as a table and Fencing as one answer (30 Oct, his picks of _mock/hf.html): the chat's own forms, as ChatGPT draws
