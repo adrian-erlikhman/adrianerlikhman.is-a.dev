@@ -376,7 +376,7 @@ body.intro-lock{overflow:hidden}
 .cg-logo img{width:26px;height:26px}
 .cg-close{display:none}
 .cg-acts{margin-top:6px;display:flex;flex-direction:column;flex:none}
-.cg-si{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:6px 10px;border-radius:8px;font-size:14px;line-height:1.3;color:var(--cg-ink);text-align:left}
+.cg-si{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:6px 10px;border-radius:8px;font-size:16px;line-height:normal;color:var(--cg-ink);text-align:left}
 .cg-si:hover,.cg-si.on{background:var(--cg-hov)}
 .cg-h{font-size:13px;color:var(--cg-mute);padding:18px 10px 6px;flex:none}
 .cg-list{display:flex;flex-direction:column;overflow-y:auto;min-height:0}
