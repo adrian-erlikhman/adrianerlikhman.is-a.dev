@@ -678,7 +678,9 @@ with "a lot of updates" still to come. What shipped:
   its conversation. **Since 1 Nov (his pick A of three, `_mock/about2.html`; "not the inherently most impressive"):** Best
   Paper Finalist / IEEE BigData 2026, 12 of 130 (`#rs-t1`); Sole-author paper / accepted at an AACL-IJCNLP workshop
   (`#rs-t2`); Team USA épée / 6th at the Cadet Pan-Ams (`#fencing`); AI course for LAUSD / headed toward a district
-  elective (`#case-aimlli`). The same day the About photos got per-photo crops (`.hs`, `.yc`, `.pod`, `.climb`, `.lunge`
+  elective (`#case-aimlli`). **Then, the same evening, his words:** Sole-author paper / "At a PhD-level venue: an
+  AACL-IJCNLP workshop" (not "conference": it's a workshop at one); Team USA fencer (not "épée"); 4× hackathon winner /
+  Two at USC in one weekend (`#work`); AI course for LAUSD. Best Paper Finalist came off the row on his word. The same day the About photos got per-photo crops (`.hs`, `.yc`, `.pod`, `.climb`, `.lunge`
   at 86%) so faces stay in frame ("the photos are not oriented well"). The original four, now history: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
   Pan-Ams (`#fencing`), National Merit / Semifinalist (`#record`), 4 hackathon wins / and a 3rd internationally (`#work`;
   TrojanHacks, SEPHacks, VISION HACK, Decode the Ocean, plus Safe Routes' 3rd). 2×2 on phones. Keep it in step with
