@@ -764,3 +764,26 @@ a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
 /* Off the laptop (1 Nov): the hiking shot is the grid's one portrait; its paragraphs sit tighter under their h4s */
 .cg-imgs .lf-hike img{object-position:center 66%}
 .cg-a .lf-p{margin:0 0 6px}
+/* the welcome (1 Nov; Adrian: "make it annotated like we annotated stuff in hivemind and monte ... cute and not AI slop",
+   in honey): notes in Shantell Sans with pencil arrows that draw themselves in (site.js CHAT SITE, welcome) */
+.wn{position:fixed;inset:0;z-index:70;pointer-events:none;--wn:#b9771a}
+.wn.out{opacity:0;transition:opacity .25s ease}
+.wn-svg{position:absolute;inset:0;overflow:visible}
+.wn-svg path{fill:none;stroke:var(--wn);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wn-n{position:absolute;font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;font-size:17px;line-height:1.22;color:var(--wn);
+  white-space:nowrap;text-shadow:0 0 6px #fff,0 0 3px #fff,0 0 1px #fff;opacity:0;transform:translateY(5px) rotate(var(--r,-2deg));animation:wnIn .45s ease-out forwards}
+.wn-n small{display:block;font-size:14.5px;opacity:.85}
+.wn-u{position:relative;display:inline-block}
+.wn-u svg{position:absolute;left:-3px;right:-3px;bottom:-5px;width:calc(100% + 6px);height:8px;overflow:visible}
+.wn-u path{fill:none;stroke:var(--wn);stroke-width:1.6;stroke-linecap:round}
+.wn-go{position:absolute;pointer-events:auto;border:0;background:none;padding:9px 18px 10px;cursor:pointer;font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;
+  font-weight:600;font-size:17px;color:var(--wn);opacity:0;transform:rotate(1.5deg);animation:wnIn .45s ease-out forwards}
+.wn-go svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wn-go path{fill:none;stroke:var(--wn);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wn-go:hover path,.wn-go:focus-visible path{fill:color-mix(in srgb,var(--wn) 10%,transparent)}
+.wn-go:focus-visible{outline:none}
+@keyframes wnIn{to{opacity:1;transform:translateY(0) rotate(var(--r,-2deg))}}
+@keyframes wnDraw{to{stroke-dashoffset:0}}
+.cg.cg-tour .cg-chips{opacity:0;pointer-events:none}
+.cg .cg-chips{transition:opacity .35s ease}
+@media (prefers-reduced-motion:reduce){.wn-n,.wn-go{animation:none;opacity:1;transform:rotate(var(--r,-2deg))}.wn path{animation:none!important;stroke-dashoffset:0!important}}

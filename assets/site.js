@@ -1565,8 +1565,8 @@ const BIG=(function(){
 /* ================= CHAT SITE (29 Oct): the whole homepage is one chat app (Adrian: "have every section be a part of the
    chatgpt"). Each section is a conversation (article.cg-conv in index.html, the section's own markup inside). Opening one the
    first time plays it: "Thinking", the answer's opening line streams in word by word, then its blocks build in one after
-   another (lists and grids item by item). Opened again, it shows at once. After the intro, "Who is Adrian?" types itself
-   into the composer and plays; it stops for good if the visitor does anything first. The chat speaks about Adrian in the
+   another (lists and grids item by item). Opened again, it shows at once. After the intro (and, on a first visit, the
+   hand-drawn welcome notes), "Who is Adrian?" types itself into the composer and plays; it stops for good if the visitor does anything first. The chat speaks about Adrian in the
    third person (his ask, 29 Oct). A typed question gets a written answer from KB below, or opens a whole conversation.
    #links into a conversation (#papers, #case-hivemind, #rs-t2, …) open it and scroll to that spot. ================= */
 (function(){
@@ -1930,7 +1930,90 @@ const BIG=(function(){
   $('cgClose').addEventListener('click',closeSide);
   $('cgScrim').addEventListener('click',closeSide);
 
-  /* ---- landing: a #link opens its conversation at once; otherwise "Who are you?" types itself in and plays ---- */
+  /* ---- the welcome, annotated (1 Nov; Adrian: "a little bit of a walkthrough when the user lands ... short and
+     condensed", then "make it annotated like we annotated stuff in hivemind and monte ... make it cute and not AI slop").
+     On a first visit, before "Who is Adrian?" plays, hand-written notes point at the real chat list, the composer and the
+     suggestions, each arrow drawing itself in. Any click, any key or "ok, let's go" puts them away; a click on a chat or a
+     chip goes straight through to it. On phones the suggestions wait until the notes are gone, to make room. It shows once
+     per visitor (localStorage, where the browser allows it) and never on a deep link. ---- */
+  const NS='http://www.w3.org/2000/svg';
+  const SEEN='ae-welcome-seen';
+  async function welcome(){
+    try{ if(localStorage.getItem(SEEN)) return; }catch(_){}
+    // measure the notes in their own font, not the fallback
+    try{ await Promise.race([document.fonts.load("500 17px 'Shantell Sans'"),sleep(1500)]); }catch(_){}
+    return notes(); }
+  function notes(){ return new Promise(res=>{
+    const ph=matchMedia('(max-width:860px)').matches, W=innerWidth, H=innerHeight;
+    const ov=document.createElement('div'); ov.className='wn';
+    const svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','wn-svg'); svg.setAttribute('aria-hidden','true'); ov.appendChild(svg);
+    document.body.appendChild(ov); if(ph) root.classList.add('cg-tour');
+    const R=el=>el.getBoundingClientRect();
+    let t=RM?0:.25;                                           // each note starts once the last one's arrow is drawn
+    const note=(html,r=-2)=>{ const n=document.createElement('div'); n.className='wn-n'; n.setAttribute('aria-hidden','true'); n.innerHTML=html;
+      n.style.setProperty('--r',r+'deg'); ov.appendChild(n); return n; };
+    const seq=n=>{ n.style.animationDelay=t+'s'; };
+    const put=(n,x,y)=>{ x=Math.max(10,Math.min(W-10-n.offsetWidth,x)); n.style.left=Math.round(x)+'px'; n.style.top=Math.round(y)+'px'; return {left:x,top:y,right:x+n.offsetWidth,bottom:y+n.offsetHeight,width:n.offsetWidth,height:n.offsetHeight}; };
+    const draw=(d,delay,dur)=>{ const p=document.createElementNS(NS,'path'); p.setAttribute('d',d); svg.appendChild(p);
+      const L=p.getTotalLength(); p.style.strokeDasharray=L; p.style.strokeDashoffset=L; p.style.animation=`wnDraw ${dur}s ${delay}s ease-in-out forwards`; };
+    /* a pencil arrow from a to b: one curve with a sideways bow, then a two-stroke head along the end of the curve */
+    const arrow=(a,b,bow)=>{ const dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1, px=-dy/len, py=dx/len;
+      const c1={x:a.x+dx*.3+px*bow,y:a.y+dy*.3+py*bow}, c2={x:a.x+dx*.78+px*bow*.55,y:a.y+dy*.78+py*bow*.55};
+      draw(`M${a.x.toFixed(1)} ${a.y.toFixed(1)}C${c1.x.toFixed(1)} ${c1.y.toFixed(1)} ${c2.x.toFixed(1)} ${c2.y.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`,t+.2,.55);
+      const tx=b.x-c2.x, ty=b.y-c2.y, tl=Math.hypot(tx,ty)||1, ux=tx/tl, uy=ty/tl, k=10, s=.5;   // head: two strokes 30° off the tangent
+      const h=(sg)=>({x:b.x-k*(ux*Math.cos(s)-sg*uy*Math.sin(s)),y:b.y-k*(uy*Math.cos(s)+sg*ux*Math.sin(s))});
+      const h1=h(1),h2=h(-1); draw(`M${h1.x.toFixed(1)} ${h1.y.toFixed(1)}L${b.x.toFixed(1)} ${b.y.toFixed(1)}L${h2.x.toFixed(1)} ${h2.y.toFixed(1)}`,t+.72,.2);
+      t+=RM?0:.65; };
+    const U='<svg viewBox="0 0 60 8" preserveAspectRatio="none"><path d="M1 5c8-3 14 2 22-1s14 2 21-1 10 1 15-1"/></svg>';   // a squiggle under "no AI"
+    const comp=R(form), h1=R(root.querySelector('.cg-empty h1'));
+    const ps=note(`p.s. <span class="wn-u">no AI${U}</span> in here.<small>every answer is pre-written</small>`,1.5);
+    const go=document.createElement('button'); go.type='button'; go.className='wn-go';
+    go.innerHTML='<svg viewBox="0 0 150 44" preserveAspectRatio="none" aria-hidden="true"><path d="M5 7C40 3 104 5 146 6c2 9 1 21-1 32-41 3-96 2-140 0C3 27 3 17 5 7z"/></svg><span>ok, let’s go →</span>';
+    ov.appendChild(go);
+    let rp;
+    if(!ph){
+      const list=root.querySelector('.cg-list'), L=R(list), it=[...list.children].map(R), chipsEl=$('cgChips'), chips=R(chipsEl), last=R(chipsEl.lastElementChild);
+      const n1=note('my life, sorted into chats',-2.5), n2=note('or ask anything!<small>even my favorite movie</small>',-1.5), n3=note('stuck?<small>try one of these</small>',2);
+      // 2 is placed first, since it decides where 1 fits: left of the composer if there's room, else above the headline
+      let r2, a2;
+      if(comp.left-L.right>n2.offsetWidth+56){ r2=put(n2,comp.left-28-n2.offsetWidth,comp.top-n2.offsetHeight-14); a2=[{x:r2.right-26,y:r2.bottom+4},{x:comp.left+16,y:comp.top+6},18]; }
+      else { r2=put(n2,comp.left+6,h1.top-n2.offsetHeight-26); a2=[{x:r2.left+10,y:r2.bottom+4},{x:comp.left+24,y:comp.top-5},34]; }
+      // 1 sits beside the chat list, clear of 2, and points at the row level with it
+      const r1=put(n1,L.right+58,Math.min(it[2].top-6,r2.top-24-n1.offsetHeight)), mid=r1.top+r1.height/2;
+      const row=it.reduce((b,r)=>Math.abs(r.top+r.height/2-mid)<Math.abs(b.top+b.height/2-mid)?r:b,it[0]);
+      seq(n1); arrow({x:r1.left-8,y:mid+3},{x:L.right-26,y:row.top+row.height/2},mid<row.top?20:-24);
+      seq(n2); arrow(...a2);
+      // 3: right of the suggestions if there's room, else right of their last row
+      seq(n3);
+      if(W-chips.right>n3.offsetWidth+60){ const r3=put(n3,chips.right+44,chips.top+34); arrow({x:r3.left-6,y:r3.top+12},{x:chips.right-14,y:chips.top+20},-16); }
+      else { const r3=put(n3,last.right+40,last.top+2); arrow({x:r3.left-6,y:r3.top+12},{x:last.right+6,y:last.top+last.height/2},-12); }
+      // the p.s. and the button side by side under the suggestions
+      const gap=26, wsum=ps.offsetWidth+gap+go.offsetWidth, cx=comp.left+comp.width/2, y=chips.bottom+28;
+      rp=put(ps,cx-wsum/2,y); go.style.left=Math.round(rp.right+gap)+'px'; go.style.top=Math.round(y+(ps.offsetHeight-go.offsetHeight)/2+2)+'px';
+    } else {
+      // phones: the suggestions step aside (cg-tour) and the notes take their place under the composer
+      const m=R($('cgMenu'));
+      const n1=note('my life, sorted into chats<small>(they live in here)</small>',-2.5), r1=put(n1,m.left+30,m.bottom+34);
+      seq(n1); arrow({x:r1.left+4,y:r1.top-2},{x:m.left+m.width/2+2,y:m.bottom+2},16);
+      const n2=note('or ask anything!<small>even my favorite movie</small>',-1.5), r2=put(n2,W/2-n2.offsetWidth/2+34,comp.bottom+38);
+      seq(n2); arrow({x:r2.left-6,y:r2.top+8},{x:comp.left+62,y:comp.bottom+4},-20);
+      rp=put(ps,W/2-ps.offsetWidth/2,r2.bottom+26);
+      go.style.left=Math.round(W/2-go.offsetWidth/2)+'px'; go.style.top=Math.round(rp.bottom+16)+'px';
+    }
+    seq(ps); ps.querySelector('.wn-u path').style.cssText=`stroke-dasharray:70;stroke-dashoffset:70;animation:wnDraw .35s ${t+.35}s ease-out forwards`;
+    t+=RM?0:.55;
+    go.style.animationDelay=t+'s';
+    go.querySelector('path').style.cssText=`stroke-dasharray:400;stroke-dashoffset:400;animation:wnDraw .5s ${t}s ease-in-out forwards`;
+    let gone=false;
+    const done=()=>{ if(gone) return; gone=true; try{ localStorage.setItem(SEEN,'1'); }catch(_){} removeEventListener('pointerdown',down,true); removeEventListener('keydown',key,true);
+      ov.classList.add('out'); root.classList.remove('cg-tour'); setTimeout(()=>ov.remove(),260); res(); };
+    const down=()=>done();                                    // a click anywhere; on a chat or chip it carries on to it
+    const key=e=>{ if(e.key==='Escape'||e.key==='Enter'||e.key===' '){ if(e.target===go||e.key==='Escape') e.preventDefault(); } done(); };
+    addEventListener('pointerdown',down,true); addEventListener('keydown',key,true); go.addEventListener('click',done);
+    setTimeout(()=>{ if(!gone) go.focus({preventScroll:true}); },(t+.5)*1000);
+  }); }
+  /* ---- landing: a #link opens its conversation at once; otherwise the welcome (first visit only), then "Who is Adrian?"
+     types itself in and plays ---- */
   const hid=decodeURIComponent(location.hash.slice(1)), hk=hid&&convOf(hid);
   if(hk){ auto=false; open(hk,{to:hid,instant:true}); }
   async function demo(){
@@ -1940,8 +2023,8 @@ const BIG=(function(){
     await sleep(RM?0:380); if(!auto) return; typing=false; auto=false;
     inp.value=''; send.classList.add('cg-off'); open('about');
   }
-  if(!hk){ if(!document.body.classList.contains('intro-lock')) demo();
-    else{ const w=setInterval(()=>{ if(!document.body.classList.contains('intro-lock')){ clearInterval(w); demo(); } },150); } }
+  if(!hk){ if(!document.body.classList.contains('intro-lock')) welcome().then(demo);
+    else{ const w=setInterval(()=>{ if(!document.body.classList.contains('intro-lock')){ clearInterval(w); welcome().then(demo); } },150); } }
 })();
 
 /* ================= NAV: the section in view is underlined ================= */

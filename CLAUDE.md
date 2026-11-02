@@ -699,7 +699,17 @@ with "a lot of updates" still to come. What shipped:
   "fun fact" too): one of twelve facts in site.js `SUR`, shuffled with no repeats, each with "Another one"; keep them in
   step with the facts they quote. (3) A no-AI line: he picked C (under each answer) of three placements, then asked
   instead for **a short welcome walkthrough on landing** ("this is how my shit works, welcome ... short and condensed"),
-  which is to carry the no-AI statement. The walkthrough is still a mock (`_mock/welcome.html`); line C did not ship.
+  which is to carry the no-AI statement; line C did not ship. A card, a spotlight tour and a chat message
+  (`_mock/welcome.html`) were "hella chatted"; he asked for it "annotated like we annotated stuff in hivemind and monte ...
+  cute and not AI slop", and shipped `_mock/welcome2.html` **in honey** (`#b9771a`, the old Hivemind note's colour, over
+  navy). **The welcome:** on a first visit, before "Who is Adrian?" plays, hand-written notes in Shantell Sans (Google
+  Fonts, `INFM` 100 / `BNCE` 30 as on the Hivemind site) sit on the real empty screen, each pencil arrow drawing itself in:
+  "my life, sorted into chats" (to the chat list; on phones to ☰, "(they live in here)"), "or ask anything! even my favorite
+  movie" (to the composer), "stuck? try one of these" (to the suggestions, desktop only), "p.s. no AI in here. every answer
+  is pre-written" (squiggle under "no AI"), and an "ok, let's go →" box. Any click or key puts them away (a click on a chat
+  or chip goes through). On phones the suggestions hide while the notes are up. Shown once per visitor (localStorage
+  `ae-welcome-seen`), never on a deep link. Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
+  so check 1440, 1280, 1024 and two phone sizes after moving anything on the empty screen.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
