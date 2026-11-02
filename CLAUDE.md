@@ -710,6 +710,10 @@ with "a lot of updates" still to come. What shipped:
   or chip goes through). On phones the suggestions hide while the notes are up. Shown once per visitor (localStorage
   `ae-welcome-seen`), never on a deep link. Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
   so check 1440, 1280, 1024 and two phone sizes after moving anything on the empty screen.
+  **More personal (same day, his ask; `_mock/welcome3.html`):** his headshot as a taped polaroid, "hi, i'm adrian!", drops
+  in first at the top right; the composer note reads "or ask me anything! my épée rating, my favorite movie…"; where there's
+  room left of "The 30-second version" chip, "short on time? start here" points at it (else "stuck? try one of these");
+  the button says "ok, show me around →".
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the

@@ -1933,7 +1933,7 @@ const BIG=(function(){
   /* ---- the welcome, annotated (1 Nov; Adrian: "a little bit of a walkthrough when the user lands ... short and
      condensed", then "make it annotated like we annotated stuff in hivemind and monte ... make it cute and not AI slop").
      On a first visit, before "Who is Adrian?" plays, hand-written notes point at the real chat list, the composer and the
-     suggestions, each arrow drawing itself in. Any click, any key or "ok, let's go" puts them away; a click on a chat or a
+     suggestions, each arrow drawing itself in, after his polaroid saying hi (more personal, his ask the same day). Any click, any key or "ok, let's go" puts them away; a click on a chat or a
      chip goes straight through to it. On phones the suggestions wait until the notes are gone, to make room. It shows once
      per visitor (localStorage, where the browser allows it) and never on a deep link. ---- */
   const NS='http://www.w3.org/2000/svg';
@@ -1966,14 +1966,19 @@ const BIG=(function(){
       t+=RM?0:.65; };
     const U='<svg viewBox="0 0 60 8" preserveAspectRatio="none"><path d="M1 5c8-3 14 2 22-1s14 2 21-1 10 1 15-1"/></svg>';   // a squiggle under "no AI"
     const comp=R(form), h1=R(root.querySelector('.cg-empty h1'));
+    const pol=document.createElement('div'); pol.className='wn-pol'; pol.setAttribute('aria-hidden','true');
+    pol.innerHTML='<img src="/adrian.jpg" alt=""><span>hi, i’m adrian!</span>'; ov.appendChild(pol);
+    { const pw=pol.offsetWidth, phh=pol.offsetHeight;
+      const x=ph?W-14-pw:Math.min(W-28-pw,h1.right-pw+24), y=ph?66:Math.max(66,h1.top-phh-38);
+      pol.style.left=Math.round(x)+'px'; pol.style.top=Math.round(y)+'px'; pol.style.setProperty('--r',(ph?5:4)+'deg'); pol.style.animationDelay=t+'s'; t+=RM?0:.5; }
     const ps=note(`p.s. <span class="wn-u">no AI${U}</span> in here.<small>every answer is pre-written</small>`,1.5);
     const go=document.createElement('button'); go.type='button'; go.className='wn-go';
-    go.innerHTML='<svg viewBox="0 0 150 44" preserveAspectRatio="none" aria-hidden="true"><path d="M5 7C40 3 104 5 146 6c2 9 1 21-1 32-41 3-96 2-140 0C3 27 3 17 5 7z"/></svg><span>ok, let’s go →</span>';
+    go.innerHTML='<svg viewBox="0 0 150 44" preserveAspectRatio="none" aria-hidden="true"><path d="M5 7C40 3 104 5 146 6c2 9 1 21-1 32-41 3-96 2-140 0C3 27 3 17 5 7z"/></svg><span>ok, show me around →</span>';
     ov.appendChild(go);
     let rp;
     if(!ph){
       const list=root.querySelector('.cg-list'), L=R(list), it=[...list.children].map(R), chipsEl=$('cgChips'), chips=R(chipsEl), last=R(chipsEl.lastElementChild);
-      const n1=note('my life, sorted into chats',-2.5), n2=note('or ask anything!<small>even my favorite movie</small>',-1.5), n3=note('stuck?<small>try one of these</small>',2);
+      const n1=note('my life, sorted into chats',-2.5), n2=note('or ask me anything!<small>my épée rating, my favorite movie…</small>',-1.5), n3=note('stuck?<small>try one of these</small>',2), n3s=note('short on time?<small>start here</small>',-2);
       // 2 is placed first, since it decides where 1 fits: left of the composer if there's room, else above the headline
       let r2, a2;
       if(comp.left-L.right>n2.offsetWidth+56){ r2=put(n2,comp.left-28-n2.offsetWidth,comp.top-n2.offsetHeight-14); a2=[{x:r2.right-26,y:r2.bottom+4},{x:comp.left+16,y:comp.top+6},18]; }
@@ -1983,10 +1988,12 @@ const BIG=(function(){
       const row=it.reduce((b,r)=>Math.abs(r.top+r.height/2-mid)<Math.abs(b.top+b.height/2-mid)?r:b,it[0]);
       seq(n1); arrow({x:r1.left-8,y:mid+3},{x:L.right-26,y:row.top+row.height/2},mid<row.top?20:-24);
       seq(n2); arrow(...a2);
-      // 3: right of the suggestions if there's room, else right of their last row
-      seq(n3);
-      if(W-chips.right>n3.offsetWidth+60){ const r3=put(n3,chips.right+44,chips.top+34); arrow({x:r3.left-6,y:r3.top+12},{x:chips.right-14,y:chips.top+20},-16); }
-      else { const r3=put(n3,last.right+40,last.top+2); arrow({x:r3.left-6,y:r3.top+12},{x:last.right+6,y:last.top+last.height/2},-12); }
+      // 3: "short on time?" points at the 30-second version when there's room left of it; else "stuck?" at the suggestions
+      const c30=chipsEl.querySelector('[data-ask="Give me the 30-second version"]'), q=c30&&R(c30);
+      if(q&&q.left-L.right>n3s.offsetWidth+70){ n3.remove(); seq(n3s); const r3=put(n3s,q.left-36-n3s.offsetWidth,q.top-2); arrow({x:r3.right+4,y:r3.top+r3.height/2},{x:q.left-6,y:q.top+q.height/2},-10); }
+      else { n3s.remove(); seq(n3);
+        if(W-chips.right>n3.offsetWidth+60){ const r3=put(n3,chips.right+44,chips.top+34); arrow({x:r3.left-6,y:r3.top+12},{x:chips.right-14,y:chips.top+20},-16); }
+        else { const r3=put(n3,last.right+40,last.top+2); arrow({x:r3.left-6,y:r3.top+12},{x:last.right+6,y:last.top+last.height/2},-12); } }
       // the p.s. and the button side by side under the suggestions
       const gap=26, wsum=ps.offsetWidth+gap+go.offsetWidth, cx=comp.left+comp.width/2, y=chips.bottom+28;
       rp=put(ps,cx-wsum/2,y); go.style.left=Math.round(rp.right+gap)+'px'; go.style.top=Math.round(y+(ps.offsetHeight-go.offsetHeight)/2+2)+'px';
@@ -1995,7 +2002,7 @@ const BIG=(function(){
       const m=R($('cgMenu'));
       const n1=note('my life, sorted into chats<small>(they live in here)</small>',-2.5), r1=put(n1,m.left+30,m.bottom+34);
       seq(n1); arrow({x:r1.left+4,y:r1.top-2},{x:m.left+m.width/2+2,y:m.bottom+2},16);
-      const n2=note('or ask anything!<small>even my favorite movie</small>',-1.5), r2=put(n2,W/2-n2.offsetWidth/2+34,comp.bottom+38);
+      const n2=note('or ask me anything!<small>my épée rating, my favorite movie…</small>',-1.5), r2=put(n2,W/2-n2.offsetWidth/2+34,comp.bottom+38);
       seq(n2); arrow({x:r2.left-6,y:r2.top+8},{x:comp.left+62,y:comp.bottom+4},-20);
       rp=put(ps,W/2-ps.offsetWidth/2,r2.bottom+26);
       go.style.left=Math.round(W/2-go.offsetWidth/2)+'px'; go.style.top=Math.round(rp.bottom+16)+'px';

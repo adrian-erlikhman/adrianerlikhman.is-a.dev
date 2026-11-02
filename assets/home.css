@@ -787,3 +787,12 @@ a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
 .cg.cg-tour .cg-chips{opacity:0;pointer-events:none}
 .cg .cg-chips{transition:opacity .35s ease}
 @media (prefers-reduced-motion:reduce){.wn-n,.wn-go{animation:none;opacity:1;transform:rotate(var(--r,-2deg))}.wn path{animation:none!important;stroke-dashoffset:0!important}}
+/* the polaroid: his headshot, taped to the page, saying hi */
+.wn-pol{position:absolute;width:128px;padding:8px 8px 9px;background:#fff;border-radius:2px;box-shadow:0 12px 28px -12px rgba(0,0,0,.4),0 1px 3px rgba(0,0,0,.14);
+  opacity:0;transform:rotate(var(--r,4deg)) translateY(-10px) scale(.94);animation:wnPol .55s cubic-bezier(.2,.9,.3,1.25) forwards}
+.wn-pol::before{content:"";position:absolute;top:-11px;left:50%;width:58px;height:21px;transform:translateX(-50%) rotate(-4deg);background:rgba(233,208,150,.72);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.wn-pol img{display:block;width:112px;height:112px;object-fit:cover;object-position:center 28%}
+.wn-pol span{display:block;margin-top:6px;text-align:center;font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:600;font-size:15px;line-height:1.2;color:var(--wn);white-space:nowrap}
+@keyframes wnPol{to{opacity:1;transform:rotate(var(--r,4deg))}}
+@media (max-width:860px){.wn-pol{width:102px;padding:6px 6px 7px}.wn-pol img{width:90px;height:90px}.wn-pol span{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.wn-pol{animation:none;opacity:1;transform:rotate(var(--r,4deg))}}
