@@ -14,5 +14,5 @@ __pycache__/
 Thumbs.db
 .claude/launch.json
 
-# fetched by tools/make_og.py, not vendored (OFL)
+# fonts for the PIL og card tools/make_og.py drew until 2 Nov 2026; OFL, not vendored
 tools/fonts/

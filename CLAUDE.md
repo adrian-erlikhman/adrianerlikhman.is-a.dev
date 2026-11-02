@@ -426,7 +426,15 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- `og.png` (`tools/make_og.py`, `?v=12`) is, since 15 Oct
+- **`og.png` is the scrapbook since 2 Nov** (`?v=13`; Adrian: the old card "is not great lets make some cool ass
+  unique shit"; he picked **B** of three takes in `_mock/og.html`, over A, a still of the chat, and C, a paper's title
+  page). Its source is `tools/og-card.html`; `python tools/make_og.py` serves the repo and screenshots it with headless
+  Chrome at 1200x630 (needs the network for Google Fonts). On the site's warm white and dot grid: "LOS ANGELES,
+  CALIFORNIA" in Plex Mono, the name in navy Latin Modern bold, three notes in the welcome's ballpoint blue (Shantell
+  Sans), "i do ML/NLP research", "i build things: 4× hackathon winner", "i fence épée for Team USA", with a pen arrow to a
+  taped print of the Pan-Ams lunge (`img/about/lunge-wide.webp`), and the headshot as the welcome's polaroid, "hi, i'm
+  adrian!". The og and twitter alt text describe it; change them with it. **Before 2 Nov** (history, drawn with PIL; the
+  OTFs for it sit in the gitignored `tools/fonts/`): since 15 Oct
   (Adrian picked C of three takes, after asking for no bubbles and "a cool
   picture"): his Team USA lunge at the Pan-Ams (`fencing-1.jpg`) across the
   card under a navy fade from the left; "LOS ANGELES, CALIFORNIA" on top
@@ -435,8 +443,8 @@ from LaTeX in `resume/`.
   three lines, each with a light-blue marker, and nothing else (the credential
   lines came off on 16 Oct: "just do the researcher intern stuff"). Earlier
   the same day it was chips, then chips beside his headshot. Chat apps show a
-  still, so no animation. The OTFs sit in the gitignored `tools/fonts/`. Bump
-  `?v=` on both pages when it changes; chat apps cache the first preview of a
+  still, so no animation. Bump
+  `?v=` on both tags when it changes; chat apps cache the first preview of a
   URL. Never "accepted" alone for the two journal papers. The 404 page keeps
   its own dark neon design.
 
