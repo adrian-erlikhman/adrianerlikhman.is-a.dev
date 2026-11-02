@@ -730,6 +730,14 @@ with "a lot of updates" still to come. What shipped:
   without his OK: SafeJew's FBI/LAPD/ADL data, the San Francisco internship from a hackathon, coaching beginners at LAIFC
   (and the 11-year-old brother the prep doc mentions), LAUSD calling his first curriculum too technical, the URTC
   rejection (idea 2, which he didn't pick), Homo Deus (he said no book). Still open: the dish his grandma makes.
+  **Outside proof (idea 5), same day:** a search agent loaded every candidate page. Linked: SafeJew's **Grant** button
+  (card and canvas) to JFEDLA's `jewishla.org/tig-past-projects/` ("Adrian E. & Yonatan Z. – SafeJew / 10th Grade, LACES",
+  2024-2025 cohort); Safe Routes' **Results** button to `youngcoderssphere.org/competition-winners`; the Honors NCSS row's
+  "Student panel on AI" to the session on `eventee.com/e/ncss-2026-28032` (no student names listed). Monte's Devpost page
+  now shows "WINNER Best Project in Finance" (the site says "1st place, Finance"; same prize, Devpost's name). Not public
+  yet, recheck later: the BigData HSS accepted list and finalists (its program says "TBD"; the symposium's own award names
+  are "Outstanding Paper / Runner-Up / Rising Star", so ask how "Best Paper Finalist" was worded in his email if it ever
+  matters), ARRSI's accepted papers, the SEPHacks and VISION HACK Devpost winners, Decode the Ocean, Citadel Terminal.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
