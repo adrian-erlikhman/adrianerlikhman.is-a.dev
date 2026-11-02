@@ -708,7 +708,7 @@ with "a lot of updates" still to come. What shipped:
   movie" (to the composer), "stuck? try one of these" (to the suggestions, desktop only), "p.s. no AI in here. every answer
   is pre-written" (squiggle under "no AI"), and an "ok, let's go →" box. Any click or key puts them away (a click on a chat
   or chip goes through). On phones the suggestions hide while the notes are up. Shown once per visitor (localStorage
-  `ae-welcome-seen`), never on a deep link. Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
+  `ae-welcome-seen`), never on a deep link; **`/?welcome` shows it again** (for Adrian, or a link he sends). Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
   so check 1440, 1280, 1024 and two phone sizes after moving anything on the empty screen.
   **More personal (same day, his ask; `_mock/welcome3.html`):** his headshot as a taped polaroid, "hi, i'm adrian!", drops
   in first at the top right; the composer note reads "or ask me anything! my épée rating, my favorite movie…"; where there's
@@ -733,7 +733,7 @@ with "a lot of updates" still to come. What shipped:
   summer", the canvas, KB, llms.txt; not on the résumés yet); **coaching**: beginner classes at LAIFC and his 11-year-old
   brother at the club and tournaments (fencing "He coaches, too", KB); LAUSD's educators calling his first AIML-LI version
   too technical, rebuilt with teachers. Still not used: the URTC rejection (idea 2, not picked), Homo Deus (he said no
-  book), UCLA expanding SafeJew (brag sheet; ask). Still open: the dish his grandma makes.
+  book). Later the same day he gave the dish, **borscht and pelmeni** (favorites table, Family, KB, Surprise me), and OK'd **SafeJew's UCLA work** ("He's now working with UCLA to expand it" on the card, the canvas and llms.txt).
   **Outside proof (idea 5), same day:** a search agent loaded every candidate page. Linked: SafeJew's **Grant** button
   (card and canvas) to JFEDLA's `jewishla.org/tig-past-projects/` ("Adrian E. & Yonatan Z. – SafeJew / 10th Grade, LACES",
   2024-2025 cohort); Safe Routes' **Results** button to `youngcoderssphere.org/competition-winners`; the Honors NCSS row's
