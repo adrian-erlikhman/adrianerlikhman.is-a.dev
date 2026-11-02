@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Shantell+Sans:wght,BNCE,INFM@400..600,-100..100,0..100&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/home.css?v=2026-11-01-hl">
+<link rel="stylesheet" href="/assets/home.css?v=2026-11-02-ph">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -336,15 +336,13 @@
          about him in the third person, his own three paragraphs turned around, under a ChatGPT-style photo grid; a click on a
          photo opens it large (site.js CHAT SITE). Since 1 Nov the words are take B of _mock/about.html (Adrian's pick):
          each paragraph names the work; every fact is from the site. -->
-    <!-- Photos (30 Oct, Adrian: "i like the fencing. then headshot, maybe the YC. choose two more good ones. the climbing
-         photo is fine"): the Pan-Ams lunge large, then the headshot, YC, the podium with his medal, and climbing. Phones show
-         the first three. -->
-    <div class="cg-imgs">
-      <button type="button" class="big lunge" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/fencing-1.jpg" width="800" height="600" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
-      <button type="button" class="hs" data-cap="Adrian Erlikhman"><img src="/adrian.jpg" width="800" height="600" alt="Adrian Erlikhman"></button>
-      <button type="button" class="tall yc" data-cap="Y Combinator Startup School 2026"><img src="/img/ycs/yc-sign.jpg" width="600" height="800" alt="Adrian Erlikhman with two other attendees under the Y Combinator sign at Startup School 2026"></button>
-      <button type="button" class="tall pod" data-cap="USA Fencing podium"><img src="/fencing-2.jpg" width="600" height="800" loading="lazy" alt="Adrian Erlikhman on the podium with a USA Fencing medal"></button>
-      <button type="button" class="climb" data-cap="Rock climbing"><img src="/life-climb.jpg" width="800" height="533" loading="lazy" alt="Adrian Erlikhman rock climbing"></button>
+    <!-- Photos (2 Nov, Adrian picked B of _mock/photos.html after "the photos are not great"): three close crops in one
+         row, same height, on phones too: the headshot, the Pan-Ams lunge, YC. The crops are img/about/; a click opens the
+         whole original (data-full). -->
+    <div class="cg-imgs ph">
+      <button type="button" class="p" data-cap="Adrian Erlikhman" data-full="/adrian.jpg"><img src="/img/about/hs-portrait.webp" width="450" height="600" alt="Adrian Erlikhman"></button>
+      <button type="button" class="w" data-cap="Team USA, Cadet Pan-American Championships, Bogotá" data-full="/fencing-1.jpg"><img src="/img/about/lunge-wide.webp" width="520" height="390" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
+      <button type="button" class="p" data-cap="Y Combinator Startup School 2026" data-full="/img/ycs/yc-sign.jpg"><img src="/img/about/yc-portrait.webp" width="480" height="640" alt="Adrian Erlikhman with two other attendees under the Y Combinator sign at Startup School 2026"></button>
     </div>
     <!-- HIGHLIGHTS (31 Oct, Adrian's yes to "show the big results right away"): the four results an admissions reader should
          see in the first seconds, each opening its conversation. Keep them in step with Research, Fencing, Honors and What
@@ -694,6 +692,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-11-01-hl"></script>
+<script src="/assets/site.js?v=2026-11-02-ph"></script>
 </body>
 </html>

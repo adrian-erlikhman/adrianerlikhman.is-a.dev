@@ -444,7 +444,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-11-01-pub`, site.js `2026-11-01-pub`).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-11-02-ph`, site.js `2026-11-02-ph`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -530,7 +530,7 @@ with "a lot of updates" still to come. What shipped:
   he's built; About is his three paragraphs turned to "Adrian is... He builds..." (since 1 Nov, his pick of three takes in `_mock/about.html`: **take B**, each paragraph naming the work: SafeJew, Safe Routes and AIML-LI; both papers with their results; the four internships by kind; épée for Team USA and No. 49 among U.S. juniors; his eating/puzzles/outdoors/napping line kept), under a ChatGPT-style photo grid
   (`.cg-imgs`; since 30 Oct, his ask, "i like the fencing. then headshot, maybe the YC. choose two more good ones. the
   climbing photo is fine": the Pan-Ams lunge large, then the headshot, the YC sign, the podium with his medal, climbing;
-  cycling is out; a click opens `.cg-lb`). Internships are in the third person since 30 Oct (see the refine pass). **"Type literally anything"**: he
+  cycling is out; a click opens `.cg-lb`; since 2 Nov three close crops in a row, see the admissions pass). Internships are in the third person since 30 Oct (see the refine pass). **"Type literally anything"**: he
   chose written answers over a live AI model. site.js `KB` holds ~90 answers in the third person, every fact from
   llms.txt or the page (GPA, SAT, APs and dual enrollment, school, age not listed, hobbies with photos, brother, JSU,
   fields, MIT, a summary, what's next, each internship, each paper and project with a card that opens the big view, the
@@ -680,8 +680,13 @@ with "a lot of updates" still to come. What shipped:
   (`#rs-t2`); Team USA épée / 6th at the Cadet Pan-Ams (`#fencing`); AI course for LAUSD / headed toward a district
   elective (`#case-aimlli`). **Then, the same evening, his words:** Sole-author paper / "At a PhD-level venue: an
   AACL-IJCNLP workshop" (not "conference": it's a workshop at one); Team USA fencer (not "épée"); 4× hackathon winner /
-  Two at USC in one weekend (`#work`); AI course for LAUSD. Best Paper Finalist came off the row on his word. The same day the About photos got per-photo crops (`.hs`, `.yc`, `.pod`, `.climb`, `.lunge`
-  at 86%) so faces stay in frame ("the photos are not oriented well"). The original four, now history: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
+  Two at USC in one weekend (`#work`); AI course for LAUSD. Best Paper Finalist came off the row on his word. **About's
+  photos since 2 Nov** ("the photos are not great"; he picked **B, three across**, of `_mock/photos.html`, over A, two
+  big, and C, four squares): one row of one height, desktop and phone alike (`.cg-imgs.ph`; `.p` 3:4, `.w` 4:3): the
+  headshot, the Pan-Ams lunge, the YC sign, as close crops in `img/about/` (`hs-portrait`, `lunge-wide`, `yc-portrait`
+  .webp). The originals are only 800px, so no crop can be sharper than that; ask him for full-size photos. A click opens
+  the whole original (`data-full` on the button; the lightbox reads it first). The podium and climbing came off About
+  (climbing is in Off the laptop). The per-photo crops of 1 Nov (`.hs`, `.yc`, `.lunge`...) are history. The original four, now history: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
   Pan-Ams (`#fencing`), National Merit / Semifinalist (`#record`), 4 hackathon wins / and a 3rd internationally (`#work`;
   TrojanHacks, SEPHacks, VISION HACK, Decode the Ocean, plus Safe Routes' 3rd). 2×2 on phones. Keep it in step with
   those conversations. (2) **"The 30-second version"** is the first chip on the empty screen (`data-ask`, the KB

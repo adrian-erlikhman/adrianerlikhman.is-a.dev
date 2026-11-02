@@ -1902,7 +1902,7 @@ const BIG=(function(){
     e.preventDefault(); stopAuto(); const vid=b.matches('[data-video]');
     lbImg.hidden=vid; lbVid.hidden=!vid;
     if(vid){ lbVid.src=b.getAttribute('href'); lbVid.poster=b.querySelector('img').src; const p=lbVid.play(); if(p&&p.catch) p.catch(()=>{}); }
-    else { const im=b.querySelector('img'); lbImg.src=im.currentSrc||im.src; lbImg.alt=im.alt; }
+    else { const im=b.querySelector('img'); lbImg.src=b.dataset.full||im.currentSrc||im.src; lbImg.alt=im.alt; }   // a crop opens its whole original
     lb.querySelector('p').textContent=b.dataset.cap||'';
     lb._from=b; lb.hidden=false; lb.querySelector('.cg-lbx').focus(); });
   /* the paper reader: a link to one of the site's PDFs opens the whole paper over the page, in the browser's own PDF viewer
