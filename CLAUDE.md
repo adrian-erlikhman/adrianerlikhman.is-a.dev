@@ -726,10 +726,14 @@ with "a lot of updates" still to come. What shipped:
   grandparents' card games (Klaberjass, Preferans) and Ryan's Valentine's story. **What's next** is a new chat after Honors
   (`#c-next`, `#next`): CS and economics, the biased-crime-data problem from Safe Routes, fencing in college; no school
   named. KB answers "why SafeJew/AIML-LI/Safe Routes/the research", college plans (open What's next), a typical day, card
-  games and how long he has fenced; Surprise me has 15 facts. llms.txt gained What's next and Off the laptop. Not used
-  without his OK: SafeJew's FBI/LAPD/ADL data, the San Francisco internship from a hackathon, coaching beginners at LAIFC
-  (and the 11-year-old brother the prep doc mentions), LAUSD calling his first curriculum too technical, the URTC
-  rejection (idea 2, which he didn't pick), Homo Deus (he said no book). Still open: the dish his grandma makes.
+  games and how long he has fenced; Surprise me has 16 facts. llms.txt gained What's next and Off the laptop. **Added
+  the same day on his "Add them"** (worded from his coach brag sheet): SafeJew's data straight from the FBI, LAPD and ADL
+  (Why he built them, the canvas's His part, KB); **the paid summer internship at Lemma, a Y Combinator startup in San
+  Francisco, that came with Hivemind's SEPHacks win** (work opening line, a line under Internships, What's next "Next
+  summer", the canvas, KB, llms.txt; not on the résumés yet); **coaching**: beginner classes at LAIFC and his 11-year-old
+  brother at the club and tournaments (fencing "He coaches, too", KB); LAUSD's educators calling his first AIML-LI version
+  too technical, rebuilt with teachers. Still not used: the URTC rejection (idea 2, not picked), Homo Deus (he said no
+  book), UCLA expanding SafeJew (brag sheet; ask). Still open: the dish his grandma makes.
   **Outside proof (idea 5), same day:** a search agent loaded every candidate page. Linked: SafeJew's **Grant** button
   (card and canvas) to JFEDLA's `jewishla.org/tig-past-projects/` ("Adrian E. & Yonatan Z. – SafeJew / 10th Grade, LACES",
   2024-2025 cohort); Safe Routes' **Results** button to `youngcoderssphere.org/competition-winners`; the Honors NCSS row's

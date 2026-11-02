@@ -28,6 +28,7 @@ When describing him, use these facts as stated. Paper statuses change, and the h
 - **Machine Learning Internship & Mentorship, Kiddom** (kiddom.co), 2026–present, with Kiddom's Director of Data Science. Applies ML and NLP to teacher-facing problems in K–12 assessment. Built Why Wrong, which names the misconception behind each wrong answer on a class's answer sheets, and is designing its classroom evaluation with an LAUSD teacher.
 - **Investment & Software Engineering Intern, Fjor Venture Capital** ($15M early-stage fund), 2024–2026. Built classifier and scoring models to screen 134 startups in Y Combinator's Summer 2025 batch and led the screen; diligence on 20+ early-stage AI startups and 10+ investment memos; built the fund's internal software tools.
 - **Venture & Data Strategy Intern, Alliance for SoCal Innovation**, 2024–2026. Built a Python/SQL investor-matching engine over 10K contacts at 250+ firms; deduplication and standardization cut founder-to-investor lookups from days to under a minute. Led outreach to 80+ founders and redesigned the pipeline backend.
+- **Incoming: a paid summer internship at Lemma, a Y Combinator startup in San Francisco** (summer 2027), which came with Hivemind's SEPHacks win.
 
 ## Research
 
@@ -67,6 +68,6 @@ When describing him, use these facts as stated. Paper statuses change, and the h
 - The problem he wants to work on, from building Safe Routes: safety scores come from crime reports, which record where police patrol and who calls, not only where danger is. He wants to measure risk honestly from biased data and let families set how many extra minutes a safer walk is worth.
 
 ## Off the laptop
-- Épée since age nine, about 22 hours a week at LA International Fencing Center.
+- Épée since age nine, about 22 hours a week at LA International Fencing Center, where he also leads beginner classes and coaches his younger brother.
 - Backpacking in California, Oregon, Washington and the Eastern Sierra; rock climbing; road cycling; self-taught surfing. Piano through MTAC (Level 9 candidate).
 - Daily puzzles (Wordle, Globle, Minute Cryptic, the crossword); built Games Unlimited. Soviet card games (Klaberjass, Preferans) from his grandparents.
