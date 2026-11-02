@@ -1,7 +1,7 @@
 %% ============================================================================
 %%  Adrian Erlikhman -- resume, LONG version
 %%  Source of resume-long.pdf on adrianerlikhman.is-a.dev.
-%%  Updated: 2026-10-29
+%%  Updated: 2026-11-01
 %%
 %%  The classic black-and-white LaTeX resume layout (Jake's Resume), 11pt.
 %%  Self-contained and pure ASCII: paste it into Overleaf as-is and set
@@ -74,6 +74,11 @@
 \newcommand{\paper}[4]{\par\addvspace{4pt}\noindent
   \ifblank{#2}{\textbf{#1}}{\href{#2}{\textbf{\underline{#1}}}}\par\nopagebreak
   \noindent{\small\itshape #4\ifblank{#3}{}{\sep #3}}\par\nopagebreak}
+% \papertwo{Title, line 1}{Line 2}{Link}{Authors}{Status}: an underline can't wrap, so a long title breaks by hand
+\newcommand{\papertwo}[5]{\par\addvspace{4pt}\noindent
+  \href{#3}{\textbf{\underline{#1}}}\par\nopagebreak
+  \noindent\href{#3}{\textbf{\underline{#2}}}\par\nopagebreak
+  \noindent{\small\itshape #5\ifblank{#4}{}{\sep #4}}\par\nopagebreak}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -153,7 +158,7 @@
 \section{Research}
 
 \paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{https://github.com/adrian-erlikhman/self-recognition-peer-baseline}%
-  {Co-first author, with R.\ Erlikhman, M.\ Tarekegn; advised by Philo Juang (Google DeepMind)}%
+  {Co-first author, with M.\ Tarekegn, P.\ Juang}%
   {Preprint, arXiv forthcoming}
 \begin{itemize}
   \item Introduced a peer baseline that scores each LLM judge's self-attribution rate against how often the other judges name it on the same text, separating self-recognition from text that any model can identify, a confound prior self-recognition studies leave in.
@@ -161,7 +166,7 @@
   \item An 18-feature interpretable stylometric classifier recovers the true author 86.3\% of the time, above every judge, so the signal is in the text and most judges simply do not use it. Reproducible in one command, with no API key.
 \end{itemize}
 
-\paper{Do LLM Fingerprints Survive Outside English?}{https://adrianerlikhman.is-a.dev/papers/langllm-bigdata2026.pdf}%
+\paper{Interpretable Multilingual Attribution of Frontier LLMs}{https://adrianerlikhman.is-a.dev/papers/langllm-bigdata2026.pdf}%
   {Co-first author}%
   {Best Paper Finalist, IEEE BigData 2026 HS Symposium}
 \begin{itemize}
@@ -178,17 +183,17 @@
   \item RewardBench's leader survives the removal of any 11 of 2,985 items, and removing 12 particular items makes the runner-up the winner; linear programs show the bound is tight near the top of RewardBench and RewardBench 2. On 200-item RewardBench samples, picks with a top-two gap above 2 points match the full-benchmark winner 87\% of the time (43\% otherwise).
 \end{itemize}
 
-\paper{How Robust Are the Legatum Prosperity Index Rankings?\newline A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
+\papertwo{How Robust Are the Legatum Prosperity Index Rankings?}{A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}%
   {Co-first author, with Ryan Erlikhman}%
-  {Accepted with revisions, Journal of High School Science}
+  {In revision, Journal of High School Science}
 \begin{itemize}
   \item Reproduced every published score for 167 countries exactly, then varied the choices the index hides: 10,000 draws under each of three weight priors, and a 131,072-run Sobol' design over weighting, normalization and aggregation.
   \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq) -- the only part of a weight's influence that can actually reorder countries -- and showed it tracks Sobol' total effects (Spearman 0.91--0.99) at a fraction of the compute. The ranking holds as a whole (median Spearman \geqsym\ 0.9899) but not mid-table, where the median 90\% rank interval spans 36 places.
 \end{itemize}
 
-\paper{Does Portfolio Optimization Beat Splitting Evenly? Markowitz vs.\ the 1/N Portfolio}{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}%
+\paper{Does Portfolio Optimization Beat Splitting Evenly?}{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}%
   {With Ryan Erlikhman}%
-  {Accepted with revisions, Oxford Journal of Student Scholarship}
+  {Published, Oxford Journal of Student Scholarship, Oct 2026}
 \begin{itemize}
   \item Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 against 0.51), about 3 points of return a year at equal risk. The loss traces to estimating expected returns, and shrinkage closes it only with roughly two decades of stationary data -- more history than most investors have.
 \end{itemize}
@@ -217,7 +222,7 @@
 
 \role{Citadel High School Terminal}{Finalist, top 8 of 45 teams}{Citadel \textbar\ Citadel Securities, hosted by Correlation One}{2026}
 \begin{itemize}
-  \item Wrote ``dunerscore,'' a Python tower-defense strategy that reads the board and prices every wall, turret and attack lane, then adapts to the opponent's last layout; shipped a new version after each round's replay review, on a team of three.\enspace\lnk{https://terminal.c1games.com/}{about}
+  \item Wrote ``dunderscore,'' a Python tower-defense strategy that reads the board and prices every wall, turret and attack lane, then adapts to the opponent's last layout; shipped a new version after each round's replay review, on a team of three.\enspace\lnk{https://terminal.c1games.com/}{about}
 \end{itemize}
 
 \role{Y Combinator Startup School}{Admitted}{sub-5\% acceptance\sep \$30,000+ in partner credits}{2026}
@@ -235,7 +240,7 @@
 \section{Talks \& Presentations}
 
 \role{IEEE BigData 2026, High School Symposium}{Presenter, Best Paper Finalist}{``Interpretable Multilingual Attribution of Frontier LLMs''\sep Phoenix, AZ}{Dec 2026}
-\role{ARRSI Workshop @ AACL-IJCNLP 2026}{Presenter}{``Curated to Win''\sep Hengqin, China}{Nov 2026}
+\role{ARRSI Workshop @ AACL-IJCNLP 2026}{Presenter}{``Curated to Win''\sep Virtual}{Nov 2026}
 
 \role{NCSS 2026, National Consortium of STEM Schools}{Invited Speaker, Student Panel on AI}{San Diego, CA}{Dec 2026}
 \begin{itemize}

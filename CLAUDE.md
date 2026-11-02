@@ -1,5 +1,25 @@
 # Project memory — adrianerlikhman.is-a.dev (repo adrian-erlikhman/adrianerlikhman.is-a.dev, formerly adrian-erlikhman.github.io)
 
+## Status pass (1 Nov 2026, Adrian's "Yes, fix them" after a college-app audit)
+- **Portfolio paper: Published** (OJSS, 29 Oct 2026, Oct 2026 Vol. 12 No. 7, pp. 510-529; journal page
+  `oxfordjss.org/oct-2026-vol-12-issue-7/does-portfolio-optimization-beat-splitting-evenly`; DOI 10.65161/recqxelaA8evrueNC
+  was still registering on 1 Nov, so it is not linked yet). The site's PDF is the journal's published copy (20 pp, Title/Author
+  metadata added), `?v=2026-10-29` in the answer, `D`, ⌘K and `PAPERS`; R.04's answer has an "In the journal" tile
+  (`.pa-gh` holding the OJSS O). Long résumé: "Published, Oxford Journal of Student Scholarship, Oct 2026", title without the
+  old "Markowitz vs. the 1/N Portfolio" subtitle (the published title has none). The one-pager still doesn't carry it.
+- **Legatum: In revision** (JHSS's second decision, 20 Oct, was again revise and resubmit). Site, llms.txt, JSON-LD (dropped
+  from `award`) and both résumés. Its logo is off the "Interned, published and selected at" strip. Say "Accepted with
+  revisions" or "published" again only once JHSS says so.
+- Both résumés: LangLLM's real title, "dunderscore", Whose Line credited "Co-first author, with M. Tarekegn, P. Juang" (long)
+  and "with Michael Tarekegn and Philo Juang" (short); no "advised by" there any more (AIML-LI's advisor line stays). Long's
+  Talks lists ARRSI as Virtual (registered virtual, 21 Oct; pre-recorded talk). Long's Legatum title uses `\papertwo`
+  (two underlined lines: `\underline` is an hbox and can't wrap, so the old `\newline` ran the title off page 2).
+- Fencing results fixed against fencingtracker: Top 16 Y14 is the March 2024 NAC (9th of 218), not Summer Nationals 2023;
+  November NAC Cadet is Top 64 (33rd of 269). The "4× Junior Regional Champion" line was left alone (fencingtracker shows
+  two Junior wins; ask him).
+- Honors: NCSS/podcast row reads "Invited speaker & guest". KB: résumé "(two pages, or four)", ARRSI "present it
+  virtually", a piano answer from the long résumé's Honors (MTAC, Level 9 candidate, five state-honors exams).
+
 Personal portfolio site (single-page `index.html`), served via GitHub Pages at
 the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links two
 résumés, `resume.pdf` (one page) and `resume-long.pdf` (three pages), both built
@@ -139,9 +159,7 @@ from LaTeX in `resume/`.
     chose to keep its old credit line (Ryan and Michael, Philo as advisor)
     until **15 Oct, when he chose each paper's real author list**: the site's
     R.03 panel and llms.txt now say Adrian Erlikhman, Michael Tarekegn, Philo
-    Juang, co-first author. **Both résumés still carry the old CompLLM credit**
-    ("advised by Philo Juang (Google DeepMind)"; the long one adds R.
-    Erlikhman) and were not rebuilt; ask before changing them. Swap the dashed "PDF · ARXIV SOON" for the arXiv
+    Juang, co-first author. Both résumés match since 1 Nov (Adrian's OK). Swap the dashed "PDF · ARXIV SOON" for the arXiv
     link once it is posted (the R.03 card's `[EDIT]` comment marks the spot),
     and drop "forthcoming".
   - LangLLM's abstract is a **site-hosted PDF**, `papers/langllm-abstract-urtc2026.pdf`,
@@ -187,7 +205,7 @@ from LaTeX in `resume/`.
     author" (see the credit rule below). Since 29 Oct (his ask, "have the full titles") the site
   uses the paper's own title, "Interpretable Multilingual Attribution of Frontier LLMs".
 - **Legatum's title carries a deliberate line break** in the long one (after
-  the question mark, with `\newline`). Without it the title filled the line and
+  the question mark; since 1 Nov through `\papertwo`, because `\newline` inside the underline never broke). Without it the title filled the line and
   the italic venue was stranded alone on the next one. Keep the break if you
   edit the title. In the long one, `\paper` puts the status in italic navy on
   the right of the title line and the authors in dim grey under it, so a long
@@ -251,9 +269,8 @@ from LaTeX in `resume/`.
     him as an author (no affiliation), and R.01's cover image is the BigData
     paper's first page, which names him at UCLA.
   - Legatum: Co-first author with Ryan Erlikhman, no advisor (the manuscript's
-    acknowledgements say no mentor supervised it). Both résumés say "Accepted
-    with revisions, Journal of High School Science", matching the site; the old
-    hand-authored résumé said "Accepted".
+    acknowledgements say no mentor supervised it). Both résumés say "In revision,
+    Journal of High School Science" since 1 Nov, matching the site.
   - Ledger's role wording is fixed; see Site structure.
   - The summit is **500+ LA students** since 15 Oct 2026 (Adrian: "event is for
     500 + students", told that his Sept prep notes and aiml-initiative.org still
@@ -324,8 +341,8 @@ from LaTeX in `resume/`.
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **five places** since the 29 Oct all-chat homepage: the chat's sidebar Résumé link and
-  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-10-29-aiedu"
-  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-10-29-aiedu`.
+  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-11-01-pub"
+  index.html` should print 7 (the five, plus home.css and site.js, which share the value since 1 Nov). Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-01-pub`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -426,7 +443,7 @@ from LaTeX in `resume/`.
 - **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
   the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
   maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-10-31-hl`, site.js `2026-10-31-hl`).
+  homepage (see below). Both links carry `?v=` (currently home.css `2026-11-01-pub`, site.js `2026-11-01-pub`).
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -551,7 +568,7 @@ with "a lot of updates" still to come. What shipped:
   do; the row gets a dark left bar): full title, result, finding, How, Authors, "Read the paper" into `.cg-rd`. Rows
   keep `#rs-t1..5`; without JS a row opens the PDF (Whose Line: the repo); the reader leaves `[data-dv]` rows to the
   canvas. The answer opens "Five papers: a Best Paper Finalist at IEEE BigData, a sole-author paper at an AACL-IJCNLP
-  workshop, two accepted with revisions in student journals, and a preprint." Rows are still written from `D` by a
+  workshop, one published in a student journal, one in revision at another, and a preprint." (1 Nov) Rows are still written from `D` by a
   scratch script (node evals `D`, Python writes `.rl`): change `D`, then the row. The `.cg-pp` notes above are history.
   **Since later that night Research is question-first cards** (Adrian on the list: "hard to read each paper"; of
   three more takes, D chat answer, E question first, F result first, he said "more like e, but do the actual questions
@@ -653,8 +670,7 @@ with "a lot of updates" still to come. What shipped:
   music Rachmaninoff ("specifically musical moment #6", i.e. Moment Musical No. 6) and Chopin's "Revolutionary" Étude,
   class "Math and CS, but logic is my fav", place "my bed or anywhere in nature"; **book: skip** (none, on his word).
   KB has one answer each, plus a list for any other favorite ("favorite color") ending in his email; "favorite sport",
-  "paper" or "project" still open their conversations. Nothing says he plays piano, so "does he play piano" gets the
-  honest miss. (8) Typed answers leave blank room under the newest turn (`.cg-sp`) so its question sits at the top while
+  "paper" or "project" still open their conversations. Piano: the long résumé lists MTAC piano, so since 1 Nov KB answers it from there. (8) Typed answers leave blank room under the newest turn (`.cg-sp`) so its question sits at the top while
   it builds, then shrink it to fit.
   **Admissions pass (31 Oct; Adrian: "how else can we refine the site for an AO", then yes to the first idea).**
   (1) **About's highlights** (`.cg-hl`): one bordered row of four under the photos, before his paragraphs, each a link to
@@ -715,7 +731,7 @@ with "a lot of updates" still to come. What shipped:
   list**, all five, each opening the big view) · Selected work (six screenshots with plain text under them, his
   "selected work is good"; **a click opens the big view**, ctrl/cmd-click the live site) · Fencing ("fencing looks
   good") · Achievements (two columns of plain rows and one "Also" line) · Contact (email and three links). **Lemma is off
-  the logo strip.** **The strip gained AACL-IJCNLP, OJSS and JHSS on 28 Oct** (his ask), after IEEE: `aacl.webp`
+  the logo strip.** **The strip gained AACL-IJCNLP, OJSS and JHSS on 28 Oct** (JHSS came off on 1 Nov: in revision, not published) (his ask), after IEEE: `aacl.webp`
   (the "AACL-IJCNLP" wordmark cut from 2026.aaclnet.org's `aacl-2026-logo-v2.png`, no "2026", no skyline),
   `ojss-lockup.webp` (the full lockup from oxfordjss.org's Wix header; `ojss.webp` is the bare O used on R cards) and
   `jhss.webp` (jhss.scholasticahq.com's white-on-blue logo turned to ink). Sizes are balanced by class (`.w` 16px,
@@ -1382,6 +1398,4 @@ the rail and the ⌘K palette follow it.
   card, the ⌘K palette and the terminal's `PAPERS` map. Bump the query in all
   three whenever the PDF changes. The PDF is the 13 Sept 2026 JHSS revision
   exactly as Adrian exported it; its title page lists both authors' emails, and
-  he chose to publish it that way. Its status line stays "Accepted with
-  revisions · Journal of High School Science · in revision" until he says
-  otherwise.
+  he chose to publish it that way. Its status is "In revision" since 1 Nov (see Status pass).
