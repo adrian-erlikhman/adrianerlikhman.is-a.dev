@@ -526,7 +526,7 @@ with "a lot of updates" still to come. What shipped:
   **Third person and typed answers (29 Oct, later).** Adrian: "be like Adrian is this, right, switch the tense. maybe it
   should have photos". The chat now speaks about him: the questions are "Who is Adrian?", "Where has he interned?", "What
   has he built?", "Does he really fence for Team USA?", "How can I reach him?"; the sidebar says About Adrian and What
-  he's built; About is his three paragraphs turned to "Adrian is... He builds...", under a ChatGPT-style photo grid
+  he's built; About is his three paragraphs turned to "Adrian is... He builds..." (since 1 Nov, his pick of three takes in `_mock/about.html`: **take B**, each paragraph naming the work: SafeJew, Safe Routes and AIML-LI; both papers with their results; the four internships by kind; épée for Team USA and No. 49 among U.S. juniors; his eating/puzzles/outdoors/napping line kept), under a ChatGPT-style photo grid
   (`.cg-imgs`; since 30 Oct, his ask, "i like the fencing. then headshot, maybe the YC. choose two more good ones. the
   climbing photo is fine": the Pan-Ams lunge large, then the headshot, the YC sign, the podium with his medal, climbing;
   cycling is out; a click opens `.cg-lb`). Internships are in the third person since 30 Oct (see the refine pass). **"Type literally anything"**: he
