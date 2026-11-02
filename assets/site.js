@@ -1670,6 +1670,8 @@ const BIG=(function(){
   const pics=(...ks)=>`<div class="cg-imgs row">${ks.map(k=>`<button type="button" data-cap="${PICS[k][2]}"><img src="${PICS[k][0]}" alt="${PICS[k][1]}" loading="lazy"></button>`).join('')}</div>`;
   const K=(re,w=3)=>[re,w];
   const KB=[
+    /* "Surprise me", typed or from its chip: one fact from SUR below */
+    {k:[K(/surprise me|fun fact|random (fact|thing)|something (interesting|random|cool|fun|surprising)|^tell me something\W*$|another one|^random$/,5)],sur:1},
     /* projects and papers by name: a short answer and a card that opens the big view */
     {k:[K(/hivemind|shared memory|coding agents?|lemma|sephacks/)],dv:'hivemind',f:['work'],a:say(`<b>Hivemind</b> won Lemma’s Agent Behaviour Monitoring track at SEPHacks 2026 (USC SEP × LA Tech Week), built with Michael Tarekegn.`,`It is shared memory for a team’s AI coding agents: an engineer’s correction becomes a lesson, a team lead approves it, and every agent on the team loads it at its next session. In their eval, Claude Code passed 36 of 36 runs with Hivemind and 14 of 36 without.`,`Adrian designed and built the website, the web app and the terminal app’s design, and made the launch film.`)},
     {k:[K(/\bmonte\b|credit cards?|tap to pay|apple pay|trojanhacks?/)],dv:'monte',f:['work'],a:say(`<b>Monte</b> took 1st place in the Finance track at ACM TrojanHacks 2026, built with Michael Tarekegn.`,`It picks the credit card that pays most for each purchase, from the store’s merchant code and 29 cards’ published terms, and never picks a card carrying a balance. Over a year it weighs each card’s rewards against its fees and interest.`,`Adrian built the interface, the tap-to-pay demo and the brand, and made the launch film.`)},
@@ -1705,8 +1707,9 @@ const BIG=(function(){
     {k:[K(/\bschool\b|laces|enriched studies|magnet|go to school/)],f:['about'],a:say(`He is a senior at the <b>Los Angeles Center for Enriched Studies (LACES)</b>, an LAUSD magnet school in Los Angeles, class of 2027.`)},
     {k:[K(/\blives?\b|hometown|where.*\bfrom\b|based (in|out)|located|which city|what city|\bstate\b/)],f:['about'],a:say(`Los Angeles, California.`)},
 
-    /* who he is, off the laptop */
-    {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping/)],f:['fencing','about'],a:say(`Off the laptop he fences épée for Team USA, and he likes eating, puzzles, the outdoors and naps.`,`The outdoors means rock climbing, backpacking, hiking, road cycling and swimming in alpine lakes.`)+pics('climb','backpack','cycle','hike')},
+    /* who he is, off the laptop: hobbies open the Off the laptop conversation (weight 4, so "outside of school" beats the
+       school answer) */
+    {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping/,4)],go:'life'},
     /* his favorites, in his words (30 Oct): "food: soviet food from grandma, book: skip, movie: good will hunting, artist:
        rachmaninov (specifically musical moment #6, but also chopin revolutionary etude), class: Math and CS, but logic is my
        fav. place: my bed or anywhere in nature". No book, on his word. The "What's his favorite…" chip fills the composer. */
@@ -1818,16 +1821,44 @@ const BIG=(function(){
       else { stagger(el); await sleep(220); } }
     a.insertAdjacentHTML('afterend',acts()); fit(); if(my===run) busy=false;
   }
+
+  /* ---- "Surprise me" (1 Nov, from the AdrianGPT ideas Adrian kept): one short fact at a time, in a shuffled order that
+     doesn't repeat until all twelve have shown, each with "Another one" and a chip to its conversation. Every fact is
+     already on the site or in his record; about half are about him rather than his work. ---- */
+  PICS.swim=['/life-swim.jpg','Adrian Erlikhman swimming in an alpine lake','Swimming in an alpine lake'];
+  const SUR=[
+    {a:say(`Removing 12 particular questions from RewardBench’s 2,985 changes which reward model comes out on top. Adrian showed it in ${S('rs-t2','Curated to Win')}, a paper he wrote alone.`),f:['research']},
+    {a:say(`His favorite piece of music is Rachmaninoff’s Moment Musical No. 6. He studies piano too: an MTAC Level 9 candidate, with five state-honors exams.`),f:['life']},
+    {a:say(`His Citadel Terminal bot is called <b>dunderscore</b>. He and two teammates rewrote its strategy between rounds from match replays and finished in the top 8 of 45 teams.`),dv:'citadel',f:['work']},
+    {a:say(`Napping made his own list of hobbies, next to eating, puzzles and the outdoors. Asked for his favorite place, he said “my bed or anywhere in nature.”`)+pics('backpack','swim'),f:['life']},
+    {a:say(`Splitting money evenly beat the textbook Markowitz portfolio in 74% of 250 market simulations. Adrian and his brother, Ryan, published that in the Oxford Journal of Student Scholarship in October.`),f:['research']},
+    {a:say(`The six-second clip that loops in ${S('fencing','his fencing answer')} is one of his own touches, in a Senior team relay at Summer Nationals 2026. He’s the fencer on the right.`),f:['fencing']},
+    {a:say(`He likes puzzles enough to have built ${X('/linkedin-games-unlimited/','Games Unlimited')}: unlimited practice versions of the LinkedIn daily puzzle games.`),f:['life']},
+    {a:say(`${S('case-hivemind','Hivemind')} and ${S('case-monte','Monte')} won at two different USC hackathons on the same weekend in October. He built both with Michael Tarekegn.`),f:['work']},
+    {a:say(`His favorite food is the Soviet cooking his grandma makes, and his favorite movie is <i>Good Will Hunting</i>.`),f:['life']},
+    {a:say(`Frontier AI models are bad at telling which AI wrote an essay: they name the right one 20–25% of the time, close to chance. A classifier on 21 interpretable features gets 59–72% in all seven languages. That paper is a Best Paper Finalist at IEEE BigData.`),dv:'langllm',f:['research']},
+    {a:say(`He built the scoring models a $15M venture fund used to rank all 134 startups in Y Combinator’s Summer 2025 batch, then led the screen.`),f:['experience']},
+    {a:say(`In épée the whole body is target and both fencers can score at once. Adrian holds an <b>A26</b>, the highest USA Fencing rating.`)+pics('lunge','podium'),f:['fencing']}
+  ];
+  let surLeft=[];
+  const SH=P('<path d="M3 6h2.5c4.5 0 4.5 8 9 8H17M14.5 11.5L17 14l-2.5 2.5M3 14h2.5c1.4 0 2.4-.8 3.2-1.9M11.3 7.9C12.1 6.8 13.1 6 14.5 6H17M14.5 3.5L17 6l-2.5 2.5"/>').replace(/18/g,'16');
+  function surprise(t){
+    if(!surLeft.length){ surLeft=SUR.map((_,i)=>i); for(let i=surLeft.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [surLeft[i],surLeft[j]]=[surLeft[j],surLeft[i]]; } }
+    const s=SUR[surLeft.pop()];
+    return reply(t,s.a+(s.dv?card(s.dv):'')+`<div class="cg-follow"><button class="cg-chip" type="button" data-surprise="Another one">${SH}Another one</button>${s.f.map(chipHTML).join('')}</div>`);
+  }
   function answer(t){ const e=best(norm(t));
     if(!e) return reply(t,missHTML());
     if(e.go) return open(e.go,e.to?{to:e.to,instant:true}:{});
     if(e.help) return reply(t,helpHTML());
+    if(e.sur) return surprise(t);
     return reply(t,e.a+(e.dv?card(e.dv):'')+(e.f?chips(e.f):'')); }
 
   /* ---- the visitor ---- */
   const stopAuto=()=>{ auto=false; if(typing){ typing=false; inp.value=''; send.classList.add('cg-off'); } };
   root.addEventListener('click',e=>{
     const pk=e.target.closest('[data-pk]'); if(pk){ e.preventDefault(); stopAuto(); pickPaper(pk.dataset.pk); return; }
+    const sp=e.target.closest('[data-surprise]'); if(sp){ e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); surprise(sp.dataset.surprise); return; }
     const ak=e.target.closest('[data-ask]'); if(ak){ e.preventDefault(); stopAuto(); if(BIG) BIG.close(true); answer(ak.dataset.ask); return; }
     /* "What's his favorite…" (Adrian: "what is his favorite [blank]"): the chip starts the question and the visitor finishes it */
     const fl=e.target.closest('[data-fill]'); if(fl){ e.preventDefault(); stopAuto(); inp.value=fl.dataset.fill; send.classList.remove('cg-off'); inp.focus(); inp.setSelectionRange(inp.value.length,inp.value.length); return; }

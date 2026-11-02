@@ -689,6 +689,17 @@ with "a lot of updates" still to come. What shipped:
   the answers (he removed the composer line on 29 Oct), a "why he does this" chat in his own words, his own lines for
   college plans, a challenge and summers, past tense and photos after 10 Nov, 2 Dec and 17 Dec, and outside proof
   links (BigData program, Devpost winners, ARRSI accepted list) once posted.
+- **Off the laptop and Surprise me (1 Nov).** Adrian brought a ChatGPT-written "AdrianGPT" prompt and asked what to keep.
+  Settled: the name stays "Adrian" (no "GPT": nothing here is a model, GPT is OpenAI's, and "[Name]GPT" is a common
+  gimmick), and the site stays one chat (no second scrolling site). He kept three ideas from `_mock/beyond.html`:
+  (1) **Off the laptop**, a chat after Team USA épée ("What does he do for fun?", `#c-life`, `#life`): five outdoor photos,
+  Outside, Piano (MTAC, from the long résumé), Puzzles (Games Unlimited), his favorites as a table (his 30 Oct words, no
+  book), Family (Ryan as co-author). Typed hobby questions open it (KB weight 4, so "outside of school" beats the school
+  answer). (2) **Surprise me**, a chip on the empty screen, under About and under Off the laptop (`data-surprise`; typed
+  "fun fact" too): one of twelve facts in site.js `SUR`, shuffled with no repeats, each with "Another one"; keep them in
+  step with the facts they quote. (3) A no-AI line: he picked C (under each answer) of three placements, then asked
+  instead for **a short welcome walkthrough on landing** ("this is how my shit works, welcome ... short and condensed"),
+  which is to carry the no-AI statement. The walkthrough is still a mock (`_mock/welcome.html`); line C did not ship.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the

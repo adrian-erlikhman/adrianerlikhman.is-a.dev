@@ -761,3 +761,6 @@ a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
   .cv-tx{padding:20px 18px 36px}.cv-t{font-size:20px}
   .cv-dl{grid-template-columns:1fr;gap:2px}.cv-dl dd{margin-bottom:12px}
 }
+/* Off the laptop (1 Nov): the hiking shot is the grid's one portrait; its paragraphs sit tighter under their h4s */
+.cg-imgs .lf-hike img{object-position:center 66%}
+.cg-a .lf-p{margin:0 0 6px}
