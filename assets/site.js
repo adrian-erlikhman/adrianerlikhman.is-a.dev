@@ -1435,7 +1435,7 @@ const BIG=(function(){
   })();
   const D={
     hivemind:{lg:'/img/logos/hivemind.svg',n:'Hivemind',k:'Hackathon build · October 2026',
-      a:['Won Lemma’s agent-monitoring track','SEPHacks 2026 at USC, LA Tech Week'],
+      a:['Won Lemma’s agent-monitoring track','SEPHacks 2026 at USC, LA Tech Week, with a paid summer internship at Lemma'],
       t:'Shared memory for a team’s AI coding agents. One engineer corrects an agent once; after a lead approves it, every agent on the team follows the rule, in Claude Code, Cursor, Codex and three other tools.',
       h:'Hooks hand each agent the team’s locked rules for the file it is about to edit, and <code>hivemind watch</code> flags a broken rule as it happens. In the eval, agents passed 36 of 36 runs with Hivemind, 14 of 36 without it and 15 of 36 with a placebo memory. Next.js, Supabase, Claude Haiku, MCP.',
       p:['His part','Designed and built the website, the web app and the terminal app’s interface, and made the launch film, overnight with Michael Tarekegn, who built the engine, hooks and eval.'],
@@ -1459,7 +1459,7 @@ const BIG=(function(){
       a:['Funded by a JFEDLA Teen Innovation Grant','the Jewish Federation of Greater Los Angeles'],
       t:'A live map of 1,394 antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, each tied to its source, distributed through the Jewish Federation of Los Angeles’ Community Security Initiative.',
       h:'He wrote a dependency-free LA gazetteer that finds the most specific place a news story names and geocodes it, so a daily GitHub Action adds new incidents with no one in the loop. 800 incidents across LA and 594 on campuses, from ADL records and cited news reports. Next.js, TypeScript, Supabase.',
-      p:['His part','Co-founded it, wrote the gazetteer and rebuilt the platform as V2 for a pitch to Hillel International.'],
+      p:['His part','Co-founded it, got incident data from the FBI, LAPD and ADL, wrote the gazetteer and rebuilt the platform as V2 for a pitch to Hillel International.'],
       site:'https://safejew.org/map',m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
       l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code'],['https://www.jewishla.org/tig-past-projects/','Grant']]},
     aimlli:{lg:'/img/logos/aimlli-mark.webp',n:'AIML-LI',k:'Co-founder & lead · 2023 to now',
@@ -1673,7 +1673,7 @@ const BIG=(function(){
     /* "Surprise me", typed or from its chip: one fact from SUR below */
     {k:[K(/surprise me|fun fact|random (fact|thing)|something (interesting|random|cool|fun|surprising)|^tell me something\W*$|another one|^random$/,5)],sur:1},
     /* projects and papers by name: a short answer and a card that opens the big view */
-    {k:[K(/hivemind|shared memory|coding agents?|lemma|sephacks/)],dv:'hivemind',f:['work'],a:say(`<b>Hivemind</b> won Lemma’s Agent Behaviour Monitoring track at SEPHacks 2026 (USC SEP × LA Tech Week), built with Michael Tarekegn.`,`It is shared memory for a team’s AI coding agents: an engineer’s correction becomes a lesson, a team lead approves it, and every agent on the team loads it at its next session. In their eval, Claude Code passed 36 of 36 runs with Hivemind and 14 of 36 without.`,`Adrian designed and built the website, the web app and the terminal app’s design, and made the launch film.`)},
+    {k:[K(/hivemind|shared memory|coding agents?|lemma|sephacks/)],dv:'hivemind',f:['work'],a:say(`<b>Hivemind</b> won Lemma’s Agent Behaviour Monitoring track at SEPHacks 2026 (USC SEP × LA Tech Week), built with Michael Tarekegn. The win came with a paid summer internship at Lemma, a Y Combinator startup in San Francisco.`,`It is shared memory for a team’s AI coding agents: an engineer’s correction becomes a lesson, a team lead approves it, and every agent on the team loads it at its next session. In their eval, Claude Code passed 36 of 36 runs with Hivemind and 14 of 36 without.`,`Adrian designed and built the website, the web app and the terminal app’s design, and made the launch film.`)},
     {k:[K(/\bmonte\b|credit cards?|tap to pay|apple pay|trojanhacks?/)],dv:'monte',f:['work'],a:say(`<b>Monte</b> took 1st place in the Finance track at ACM TrojanHacks 2026, built with Michael Tarekegn.`,`It picks the credit card that pays most for each purchase, from the store’s merchant code and 29 cards’ published terms, and never picks a card carrying a balance. Over a year it weighs each card’s rewards against its fees and interest.`,`Adrian built the interface, the tap-to-pay demo and the brand, and made the launch film.`)},
     {k:[K(/safe ?jew|antisemit|incident map/)],dv:'safejew',f:['work'],a:say(`<b>SafeJew</b>, which Adrian co-founded, is a live map of antisemitic incidents across Greater Los Angeles, each with its source: 800 across LA and 594 on 33 university campuses, updated daily. It is funded by a JFEDLA Teen Innovation Grant.`,`He built the LA gazetteer that turns a place named in a news story into coordinates, so a daily job adds new incidents on its own.`)},
     {k:[K(/aiml|ai literacy|literacy|ai course|summit|chromebook/)],dv:'aimlli',f:['work'],a:say(`<b>AIML-LI</b>, the AI & Machine Learning Literacy Initiative, is a free AI-literacy course for LA public schools that Adrian co-founded and has led since 2023: six units of Python notebooks that run on school Chromebooks, from foundations to neural networks.`,`It also puts on a free AI summit and hackathon for 500+ LA public-school students.`)},
@@ -1710,13 +1710,13 @@ const BIG=(function(){
     /* what's next (1 Nov): college plans and the problem he wants to work on open their own conversation */
     {k:[K(/(college|future) plans|his plans|\bmajor\b|study in college|want to (study|do|be)|career|future|\bgoals?\b|dream|what'?s next|what is next|next for him|after high school|after (he )?graduat|problem (does )?he (wants?|most)/,4)],go:'next'},
     /* why he built what he built (1 Nov): beats the answers about each project */
-    {k:[K(/why .{0,25}safe ?jew|safe ?jew.{0,20}\bwhy\b/,6)],dv:'safejew',f:['work'],a:say(`When antisemitic incidents rose across LA in late 2023, the reports were scattered across news stories, community groups and agencies, each counting differently. Adrian is Jewish and wanted one clear picture, for himself and for other families, so he co-founded ${S('case-safejew','SafeJew')}.`)},
-    {k:[K(/why .{0,25}(aiml|ai literacy|ai course|teach)/,6)],dv:'aimlli',f:['work'],a:say(`By sophomore year everyone around him was using ChatGPT, but no class taught how it works or when to trust it. So he wrote one: ${S('case-aimlli','AIML-LI')}.`)},
+    {k:[K(/why .{0,25}safe ?jew|safe ?jew.{0,20}\bwhy\b/,6)],dv:'safejew',f:['work'],a:say(`When antisemitic incidents rose across LA in late 2023, the reports were scattered across news stories, community groups and agencies, each counting differently. Adrian is Jewish and wanted one clear picture, for himself and for other families, so he co-founded ${S('case-safejew','SafeJew')}. He needed data nobody hands a teenager, so he went straight to the FBI, LAPD and ADL.`)},
+    {k:[K(/why .{0,25}(aiml|ai literacy|ai course|teach)/,6)],dv:'aimlli',f:['work'],a:say(`By sophomore year everyone around him was using ChatGPT, but no class taught how it works or when to trust it. So he wrote one: ${S('case-aimlli','AIML-LI')}. LAUSD’s educators called the first version too technical, so he rebuilt it with teachers.`)},
     {k:[K(/why .{0,25}safe ?routes/,6)],dv:'saferoutes',f:['work','next'],a:say(`From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the way to or from school. His friends are in that number.`)},
     {k:[K(/why .{0,30}(research|\bai\b|evaluat|judges?|benchmarks?)/,6)],f:['research'],a:say(`In his words: “AI models now grade other AI models’ work. If the judge plays favorites, like a teacher grading their own essay, so does every ranking built on it. I want to know when those tests can be trusted.”`)},
     {k:[K(/typical day|daily routine|his (day|schedule)|how does he (balance|manage|do it all)|time management|wake up|after (school|class)/,4)],f:['life'],a:say(`Up at 8:00, out the door by 8:10. Puzzles in homeroom, then school, often a call for ${S('xp-firstness','Firstness')} or ${S('xp-kiddom','Kiddom')}, fencing most evenings (six hours on Saturdays), and research or ${S('case-aimlli','AIML-LI')} at night.`)},
     {k:[K(/card games?|klaberjass|preferans|\bcards\b|grandparents/,4)],f:['life'],a:say(`His grandparents taught him two Soviet card games, Klaberjass and Preferans.`)},
-    {k:[K(/how long has he (been )?fenc|when did he start fenc|start(ed)? fencing|how (much|often) does he (train|practice|fence)|hours a week/,4)],f:['fencing'],a:say(`He has fenced épée since he was nine, and trains about 22 hours a week at LA International Fencing Center: most evenings, and six hours on Saturdays.`)},
+    {k:[K(/how long has he (been )?fenc|when did he start fenc|start(ed)? fencing|how (much|often) does he (train|practice|fence)|how many hours|hours a week/,4)],f:['fencing'],a:say(`He has fenced épée since he was nine, and trains about 22 hours a week at LA International Fencing Center: most evenings, and six hours on Saturdays.`)},
     /* who he is, off the laptop: hobbies open the Off the laptop conversation (weight 4, so "outside of school" beats the
        school answer) */
     {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping|surf/,4)],go:'life'},
@@ -1760,7 +1760,9 @@ const BIG=(function(){
     {k:[K(/\branks?\b|ranked|ranking|number one|\bno\.? ?\d|how good|national(ly)?|standing/)],f:['fencing'],a:say(`Nationally he is <b>No. 49 in U.S. Junior (U20)</b> and <b>No. 78 in U.S. Senior</b> épée, with a peak of <b>No. 17 as a Cadet (U17)</b>. He is No. 1 in Region 4. ${X('https://fencingtracker.com/p/100253463/Adrian-Erlikhman','Full record')}`)},
     {k:[K(/rating|\ba26\b|a.?rated/)],f:['fencing'],a:say(`<b>A26</b>: an A, the highest USA Fencing rating, earned in 2026.`)},
     {k:[K(/team usa|pan.?am|bogot|represent|international|\busa\b|what team/)],f:['fencing'],a:say(`He fenced for <b>Team USA</b> at the Cadet Pan-American Championships in Bogotá and placed 6th.`)+pics('lunge','podium')},
-    {k:[K(/\bclub\b|coach|\btrain(s|ing)?\b|practice|fencing center/)],f:['fencing'],a:say(`He trains at LA International Fencing Center.`)},
+    {k:[K(/\bclub\b|coach|\btrain(s|ing)?\b|practice|fencing center/)],f:['fencing'],a:say(`He trains at LA International Fencing Center, where he also leads beginner classes for younger kids and coaches his 11-year-old brother.`)},
+    {k:[K(/does he coach|he coach|coach(es|ing) (kids|beginners|his brother|younger)|teach(es|ing)? fencing|beginner class/,5)],f:['fencing'],a:say(`Yes. At LA International Fencing Center he leads beginner classes for younger kids just starting the sport, and coaches his 11-year-old brother at the club and at tournaments.`)},
+    {k:[K(/next summer|this summer|summer intern|san francisco|\bsf\b|intern(ing|ship)? at lemma|lemma intern/,5)],f:['experience','work'],a:say(`Next summer he interns at <b>Lemma</b>, a Y Combinator startup in San Francisco: a paid internship that came with ${S('case-hivemind','Hivemind')}’s win at SEPHacks.`)},
     {k:[K(/results?|medals?|tournaments?|nationals|\bnac\b|north american cup|podium|best finish/)],f:['fencing'],a:say(`His best results:`)+ul([`<b>6th</b>, Cadet Pan-American Championships, for Team USA (Bogotá)`,`<b>Top 8</b>, Super Junior & Cadet Circuit`,`<b>Top 16</b>, Cadet, October North American Cup`,`<b>Top 32</b>, Div I, National Championships`,`<b>4× Junior Regional Champion</b>`])},
     {k:[K(/all.?american|all.?academic/)],f:['fencing','record'],a:say(`He is a <b>3× All-American</b> and a <b>3× All-Academic</b>, both First Team, from USA Fencing. All-Academic takes a national result and a 3.85+ GPA.`)},
     {k:[K(/\bvideos?\b|\bwatch\b|\bbouts?\b|footage|\bclips?\b/)],go:'fencing',to:'bouts'},
@@ -1833,7 +1835,7 @@ const BIG=(function(){
   }
 
   /* ---- "Surprise me" (1 Nov, from the AdrianGPT ideas Adrian kept): one short fact at a time, in a shuffled order that
-     doesn't repeat until all fifteen have shown, each with "Another one" and a chip to its conversation. Every fact is
+     doesn't repeat until all sixteen have shown, each with "Another one" and a chip to its conversation. Every fact is
      already on the site or in his record; about half are about him rather than his work. ---- */
   PICS.swim=['/life-swim.jpg','Adrian Erlikhman swimming in an alpine lake','Swimming in an alpine lake'];
   const SUR=[
@@ -1849,6 +1851,7 @@ const BIG=(function(){
     {a:say(`Frontier AI models are bad at telling which AI wrote an essay: they name the right one 20–25% of the time, close to chance. A classifier on 21 interpretable features gets 59–72% in all seven languages. That paper is a Best Paper Finalist at IEEE BigData.`),dv:'langllm',f:['research']},
     {a:say(`He built the scoring models a $15M venture fund used to rank all 134 startups in Y Combinator’s Summer 2025 batch, then led the screen.`),f:['experience']},
     {a:say(`He ran experiments on nap length. Forty-five minutes won.`),f:['life']},
+    {a:say(`${S('case-hivemind','Hivemind')}’s hackathon win came with a paid summer internship at Lemma, a Y Combinator startup in San Francisco.`),f:['work']},
     {a:say(`Tied 14–14, one touch from the end, his opponent bloodied his nose and kneed him, and the referee missed it. He used box breathing to reset, then scored the last touch.`),f:['fencing']},
     {a:say(`His grandparents taught him two Soviet card games, Klaberjass and Preferans.`),f:['life']},
     {a:say(`In épée the whole body is target and both fencers can score at once. Adrian holds an <b>A26</b>, the highest USA Fencing rating.`)+pics('lunge','podium'),f:['fencing']}
