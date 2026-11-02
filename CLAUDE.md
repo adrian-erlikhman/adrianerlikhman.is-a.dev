@@ -675,7 +675,11 @@ with "a lot of updates" still to come. What shipped:
   it builds, then shrink it to fit.
   **Admissions pass (31 Oct; Adrian: "how else can we refine the site for an AO", then yes to the first idea).**
   (1) **About's highlights** (`.cg-hl`): one bordered row of four under the photos, before his paragraphs, each a link to
-  its conversation: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
+  its conversation. **Since 1 Nov (his pick A of three, `_mock/about2.html`; "not the inherently most impressive"):** Best
+  Paper Finalist / IEEE BigData 2026, 12 of 130 (`#rs-t1`); Sole-author paper / accepted at an AACL-IJCNLP workshop
+  (`#rs-t2`); Team USA épée / 6th at the Cadet Pan-Ams (`#fencing`); AI course for LAUSD / headed toward a district
+  elective (`#case-aimlli`). The same day the About photos got per-photo crops (`.hs`, `.yc`, `.pod`, `.climb`, `.lunge`
+  at 86%) so faces stay in frame ("the photos are not oriented well"). The original four, now history: Best Paper Finalist / IEEE BigData 2026 (`#rs-t1`, picks the paper), Team USA épée / 6th, Cadet
   Pan-Ams (`#fencing`), National Merit / Semifinalist (`#record`), 4 hackathon wins / and a 3rd internationally (`#work`;
   TrojanHacks, SEPHacks, VISION HACK, Decode the Ocean, plus Safe Routes' 3rd). 2×2 on phones. Keep it in step with
   those conversations. (2) **"The 30-second version"** is the first chip on the empty screen (`data-ask`, the KB

@@ -800,3 +800,10 @@ a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
 .cg-q{margin:4px 0 20px;font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;font-size:17.5px;line-height:1.5;color:#1f4aa6;transform:rotate(-.5deg);transform-origin:left center}
 .cg-q span{display:block;margin-top:2px;font-size:14.5px;opacity:.8}
 @media(max-width:860px){.cg-q{font-size:16.5px}}
+/* About's photos (1 Nov, Adrian: "the photos are not oriented well"): each crop keeps the faces in frame */
+.cg-imgs .lunge img{object-position:86% center}
+.cg-imgs .hs img{object-position:center 22%}
+.cg-imgs .yc img{object-position:center 62%}
+.cg-imgs .pod img{object-position:center 40%}
+.cg-imgs .climb img{object-position:center 40%}
+.cg-hl .nw{display:inline;margin:0;white-space:nowrap}
