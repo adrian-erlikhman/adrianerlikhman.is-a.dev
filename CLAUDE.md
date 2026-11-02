@@ -6,7 +6,8 @@
   was still registering on 1 Nov, so it is not linked yet). The site's PDF is the journal's published copy (20 pp, Title/Author
   metadata added), `?v=2026-10-29` in the answer, `D`, ⌘K and `PAPERS`; R.04's answer has an "In the journal" tile
   (`.pa-gh` holding the OJSS O). Long résumé: "Published, Oxford Journal of Student Scholarship, Oct 2026", title without the
-  old "Markowitz vs. the 1/N Portfolio" subtitle (the published title has none). The one-pager still doesn't carry it.
+  old "Markowitz vs. the 1/N Portfolio" subtitle (the published title has none), credit "Co-first author, with Ryan Erlikhman".
+  **The one-pager carries it since 1 Nov** (his yes), after Legatum, one bullet (74% of 250 simulations, Sharpe 0.70 vs 0.51).
 - **Legatum: In revision** (JHSS's second decision, 20 Oct, was again revise and resubmit). Site, llms.txt, JSON-LD (dropped
   from `award`) and both résumés. Its logo is off the "Interned, published and selected at" strip. Say "Accepted with
   revisions" or "published" again only once JHSS says so.
@@ -291,7 +292,7 @@ from LaTeX in `resume/`.
     monospace font. The template's "July 2026 · Vol 10. No 1." footer
     is the journal's own. Linked as `?v=2026-10-02` from the card, the ⌘K
     palette and the terminal; bump all three if it changes. Drop "revision
-    submitted" once it is published. The one-pager doesn't carry this paper.
+    submitted" once it is published. The one-pager carries it since 1 Nov (see Status pass).
   - **Curated to Win** (R.02 since 12 Oct): "Curated to Win: Certifying
     Reward-Model and Judge Selection Against Evaluation-Set Curation", Adrian's
     **sole-author** paper, so its credit reads "Sole author", the one exception to
@@ -341,8 +342,8 @@ from LaTeX in `resume/`.
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **five places** since the 29 Oct all-chat homepage: the chat's sidebar Résumé link and
-  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-11-01-pub"
-  index.html` should print 7 (the five, plus home.css and site.js, which share the value since 1 Nov). Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-01-pub`.
+  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-11-01-ojss"
+  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-01-ojss`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
