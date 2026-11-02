@@ -1457,7 +1457,7 @@ const BIG=(function(){
       l:[['https://terminal.c1games.com/','About Terminal',1]]},
     safejew:{lg:'/img/logos/safejew.webp',n:'SafeJew',k:'Co-founder · 2024 to now',
       a:['Funded by a JFEDLA Teen Innovation Grant','the Jewish Federation of Greater Los Angeles'],
-      t:'A live map of 1,394 antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, each tied to its source, distributed through the Jewish Federation of Los Angeles’ Community Security Initiative.',
+      t:'A live map of 1,394 antisemitic incidents across Greater Los Angeles and 33 U.S. college campuses, each tied to its source, distributed through the Jewish Federation of Los Angeles’ Community Security Initiative. He is now working with UCLA to expand it.',
       h:'He wrote a dependency-free LA gazetteer that finds the most specific place a news story names and geocodes it, so a daily GitHub Action adds new incidents with no one in the loop. 800 incidents across LA and 594 on campuses, from ADL records and cited news reports. Next.js, TypeScript, Supabase.',
       p:['His part','Co-founded it, got incident data from the FBI, LAPD and ADL, wrote the gazetteer and rebuilt the platform as V2 for a pitch to Hillel International.'],
       site:'https://safejew.org/map',m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
@@ -1720,10 +1720,10 @@ const BIG=(function(){
     /* who he is, off the laptop: hobbies open the Off the laptop conversation (weight 4, so "outside of school" beats the
        school answer) */
     {k:[K(/hobb|for fun|free time|spare time|outside (of )?(school|work|coding|class)|off the laptop|what does he (like|enjoy)|\benjoy|weekends?|outdoors|hik(e|ing)|climb|cycl|bike|swim|backpack|camping|surf/,4)],go:'life'},
-    /* his favorites, in his words (30 Oct): "food: soviet food from grandma, book: skip, movie: good will hunting, artist:
+    /* his favorites, in his words (30 Oct): "food: soviet food from grandma (1 Nov: "borscht and pelmeni"), book: skip, movie: good will hunting, artist:
        rachmaninov (specifically musical moment #6, but also chopin revolutionary etude), class: Math and CS, but logic is my
        fav. place: my bed or anywhere in nature". No book, on his word. The "What's his favorite…" chip fills the composer. */
-    {k:[K(/\bfood\b|\beat\b|eating|favou?rite (meal|dish|restaurant|snack|cuisine)|cook|grandm|soviet|russian food/,4)],f:['about'],a:say(`His favorite food is the Soviet cooking his grandma makes. Eating is also on his own list of hobbies, right after fencing.`)},
+    {k:[K(/\bfood\b|\beat\b|eating|favou?rite (meal|dish|restaurant|snack|cuisine)|cook|grandm|soviet|russian food|borscht|borsch|pelmeni|dumplings/,4)],f:['about'],a:say(`His favorite food is his grandma’s borscht and pelmeni. Eating is also on his own list of hobbies, right after fencing.`)},
     {k:[K(/\bmovies?\b|favou?rite (film|show|tv)|good will hunting|\bcinema\b/)],f:['about'],a:say(`His favorite movie is <i>Good Will Hunting</i>.`)},
     {k:[K(/piano|pianist|\bmtac\b|(play|plays|playing) (an? )?(instruments?|music)|instruments?\b/,4)],f:['about'],a:say(`Yes, piano, through the Music Teachers’ Association of California (MTAC): he is a Level 9 candidate, with five state-honors exams.`)},
     {k:[K(/\bmusic|\bsongs?\b|composers?|classical|rach?man|chopin|\bartists?\b|\bbands?\b|\bsingers?\b|listen/)],f:['about'],a:say(`Rachmaninoff, and Moment Musical No. 6 above all. He also loves Chopin’s “Revolutionary” Étude.`)},
@@ -1789,7 +1789,7 @@ const BIG=(function(){
     {k:[K(/\bwho\b|about (him|adrian)|tell me about|introduc|background|\bbio\b|what does (he|adrian) do|^adrian\??$|^him\??$/,2)],go:'about'},
     /* any other favorite ("what's his favorite?", "favorite color"): the ones he has shared; after the topics, so "favorite
        sport" or "favorite paper" still opens its conversation */
-    {k:[K(/favou?rites?|\bfavs?\b/,2)],f:['about'],a:say(`The favorites he has shared:`)+ul([`<b>Food:</b> the Soviet cooking his grandma makes`,`<b>Movie:</b> <i>Good Will Hunting</i>`,`<b>Music:</b> Rachmaninoff, above all Moment Musical No. 6, and Chopin’s “Revolutionary” Étude`,`<b>Subjects:</b> math and computer science, and logic most of all`,`<b>Place:</b> his bed, or anywhere in nature`])+say(`For any other favorite, ask him: ${MAIL}`)},
+    {k:[K(/favou?rites?|\bfavs?\b/,2)],f:['about'],a:say(`The favorites he has shared:`)+ul([`<b>Food:</b> his grandma’s borscht and pelmeni`,`<b>Movie:</b> <i>Good Will Hunting</i>`,`<b>Music:</b> Rachmaninoff, above all Moment Musical No. 6, and Chopin’s “Revolutionary” Étude`,`<b>Subjects:</b> math and computer science, and logic most of all`,`<b>Place:</b> his bed, or anywhere in nature`])+say(`For any other favorite, ask him: ${MAIL}`)},
 
     /* the chat itself */
     {k:[K(/are you (an? )?(ai|bot|robot|real|human|chat ?gpt|gpt|claude|llm|person)|is this (an? )?(ai|chat ?gpt|gpt|real|bot)|who am i (talking|speaking)|chat ?bot|chat ?gpt|(did|does|was) (an? )?(ai|gpt|claude|llm) (write|wrote|make|made|generate)|(written|generated|made) (by|with) (an? )?(ai|gpt|claude|llm)|ai.?(written|generated)/,4)],f:['about'],a:say(`There is no AI model here. This is Adrian’s site, laid out like a chat, and every answer is written ahead of time from his record, so it can’t make anything up.`)},
@@ -1847,7 +1847,7 @@ const BIG=(function(){
     {a:say(`The six-second clip that loops in ${S('fencing','his fencing answer')} is one of his own touches, in a Senior team relay at Summer Nationals 2026. He’s the fencer on the right.`),f:['fencing']},
     {a:say(`He likes puzzles enough to have built ${X('/linkedin-games-unlimited/','Games Unlimited')}: unlimited practice versions of the LinkedIn daily puzzle games.`),f:['life']},
     {a:say(`${S('case-hivemind','Hivemind')} and ${S('case-monte','Monte')} won at two different USC hackathons on the same weekend in October. He built both with Michael Tarekegn.`),f:['work']},
-    {a:say(`His favorite food is the Soviet cooking his grandma makes, and his favorite movie is <i>Good Will Hunting</i>.`),f:['life']},
+    {a:say(`His favorite food is his grandma’s borscht and pelmeni, and his favorite movie is <i>Good Will Hunting</i>.`),f:['life']},
     {a:say(`Frontier AI models are bad at telling which AI wrote an essay: they name the right one 20–25% of the time, close to chance. A classifier on 21 interpretable features gets 59–72% in all seven languages. That paper is a Best Paper Finalist at IEEE BigData.`),dv:'langllm',f:['research']},
     {a:say(`He built the scoring models a $15M venture fund used to rank all 134 startups in Y Combinator’s Summer 2025 batch, then led the screen.`),f:['experience']},
     {a:say(`He ran experiments on nap length. Forty-five minutes won.`),f:['life']},
@@ -1955,7 +1955,8 @@ const BIG=(function(){
   const NS='http://www.w3.org/2000/svg';
   const SEEN='ae-welcome-seen';
   async function welcome(){
-    try{ if(localStorage.getItem(SEEN)) return; }catch(_){}
+    const again=/[?&]welcome(=|&|$)/.test(location.search);       // ?welcome shows it again, for him or anyone he sends it to
+    try{ if(!again&&localStorage.getItem(SEEN)) return; }catch(_){}
     // measure the notes in their own font, not the fallback
     try{ await Promise.race([document.fonts.load("500 17px 'Shantell Sans'"),sleep(1500)]); }catch(_){}
     return notes(); }
