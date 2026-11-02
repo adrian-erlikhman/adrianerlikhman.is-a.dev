@@ -714,6 +714,22 @@ with "a lot of updates" still to come. What shipped:
   in first at the top right; the composer note reads "or ask me anything! my épée rating, my favorite movie…"; where there's
   room left of "The 30-second version" chip, "short on time? start here" points at it (else "stuck? try one of these");
   the button says "ok, show me around →".
+- **Content pass (1 Nov; Adrian picked 1, 3, 4, 5 of six ideas: his whys, Off the laptop specifics, what's next, outside
+  proof).** Sources: his "MIT Interview Master Prep" doc (Drive), whose spoken lines are quoted as his words, and his "UC
+  Essays" doc, **paraphrased only** (those essays go to UC readers; never copy a sentence of them onto the site, since a
+  public copy could get flagged as the essay's source). His quotes show as `.cg-q`: Shantell Sans in a darker honey
+  (`#8e5a0f`, for contrast), signed "— Adrian": Research ("AI models now grade other AI models' work…"), What he's built
+  ("My default is to start before I feel ready…"), fencing ("Fencing taught me to go after hard things…") and What's next
+  ("I learn by building…"). What he's built ends with **Why he built them** (SafeJew, AIML-LI, Safe Routes). Fencing adds
+  since age nine, ~22 hours a week, and **The bout he remembers** (the 14–14 bout, box breathing). Off the laptop adds the
+  backpacking states, self-taught surfing, his morning puzzles, the nap experiments (45 minutes), **A typical day**, his
+  grandparents' card games (Klaberjass, Preferans) and Ryan's Valentine's story. **What's next** is a new chat after Honors
+  (`#c-next`, `#next`): CS and economics, the biased-crime-data problem from Safe Routes, fencing in college; no school
+  named. KB answers "why SafeJew/AIML-LI/Safe Routes/the research", college plans (open What's next), a typical day, card
+  games and how long he has fenced; Surprise me has 15 facts. llms.txt gained What's next and Off the laptop. Not used
+  without his OK: SafeJew's FBI/LAPD/ADL data, the San Francisco internship from a hackathon, coaching beginners at LAIFC
+  (and the 11-year-old brother the prep doc mentions), LAUSD calling his first curriculum too technical, the URTC
+  rejection (idea 2, which he didn't pick), Homo Deus (he said no book). Still open: the dish his grandma makes.
 - **Big view (`#dv`, site.js BIG VIEW), second take (28 Oct, late):** Adrian called the stacked version (problem bar,
   three numbers, big screenshot, columns) "lame" and asked for it "more like i had it with the bubble version...
   interesting to look at, but not doing tm, a strong precise description, send to the website, highlight the
