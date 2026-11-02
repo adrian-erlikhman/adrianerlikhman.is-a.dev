@@ -1949,8 +1949,9 @@ const BIG=(function(){
   /* ---- the welcome, annotated (1 Nov; Adrian: "a little bit of a walkthrough when the user lands ... short and
      condensed", then "make it annotated like we annotated stuff in hivemind and monte ... make it cute and not AI slop").
      On a first visit, before "Who is Adrian?" plays, hand-written notes point at the real chat list, the composer and the
-     suggestions, each arrow drawing itself in, after his polaroid saying hi (more personal, his ask the same day). Any click, any key or "ok, let's go" puts them away; a click on a chat or a
-     chip goes straight through to it. On phones the suggestions wait until the notes are gone, to make room. It shows on
+     suggestions, each arrow drawing itself in, after his polaroid saying hi (more personal, his ask the same day). They stay up until the visitor does something: "ok, show me around", Esc, or a click on a chat, a chip or the
+     composer, which goes straight through (Adrian, the same day: "the shit goes away too quickly"; a click anywhere used
+     to put them away). On phones the suggestions wait until the notes are gone, to make room. It shows on
      every visit to the plain address (Adrian, 1 Nov: "if you load it just like this, it doesn't show the annotations. fix
      this"; it was once per visitor) and never on a deep link. ---- */
   const NS='http://www.w3.org/2000/svg';
@@ -2028,9 +2029,10 @@ const BIG=(function(){
     go.querySelector('path').style.cssText=`stroke-dasharray:400;stroke-dashoffset:400;animation:wnDraw .5s ${t}s ease-in-out forwards`;
     let gone=false;
     const done=()=>{ if(gone) return; gone=true; removeEventListener('pointerdown',down,true); removeEventListener('keydown',key,true);
-      ov.classList.add('out'); root.classList.remove('cg-tour'); setTimeout(()=>ov.remove(),260); res(); };
-    const down=()=>done();                                    // a click anywhere; on a chat or chip it carries on to it
-    const key=e=>{ if(e.key==='Escape'||e.key==='Enter'||e.key===' '){ if(e.target===go||e.key==='Escape') e.preventDefault(); } done(); };
+      ov.classList.add('out'); root.classList.remove('cg-tour'); setTimeout(()=>ov.remove(),520); res(); };
+    /* only a real action puts them away; a click on empty page or a stray tap leaves them up */
+    const down=e=>{ if(e.target.closest('a,button,input,textarea,select,[data-conv],[data-ask],[data-surprise],[data-fill],.cg-comp,.cg-side')) done(); };
+    const key=e=>{ if(e.key==='Escape'){ e.preventDefault(); done(); } };   // Enter or Space on the focused button clicks it
     addEventListener('pointerdown',down,true); addEventListener('keydown',key,true); go.addEventListener('click',done);
     setTimeout(()=>{ if(!gone) go.focus({preventScroll:true}); },(t+.5)*1000);
   }); }

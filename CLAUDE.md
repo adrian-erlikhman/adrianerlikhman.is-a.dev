@@ -706,8 +706,10 @@ with "a lot of updates" still to come. What shipped:
   Fonts, `INFM` 100 / `BNCE` 30 as on the Hivemind site) sit on the real empty screen, each pencil arrow drawing itself in:
   "my life, sorted into chats" (to the chat list; on phones to ☰, "(they live in here)"), "or ask anything! even my favorite
   movie" (to the composer), "stuck? try one of these" (to the suggestions, desktop only), "p.s. no AI in here. every answer
-  is pre-written" (squiggle under "no AI"), and an "ok, let's go →" box. Any click or key puts them away (a click on a chat
-  or chip goes through). On phones the suggestions hide while the notes are up. **Shown on every visit to the plain
+  is pre-written" (squiggle under "no AI"), and an "ok, let's go →" box. **They stay up until a real action** (since the
+  same day, "the shit goes away too quickly"): the button, Esc, or a click on a chat, chip, composer or the sidebar, which
+  goes through; clicks on empty page and other keys do nothing. They fade out over .5 s. **Ink: ballpoint blue** (`#2457c5`;
+  quotes `#1f4aa6`), his pick from `_mock/inks.html` over red pen, pencil, navy, green and the first honey. On phones the suggestions hide while the notes are up. **Shown on every visit to the plain
   address** (it was once per visitor until Adrian, the same day: "if you load it just like this, it doesn't show the
   annotations. fix this"), never on a deep link. Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
   so check 1440, 1280, 1024 and two phone sizes after moving anything on the empty screen.
@@ -718,8 +720,8 @@ with "a lot of updates" still to come. What shipped:
 - **Content pass (1 Nov; Adrian picked 1, 3, 4, 5 of six ideas: his whys, Off the laptop specifics, what's next, outside
   proof).** Sources: his "MIT Interview Master Prep" doc (Drive), whose spoken lines are quoted as his words, and his "UC
   Essays" doc, **paraphrased only** (those essays go to UC readers; never copy a sentence of them onto the site, since a
-  public copy could get flagged as the essay's source). His quotes show as `.cg-q`: Shantell Sans in a darker honey
-  (`#8e5a0f`, for contrast), signed "— Adrian": Research ("AI models now grade other AI models' work…"), What he's built
+  public copy could get flagged as the essay's source). His quotes show as `.cg-q`: Shantell Sans in a darker shade of the
+  notes' ink (`#1f4aa6` since the blue switch), signed "— Adrian": Research ("AI models now grade other AI models' work…"), What he's built
   ("My default is to start before I feel ready…"), fencing ("Fencing taught me to go after hard things…") and What's next
   ("I learn by building…"). What he's built ends with **Why he built them** (SafeJew, AIML-LI, Safe Routes). Fencing adds
   since age nine, ~22 hours a week, and **The bout he remembers** (the 14–14 bout, box breathing). Off the laptop adds the
