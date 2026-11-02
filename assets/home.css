@@ -796,3 +796,7 @@ a.pa-f:hover{background:#f7f7f7;border-color:#d4d4d4}
 @keyframes wnPol{to{opacity:1;transform:rotate(var(--r,4deg))}}
 @media (max-width:860px){.wn-pol{width:102px;padding:6px 6px 7px}.wn-pol img{width:90px;height:90px}.wn-pol span{font-size:13px}}
 @media (prefers-reduced-motion:reduce){.wn-pol{animation:none;opacity:1;transform:rotate(var(--r,4deg))}}
+/* his own words (1 Nov): a quote in the welcome's handwriting, a darker honey so it reads as text, signed */
+.cg-q{margin:4px 0 20px;font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;font-size:17.5px;line-height:1.5;color:#8e5a0f;transform:rotate(-.5deg);transform-origin:left center}
+.cg-q span{display:block;margin-top:2px;font-size:14.5px;opacity:.8}
+@media(max-width:860px){.cg-q{font-size:16.5px}}
