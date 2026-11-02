@@ -1461,7 +1461,7 @@ const BIG=(function(){
       h:'He wrote a dependency-free LA gazetteer that finds the most specific place a news story names and geocodes it, so a daily GitHub Action adds new incidents with no one in the loop. 800 incidents across LA and 594 on campuses, from ADL records and cited news reports. Next.js, TypeScript, Supabase.',
       p:['His part','Co-founded it, wrote the gazetteer and rebuilt the platform as V2 for a pitch to Hillel International.'],
       site:'https://safejew.org/map',m:I('/img/cases/safejew-incident.webp','SafeJew’s incident map'),
-      l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code']]},
+      l:[['https://safejew.org/map','Open the map',1],['https://github.com/RE17-IWD/safejew','Code'],['https://www.jewishla.org/tig-past-projects/','Grant']]},
     aimlli:{lg:'/img/logos/aimlli-mark.webp',n:'AIML-LI',k:'Co-founder & lead · 2023 to now',
       a:['Working with LAUSD toward a district-wide course','LA Student AI Summit for 500+ students, 6 Feb 2027'],
       t:'A free, open-source AI course any LA public-school teacher can run on the Chromebooks a class already has: twelve weeks, six units, real Python, aligned to state standards.',
@@ -1482,7 +1482,7 @@ const BIG=(function(){
       h:'Scores 431,599 street blocks by hour from 85,634 LAPD incidents, then runs A* in the browser over the streets and LA Metro’s 5,395 stops, offline, in English and Spanish. One trip to LACES cuts modeled exposure by 80%.',
       p:['Why','From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the school commute. His friends are in that number.'],
       site:'https://safe-routes-la.github.io/',m:I('/img/cases/saferoutes-walk.webp','Safe Routes’ worked example'),
-      l:[['https://safe-routes-la.github.io/','Try it',1],['https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place','Write-up'],['https://github.com/safe-routes-la/safe-routes-la.github.io','Code']]},
+      l:[['https://safe-routes-la.github.io/','Try it',1],['https://www.youngcoderssphere.org/competition-winners','Results'],['https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place','Write-up'],['https://github.com/safe-routes-la/safe-routes-la.github.io','Code']]},
     langllm:{paper:1,lg:'/img/logos/ieee.webp',n:'Interpretable Multilingual Attribution of Frontier LLMs',k:'Paper · IEEE BigData 2026 · Phoenix, 17 Dec',
       a:['Best Paper Finalist','one of 12, from 130 accepted papers'],
       t:'Can you still tell which AI model wrote an essay once it leaves English? Yes: an interpretable classifier names the model 59–72% of the time in all seven languages, while the models themselves manage 20–25%.',
@@ -1752,7 +1752,7 @@ const BIG=(function(){
     /* skills */
     {k:[K(/programming|coding|tech ?stack|\bstack\b|python|javascript|typescript|react|next\.?js|\bsql\b|skills|code in|frameworks?|what tools/)],f:['work'],a:ul([`<b>Python</b> for ML and data: his papers, the Citadel bot, Alliance’s investor-matching engine and AIML-LI’s notebooks`,`<b>TypeScript and JavaScript</b>, with Next.js and Supabase, for the web: Hivemind, Monte and SafeJew`,`<b>SQL</b> for data work, as in the investor-matching engine`])},
     {k:[K(/hackathons?|\bhacks?\b|\bwon\b|\bwins?\b|winning|first place|1st place|placed/)],f:['work'],a:say(`Four wins and a 3rd:`)+ul([`<b>1st, Finance track</b>, ACM TrojanHacks 2026: ${S('case-monte','Monte')}`,`<b>Won Lemma’s agent track</b>, SEPHacks 2026: ${S('case-hivemind','Hivemind')}`,`<b>1st, Council District 9 Champion, Under 18</b>, VISION HACK: South LA: ${S('case-ledger','Ledger')}`,`<b>1st</b>, Decode the Ocean (Lovable × United Nations): eDNAtlas`,`<b>3rd internationally</b>, Code for Transportation: ${S('case-saferoutes','Safe Routes')}`])},
-    {k:[K(/\bgrants?\b|funded|funding|jfedla|federation/)],f:['work'],a:say(`${S('case-safejew','SafeJew')} is funded by a <b>Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles (JFEDLA).`)},
+    {k:[K(/\bgrants?\b|funded|funding|jfedla|federation/)],f:['work'],a:say(`${S('case-safejew','SafeJew')} is funded by a <b>Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles (JFEDLA), which ${X('https://www.jewishla.org/tig-past-projects/','lists it among its past projects')}.`)},
 
     /* fencing */
     {k:[K(/what is (an )?[ée]p[ée]e|what'?s (an )?[ée]p[ée]e|weapons?|\bfoil\b|sabre|saber/,4)],f:['fencing'],a:say(`Épée is one of fencing’s three weapons. The whole body is target, touches land with the point, and there is no right-of-way, so both fencers can score at once.`)},
