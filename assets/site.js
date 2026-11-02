@@ -1950,13 +1950,11 @@ const BIG=(function(){
      condensed", then "make it annotated like we annotated stuff in hivemind and monte ... make it cute and not AI slop").
      On a first visit, before "Who is Adrian?" plays, hand-written notes point at the real chat list, the composer and the
      suggestions, each arrow drawing itself in, after his polaroid saying hi (more personal, his ask the same day). Any click, any key or "ok, let's go" puts them away; a click on a chat or a
-     chip goes straight through to it. On phones the suggestions wait until the notes are gone, to make room. It shows once
-     per visitor (localStorage, where the browser allows it) and never on a deep link. ---- */
+     chip goes straight through to it. On phones the suggestions wait until the notes are gone, to make room. It shows on
+     every visit to the plain address (Adrian, 1 Nov: "if you load it just like this, it doesn't show the annotations. fix
+     this"; it was once per visitor) and never on a deep link. ---- */
   const NS='http://www.w3.org/2000/svg';
-  const SEEN='ae-welcome-seen';
   async function welcome(){
-    const again=/[?&]welcome(=|&|$)/.test(location.search);       // ?welcome shows it again, for him or anyone he sends it to
-    try{ if(!again&&localStorage.getItem(SEEN)) return; }catch(_){}
     // measure the notes in their own font, not the fallback
     try{ await Promise.race([document.fonts.load("500 17px 'Shantell Sans'"),sleep(1500)]); }catch(_){}
     return notes(); }
@@ -2029,14 +2027,14 @@ const BIG=(function(){
     go.style.animationDelay=t+'s';
     go.querySelector('path').style.cssText=`stroke-dasharray:400;stroke-dashoffset:400;animation:wnDraw .5s ${t}s ease-in-out forwards`;
     let gone=false;
-    const done=()=>{ if(gone) return; gone=true; try{ localStorage.setItem(SEEN,'1'); }catch(_){} removeEventListener('pointerdown',down,true); removeEventListener('keydown',key,true);
+    const done=()=>{ if(gone) return; gone=true; removeEventListener('pointerdown',down,true); removeEventListener('keydown',key,true);
       ov.classList.add('out'); root.classList.remove('cg-tour'); setTimeout(()=>ov.remove(),260); res(); };
     const down=()=>done();                                    // a click anywhere; on a chat or chip it carries on to it
     const key=e=>{ if(e.key==='Escape'||e.key==='Enter'||e.key===' '){ if(e.target===go||e.key==='Escape') e.preventDefault(); } done(); };
     addEventListener('pointerdown',down,true); addEventListener('keydown',key,true); go.addEventListener('click',done);
     setTimeout(()=>{ if(!gone) go.focus({preventScroll:true}); },(t+.5)*1000);
   }); }
-  /* ---- landing: a #link opens its conversation at once; otherwise the welcome (first visit only), then "Who is Adrian?"
+  /* ---- landing: a #link opens its conversation at once; otherwise the welcome, then "Who is Adrian?"
      types itself in and plays ---- */
   const hid=decodeURIComponent(location.hash.slice(1)), hk=hid&&convOf(hid);
   if(hk){ auto=false; open(hk,{to:hid,instant:true}); }

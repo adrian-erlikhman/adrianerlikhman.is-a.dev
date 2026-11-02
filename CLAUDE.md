@@ -707,8 +707,9 @@ with "a lot of updates" still to come. What shipped:
   "my life, sorted into chats" (to the chat list; on phones to ☰, "(they live in here)"), "or ask anything! even my favorite
   movie" (to the composer), "stuck? try one of these" (to the suggestions, desktop only), "p.s. no AI in here. every answer
   is pre-written" (squiggle under "no AI"), and an "ok, let's go →" box. Any click or key puts them away (a click on a chat
-  or chip goes through). On phones the suggestions hide while the notes are up. Shown once per visitor (localStorage
-  `ae-welcome-seen`), never on a deep link; **`/?welcome` shows it again** (for Adrian, or a link he sends). Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
+  or chip goes through). On phones the suggestions hide while the notes are up. **Shown on every visit to the plain
+  address** (it was once per visitor until Adrian, the same day: "if you load it just like this, it doesn't show the
+  annotations. fix this"), never on a deep link. Positions are computed from the real elements (site.js CHAT SITE, `welcome`),
   so check 1440, 1280, 1024 and two phone sizes after moving anything on the empty screen.
   **More personal (same day, his ask; `_mock/welcome3.html`):** his headshot as a taped polaroid, "hi, i'm adrian!", drops
   in first at the top right; the composer note reads "or ask me anything! my épée rating, my favorite movie…"; where there's
