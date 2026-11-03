@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-nx`, site.js `2026-11-03-mw`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-rf`, site.js `2026-11-03-mw`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -633,9 +633,9 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   It opens with **Coming up**, a dated list: "Right now: finishing my college applications, between fencing practices"
   (his ask, the same evening; drop it once his applications are in), Nov. 10 Curated to Win at ARRSI (virtual), Dec. 2 NCSS panel, Dec. 17 IEEE
   BigData in Phoenix, Feb. 6, 2027 the LA Student AI Summit at LACES, Summer 2027 Lemma. **Reword or drop each line once its
-  date passes** (and the same lines in llms.txt). Then **In college**: computer science, math and economics, plus AI research
-  (his "not just cs and economics", the same evening; math from his number theory and combinatorics since 2022; the signpost
-  doodle has three boards, CS, math, econ), with economics' reason from his Alliance
+  date passes** (and the same lines in llms.txt). Then **In college**, his fields in his words (3 Nov, late): **computer
+  science, data science, applied math, economics and quantitative finance**, then research in them and **becoming a
+  founder** (the signpost doodle points two ways: "research" and "founder"), with economics' reason from his Alliance
   work (the engine showed which startups drew which investors but never why; paraphrased from his MIT essay's idea, not its
   sentences), the Safe Routes biased-data problem, and fencing plus coaching.
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight

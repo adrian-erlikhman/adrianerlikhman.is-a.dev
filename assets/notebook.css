@@ -258,9 +258,9 @@ h2{display:flex;align-items:flex-end;gap:12px}
 .js h2.seen .doo .mn{stroke-dashoffset:0}.js h2.seen .doo .tr{opacity:.8}.js h2.seen .doo .lbl{opacity:1}
 #h-work.seen .doo{animation:bob 2.8s ease-in-out 1.8s infinite}@keyframes bob{50%{transform:translateY(-2px) rotate(-2deg)}}
 h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}75%{transform:rotate(6deg)}}
-#h-next .doo{width:100px;height:62px;margin-bottom:-12px}
+#h-next .doo{width:136px;height:62px;margin-bottom:-12px}
 @media(max-width:700px){.doo{width:60px;height:38px;margin-bottom:-4px}}
-@media(max-width:700px){#h-next .doo{width:80px;height:50px;margin-bottom:-8px}}
+@media(max-width:700px){#h-next .doo{width:108px;height:50px;margin-bottom:-8px}}
 @media(prefers-reduced-motion:reduce){.js .doo .mn{stroke-dashoffset:0;transition:none}.js .doo .tr,.js .doo .lbl{opacity:.8;transition:none}h2 .doo{animation:none!important}}
 
 /* ---- Projects as a museum wall (3 Nov; Adrian picked it from five takes in _mock/proj4-*.html): each project framed under
