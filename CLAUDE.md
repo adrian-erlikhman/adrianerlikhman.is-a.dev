@@ -523,11 +523,12 @@ from LaTeX in `resume/`.
   or taped photos, fade-ins, the dot grid, pill or boxed buttons, "↗" arrows, cutesy asides. Links are underlined navy
   text, grouped with " · ". Keep it that way; ask before adding any flourish back.
 - **Order:** about (`#about`: the name, two short paragraphs, Résumé · Email · LinkedIn · GitHub, then his three photos
-  across: headshot, lunge, YC) · Research (`#papers`, `#rs-t1..5`: his "AI models now grade..." line, then per paper the
+  across: headshot, lunge, YC) · **Experience** (`#experience`, `#xp-*`, then Lemma next summer; first since 3 Nov, his
+  words: "i think experience should be the first section"; titled Experience, was Internships) · Research (`#papers`, `#rs-t1..5`: his "AI models now grade..." line, then per paper the
   first page, the title, result and venue with co-authors, a first-person paragraph, "What it asks" as `<details>`, and
   "Paper (n pages) · Code and data") · Projects (`#work`, `#case-*`, a list with a picture beside each; Ledger keeps its
   receipt; the "why I built it" stories sit in SafeJew's, AIML-LI's and Safe Routes' paragraphs; dunderscore last) ·
-  Internships (`#experience`, `#xp-*`, then Lemma next summer) · Fencing (`#fencing`, the six-second touch, rankings in a
+  Fencing (`#fencing`, the six-second touch, rankings in a
   sentence, results, the bout, coaching, `#bouts`) · Honors (`#record`, a plain table, no marks) · Off the laptop (`#life`)
   · Next (`#next`) · Contact (`#contact`). The top bar's links are plain grey text; the one in view darkens (site.js NAV).
 - **Kept:** the swarm intro (its button now just says "skip"), the `status.json` maintenance screen (now "Back soon"), the
