@@ -2217,6 +2217,11 @@ const BIG=(function(){
     f.addEventListener('pointerleave',()=>{ f.style.removeProperty('--rx'); f.style.removeProperty('--ry'); });
   });
 
+  /* ---- the pen underlines draw in once their phrase is on screen ---- */
+  const hls=document.querySelectorAll('.hl');
+  if(still||!window.IntersectionObserver) hls.forEach(h=>h.classList.add('on'));
+  else{ const uio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); uio.unobserve(e.target); } }),{rootMargin:'0px 0px -10% 0px'}); hls.forEach(h=>uio.observe(h)); }
+
   /* ---- 4. Ledger's receipt prints when it comes into view ---- */
   const lgr=$('.lgr');
   if(lgr&&!still&&window.IntersectionObserver){
