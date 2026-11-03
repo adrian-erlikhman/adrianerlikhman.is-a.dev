@@ -466,7 +466,7 @@ from LaTeX in `resume/`.
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-p2`, site.js `2026-11-03-p2`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-p3`, site.js `2026-11-03-p3`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -531,7 +531,7 @@ from LaTeX in `resume/`.
   sentence, results, the bout, coaching, `#bouts`) · Honors (`#record`, a plain table, no marks) · Off the laptop (`#life`)
   · Next (`#next`) · Contact (`#contact`). The top bar's links are plain grey text; the one in view darkens (site.js NAV).
 - **Kept:** the swarm intro (its button now just says "skip"), the `status.json` maintenance screen (now "Back soon"), the
-  résumé picker ("LaTeX source" at its foot), ⌘K, the photo viewer and the paper reader (site.js NOTEBOOK; `main.nb`,
+  résumé picker ("LaTeX source" at its foot), the photo viewer and the paper reader (site.js NOTEBOOK; `main.nb`,
   `[data-full]`, `[data-video]`, `/papers/` links). Old ids all land.
 - **Overnight pass (3 Nov), from an admissions-officer review (a subagent's read of the page):** colon reveals became
   sentences; dates are U.S. style ("Dec. 17"); the hero gained "4.0 unweighted · SAT 1520 · 17 APs · National Merit
@@ -544,6 +544,18 @@ from LaTeX in `resume/`.
   rows. **Left for Adrian** (his past calls or unknown facts): the MIT recruitment line in Fencing (the reviewer flagged
   that other schools' readers see it), "4× Junior Regional Champion" (fencingtracker shows two), which brother is "my
   11-year-old brother" (Ryan is older), teammate credits on SafeJew, Ledger and Safe Routes, and project order.
+- **Second overnight pass (3 Nov), from a second fresh review:** the hero's score line came out again ("the least
+  nonchalant line"; scores stay in Honors) and its paragraph lost its links; it now says "Best Paper Finalist at the IEEE
+  BigData High School Symposium" and "a free AI course that I'm working with LAUSD's Ed Tech office to turn into a
+  district elective". Research's intro is one framing (three papers on language models, two with Ryan); Curated to Win's
+  summary keeps only the 12-item sentence (the 11-under-RewardBench's-code detail stays in its questions); "What it asks"
+  is "Research questions". Projects has no intro line; SafeJew says "which I co-founded"; AIML-LI is "with input from
+  engineers at Google DeepMind and Microsoft" and "planning a summit" (it is 6 Feb 2027). Lemma moved to the bottom of
+  Internships. The Y14 result is gone. Honors: NCSS is "Invited panelist", APs read "17 APs, 6 of them this year", and the
+  MTAC row went back to the outdoors section as a sentence. "Off the laptop" is now **"Outside school"**, with three
+  photos (climb, backpack, cycle). Paper pages are 104px. On phones the top bar is not sticky and its links wrap. The
+  **⌘K palette is gone** from the page (its "adrian.os" prompt and toasts read as gimmicks, and "/" opened it while
+  typing); its script skips itself.
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight
   cards, the handwritten quotes (his lines are now plain sentences in Research, Projects, Fencing and Next). Their code
   still sits in site.js and skips itself.

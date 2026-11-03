@@ -24,7 +24,7 @@ b{font-weight:700;color:var(--ink)}
 p+p{margin-top:14px}
 
 /* top bar: the section in view is underlined (site.js NAV) */
-.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.94);border-bottom:1px solid var(--rule)}
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
 .nav .wrap{display:flex;align-items:baseline;gap:20px;padding:16px 0 14px}
 .brand{font-weight:700;font-size:19.5px;color:var(--ink);text-decoration:none}
 .nav nav{margin-left:auto;display:flex;gap:20px;font-size:17px}
@@ -54,10 +54,10 @@ h3.sub{font-size:19.5px;margin:26px 0 6px}
 .ul li{padding:2px 0}
 
 /* papers: the first page beside each */
-.pp{display:grid;grid-template-columns:76px minmax(0,1fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--rule);scroll-margin-top:70px}
+.pp{display:grid;grid-template-columns:104px minmax(0,1fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--rule);scroll-margin-top:70px}
 .pp:last-child{border-bottom:0}
 .pg{align-self:start;margin-top:5px}
-.pg img{width:76px;height:auto;aspect-ratio:640/829;object-fit:cover;object-position:top;border:1px solid var(--rule);background:#fff}
+.pg img{width:104px;height:auto;aspect-ratio:640/829;object-fit:cover;object-position:top;border:1px solid var(--rule);background:#fff}
 details{margin-top:10px;font-size:17.5px}
 details summary{cursor:pointer;color:var(--acc);width:max-content;max-width:100%}
 details ol{margin:8px 0 2px;padding-left:24px;color:var(--body)}
@@ -99,9 +99,9 @@ details li{padding:3px 0}
 .fav{margin-top:18px}
 .fav td:first-child{width:130px;color:var(--dim)}
 .fav td:nth-child(2){font-weight:400;white-space:normal;color:var(--body)}
-.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:20px 0}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0}
 .strip button{cursor:zoom-in;overflow:hidden}
-.strip img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.strip img{width:100%;aspect-ratio:4/3;object-fit:cover}
 #contact{padding-bottom:110px}
 
 /* Ledger's receipt (29 Oct, Adrian picked it over the dashboard screenshot) */
@@ -111,7 +111,6 @@ details li{padding:3px 0}
 .lgr .slot::after{content:"";position:absolute;left:2.5cqw;right:2.5cqw;top:45%;height:2px;border-radius:2px;background:#000}
 .rcp{position:absolute;left:50%;bottom:-1.9cqw;width:60%;transform:translateX(-50%);background:var(--pp);color:var(--pk);padding:1.4em 1.5em 1.6em;font:500 2.75cqw/1.55 var(--mono);letter-spacing:.02em;filter:drop-shadow(0 12px 16px rgba(8,16,48,.4));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
 .rcp::before{content:"";position:absolute;left:0;right:0;top:-.7em;height:.7em;background:linear-gradient(45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x,linear-gradient(-45deg,var(--pp) 50%,transparent 50%) 0 0/1.05em .7em repeat-x}
-.pj a.im:hover .rcp{transform:translate(-50%,-2.2cqw)}
 .rcp .hd{display:flex;align-items:center;justify-content:center;gap:.45em;font-weight:700;font-size:1.5em;line-height:1;letter-spacing:.12em}
 .rcp .hd img{width:1.1em;height:1.1em;object-fit:contain}
 .rcp .c{text-align:center}
@@ -197,9 +196,9 @@ body.intro-lock{overflow:hidden}
   body{font-size:18px}
   .wrap{width:calc(100% - 32px)}
   .nav .wrap{flex-wrap:wrap;gap:4px 16px;padding:12px 0 10px}
-  .nav nav{margin-left:0;width:100%;gap:16px;font-size:16px;overflow-x:auto;scrollbar-width:none}
-  .nav nav::-webkit-scrollbar{display:none}
-  html{scroll-padding-top:96px}
+  .nav nav{margin-left:0;width:100%;gap:2px 14px;font-size:16px;flex-wrap:wrap}
+  .nav{position:static}
+  html{scroll-padding-top:16px}
   .hero{padding-top:40px}
   .hero h1{font-size:36px}
   .sec{padding-top:60px}
@@ -215,6 +214,4 @@ body.intro-lock{overflow:hidden}
   .hon,.hon tbody,.hon tr,.hon td{display:block;width:auto!important}
   .hon tr{padding:9px 0;border-bottom:1px solid var(--rule)}
   .hon td{border:0;padding:0}
-  .strip{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .strip button:nth-child(n+4){display:none}
 }
