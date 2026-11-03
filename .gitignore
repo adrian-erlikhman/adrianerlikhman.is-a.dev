@@ -14,5 +14,5 @@ __pycache__/
 Thumbs.db
 .claude/launch.json
 
-# fonts for the PIL og card tools/make_og.py drew until 2 Nov 2026; OFL, not vendored
+# Latin Modern Mono for the og card (tools/make_og.py) and fonts for the older PIL cards; not vendored
 tools/fonts/

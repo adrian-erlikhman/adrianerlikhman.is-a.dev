@@ -94,6 +94,8 @@ details li{padding:3px 0}
 .tb td:first-child{color:var(--ink)}
 .tb td:nth-child(2){font-weight:700;color:var(--ink);white-space:nowrap}
 .tb td:nth-child(3){color:var(--dim)}
+.hon{table-layout:fixed}
+.hon td:nth-child(1){width:42%}.hon td:nth-child(2){width:21%}.hon td:nth-child(3){width:37%}
 .fav{margin-top:18px}
 .fav td:first-child{width:130px;color:var(--dim)}
 .fav td:nth-child(2){font-weight:400;white-space:normal;color:var(--body)}
@@ -210,6 +212,9 @@ body.intro-lock{overflow:hidden}
   .vids{grid-template-columns:1fr}
   .tb,.st,.lk,details{font-size:16.5px}
   .tb td:nth-child(2){white-space:normal}
+  .hon,.hon tbody,.hon tr,.hon td{display:block;width:auto!important}
+  .hon tr{padding:9px 0;border-bottom:1px solid var(--rule)}
+  .hon td{border:0;padding:0}
   .strip{grid-template-columns:repeat(3,minmax(0,1fr))}
   .strip button:nth-child(n+4){display:none}
 }

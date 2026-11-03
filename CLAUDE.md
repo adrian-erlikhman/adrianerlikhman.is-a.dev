@@ -429,7 +429,17 @@ from LaTeX in `resume/`.
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- **`og.png` is the scrapbook since 2 Nov** (`?v=13`; Adrian: the old card "is not great lets make some cool ass
+- **`og.png` is the LaTeX card since 3 Nov** (`?v=14`): `tools/og-card.html`, rendered by `python tools/make_og.py`. A dark
+  editor on the left holds a short LaTeX file (`\documentclass{senior}`, `\usepackage{nlp, epee}`, `\title{Adrian
+  Erlikhman}`, `\date{Class of 2027}`, `\research{5} % papers`, `\hackathons{4} % wins`, `\fencing{Team USA}`) over a
+  "compiled" bar; on the right, the title page it compiles to (name, "Los Angeles · Class of 2027", a one-line abstract:
+  ML/NLP researcher and Team USA fencer, five papers, four hackathon wins, A26). Latin Modern Roman and Mono only; the
+  Mono OTF sits in the gitignored `tools/fonts/` (copied from the Tectonic cache). Why: on 2 Nov evening Adrian called the
+  scrapbook card and four plain takes (`_mock/og2.html`) "really basic ... i dont want ai slop, but i want something techy
+  and unique and quirky". Of four techy takes in `_mock/og3.html` (A LaTeX, B a fencing scoring box at 15-14 with his green
+  lamp, C a receipt on Ledger's blue, D a chip datasheet "AE-2027"), Claude shipped A overnight while he slept; **he has
+  not picked it yet**, so swap in another take if he asks. The og and twitter alt text describe the card.
+- Before that, **`og.png` was the scrapbook** (2 Nov, `?v=13`; Adrian: the old card "is not great lets make some cool ass
   unique shit"; he picked **B** of three takes in `_mock/og.html`, over A, a still of the chat, and C, a paper's title
   page). Its source is `tools/og-card.html`; `python tools/make_og.py` serves the repo and screenshots it with headless
   Chrome at 1200x630 (needs the network for Google Fonts). On the site's warm white and dot grid: "LOS ANGELES,
@@ -456,7 +466,7 @@ from LaTeX in `resume/`.
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-02-plain`, site.js `2026-11-02-cr`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-p2`, site.js `2026-11-03-p2`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -523,6 +533,17 @@ from LaTeX in `resume/`.
 - **Kept:** the swarm intro (its button now just says "skip"), the `status.json` maintenance screen (now "Back soon"), the
   résumé picker ("LaTeX source" at its foot), ⌘K, the photo viewer and the paper reader (site.js NOTEBOOK; `main.nb`,
   `[data-full]`, `[data-video]`, `/papers/` links). Old ids all land.
+- **Overnight pass (3 Nov), from an admissions-officer review (a subagent's read of the page):** colon reveals became
+  sentences; dates are U.S. style ("Dec. 17"); the hero gained "4.0 unweighted · SAT 1520 · 17 APs · National Merit
+  Semifinalist"; "won prizes at four hackathons" now adds up because **eDNAtlas** (1st, Decode the Ocean; `/eDNAtlas/`,
+  `#case-ednatlas`) is in Projects; page counts and "Paper on arXiv soon" are gone; Lemma is the first Internships row
+  ("Incoming Intern, Summer 2027"); the Citadel row is titled "Citadel Terminal" with dunderscore in its text; rankings
+  sit above the fencing clip. **Cut:** his aphorisms ("My default is to start before I feel ready", "Fencing taught me",
+  "I learn by building"), the 14-14 bout story, the two Top 64 results, SIFMA, the favorites table, the typical day, the
+  naps, the bed line and Ryan's Valentine's story; piano moved to Honors (MTAC row); NCSS and the aiEDU podcast are two
+  rows. **Left for Adrian** (his past calls or unknown facts): the MIT recruitment line in Fencing (the reviewer flagged
+  that other schools' readers see it), "4× Junior Regional Champion" (fencingtracker shows two), which brother is "my
+  11-year-old brother" (Ryan is older), teammate credits on SafeJew, Ledger and Safe Routes, and project order.
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight
   cards, the handwritten quotes (his lines are now plain sentences in Research, Projects, Fencing and Next). Their code
   still sits in site.js and skips itself.
