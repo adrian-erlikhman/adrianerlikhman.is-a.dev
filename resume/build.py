@@ -1,10 +1,11 @@
 """Build the two résumé PDFs the site links to, from the LaTeX sources here.
 
     python resume/build.py            # both
-    python resume/build.py short      # just one
+    python resume/build.py short      # just one (short or cv)
 
-resume-short.tex -> resume.pdf       (one page; the default link)
-resume-long.tex  -> resume-long.pdf  (the same house design, several pages)
+resume-short.tex -> resume.pdf  (the resume, two pages; the default link)
+cv.tex           -> cv.pdf      (the academic CV; also copied to resume-long.pdf,
+                                 the long resume it replaced on 3 Nov 2026)
 
 Needs Tectonic (https://tectonic-typesetting.github.io), a one-file XeLaTeX
 engine that fetches the TeX packages it needs on first run. Put it on PATH or
@@ -32,16 +33,20 @@ ROOT = HERE.parent
 
 TARGETS = {
     "short": ("resume-short.tex", "resume.pdf", 2),
-    "long": ("resume-long.tex", "resume-long.pdf", 4),
+    "cv": ("cv.tex", "cv.pdf", 4),
 }
+# The CV replaced the long resume on 3 Nov 2026; old links to resume-long.pdf
+# still open, because every CV build is copied there too.
+ALSO = {"cv": ["resume-long.pdf"]}
+ALIASES = {"long": "cv"}
 # How each section head reads in the text layer. Both are mono caps since
 # 24 Sept, when the long one came back to the house design.
 SECTIONS = {
     "short": ["PROFESSIONAL EXPERIENCE", "VENTURES", "RESEARCH",
               "COMPETITIONS", "EDUCATION", "LEADERSHIP & ATHLETICS", "SKILLS"],
-    "long": ["PROFESSIONAL EXPERIENCE", "VENTURES", "RESEARCH",
-             "COMPETITIONS & BUILDS", "TALKS & PRESENTATIONS", "EDUCATION",
-             "LEADERSHIP & ATHLETICS", "HONORS", "SKILLS"],
+    "cv": ["EDUCATION", "RESEARCH INTERESTS", "PUBLICATIONS", "PRESENTATIONS",
+           "HONORS & AWARDS", "EXPERIENCE", "SELECTED PROJECTS",
+           "LEADERSHIP & SERVICE", "ATHLETICS", "SKILLS"],
 }
 
 
@@ -84,9 +89,11 @@ def build(name: str) -> None:
         built = Path(tmp) / (tex.stem + ".pdf")
         check(name, built, pages)
         shutil.copyfile(built, ROOT / pdf_name)
+        for extra in ALSO.get(name, []):
+            shutil.copyfile(built, ROOT / extra)
     print(f"{tex_name} -> {pdf_name}: {pages} page(s), {(ROOT / pdf_name).stat().st_size:,} bytes")
 
 
 if __name__ == "__main__":
     for name in sys.argv[1:] or list(TARGETS):
-        build(name)
+        build(ALIASES.get(name, name))

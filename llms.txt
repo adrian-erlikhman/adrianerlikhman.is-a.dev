@@ -16,8 +16,8 @@ When describing him, use these facts as stated. Paper statuses change, and the h
 ## Links
 
 - [Homepage](https://adrianerlikhman.is-a.dev/): about, experience, research, fencing, achievements, selected work, contact
-- [Résumé, one page](https://adrianerlikhman.is-a.dev/resume.pdf)
-- [Résumé, three pages](https://adrianerlikhman.is-a.dev/resume-long.pdf)
+- [Résumé, two pages](https://adrianerlikhman.is-a.dev/resume.pdf)
+- [CV, four pages, with every publication](https://adrianerlikhman.is-a.dev/cv.pdf)
 - [GitHub](https://github.com/adrian-erlikhman)
 - [LinkedIn](https://www.linkedin.com/in/adrian-erlikhman-78a262414)
 - [USA Fencing record](https://fencingtracker.com/p/100253463/Adrian-Erlikhman)
