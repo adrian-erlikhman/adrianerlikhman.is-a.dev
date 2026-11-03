@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-hn`, site.js `2026-11-03-hn`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-md`, site.js `2026-11-03-md`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -620,6 +620,13 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   `#case-*` stay on the figures; Ledger's receipt still prints in its frame. Order (his ask, 3 Nov: AIML-LI and SafeJew
   higher): AIML-LI, SafeJew, Hivemind, Monte, Ledger, eDNAtlas, Safe Routes, Citadel. The "won the same weekend as Hivemind!" note
   came off (Monte is mid-row now); four pen notes remain.
+- **The museum wall in colour (3 Nov, his ask: "cool interactive shit with their logos on top ... a little more colorful").**
+  Each figure carries `--b`, the project's colour (AIML-LI #0a6a9a, SafeJew #1d4f92, Hivemind #e5484d, Monte #2f45ff, Ledger
+  #1b4dff, eDNAtlas #1f8a8a, Safe Routes #dc7426, Citadel #2bb3a8): its logo sits in a white medallion (`a.md`, a link to the
+  project's site; Citadel's to About Terminal) pinned over the frame's top-left corner, ringed in that colour, and the wall
+  label has a top rule in it. eDNAtlas (no logo) gets a drawn double helix, Citadel a dark tile with a teal "__" for
+  dunderscore. Hover: the frame tilts toward the cursor (site.js sets `--rx`/`--ry`) and lifts, the spotlight brightens and
+  the medallion spins once. Reduced motion: none of it.
 - **All three top photos are annotated (3 Nov, his ask: "annotate all 3 of the top photos when i land").** "hi! that's me"
   (left margin, headshot), "fencing for Team USA at the Pan‑American Championships in Bogotá" (under the middle photo: a
   new note side, `s:'b'`, centred below its target with the arrow curving up; the hyphen is non-breaking) and "at Y
