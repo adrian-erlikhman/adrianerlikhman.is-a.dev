@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-hk`, site.js `2026-11-03-md`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-lb`, site.js `2026-11-03-md`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -621,7 +621,9 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   higher): AIML-LI, SafeJew, Hivemind, Monte, Ledger, eDNAtlas, Safe Routes, Citadel. The "won the same weekend as Hivemind!" note
   came off (Monte is mid-row now); four pen notes remain.
 - **Research refined (3 Nov, his picks from `_mock/research2.html`).** The intro is one short paragraph about the topics, not
-  the venues ("I study when we can trust AI, and the numbers behind big decisions: ..."). Each paper opens with a plain
+  the venues; since his "the research paragraph is mid and is AI slop, make it more professional" it reads "My research
+  focuses on evaluating language models: identifying which model wrote a text, and testing whether LLM judges and
+  benchmarks give reliable results. Two further papers, written with my brother Ryan, ...". Each paper opens with a plain
   question in italics (`p.hk`, e.g. "Do AI judges recognize their own writing?"); LangLLM's and Curated to Win's paragraphs
   lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
   ("yes published first"). He turned down status stamps on the first pages, then a colourful extra (result charts per
@@ -632,7 +634,10 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   project's site; Citadel's to About Terminal) pinned over the frame's top-left corner, ringed in that colour, and the wall
   label has a top rule in it. eDNAtlas (no logo) gets a drawn double helix, Citadel a dark tile with a teal "__" for
   dunderscore. Hover: the frame tilts toward the cursor (site.js sets `--rx`/`--ry`) and lifts, the spotlight brightens and
-  the medallion spins once. Reduced motion: none of it.
+  the medallion grows a touch (it spun once until Adrian: "i dont like that the logo spins"). Reduced motion: none of it.
+  **Wall labels rewritten the same evening** ("the descriptions could be better"): medium, then what it does, his part and
+  the numbers in two sentences, then a plain credit line (the museum puns, "Gift of" / "On loan to", are gone). Ledger's
+  role keeps its fixed wording.
 - **All three top photos are annotated (3 Nov, his ask: "annotate all 3 of the top photos when i land").** "hi! that's me"
   (left margin, headshot), "fencing for Team USA at the Pan‑American Championships in Bogotá" (under the middle photo: a
   new note side, `s:'b'`, centred below its target with the arrow curving up; the hyphen is non-breaking) and "at Y
