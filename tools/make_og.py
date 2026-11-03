@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 """Render og.png, the link-preview card for adrianerlikhman.is-a.dev.
 
-Since 3 Nov 2026 it is the LaTeX card (tools/og-card.html): an editor with a
-short LaTeX file on the left (document class "senior", packages nlp and epee,
-research 5, hackathons 4, fencing Team USA) and, on the right, the title page
-it compiles to: his name, "Los Angeles, Class of 2027" and a one-line abstract.
-Adrian turned down the scrapbook card (2 Nov) and four plain takes ("really
-basic ... i want something techy and unique and quirky"); this is take A of
-four techy ones in _mock/og3.html (B a fencing scoring box at 15-14, C a
-receipt on Ledger's blue, D a chip datasheet). Earlier cards are in git history.
+Since 3 Nov 2026 it is the commit grid (tools/og-card.html): a contribution-style
+heatmap whose darkest cells spell ADRIAN, over his name and one line, "ML/NLP
+research, software, Team USA epee". Adrian turned down the scrapbook card, four
+plain takes, four techy ones (LaTeX, scoring box, receipt, datasheet) and four of
+six more, then said "A or F" of the last round (_mock/og4, refined in _mock/og5):
+the swarm (his loading screen) or this. F reads best at phone size. Earlier cards
+are in git history.
 
 Cards get rendered small: ~300px in iMessage, ~360px in Slack. The name on the
-page carries it there; the code reads as texture until the card is opened large.
+grid carry it there; the grid reads as a heatmap until the card is opened large.
 Chat apps show a still, so there is no animation.
 
 Fonts: Latin Modern Roman comes from /fonts/ (the site's woff2). Latin Modern
-Mono is lmmono10-regular.otf, copied from the Tectonic cache
+Mono (the small labels) is lmmono10-regular.otf, copied from the Tectonic cache
 (%LOCALAPPDATA%/TectonicProject/Tectonic/cache/bundles/data/<hash>/) into the
 gitignored tools/fonts/. Needs Chrome (set CHROME to its path if it isn't the
 default). Writes og.png at the repo root, or the path given:

@@ -441,7 +441,15 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   (~33 KB each). GUST font licence. Google Fonts now loads only Plex Mono.
 - The demos' dark panels (`.guess`, the lab) went from warm brown to deep
   navy with a light-blue accent (`--g-acc:#9db8e0`); wrong answers stay red.
-- **`og.png` is the LaTeX card since 3 Nov** (`?v=14`): `tools/og-card.html`, rendered by `python tools/make_og.py`. A dark
+- **`og.png` is the commit grid since 3 Nov (later)** (`?v=15`): `tools/og-card.html` (`python tools/make_og.py`, local
+  fonts only). A contribution-style heatmap, Mar to 3 Nov, whose darkest cells spell ADRIAN in a 5x7 font (the other cells
+  are seeded noise: no counts, no GitHub logo), over "Adrian Erlikhman" in navy Latin Modern bold and "ML/NLP research ·
+  software · Team USA épée"; the URL and "Los Angeles" small in LM Mono. Adrian turned down the LaTeX card and every other
+  take ("i dont like any of the placcards"), was shown six more (`_mock/og4.html`: swarm, ASCII headshot, neofetch,
+  blueprint, player select, commit grid), said "A or F", and Claude shipped F from the refined pair (`_mock/og5/`,
+  sheet `_mock/og-shots/og5-options.png`) because it reads best at phone size. **A, the swarm (his loading screen's
+  dots), is ready in `_mock/og5/a.html`** if he asks for it. The og and twitter alt text describe the grid.
+- Before that (3 Nov, morning), **`og.png` was the LaTeX card** (`?v=14`): `tools/og-card.html`, rendered by `python tools/make_og.py`. A dark
   editor on the left holds a short LaTeX file (`\documentclass{senior}`, `\usepackage{nlp, epee}`, `\title{Adrian
   Erlikhman}`, `\date{Class of 2027}`, `\research{5} % papers`, `\hackathons{4} % wins`, `\fencing{Team USA}`) over a
   "compiled" bar; on the right, the title page it compiles to (name, "Los Angeles · Class of 2027", a one-line abstract:

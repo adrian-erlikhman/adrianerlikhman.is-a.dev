@@ -1,58 +1,61 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>og card</title>
-<meta name="robots" content="noindex">
-<!-- og.png's source since 3 Nov 2026: the LaTeX card. Adrian turned down the scrapbook card and four plain ones ("really
-     basic ... i dont want ai slop, but i want something techy and unique and quirky"); of four techy takes in _mock/og3.html
-     (LaTeX source, a fencing scoring box, a receipt, a chip datasheet) this one was Claude's pick overnight, since his site
-     and résumés are LaTeX. Left: an editor with the source (\documentclass{senior}); right: the page it compiles to. Only
-     facts from the site. tools/make_og.py serves the repo and screenshots this page at 1200x630. -->
+<html lang="en"><head><meta charset="utf-8"><title>og card</title><meta name="robots" content="noindex">
+<!-- og.png's source since 3 Nov 2026: the commit grid. Adrian turned down the scrapbook, four plain cards and four techy
+     ones (LaTeX, scoring box, receipt, datasheet), then from six more (_mock/og4) narrowed it to "A or F": the swarm or this.
+     Claude shipped F, which reads best at phone size; A, the loading screen's dots, is _mock/og5/a.html.
+     A commit heatmap (weekday rows, week columns, Mar to 3 Nov) whose darkest cells spell ADRIAN in a 5x7 font, one empty
+     week between letters. The other cells are seeded noise, not real activity, so there are no counts anywhere. Days
+     after 3 Nov 2026 are left off, as on a real graph. tools/make_og.py serves the repo and screenshots this at 1200x630. -->
 <style>
-@font-face{font-family:'LM Roman';src:url(/fonts/lmroman10-regular.woff2) format('woff2');font-weight:400;font-display:block}
 @font-face{font-family:'LM Roman';src:url(/fonts/lmroman10-bold.woff2) format('woff2');font-weight:700;font-display:block}
-/* Latin Modern Mono, copied from the Tectonic cache into the gitignored tools/fonts/ (see make_og.py) */
-@font-face{font-family:'LM Mono';src:url(/tools/fonts/lmmono10-regular.otf) format('opentype');font-weight:400;font-display:block}
-html,body{margin:0;padding:0}
-body{width:1200px;height:630px;overflow:hidden;position:relative;background:#e9e6df;font-family:'LM Roman',serif;color:#1a1a1a;-webkit-font-smoothing:antialiased}
-.ab{position:absolute}
-.ed{left:0;top:0;bottom:0;width:640px;background:#1d1f23;color:#d7dae0;font:400 25px/1.55 'LM Mono',monospace;padding-top:46px;box-sizing:border-box}
-.ed ol{margin:0;padding:0;list-style:none;counter-reset:l}
-.ed li{counter-increment:l;white-space:pre;padding-left:82px;position:relative}
-.ed li::before{content:counter(l);position:absolute;left:0;width:56px;text-align:right;color:#5b616d}
-.c{color:#7fb0ff}.b{color:#e7c07b}.k{color:#7a8190}
-.bar{left:0;bottom:0;width:640px;height:52px;background:#16181b;color:#8a919c;font:400 20px/52px 'LM Mono',monospace;padding-left:28px;box-sizing:border-box}
-.bar b{color:#a6d189;font-weight:400}
-.pg{left:700px;top:46px;width:440px;height:560px;background:#fff;box-shadow:0 24px 50px -24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.06);text-align:center}
-.pg h1{margin:92px 0 0;font-weight:700;font-size:58px;line-height:1.05}
-.au{margin-top:18px;font-size:24px;color:#333}
-.abs{margin:44px 46px 0;text-align:justify;font-size:19.5px;line-height:1.45;color:#222}
-.abs b{display:block;text-align:center;margin-bottom:6px;font-size:20px}
-.n{position:absolute;left:0;right:0;bottom:26px;font-size:17px;color:#777}
-</style>
-</head>
-<body>
-<div class="ab ed"><ol>
-  <li><span class="c">\documentclass</span><span class="b">{</span>senior<span class="b">}</span></li>
-  <li><span class="c">\usepackage</span><span class="b">{</span>nlp, epee<span class="b">}</span></li>
-  <li> </li>
-  <li><span class="c">\title</span><span class="b">{</span>Adrian Erlikhman<span class="b">}</span></li>
-  <li><span class="c">\date</span><span class="b">{</span>Class of 2027<span class="b">}</span></li>
-  <li> </li>
-  <li><span class="c">\begin</span><span class="b">{</span>document<span class="b">}</span></li>
-  <li><span class="c">\maketitle</span></li>
-  <li><span class="c">\research</span><span class="b">{</span>5<span class="b">}</span>      <span class="k">% papers</span></li>
-  <li><span class="c">\hackathons</span><span class="b">{</span>4<span class="b">}</span>    <span class="k">% wins</span></li>
-  <li><span class="c">\fencing</span><span class="b">{</span>Team USA<span class="b">}</span></li>
-  <li><span class="c">\end</span><span class="b">{</span>document<span class="b">}</span></li>
-</ol></div>
-<div class="ab bar"><b>✓</b> compiled · adrian.tex → adrianerlikhman.is-a.dev</div>
-<div class="ab pg">
-  <h1>Adrian<br>Erlikhman</h1>
-  <div class="au">Los Angeles · Class of 2027</div>
-  <div class="abs"><b>Abstract</b>ML/NLP researcher and Team USA fencer. Five papers, four hackathon wins, and an épée rating of A26.</div>
-  <div class="n">1</div>
-</div>
-</body>
-</html>
+@font-face{font-family:'LM Roman';src:url(/fonts/lmroman10-regular.woff2) format('woff2');font-weight:400;font-display:block}
+@font-face{font-family:'LM Mono';src:url(/tools/fonts/lmmono10-regular.otf) format('opentype');font-display:block}
+html,body{margin:0}
+body{width:1200px;height:630px;overflow:hidden;position:relative;background:#fbfaf7;color:#1f3a5f;font-family:'LM Roman',serif}
+:root{--x:110px;--top:84px}
+.gr{position:absolute;left:var(--x);top:var(--top);display:grid;grid-template-columns:repeat(37,24px);grid-template-rows:repeat(7,24px);gap:4px;grid-auto-flow:column}
+.gr i{display:block;border-radius:5px;background:#eeeae2}
+.gr i.x{background:none}
+.l1{background:#d9e0ea!important}.l2{background:#aebfd6!important}.l3{background:#6f8bb1!important}.l4{background:#1f3a5f!important}
+.mo{position:absolute;top:calc(var(--top) - 30px);font:400 18px/1 'LM Mono',monospace;color:#8b95a3}
+.dy{position:absolute;left:58px;font:400 18px/1 'LM Mono',monospace;color:#8b95a3}
+.lg{position:absolute;right:58px;top:300px;display:flex;align-items:center;gap:5px;font:400 17px/1 'LM Mono',monospace;color:#8b95a3}
+.lg i{width:17px;height:17px;border-radius:4px;display:block;background:#eeeae2}
+.lg span{margin:0 6px}
+h1{position:absolute;left:calc(var(--x) - 4px);top:352px;margin:0;font-weight:700;font-size:88px;line-height:1;letter-spacing:-.01em;color:#1f3a5f}
+.sub{position:absolute;left:var(--x);top:462px;font-size:32px;color:#4a5566}
+.url{position:absolute;left:var(--x);bottom:42px;font:400 19px/1 'LM Mono',monospace;color:#8b95a3}
+.loc{position:absolute;right:58px;bottom:42px;font:400 19px/1 'LM Mono',monospace;color:#8b95a3}
+</style></head><body>
+<div class="gr" id="g"></div>
+<div class="dy" style="top:117px">Mon</div><div class="dy" style="top:173px">Wed</div><div class="dy" style="top:229px">Fri</div>
+<div class="lg"><span>Less</span><i></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div>
+<h1>Adrian Erlikhman</h1>
+<div class="sub">ML/NLP research · software · Team USA épée</div>
+<div class="url">adrianerlikhman.is-a.dev</div>
+<div class="loc">Los Angeles</div>
+<script>
+const COLS=37,ROWS=7,X0=110;
+// a classic 5x7 font; I is 3 wide
+const F={A:['.###.','#...#','#...#','#####','#...#','#...#','#...#'],D:['####.','#...#','#...#','#...#','#...#','#...#','####.'],
+  R:['####.','#...#','#...#','####.','#.#..','#..#.','#...#'],I:['###','.#.','.#.','.#.','.#.','.#.','###'],
+  N:['#...#','#...#','##..#','#.#.#','#..##','#...#','#...#']};
+const on=new Set();let cx=2;
+for(const ch of 'ADRIAN'){const f=F[ch];for(let r=0;r<7;r++)for(let c=0;c<f[r].length;c++)if(f[r][c]==='#')on.add((cx+c)+','+r);cx+=f[0].length+1;}
+let s=20271103;const R=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+// the graph runs from the week of Sun 22 Feb to this week (Sun 1 Nov); today is Tue 3 Nov
+const start=new Date(Date.UTC(2026,1,22)), today=new Date(Date.UTC(2026,10,3));
+const g=document.getElementById('g');
+for(let c=0;c<COLS;c++)for(let r=0;r<ROWS;r++){const i=document.createElement('i');
+  const day=new Date(start.getTime()+(c*7+r)*864e5);
+  if(day>today) i.className='x';
+  else if(on.has(c+','+r)) i.className='l4';
+  else{const u=R(),wk=(r===0||r===6);
+    const lv=u<(wk?.88:.75)?0:u<(wk?.99:.97)?1:2; if(lv) i.className='l'+lv;}
+  g.appendChild(i);}
+// month labels over the first week that holds the 1st
+const MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];let last=-9;
+for(let c=0;c<COLS;c++){for(let k=0;k<7;k++){const d=new Date(start.getTime()+(c*7+k)*864e5);
+  if(d.getUTCDate()===1&&d<=today&&c-last>=3){const e=document.createElement('div');e.className='mo';e.textContent=MN[d.getUTCMonth()];e.style.left=(X0+c*28)+'px';document.body.appendChild(e);last=c;}}}
+</script>
+</body></html>
