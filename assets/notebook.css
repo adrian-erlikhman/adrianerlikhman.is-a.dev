@@ -294,3 +294,6 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .wl{border-top:3px solid var(--b)}
 @media(max-width:820px){.md{width:46px;height:46px;left:-10px;top:-14px}.md img,.md svg{width:27px;height:27px}}
 @media(prefers-reduced-motion:reduce){.md,.fr{transition:none}.mw:hover .md{transform:none}}
+
+/* each paper opens with the question it asks, in plain words (3 Nov, his pick) */
+.hk{margin:0 0 2px;font-style:italic;color:var(--dim);font-size:17px;line-height:1.4}
