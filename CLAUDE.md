@@ -630,7 +630,8 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   hover. Not `.dd`: that class is the receipt's double rule. Paths live in the scratch script `ship_museum.py` /
   `make_titles2.py` (session scratchpad) and inline in index.html.
 - **What's next, rewritten (3 Nov, later; his "the actual content of the whats next section could use a little work").**
-  It opens with **Coming up**, a dated list: Nov. 10 Curated to Win at ARRSI (virtual), Dec. 2 NCSS panel, Dec. 17 IEEE
+  It opens with **Coming up**, a dated list: "Right now: finishing my college applications, between fencing practices"
+  (his ask, the same evening; drop it once his applications are in), Nov. 10 Curated to Win at ARRSI (virtual), Dec. 2 NCSS panel, Dec. 17 IEEE
   BigData in Phoenix, Feb. 6, 2027 the LA Student AI Summit at LACES, Summer 2027 Lemma. **Reword or drop each line once its
   date passes** (and the same lines in llms.txt). Then **In college**: CS and economics, with the reason from his Alliance
   work (the engine showed which startups drew which investors but never why; paraphrased from his MIT essay's idea, not its
