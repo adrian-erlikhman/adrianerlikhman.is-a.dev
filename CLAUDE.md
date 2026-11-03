@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-lb`, site.js `2026-11-03-md`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-ul`, site.js `2026-11-03-ul`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -628,6 +628,13 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
   ("yes published first"). He turned down status stamps on the first pages, then a colourful extra (result charts per
   paper, `_mock/research3-a.html`, or topic medallions, `-b.html`): "this is dtm, its chill for now". Leave Research as is.
+- **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline
+  them or make them in the annotated font").** `span.hl`: a hand-drawn ballpoint-blue stroke (SVG background) that draws
+  itself under the phrase once it's on screen (site.js NOTES & TOUCHES adds `.on`; no JS or reduced motion: just there).
+  Fifteen in all: in the intro "sole-author paper was accepted", "Best Paper Finalist", "won prizes at four hackathons",
+  "6th for Team USA"; one per wall label's credit line (district elective, Teen Innovation Grant, Winner of Lemma's track,
+  1st place ×3, 3rd place internationally, top 8 of 45 teams), in ink; and Research's "Best Paper Finalist", "Sole author"
+  and "Published". Keep it to one per item. The wall label's block spans are `.wl>span` so an inner `.hl` stays inline.
 - **The museum wall in colour (3 Nov, his ask: "cool interactive shit with their logos on top ... a little more colorful").**
   Each figure carries `--b`, the project's colour (AIML-LI #0a6a9a, SafeJew #1d4f92, Hivemind #e5484d, Monte #2f45ff, Ledger
   #1b4dff, eDNAtlas #1f8a8a, Safe Routes #dc7426, Citadel #2bb3a8): its logo sits in a white medallion (`a.md`, a link to the
