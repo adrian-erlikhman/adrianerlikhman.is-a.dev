@@ -142,13 +142,13 @@
       "subjectOf": [
         {
           "@type": "DigitalDocument",
-          "name": "Adrian Erlikhman — Résumé (one page)",
+          "name": "Adrian Erlikhman — Résumé (two pages)",
           "url": "https://adrianerlikhman.is-a.dev/resume.pdf"
         },
         {
           "@type": "DigitalDocument",
-          "name": "Adrian Erlikhman — Résumé (three pages)",
-          "url": "https://adrianerlikhman.is-a.dev/resume-long.pdf"
+          "name": "Adrian Erlikhman — Curriculum Vitae",
+          "url": "https://adrianerlikhman.is-a.dev/cv.pdf"
         }
       ]
     },
@@ -293,7 +293,7 @@
      the photo viewer and the paper reader; styles in assets/notebook.css. -->
 <header class="nav"><div class="wrap">
   <a class="brand" href="#about">Adrian Erlikhman</a>
-  <nav aria-label="Sections"><a href="#experience">Experience</a><a href="#papers">Research</a><a href="#work">Projects</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a></nav>
+  <nav aria-label="Sections"><a href="#experience">Experience</a><a href="#papers">Research</a><a href="#work">Projects</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="resume.pdf?v=2026-11-03-cv" target="_blank" data-cv-menu>Résumé</a></nav>
 </div></header>
 
 <main id="main" class="nb" tabindex="-1">
@@ -301,7 +301,7 @@
   <h1 data-nosnippet>Adrian Erlikhman</h1>
   <p>I’m a senior at LACES, a public magnet school in Los Angeles. I research when AI evaluations can be trusted, build software, and fence épée for Team USA.</p>
   <p>My sole-author paper was accepted at an AACL-IJCNLP workshop, and a co-authored paper was a Best Paper Finalist at the IEEE BigData High School Symposium. I’ve won prizes at four hackathons, placed 6th for Team USA at the Cadet Pan-American Championships, and wrote a free AI course that I’m working with LAUSD’s Ed Tech office to turn into a district elective.</p>
-  <p class="links"><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a> · <a href="mailto:erlikhman.adrian@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
+  <p class="links"><a href="resume.pdf?v=2026-11-03-cv" target="_blank">Résumé</a> · <a href="cv.pdf?v=2026-11-03-cv" target="_blank">CV</a> · <a href="mailto:erlikhman.adrian@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
   <div class="photos">
     <button type="button" class="p" data-full="/adrian.jpg" data-cap="Adrian Erlikhman"><img src="/img/about/hs-portrait.webp" width="450" height="600" alt="Adrian Erlikhman"></button>
     <button type="button" class="w" data-full="/fencing-1.jpg" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/img/about/lunge-wide.webp" width="520" height="390" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
@@ -457,19 +457,19 @@
 <section class="wrap sec" id="contact" aria-labelledby="h-contact">
   <h2 id="h-contact">Contact</h2>
   <p>Email: <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a></p>
-  <p class="links"><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
+  <p class="links"><a href="resume.pdf?v=2026-11-03-cv" target="_blank">Résumé</a> · <a href="cv.pdf?v=2026-11-03-cv" target="_blank">CV</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
 </section>
 </main>
 
 <!-- RÉSUMÉ PICKER: every [data-cv-menu] link opens this. Without JS those links go straight to the one-pager.
      Bump ?v= on all five résumé hrefs (three triggers, two options) whenever a PDF changes. -->
-<div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
-  <div class="cvm-h">Résumé</div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">
-    <span class="cvm-k">Short</span><span class="cvm-p">2 pages</span>
+<div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose the résumé or the CV" hidden>
+  <div class="cvm-h">Résumé or CV</div>
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-11-03-cv" target="_blank" rel="noopener">
+    <span class="cvm-k">Résumé</span><span class="cvm-p">2 pages</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">
-    <span class="cvm-k">Long</span><span class="cvm-p">4 pages</span>
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="cv.pdf?v=2026-11-03-cv" target="_blank" rel="noopener">
+    <span class="cvm-k">CV</span><span class="cvm-p">4 pages, with publications</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">LaTeX source</a>
 </div>

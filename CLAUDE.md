@@ -22,9 +22,9 @@
   virtually", a piano answer from the long résumé's Honors (MTAC, Level 9 candidate, five state-honors exams).
 
 Personal portfolio site (single-page `index.html`), served via GitHub Pages at
-the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links two
-résumés, `resume.pdf` (one page) and `resume-long.pdf` (three pages), both built
-from LaTeX in `resume/`.
+the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
+**résumé**, `resume.pdf` (two pages, `resume/resume-short.tex`), and since 3 Nov 2026 an academic **CV**, `cv.pdf`
+(four pages, `resume/cv.tex`), both built from LaTeX in `resume/`.
 
 ## USA Fencing — current standings (keep in sync between site + résumés)
 - **U.S. Junior (U20): No. 49** — current national ranking
@@ -36,9 +36,20 @@ from LaTeX in `resume/`.
   - Site (since 30 Oct): `index.html`, the rankings table (`.cg-rk`) in the Team USA épée conversation, and the
     ranking and results answers in site.js `KB`; `llms.txt` too.
   - Both résumés: the fencing lines under LEADERSHIP & ATHLETICS in
-    `resume/resume-short.tex` and `resume/resume-long.tex`, then rebuild.
+    `resume/resume-short.tex` and `resume/cv.tex`, then rebuild.
 
 ## Résumé
+- **A résumé and a CV since 3 Nov 2026** (Adrian: "instead of two resumees. lets do a resume and a CV"). The short
+  résumé is unchanged. The long one became **`resume/cv.tex` → `cv.pdf`**, an academic CV in the same Jake's layout:
+  Education (LACES; L.A. Southwest College dual enrollment as its own entry) · Research Interests · Publications, as
+  numbered full citations ([1]-[5]: conference and workshop papers, journal articles, preprints; his name bold, author
+  order as on each paper, the status bold, "Co-first author"/"Sole author", underlined PDF/Code words) with one or two
+  bullets each · Presentations (dated lines) · Honors & Awards (one dated line each) · Experience (the internships, then
+  the maths research) · Selected Projects · Leadership & Service (JSU, STEMsters, coaching at LAIFC) · Athletics ·
+  Skills (with a Music line for MTAC). Its section heads are unkerned (`\headnokern`): kerned small-caps "Aw" read as
+  "A wards" and failed the build. `build.py cv` (or `long`) builds it and **copies it to `resume-long.pdf`** too, so old
+  links to the long résumé still open; the sitemap, JSON-LD and llms.txt list `cv.pdf`. Notes below about the long
+  résumé's sections describe what the CV grew out of; its content rules (Kiddom, Firstness, credits) still hold.
 - **Since 20-21 Oct 2026 both résumés are the classic black-and-white Jake's Resume
   layout at 11pt** (Adrian: "the normal black and white latex format like the most
   famous one", "make the font the size of the actual resume"; no navy, no colour).
@@ -344,9 +355,10 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **five places** (since the 2 Nov notebook homepage): the top bar's Résumé button, the
-  hero's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-11-02-cr"
-  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-02-cr`.
+  **Since 3 Nov** the hero and Contact show **Résumé · CV** as two plain links, and only the top bar's Résumé opens the
+  picker ("Résumé or CV": Résumé, 2 pages; CV, 4 pages, with publications; LaTeX source). The `?v=` cache-buster is on
+  **seven links** on five lines: `grep -o "v=2026-11-03-cv" index.html | wc -l` should print 7. Bump them all whenever
+  either PDF changes, to a value nobody else has used. Currently `?v=2026-11-03-cv`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
