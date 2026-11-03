@@ -308,12 +308,15 @@ from LaTeX in `resume/`.
     claim the ACL Anthology or proceedings until he confirms he chose archival,
     don't quote an acceptance rate, and don't add a talk or poster line until the
     format is settled. The site's PDF, `papers/curated-to-win-arrsi2026.pdf`, is
-    the camera-ready from the repo (commit ad14f21, 12 Oct) with only Title/Author
-    metadata added; linked with `?v=2026-10-12` from the card, the ⌘K palette
-    and the terminal's `read curated`. Bump all three if it changes. Numbers on
-    the card, résumés and llms.txt come from the paper's `numbers.tex`: leader
-    certified against any 11 of 2,985 RewardBench items, 12 flip it; RB2 any 42;
-    200-item RewardBench samples 87% vs 43%.
+    the camera-ready uploaded to OpenReview on 2 Nov (repo commit 6e0f9cf, after a
+    third council round) with only Title/Author metadata appended; linked with
+    `?v=2026-11-02-cr` from index.html (3 links) and site.js (4: ⌘K, `PAPERS`, the
+    big view's `D`). Bump them all if it changes. Numbers on the site, résumés and
+    llms.txt come from the paper's `numbers.tex`: 12 particular RewardBench items
+    (of 2,985) flip the leader, and 11 suffice under RewardBench's own scoring code
+    (the 2 Nov camera-ready's addition), so never write "survives any 11" unscoped;
+    RB2's leader survives any 39 under its own code (42 renormalized);
+    200-item RewardBench samples: the 8% certified at 2 points are right 87% vs 43%.
   - Class rank is out **temporarily**; Adrian wants it back later. Speech &
     Debate, National Honor Society, Cedars-Sinai, Friendship Circle LA, Mandala
     and Caltech are out permanently.
@@ -342,8 +345,8 @@ from LaTeX in `resume/`.
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   The `?v=` cache-buster lives in **five places** (since the 2 Nov notebook homepage): the top bar's Résumé button, the
-  hero's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-11-01-ojss"
-  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-01-ojss`.
+  hero's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-11-02-cr"
+  index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-02-cr`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
@@ -453,7 +456,7 @@ from LaTeX in `resume/`.
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-02-plain`, site.js `2026-11-02-plain`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-02-plain`, site.js `2026-11-02-cr`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
