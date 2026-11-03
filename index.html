@@ -45,11 +45,8 @@
 <meta name="twitter:description" content="ML/NLP researcher. Software, ML, investment, and venture intern. Team USA fencer.">
 <meta name="twitter:image" content="https://adrianerlikhman.is-a.dev/og.png?v=13">
 <meta name="twitter:image:alt" content="Adrian Erlikhman, Los Angeles, California, with three handwritten notes: i do ML/NLP research; i build things: 4× hackathon winner; i fence épée for Team USA. A pen arrow points to a taped photo of him lunging for Team USA at the Pan-American Championships, beside a polaroid of him that says hi, i’m adrian!">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Shantell+Sans:wght,BNCE,INFM@400..600,-100..100,0..100&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/notebook.css?v=2026-11-02-nb">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" href="/fonts/lmroman10-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/notebook.css?v=2026-11-02-plain">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -275,309 +272,206 @@
 <div id="intro">
   <canvas id="introCanvas"></canvas>
   <div class="sr-only">Adrian Erlikhman</div>
-  <button id="skip" type="button">enter ↵</button>
+  <button id="skip" type="button">skip</button>
 </div>
 
 <!-- OFFLINE / MAINTENANCE SCREEN (shown when status.json says live:false) -->
 <div id="offline" hidden>
   <div class="off-grid"></div>
   <div class="off-inner">
-    <div class="off-tag"><span class="off-dot"></span> SYSTEM OFFLINE</div>
-    <div class="off-title">BE RIGHT<br>BACK</div>
-    <p class="off-sub">adrian.os is down for maintenance. Back online shortly.</p>
+    <div class="off-title">Back soon</div>
+    <p class="off-sub">The site is down for a bit. You can still email me.</p>
     <a class="off-mail" href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>
   </div>
 </div>
 
-<!-- HOMEPAGE (2 Nov 2026): the notebook. Someone told Adrian they hated the chat site; he asked to "totally redo it to make it
-     cooler but still really good for admissions officers. maybe no chatgpt" and picked A, Notebook, of three takes
-     (_mock/redo-a.html). One scrolling page: the hero with his photos taped on the right, the short version (his four
-     highlights, 1 Nov wording), then Research, What he's built, Internships, Team USA épée, Honors, Off the laptop, What's
-     next and Contact. Every fact is typed text; the blue handwriting (the welcome's ink) is only ever an aside. The old ids
-     are kept (#about, #papers, #rs-t1..5, #work, #case-*, #experience, #xp-*, #fencing, #bouts, #record, #life, #next,
-     #contact), so llms.txt, the sitemap and old links land where they did. site.js NOTEBOOK runs the photo viewer and the
-     paper reader; styles in assets/notebook.css. The chat it replaced is in git history (last commit with it: 02e2997). -->
+<!-- HOMEPAGE (2 Nov 2026, evening): plain and in the first person. Adrian on the notebook take: "make it a little more
+     nonchalant ... dont make it in third person ... no weird AI slop fonts. no weird AI slop. do a crazy PASS to remove all
+     of that". So: one font (Latin Modern, the résumés' LaTeX face), no handwriting, no mono labels, no cards, no tilted or
+     taped photos, no fade-ins, links as plain text. The content and the old ids are the notebook's (#about, #papers,
+     #rs-t1..5, #work, #case-*, #experience, #xp-*, #fencing, #bouts, #record, #life, #next, #contact). site.js NOTEBOOK runs
+     the photo viewer and the paper reader; styles in assets/notebook.css. -->
 <header class="nav"><div class="wrap">
-  <a class="brand" href="#about"><img src="/img/logos/ae-mark.svg" width="24" height="29" alt="">Adrian Erlikhman</a>
-  <nav aria-label="Sections"><a href="#papers">Research</a><a href="#work">Built</a><a href="#experience">Internships</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="#life">Off the laptop</a><a href="#contact">Contact</a></nav>
-  <a class="btn" href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a>
+  <a class="brand" href="#about">Adrian Erlikhman</a>
+  <nav aria-label="Sections"><a href="#papers">Research</a><a href="#work">Projects</a><a href="#experience">Internships</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a></nav>
 </div></header>
 
 <main id="main" class="nb" tabindex="-1">
-<section class="hero wrap" id="about" aria-label="About Adrian">
-  <div>
-    <p class="mono">Los Angeles · Senior at LACES</p>
-    <h1 data-nosnippet>Adrian<br>Erlikhman</h1>
-    <p class="lede">He <a href="#papers">researches how far we can trust what AI evaluations say</a>, <a href="#work">builds software for Los Angeles</a>, and <a href="#fencing">fences épée for Team USA</a>.</p>
-    <div class="btns"><a class="btn solid" href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a><a class="btn" href="mailto:erlikhman.adrian@gmail.com">Email him</a></div>
-  </div>
-  <div class="collage" aria-hidden="true">
-    <a class="print c-paper" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" tabindex="-1" data-title="Curated to Win"><img src="/img/papers/r02-curated-to-win.webp" alt=""></a>
-    <button class="print c-lunge tape" type="button" tabindex="-1" data-full="/fencing-1.jpg" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/img/about/lunge-wide.webp" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
-    <button class="print c-pol tape hw" type="button" tabindex="-1" data-full="/adrian.jpg" data-cap="Adrian Erlikhman"><img src="/adrian.jpg" alt="Adrian Erlikhman"><span>hi, i’m adrian!</span></button>
-    <div class="hw n" style="left:-6px;top:342px;transform:rotate(-3deg)">my sole-author<br>paper</div>
-    <div class="hw n" style="left:300px;top:22px;transform:rotate(2deg)">Team USA, Pan-Ams ↓</div>
-    <svg class="pen" style="left:0;top:0" width="560" height="560"><path d="M56 338 C 52 316, 62 302, 84 292"/><path d="M70 290 L85 291 L80 305"/></svg>
+<section class="wrap hero" id="about" aria-label="About me">
+  <h1 data-nosnippet>Adrian Erlikhman</h1>
+  <p>I’m a senior at LACES, a public magnet school in Los Angeles. I research how far we can trust what AI evaluations say, build software for people in LA, and fence épée for Team USA.</p>
+  <p>A paper I wrote alone was accepted at an <a href="#rs-t2">AACL-IJCNLP workshop</a>, and another was a <a href="#rs-t1">Best Paper Finalist at IEEE BigData</a>. I’ve won <a href="#work">four hackathons</a>, placed <a href="#fencing">6th for the U.S. at the Cadet Pan-Ams</a>, and wrote <a href="#case-aimlli">a free AI course</a> that LAUSD is taking toward a district elective.</p>
+  <p class="links"><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a> · <a href="mailto:erlikhman.adrian@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
+  <div class="photos">
+    <button type="button" class="p" data-full="/adrian.jpg" data-cap="Me"><img src="/img/about/hs-portrait.webp" width="450" height="600" alt="Adrian Erlikhman"></button>
+    <button type="button" class="w" data-full="/fencing-1.jpg" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/img/about/lunge-wide.webp" width="520" height="390" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
+    <button type="button" class="p" data-full="/img/ycs/yc-sign.jpg" data-cap="Y Combinator Startup School 2026"><img src="/img/about/yc-portrait.webp" width="480" height="640" alt="Adrian Erlikhman with two other attendees under the Y Combinator sign at Startup School 2026"></button>
   </div>
 </section>
 
-<!-- the short version: his four highlights (1 Nov, his words: "team usa fencer", "4x hackathon winner", "sole author paper at
-     phd level"; the AI course for LAUSD). Best Paper Finalist leads Research instead. -->
-<section class="short wrap rv" aria-label="The short version">
-  <div class="hd"><span class="mono">The short version</span><span class="hw">start here ↓</span></div>
-  <div class="cards">
-    <a class="card" href="#rs-t2"><span class="mono">Research</span><b><u class="hl">Sole-author</u> paper</b><span>At a PhD-level venue: an <span class="nw">AACL-IJCNLP</span> workshop</span></a>
-    <a class="card" href="#fencing"><span class="mono">Fencing</span><b><u class="hl">Team USA</u> fencer</b><span>6th at the Cadet <span class="nw">Pan-Ams</span> · No. 49 U.S. junior</span></a>
-    <a class="card" href="#work"><span class="mono">Building</span><b><u class="hl">4×</u> hackathon winner</b><span>Two at USC in one weekend</span></a>
-    <a class="card" href="#case-aimlli"><span class="mono">Teaching</span><b>AI course for <u class="hl">LAUSD</u></b><span>Headed toward a district elective</span></a>
-  </div>
+<section class="wrap sec" id="papers" aria-labelledby="h-papers">
+  <h2 id="h-papers">Research</h2>
+  <p>AI models now grade other AI models’ work. If the judge plays favorites, like a teacher grading their own essay, so does every ranking built on it. I want to know when those tests can be trusted. Five papers so far:</p>
+  <article class="pp" id="rs-t1">
+    <a class="pg" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r01-langllm.webp" alt="" loading="lazy"></a>
+    <div>
+      <h3><a href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener">Interpretable Multilingual Attribution of Frontier LLMs</a></h3>
+      <p class="st"><b>Best Paper Finalist</b>, IEEE BigData 2026 High School Symposium, Phoenix, 17 Dec. With Michael Tarekegn and Philo Juang; co-first author.</p>
+      <p>Can you tell which AI model wrote an essay once it leaves English? We collected 840 essays from five frontier models in seven languages, and you can: 21 features a person can inspect name the right model 59–72% of the time, against 20% chance, while the models themselves barely beat chance at naming the author. It was one of 12 Best Paper Finalists out of 130 accepted papers.</p>
+      <details><summary>What it asks</summary><ol><li>Can five frontier models be told apart by their writing within each language? <b>Yes.</b> Twenty-one features a person can inspect name the author 59–72% of the time in all seven languages, against 20% chance, and 54–76% at a reading level the classifier never saw.</li><li>Does attribution weaken in languages with less training data? <b>No decline found</b> down a resource ranking fixed in advance, though a drop of up to 17 points from English to Hindi can’t be ruled out.</li><li>Does a model’s style carry across languages? <b>Partly.</b> Trained in one language and tested in another, the features reach 37–59%, and they transfer better than character n-grams (49% against 41%).</li><li>Do the models write more alike in lower-resource languages? <b>No,</b> by the test planned in advance; the drop that does appear is mostly Grok.</li><li>Does machine translation erase the signal? <b>No.</b> Retrained on essays run through Google Translate and MiniMax, the features still reach 57–70%.</li><li>Can the models tell which of them wrote an essay? <b>Barely.</b> Asked directly, the five models name the right author 20.3–25.4% of the time, close to chance; only Claude does better.</li></ol></details>
+      <p class="lk"><a href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener">Paper</a> (5 pages) · <a href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code and data</a></p>
+    </div>
+  </article>
+  <article class="pp" id="rs-t2">
+    <a class="pg" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r02-curated-to-win.webp" alt="" loading="lazy"></a>
+    <div>
+      <h3><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</a></h3>
+      <p class="st"><b>Accepted</b>, ARRSI Workshop at AACL-IJCNLP 2026, Hengqin, China, 10 Nov. Sole author.</p>
+      <p>AI labs choose a reward model or an AI judge by its score on a benchmark. This paper, which I wrote alone, asks how few test questions it takes to change that choice, and certifies when the choice can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 items, but removing 12 particular ones makes the runner-up the winner. It covers RewardBench and RewardBench 2, 306 models in all.</p>
+      <details><summary>What it asks</summary><ol><li>How much of a benchmark could be removed without changing which reward model wins? <b>Very little.</b> RewardBench’s leader survives the removal of any 11 of its 2,985 items, and removing 12 particular items makes the runner-up the winner. RewardBench 2’s leader survives any 42.</li><li>Is that bound tight, or only a worst case on paper? <b>Tight near the top.</b> Linear programs over item weights, rounded to real item subsets, reach it on both leaderboards.</li><li>How many models could a curator make the winner? <b>Three,</b> on RewardBench, with a curation budget of just 1% of the benchmark’s weight.</li><li>Does the certificate work on a small validation set? <b>Yes.</b> On 200 random items, selections whose top two are more than 2 points apart agree with the full benchmark’s winner 87% of the time, against 43% for the rest.</li></ol></details>
+      <p class="lk"><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Paper</a> (4 pages) · <a href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code and data</a></p>
+    </div>
+  </article>
+  <article class="pp" id="rs-t3">
+    <a class="pg" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" aria-label="Code and data on GitHub"><img src="/img/papers/r03-compllm.webp" alt="" loading="lazy"></a>
+    <div>
+      <h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3>
+      <p class="st"><b>Preprint</b>, arXiv forthcoming. With Michael Tarekegn and Philo Juang; co-first author.</p>
+      <p>AI models are often used to grade other models’ writing, and a judge that recognizes its own work could favor it. We tested whether nine LLM judges really recognize their own writing, across 1,270 texts and 19,000+ judgments, with two controls the usual test leaves out: how often a judge names itself on text it didn’t write, and how often its peers name it. With both in place, none beats its strongest single peer.</p>
+      <details><summary>What it asks</summary><ol><li>Does an LLM judge tell its own writing apart from other models’? <b>Sometimes.</b> The usual self-naming test flags 15 of 37 cases, but in 7 of them the judge names itself just as often on other models’ texts; 8 survive that false-alarm control.</li><li>Is that recognition specific to the judge, or can other models spot the same texts? <b>Never clearly specific.</b> Only 3 cases beat the pooled peers and none beats the judge’s strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32.</li><li>Do the texts carry information the judges miss? <b>Yes.</b> A style classifier attributes 86% of the chat-app essays, and each open-weight judge’s own likelihood ranks its text first on 58–87% of prompts, yet those judges are near chance at naming themselves.</li></ol></details>
+      <!-- [EDIT] once the arXiv version posts, link it here and drop "forthcoming" above -->
+      <p class="lk">Paper on arXiv soon · <a href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code and data</a></p>
+    </div>
+  </article>
+  <article class="pp" id="rs-t4">
+    <a class="pg" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r04-portfolio.webp" alt="" loading="lazy"></a>
+    <div>
+      <h3><a href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener">Does Portfolio Optimization Beat Splitting Evenly?</a></h3>
+      <p class="st"><b>Published</b>, Oxford Journal of Student Scholarship, October 2026. With my brother, Ryan Erlikhman; co-first author.</p>
+      <p>Finance textbooks teach Markowitz optimization: choose the mix of assets with the best return for its risk. Ryan and I tested it against simply splitting money evenly across ten assets, in 250 simulated markets calibrated to real data, and the even split won 74% of the time.</p>
+      <details><summary>What it asks</summary><ol><li>Does textbook portfolio optimization beat splitting money evenly? <b>No.</b> Across 250 simulations of ten assets the even split won 74% of the time, with a Sharpe ratio of 0.70 against Markowitz’s 0.51, worth about 3 points of return a year.</li><li>Why does the optimizer lose? <b>Estimated expected returns.</b> Given the true covariances but estimated returns, it still trails; given the true returns, it is nearly optimal.</li><li>Do the standard fixes rescue it? <b>Not with the data markets provide.</b> Shrinkage and a no-shorting rule help as the theory predicts, but shrinkage does nothing for mean returns; the shrunk portfolio pulls ahead only with about two decades of stationary returns.</li></ol></details>
+      <p class="lk"><a href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener">Paper</a> (20 pages) · <a href="https://oxfordjss.org/oct-2026-vol-12-issue-7/does-portfolio-optimization-beat-splitting-evenly" target="_blank" rel="noopener">In the journal</a></p>
+    </div>
+  </article>
+  <article class="pp" id="rs-t5">
+    <a class="pg" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r05-legatum.webp" alt="" loading="lazy"></a>
+    <div>
+      <h3><a href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener">How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</a></h3>
+      <p class="st"><b>In revision</b>, Journal of High School Science. With Ryan Erlikhman; co-first author.</p>
+      <p>The Legatum Prosperity Index ranks 167 countries by averaging twelve pillar scores with equal weights. Ryan and I rebuilt it exactly, then ran 131,072 variations of its weights and methods: the ranking holds as a whole, but a mid-table country’s place can swing across a range of 36.</p>
+      <details><summary>What it asks</summary><ol><li>Can the published index be rebuilt exactly? <b>Yes.</b> The twelve pillar scores reproduce every overall score to within 5×10<sup>−11</sup> and every rank exactly.</li><li>How stable are the rankings when the weights, normalization and aggregation change? <b>Stable overall, not mid-table.</b> The whole ranking keeps a median rank correlation of 0.99, but countries ranked 68 to 100 have a median 90% rank interval 36 places wide.</li><li>Does each pillar’s equal 1/12 weight give it equal influence? <b>No.</b> Personal Freedom’s weight has the largest effect (a Sobol’ total effect of 0.23), and under equal weights the pillars’ rank leverage differs by a factor of six.</li><li>What decides how far a weight can move the rankings? <b>Its rank leverage,</b> c<sup>2</sup>(1&nbsp;−&nbsp;ρ<sup>2</sup>), which the paper derives; it tracks the weights’ Sobol’ effects with a Spearman correlation of 0.91 to 0.99.</li></ol></details>
+      <p class="lk"><a href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener">Paper</a> (34 pages)</p>
+    </div>
+  </article>
 </section>
 
-<section class="sec wrap rv" id="papers" aria-labelledby="h-papers">
-  <div class="sh"><h2 id="h-papers">Research</h2><span class="hw">the second one i wrote alone</span></div>
-  <p class="intro">Five papers: a <b>Best Paper Finalist at IEEE BigData</b>, a <b>sole-author paper at an AACL-IJCNLP workshop</b>, one published in a student journal, one in revision at another, and a preprint.</p>
-  <p class="q">“AI models now grade other AI models’ work. If the judge plays favorites, like a teacher grading their own essay, so does every ranking built on it. I want to know when those tests can be trusted.”<span>— Adrian</span></p>
-  <div class="papers">
-    <article class="pp" id="rs-t1">
-      <a class="pg" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r01-langllm.webp" alt="" loading="lazy"></a>
-      <div>
-        <p class="st"><img src="/img/logos/ieee.webp" alt="IEEE" loading="lazy"><b>Best Paper Finalist</b><span>IEEE BigData 2026 High School Symposium · Phoenix, 17 Dec</span></p>
-        <h3><a href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener">Interpretable Multilingual Attribution of Frontier LLMs</a></h3>
-        <p class="by">With Michael Tarekegn and Philo Juang · co-first author</p>
-        <p class="sum">Can you tell which AI model wrote an essay once it leaves English? They collected 840 essays from five frontier models in seven languages, and found that you can: 21 features a person can inspect name the right model 59–72% of the time, against 20% chance, while the models themselves barely beat chance at naming the author. It is one of 12 Best Paper Finalists, from 130 accepted papers.</p>
-        <details class="rq"><summary>What the paper asks</summary><ol><li><span class="qq">Can five frontier models be told apart by their writing within each language?</span> <b>Yes.</b> Twenty-one features a person can inspect name the author 59–72% of the time in all seven languages, against 20% chance, and 54–76% at a reading level the classifier never saw.</li><li><span class="qq">Does attribution weaken in languages with less training data?</span> <b>No decline found</b> down a resource ranking fixed in advance, though a drop of up to 17 points from English to Hindi can’t be ruled out.</li><li><span class="qq">Does a model’s style carry across languages?</span> <b>Partly.</b> Trained in one language and tested in another, the features reach 37–59%, and they transfer better than character n-grams (49% against 41%).</li><li><span class="qq">Do the models write more alike in lower-resource languages?</span> <b>No,</b> by the test planned in advance; the drop that does appear is mostly Grok.</li><li><span class="qq">Does machine translation erase the signal?</span> <b>No.</b> Retrained on essays run through Google Translate and MiniMax, the features still reach 57–70%.</li><li><span class="qq">Can the models tell which of them wrote an essay?</span> <b>Barely.</b> Asked directly, the five models name the right author 20.3–25.4% of the time, close to chance; only Claude does better.</li></ol></details>
-        <div class="btns"><a class="btn" href="/papers/langllm-bigdata2026.pdf?v=2026-10-21" target="_blank" rel="noopener">Read the paper · 5 pp</a><a class="btn" href="https://github.com/adrian-erlikhman/LangLLM" target="_blank" rel="noopener">Code + data ↗</a></div>
-      </div>
-    </article>
-    <article class="pp" id="rs-t2">
-      <a class="pg" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r02-curated-to-win.webp" alt="" loading="lazy"></a>
-      <div>
-        <p class="st"><img src="/img/logos/aacl.webp" alt="AACL-IJCNLP" loading="lazy"><b>Accepted, sole author</b><span>ARRSI Workshop @ AACL-IJCNLP 2026 · Hengqin, China, 10 Nov</span></p>
-        <h3><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</a></h3>
-        <p class="by">Sole author · RewardBench and RewardBench 2 · 306 models</p>
-        <p class="sum">AI labs choose a reward model or an AI judge by its score on a benchmark. His paper, which he wrote alone, asks how few test questions it takes to change that choice, and certifies when the choice can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 items, but removing 12 particular ones makes the runner-up the winner.</p>
-        <details class="rq"><summary>What the paper asks</summary><ol><li><span class="qq">How much of a benchmark could be removed without changing which reward model wins?</span> <b>Very little.</b> RewardBench’s leader survives the removal of any 11 of its 2,985 items, and removing 12 particular items makes the runner-up the winner. RewardBench 2’s leader survives any 42.</li><li><span class="qq">Is that bound tight, or only a worst case on paper?</span> <b>Tight near the top.</b> Linear programs over item weights, rounded to real item subsets, reach it on both leaderboards.</li><li><span class="qq">How many models could a curator make the winner?</span> <b>Three,</b> on RewardBench, with a curation budget of just 1% of the benchmark’s weight.</li><li><span class="qq">Does the certificate work on a small validation set?</span> <b>Yes.</b> On 200 random items, selections whose top two are more than 2 points apart agree with the full benchmark’s winner 87% of the time, against 43% for the rest.</li></ol></details>
-        <div class="btns"><a class="btn" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Read the paper · 4 pp</a><a class="btn" href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code + data ↗</a></div>
-      </div>
-    </article>
-    <article class="pp" id="rs-t3">
-      <a class="pg" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener" aria-label="Code and data on GitHub"><img src="/img/papers/r03-compllm.webp" alt="" loading="lazy"></a>
-      <div>
-        <p class="st"><b>Preprint</b><span>arXiv forthcoming</span></p>
-        <h3>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</h3>
-        <p class="by">With Michael Tarekegn and Philo Juang · co-first author</p>
-        <p class="sum">AI models are often used to grade other models’ writing, and a judge that recognizes its own work could favor it. This paper tests whether nine LLM judges really recognize their own writing, across 1,270 texts and 19,000+ judgments, with two controls the usual test leaves out: how often a judge names itself on text it didn’t write, and how often its peers name it. With both in place, none beats its strongest single peer.</p>
-        <details class="rq"><summary>What the paper asks</summary><ol><li><span class="qq">Does an LLM judge tell its own writing apart from other models’?</span> <b>Sometimes.</b> The usual self-naming test flags 15 of 37 cases, but in 7 of them the judge names itself just as often on other models’ texts; 8 survive that false-alarm control.</li><li><span class="qq">Is that recognition specific to the judge, or can other models spot the same texts?</span> <b>Never clearly specific.</b> Only 3 cases beat the pooled peers and none beats the judge’s strongest single peer: Claude names itself on 33 of its 38 chat-app essays, and GPT names Claude on 32.</li><li><span class="qq">Do the texts carry information the judges miss?</span> <b>Yes.</b> A style classifier attributes 86% of the chat-app essays, and each open-weight judge’s own likelihood ranks its text first on 58–87% of prompts, yet those judges are near chance at naming themselves.</li></ol></details>
-        <!-- [EDIT] once the arXiv version posts, make the dashed button a link to it and drop "forthcoming" -->
-        <div class="btns"><span class="btn soon">PDF on arXiv · coming soon</span><a class="btn" href="https://github.com/adrian-erlikhman/self-recognition-peer-baseline" target="_blank" rel="noopener">Code + data ↗</a></div>
-      </div>
-    </article>
-    <article class="pp" id="rs-t4">
-      <a class="pg" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r04-portfolio.webp" alt="" loading="lazy"></a>
-      <div>
-        <p class="st"><img src="/img/logos/ojss.webp" alt="OJSS" loading="lazy"><b>Published</b><span>Oxford Journal of Student Scholarship · October 2026</span></p>
-        <h3><a href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener">Does Portfolio Optimization Beat Splitting Evenly?</a></h3>
-        <p class="by">With Ryan Erlikhman · co-first author</p>
-        <p class="sum">Finance textbooks teach Markowitz optimization: choose the mix of assets with the best return for its risk. Adrian and his brother, Ryan, tested it against simply splitting money evenly across ten assets, in 250 simulated markets calibrated to real data, and the even split won 74% of the time.</p>
-        <details class="rq"><summary>What the paper asks</summary><ol><li><span class="qq">Does textbook portfolio optimization beat splitting money evenly?</span> <b>No.</b> Across 250 simulations of ten assets the even split won 74% of the time, with a Sharpe ratio of 0.70 against Markowitz’s 0.51, worth about 3 points of return a year.</li><li><span class="qq">Why does the optimizer lose?</span> <b>Estimated expected returns.</b> Given the true covariances but estimated returns, it still trails; given the true returns, it is nearly optimal.</li><li><span class="qq">Do the standard fixes rescue it?</span> <b>Not with the data markets provide.</b> Shrinkage and a no-shorting rule help as the theory predicts, but shrinkage does nothing for mean returns; the shrunk portfolio pulls ahead only with about two decades of stationary returns.</li></ol></details>
-        <div class="btns"><a class="btn" href="/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29" target="_blank" rel="noopener">Read the paper · 20 pp</a><a class="btn" href="https://oxfordjss.org/oct-2026-vol-12-issue-7/does-portfolio-optimization-beat-splitting-evenly" target="_blank" rel="noopener">In the journal ↗</a></div>
-      </div>
-    </article>
-    <article class="pp" id="rs-t5">
-      <a class="pg" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r05-legatum.webp" alt="" loading="lazy"></a>
-      <div>
-        <p class="st"><b>In revision</b><span>Journal of High School Science</span></p>
-        <h3><a href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener">How Robust Are the Legatum Prosperity Index Rankings? A Monte Carlo and Sensitivity Analysis of Weighting, Normalization, and Aggregation</a></h3>
-        <p class="by">With Ryan Erlikhman · co-first author</p>
-        <p class="sum">The Legatum Prosperity Index ranks 167 countries by averaging twelve pillar scores with equal weights. Adrian and Ryan rebuilt it exactly, then ran 131,072 variations of its weights and methods: the ranking holds as a whole, but a mid-table country’s place can swing across a range of 36.</p>
-        <details class="rq"><summary>What the paper asks</summary><ol><li><span class="qq">Can the published index be rebuilt exactly?</span> <b>Yes.</b> The twelve pillar scores reproduce every overall score to within 5×10<sup>−11</sup> and every rank exactly.</li><li><span class="qq">How stable are the rankings when the weights, normalization and aggregation change?</span> <b>Stable overall, not mid-table.</b> The whole ranking keeps a median rank correlation of 0.99, but countries ranked 68 to 100 have a median 90% rank interval 36 places wide.</li><li><span class="qq">Does each pillar’s equal 1/12 weight give it equal influence?</span> <b>No.</b> Personal Freedom’s weight has the largest effect (a Sobol’ total effect of 0.23), and under equal weights the pillars’ rank leverage differs by a factor of six.</li><li><span class="qq">What decides how far a weight can move the rankings?</span> <b>Its rank leverage,</b> c<sup>2</sup>(1&nbsp;−&nbsp;ρ<sup>2</sup>), which the paper derives; it tracks the weights’ Sobol’ effects with a Spearman correlation of 0.91 to 0.99.</li></ol></details>
-        <div class="btns"><a class="btn" href="/papers/legatum-robustness-audit.pdf?v=2026-09-13" target="_blank" rel="noopener">Read the paper · 34 pp</a></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="sec wrap rv" id="work" aria-labelledby="h-work">
-  <div class="sh"><h2 id="h-work">What he’s built</h2><span class="hw">all of them are live. go click around!</span></div>
-  <p class="intro">Hivemind and Monte won at two USC hackathons on the same weekend, Ledger won VISION HACK: South LA, and Safe Routes placed 3rd internationally. Hivemind’s win came with a paid summer internship at Lemma, a Y Combinator startup in San Francisco. SafeJew, his live map of antisemitic incidents, is funded by the Jewish Federation of Greater Los Angeles (JFEDLA).</p>
-  <p class="q">“My default is to start before I feel ready. Most of what I know, I learned because I’d already committed to something I didn’t know how to do yet.”<span>— Adrian</span></p>
-  <div class="builds">
-    <div class="bd" id="case-hivemind"><a class="print" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener"><img src="/img/cases/hivemind-ad.webp" alt="Hivemind" loading="lazy"></a><h3><img src="/img/logos/hivemind.svg" alt="">Hivemind</h3><p class="rz">Won Lemma’s track · SEPHacks 2026</p><p>One engineer’s correction becomes a rule every AI coding agent on the team follows.</p><div class="btns"><a class="btn" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Live site ↗</a><a class="btn" href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost ↗</a><a class="btn" href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">Film ↗</a></div></div>
-    <div class="bd" id="case-monte"><div class="hw n" style="left:150px;top:-40px">same weekend, both won ↙</div><a class="print" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener"><img src="/img/cases/monte-home.webp" alt="Monte" loading="lazy"></a><h3><img src="/img/logos/monte.svg" alt="">Monte</h3><p class="rz">1st place, Finance · TrojanHacks 2026</p><p>Pays with the card that earns the most at each store and shows what each card really costs.</p><div class="btns"><a class="btn" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener">Live site ↗</a><a class="btn" href="https://devpost.com/software/monte-calygj" target="_blank" rel="noopener">Devpost ↗</a><a class="btn" href="https://github.com/michae6345-crypto/monte" target="_blank" rel="noopener">Code ↗</a></div></div>
-    <div class="bd" id="case-safejew"><a class="print" href="https://safejew.org/map" target="_blank" rel="noopener"><img src="/img/cases/safejew-incident.webp" alt="SafeJew" loading="lazy"></a><h3><img src="/img/logos/safejew.webp" alt="">SafeJew</h3><p class="rz">Funded by a JFEDLA Teen Innovation Grant</p><p>A live map of 1,394 antisemitic incidents across LA and 33 college campuses, each with its source. He’s now working with UCLA to expand it.</p><div class="btns"><a class="btn" href="https://safejew.org/map" target="_blank" rel="noopener">Live map ↗</a><a class="btn" href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code ↗</a><a class="btn" href="https://www.jewishla.org/tig-past-projects/" target="_blank" rel="noopener">Grant ↗</a></div></div>
-    <div class="bd" id="case-aimlli"><a class="print" href="https://aiml-initiative.org" target="_blank" rel="noopener"><img src="/img/cases/aimlli-home.webp" alt="AIML-LI" loading="lazy"></a><h3><img src="/img/logos/aimlli-mark.webp" alt="">AIML-LI</h3><p class="rz">Working with LAUSD · summit for 500+</p><p>A free AI course for LA public schools, built with engineers from Google DeepMind and Microsoft.</p><div class="btns"><a class="btn" href="https://aiml-initiative.org" target="_blank" rel="noopener">Live site ↗</a></div></div>
-    <!-- LEDGER (29 Oct): a receipt in place of the dashboard screenshot (Adrian picked it of three). It is test record 18 from
-         Ledger's suite, a weekly order: dairy and protein 4 of 7 varieties, so the store misses SNAP's stocking rule. -->
-    <div class="bd" id="case-ledger"><a class="print" href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener"><div class="lgr" role="img" aria-label="A receipt from Ledger's SNAP stocking check on a test order: dairy and protein short, so the store does not meet the rule"><div class="feed"><div class="rcp" aria-hidden="true"><div class="hd"><img src="/img/logos/ledger.svg" alt="">LEDGER</div><div class="c">SNAP STOCKING CHECK</div><div class="c">CORNER STOP MARKET</div><div class="ds"></div><div class="row"><span>DAIRY</span><span class="n">4/7</span><span class="w55 no">SHORT</span></div><div class="row"><span>GRAINS</span><span class="n">7/7</span><span class="w55 ok">OK</span></div><div class="row"><span>PROTEIN</span><span class="n">4/7</span><span class="w55 no">SHORT</span></div><div class="row"><span>PRODUCE</span><span class="n">7/7</span><span class="w55 ok">OK</span></div><div class="dd"></div><div class="big no">NOT MET</div></div></div><div class="slot"></div></div></a><h3><img src="/img/logos/ledger.svg" alt="">Ledger</h3><p class="rz">1st place · VISION HACK: South LA</p><p>Tracks the 18 programs a corner store answers to and checks its stock against SNAP’s rule.</p><div class="btns"><a class="btn" href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a><a class="btn" href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code ↗</a></div></div>
-    <div class="bd" id="case-saferoutes"><a class="print" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener"><img src="/img/cases/saferoutes-walk.webp" alt="Safe Routes to School" loading="lazy"></a><h3><img src="/img/logos/walkhome.svg" alt="">Safe Routes</h3><p class="rz">3rd place internationally · Code for Transportation</p><p>Safer routes to all 668 LAUSD schools, scored from 85,634 LAPD incidents.</p><div class="btns"><a class="btn" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Live site ↗</a><a class="btn" href="https://www.youngcoderssphere.org/competition-winners" target="_blank" rel="noopener">Results ↗</a><a class="btn" href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up ↗</a><a class="btn" href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code ↗</a></div></div>
-  </div>
+<section class="wrap sec" id="work" aria-labelledby="h-work">
+  <h2 id="h-work">Projects</h2>
+  <p>My default is to start before I feel ready. Most of what I know, I learned because I’d already committed to something I didn’t know how to do yet. Hivemind and Monte won at two USC hackathons on the same weekend, Ledger won VISION HACK: South LA, and Safe Routes placed 3rd internationally.</p>
+  <div class="pj" id="case-hivemind"><a class="im" href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener"><img src="/img/cases/hivemind-ad.webp" alt="Hivemind" loading="lazy"></a><div><h3>Hivemind</h3><p class="st"><b>Won Lemma’s track</b>, SEPHacks 2026. With Michael Tarekegn.</p><p>One engineer’s correction becomes a rule every AI coding agent on the team follows. The win came with a paid summer internship at Lemma.</p><p class="lk"><a href="https://hivemind-q17i.onrender.com/" target="_blank" rel="noopener">Site</a> · <a href="https://devpost.com/software/hivemind-v7rwgx" target="_blank" rel="noopener">Devpost</a> · <a href="https://youtu.be/wmBzH3som4A" target="_blank" rel="noopener">Film</a></p></div></div>
+  <div class="pj" id="case-monte"><a class="im" href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener"><img src="/img/cases/monte-home.webp" alt="Monte" loading="lazy"></a><div><h3>Monte</h3><p class="st"><b>1st place, Finance</b>, TrojanHacks 2026. With Michael Tarekegn.</p><p>Pays with the card that earns the most at each store and shows what each card really costs.</p><p class="lk"><a href="https://ace-eta-beryl.vercel.app/" target="_blank" rel="noopener">Site</a> · <a href="https://devpost.com/software/monte-calygj" target="_blank" rel="noopener">Devpost</a> · <a href="https://github.com/michae6345-crypto/monte" target="_blank" rel="noopener">Code</a></p></div></div>
+  <div class="pj" id="case-safejew"><a class="im" href="https://safejew.org/map" target="_blank" rel="noopener"><img src="/img/cases/safejew-incident.webp" alt="SafeJew" loading="lazy"></a><div><h3>SafeJew</h3><p class="st"><b>Funded by a Teen Innovation Grant</b> from the Jewish Federation of Greater Los Angeles.</p><p>A live map of 1,394 antisemitic incidents across LA and 33 college campuses, each with its source. When incidents rose across LA in late 2023, the reports were scattered across news stories, community groups and agencies, each counting differently. I’m Jewish and wanted one clear picture, for myself and for other families, so I went straight to the FBI, LAPD and ADL for the data. I’m now working with UCLA to expand it.</p><p class="lk"><a href="https://safejew.org/map" target="_blank" rel="noopener">Map</a> · <a href="https://github.com/RE17-IWD/safejew" target="_blank" rel="noopener">Code</a> · <a href="https://www.jewishla.org/tig-past-projects/" target="_blank" rel="noopener">Grant</a></p></div></div>
+  <div class="pj" id="case-aimlli"><a class="im" href="https://aiml-initiative.org" target="_blank" rel="noopener"><img src="/img/cases/aimlli-home.webp" alt="AIML-LI" loading="lazy"></a><div><h3>AIML-LI</h3><p class="st"><b>Working with LAUSD</b>, and a summit for 500+ students.</p><p>A free AI course for LA public schools, built with engineers from Google DeepMind and Microsoft. By sophomore year everyone around me was using ChatGPT, but no class taught how it works or when to trust it, so I wrote one. LAUSD’s educators called the first version too technical, so I rebuilt it with teachers.</p><p class="lk"><a href="https://aiml-initiative.org" target="_blank" rel="noopener">Site</a></p></div></div>
+  <!-- LEDGER (29 Oct): a receipt in place of the dashboard screenshot (Adrian picked it of three). It is test record 18 from
+       Ledger's suite, a weekly order: dairy and protein 4 of 7 varieties, so the store misses SNAP's stocking rule. -->
+  <div class="pj" id="case-ledger"><a class="im" href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener"><div class="lgr" role="img" aria-label="A receipt from Ledger's SNAP stocking check on a test order: dairy and protein short, so the store does not meet the rule"><div class="feed"><div class="rcp" aria-hidden="true"><div class="hd"><img src="/img/logos/ledger.svg" alt="">LEDGER</div><div class="c">SNAP STOCKING CHECK</div><div class="c">CORNER STOP MARKET</div><div class="ds"></div><div class="row"><span>DAIRY</span><span class="n">4/7</span><span class="w55 no">SHORT</span></div><div class="row"><span>GRAINS</span><span class="n">7/7</span><span class="w55 ok">OK</span></div><div class="row"><span>PROTEIN</span><span class="n">4/7</span><span class="w55 no">SHORT</span></div><div class="row"><span>PRODUCE</span><span class="n">7/7</span><span class="w55 ok">OK</span></div><div class="dd"></div><div class="big no">NOT MET</div></div></div><div class="slot"></div></div></a><div><h3>Ledger</h3><p class="st"><b>1st place</b>, VISION HACK: South LA.</p><p>Tracks the 18 programs a corner store answers to and checks its stock against SNAP’s rule.</p><p class="lk"><a href="https://visionhack-nu.vercel.app/" target="_blank" rel="noopener">Demo</a> · <a href="https://github.com/michae6345-crypto/visionhack" target="_blank" rel="noopener">Code</a></p></div></div>
+  <div class="pj" id="case-saferoutes"><a class="im" href="https://safe-routes-la.github.io/" target="_blank" rel="noopener"><img src="/img/cases/saferoutes-walk.webp" alt="Safe Routes to School" loading="lazy"></a><div><h3>Safe Routes</h3><p class="st"><b>3rd place internationally</b>, Code for Transportation.</p><p>Safer routes to all 668 LAUSD schools, scored from 85,634 LAPD incidents. From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the way to or from school. My friends are in that number.</p><p class="lk"><a href="https://safe-routes-la.github.io/" target="_blank" rel="noopener">Site</a> · <a href="https://www.youngcoderssphere.org/competition-winners" target="_blank" rel="noopener">Results</a> · <a href="https://www.youngcoderssphere.org/post/code-for-transportation-3rd-place" target="_blank" rel="noopener">Write-up</a> · <a href="https://github.com/safe-routes-la/safe-routes-la.github.io" target="_blank" rel="noopener">Code</a></p></div></div>
   <!-- CITADEL TERMINAL (29 Oct): Adrian's own screenshot of Terminal's replay viewer (his bot is DUNDERSCORE4_2, teal) -->
-  <div class="tm" id="case-citadel">
-    <button class="print" type="button" data-full="/img/terminal/viewer.webp?v=2026-10-29" data-cap="dunderscore (teal) in Terminal's replay viewer, round 41"><img src="/img/terminal/viewer.webp?v=2026-10-29" width="1984" height="915" loading="lazy" alt="Terminal's replay viewer at round 41: Adrian's bot, DUNDERSCORE4_2, in teal against an opponent in red"></button>
-    <div>
-      <div class="k"><img src="/img/logos/citadel.webp" alt="Citadel" loading="lazy"><span class="mono">Competition</span></div>
-      <h3>dunderscore</h3>
-      <p class="rz">Finalist, Citadel High School Terminal: top 8 of 45 teams, from 1,000+ applicants.</p>
-      <p>A Python bot for Terminal, Citadel’s tower-defense game where every move is code. He and two teammates wrote it and rewrote its strategy between rounds from match replays.</p>
-      <div class="btns"><a class="btn" href="https://terminal.c1games.com/" target="_blank" rel="noopener">About Terminal ↗</a></div>
-    </div>
-  </div>
-  <h4>Why he built them</h4>
-  <div class="why">
-    <div><b>SafeJew</b><p>When antisemitic incidents rose across LA in late 2023, the reports were scattered across news stories, community groups and agencies, each counting differently. He is Jewish and wanted one clear picture, for himself and for other families. He needed data nobody hands a teenager, so he went straight to the FBI, LAPD and ADL.</p></div>
-    <div><b>AIML-LI</b><p>By sophomore year everyone around him was using ChatGPT, but no class taught how it works or when to trust it. So he wrote one. LAUSD’s educators called the first version too technical, so he rebuilt it with teachers.</p></div>
-    <div><b>Safe Routes</b><p>From 2020 to 2024, 1,838 LA children aged 10 to 18 were robbed on the street, 56% of them on the way to or from school. His friends are in that number.</p></div>
-  </div>
+  <div class="pj" id="case-citadel"><button class="im" type="button" data-full="/img/terminal/viewer.webp?v=2026-10-29" data-cap="dunderscore (teal) in Terminal's replay viewer, round 41"><img src="/img/terminal/board.webp" alt="Terminal's game board at round 41: Adrian's bot, DUNDERSCORE4_2, in teal against an opponent in red" loading="lazy"></button><div><h3>dunderscore</h3><p class="st"><b>Finalist</b>, Citadel High School Terminal: top 8 of 45 teams, from 1,000+ applicants.</p><p>A Python bot for Terminal, Citadel’s tower-defense game where every move is code. Two teammates and I wrote it and rewrote its strategy between rounds from match replays.</p><p class="lk"><a href="https://terminal.c1games.com/" target="_blank" rel="noopener">About Terminal</a></p></div></div>
 </section>
 
-<section class="sec wrap rv" id="experience" aria-labelledby="h-xp">
-  <div class="sh"><h2 id="h-xp">Internships</h2><span class="hw">four so far, a fifth next summer</span></div>
-  <p class="intro">Four internships so far, across machine learning, software and venture capital.</p>
+<section class="wrap sec" id="experience" aria-labelledby="h-xp">
+  <h2 id="h-xp">Internships</h2>
   <ul class="xp">
-    <li id="xp-firstness"><div class="co"><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness ↗</a></div><div><h3>Software Engineering &amp; ML Intern</h3><p>Firstness is an AI research engine: a scientist asks a question, and it proposes new hypotheses, each backed by published research. Adrian works one-on-one with its founder, a neuroscientist affiliated with UC Berkeley and UCSF, connecting the engine to the tools scientists already use for literature, data and analysis, and turning the founder’s AI research into product demos.</p></div><div class="dt">2026 – now</div></li>
-    <li id="xp-kiddom"><div class="co"><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom ↗</a></div><div><h3>Machine Learning Internship &amp; Mentorship</h3><p>Mentored by the Director of Data Science at Kiddom, a K–12 education company, he built <a href="https://adrian-erlikhman.github.io/why-wrong/" target="_blank" rel="noopener">Why Wrong</a>: a machine-learning tool that reads a whole class’s wrong answers, names the misconception behind each one and groups the students who share it, so a teacher knows what to reteach and to whom. On a test set of planted misconceptions it scores 0.87 F1 (1.0 is perfect). He is now designing its first classroom evaluation with an LAUSD teacher.</p></div><div class="dt">2026 – now</div></li>
-    <li id="xp-fjor"><div class="co"><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital ↗</a></div><div><h3>Investment &amp; Software Engineering Intern</h3><p>At a $15M early-stage venture fund, he built the machine-learning models that ranked all 134 startups in Y Combinator’s Summer 2025 batch, then led that screen. He researched 20+ AI startups in depth, wrote 10+ investment memos for the partners’ decisions, and built the fund’s internal software for tracking deals.</p></div><div class="dt">2024 – 2026</div></li>
-    <li id="xp-alliance"><div class="co"><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation ↗</a></div><div><h3>Venture &amp; Data Strategy Intern</h3><p>At this nonprofit for Southern California’s startups, he built a matching engine, in Python and SQL, that finds a startup’s likely investors among 10,000 contacts at 250+ venture firms, angel groups and accelerators, cutting a founder’s search from days to under a minute. He also led outreach to 80+ founders and mapped the region’s deep-tech startups.</p></div><div class="dt">2024 – 2026</div></li>
+    <li id="xp-firstness"><h3><a href="https://firstness.ai" target="_blank" rel="noopener">Firstness</a>, Software Engineering &amp; ML Intern <span>2026 – now</span></h3><p>Firstness is an AI research engine: a scientist asks a question, and it proposes new hypotheses, each backed by published research. I work one-on-one with its founder, a neuroscientist affiliated with UC Berkeley and UCSF, connecting the engine to the tools scientists already use for literature, data and analysis, and turning the founder’s AI research into product demos.</p></li>
+    <li id="xp-kiddom"><h3><a href="https://www.kiddom.co" target="_blank" rel="noopener">Kiddom</a>, Machine Learning Internship &amp; Mentorship <span>2026 – now</span></h3><p>Mentored by Kiddom’s Director of Data Science, I built <a href="https://adrian-erlikhman.github.io/why-wrong/" target="_blank" rel="noopener">Why Wrong</a>: a machine-learning tool that reads a whole class’s wrong answers, names the misconception behind each one and groups the students who share it, so a teacher knows what to reteach and to whom. On a test set of planted misconceptions it scores 0.87 F1 (1.0 is perfect). I’m now designing its first classroom evaluation with an LAUSD teacher.</p></li>
+    <li id="xp-fjor"><h3><a href="https://www.fjor.co" target="_blank" rel="noopener">Fjor Venture Capital</a>, Investment &amp; Software Engineering Intern <span>2024 – 2026</span></h3><p>At a $15M early-stage venture fund, I built the machine-learning models that ranked all 134 startups in Y Combinator’s Summer 2025 batch, then led that screen. I researched 20+ AI startups in depth, wrote 10+ investment memos for the partners’ decisions, and built the fund’s internal software for tracking deals.</p></li>
+    <li id="xp-alliance"><h3><a href="https://alliancesocal.org" target="_blank" rel="noopener">Alliance for SoCal Innovation</a>, Venture &amp; Data Strategy Intern <span>2024 – 2026</span></h3><p>At this nonprofit for Southern California’s startups, I built a matching engine, in Python and SQL, that finds a startup’s likely investors among 10,000 contacts at 250+ venture firms, angel groups and accelerators, cutting a founder’s search from days to under a minute. I also led outreach to 80+ founders and mapped the region’s deep-tech startups.</p></li>
   </ul>
-  <p class="p" style="margin-top:18px">Next summer he interns at <b>Lemma</b>, a Y Combinator startup in San Francisco: a paid internship that came with <a href="#case-hivemind">Hivemind</a>’s win at SEPHacks.</p>
+  <p>Next summer I’m interning at Lemma, a Y Combinator startup in San Francisco. The internship came with <a href="#case-hivemind">Hivemind</a>’s win at SEPHacks.</p>
 </section>
 
-<section class="sec wrap rv" id="fencing" aria-labelledby="h-fence">
-  <div class="sh"><h2 id="h-fence">Team USA épée</h2><span class="hw">22 hours a week since age nine</span></div>
-  <p class="intro">Adrian fences épée for Team USA: he placed <b>6th for the U.S. at the Cadet Pan-American Championships</b> in Bogotá, holds an <b>A26</b>, the highest USA Fencing rating, and is in <b>active recruitment with MIT</b>. He has fenced since he was nine and trains about 22 hours a week at LA International Fencing Center.</p>
-  <p class="q">“Fencing taught me to go after hard things, and to stay calm when they go wrong.”<span>— Adrian</span></p>
-  <div class="fz">
-    <div class="print reel"><video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp?v=2026-10-15-a" data-src="/video/fence-loop.mp4?v=2026-10-15-a" aria-hidden="true" tabindex="-1"></video><span class="cap">His touch to 6–8, Senior team relay, Summer Nationals 2026. He’s on the right.</span></div>
-    <div class="ph">
-      <button class="print" type="button" data-full="/fencing-1.jpg" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/fencing-1.jpg" width="800" height="600" loading="lazy" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships in Bogotá, Colombia"><span class="cap">Pan-Ams, Bogotá</span></button>
-      <button class="print" type="button" data-full="/fencing-2.jpg" data-cap="USA Fencing podium"><img src="/fencing-2.jpg" width="600" height="800" loading="lazy" alt="Adrian Erlikhman on the podium with a USA Fencing medal"><span class="cap">USA Fencing podium</span></button>
-    </div>
-  </div>
-  <div class="ranks">
-    <div><b>No. 49</b><span>U.S. Junior (U20)</span></div>
-    <div><b>No. 78</b><span>U.S. Senior, open</span></div>
-    <div><b>No. 17</b><span>U.S. Cadet (U17), peak</span></div>
-    <div><b>No. 1</b><span>Region 4</span></div>
-  </div>
-  <div class="cols">
-    <div>
-      <h4>Best results</h4>
-      <ul class="ul">
-        <li><b>6th</b>, Pan-American Championships, Cadet (U17), for Team USA in Bogotá</li>
-        <li><b>Top 8</b>, Super Junior &amp; Cadet Circuit, Cadet (U17)</li>
-        <li><b>Top 16</b>, October North American Cup, Cadet (U17)</li>
-        <li><b>Top 16</b>, March North American Cup 2024, Y14 (U14)</li>
-        <li><b>Top 32</b>, National Championships, April North American Cup, Div I</li>
-        <li><b>Top 32</b>, Summer Nationals 2026, Junior (U20)</li>
-        <li><b>Top 32</b>, Summer Nationals 2025, Cadet (U17)</li>
-        <li><b>Top 64</b>, November North American Cup, Cadet (U17)</li>
-        <li><b>Top 64</b>, North American Cup, Junior (U20)</li>
-        <li><b>4×</b>, Junior (U20) Regional Champion</li>
-      </ul>
-    </div>
-    <div>
-      <h4>The bout he remembers</h4>
-      <p class="p">Tied 14–14, one touch from the end, his opponent bloodied his nose and kneed him, and the referee missed it. He used box breathing to reset, then scored the last touch.</p>
-      <h4>He coaches, too</h4>
-      <p class="p">At LAIFC he leads beginner classes for younger kids just starting the sport, and coaches his 11-year-old brother at the club and at tournaments.</p>
-    </div>
-  </div>
-  <h4 id="bouts">Watch him fence</h4>
+<section class="wrap sec" id="fencing" aria-labelledby="h-fence">
+  <h2 id="h-fence">Fencing</h2>
+  <p>I fence épée for Team USA. I placed 6th for the U.S. at the Cadet Pan-American Championships in Bogotá, I hold an A26, the highest USA Fencing rating, and I’m in active recruitment with MIT. I’ve fenced since I was nine and train about 22 hours a week at LA International Fencing Center. Fencing taught me to go after hard things, and to stay calm when they go wrong.</p>
+  <figure class="reel"><video muted loop playsinline preload="none" poster="/img/bouts/fence-loop.webp?v=2026-10-15-a" data-src="/video/fence-loop.mp4?v=2026-10-15-a" aria-hidden="true" tabindex="-1"></video><figcaption>My touch to 6–8 in the Senior team relay at Summer Nationals 2026. I’m on the right.</figcaption></figure>
+  <p>My U.S. rankings: No. 49 in Junior (U20), No. 78 in Senior, No. 17 at my peak in Cadet (U17), and No. 1 in Region 4. Full record on <a href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener me">fencingtracker.com</a>.</p>
+  <h3 class="sub">Best results</h3>
+  <ul class="ul">
+    <li>6th, Pan-American Championships, Cadet (U17), for Team USA in Bogotá</li>
+    <li>Top 8, Super Junior &amp; Cadet Circuit, Cadet (U17)</li>
+    <li>Top 16, October North American Cup, Cadet (U17)</li>
+    <li>Top 16, March North American Cup 2024, Y14 (U14)</li>
+    <li>Top 32, National Championships, April North American Cup, Div I</li>
+    <li>Top 32, Summer Nationals 2026, Junior (U20)</li>
+    <li>Top 32, Summer Nationals 2025, Cadet (U17)</li>
+    <li>Top 64, November North American Cup, Cadet (U17)</li>
+    <li>Top 64, North American Cup, Junior (U20)</li>
+    <li>4× Junior (U20) Regional Champion</li>
+  </ul>
+  <p>The bout I remember most: tied 14–14, one touch from the end, my opponent bloodied my nose and kneed me, and the referee missed it. I used box breathing to reset, then scored the last touch.</p>
+  <p>I also coach. At LAIFC I lead beginner classes for younger kids just starting the sport, and I coach my 11-year-old brother at the club and at tournaments.</p>
+  <h3 class="sub" id="bouts">Bouts</h3>
   <div class="vids">
-    <a href="/video/bout-team-afm.mp4?v=2026-10-04" data-video data-cap="Senior team relay leg, 8–2, Summer Nationals 2026. Adrian is on the right."><div class="th"><img src="/img/bouts/team-afm.webp" alt="" loading="lazy"><i></i><s>5:49</s></div><b>Senior team relay leg, 8–2</b><span>vs. a U.S. cadet travel-team fencer</span></a>
-    <a href="/video/bout-harvard.mp4?v=2026-10-04" data-video data-cap="Div I pool, 5–2, vs. a Harvard fencer, Summer Nationals 2026"><div class="th"><img src="/img/bouts/harvard.webp" alt="" loading="lazy"><i></i><s>4:26</s></div><b>Div I pool, 5–2</b><span><img src="/img/logos/harvard.svg" alt="">vs. a Harvard fencer</span></a>
-    <a href="/video/bout-ucsd.mp4?v=2026-10-04" data-video data-cap="Div I pool, 4–3, vs. a UCSD fencer, Summer Nationals 2026"><div class="th"><img src="/img/bouts/ucsd.webp" alt="" loading="lazy"><i></i><s>6:04</s></div><b>Div I pool, 4–3</b><span><img src="/img/logos/ucsd.svg" alt="">vs. a UCSD fencer</span></a>
+    <a href="/video/bout-team-afm.mp4?v=2026-10-04" data-video data-cap="Senior team relay leg, 8–2, Summer Nationals 2026. I’m on the right."><img src="/img/bouts/team-afm.webp" alt="" loading="lazy"><span>Senior team relay leg, 8–2, vs. a U.S. cadet travel-team fencer (5:49)</span></a>
+    <a href="/video/bout-harvard.mp4?v=2026-10-04" data-video data-cap="Div I pool, 5–2, vs. a Harvard fencer, Summer Nationals 2026"><img src="/img/bouts/harvard.webp" alt="" loading="lazy"><span>Div I pool, 5–2, vs. a Harvard fencer (4:26)</span></a>
+    <a href="/video/bout-ucsd.mp4?v=2026-10-04" data-video data-cap="Div I pool, 4–3, vs. a UCSD fencer, Summer Nationals 2026"><img src="/img/bouts/ucsd.webp" alt="" loading="lazy"><span>Div I pool, 4–3, vs. a UCSD fencer (6:04)</span></a>
   </div>
-  <div class="src"><a class="btn" href="https://fencingtracker.com/p/100253463/Adrian-Erlikhman" target="_blank" rel="noopener me"><img src="/img/logos/usafencing.webp" alt="">Full record on fencingtracker.com ↗</a><span class="badge"><img src="/mit-logo.svg" alt="">In active recruitment · MIT</span></div>
 </section>
 
-<section class="sec wrap rv" id="record" aria-labelledby="h-hon">
-  <div class="sh"><h2 id="h-hon">Honors</h2><span class="hw">most selective first</span></div>
-  <p class="intro">Beyond the papers and the builds:</p>
+<section class="wrap sec" id="record" aria-labelledby="h-hon">
+  <h2 id="h-hon">Honors</h2>
   <table class="tb">
-    <thead><tr><th>Honor</th><th>Result</th><th>How selective, or what it took</th></tr></thead>
     <tbody>
-      <tr><td><span class="lgo"></span>National Merit Scholarship</td><td>Semifinalist</td><td>About 16,000 of 1.3M+ entrants</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/yc.svg" alt="">Y Combinator Startup School 2026</td><td>Admitted</td><td>Under 5% acceptance</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/citadel.webp" alt=""><a href="#case-citadel">Citadel High School Terminal</a></td><td>Finalist</td><td>Top 8 of 45 teams; 1,000+ applied</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/usafencing.webp" alt="">USA Fencing All-American</td><td>3×, First Team</td><td>Three seasons running</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/usafencing.webp" alt="">USA Fencing All-Academic</td><td>3×, First Team</td><td>A national result and a 3.85+ GPA</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/lovable.svg" alt="">Decode the Ocean</td><td>1st place</td><td>eDNAtlas: 16.5M DNA sequences into a coastal health map</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/ncss.webp" alt="">NCSS 2026 · aiEDU podcast</td><td>Invited speaker &amp; guest</td><td><a href="https://eventee.com/e/ncss-2026-28032" target="_blank" rel="noopener">Student panel on AI</a>, San Diego, 2 Dec; podcast with CEO Alex Kotran</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/collegeboard.webp" alt="">AP Scholar with Distinction</td><td>2×</td><td>17 APs; every exam so far a 4 or 5</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/laces.webp" alt="">GPA and SAT</td><td>4.0 · 1520</td><td>4.0 unweighted; Math 770</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/sifma.svg" alt="">SIFMA Stock Market Game</td><td>Top 5%</td><td>Statewide, entered solo against teams</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/jsu.webp" alt="">Jewish Student Union, LACES</td><td>President</td><td>50+ members; two years</td></tr>
-      <tr><td><img class="lgo" src="/img/logos/stemsters.webp" alt="">STEMsters, LACES chapter</td><td>Co-founder</td><td>30+ volunteers at 4 elementary schools</td></tr>
+      <tr><td>National Merit Scholarship</td><td>Semifinalist</td><td>About 16,000 of 1.3M+ entrants</td></tr>
+      <tr><td>Y Combinator Startup School 2026</td><td>Admitted</td><td>Under 5% acceptance</td></tr>
+      <tr><td><a href="#case-citadel">Citadel High School Terminal</a></td><td>Finalist</td><td>Top 8 of 45 teams; 1,000+ applied</td></tr>
+      <tr><td>USA Fencing All-American</td><td>3×, First Team</td><td>Three seasons running</td></tr>
+      <tr><td>USA Fencing All-Academic</td><td>3×, First Team</td><td>A national result and a 3.85+ GPA</td></tr>
+      <tr><td>Decode the Ocean</td><td>1st place</td><td>eDNAtlas: 16.5M DNA sequences into a coastal health map</td></tr>
+      <tr><td>NCSS 2026 and the aiEDU podcast</td><td>Invited speaker and guest</td><td><a href="https://eventee.com/e/ncss-2026-28032" target="_blank" rel="noopener">Student panel on AI</a>, San Diego, 2 Dec; podcast with CEO Alex Kotran</td></tr>
+      <tr><td>AP Scholar with Distinction</td><td>2×</td><td>17 APs; every exam so far a 4 or 5</td></tr>
+      <tr><td>GPA and SAT</td><td>4.0, 1520</td><td>4.0 unweighted; Math 770</td></tr>
+      <tr><td>SIFMA Stock Market Game</td><td>Top 5%</td><td>Statewide, entered solo against teams</td></tr>
+      <tr><td>Jewish Student Union, LACES</td><td>President</td><td>50+ members; two years</td></tr>
+      <tr><td>STEMsters, LACES chapter</td><td>Co-founder</td><td>30+ volunteers at 4 elementary schools</td></tr>
     </tbody>
   </table>
 </section>
 
-<section class="sec wrap rv" id="life" aria-labelledby="h-life">
-  <div class="sh"><h2 id="h-life">Off the laptop</h2><span class="hw">eating and napping count, right?</span></div>
-  <p class="intro">When he isn’t working, Adrian is usually outside, at the piano or doing a puzzle. Eating and napping are on his own list of hobbies too.</p>
-  <div class="prints">
-    <button class="print" type="button" data-full="/life-climb.jpg" data-cap="Rock climbing"><img src="/life-climb.jpg" loading="lazy" alt="Adrian Erlikhman rock climbing"></button>
-    <button class="print" type="button" data-full="/life-backpack.jpg" data-cap="Backpacking at an alpine lake"><img src="/life-backpack.jpg" loading="lazy" alt="Adrian Erlikhman backpacking at an alpine lake"></button>
-    <button class="print" type="button" data-full="/life-hike.jpg" data-cap="Hiking a foggy ridge"><img src="/life-hike.jpg" loading="lazy" alt="Adrian Erlikhman hiking a foggy ridge"></button>
-    <button class="print" type="button" data-full="/life-swim.jpg" data-cap="Swimming in an alpine lake"><img src="/life-swim.jpg" loading="lazy" alt="Adrian Erlikhman swimming in an alpine lake"></button>
-    <button class="print" type="button" data-full="/life-cycle.jpg" data-cap="Road cycling"><img src="/life-cycle.jpg" loading="lazy" alt="Adrian Erlikhman road cycling"></button>
+<section class="wrap sec" id="life" aria-labelledby="h-life">
+  <h2 id="h-life">Off the laptop</h2>
+  <p>When I’m not working I’m usually outside, at the piano or doing a puzzle. I backpack in California, Oregon, Washington and the Eastern Sierra, and I rock climb, road cycle, swim in alpine lakes and surf, which I taught myself. My favorite place is my bed or anywhere in nature.</p>
+  <div class="strip">
+    <button type="button" data-full="/life-climb.jpg" data-cap="Rock climbing"><img src="/life-climb.jpg" loading="lazy" alt="Adrian Erlikhman rock climbing"></button>
+    <button type="button" data-full="/life-backpack.jpg" data-cap="Backpacking at an alpine lake"><img src="/life-backpack.jpg" loading="lazy" alt="Adrian Erlikhman backpacking at an alpine lake"></button>
+    <button type="button" data-full="/life-hike.jpg" data-cap="Hiking a foggy ridge"><img src="/life-hike.jpg" loading="lazy" alt="Adrian Erlikhman hiking a foggy ridge"></button>
+    <button type="button" data-full="/life-swim.jpg" data-cap="Swimming in an alpine lake"><img src="/life-swim.jpg" loading="lazy" alt="Adrian Erlikhman swimming in an alpine lake"></button>
+    <button type="button" data-full="/life-cycle.jpg" data-cap="Road cycling"><img src="/life-cycle.jpg" loading="lazy" alt="Adrian Erlikhman road cycling"></button>
   </div>
-  <div class="life">
-    <div>
-      <h4>Outside</h4>
-      <p class="p">Backpacking in California, Oregon, Washington and the Eastern Sierra, rock climbing, road cycling, swimming in alpine lakes, and surfing, which he taught himself. Asked for his favorite place, he said “my bed or anywhere in nature.”</p>
-      <h4>Piano</h4>
-      <p class="p">He studies piano through the Music Teachers’ Association of California (MTAC): a Level 9 candidate, with five state-honors exams.</p>
-      <h4>Puzzles</h4>
-      <p class="p">Every morning in homeroom: Wordle, Globle, Minute Cryptic and the crossword. He likes them enough to have built <a href="/linkedin-games-unlimited/" target="_blank" rel="noopener">Games Unlimited</a>: unlimited practice versions of the LinkedIn daily puzzle games.</p>
-      <h4>Naps</h4>
-      <p class="p">He ran experiments on nap length. Forty-five minutes won.</p>
-    </div>
-    <div>
-      <h4>A typical day</h4>
-      <ul class="ul">
-        <li>Up at 8:00, out the door by 8:10</li>
-        <li>Puzzles in homeroom, then school</li>
-        <li>Often a call for <a href="#xp-firstness">Firstness</a> or <a href="#xp-kiddom">Kiddom</a></li>
-        <li>Fencing most evenings, and six hours on Saturdays</li>
-        <li>Research or AIML-LI at night</li>
-      </ul>
-      <h4>His favorites</h4>
-      <table class="fav"><tbody>
-        <tr><td>Food</td><td>His grandma’s borscht and pelmeni</td></tr>
-        <tr><td>Movie</td><td><i>Good Will Hunting</i></td></tr>
-        <tr><td>Music</td><td>Rachmaninoff, above all Moment Musical No. 6, and Chopin’s “Revolutionary” Étude</td></tr>
-        <tr><td>Class</td><td>Math and CS, “but logic is my fav”</td></tr>
-      </tbody></table>
-      <h4>Family</h4>
-      <p class="p">His grandparents taught him two Soviet card games, Klaberjass and Preferans. His younger brother, Ryan, is his co-author: <a href="#rs-t4">their portfolio paper</a> came out in the Oxford Journal of Student Scholarship in October, and <a href="#rs-t5">their Legatum audit</a> is in revision. What Adrian admires most in him is his empathy: in second grade, Ryan gave every classmate a personalized Valentine’s present.</p>
-    </div>
-  </div>
+  <p>I study piano through the Music Teachers’ Association of California (MTAC): I’m a Level 9 candidate, with five state-honors exams. Every morning in homeroom I do Wordle, Globle, Minute Cryptic and the crossword; I like them enough that I built <a href="/linkedin-games-unlimited/" target="_blank" rel="noopener">Games Unlimited</a>, unlimited practice versions of the LinkedIn daily puzzle games. I also ran experiments on nap length. Forty-five minutes won.</p>
+  <p>My grandparents taught me two Soviet card games, Klaberjass and Preferans, and my grandma’s borscht and pelmeni are my favorite food. My younger brother, Ryan, is my co-author on <a href="#rs-t4">the portfolio paper</a> and <a href="#rs-t5">the Legatum audit</a>. What I admire most in him is his empathy: in second grade, he gave every classmate a personalized Valentine’s present.</p>
+  <table class="tb fav">
+    <tbody>
+      <tr><td>Movie</td><td><i>Good Will Hunting</i></td></tr>
+      <tr><td>Music</td><td>Rachmaninoff, above all Moment Musical No. 6, and Chopin’s “Revolutionary” Étude</td></tr>
+      <tr><td>Class</td><td>Math and CS, but logic is my fav</td></tr>
+      <tr><td>A typical day</td><td>Up at 8:00, out the door by 8:10. Puzzles in homeroom, then school. Often a call for <a href="#xp-firstness">Firstness</a> or <a href="#xp-kiddom">Kiddom</a>. Fencing most evenings, and six hours on Saturdays. Research or AIML-LI at night.</td></tr>
+    </tbody>
+  </table>
 </section>
 
-<section class="sec wrap rv" id="next" aria-labelledby="h-next">
-  <div class="sh"><h2 id="h-next">What’s next</h2></div>
-  <p class="intro">In college he wants to study <b>computer science and economics</b>, because that is where almost everything he has done already sits: the models that ranked 134 startups for a venture fund, the engine that matches founders to investors, a published paper on portfolio optimization, and Monte, which shows what a credit card really costs.</p>
-  <div class="cols">
-    <div>
-      <h4>The problem he wants to work on</h4>
-      <p class="p">It came out of <a href="#case-saferoutes">Safe Routes</a>. Its safety scores come from crime reports, and crime reports record where police patrol and who calls, not only where kids are in danger. So a “safe” route can send a 14-year-old around a whole neighborhood for the wrong reason. He wants to learn how to measure risk honestly from data collected with a bias, and to let families decide how many extra minutes a safer walk is worth, instead of choosing that number himself.</p>
-    </div>
-    <div>
-      <p class="q" style="margin-top:34px">“I learn by building. If I want to understand something, I try to make a working version of it, and then I find out everything I got wrong.”<span>— Adrian</span></p>
-      <h4>Outside class</h4>
-      <p class="p">He plans to keep fencing in college, and to keep building with other people: almost nothing he makes is solo.</p>
-    </div>
-  </div>
+<section class="wrap sec" id="next" aria-labelledby="h-next">
+  <h2 id="h-next">Next</h2>
+  <p>In college I want to study computer science and economics, because that’s where almost everything I’ve done already sits: the models that ranked 134 startups for a venture fund, the engine that matches founders to investors, a published paper on portfolio optimization, and Monte, which shows what a credit card really costs.</p>
+  <p>The problem I most want to work on came out of <a href="#case-saferoutes">Safe Routes</a>. Its safety scores come from crime reports, and crime reports record where police patrol and who calls, not only where kids are in danger. So a “safe” route can send a 14-year-old around a whole neighborhood for the wrong reason. I want to learn how to measure risk honestly from data collected with a bias, and to let families decide how many extra minutes a safer walk is worth, instead of choosing that number myself.</p>
+  <p>I learn by building. If I want to understand something, I try to make a working version of it, and then I find out everything I got wrong. I plan to keep fencing in college, and to keep building with other people: almost nothing I make is solo.</p>
 </section>
 
-<section class="contact wrap rv" id="contact" aria-labelledby="h-contact">
-  <h2 class="mono" id="h-contact">Contact</h2>
-  <a class="em" href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian<wbr>@gmail.com</a>
-  <p class="p">Email is best; he usually answers the same day.</p>
-  <div class="btns" style="margin-top:16px"><a class="btn solid" href="mailto:erlikhman.adrian@gmail.com">Email him</a><a class="btn" href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a><a class="btn" href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub ↗</a></div>
-  <span class="hw bye">thanks for reading!</span>
+<section class="wrap sec" id="contact" aria-labelledby="h-contact">
+  <h2 id="h-contact">Contact</h2>
+  <p>Email is best: <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>. I usually answer the same day.</p>
+  <p class="links"><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
 </section>
 </main>
 
@@ -591,7 +485,7 @@
   <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-11-01-ojss" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">4 pages</span>
   </a>
-  <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">Typeset in LaTeX · source ↗</a>
+  <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">LaTeX source</a>
 </div>
 
 <!-- COMMAND PALETTE -->
@@ -606,6 +500,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-11-02-nb"></script>
+<script src="/assets/site.js?v=2026-11-02-plain"></script>
 </body>
 </html>
