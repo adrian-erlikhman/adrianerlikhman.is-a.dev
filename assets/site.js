@@ -822,7 +822,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
     {ic:'</>',label:'Repo: LSTM Equity Forecaster',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/lstm-equity-forecaster')},
     {ic:'</>',label:'Repo: FinBERT Sentiment Analyzer',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/finbert-sentiment-analyzer')},
     {ic:'</>',label:'Repo: Fraud Detection System',k:'repo',run:()=>ext('https://github.com/adrian-erlikhman/fraud-detection-system')},
-    {ic:'¶',label:'Paper: Curated to Win (ARRSI, AACL-IJCNLP 2026)',k:'pdf',run:()=>ext('/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12')},
+    {ic:'¶',label:'Paper: Curated to Win (ARRSI, AACL-IJCNLP 2026)',k:'pdf',run:()=>ext('/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr')},
     {ic:'¶',label:'Paper: Portfolio Optimization vs 1/N',k:'pdf',run:()=>ext('/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29')},
     {ic:'¶',label:'Paper: Legatum Robustness Audit',k:'pdf',run:()=>ext('/papers/legatum-robustness-audit.pdf?v=2026-09-13')},
     {ic:'$',label:'whoami',k:'sys',run:()=>toast('adrian erlikhman — senior @ LACES, Los Angeles · ML, quant, data')},
@@ -1179,7 +1179,7 @@ if(tb) addEventListener('scroll',()=>{const h=document.documentElement;tb.style.
   const echo=cmd=>print('<span class="tp">adrian@os:~$</span>'+cmd.replace(/</g,'&lt;'));
   const go=sel=>{const el=document.querySelector(sel); if(el)el.scrollIntoView({behavior:'smooth'});};
   const REPOS={lstm:'lstm-equity-forecaster',finbert:'finbert-sentiment-analyzer',fraud:'fraud-detection-system'};
-  const PAPERS={langllm:'/papers/langllm-bigdata2026.pdf?v=2026-10-21',curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
+  const PAPERS={langllm:'/papers/langllm-bigdata2026.pdf?v=2026-10-21',curated:'/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr',portfolio:'/papers/portfolio-optimization-vs-equal-weight.pdf?v=2026-10-29',robustness:'/papers/legatum-robustness-audit.pdf?v=2026-09-13'};
   const SEC={about:'#about',experience:'#experience',record:'#record',research:'#papers',projects:'#work',fencing:'#fencing',contact:'#contact'};
   const CMDS={
     help:()=>print("nav: <b>ls</b> · <b>open &lt;project&gt;</b> · <b>read &lt;paper&gt;</b> · <b>goto &lt;section&gt;</b> · <b>resume short|long</b> · <b>email</b><br>info: <b>whoami</b> · <b>stack</b> · <b>fencing</b> · <b>fortune</b> · <b>clear</b>",'dim'),
@@ -1492,11 +1492,11 @@ const BIG=(function(){
       l:[['/papers/langllm-bigdata2026.pdf?v=2026-10-21','Read the paper',1],['https://github.com/adrian-erlikhman/LangLLM','Code + data']]},
     curated:{paper:1,n:'Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation',k:'Paper · ARRSI @ AACL-IJCNLP 2026 · Hengqin, 10 Nov',
       a:['Accepted, sole author','ARRSI Workshop, AACL-IJCNLP 2026'],
-      t:'How few test items does it take to change which reward model wins? RewardBench’s leader survives the removal of any 11 of its 2,985 items; removing the right 12 makes the runner-up the winner.',
+      t:'How few test items does it take to change which reward model wins? Removing the right 12 of RewardBench’s 2,985 makes the runner-up the winner; under RewardBench’s own scoring code, 11 are enough.',
       h:'A curation certificate, solved as linear programs over 118 RewardBench and 188 RewardBench 2 models; on RewardBench 2 the leader survives any 42 items.',
       p:['Author','Adrian Erlikhman, sole author'],
-      pg:'/img/papers/r02-curated-to-win.webp',href:'/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12',
-      l:[['/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12','Read the paper',1],['https://github.com/adrian-erlikhman/curated-to-win','Code + data']]},
+      pg:'/img/papers/r02-curated-to-win.webp',href:'/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr',
+      l:[['/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr','Read the paper',1],['https://github.com/adrian-erlikhman/curated-to-win','Code + data']]},
     compllm:{paper:1,n:'Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges',k:'Paper · preprint',
       a:['Preprint','arXiv forthcoming'],
       t:'Do LLM judges really recognize their own writing? The usual test flags 15 of 37 cases; 8 survive a false-alarm control, and none beats the judge’s strongest single peer.',
@@ -1684,7 +1684,7 @@ const BIG=(function(){
     {k:[K(/why wrong|misconception|wrong answers/)],f:['experience'],a:say(`<b>${X('https://adrian-erlikhman.github.io/why-wrong/','Why Wrong')}</b> reads a whole class’s wrong answers and names the misconception behind each one: 0.87 F1 on planted misconceptions, with students grouped by shared mistake.`,`Adrian built it in his ${S('xp-kiddom','Kiddom')} ML mentorship and is designing its classroom evaluation with an LAUSD teacher.`)},
     {k:[K(/games unlimited|linkedin games|puzzles?|crossword|wordle|sudoku/)],f:['about'],a:say(`Adrian likes puzzles enough to have built ${X('/linkedin-games-unlimited/','Games Unlimited')}: unlimited practice versions of the LinkedIn daily puzzle games.`)},
     {k:[K(/ieee|bigdata|big data|multilingual|attribution|which (ai|model|llm) wrote|langllm|best paper|stylometr|seven languages/)],dv:'langllm',f:['research'],a:say(`<b>Interpretable Multilingual Attribution of Frontier LLMs</b> is accepted at the IEEE BigData 2026 High School Symposium (Phoenix, 17 Dec) and is a <b>Best Paper Finalist</b>: one of 12 papers, top 16 of 130 accepted.`,`A classifier built on 21 interpretable features names which of five frontier models wrote an essay 59–72% of the time in all seven languages, against 20% chance; the models themselves do little better than chance. Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
-    {k:[K(/curated|reward.?models?|rewardbench|leaderboard|sole.?author|aacl|arrsi|benchmark/)],dv:'curated',f:['research'],a:say(`<b>Curated to Win</b> is Adrian’s sole-author paper, accepted at the ARRSI workshop at AACL-IJCNLP 2026.`,`It certifies when picking a reward model or AI judge by its score on a test set can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 questions, but removing 12 particular ones makes the runner-up the winner.`)},
+    {k:[K(/curated|reward.?models?|rewardbench|leaderboard|sole.?author|aacl|arrsi|benchmark/)],dv:'curated',f:['research'],a:say(`<b>Curated to Win</b> is Adrian’s sole-author paper, accepted at the ARRSI workshop at AACL-IJCNLP 2026.`,`It certifies when picking a reward model or AI judge by its score on a test set can be trusted: removing 12 particular questions of RewardBench’s 2,985 makes the runner-up the winner, and under RewardBench’s own scoring code 11 are enough.`)},
     {k:[K(/whose line|self.?recogni|own writing|llm judges?|ai judges?|\bjudges?\b|preprint|arxiv/)],dv:'compllm',f:['research'],a:say(`<b>Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges</b> asks whether AI judges recognize their own writing.`,`Across nine judges and 1,270 texts, the usual test flags 15 of 37 cases; with two controls added, none beats the judge’s strongest single peer. It is a preprint, arXiv forthcoming; Adrian is co-first author, with Michael Tarekegn and Philo Juang.`)},
     {k:[K(/portfolio (optim|paper)|markowitz|1\/n|ojss|oxford|splitting (money )?evenly|equal.?weight|sharpe/)],dv:'portfolio',f:['research'],a:say(`<b>Does Portfolio Optimization Beat Splitting Evenly?</b> was published in the Oxford Journal of Student Scholarship in October 2026.`,`Splitting money evenly beat the Markowitz-optimal portfolio in 74% of 250 market simulations. Adrian is co-first author with his brother, Ryan Erlikhman.`)},
     {k:[K(/legatum|prosperity|jhss|countries|monte carlo|sensitivity/)],dv:'legatum',f:['research'],a:say(`<b>How Robust Are the Legatum Prosperity Index Rankings?</b> is in revision at the Journal of High School Science.`,`It rebuilds the index’s ranking of 167 countries exactly, then stress-tests it with 30,000 alternative weightings and a 131,072-run sensitivity analysis. Adrian is co-first author with Ryan Erlikhman.`)},

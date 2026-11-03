@@ -293,7 +293,7 @@
      the photo viewer and the paper reader; styles in assets/notebook.css. -->
 <header class="nav"><div class="wrap">
   <a class="brand" href="#about">Adrian Erlikhman</a>
-  <nav aria-label="Sections"><a href="#papers">Research</a><a href="#work">Projects</a><a href="#experience">Internships</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a></nav>
+  <nav aria-label="Sections"><a href="#papers">Research</a><a href="#work">Projects</a><a href="#experience">Internships</a><a href="#fencing">Fencing</a><a href="#record">Honors</a><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a></nav>
 </div></header>
 
 <main id="main" class="nb" tabindex="-1">
@@ -301,7 +301,7 @@
   <h1 data-nosnippet>Adrian Erlikhman</h1>
   <p>I’m a senior at LACES, a public magnet school in Los Angeles. I research how far we can trust what AI evaluations say, build software for people in LA, and fence épée for Team USA.</p>
   <p>A paper I wrote alone was accepted at an <a href="#rs-t2">AACL-IJCNLP workshop</a>, and another was a <a href="#rs-t1">Best Paper Finalist at IEEE BigData</a>. I’ve won <a href="#work">four hackathons</a>, placed <a href="#fencing">6th for the U.S. at the Cadet Pan-Ams</a>, and wrote <a href="#case-aimlli">a free AI course</a> that LAUSD is taking toward a district elective.</p>
-  <p class="links"><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a> · <a href="mailto:erlikhman.adrian@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
+  <p class="links"><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a> · <a href="mailto:erlikhman.adrian@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
   <div class="photos">
     <button type="button" class="p" data-full="/adrian.jpg" data-cap="Me"><img src="/img/about/hs-portrait.webp" width="450" height="600" alt="Adrian Erlikhman"></button>
     <button type="button" class="w" data-full="/fencing-1.jpg" data-cap="Team USA, Cadet Pan-American Championships, Bogotá"><img src="/img/about/lunge-wide.webp" width="520" height="390" alt="Adrian Erlikhman fencing épée for Team USA at the Cadet Pan-American Championships in Bogotá"></button>
@@ -323,13 +323,13 @@
     </div>
   </article>
   <article class="pp" id="rs-t2">
-    <a class="pg" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r02-curated-to-win.webp" alt="" loading="lazy"></a>
+    <a class="pg" href="/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr" target="_blank" rel="noopener" aria-label="Read the paper (PDF)"><img src="/img/papers/r02-curated-to-win.webp" alt="" loading="lazy"></a>
     <div>
-      <h3><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</a></h3>
+      <h3><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation</a></h3>
       <p class="st"><b>Accepted</b>, ARRSI Workshop at AACL-IJCNLP 2026, Hengqin, China, 10 Nov. Sole author.</p>
-      <p>AI labs choose a reward model or an AI judge by its score on a benchmark. This paper, which I wrote alone, asks how few test questions it takes to change that choice, and certifies when the choice can be trusted: RewardBench’s leader survives the removal of any 11 of its 2,985 items, but removing 12 particular ones makes the runner-up the winner. It covers RewardBench and RewardBench 2, 306 models in all.</p>
-      <details><summary>What it asks</summary><ol><li>How much of a benchmark could be removed without changing which reward model wins? <b>Very little.</b> RewardBench’s leader survives the removal of any 11 of its 2,985 items, and removing 12 particular items makes the runner-up the winner. RewardBench 2’s leader survives any 42.</li><li>Is that bound tight, or only a worst case on paper? <b>Tight near the top.</b> Linear programs over item weights, rounded to real item subsets, reach it on both leaderboards.</li><li>How many models could a curator make the winner? <b>Three,</b> on RewardBench, with a curation budget of just 1% of the benchmark’s weight.</li><li>Does the certificate work on a small validation set? <b>Yes.</b> On 200 random items, selections whose top two are more than 2 points apart agree with the full benchmark’s winner 87% of the time, against 43% for the rest.</li></ol></details>
-      <p class="lk"><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-10-12" target="_blank" rel="noopener">Paper</a> (4 pages) · <a href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code and data</a></p>
+      <p>AI labs choose a reward model or an AI judge by its score on a benchmark. This paper, which I wrote alone, asks how few test questions it takes to change that choice, and certifies when the choice can be trusted: removing 12 particular items of RewardBench’s 2,985 makes the runner-up the winner, and under RewardBench’s own scoring code 11 are enough. It covers RewardBench and RewardBench 2, 306 models in all.</p>
+      <details><summary>What it asks</summary><ol><li>How much of a benchmark could be removed without changing which reward model wins? <b>Very little.</b> Removing 12 particular items of RewardBench’s 2,985 makes the runner-up the winner; under RewardBench’s own scoring code, 11 are enough. RewardBench 2’s leader survives the removal of any 39.</li><li>Is that bound tight, or only a worst case on paper? <b>Tight near the top.</b> Linear programs over item weights, rounded to real item subsets, reach it on both leaderboards.</li><li>How many models could a curator make the winner? <b>Three,</b> on RewardBench, with a curation budget of just 1% of the benchmark’s weight.</li><li>Does the certificate work on a small validation set? <b>Yes.</b> On 200 random RewardBench items, the 8% of selections whose top two are more than 2 points apart agree with the full benchmark’s winner 87% of the time, against 43% for the rest.</li></ol></details>
+      <p class="lk"><a href="/papers/curated-to-win-arrsi2026.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">Paper</a> (4 pages) · <a href="https://github.com/adrian-erlikhman/curated-to-win" target="_blank" rel="noopener">Code and data</a></p>
     </div>
   </article>
   <article class="pp" id="rs-t3">
@@ -471,7 +471,7 @@
 <section class="wrap sec" id="contact" aria-labelledby="h-contact">
   <h2 id="h-contact">Contact</h2>
   <p>Email is best: <a href="mailto:erlikhman.adrian@gmail.com">erlikhman.adrian@gmail.com</a>. I usually answer the same day.</p>
-  <p class="links"><a href="resume.pdf?v=2026-11-01-ojss" target="_blank" data-cv-menu>Résumé</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
+  <p class="links"><a href="resume.pdf?v=2026-11-02-cr" target="_blank" data-cv-menu>Résumé</a> · <a href="https://www.linkedin.com/in/adrian-erlikhman-78a262414" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/adrian-erlikhman" target="_blank" rel="noopener">GitHub</a></p>
 </section>
 </main>
 
@@ -479,10 +479,10 @@
      Bump ?v= on all five résumé hrefs (three triggers, two options) whenever a PDF changes. -->
 <div id="cvMenu" class="cvmenu" role="menu" aria-label="Choose a résumé" hidden>
   <div class="cvm-h">Résumé</div>
-  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-11-01-ojss" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="short" href="resume.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">
     <span class="cvm-k">Short</span><span class="cvm-p">2 pages</span>
   </a>
-  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-11-01-ojss" target="_blank" rel="noopener">
+  <a class="cvm-opt" role="menuitem" data-cv="long" href="resume-long.pdf?v=2026-11-02-cr" target="_blank" rel="noopener">
     <span class="cvm-k">Long</span><span class="cvm-p">4 pages</span>
   </a>
   <a class="cvm-src" role="menuitem" href="https://github.com/adrian-erlikhman/adrianerlikhman.is-a.dev/tree/main/resume" target="_blank" rel="noopener">LaTeX source</a>
@@ -500,6 +500,6 @@
   </div>
 </div>
 
-<script src="/assets/site.js?v=2026-11-02-plain"></script>
+<script src="/assets/site.js?v=2026-11-02-cr"></script>
 </body>
 </html>
