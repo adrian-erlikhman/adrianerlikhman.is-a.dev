@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-md`, site.js `2026-11-03-md`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-hk`, site.js `2026-11-03-md`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -620,6 +620,11 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   `#case-*` stay on the figures; Ledger's receipt still prints in its frame. Order (his ask, 3 Nov: AIML-LI and SafeJew
   higher): AIML-LI, SafeJew, Hivemind, Monte, Ledger, eDNAtlas, Safe Routes, Citadel. The "won the same weekend as Hivemind!" note
   came off (Monte is mid-row now); four pen notes remain.
+- **Research refined (3 Nov, his picks from `_mock/research2.html`).** The intro is one short paragraph about the topics, not
+  the venues ("I study when we can trust AI, and the numbers behind big decisions: ..."). Each paper opens with a plain
+  question in italics (`p.hk`, e.g. "Do AI judges recognize their own writing?"); LangLLM's and Curated to Win's paragraphs
+  lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
+  ("yes published first"). He turned down status stamps on the first pages.
 - **The museum wall in colour (3 Nov, his ask: "cool interactive shit with their logos on top ... a little more colorful").**
   Each figure carries `--b`, the project's colour (AIML-LI #0a6a9a, SafeJew #1d4f92, Hivemind #e5484d, Monte #2f45ff, Ledger
   #1b4dff, eDNAtlas #1f8a8a, Safe Routes #dc7426, Citadel #2bb3a8): its logo sits in a white medallion (`a.md`, a link to the
