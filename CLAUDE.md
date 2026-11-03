@@ -617,7 +617,8 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   phones under 820px, 1 under 480px) with a wall label (`.wl`): title and year, medium, what it is (SafeJew's and Safe
   Routes' whys kept in a clause), an italic credit line ("Gift of the Jewish Federation of Greater Los Angeles (Teen
   Innovation Grant). On view since 2024.", "On loan to LAUSD, working toward a district elective.") and its links. Ids
-  `#case-*` stay on the figures; Ledger's receipt still prints in its frame. The "won the same weekend as Hivemind!" note
+  `#case-*` stay on the figures; Ledger's receipt still prints in its frame. Order (his ask, 3 Nov: AIML-LI and SafeJew
+  higher): AIML-LI, SafeJew, Hivemind, Monte, Ledger, eDNAtlas, Safe Routes, Citadel. The "won the same weekend as Hivemind!" note
   came off (Monte is mid-row now); four pen notes remain.
 - **Section-title doodles (3 Nov, later).** One pen drawing after every h2 (`svg.doo`, 64x40, `#2457c5`), each about him:
   Experience a laptop with a rising chart and coffee; Research a paper being written with a pencil (he asked for a writing
