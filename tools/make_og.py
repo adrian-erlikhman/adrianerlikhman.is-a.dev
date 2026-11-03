@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 """Render og.png, the link-preview card for adrianerlikhman.is-a.dev.
 
-Since 2 Nov 2026 (Adrian: the old card "is not great lets make some cool ass
-unique shit"; he picked B, "the scrapbook", of three takes in _mock/og.html,
-over A, a still of the chat, and C, a paper's title page): the card is
-tools/og-card.html, screenshotted by headless Chrome. His name in Latin Modern
-on the site's warm white and dot grid; three notes in the welcome's ballpoint
-blue handwriting (Shantell Sans) with a pen arrow to a taped print of his Team
-USA lunge at the Pan-Ams; his headshot as the welcome's polaroid, "hi, i'm
-adrian!". The cards before it (the navy fade over the lunge, 15 Oct; chips;
-chips beside the headshot) were drawn here with PIL and are in git history.
+Since 3 Nov 2026 it is the LaTeX card (tools/og-card.html): an editor with a
+short LaTeX file on the left (document class "senior", packages nlp and epee,
+research 5, hackathons 4, fencing Team USA) and, on the right, the title page
+it compiles to: his name, "Los Angeles, Class of 2027" and a one-line abstract.
+Adrian turned down the scrapbook card (2 Nov) and four plain takes ("really
+basic ... i want something techy and unique and quirky"); this is take A of
+four techy ones in _mock/og3.html (B a fencing scoring box at 15-14, C a
+receipt on Ledger's blue, D a chip datasheet). Earlier cards are in git history.
 
-Cards get rendered small: ~300px in iMessage, ~360px in Slack. The name and
-the two photos carry it there, so the notes are set large. Chat apps show a
-still, so there is no animation.
+Cards get rendered small: ~300px in iMessage, ~360px in Slack. The name on the
+page carries it there; the code reads as texture until the card is opened large.
+Chat apps show a still, so there is no animation.
 
-Needs Chrome (set CHROME to its path if it isn't the default) and a network
-connection for Google Fonts. Writes og.png at the repo root, or the path given:
+Fonts: Latin Modern Roman comes from /fonts/ (the site's woff2). Latin Modern
+Mono is lmmono10-regular.otf, copied from the Tectonic cache
+(%LOCALAPPDATA%/TectonicProject/Tectonic/cache/bundles/data/<hash>/) into the
+gitignored tools/fonts/. Needs Chrome (set CHROME to its path if it isn't the
+default). Writes og.png at the repo root, or the path given:
     python tools/make_og.py [out.png]
 """
 import functools

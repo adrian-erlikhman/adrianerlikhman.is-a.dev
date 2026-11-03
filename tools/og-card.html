@@ -4,48 +4,55 @@
 <meta charset="utf-8">
 <title>og card</title>
 <meta name="robots" content="noindex">
-<!-- og.png's source (2 Nov 2026, Adrian picked B, "the scrapbook", of three takes in _mock/og.html). tools/make_og.py
-     serves the repo and screenshots this page at 1200x630. Cards show at ~300-480px, so everything here is set large. -->
-<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght,BNCE,INFM@400..600,-100..100,0..100&family=IBM+Plex+Mono:wght@600&display=block" rel="stylesheet">
+<!-- og.png's source since 3 Nov 2026: the LaTeX card. Adrian turned down the scrapbook card and four plain ones ("really
+     basic ... i dont want ai slop, but i want something techy and unique and quirky"); of four techy takes in _mock/og3.html
+     (LaTeX source, a fencing scoring box, a receipt, a chip datasheet) this one was Claude's pick overnight, since his site
+     and résumés are LaTeX. Left: an editor with the source (\documentclass{senior}); right: the page it compiles to. Only
+     facts from the site. tools/make_og.py serves the repo and screenshots this page at 1200x630. -->
 <style>
+@font-face{font-family:'LM Roman';src:url(/fonts/lmroman10-regular.woff2) format('woff2');font-weight:400;font-display:block}
 @font-face{font-family:'LM Roman';src:url(/fonts/lmroman10-bold.woff2) format('woff2');font-weight:700;font-display:block}
+/* Latin Modern Mono, copied from the Tectonic cache into the gitignored tools/fonts/ (see make_og.py) */
+@font-face{font-family:'LM Mono';src:url(/tools/fonts/lmmono10-regular.otf) format('opentype');font-weight:400;font-display:block}
 html,body{margin:0;padding:0}
-body{width:1200px;height:630px;overflow:hidden;position:relative;background:#fbfaf7;--ink:#2457c5;-webkit-font-smoothing:antialiased}
-/* the site's dot grid */
-body::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#d9d6cf 1.3px,transparent 1.4px);background-size:26px 26px;opacity:.7}
+body{width:1200px;height:630px;overflow:hidden;position:relative;background:#e9e6df;font-family:'LM Roman',serif;color:#1a1a1a;-webkit-font-smoothing:antialiased}
 .ab{position:absolute}
-.k{left:76px;top:86px;font:600 17px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#7a7a74}
-.nm{left:72px;top:118px;margin:0;font:700 100px/0.98 'LM Roman',serif;color:#1f3a5f;letter-spacing:-.01em}
-/* the welcome's ballpoint notes */
-.hw{font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;color:var(--ink)}
-.nt{left:78px;top:366px;margin:0;padding:0;list-style:none;font-size:33px;font-weight:500;line-height:56px}
-.nt li:nth-child(1){transform:rotate(-1.2deg)}
-.nt li:nth-child(2){transform:rotate(.6deg)}
-.nt li:nth-child(3){transform:rotate(-.8deg)}
-.nt u{text-decoration:none;background:linear-gradient(transparent 62%,rgba(36,87,197,.16) 62%)}
-/* a taped print of the Pan-Ams lunge, and the polaroid from the welcome */
-.pr{left:640px;top:58px;width:404px;padding:14px;background:#fff;box-shadow:0 18px 36px -16px rgba(0,0,0,.42),0 1px 3px rgba(0,0,0,.14);transform:rotate(-4deg)}
-.pr img{display:block;width:376px;height:282px;object-fit:cover}
-.tp{left:770px;top:42px;width:88px;height:28px;background:rgba(233,208,150,.78);transform:rotate(-14deg)}
-.pol{left:922px;top:286px;width:228px;padding:11px 11px 12px;background:#fff;box-shadow:0 18px 36px -14px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.14);transform:rotate(6deg)}
-.pol::before{content:"";position:absolute;top:-15px;left:50%;width:96px;height:30px;transform:translateX(-50%) rotate(-4deg);background:rgba(233,208,150,.78);box-shadow:0 1px 2px rgba(0,0,0,.08)}
-.pol img{display:block;width:206px;height:206px;object-fit:cover;object-position:center 26%}
-.pol span{display:block;margin-top:8px;text-align:center;font-weight:600;font-size:27px;line-height:1.1}
-svg{position:absolute;left:0;top:0;overflow:visible}
-svg path{fill:none;stroke:var(--ink);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.ed{left:0;top:0;bottom:0;width:640px;background:#1d1f23;color:#d7dae0;font:400 25px/1.55 'LM Mono',monospace;padding-top:46px;box-sizing:border-box}
+.ed ol{margin:0;padding:0;list-style:none;counter-reset:l}
+.ed li{counter-increment:l;white-space:pre;padding-left:82px;position:relative}
+.ed li::before{content:counter(l);position:absolute;left:0;width:56px;text-align:right;color:#5b616d}
+.c{color:#7fb0ff}.b{color:#e7c07b}.k{color:#7a8190}
+.bar{left:0;bottom:0;width:640px;height:52px;background:#16181b;color:#8a919c;font:400 20px/52px 'LM Mono',monospace;padding-left:28px;box-sizing:border-box}
+.bar b{color:#a6d189;font-weight:400}
+.pg{left:700px;top:46px;width:440px;height:560px;background:#fff;box-shadow:0 24px 50px -24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.06);text-align:center}
+.pg h1{margin:92px 0 0;font-weight:700;font-size:58px;line-height:1.05}
+.au{margin-top:18px;font-size:24px;color:#333}
+.abs{margin:44px 46px 0;text-align:justify;font-size:19.5px;line-height:1.45;color:#222}
+.abs b{display:block;text-align:center;margin-bottom:6px;font-size:20px}
+.n{position:absolute;left:0;right:0;bottom:26px;font-size:17px;color:#777}
 </style>
 </head>
 <body>
-<div class="ab k">LOS ANGELES, CALIFORNIA</div>
-<h1 class="ab nm">Adrian<br>Erlikhman</h1>
-<ul class="ab nt hw">
-  <li>i do <u>ML/NLP research</u></li>
-  <li>i build things: <u>4× hackathon winner</u></li>
-  <li>i fence épée for <u>Team USA</u></li>
-</ul>
-<div class="ab pr"><img src="/img/about/lunge-wide.webp" alt=""></div>
-<div class="ab tp"></div>
-<div class="ab pol hw"><img src="/adrian.jpg" alt=""><span>hi, i’m adrian!</span></div>
-<svg width="1200" height="630"><path d="M526 518 C 640 528, 760 500, 790 394"/><path d="M777 409 L790 393 L801 412"/></svg>
+<div class="ab ed"><ol>
+  <li><span class="c">\documentclass</span><span class="b">{</span>senior<span class="b">}</span></li>
+  <li><span class="c">\usepackage</span><span class="b">{</span>nlp, epee<span class="b">}</span></li>
+  <li> </li>
+  <li><span class="c">\title</span><span class="b">{</span>Adrian Erlikhman<span class="b">}</span></li>
+  <li><span class="c">\date</span><span class="b">{</span>Class of 2027<span class="b">}</span></li>
+  <li> </li>
+  <li><span class="c">\begin</span><span class="b">{</span>document<span class="b">}</span></li>
+  <li><span class="c">\maketitle</span></li>
+  <li><span class="c">\research</span><span class="b">{</span>5<span class="b">}</span>      <span class="k">% papers</span></li>
+  <li><span class="c">\hackathons</span><span class="b">{</span>4<span class="b">}</span>    <span class="k">% wins</span></li>
+  <li><span class="c">\fencing</span><span class="b">{</span>Team USA<span class="b">}</span></li>
+  <li><span class="c">\end</span><span class="b">{</span>document<span class="b">}</span></li>
+</ol></div>
+<div class="ab bar"><b>✓</b> compiled · adrian.tex → adrianerlikhman.is-a.dev</div>
+<div class="ab pg">
+  <h1>Adrian<br>Erlikhman</h1>
+  <div class="au">Los Angeles · Class of 2027</div>
+  <div class="abs"><b>Abstract</b>ML/NLP researcher and Team USA fencer. Five papers, four hackathon wins, and an épée rating of A26.</div>
+  <div class="n">1</div>
+</div>
 </body>
 </html>
