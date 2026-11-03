@@ -2057,3 +2057,48 @@ const BIG=(function(){
   const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}),{rootMargin:'-45% 0px -50% 0px'});
   links.forEach(l=>{const s=document.querySelector(l.getAttribute('href'));if(s)spy.observe(s);});
 })();
+
+/* ================= NOTEBOOK (2 Nov 2026): the homepage as one scrolling page (Adrian picked A, Notebook, of three takes in
+   _mock/redo-a.html after asking for no ChatGPT). A photo with data-full opens large, and a bout ([data-video]) plays with
+   sound, in one viewer; the site's PDFs open in a reader over the page, in the browser's own PDF viewer. Phones, browsers
+   without an inline PDF viewer, and ctrl/cmd-clicks get the PDF in a new tab instead. Esc, × or a click outside closes. ===== */
+(function(){
+  const main=document.querySelector('main.nb'); if(!main) return;
+  const X='<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>';
+  const mod=e=>e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button;
+  const lb=document.createElement('div'); lb.className='lb'; lb.hidden=true;
+  lb.setAttribute('role','dialog'); lb.setAttribute('aria-modal','true'); lb.setAttribute('aria-label','Photo viewer');
+  lb.innerHTML=`<button class="xb" type="button" aria-label="Close">${X}</button><img alt=""><video controls playsinline hidden></video><p></p>`;
+  document.body.appendChild(lb);
+  const im=lb.querySelector('img'),vd=lb.querySelector('video');
+  let from=null;
+  const close=()=>{ if(lb.hidden) return; lb.hidden=true; vd.pause(); vd.removeAttribute('src'); vd.load(); if(from) from.focus({preventScroll:true}); };
+  lb.addEventListener('click',e=>{ if(e.target!==vd) close(); });
+  main.addEventListener('click',e=>{
+    const b=e.target.closest('[data-full],[data-video]'); if(!b||mod(e)) return;
+    e.preventDefault(); const v=b.hasAttribute('data-video');
+    im.hidden=v; vd.hidden=!v;
+    if(v){ vd.src=b.getAttribute('href'); const p=vd.play(); if(p&&p.catch) p.catch(()=>{}); }
+    else { const i=b.querySelector('img'); im.src=b.dataset.full; im.alt=i?i.alt:''; }
+    lb.querySelector('p').textContent=b.dataset.cap||'';
+    from=b; lb.hidden=false; lb.querySelector('.xb').focus();
+  });
+  const rd=document.createElement('div'); rd.className='rd'; rd.hidden=true;
+  rd.innerHTML=`<div class="rd-p" role="dialog" aria-modal="true" aria-label="Paper"><div class="rd-b"><b></b><a target="_blank" rel="noopener">Open in a new tab ↗</a><button class="xb" type="button" aria-label="Close">${X}</button></div><iframe title="Paper"></iframe></div>`;
+  document.body.appendChild(rd);
+  const fr=rd.querySelector('iframe'), inline=navigator.pdfViewerEnabled!==false&&matchMedia('(min-width:760px)').matches;
+  let rfrom=null;
+  const rclose=()=>{ if(rd.hidden) return; rd.hidden=true; fr.src='about:blank'; document.body.style.overflow=''; if(rfrom) rfrom.focus({preventScroll:true}); };
+  rd.addEventListener('click',e=>{ if(e.target===rd||e.target.closest('.xb')) rclose(); });
+  main.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="/papers/"]'); if(!a||!inline||mod(e)) return;
+    e.preventDefault(); const u=a.getAttribute('href'), pp=a.closest('.pp'), h=pp&&pp.querySelector('h3');
+    rd.querySelector('b').textContent=a.dataset.title||(h?h.textContent:'Paper');
+    rd.querySelector('.rd-b a').href=u; fr.src=u; rfrom=a;
+    rd.hidden=false; document.body.style.overflow='hidden'; rd.querySelector('.xb').focus();
+  });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'){ close(); rclose(); } });
+  /* back up at the top, no section link stays underlined (site.js NAV only watches the sections in the bar) */
+  const hero=document.getElementById('about');
+  if(hero) new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) document.querySelectorAll('.nav nav a.on').forEach(a=>a.classList.remove('on')); }),{rootMargin:'-45% 0px -50% 0px'}).observe(hero);
+})();

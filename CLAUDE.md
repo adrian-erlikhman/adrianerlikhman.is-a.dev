@@ -341,8 +341,8 @@ from LaTeX in `resume/`.
 - **Site links:** every résumé link carries `data-cv-menu` and opens the
   `#cvMenu` picker (short, long, LaTeX source); without JS it opens the
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
-  The `?v=` cache-buster lives in **five places** since the 29 Oct all-chat homepage: the chat's sidebar Résumé link and
-  Résumé pill, the Contact conversation's Résumé button and the two picker options. `grep -c "v=2026-11-01-ojss"
+  The `?v=` cache-buster lives in **five places** (since the 2 Nov notebook homepage): the top bar's Résumé button, the
+  hero's Résumé button, Contact's Résumé button and the two picker options. `grep -c "v=2026-11-01-ojss"
   index.html` should print 5. Bump all five whenever either PDF changes, to a value nobody else has used. Currently `?v=2026-11-01-ojss`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
@@ -449,10 +449,14 @@ from LaTeX in `resume/`.
   its own dark neon design.
 
 ## Shared assets
-- **Since 28 Oct the homepage loads `assets/home.css`, not `site.css`** (no other page loaded site.css; it stays in
-  the repo as history). home.css holds the new design plus copies of the site.css rules for the intro, the
-  maintenance screen, the résumé picker, ⌘K and toasts. `site.js` is still shared; its CHAT SITE block runs the
-  homepage (see below). Both links carry `?v=` (currently home.css `2026-11-02-ph`, site.js `2026-11-02-ph`).
+- **Since 2 Nov the homepage loads `assets/notebook.css`** (the notebook; see Homepage: the notebook). It holds the new
+  design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
+  (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
+  its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-02-nb`, site.js `2026-11-02-nb`). An inline
+  script in the head adds `.js` to `<html>`; the scroll reveal (`.js .rv`) needs it, so a failed script never hides a
+  section.
+- 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
   JSON-LD and the code-preview samples stay inline in the page that needs them.
@@ -495,7 +499,40 @@ from LaTeX in `resume/`.
   site.css. Git history has all of it (last commit with the page: ae30c60). Notes elsewhere in this
   file that mention /demos/ are history; don't bring any of it back unless he asks.
 
-## Homepage redesign (28 Oct 2026, current)
+## Homepage: the notebook (2 Nov 2026, current)
+- **Why:** someone told Adrian they hated the site; he asked "how can we totally redo it to make it cooler but still really
+  good for admissions officers. maybe no chatgpt". Of three full mocks (`_mock/redo-a.html` Notebook, `redo-b.html` Big
+  type: huge name, facts table, the touch full width; `redo-c.html` Launch: centered, framed video with tabs, logo row)
+  he picked **A, Notebook**. The chat homepage (29 Oct to 2 Nov) is gone; its markup is in git history (last commit with
+  it: 02e2997), and its notes below are history except where they set content or wording.
+- **What it is:** one scrolling page (`main.nb`), no chat, no welcome notes, everything typed and visible without a click.
+  The swarm intro still plays on a plain visit and the `status.json` maintenance switch still works (site.js INTRO). Top
+  bar: page mark and name, Research · Built · Internships · Fencing · Honors · Off the laptop · Contact (the one in view
+  is underlined, site.js NAV; back at the hero none is), Résumé (the picker). On phones the links scroll sideways under
+  the name.
+- **Order:** hero (`#about`: "Los Angeles · Senior at LACES", the name, "He researches how far we can trust what AI
+  evaluations say, builds software for Los Angeles, and fences épée for Team USA." with each clause linked, Résumé and
+  Email him; on the right the og card's collage: the Curated to Win first page (opens the PDF), the lunge print and the
+  "hi, i'm adrian!" polaroid (open in the viewer), and two blue notes) · **the short version** (his four highlights, his
+  1 Nov words: Sole-author paper, Team USA fencer, 4× hackathon winner, AI course for LAUSD) · Research (`#papers`,
+  `#rs-t1..5`: per paper the taped first page, result and venue with its mark, the full title, authors, the plain
+  paragraph, "What the paper asks" as a `<details>` with the papers' own questions, and the PDF and code buttons) ·
+  What he's built (`#work`, `#case-*`: six taped prints, result in navy, one line, the links; Ledger keeps its receipt;
+  then Citadel's dunderscore and "Why he built them") · Internships (`#experience`, `#xp-*`, no logos, plus Lemma next
+  summer) · Team USA épée (`#fencing`: the six-second touch, two photo prints, four ranks, results, the bout he
+  remembers, coaching, `#bouts`, fencingtracker and the MIT line) · Honors (`#record`, the ranked table) · Off the laptop
+  (`#life`) · What's next (`#next`) · Contact (`#contact`). His four quotes stay as `.q` in the blue hand.
+- **Handwriting is only an aside**, never a fact: the hero's two notes, "start here ↓", and one per section head ("the
+  second one i wrote alone", "all of them are live. go click around!", "same weekend, both won", "four so far, a fifth next
+  summer", "22 hours a week since age nine", "most selective first", "eating and napping count, right?"), and "thanks for
+  reading!". Change them freely; keep them short and true.
+- **Clicks:** a `[data-full]` photo opens large and a `[data-video]` bout plays with sound in one viewer (`.lb`); every
+  `/papers/…pdf` link opens the reader (`.rd`, the browser's PDF viewer; phones and ctrl/cmd-clicks get a new tab).
+  site.js NOTEBOOK. The ⌘K palette still jumps to the old ids.
+- **Not carried over:** typed questions and their KB, Surprise me, the favorites chip, the welcome notes, the canvas
+  (BIG VIEW). Their code still sits in site.js and skips itself; their CSS in home.css. Ask before bringing any back.
+
+## Homepage redesign (28 Oct 2026; the chat, history)
 Adrian rejected the paper-page, newspaper, LaTeX-editor, contents-page and "bubbly" sidebar takes ("mid... AI slop"),
 then asked to emulate **Fuser** (fuser.studio) "to make it more unique", **but not its black background**: Fuser's
 structure in his warm white + navy. He reviewed it as a private artifact mock (`_mock/landing6.html`) and said push it,
