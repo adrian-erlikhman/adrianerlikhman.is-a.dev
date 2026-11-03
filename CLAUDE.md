@@ -624,7 +624,8 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   the venues ("I study when we can trust AI, and the numbers behind big decisions: ..."). Each paper opens with a plain
   question in italics (`p.hk`, e.g. "Do AI judges recognize their own writing?"); LangLLM's and Curated to Win's paragraphs
   lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
-  ("yes published first"). He turned down status stamps on the first pages.
+  ("yes published first"). He turned down status stamps on the first pages, then a colourful extra (result charts per
+  paper, `_mock/research3-a.html`, or topic medallions, `-b.html`): "this is dtm, its chill for now". Leave Research as is.
 - **The museum wall in colour (3 Nov, his ask: "cool interactive shit with their logos on top ... a little more colorful").**
   Each figure carries `--b`, the project's colour (AIML-LI #0a6a9a, SafeJew #1d4f92, Hivemind #e5484d, Monte #2f45ff, Ledger
   #1b4dff, eDNAtlas #1f8a8a, Safe Routes #dc7426, Citadel #2bb3a8): its logo sits in a white medallion (`a.md`, a link to the
