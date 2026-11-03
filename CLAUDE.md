@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-nt`, site.js `2026-11-03-nt`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-mw`, site.js `2026-11-03-mw`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -610,6 +610,24 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   page lifts to 2.6x on hover (CSS); (4) Ledger's receipt prints out of the slot when it comes into view. site.js NOTES &
   TOUCHES (positions computed from the real elements, re-laid out on resize, font load and any height change); styles at
   the end of notebook.css. Reduced motion: no name effect, notes and receipt shown as they end.
+- **Projects is a museum wall (3 Nov, later).** Adrian rejected tighter lists (C, D), three presentations (index + stage,
+  problem first, commit log), three all-at-once takes (paper figure, periodic table, marked-up contact sheet) and four of
+  five more (map of LA, bookshelf, lock screen, Venn), then picked the **museum wall** (`_mock/proj4-museum.html`): each
+  project framed (`.fr`) under a spotlight on a warm wall (`.ms`, wider than the text column via `.wide`, 4 across, 2 on
+  phones under 820px, 1 under 480px) with a wall label (`.wl`): title and year, medium, what it is (SafeJew's and Safe
+  Routes' whys kept in a clause), an italic credit line ("Gift of the Jewish Federation of Greater Los Angeles (Teen
+  Innovation Grant). On view since 2024.", "On loan to LAUSD, working toward a district elective.") and its links. Ids
+  `#case-*` stay on the figures; Ledger's receipt still prints in its frame. The "won the same weekend as Hivemind!" note
+  came off (Monte is mid-row now); four pen notes remain.
+- **Section-title doodles (3 Nov, later).** One pen drawing after every h2 (`svg.doo`, 64x40, `#2457c5`), each about him:
+  Experience a laptop with a rising chart and coffee; Research a paper being written with a pencil (he asked for a writing
+  utensil instead of the first round's prize ribbon); Projects the Hivemind bee on a dotted loop (it bobs); Fencing him
+  mid-lunge in a mask; Honors a podium; Outside school a tent under the Sierra; What's next a signpost, "CS" one way and
+  "econ" the other (his ask: "something else" than the first round's grad cap); Contact an LA palm and a paper plane. He
+  liked fencing, outside school, projects and contact as they were. Each draws itself in once its title is on screen
+  (site.js NOTES & TOUCHES; `html.js` is set by a one-line script in the head so they don't flash in whole) and wiggles on
+  hover. Not `.dd`: that class is the receipt's double rule. Paths live in the scratch script `ship_museum.py` /
+  `make_titles2.py` (session scratchpad) and inline in index.html.
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight
   cards, the handwritten quotes (his lines are now plain sentences in Research, Projects, Fencing and Next). Their code
   still sits in site.js and skips itself.

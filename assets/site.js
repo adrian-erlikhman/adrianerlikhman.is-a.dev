@@ -2117,7 +2117,6 @@ const BIG=(function(){
     {t:'#about .photos button',s:'l',fx:0,fy:.42,dy:-26,txt:'hi! that’s me'},
     {t:'#xp-lemma h3',s:'l',fx:0,fy:.5,dy:-34,txt:'came with a hackathon win!'},
     {t:'#rs-t2 .pg',s:'l',fx:0,fy:.3,dy:-30,txt:'wrote this one on my own'},
-    {t:'#case-monte .im',s:'l',fx:0,fy:0,dy:-14,txt:'won the same weekend as Hivemind!'},
     {t:'.reel video',s:'r',fx:.72,fy:.32,dy:44,txt:'me, in the black mask'},
   ];
   const seen=new Set(); let els=[], svg=null, io=null;
@@ -2198,6 +2197,12 @@ const BIG=(function(){
       for(const p of P){const dx=p.x-mx,dy=p.y-my,ds=Math.hypot(dx,dy)||1,f=Math.max(0,1-ds/(160*DPR))*14*DPR; p.vx+=dx/ds*f; p.vy+=dy/ds*f;}
       kick=performance.now()+400; });
   }
+
+  /* ---- section-title doodles draw themselves in once their title is on screen ---- */
+  document.documentElement.classList.add('js');
+  const hs=[...document.querySelectorAll('main h2')].filter(h=>h.querySelector('.doo'));
+  if(still||!window.IntersectionObserver) hs.forEach(h=>h.classList.add('seen'));
+  else{ const dio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); dio.unobserve(e.target); } }),{rootMargin:'0px 0px -12% 0px'}); hs.forEach(h=>dio.observe(h)); }
 
   /* ---- 4. Ledger's receipt prints when it comes into view ---- */
   const lgr=$('.lgr');
