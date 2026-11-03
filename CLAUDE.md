@@ -50,6 +50,28 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   "A wards" and failed the build. `build.py cv` (or `long`) builds it and **copies it to `resume-long.pdf`** too, so old
   links to the long résumé still open; the sitemap, JSON-LD and llms.txt list `cv.pdf`. Notes below about the long
   résumé's sections describe what the CV grew out of; its content rules (Kiddom, Firstness, credits) still hold.
+- **CV refined (3 Nov, later; his "refine the CV"), from a fresh reviewer's read:** dated entries keep the date top right
+  on their first line (`\dated` is two minipages); the footer says "Updated November 2026" (change it when you edit);
+  project headers carry their result; the in-revision Legatum paper moved to "Manuscripts in revision and preprints" with
+  Whose Line; citations carry place and year; talks after today say "(scheduled)" (drop it after 10 Nov, 2 Dec, 17 Dec);
+  current roles in the present tense; LangLLM gained its Code link (github.com/adrian-erlikhman/LangLLM, public). Facts
+  tightened: Whose Line's tests are "significantly" and the 86.3% is "of the chat-app essays"; Legatum's band is ranks
+  68-100 and no compute-saving claim; Safe Routes' 80% names its one modeled trip; SafeJew is funded by the Teen
+  Innovation Grant and distributed through the Community Security Initiative (the one-pager said the Initiative funded
+  it and claimed "a citable source on every pin"; both fixed there too); "open-source" is off AIML-LI in both (the
+  notebooks repo is private); YC admitted him as AIML-LI's co-founder; JSU is President since 11th grade, Secretary in
+  10th (his College Apps notes), so 2024-Present; AP Scholar years 2025 and 2026 (his Common App); coaching is beginner
+  classes and his younger brother. MTAC moved to Honors. **Still open, for Adrian:** who shares co-first authorship on
+  LangLLM and Whose Line (an asterisk key would be standard); his part in Safe Routes and eDNAtlas; dates for coaching,
+  the Expo and dual enrollment; and **"4× Junior regional champion"**: his final Common App says **3×**, fencingtracker
+  shows two, the site and both résumés say 4×.
+- **Alliance: deep tech and Caltech (3 Nov, his ask).** "add a line for the alliance talked about deeptech companies i
+  worked with, including companies coming out of caltech". From his Common App entry: a coalition of USC, UCLA, Caltech
+  and 20+ organizations; he diligenced 35 startups. CV: a role line naming the coalition and a bullet ("Worked with
+  Southern California's deep-tech startups, including companies spun out of Caltech: diligenced 35 startups, led outreach
+  to 80+ founders and mapped the region's deep-tech ecosystem"); one-pager: "Worked with SoCal deep-tech startups,
+  including Caltech spinouts"; site and llms.txt match. (The old "Caltech is out permanently" rule was about something
+  else; this is his own ask.)
 - **Since 20-21 Oct 2026 both résumés are the classic black-and-white Jake's Resume
   layout at 11pt** (Adrian: "the normal black and white latex format like the most
   famous one", "make the font the size of the actual resume"; no navy, no colour).
@@ -357,8 +379,8 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   one-pager. The ⌘K palette and the terminal read their URLs from the picker.
   **Since 3 Nov** the hero and Contact show **Résumé · CV** as two plain links, and only the top bar's Résumé opens the
   picker ("Résumé or CV": Résumé, 2 pages; CV, 4 pages, with publications; LaTeX source). The `?v=` cache-buster is on
-  **seven links** on five lines: `grep -o "v=2026-11-03-cv" index.html | wc -l` should print 7. Bump them all whenever
-  either PDF changes, to a value nobody else has used. Currently `?v=2026-11-03-cv`.
+  **seven links** on five lines: `grep -o "v=2026-11-03-cv2" index.html | wc -l` should print 7. Bump them all whenever
+  either PDF changes, to a value nobody else has used. Currently `?v=2026-11-03-cv2`.
   JSON-LD `subjectOf` and `sitemap.xml` list both PDFs.
 - **Retired:** the hand-authored résumé Adrian exported on 8 Sept
   (`~/Downloads/Adrian_Erlikhman_Resume.pdf`) and the surgery pipeline that
