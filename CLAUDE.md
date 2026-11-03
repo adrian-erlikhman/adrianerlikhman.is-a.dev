@@ -541,8 +541,8 @@ from LaTeX in `resume/`.
   sit above the fencing clip. **Cut:** his aphorisms ("My default is to start before I feel ready", "Fencing taught me",
   "I learn by building"), the 14-14 bout story, the two Top 64 results, SIFMA, the favorites table, the typical day, the
   naps, the bed line and Ryan's Valentine's story; piano moved to Honors (MTAC row); NCSS and the aiEDU podcast are two
-  rows. **Left for Adrian** (his past calls or unknown facts): the MIT recruitment line in Fencing (the reviewer flagged
-  that other schools' readers see it), "4× Junior Regional Champion" (fencingtracker shows two), which brother is "my
+  rows. **The MIT recruitment line in Fencing stays** (Adrian, 3 Nov: "Keep it", after both reviewers flagged that other
+  schools' readers see it; don't raise it again). **Left for Adrian** (his past calls or unknown facts): "4× Junior Regional Champion" (fencingtracker shows two), which brother is "my
   11-year-old brother" (Ryan is older), teammate credits on SafeJew, Ledger and Safe Routes, and project order.
 - **Second overnight pass (3 Nov), from a second fresh review:** the hero's score line came out again ("the least
   nonchalant line"; scores stay in Honors) and its paragraph lost its links; it now says "Best Paper Finalist at the IEEE
