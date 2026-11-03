@@ -2102,3 +2102,108 @@ const BIG=(function(){
   const hero=document.getElementById('about');
   if(hero) new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) document.querySelectorAll('.nav nav a.on').forEach(a=>a.classList.remove('on')); }),{rootMargin:'-45% 0px -50% 0px'}).observe(hero);
 })();
+
+/* ================= NOTES & TOUCHES (3 Nov 2026): Adrian picked A (pen notes) and touches 1, 2 and 4 of _mock/touches.html.
+   Five hand-written notes in his ballpoint blue sit in the margins (1180px+ only), each with an arrow that draws in once
+   it is on screen. The name turns into the loading screen's dots under the cursor; Ledger's receipt prints when it
+   comes into view. The paper peek (touch 2) is CSS only. Styles at the end of notebook.css. ===== */
+(function(){
+  const main=document.querySelector('main.nb'); if(!main) return;
+  const $=s=>document.querySelector(s), still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const NS='http://www.w3.org/2000/svg';
+
+  /* ---- the notes: the target, which side, where the arrow lands on it (fx, fy), and the note's offset from there ---- */
+  const NOTES=[
+    {t:'#about .photos button',s:'l',fx:0,fy:.42,dy:-26,txt:'hi! that’s me'},
+    {t:'#xp-lemma h3',s:'l',fx:0,fy:.5,dy:-34,txt:'came with a hackathon win!'},
+    {t:'#rs-t2 .pg',s:'l',fx:0,fy:.3,dy:-30,txt:'wrote this one on my own'},
+    {t:'#case-monte .im',s:'l',fx:0,fy:0,dy:-14,txt:'won the same weekend as Hivemind!'},
+    {t:'.reel video',s:'r',fx:.72,fy:.32,dy:44,txt:'me, in the black mask'},
+  ];
+  const seen=new Set(); let els=[], svg=null, io=null;
+  const box=el=>{const r=el.getBoundingClientRect();return {l:r.left+scrollX,t:r.top+scrollY,w:r.width,h:r.height};};
+  // a hand-drawn arrow: one bowed stroke, then two short strokes for the head
+  const arrow=(x1,y1,x2,y2,side)=>{
+    const cx=(x1+x2)/2, cy=(y1+y2)/2+(side==='l'?-1:1)*Math.min(40,Math.abs(x2-x1)*.25);
+    const a=Math.atan2(y2-cy,x2-cx), h=9, p=d=>`${x2-h*Math.cos(a+d)},${y2-h*Math.sin(a+d)}`;
+    return `M${x1},${y1} Q${cx},${cy} ${x2},${y2} M${p(-.5)} L${x2},${y2} L${p(.5)}`;
+  };
+  function layout(){
+    els.forEach(n=>n.remove()); els=[]; if(svg){svg.remove();svg=null;} if(io){io.disconnect();io=null;}
+    const col=$('#main .wrap'); if(!col||innerWidth<1180) return;
+    const c=box(col), W=Math.min(210,c.l-54);
+    svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','pn-svg'); svg.setAttribute('aria-hidden','true');
+    svg.setAttribute('width',document.documentElement.scrollWidth); svg.setAttribute('height',document.documentElement.scrollHeight);
+    document.body.appendChild(svg);
+    io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; const i=+e.target.dataset.i;
+      seen.add(i); e.target.classList.add('on'); e.target._p.classList.add('on'); io.unobserve(e.target); }),{rootMargin:'0px 0px -12% 0px'});
+    NOTES.forEach((d,i)=>{
+      const el=$(d.t); if(!el) return; const r=box(el);
+      const tx=r.l+r.w*d.fx+(d.s==='l'?-8:10), ty=r.t+r.h*d.fy;
+      const n=document.createElement('div'); n.className='pn '+d.s; n.textContent=d.txt; n.dataset.i=i;
+      n.setAttribute('aria-hidden','true'); n.style.width=W+'px'; document.body.appendChild(n);
+      const nh=n.offsetHeight, ny=ty+d.dy-nh/2, nx=d.s==='l'?c.l-36-W:c.l+c.w+36, sx=d.s==='l'?c.l-30:nx-6;
+      n.style.left=nx+'px'; n.style.top=ny+'px';
+      const p=document.createElementNS(NS,'path'); p.setAttribute('d',arrow(sx,ny+nh*.55,tx,ty,d.s)); svg.appendChild(p);
+      p.style.setProperty('--len',Math.ceil(p.getTotalLength())); n._p=p; els.push(n);
+      if(seen.has(i)||still){n.classList.add('on');p.classList.add('on');} else io.observe(n);
+    });
+  }
+  let t=0; const relayout=()=>{clearTimeout(t);t=setTimeout(layout,150);};
+  addEventListener('resize',relayout); addEventListener('load',relayout);
+  if(document.fonts) document.fonts.ready.then(relayout);
+  if(window.ResizeObserver) new ResizeObserver(relayout).observe(main); // a details opening, a late image
+  relayout();
+
+  /* ---- 1. the name: under the cursor it turns into the loading screen's dots, which the cursor pushes; a tap bursts them ---- */
+  const h1=$('.hero h1');
+  if(h1&&!still){
+    const PAD=48; let cv=null,ctx,P=[],DPR=1,raf=0,mx=-1e4,my=-1e4,hover=false,kick=0;
+    const build=()=>{
+      DPR=Math.min(devicePixelRatio||1,2);
+      const cs=getComputedStyle(h1), r=h1.getBoundingClientRect(), tn=[...h1.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());
+      if(!tn) return false;
+      const rg=document.createRange(); rg.selectNodeContents(tn); const tr=rg.getBoundingClientRect();
+      const mk=document.createElement('span'); mk.style.cssText='display:inline-block;width:0;height:0;vertical-align:baseline';
+      h1.appendChild(mk); const base=mk.getBoundingClientRect().top-r.top; mk.remove();
+      const W=Math.ceil(r.width+PAD*2), H=Math.ceil(r.height+PAD*2);
+      cv=document.createElement('canvas'); cv.width=W*DPR; cv.height=H*DPR; cv.setAttribute('aria-hidden','true');
+      cv.style.cssText=`left:${-PAD}px;top:${-PAD}px;width:${W}px;height:${H}px`;
+      const o=document.createElement('canvas'); o.width=cv.width; o.height=cv.height; const oc=o.getContext('2d');
+      oc.font=`${cs.fontWeight} ${parseFloat(cs.fontSize)*DPR}px ${cs.fontFamily}`;
+      oc.fillText(tn.textContent.trim(),(tr.left-r.left+PAD)*DPR,(base+PAD)*DPR);
+      const d=oc.getImageData(0,0,o.width,o.height).data, step=Math.max(2,Math.round(1.55*DPR)); P=[];
+      for(let y=0;y<o.height;y+=step)for(let x=0;x<o.width;x+=step)if(d[(y*o.width+x)*4+3]>110)
+        P.push({hx:x,hy:y,x,y,vx:0,vy:0,c:Math.random()<.12?'#9db8e0':'#1f3a5f'});
+      ctx=cv.getContext('2d'); h1.appendChild(cv); h1.classList.add('sw'); return true;
+    };
+    const frame=()=>{
+      const R=58*DPR, S=1.5*DPR; let moving=false;
+      ctx.clearRect(0,0,cv.width,cv.height);
+      for(const p of P){
+        if(hover){const dx=p.x-mx,dy=p.y-my,dd=dx*dx+dy*dy; if(dd<R*R){const ds=Math.sqrt(dd)||1,f=(1-ds/R)*3.2*DPR; p.vx+=dx/ds*f; p.vy+=dy/ds*f;}}
+        p.vx=(p.vx+(p.hx-p.x)*.06)*.84; p.vy=(p.vy+(p.hy-p.y)*.06)*.84; p.x+=p.vx; p.y+=p.vy;
+        if(Math.abs(p.x-p.hx)>.4||Math.abs(p.y-p.hy)>.4||Math.abs(p.vx)>.05) moving=true;
+        ctx.fillStyle=p.c; ctx.fillRect(p.x,p.y,S,S);
+      }
+      if(hover||moving||performance.now()<kick) raf=requestAnimationFrame(frame);
+      else{cv.remove();cv=null;h1.classList.remove('sw');raf=0;}
+    };
+    const start=()=>{ if(!cv&&!build()) return false; if(!raf) raf=requestAnimationFrame(frame); return true; };
+    const at=e=>{const r=cv.getBoundingClientRect(); mx=(e.clientX-r.left)*DPR; my=(e.clientY-r.top)*DPR;};
+    h1.addEventListener('pointerenter',e=>{ if(e.pointerType!=='mouse') return; hover=true; if(start()) at(e); });
+    h1.addEventListener('pointermove',e=>{ if(hover&&cv) at(e); });
+    h1.addEventListener('pointerleave',()=>{ hover=false; mx=my=-1e4; });
+    h1.addEventListener('click',e=>{ if(hover||!start()) return; at(e);
+      for(const p of P){const dx=p.x-mx,dy=p.y-my,ds=Math.hypot(dx,dy)||1,f=Math.max(0,1-ds/(160*DPR))*14*DPR; p.vx+=dx/ds*f; p.vy+=dy/ds*f;}
+      kick=performance.now()+400; });
+  }
+
+  /* ---- 4. Ledger's receipt prints when it comes into view ---- */
+  const lgr=$('.lgr');
+  if(lgr&&!still&&window.IntersectionObserver){
+    lgr.classList.add('pr');
+    const o=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ lgr.classList.add('in'); o.disconnect(); } }),{threshold:.5});
+    o.observe(lgr);
+  }
+})();
