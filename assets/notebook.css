@@ -222,11 +222,12 @@ body.intro-lock{overflow:hidden}
    the margins only where there is room (1180px+); site.js NOTES places them and draws each arrow in once it is seen. ---- */
 @font-face{font-family:'Shantell Sans';src:url(/fonts/shantell-sans-notes.woff2) format('woff2');font-weight:500;font-display:swap}
 .pn{position:absolute;z-index:6;pointer-events:none;font:500 18px/1.22 'Shantell Sans','Comic Sans MS',cursive;color:#2457c5;transform:rotate(-2deg);opacity:0;transition:opacity .5s .3s}
-.pn.l{text-align:right}.pn.on{opacity:1}
+.pn.l{text-align:right}.pn.b{text-align:left;transform:rotate(-1.5deg)}.pn.on{opacity:1}
 .pn-svg{position:absolute;left:0;top:0;z-index:6;pointer-events:none;overflow:visible}
 .pn-svg path{fill:none;stroke:#2457c5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1)}
 .pn-svg path.on{stroke-dashoffset:0}
 @media(max-width:1179px){.pn,.pn-svg{display:none}}
+@media(min-width:1180px){.hero .photos{margin-bottom:44px}} /* room for the note under the middle photo */
 @media(prefers-reduced-motion:reduce){.pn,.pn-svg path{transition:none}}
 /* 1. under the cursor, the name turns into the loading screen's dots, which it pushes around; a tap bursts them */
 .hero h1{position:relative}

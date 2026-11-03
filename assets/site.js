@@ -2114,7 +2114,9 @@ const BIG=(function(){
 
   /* ---- the notes: the target, which side, where the arrow lands on it (fx, fy), and the note's offset from there ---- */
   const NOTES=[
-    {t:'#about .photos button',s:'l',fx:0,fy:.42,dy:-26,txt:'hi! that’s me'},
+    {t:'#about .photos button',s:'l',fx:0,fy:.42,dy:-26,txt:'hi! that’s me',now:1},
+    {t:'#about .photos button:nth-child(2)',s:'b',fx:.5,fy:1,dy:0,txt:'fencing for Team USA at the Pan‑American Championships in Bogotá',now:1},
+    {t:'#about .photos button:nth-child(3)',s:'r',fx:1,fy:.42,dy:-26,txt:'at Y Combinator’s Startup School',now:1},
     {t:'#xp-lemma h3',s:'l',fx:0,fy:.5,dy:-34,txt:'came with a hackathon win!'},
     {t:'#rs-t2 .pg',s:'l',fx:0,fy:.3,dy:-30,txt:'wrote this one on my own'},
     {t:'.reel video',s:'r',fx:.72,fy:.32,dy:44,txt:'me, in the black mask'},
@@ -2138,14 +2140,18 @@ const BIG=(function(){
       seen.add(i); e.target.classList.add('on'); e.target._p.classList.add('on'); io.unobserve(e.target); }),{rootMargin:'0px 0px -12% 0px'});
     NOTES.forEach((d,i)=>{
       const el=$(d.t); if(!el) return; const r=box(el);
-      const tx=r.l+r.w*d.fx+(d.s==='l'?-8:10), ty=r.t+r.h*d.fy;
+      const b=d.s==='b', tx=r.l+r.w*d.fx+(b?0:d.s==='l'?-8:10), ty=r.t+r.h*d.fy+(b?6:0), w=b?Math.min(400,r.w+40):W;
       const n=document.createElement('div'); n.className='pn '+d.s; n.textContent=d.txt; n.dataset.i=i;
-      n.setAttribute('aria-hidden','true'); n.style.width=W+'px'; document.body.appendChild(n);
-      const nh=n.offsetHeight, ny=ty+d.dy-nh/2, nx=d.s==='l'?c.l-36-W:c.l+c.w+36, sx=d.s==='l'?c.l-30:nx-6;
+      n.setAttribute('aria-hidden','true'); n.style.width=w+'px'; document.body.appendChild(n);
+      const nh=n.offsetHeight, ny=b?ty+28:ty+d.dy-nh/2, nx=b?tx-w/2+30:d.s==='l'?c.l-36-W:c.l+c.w+36, sx=d.s==='l'?c.l-30:nx-6;
       n.style.left=nx+'px'; n.style.top=ny+'px';
-      const p=document.createElementNS(NS,'path'); p.setAttribute('d',arrow(sx,ny+nh*.55,tx,ty,d.s)); svg.appendChild(p);
+      const p=document.createElementNS(NS,'path');
+      p.setAttribute('d',b?`M${tx+34},${ny-3} C${tx+30},${ty+16} ${tx+10},${ty+8} ${tx+1},${ty} M${tx-4.4},${ty+7.2} L${tx+1},${ty} L${tx+8.6},${ty+4.4}`:arrow(sx,ny+nh*.55,tx,ty,d.s));
+      svg.appendChild(p);
       p.style.setProperty('--len',Math.ceil(p.getTotalLength())); n._p=p; els.push(n);
-      if(seen.has(i)||still){n.classList.add('on');p.classList.add('on');} else io.observe(n);
+      if(seen.has(i)||still){n.classList.add('on');p.classList.add('on');}
+      else if(d.now){ seen.add(i); const go=()=>{ if(document.body.classList.contains('intro-lock')) return setTimeout(go,150); setTimeout(()=>{n.classList.add('on');p.classList.add('on');},450+i*350); }; go(); }
+      else io.observe(n);
     });
   }
   let t=0; const relayout=()=>{clearTimeout(t);t=setTimeout(layout,150);};
