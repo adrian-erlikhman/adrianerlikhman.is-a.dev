@@ -478,7 +478,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-p3`, site.js `2026-11-03-p3`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-nt`, site.js `2026-11-03-nt`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -569,6 +569,17 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   photos (climb, backpack, cycle). Paper pages are 104px. On phones the top bar is not sticky and its links wrap. The
   **⌘K palette is gone** from the page (its "adrian.os" prompt and toasts read as gimmicks, and "/" opened it while
   typing); its script skips itself.
+- **Notes and touches (3 Nov, later; his ask: "add a little cool interactive shit and maybe some annotations, but i
+  really like this base").** He picked **A (pen)** over B (LaTeX margin notes) and touches **1, 2 and 4** (not 3, scoring
+  lamps on the clip) from `_mock/touches.html` (sheet `_mock/touch-shots/touches-options.png`). This lifts the plain pass's
+  ban on handwriting for these notes only. **Five notes** in his ballpoint blue (`#2457c5`, Shantell Sans pinned to INFM 100 /
+  BNCE 30, self-hosted as `fonts/shantell-sans-notes.woff2`), in the margins at 1180px+ only, each arrow drawing in once
+  seen: "hi! that's me" (headshot), "came with a hackathon win!" (Lemma), "wrote this one on my own" (Curated to Win's
+  page), "won the same weekend as Hivemind!" (Monte), "me, in the black mask" (the clip). **Touches:** (1) under the
+  cursor the name turns into the loading screen's dots, which the cursor pushes; a tap bursts them; (2) a paper's first
+  page lifts to 2.6x on hover (CSS); (4) Ledger's receipt prints out of the slot when it comes into view. site.js NOTES &
+  TOUCHES (positions computed from the real elements, re-laid out on resize, font load and any height change); styles at
+  the end of notebook.css. Reduced motion: no name effect, notes and receipt shown as they end.
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight
   cards, the handwritten quotes (his lines are now plain sentences in Research, Projects, Fencing and Next). Their code
   still sits in site.js and skips itself.

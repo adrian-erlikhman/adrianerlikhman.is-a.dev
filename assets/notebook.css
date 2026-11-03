@@ -215,3 +215,31 @@ body.intro-lock{overflow:hidden}
   .hon tr{padding:9px 0;border-bottom:1px solid var(--rule)}
   .hon td{border:0;padding:0}
 }
+
+/* ---- Notes and touches (3 Nov 2026). Adrian asked for "a little cool interactive shit and maybe some annotations" on
+   this base, and picked from _mock/touches.html: A, notes in his ballpoint blue (the old welcome's ink and hand, Shantell
+   Sans pinned to INFM 100 / BNCE 30 and self-hosted), and touches 1, 2 and 4 (not the scoring lamps). The notes sit in
+   the margins only where there is room (1180px+); site.js NOTES places them and draws each arrow in once it is seen. ---- */
+@font-face{font-family:'Shantell Sans';src:url(/fonts/shantell-sans-notes.woff2) format('woff2');font-weight:500;font-display:swap}
+.pn{position:absolute;z-index:6;pointer-events:none;font:500 18px/1.22 'Shantell Sans','Comic Sans MS',cursive;color:#2457c5;transform:rotate(-2deg);opacity:0;transition:opacity .5s .3s}
+.pn.l{text-align:right}.pn.on{opacity:1}
+.pn-svg{position:absolute;left:0;top:0;z-index:6;pointer-events:none;overflow:visible}
+.pn-svg path{fill:none;stroke:#2457c5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1)}
+.pn-svg path.on{stroke-dashoffset:0}
+@media(max-width:1179px){.pn,.pn-svg{display:none}}
+@media(prefers-reduced-motion:reduce){.pn,.pn-svg path{transition:none}}
+/* 1. under the cursor, the name turns into the loading screen's dots, which it pushes around; a tap bursts them */
+.hero h1{position:relative}
+.hero h1.sw{color:transparent}
+.hero h1 canvas{position:absolute;pointer-events:none}
+/* 2. a paper's first page lifts to a readable size on hover */
+.pg{position:relative;z-index:1}
+.pg img{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s;transform-origin:0 0}
+@media(hover:hover) and (min-width:701px){
+  .pg:hover{z-index:20}
+  .pg:hover img{transform:scale(2.6);box-shadow:0 18px 40px -12px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.08)}
+}
+@media(prefers-reduced-motion:reduce){.pg img{transition:none}}
+/* 4. Ledger's receipt prints out of the slot when it comes into view (site.js adds .pr, then .in) */
+.lgr.pr .rcp{transform:translate(-50%,86%);transition:none}
+.lgr.pr.in .rcp{transform:translate(-50%,0);transition:transform 1.9s steps(16,end) .2s}
