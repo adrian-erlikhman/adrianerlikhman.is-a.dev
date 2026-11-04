@@ -306,16 +306,19 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .wl2 b{color:var(--ink);font-style:italic}.wl2 i{display:block;font-style:normal;color:#666;margin-top:2px}.wl2>span{display:block;margin-top:5px}
 .wl2 .cr{color:#555;font-style:italic}.wl2 .lk{font-size:14.5px;margin:6px 0 0}
 .sg{position:relative;display:flex;justify-content:center;margin:0 0 92px}
-.sg-b{display:flex;flex-direction:column;align-items:center;border:34px solid transparent;border-image:url(/img/frames/f-aimlli.svg) 120 round;background:#fbfaf7;
+.sg-b{display:flex;flex-direction:column;align-items:center;text-align:center;border:34px solid transparent;border-image:url(/img/frames/f-aimlli.svg) 120 round;background:#fbfaf7;
   background-clip:padding-box;padding:10px 38px 8px;filter:drop-shadow(0 10px 12px rgba(70,50,20,.22))}
 .sg-k{font:italic 15px 'LM Roman',serif;letter-spacing:.2em;color:#8a6a2a}
-.sg-t{font-size:44px;line-height:1.05;margin:2px 0 6px;color:var(--acc)}
+/* the museum's name in Cinzel (4 Nov, Adrian's pick E of _mock/sign-fonts.html, over his pen and twelve others): carved Roman
+   capitals, self-hosted (fonts/cinzel-600.woff2, Latin, from Google Fonts; SIL Open Font License, Natanael Gama) */
+@font-face{font-family:'Cinzel';src:url(/fonts/cinzel-600.woff2) format('woff2');font-weight:600;font-display:swap}
+.sg-t{font:600 40px/1.1 'Cinzel','LM Roman',serif;letter-spacing:.04em;margin:4px 0 8px;color:var(--acc)}
 .sg-s{font:13px 'LM Roman',serif;letter-spacing:.14em;text-transform:uppercase;color:#7a6a55}
 .sg-n{position:absolute;right:0;top:66%;z-index:2;font-size:21px;transform:rotate(-7deg);color:#2457c5}
 .sg-n svg{position:absolute;left:-48px;top:-16px;width:44px;height:30px;overflow:visible}
 .sg-n path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
 @media(max-width:900px){.mf{flex-basis:calc((100% - 40px)/2)}.cf{border-width:40px}}
-@media(max-width:820px){.mus{padding:28px 14px 30px}.sg-t{font-size:30px}.sg{flex-direction:column;align-items:center}.sg-n{position:static;margin-top:12px}.sg-n svg{display:none}}
+@media(max-width:820px){.mus{padding:28px 14px 30px}.sg-t{font-size:27px;letter-spacing:.03em}.sg{flex-direction:column;align-items:center}.sg-n{position:static;margin-top:12px}.sg-n svg{display:none}}
 @media(max-width:600px){.mf{flex-basis:100%}.cf{border-width:46px}}
 @media(prefers-reduced-motion:reduce){.cf,.mf::after{transition:none}.mf:hover .cf{transform:none}}
 
@@ -335,7 +338,7 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .mx[hidden]{display:none}
 .mx-bg{position:fixed;inset:0;background-color:#f4f1ea;background-image:radial-gradient(ellipse 60% 55% at 40% 44%,rgba(255,214,160,.25),transparent 72%);opacity:0;transition:opacity .35s}
 .mx.on .mx-bg{opacity:1}
-.mx-hd{position:absolute;top:18px;left:24px;margin:0;font-size:20px;color:#2457c5;opacity:0;transition:opacity .3s .2s}
+.mx-hd{position:absolute;top:22px;left:24px;margin:0;font:600 16px/1 'Cinzel','LM Roman',serif;letter-spacing:.06em;color:var(--acc);opacity:0;transition:opacity .3s .2s}
 .mx.on .mx-hd{opacity:1}
 .mx .xb{position:fixed;top:14px;right:16px;z-index:3;color:var(--ink);background:rgba(0,0,0,.06)}
 .mx .xb:hover{background:rgba(0,0,0,.12)}
@@ -386,7 +389,7 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
   .mx-w::before{top:-50px;width:104px;height:40px}
   .mx-n{left:3%;font-size:18px}.mx-n svg{height:80px;width:46px}
   .mx-p{padding:18px 18px 16px;font-size:15.5px}.mx-p h3{font-size:22px}
-  .mx-hd{font-size:18px;top:16px;left:16px}
+  .mx-hd{font-size:14px;top:20px;left:16px}
   .mx-nv{background:linear-gradient(rgba(244,241,234,0),rgba(244,241,234,.95) 40%);padding:18px 8px 10px}
 }
 @media(prefers-reduced-motion:reduce){.mx-bg,.mx-hd,.mx-in,.mx-w::before,.mx-w::after,.mx-n,.mx-n path,.mx-p,.mx-nv{transition:none}.mx-p{transform:none}}
