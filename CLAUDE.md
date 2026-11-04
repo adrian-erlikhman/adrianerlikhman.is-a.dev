@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-04-look`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-04-gallery`, site.js `2026-11-04-look`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -678,6 +678,14 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   "Film" in the links for sound; Ledger's receipt prints again; Citadel shows the whole replay viewer (`data-img`,
   `data-ar`), and its wall picture now links to Terminal (it was a photo-viewer button). The sign has a second note on the
   left, "pick any work for a closer look!" (`.sg-h`). Ctrl/cmd-click on the wall still opens the site; no JS: plain links.
+  **A white gallery since 4 Nov** (Adrian: "how can we make the museum look better and flow better with my website ...
+  should we change the cream backdrop?"; he picked **B** of `_mock/museum-options.png`, mocks `_mock/mus-a|b|c.html`, over A
+  a navy room and C an edge-to-edge crimson room). The page's warm white stays; the museum has no wall of its own: the
+  frames hang on the page with soft warm lamp light and lighter shadows, the sign's panel is warm white with the title in
+  navy, the sign's notes and the closer look's pen note are ballpoint blue, and the wall labels are white cards with a
+  hairline. The closer look is the same warm white (`#f4f1ea`). **Wall labels are short since the same day**: title, year,
+  medium, one line on what it is, the credit and the links; everything else lives in the placard (`.xd`). Notes above
+  about the crimson wall (`#5c1f24`) are history.
   **Plaques (4 Nov, his ask):** Hivemind "1st place, SEPHacks", Monte "1st place, TrojanHacks"; the labels and placards
   under them keep the track (Lemma's agent-monitoring track; Finance track), so neither reads as the overall prize.
 - **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline
