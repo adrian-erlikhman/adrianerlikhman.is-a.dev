@@ -635,7 +635,11 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   SafeJew; Team USA international fencer and "a semi-professional napper"). Typos fixed only, plus one fact: his "I've even
   presented at a research conference in China (though over zoom)" became "On Nov. 10 I'm presenting that research ...",
   since the ARRSI talk is on 10 Nov. **After 10 Nov, change it to "I presented".** Underlines: recursive self-improvement,
-  the China talk, four cool companies, Team USA international fencer.
+  the China talk, four cool companies, Team USA international fencer. **The same evening (his ask, "one short parenthesis"
+  each):** AIML-LI "(a free AI-literacy curriculum and student summit, supported by aiEDU and Jane Street)" (he wrote
+  "curriculum supported by aiEDU and Jane Street"; Jane Street gives the summit's prizes, aiEDU backs the course, so the
+  summit is named) and SafeJew "(a live map of antisemitic incidents across LA, funded by the Jewish Federation of Greater
+  Los Angeles)" (JFEDLA spelled out for admissions readers).
 - **Projects is the Museum of Adrian (3 Nov, late; it replaced the medallion wall below).** Adrian: "make it more like an
   actual museum, make them have different cool frames and then make it like the museum of adrian in the annotated font".
   Round 1 (`_mock/museum-v1..v5.html`): he liked 1 (grand gallery, "free admission!") and the salon's colours. Round 2
