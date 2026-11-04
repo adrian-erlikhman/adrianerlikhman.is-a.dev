@@ -434,7 +434,10 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   `icon-192/512.png` (transparent) and `apple-touch-icon.png` (on `#fbfaf7`). The head links carry
   `?v=2026-10-23-page`; bump it when the icons change. The bar shows the page and "Adrian Erlikhman" in
   Latin Modern (`.ae-mark .pgm`, `.nm.pgn`); the `~/ae` prompt and its Reenie Beanie name are gone. Earlier
-  marks (the `[ ae ]` block, the squircle) are history.
+  marks (the `[ ae ]` block, the squircle) are history. **Since 3 Nov (late) the notebook homepage's top bar shows
+  only the page mark** (`a.brand` > `img/logos/ae-mark.svg`, 30px, aria-label "Adrian Erlikhman, back to top"):
+  Adrian disliked the bar's "Adrian Erlikhman" sitting over the big one and picked **A** of four takes
+  (`_mock/top-a..d.html`: the page mark, a<sub>e</sub> without the page, a pen signature, nothing).
 - **LinkedIn is `linkedin.com/in/adrian-erlikhman-78a262414`** (8 Oct). Until
   then the site, both résumés, llms.txt, the ⌘K palette and the GitHub README
   linked `…-55489620b`, a separate, empty "Adrian Erlikhman" account (no photo,
@@ -508,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-mus`, site.js `2026-11-03-mus`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-mark`, site.js `2026-11-03-mark`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -606,10 +609,11 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   BNCE 30, self-hosted as `fonts/shantell-sans-notes.woff2`), in the margins at 1180px+ only, each arrow drawing in once
   seen: "hi! that's me" (headshot), "came with a hackathon win!" (Lemma), "wrote this one on my own" (Curated to Win's
   page), "won the same weekend as Hivemind!" (Monte), "me, in the black mask" (the clip). **Touches:** (1) under the
-  cursor the name turns into the loading screen's dots, which the cursor pushes; a tap bursts them; (2) a paper's first
+  cursor the name turned into the loading screen's dots (**removed 3 Nov, late**: Adrian, on a screenshot of it mid-push,
+  "i dont like both of these"; the big name is plain text now, don't bring the effect back); (2) a paper's first
   page lifts to 2.6x on hover (CSS); (4) Ledger's receipt prints out of the slot when it comes into view. site.js NOTES &
   TOUCHES (positions computed from the real elements, re-laid out on resize, font load and any height change); styles at
-  the end of notebook.css. Reduced motion: no name effect, notes and receipt shown as they end.
+  the end of notebook.css. Reduced motion: notes and receipt shown as they end.
 - **Projects is a museum wall (3 Nov, later).** Adrian rejected tighter lists (C, D), three presentations (index + stage,
   problem first, commit log), three all-at-once takes (paper figure, periodic table, marked-up contact sheet) and four of
   five more (map of LA, bookshelf, lock screen, Venn), then picked the **museum wall** (`_mock/proj4-museum.html`): each

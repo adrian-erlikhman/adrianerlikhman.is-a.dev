@@ -26,7 +26,8 @@ p+p{margin-top:14px}
 /* top bar: the section in view is underlined (site.js NAV) */
 .nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--rule)}
 .nav .wrap{display:flex;align-items:baseline;gap:20px;padding:16px 0 14px}
-.brand{font-weight:700;font-size:19.5px;color:var(--ink);text-decoration:none}
+/* the page mark (a with a subscript e on a dog-eared page, his favicon since 23 Oct) stands in for the name, 3 Nov */
+.brand{display:flex;align-self:center;text-decoration:none}.brand img{width:30px;height:30px;display:block}
 .nav nav{margin-left:auto;display:flex;gap:20px;font-size:17px}
 .nav nav a{color:var(--dim);text-decoration:none}
 .nav nav a:hover,.nav nav a.on{color:var(--ink);text-decoration:underline;text-decoration-color:var(--ink)}
@@ -229,10 +230,6 @@ body.intro-lock{overflow:hidden}
 @media(max-width:1179px){.pn,.pn-svg{display:none}}
 @media(min-width:1180px){.hero .photos{margin-bottom:44px}} /* room for the note under the middle photo */
 @media(prefers-reduced-motion:reduce){.pn,.pn-svg path{transition:none}}
-/* 1. under the cursor, the name turns into the loading screen's dots, which it pushes around; a tap bursts them */
-.hero h1{position:relative}
-.hero h1.sw{color:transparent}
-.hero h1 canvas{position:absolute;pointer-events:none}
 /* 2. a paper's first page lifts to a readable size on hover */
 .pg{position:relative;z-index:1}
 .pg img{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s;transform-origin:0 0}

@@ -2103,9 +2103,9 @@ const BIG=(function(){
   if(hero) new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) document.querySelectorAll('.nav nav a.on').forEach(a=>a.classList.remove('on')); }),{rootMargin:'-45% 0px -50% 0px'}).observe(hero);
 })();
 
-/* ================= NOTES & TOUCHES (3 Nov 2026): Adrian picked A (pen notes) and touches 1, 2 and 4 of _mock/touches.html.
+/* ================= NOTES & TOUCHES (3 Nov 2026): Adrian picked A (pen notes) and touches 1, 2 and 4 of _mock/touches.html (1, the dotted name, came off the same night).
    Five hand-written notes in his ballpoint blue sit in the margins (1180px+ only), each with an arrow that draws in once
-   it is on screen. The name turns into the loading screen's dots under the cursor; Ledger's receipt prints when it
+   it is on screen. Ledger's receipt prints when it
    comes into view. The paper peek (touch 2) is CSS only. Styles at the end of notebook.css. ===== */
 (function(){
   const main=document.querySelector('main.nb'); if(!main) return;
@@ -2159,50 +2159,6 @@ const BIG=(function(){
   if(document.fonts) document.fonts.ready.then(relayout);
   if(window.ResizeObserver) new ResizeObserver(relayout).observe(main); // a details opening, a late image
   relayout();
-
-  /* ---- 1. the name: under the cursor it turns into the loading screen's dots, which the cursor pushes; a tap bursts them ---- */
-  const h1=$('.hero h1');
-  if(h1&&!still){
-    const PAD=48; let cv=null,ctx,P=[],DPR=1,raf=0,mx=-1e4,my=-1e4,hover=false,kick=0;
-    const build=()=>{
-      DPR=Math.min(devicePixelRatio||1,2);
-      const cs=getComputedStyle(h1), r=h1.getBoundingClientRect(), tn=[...h1.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());
-      if(!tn) return false;
-      const rg=document.createRange(); rg.selectNodeContents(tn); const tr=rg.getBoundingClientRect();
-      const mk=document.createElement('span'); mk.style.cssText='display:inline-block;width:0;height:0;vertical-align:baseline';
-      h1.appendChild(mk); const base=mk.getBoundingClientRect().top-r.top; mk.remove();
-      const W=Math.ceil(r.width+PAD*2), H=Math.ceil(r.height+PAD*2);
-      cv=document.createElement('canvas'); cv.width=W*DPR; cv.height=H*DPR; cv.setAttribute('aria-hidden','true');
-      cv.style.cssText=`left:${-PAD}px;top:${-PAD}px;width:${W}px;height:${H}px`;
-      const o=document.createElement('canvas'); o.width=cv.width; o.height=cv.height; const oc=o.getContext('2d');
-      oc.font=`${cs.fontWeight} ${parseFloat(cs.fontSize)*DPR}px ${cs.fontFamily}`;
-      oc.fillText(tn.textContent.trim(),(tr.left-r.left+PAD)*DPR,(base+PAD)*DPR);
-      const d=oc.getImageData(0,0,o.width,o.height).data, step=Math.max(2,Math.round(1.55*DPR)); P=[];
-      for(let y=0;y<o.height;y+=step)for(let x=0;x<o.width;x+=step)if(d[(y*o.width+x)*4+3]>110)
-        P.push({hx:x,hy:y,x,y,vx:0,vy:0,c:Math.random()<.12?'#9db8e0':'#1f3a5f'});
-      ctx=cv.getContext('2d'); h1.appendChild(cv); h1.classList.add('sw'); return true;
-    };
-    const frame=()=>{
-      const R=58*DPR, S=1.5*DPR; let moving=false;
-      ctx.clearRect(0,0,cv.width,cv.height);
-      for(const p of P){
-        if(hover){const dx=p.x-mx,dy=p.y-my,dd=dx*dx+dy*dy; if(dd<R*R){const ds=Math.sqrt(dd)||1,f=(1-ds/R)*3.2*DPR; p.vx+=dx/ds*f; p.vy+=dy/ds*f;}}
-        p.vx=(p.vx+(p.hx-p.x)*.06)*.84; p.vy=(p.vy+(p.hy-p.y)*.06)*.84; p.x+=p.vx; p.y+=p.vy;
-        if(Math.abs(p.x-p.hx)>.4||Math.abs(p.y-p.hy)>.4||Math.abs(p.vx)>.05) moving=true;
-        ctx.fillStyle=p.c; ctx.fillRect(p.x,p.y,S,S);
-      }
-      if(hover||moving||performance.now()<kick) raf=requestAnimationFrame(frame);
-      else{cv.remove();cv=null;h1.classList.remove('sw');raf=0;}
-    };
-    const start=()=>{ if(!cv&&!build()) return false; if(!raf) raf=requestAnimationFrame(frame); return true; };
-    const at=e=>{const r=cv.getBoundingClientRect(); mx=(e.clientX-r.left)*DPR; my=(e.clientY-r.top)*DPR;};
-    h1.addEventListener('pointerenter',e=>{ if(e.pointerType!=='mouse') return; hover=true; if(start()) at(e); });
-    h1.addEventListener('pointermove',e=>{ if(hover&&cv) at(e); });
-    h1.addEventListener('pointerleave',()=>{ hover=false; mx=my=-1e4; });
-    h1.addEventListener('click',e=>{ if(hover||!start()) return; at(e);
-      for(const p of P){const dx=p.x-mx,dy=p.y-my,ds=Math.hypot(dx,dy)||1,f=Math.max(0,1-ds/(160*DPR))*14*DPR; p.vx+=dx/ds*f; p.vy+=dy/ds*f;}
-      kick=performance.now()+400; });
-  }
 
   /* ---- section-title doodles draw themselves in once their title is on screen ---- */
   document.documentElement.classList.add('js');
