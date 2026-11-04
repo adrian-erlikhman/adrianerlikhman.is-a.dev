@@ -628,6 +628,14 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
   ("yes published first"). He turned down status stamps on the first pages, then a colourful extra (result charts per
   paper, `_mock/research3-a.html`, or topic medallions, `-b.html`): "this is dtm, its chill for now". Leave Research as is.
+- **The About intro is Adrian's own words (3 Nov, late).** He found the accomplishments list "mid", saw three takes
+  (`_mock/about-a..c.html`) and wrote his own mix: "Hi! I'm Adrian, a senior in high school in LA. I love building things
+  that help my community, and my 'weapons of choice' are software engineering and machine learning..." (recursive
+  self-improvement and how well we can evaluate it; four companies from an AI research startup to a VC fund; AIML-LI and
+  SafeJew; Team USA international fencer and "a semi-professional napper"). Typos fixed only, plus one fact: his "I've even
+  presented at a research conference in China (though over zoom)" became "On Nov. 10 I'm presenting that research ...",
+  since the ARRSI talk is on 10 Nov. **After 10 Nov, change it to "I presented".** Underlines: recursive self-improvement,
+  the China talk, four cool companies, Team USA international fencer.
 - **Projects is the Museum of Adrian (3 Nov, late; it replaced the medallion wall below).** Adrian: "make it more like an
   actual museum, make them have different cool frames and then make it like the museum of adrian in the annotated font".
   Round 1 (`_mock/museum-v1..v5.html`): he liked 1 (grand gallery, "free admission!") and the salon's colours. Round 2
