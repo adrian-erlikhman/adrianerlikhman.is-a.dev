@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-hw`, site.js `2026-11-03-mark`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-04-look`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -569,7 +569,8 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   text, grouped with " · ". Keep it that way; ask before adding any flourish back.
 - **Order:** about (`#about`: the name, two short paragraphs, Résumé · Email · LinkedIn · GitHub, then his three photos
   across: headshot, lunge, YC) · **Experience** (`#experience`, `#xp-*`, then Lemma next summer; first since 3 Nov, his
-  words: "i think experience should be the first section"; titled Experience, was Internships) · Research (`#papers`, `#rs-t1..5`: his "AI models now grade..." line, then per paper the
+  words: "i think experience should be the first section"; titled Experience, was Internships) · **Projects, then Research**
+  (since 4 Nov, his ask: "first put projects then resarhc"; the bar's links follow) · Research (`#papers`, `#rs-t1..5`: his "AI models now grade..." line, then per paper the
   first page, the title, result and venue with co-authors, a first-person paragraph, "What it asks" as `<details>`, and
   "Paper (n pages) · Code and data") · Projects (`#work`, `#case-*`, a list with a picture beside each; Ledger keeps its
   receipt; the "why I built it" stories sit in SafeJew's, AIML-LI's and Safe Routes' paragraphs; dunderscore last) ·
@@ -662,6 +663,23 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   and gold wave scroll; Safe Routes walnut, egg-and-dart; Citadel cream and gold, scrolled corners. 40-66 KB each (SVG,
   gzipped by Pages). The medallions, the tilt script and the old `.ms/.mw/.fr/.wl/.md` CSS are gone; the notes below about
   the medallion wall are history. Pen underlines in the labels now style as `.wl2 .hl`.
+  **A closer look (4 Nov, his ask: "if they click on a project, i want it to expand it so they can see more of it and then
+  have a placcard on the side ... describing it well. then ... have the live link if they click on the thing once they
+  expand it").** A click on a work's picture or plaque grows its frame out of the wall (FLIP) into a room of its own
+  (`.mx`, site.js MUSEUM, appended inside `main` so the placard's Film links reach the viewer): the frame large under its
+  lamp, a cream museum placard beside it (below it under 1100px), "the Museum of Adrian" top left, × and ‹ name / name ›
+  with "n of 8" at the foot (arrow keys too; Esc, Back, × or a click on the bare wall closes, and the frame flies back).
+  There **the picture is the live link** (`data-href`), with a pen note under the frame, "click it to open the live site!"
+  ("tap" on touch; SafeJew and eDNAtlas "live map", Ledger "live demo", Citadel "visit Terminal"), and a "Visit
+  host/path" band on hover. The placard is built from the wall label (title, year, medium, credit, links) plus the
+  figure's hidden `div.xd` (a lead, How it works, My part; Safe Routes' third heading is Why I built it; an `.xd .cr` or
+  `.xd .lk` replaces the wall's). The `.xd` text is first person, from the old big view's `D` and the wall labels; keep the
+  two in step. Hivemind and Monte play their films muted in the frame (`data-video`, Hivemind from 29 s, `data-t`), with
+  "Film" in the links for sound; Ledger's receipt prints again; Citadel shows the whole replay viewer (`data-img`,
+  `data-ar`), and its wall picture now links to Terminal (it was a photo-viewer button). The sign has a second note on the
+  left, "pick any work for a closer look!" (`.sg-h`). Ctrl/cmd-click on the wall still opens the site; no JS: plain links.
+  **Plaques (4 Nov, his ask):** Hivemind "1st place, SEPHacks", Monte "1st place, TrojanHacks"; the labels and placards
+  under them keep the track (Lemma's agent-monitoring track; Finance track), so neither reads as the overall prize.
 - **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline
   them or make them in the annotated font").** `span.hl`: a hand-drawn ballpoint-blue stroke (SVG background) that draws
   itself under the phrase once it's on screen (site.js NOTES & TOUCHES adds `.on`; no JS or reduced motion: just there).

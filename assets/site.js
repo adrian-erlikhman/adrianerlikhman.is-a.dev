@@ -2179,3 +2179,137 @@ const BIG=(function(){
     o.observe(lgr);
   }
 })();
+
+/* ================= MUSEUM: a closer look (4 Nov 2026). Adrian: "if they click on a project, i want it to expand it so they
+   can see more of it and then have a placcard on the side ... describing it well. then ... have the live link if they click
+   on the thing once they expand it". A click on a work (its picture or its plaque) grows the frame out of the wall into a room
+   of its own, with a placard beside it built from the wall label and the figure's hidden .xd; there the picture opens the
+   live site (data-href), and a pen note says so. Hivemind and Monte play their films there, muted; Ledger's receipt prints
+   again. The arrows and the arrow keys walk the gallery; Esc, the close button, Back or a click on the wall closes it, and
+   the frame flies back to its place. Ctrl/cmd-click on the wall still goes straight to the site; without JS the pictures are
+   plain links. ===== */
+(function(){
+  const main=document.querySelector('main.nb'), figs=[...document.querySelectorAll('.mf')].filter(f=>f.querySelector('.xd'));
+  if(!main||!figs.length) return;
+  const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const quiet=still||!!(navigator.connection&&navigator.connection.saveData);
+  const touch=matchMedia('(hover:none)').matches;
+  const mod=e=>e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button;
+  const X='<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>';
+  const mx=document.createElement('div'); mx.className='mx'; mx.hidden=true;
+  mx.setAttribute('role','dialog'); mx.setAttribute('aria-modal','true'); mx.setAttribute('aria-labelledby','mx-t');
+  mx.innerHTML='<div class="mx-bg"></div><p class="pen mx-hd" aria-hidden="true">the Museum of Adrian</p>'+
+    '<button class="xb" type="button" aria-label="Back to the gallery">'+X+'</button>'+
+    '<div class="mx-in"><div class="mx-w"><div class="cf mx-f"></div><p class="pen mx-n" aria-hidden="true"><span></span>'+
+    '<svg viewBox="0 0 56 100" preserveAspectRatio="none"><path d="M4 92 C30 90 44 66 40 10 M33 19 L40 10 L46.4 18.4"/></svg></p></div>'+
+    '<aside class="mx-p"></aside></div><div class="mx-nv"><button type="button" class="pv"></button><span></span><button type="button" class="nx"></button></div>';
+  main.appendChild(mx);
+  const F=mx.querySelector('.mx-f'), Pl=mx.querySelector('.mx-p'), note=mx.querySelector('.mx-n'), inn=mx.querySelector('.mx-in');
+  const nm=f=>f.querySelector('.wl2 b').textContent;
+  const where=u=>{ try{ const x=new URL(u,location.href), p=x.pathname.replace(/\/$/,''); return (x.host===location.host?'adrianerlikhman.is-a.dev':x.host.replace(/^www\./,''))+p; }catch(_){ return u; } };
+  let cur=-1, busy=false, pushed=false, tIn=0;
+
+  function fill(i){
+    cur=i; const f=figs[i], xd=f.querySelector('.xd'), d=xd.dataset, wl=f.querySelector('.wl2'), name=nm(f);
+    F.style.setProperty('--fr',f.style.getPropertyValue('--fr')); F.style.setProperty('--ar',d.ar||'16/9');
+    let m; const lgr=f.querySelector('.lgr'), wi=f.querySelector('.im img');
+    if(lgr){ m=lgr.cloneNode(true); m.classList.remove('in'); if(!still) m.classList.add('pr'); }
+    else if(d.video&&!quiet){ m=document.createElement('video'); m.muted=true; m.loop=true; m.playsInline=true; m.preload='auto';
+      m.setAttribute('muted',''); m.setAttribute('playsinline',''); m.poster=d.poster; m.src=d.video; m.setAttribute('aria-hidden','true');
+      if(d.t) m.addEventListener('loadedmetadata',()=>{ m.currentTime=+d.t; },{once:true}); } // Hivemind's opens on a title card: start where its poster is
+    else { m=new Image(); m.src=d.img||d.poster||(wi&&(wi.currentSrc||wi.src)); m.alt=d.alt||(wi?wi.alt:name); }
+    const a=document.createElement('a'); a.className='mx-a'; a.href=d.href; a.target='_blank'; a.rel='noopener';
+    a.setAttribute('aria-label','Open '+name+' ('+where(d.href)+') in a new tab');
+    a.append(m); a.insertAdjacentHTML('beforeend','<span class="mx-u" aria-hidden="true">Visit '+where(d.href)+'</span>');
+    F.replaceChildren(a);
+    note.firstChild.textContent=(d.note||'click it to open the live site!').replace(/^click/,touch?'tap':'click');
+    // the placard: title, year and medium from the wall label, then what the wall label has no room for, then its credit and links
+    const b=wl.querySelector('b'), yr=b.nextSibling&&b.nextSibling.nodeType===3?b.nextSibling.textContent:'';
+    Pl.innerHTML='<h3 id="mx-t"><b></b></h3><p class="md"></p>';
+    Pl.querySelector('b').textContent=name; Pl.querySelector('h3').append(yr);
+    Pl.querySelector('.md').innerHTML=wl.querySelector('i').innerHTML;
+    [...xd.children].forEach(c=>{ if(!c.matches('.cr,.lk')) Pl.append(c.cloneNode(true)); });
+    [xd.querySelector('.cr')||wl.querySelector('.cr'),xd.querySelector('.lk')||wl.querySelector('.lk')].forEach(c=>{ if(c) Pl.append(c.cloneNode(true)); });
+    Pl.querySelectorAll('.hl').forEach(h=>h.classList.remove('on'));
+    const n=figs.length, pv=figs[(i+n-1)%n], nx=figs[(i+1)%n];
+    mx.querySelector('.pv').textContent='‹ '+nm(pv); mx.querySelector('.nx').textContent=nm(nx)+' ›';
+    mx.querySelector('.pv').setAttribute('aria-label','Previous: '+nm(pv)); mx.querySelector('.nx').setAttribute('aria-label','Next: '+nm(nx));
+    mx.querySelector('.mx-nv span').textContent=(i+1)+' of '+n;
+  }
+  // once the frame has landed: the arrow draws, the receipt prints, the film plays, the credit's pen line draws
+  function settle(t){
+    clearTimeout(tIn); note.classList.remove('on');
+    const p=note.querySelector('path'); p.style.setProperty('--len',Math.ceil(p.getTotalLength()));
+    tIn=setTimeout(()=>{
+      note.classList.add('on'); const l=F.querySelector('.lgr'); if(l) l.classList.add('in');
+      const v=F.querySelector('video'); if(v){ const q=v.play(); if(q&&q.catch) q.catch(()=>{}); }
+      Pl.querySelectorAll('.hl').forEach(h=>h.classList.add('on'));
+    },still?0:t);
+  }
+  // FLIP with one scale and the centres aligned, so the frame grows out of (or back into) its place on the wall
+  function fly(s,back){
+    const t=F.getBoundingClientRect(), k=s.width/t.width, dx=s.left+s.width/2-t.left-t.width/2, dy=s.top+s.height/2-t.top-t.height/2;
+    const T='translate('+dx+'px,'+dy+'px) scale('+k+')';
+    if(back){ F.style.transition='transform .45s cubic-bezier(.5,0,.75,.45)'; F.style.transform=T; return; }
+    F.style.transition='none'; F.style.transform=T; F.getBoundingClientRect();
+    F.style.transition='transform .62s cubic-bezier(.2,.75,.25,1)'; F.style.transform='';
+  }
+  const stop=()=>{ const v=F.querySelector('video'); if(v){ v.pause(); v.removeAttribute('src'); v.load(); } };
+  function open(i){
+    if(busy||!mx.hidden) return;
+    fill(i);
+    const sb=innerWidth-document.documentElement.clientWidth;
+    document.body.style.overflow='hidden'; if(sb>0) document.body.style.paddingRight=sb+'px';
+    mx.hidden=false; mx.scrollTop=0;
+    if(!still) fly(figs[i].querySelector('.cf').getBoundingClientRect());
+    requestAnimationFrame(()=>mx.classList.add('on'));
+    settle(650);
+    if(!pushed){ try{ history.pushState({mx:1},''); pushed=true; }catch(_){} }
+    mx.querySelector('.xb').focus({preventScroll:true});
+  }
+  function close(popped){
+    if(mx.hidden||busy) return; busy=true; clearTimeout(tIn);
+    const f=figs[cur], wc=f.querySelector('.cf');
+    let r=wc.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight){ f.scrollIntoView({block:'center',behavior:'instant'}); r=wc.getBoundingClientRect(); }
+    mx.classList.remove('on'); note.classList.remove('on');
+    if(!still) fly(r,1);
+    if(pushed&&!popped){ pushed=false; history.back(); } else pushed=false;
+    setTimeout(()=>{
+      stop(); mx.hidden=true; F.style.transition=F.style.transform=''; F.replaceChildren();
+      document.body.style.overflow=document.body.style.paddingRight=''; busy=false;
+      const im=f.querySelector('.im'); if(im) im.focus({preventScroll:true});
+    },still?0:470);
+  }
+  function go(d){
+    if(busy||mx.hidden) return; busy=true; inn.classList.add('sw');
+    setTimeout(()=>{ stop(); fill((cur+d+figs.length)%figs.length); mx.scrollTop=0; inn.classList.remove('sw'); busy=false; settle(260); },still?0:200);
+  }
+
+  figs.forEach(f=>{ const im=f.querySelector('.im'); if(im){ im.setAttribute('aria-haspopup','dialog'); im.setAttribute('aria-label',nm(f)+': a closer look'); } });
+  main.addEventListener('click',e=>{
+    const t=e.target.closest('.mf .im,.mf .plq'); if(!t||mod(e)) return;
+    const i=figs.indexOf(t.closest('.mf')); if(i<0) return;
+    e.preventDefault(); open(i);
+  });
+  mx.addEventListener('click',e=>{
+    if(e.target.closest('.xb')) return close();
+    if(e.target.closest('.pv')) return go(-1);
+    if(e.target.closest('.nx')) return go(1);
+    if(e.target===mx||e.target===inn||e.target.classList.contains('mx-bg')) close(); // a click on the bare wall
+  });
+  addEventListener('popstate',()=>{ if(pushed&&!mx.hidden){ pushed=false; close(true); } });
+  addEventListener('keydown',e=>{
+    if(mx.hidden) return;
+    const lb=document.querySelector('.lb'); if(lb&&!lb.hidden) return; // the film viewer is on top: it takes Esc
+    if(e.key==='Escape'){ e.preventDefault(); close(); }
+    else if(e.key==='ArrowRight'){ e.preventDefault(); go(1); }
+    else if(e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+    else if(e.key==='Tab'){ // keep focus in the room
+      const q=[...mx.querySelectorAll('a[href],button')], a=q[0], z=q[q.length-1];
+      if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); }
+      else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); }
+      else if(!mx.contains(document.activeElement)){ e.preventDefault(); a.focus(); }
+    }
+  },true);
+})();
