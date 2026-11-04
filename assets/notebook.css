@@ -316,3 +316,76 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 @media(max-width:820px){.mus{padding:28px 14px 30px}.sg-t{font-size:30px}.sg{flex-direction:column;align-items:center}.sg-n{position:static;margin-top:12px}.sg-n svg{display:none}}
 @media(max-width:600px){.mf{flex-basis:100%}.cf{border-width:46px}}
 @media(prefers-reduced-motion:reduce){.cf,.mf::after{transition:none}.mf:hover .cf{transform:none}}
+
+/* ---- a closer look (4 Nov, Adrian: "if they click on a project, i want it to expand it so they can see more of it and then
+   have a placcard on the side ... describing it well. then ... have the live link if they click on the thing once they
+   expand it"). A click on a work grows its frame out of the wall into a room of its own (.mx, built by site.js MUSEUM from
+   the wall label and the figure's hidden .xd), with a placard beside it; the picture in there is the live link, and a pen
+   note says so. The sign's second note (.sg-h) says the works open. ---- */
+.xd{display:none}
+.js .plq{cursor:zoom-in}
+.sg-h{position:absolute;left:0;top:58%;z-index:2;width:190px;font-size:20px;line-height:1.15;text-align:left;transform:rotate(4deg);color:#ffd6a0}
+.sg-h svg{position:absolute;left:62%;top:100%;width:40px;height:46px;overflow:visible}
+.sg-h path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+@media(max-width:1000px){.sg-h{width:150px;font-size:18px}}
+@media(max-width:820px){.sg-h{position:static;width:auto;margin-top:8px;transform:rotate(-2deg)}.sg-h svg{display:none}}
+.mx{position:fixed;inset:0;z-index:290;overflow-y:auto;overscroll-behavior:contain;color:#f3e6d0}
+.mx[hidden]{display:none}
+.mx-bg{position:fixed;inset:0;background-color:#5c1f24;background-image:radial-gradient(ellipse 60% 55% at 40% 44%,rgba(255,214,160,.09),transparent 72%),radial-gradient(rgba(255,220,200,.05) 1px,transparent 1.6px),linear-gradient(#64232a,#48161b);
+  background-size:100% 100%,8px 8px,100% 100%;opacity:0;transition:opacity .35s}
+.mx.on .mx-bg{opacity:1}
+.mx-hd{position:absolute;top:18px;left:24px;margin:0;font-size:20px;color:#f6dfa0;opacity:0;transition:opacity .3s .2s}
+.mx.on .mx-hd{opacity:1}
+.mx .xb{position:fixed;top:14px;right:16px;z-index:3;color:#f6dfa0;background:rgba(0,0,0,.22)}
+.mx .xb:hover{background:rgba(0,0,0,.4)}
+.mx-in{position:relative;min-height:100%;box-sizing:border-box;display:grid;grid-template-columns:auto 400px;gap:56px;align-items:center;justify-content:center;padding:92px 40px 84px;transition:opacity .2s}
+.mx-in.sw{opacity:0}
+.mx-w{position:relative;width:min(calc(100vw - 576px),calc((100vh - 270px)*1.778 + 128px),980px)}
+.mx-w::before{content:"";position:absolute;left:50%;top:-64px;width:132px;height:50px;transform:translateX(-50%);z-index:3;
+  background:url(/img/frames/lamp.svg) center/contain no-repeat;filter:drop-shadow(0 3px 3px rgba(0,0,0,.5));opacity:0;transition:opacity .3s .4s}
+.mx.on .mx-w::before{opacity:1}
+.mx-w::after{content:"";position:absolute;left:-8%;right:-8%;top:-30px;height:78%;pointer-events:none;z-index:4;mix-blend-mode:screen;
+  background:radial-gradient(ellipse 50% 64% at 50% 0,rgba(255,226,160,.3),rgba(255,226,160,0) 72%);opacity:0;transition:opacity .5s .35s}
+.mx.on .mx-w::after{opacity:.9}
+.mx-f{border-width:56px;transform-origin:50% 50%;will-change:transform}
+.mx-a{display:block;position:relative;overflow:hidden;background:#1c1b21;cursor:pointer}
+.mx-a>img,.mx-a>video{display:block;width:100%;aspect-ratio:var(--ar,16/9);object-fit:cover}
+.mx-a .lgr{aspect-ratio:16/10}
+.mx-u{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;background:linear-gradient(rgba(8,8,10,0),rgba(8,8,10,.74));color:#fff;font-size:16px;text-align:left;
+  opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.mx-a:hover .mx-u,.mx-a:focus-visible .mx-u{opacity:1;transform:none}
+.mx-a:hover>img,.mx-a:hover>video{filter:brightness(1.05)}
+.mx-n{position:absolute;left:7%;top:100%;margin:16px 0 0;font-size:21px;white-space:nowrap;color:#ffd6a0;transform:rotate(-4deg);opacity:0;transition:opacity .35s}
+.mx-n svg{position:absolute;left:100%;bottom:60%;margin-left:2px;width:56px;height:100px;overflow:visible}
+.mx-n path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:var(--len,200);stroke-dashoffset:var(--len,200);transition:stroke-dashoffset .7s .25s ease}
+.mx-n.on{opacity:1}.mx-n.on path{stroke-dashoffset:0}
+.mx-p{position:relative;box-sizing:border-box;background:#fbfaf7;color:#333;padding:22px 26px 20px;font-size:16px;line-height:1.5;
+  box-shadow:0 14px 34px rgba(0,0,0,.42),0 1px 2px rgba(0,0,0,.3);opacity:0;transform:translateX(22px);transition:opacity .4s .25s,transform .5s .25s cubic-bezier(.2,.7,.2,1)}
+.mx.on .mx-p{opacity:1;transform:none}
+.mx-p h3{margin:0;font-size:25px;font-weight:400;line-height:1.2;color:var(--ink)}.mx-p h3 b{font-style:italic}
+.mx-p p{margin:0}
+.mx-p .md{margin-top:3px;color:#666;font-size:15px}
+.mx-p .xl{margin-top:14px;padding-top:14px;border-top:1px solid #ddd5c6;color:var(--ink)}
+.mx-p h4{margin:13px 0 2px;font-size:15.5px;font-weight:700;color:var(--ink)}
+.mx-p .cr,.mx-p .lk{display:block}.mx-p .cr{margin-top:14px;font-style:italic;color:#555}.mx-p .hl{color:var(--ink)}
+.mx-p .lk{margin-top:10px;font-size:15.5px}
+.mx-nv{position:fixed;left:0;right:0;bottom:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:12px 18px 14px;pointer-events:none;opacity:0;transition:opacity .3s .3s}
+.mx.on .mx-nv{opacity:1}
+.mx-nv button{pointer-events:auto;font:17px/1.2 'LM Roman',serif;color:#f6dfa0;background:none;border:0;padding:8px 10px;cursor:pointer}
+.mx-nv button:hover{text-decoration:underline}
+.mx-nv span{font-style:italic;font-size:14.5px;color:#d8b9a0}
+@media(max-width:1099px){
+  .mx-in{grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;gap:84px;padding:96px 22px 96px}
+  .mx-w{width:min(100%,760px)}
+  .mx-p{width:min(100%,640px);transform:translateY(18px)}
+}
+@media(max-width:600px){
+  .mx-in{gap:76px;padding:108px 12px 88px}
+  .mx-f{border-width:30px;padding:5px}
+  .mx-w::before{top:-50px;width:104px;height:40px}
+  .mx-n{left:3%;font-size:18px}.mx-n svg{height:80px;width:46px}
+  .mx-p{padding:18px 18px 16px;font-size:15.5px}.mx-p h3{font-size:22px}
+  .mx-hd{font-size:18px;top:16px;left:16px}
+  .mx-nv{background:linear-gradient(rgba(60,18,22,0),rgba(60,18,22,.92) 40%);padding:18px 8px 10px}
+}
+@media(prefers-reduced-motion:reduce){.mx-bg,.mx-hd,.mx-in,.mx-w::before,.mx-w::after,.mx-n,.mx-n path,.mx-p,.mx-nv{transition:none}.mx-p{transform:none}}
