@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-04-cinzel`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-04-photos`, site.js `2026-11-04-cinzel`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -567,8 +567,9 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   19.5px. **None of:** Geist, Plex Mono, Shantell Sans/handwriting, spaced-capital labels, cards, highlighter marks, tilted
   or taped photos, fade-ins, the dot grid, pill or boxed buttons, "↗" arrows, cutesy asides. Links are underlined navy
   text, grouped with " · ". Keep it that way; ask before adding any flourish back.
-- **Order:** about (`#about`: the name, two short paragraphs, Résumé · Email · LinkedIn · GitHub, then his three photos
-  across: headshot, lunge, YC) · **Experience** (`#experience`, `#xp-*`, then Lemma next summer; first since 3 Nov, his
+- **Order:** about (`#about`: the name, then his three photos across (headshot, lunge, YC; above the writing since 4 Nov,
+  his pick A of `_mock/about-photos-options.png` over photos-first), then two short paragraphs and Résumé · CV · Email ·
+  LinkedIn · GitHub) · **Experience** (`#experience`, `#xp-*`, then Lemma next summer; first since 3 Nov, his
   words: "i think experience should be the first section"; titled Experience, was Internships) · **Projects, then Research**
   (since 4 Nov, his ask: "first put projects then resarhc"; the bar's links follow) · Research (`#papers`, `#rs-t1..5`: his "AI models now grade..." line, then per paper the
   first page, the title, result and venue with co-authors, a first-person paragraph, "What it asks" as `<details>`, and

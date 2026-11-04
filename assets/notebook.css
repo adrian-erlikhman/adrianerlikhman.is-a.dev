@@ -34,9 +34,10 @@ p+p{margin-top:14px}
 
 /* about */
 .hero{padding-top:64px}
-.hero h1{font-weight:700;font-size:44px;line-height:1.1;color:var(--ink);margin-bottom:22px;letter-spacing:-.005em}
+.hero h1{font-weight:700;font-size:44px;line-height:1.1;color:var(--ink);margin-bottom:26px;letter-spacing:-.005em}
 .links{color:var(--dim)}
-.photos{display:flex;gap:8px;margin-top:34px}
+/* the photos sit between the name and the writing since 4 Nov (Adrian's pick A of _mock/about-photos-options.png) */
+.photos{display:flex;gap:8px;margin:0 0 34px}
 .photos button{flex:var(--r) 1 0;aspect-ratio:var(--r);min-width:0;overflow:hidden;cursor:zoom-in}
 .photos .p{--r:.75}.photos .w{--r:1.3333}
 .photos img{width:100%;height:100%;object-fit:cover}
@@ -228,7 +229,7 @@ body.intro-lock{overflow:hidden}
 .pn-svg path{fill:none;stroke:#2457c5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1)}
 .pn-svg path.on{stroke-dashoffset:0}
 @media(max-width:1179px){.pn,.pn-svg{display:none}}
-@media(min-width:1180px){.hero .photos{margin-bottom:44px}} /* room for the note under the middle photo */
+@media(min-width:1180px){.hero .photos{margin-bottom:96px}} /* room for the note under the middle photo, above the writing */
 @media(prefers-reduced-motion:reduce){.pn,.pn-svg path{transition:none}}
 /* 2. a paper's first page lifts to a readable size on hover */
 .pg{position:relative;z-index:1}
