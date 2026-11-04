@@ -720,6 +720,9 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   founder** (the signpost doodle points two ways: "research" and "founder"), with economics' reason from his Alliance
   work (the engine showed which startups drew which investors but never why; paraphrased from his MIT essay's idea, not its
   sentences), the Safe Routes biased-data problem, and fencing plus coaching.
+  **Rewritten plain on 4 Nov** (his ask: "the content of the in college section is good, but there is a lot of slop ... writing"):
+  same content, four short paragraphs, no colon reveals or closing flourishes ("sits there", "the one I kept asking", "comes with
+  me" are gone); "start a company" for becoming a founder; "Three of my papers are about evaluating language models".
 - **Not carried over:** typed questions and their KB, Surprise me, the welcome notes, the canvas (BIG VIEW), the highlight
   cards, the handwritten quotes (his lines are now plain sentences in Research, Projects, Fencing and Next). Their code
   still sits in site.js and skips itself.
