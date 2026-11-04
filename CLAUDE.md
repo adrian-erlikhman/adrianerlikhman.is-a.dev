@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-mark`, site.js `2026-11-03-mark`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-hw`, site.js `2026-11-03-mark`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -638,8 +638,11 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   self-improvement and how well we can evaluate it; four companies from an AI research startup to a VC fund; AIML-LI and
   SafeJew; Team USA international fencer and "a semi-professional napper"). Typos fixed only, plus one fact: his "I've even
   presented at a research conference in China (though over zoom)" became "On Nov. 10 I'm presenting that research ...",
-  since the ARRSI talk is on 10 Nov. **After 10 Nov, change it to "I presented".** Underlines: recursive self-improvement,
-  the China talk, four cool companies, Team USA international fencer. **The same evening (his ask, "one short parenthesis"
+  since the ARRSI talk is on 10 Nov. **After 10 Nov, change it to "I presented".** Marked phrases: recursive
+  self-improvement, the China talk, four cool companies, Team USA international fencer. **Since 3 Nov (late) they are
+  written in by hand, not underlined** (`span.hw`: Shantell Sans in the notes' ballpoint blue at .94em; Adrian wanted
+  "something other than underlines" and picked **C** of five takes, `_mock/em-a..e.html`: highlighter, pen loops, handwritten,
+  hover cards, navy bold). The pen underlines elsewhere (wall labels, Research) stay. **The same evening (his ask, "one short parenthesis"
   each):** AIML-LI "(a free AI-literacy curriculum and student summit, supported by aiEDU and Jane Street)" (he wrote
   "curriculum supported by aiEDU and Jane Street"; Jane Street gives the summit's prizes, aiEDU backs the course, so the
   summit is named) and SafeJew "(a live map of antisemitic incidents across LA, funded by the Jewish Federation of Greater
@@ -662,7 +665,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
 - **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline
   them or make them in the annotated font").** `span.hl`: a hand-drawn ballpoint-blue stroke (SVG background) that draws
   itself under the phrase once it's on screen (site.js NOTES & TOUCHES adds `.on`; no JS or reduced motion: just there).
-  Fifteen in all: in the intro "sole-author paper was accepted", "Best Paper Finalist", "won prizes at four hackathons",
+  Fifteen in all (the intro's four became handwriting on 3 Nov, late; see the About intro): in the intro "sole-author paper was accepted", "Best Paper Finalist", "won prizes at four hackathons",
   "6th for Team USA"; one per wall label's credit line (district elective, Teen Innovation Grant, Winner of Lemma's track,
   1st place ×3, 3rd place internationally, top 8 of 45 teams), in ink; and Research's "Best Paper Finalist", "Sole author"
   and "Published". Keep it to one per item. The wall label's block spans are `.wl>span` so an inner `.hl` stays inline.

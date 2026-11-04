@@ -272,6 +272,8 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .js .hl.on{background-size:100% .5em}
 @media(prefers-reduced-motion:reduce){.js .hl{background-size:100% .5em;transition:none}}
 .wl2 .hl{color:var(--ink)}
+/* the About paragraph's key phrases are written in by hand, in the notes' ballpoint blue (3 Nov, Adrian picked C of five; no underline there) */
+.hw{font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;color:#2457c5;font-size:.94em}
 
 /* ---- the Museum of Adrian (3 Nov, Adrian's pick after three rounds of mocks): a crimson gallery, the sign in a carved frame
    with "free admission!", a brass picture light over every work, a different carved frame per project (border-image from
