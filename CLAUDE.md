@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-04-gallery`, site.js `2026-11-04-look`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-04-cinzel`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -686,6 +686,11 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   hairline. The closer look is the same warm white (`#f4f1ea`). **Wall labels are short since the same day**: title, year,
   medium, one line on what it is, the credit and the links; everything else lives in the placard (`.xd`). Notes above
   about the crimson wall (`#5c1f24`) are history.
+  **The museum's name is in Cinzel since 4 Nov** (his ask, "change the title font of museum of adrian, give me a bunch of
+  options"; he picked **E** of fourteen in `_mock/sign-fonts.html` / `.png`, over his pen, four Latin Modern cuts, Garamond,
+  Didones, a script and Art Deco faces): carved Roman capitals, weight 600, self-hosted as `fonts/cinzel-600.woff2` (Latin,
+  from Google Fonts, OFL). It sets the sign's title (`.sg-t`, navy, no longer `.pen`) and the closer look's corner label
+  (`.mx-hd`). It is the third face on the page, for the museum's name only; everything else stays Latin Modern and the pen.
   **Plaques (4 Nov, his ask):** Hivemind "1st place, SEPHacks", Monte "1st place, TrojanHacks"; the labels and placards
   under them keep the track (Lemma's agent-monitoring track; Finance track), so neither reads as the overall prize.
 - **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline

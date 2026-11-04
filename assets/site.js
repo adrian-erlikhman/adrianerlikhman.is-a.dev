@@ -2198,7 +2198,7 @@ const BIG=(function(){
   const X='<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>';
   const mx=document.createElement('div'); mx.className='mx'; mx.hidden=true;
   mx.setAttribute('role','dialog'); mx.setAttribute('aria-modal','true'); mx.setAttribute('aria-labelledby','mx-t');
-  mx.innerHTML='<div class="mx-bg"></div><p class="pen mx-hd" aria-hidden="true">the Museum of Adrian</p>'+
+  mx.innerHTML='<div class="mx-bg"></div><p class="mx-hd" aria-hidden="true">the Museum of Adrian</p>'+
     '<button class="xb" type="button" aria-label="Back to the gallery">'+X+'</button>'+
     '<div class="mx-in"><div class="mx-w"><div class="cf mx-f"></div><p class="pen mx-n" aria-hidden="true"><span></span>'+
     '<svg viewBox="0 0 56 100" preserveAspectRatio="none"><path d="M4 92 C30 90 44 66 40 10 M33 19 L40 10 L46.4 18.4"/></svg></p></div>'+
