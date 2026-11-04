@@ -264,37 +264,6 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 @media(max-width:700px){#h-next .doo{width:108px;height:50px;margin-bottom:-8px}}
 @media(prefers-reduced-motion:reduce){.js .doo .mn{stroke-dashoffset:0;transition:none}.js .doo .tr,.js .doo .lbl{opacity:.8;transition:none}h2 .doo{animation:none!important}}
 
-/* ---- Projects as a museum wall (3 Nov; Adrian picked it from five takes in _mock/proj4-*.html): each project framed under
-   a spotlight, with a wall label giving the year, what it is built with, what it is and a credit line. Wider than the
-   text column, like a full-width figure. ---- */
-.wide{width:min(1040px,calc(100vw - 40px));margin-left:calc((100% - min(1040px,100vw - 40px))/2)}
-.ms{margin-top:22px;padding:40px 34px 30px;background:#efebe4;border-top:1px solid #e1dbd0;border-bottom:1px solid #e1dbd0}
-.ms-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:46px 30px}
-.mw{margin:0;position:relative}
-.mw::before{content:"";position:absolute;left:-10%;right:-10%;top:-38px;height:120px;background:radial-gradient(ellipse at 50% 0,rgba(255,250,235,.95),rgba(255,250,235,0) 70%);pointer-events:none}
-.fr{position:relative;background:#fff;padding:12px;border:5px solid #2a2622;box-shadow:0 14px 22px -12px rgba(0,0,0,.45),inset 0 0 0 1px rgba(0,0,0,.06)}
-.fr .im{display:block}.fr .im>img,.fr .lgr{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-.wl{margin:16px 0 0 auto;width:90%;background:#fbfaf7;padding:9px 11px 10px;box-shadow:0 1px 3px rgba(0,0,0,.15);font-size:14.5px;line-height:1.4;color:#333}
-.wl b{color:var(--ink);font-style:italic;font-weight:700}.wl i{display:block;font-style:normal;color:#666;margin-top:2px}
-.wl>span{display:block;margin-top:5px}.wl .cr{color:#555;font-style:italic}
-.wl .lk{font-size:14px;margin:6px 0 0}
-@media(max-width:820px){.ms{padding:28px 16px 20px}.ms-g{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 16px}.wl{width:100%;font-size:14px}}
-@media(max-width:480px){.ms-g{grid-template-columns:1fr}}
-
-/* ---- Museum wall, in colour (3 Nov, later): each project's logo as a medallion pinned to its frame, ringed in the project's
-   colour (--b on the figure), which also tops its wall label. Hover a frame: it tilts toward the cursor and lifts, its
-   spotlight brightens and the medallion grows a touch (no spin: Adrian disliked it) (site.js NOTES & TOUCHES sets --rx/--ry). ---- */
-.md{position:absolute;left:-18px;top:-20px;z-index:3;width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;
-  box-shadow:0 0 0 3px var(--b),0 8px 16px -6px rgba(0,0,0,.4);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.md img,.md svg{width:34px;height:34px;object-fit:contain;display:block}
-.mw:hover .md,.md:focus-visible{transform:scale(1.06)}
-.fr{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .2s ease-out,box-shadow .25s}
-.mw:hover .fr{--ty:-5px;box-shadow:0 22px 30px -14px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.06)}
-.mw::before{opacity:.7;transition:opacity .3s}.mw:hover::before{opacity:1}
-.wl{border-top:3px solid var(--b)}
-@media(max-width:820px){.md{width:46px;height:46px;left:-10px;top:-14px}.md img,.md svg{width:27px;height:27px}}
-@media(prefers-reduced-motion:reduce){.md,.fr{transition:none}.mw:hover .md{transform:none}}
-
 /* each paper opens with the question it asks, in plain words (3 Nov, his pick) */
 .hk{margin:0 0 2px;font-style:italic;color:var(--dim);font-size:17px;line-height:1.4}
 
@@ -305,4 +274,46 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .js .hl{background-size:0 .5em;transition:background-size 1s cubic-bezier(.5,0,.2,1) .25s}
 .js .hl.on{background-size:100% .5em}
 @media(prefers-reduced-motion:reduce){.js .hl{background-size:100% .5em;transition:none}}
-.wl .hl{color:var(--ink)}
+.wl2 .hl{color:var(--ink)}
+
+/* ---- the Museum of Adrian (3 Nov, Adrian's pick after three rounds of mocks): a crimson gallery, the sign in a carved frame
+   with "free admission!", a brass picture light over every work, a different carved frame per project (border-image from
+   img/frames/f-*.svg, 9-slice at 120), a brass plaque and the wall label. Three across, the last two centred. ---- */
+.wide{width:min(1040px,calc(100vw - 40px));margin-left:calc((100% - min(1040px,100vw - 40px))/2)}
+.pen{font-family:'Shantell Sans','Comic Sans MS',cursive;font-weight:500}
+.mus{margin-top:22px;padding:40px 40px 46px;background:#5c1f24;background-image:radial-gradient(rgba(255,220,200,.05) 1px,transparent 1.6px),linear-gradient(#64232a,#521a1f);
+  background-size:8px 8px,100% 100%;border-top:10px solid #3d1216;box-shadow:inset 0 14px 18px -10px rgba(0,0,0,.5)}
+.mg{display:flex;flex-wrap:wrap;justify-content:center;gap:96px 40px}
+.mf{margin:0;text-align:center;position:relative;flex:0 0 calc((100% - 80px)/3)}
+.mf::before{content:"";position:absolute;left:50%;top:-58px;width:110px;height:42px;transform:translateX(-50%);z-index:3;
+  background:url(/img/frames/lamp.svg) center/contain no-repeat;filter:drop-shadow(0 3px 3px rgba(0,0,0,.5))}
+.mf::after{content:"";position:absolute;left:-6%;right:-6%;top:-26px;height:330px;pointer-events:none;z-index:4;mix-blend-mode:screen;
+  background:radial-gradient(ellipse 50% 64% at 50% 0,rgba(255,226,160,.32),rgba(255,226,160,0) 72%);opacity:.8;transition:opacity .3s}
+.mf:hover::after{opacity:1}
+.cf{position:relative;border:46px solid transparent;border-image:var(--fr) 120 round;background:#f3ecdc;background-clip:padding-box;padding:8px;
+  filter:drop-shadow(0 18px 16px rgba(0,0,0,.55));transition:transform .3s ease}
+.cf .im{display:block}.cf .im>img,.cf .lgr{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+#case-citadel .cf .im>img{object-position:center}
+.mf:hover .cf{transform:translateY(-4px)}
+.plq{position:relative;display:inline-block;margin:16px auto 0;padding:8px 22px 7px;background:linear-gradient(180deg,#efd486,#c49a43 55%,#e2c06a);color:#3d2c0b;
+  font:700 14px/1.25 'LM Roman',serif;letter-spacing:.05em;text-transform:uppercase;text-align:center;border-radius:2px;
+  text-shadow:0 1px 0 rgba(255,245,210,.6);box-shadow:0 2px 5px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.55)}
+.plq small{display:block;font-weight:400;letter-spacing:.02em;text-transform:none;font-size:13px;font-style:italic}
+.plq::before,.plq::after{content:"";position:absolute;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6,#7a5a1e 70%)}
+.plq::before{left:7px}.plq::after{right:7px}
+.wl2{margin-top:12px;background:#fbfaf7;padding:10px 13px 11px;box-shadow:0 1px 3px rgba(0,0,0,.18);font-size:15px;line-height:1.45;color:#333;text-align:left}
+.wl2 b{color:var(--ink);font-style:italic}.wl2 i{display:block;font-style:normal;color:#666;margin-top:2px}.wl2>span{display:block;margin-top:5px}
+.wl2 .cr{color:#555;font-style:italic}.wl2 .lk{font-size:14.5px;margin:6px 0 0}
+.sg{position:relative;display:flex;justify-content:center;margin:0 0 92px}
+.sg-b{display:flex;flex-direction:column;align-items:center;border:34px solid transparent;border-image:url(/img/frames/f-aimlli.svg) 120 round;background:#2c0c0f;
+  background-clip:padding-box;padding:10px 38px 8px;filter:drop-shadow(0 14px 14px rgba(0,0,0,.5))}
+.sg-k{font:italic 15px 'LM Roman',serif;letter-spacing:.2em;color:#e8cf95}
+.sg-t{font-size:44px;line-height:1.05;margin:2px 0 6px;color:#f6dfa0}
+.sg-s{font:13px 'LM Roman',serif;letter-spacing:.14em;text-transform:uppercase;color:#d8b9a0}
+.sg-n{position:absolute;right:0;top:66%;z-index:2;font-size:21px;transform:rotate(-7deg);color:#ffd6a0}
+.sg-n svg{position:absolute;left:-48px;top:-16px;width:44px;height:30px;overflow:visible}
+.sg-n path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+@media(max-width:900px){.mf{flex-basis:calc((100% - 40px)/2)}.cf{border-width:40px}}
+@media(max-width:820px){.mus{padding:28px 14px 30px}.sg-t{font-size:30px}.sg{flex-direction:column;align-items:center}.sg-n{position:static;margin-top:12px}.sg-n svg{display:none}}
+@media(max-width:600px){.mf{flex-basis:100%}.cf{border-width:46px}}
+@media(prefers-reduced-motion:reduce){.cf,.mf::after{transition:none}.mf:hover .cf{transform:none}}

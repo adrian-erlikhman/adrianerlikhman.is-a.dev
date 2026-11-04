@@ -508,7 +508,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-ul`, site.js `2026-11-03-ul`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-03-mus`, site.js `2026-11-03-mus`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -628,6 +628,21 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   lost the sentence that repeated it. Order: LangLLM, Curated to Win, the portfolio paper (published), Whose Line, Legatum
   ("yes published first"). He turned down status stamps on the first pages, then a colourful extra (result charts per
   paper, `_mock/research3-a.html`, or topic medallions, `-b.html`): "this is dtm, its chill for now". Leave Research as is.
+- **Projects is the Museum of Adrian (3 Nov, late; it replaced the medallion wall below).** Adrian: "make it more like an
+  actual museum, make them have different cool frames and then make it like the museum of adrian in the annotated font".
+  Round 1 (`_mock/museum-v1..v5.html`): he liked 1 (grand gallery, "free admission!") and the salon's colours. Round 2
+  (`museum2-*`, carved frames after an ornate gold frame photo he pasted): he liked B and C, "with the lights". Round 3
+  (`museum3-*`): **3 + 3 + 2** shipped. Crimson wall (`.mus`, `.wide`), the sign "the Museum of Adrian" in Shantell Sans inside
+  a carved gold frame with "free admission!" pen-scribbled beside it (`.sg`, under it on phones), then three across (`.mg`,
+  flex, last row centred; two at 900px, one at 600px): each work (`figure.mf#case-*`) has a brass picture light (`::before`,
+  `img/frames/lamp.svg`) throwing a warm pool (`::after`, brighter on hover), its own carved frame (`.cf`, `border-image:
+  var(--fr) 120 round`), a brass plaque (`.plq`: name, result) and the wall label (`.wl2`, same copy as before). **Eight
+  different frames**, `img/frames/f-<project>.svg`, drawn by `python tools/make_frames2.py` (helpers and SVG lighting in
+  tools/make_frames.py; **not** copied from his photo): AIML-LI gold, shell corners, running vine; SafeJew pale gold, leaf-fan
+  corners, laurel; Hivemind ebony with gold rosettes and rings; Monte silver rope; Ledger bronze fluting; eDNAtlas sea-green
+  and gold wave scroll; Safe Routes walnut, egg-and-dart; Citadel cream and gold, scrolled corners. 40-66 KB each (SVG,
+  gzipped by Pages). The medallions, the tilt script and the old `.ms/.mw/.fr/.wl/.md` CSS are gone; the notes below about
+  the medallion wall are history. Pen underlines in the labels now style as `.wl2 .hl`.
 - **Pen underlines on the most impressive things (3 Nov, his ask: "make it clear the most impressive things, underline
   them or make them in the annotated font").** `span.hl`: a hand-drawn ballpoint-blue stroke (SVG background) that draws
   itself under the phrase once it's on screen (site.js NOTES & TOUCHES adds `.on`; no JS or reduced motion: just there).

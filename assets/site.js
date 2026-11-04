@@ -2210,13 +2210,6 @@ const BIG=(function(){
   if(still||!window.IntersectionObserver) hs.forEach(h=>h.classList.add('seen'));
   else{ const dio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('seen'); dio.unobserve(e.target); } }),{rootMargin:'0px 0px -12% 0px'}); hs.forEach(h=>dio.observe(h)); }
 
-  /* ---- the museum wall: a frame tilts toward the cursor ---- */
-  if(!still&&matchMedia('(hover:hover)').matches) document.querySelectorAll('.mw .fr').forEach(f=>{
-    f.addEventListener('pointermove',e=>{ const r=f.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-      f.style.setProperty('--ry',(x*10).toFixed(2)+'deg'); f.style.setProperty('--rx',(-y*8).toFixed(2)+'deg'); });
-    f.addEventListener('pointerleave',()=>{ f.style.removeProperty('--rx'); f.style.removeProperty('--ry'); });
-  });
-
   /* ---- the pen underlines draw in once their phrase is on screen ---- */
   const hls=document.querySelectorAll('.hl');
   if(still||!window.IntersectionObserver) hls.forEach(h=>h.classList.add('on'));
