@@ -1,5 +1,17 @@
 # Project memory — adrianerlikhman.is-a.dev (repo adrian-erlikhman/adrianerlikhman.is-a.dev, formerly adrian-erlikhman.github.io)
 
+## ARRSI talk materials (5 Nov 2026, his "submit it and also updat my site")
+- Curated to Win's slides (12 pages) and A0 poster went into the AACL-IJCNLP presentation form on 5 Nov (Underline code
+  **W7_7**, submission 6aece44ce842ed4ed804e0bf, confirmation email the same day; he told Claude to sign the release for him).
+  The same PDFs are on the site as `papers/curated-to-win-arrsi2026-slides.pdf` and `-poster.pdf`, linked `?v=2026-11-05` from
+  R.02's links ("Paper · Slides · Poster · Code and data", with `data-title` for the paper reader), llms.txt and the sitemap.
+  Sources are the Slides and Design artifacts from that session. They are plain white Arial on purpose (he called the first,
+  navy and IBM Plex, "horribly chatted"), so the site's Latin Modern rules don't apply to them.
+- The status line now says "(virtual)". **The talk video is not done:** he records it, and the form uses the latest submission
+  only, so a video resubmission must carry the poster and slides too. Add a "Talk" link only once a video exists. The old rule
+  below ("don't add a talk or poster line until the format is settled") is settled for slides and poster; the Anthology
+  rule still stands.
+
 ## Status pass (1 Nov 2026, Adrian's "Yes, fix them" after a college-app audit)
 - **Portfolio paper: Published** (OJSS, 29 Oct 2026, Oct 2026 Vol. 12 No. 7, pp. 510-529; journal page
   `oxfordjss.org/oct-2026-vol-12-issue-7/does-portfolio-optimization-beat-splitting-evenly`; DOI 10.65161/recqxelaA8evrueNC
