@@ -2114,9 +2114,7 @@ const BIG=(function(){
 
   /* ---- the notes: the target, which side, where the arrow lands on it (fx, fy), and the note's offset from there ---- */
   const NOTES=[
-    {t:'#about .photos button',s:'l',fx:0,fy:.42,dy:-26,txt:'hi! that’s me',now:1},
-    {t:'#about .photos button:nth-child(2)',s:'b',fx:.5,fy:1,dy:0,txt:'fencing for Team USA at the Pan‑American Championships in Bogotá',now:1},
-    {t:'#about .photos button:nth-child(3)',s:'r',fx:1,fy:.42,dy:-26,txt:'at Y Combinator’s Startup School',now:1},
+    // the three photo notes became captions on the polaroids (5 Nov, his pick C of _mock/photo-options.png)
     {t:'#xp-lemma h3',s:'l',fx:0,fy:.5,dy:-34,txt:'came with a hackathon win!'},
     {t:'#rs-t2 .pg',s:'l',fx:0,fy:.3,dy:-30,txt:'wrote this one on my own'},
     {t:'.reel video',s:'r',fx:.72,fy:.32,dy:44,txt:'me, in the black mask'},

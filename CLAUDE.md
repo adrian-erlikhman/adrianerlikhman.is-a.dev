@@ -511,7 +511,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css `2026-11-04-photos`, site.js `2026-11-04-cinzel`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-05-polaroid`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
@@ -711,6 +711,13 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   **Wall labels rewritten the same evening** ("the descriptions could be better"): medium, then what it does, his part and
   the numbers in two sentences, then a plain credit line (the museum puns, "Gift of" / "On loan to", are gone). Ledger's
   role keeps its fixed wording.
+- **The top photos are polaroids since 5 Nov** (Adrian: "maybe there is a fancier way to do the photos?"; he picked **C** of
+  `_mock/photo-options.png` over small gold frames, overlapping prints and arched windows): white borders, the outer two a
+  little crooked, straightening on hover, and each photo's note written on its bottom in the pen (`span.pc`: "hi! that's me",
+  "Team USA, Pan-Ams in Bogotá", "YC Startup School"). The three margin notes below are gone from site.js NOTES; the notes
+  that remain are Lemma's, Curated to Win's and the clip's. The same day ("i feel like there is a lot of blue now"; his pick
+  **D** of `_mock/ink-options.png`, over pencil, red pen and sepia) the About paragraph's handwritten phrases (`.hw`) went
+  to black ink: the ballpoint blue is now only in notes, captions, doodles and pen underlines. History follows.
 - **All three top photos are annotated (3 Nov, his ask: "annotate all 3 of the top photos when i land").** "hi! that's me"
   (left margin, headshot), "fencing for Team USA at the Pan‑American Championships in Bogotá" (under the middle photo: a
   new note side, `s:'b'`, centred below its target with the arrow curving up; the hyphen is non-breaking) and "at Y
