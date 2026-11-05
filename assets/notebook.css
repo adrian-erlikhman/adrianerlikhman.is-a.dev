@@ -37,10 +37,19 @@ p+p{margin-top:14px}
 .hero h1{font-weight:700;font-size:44px;line-height:1.1;color:var(--ink);margin-bottom:26px;letter-spacing:-.005em}
 .links{color:var(--dim)}
 /* the photos sit between the name and the writing since 4 Nov (Adrian's pick A of _mock/about-photos-options.png) */
-.photos{display:flex;gap:8px;margin:0 0 34px}
-.photos button{flex:var(--r) 1 0;aspect-ratio:var(--r);min-width:0;overflow:hidden;cursor:zoom-in}
+/* polaroids since 5 Nov (his pick C of _mock/photo-options.png): a white border, a little crooked, each photo's note written
+   on its bottom in the pen (they replaced the three margin notes); pointing at one straightens it */
+.photos{display:flex;align-items:flex-start;gap:20px;margin:0 0 34px;padding:6px 4px 0}
+.photos button{position:relative;flex:var(--r) 1 0;min-width:0;cursor:zoom-in;background:#fff;padding:10px 10px 44px;
+  box-shadow:0 10px 22px -8px rgba(40,30,20,.32),0 0 0 1px rgba(0,0,0,.05);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.photos button:nth-child(1){transform:rotate(-2deg)}.photos button:nth-child(3){transform:rotate(2deg)}
+.photos button:hover,.photos button:focus-visible{transform:rotate(0) translateY(-4px);box-shadow:0 16px 28px -10px rgba(40,30,20,.4),0 0 0 1px rgba(0,0,0,.05)}
 .photos .p{--r:.75}.photos .w{--r:1.3333}
-.photos img{width:100%;height:100%;object-fit:cover}
+.photos img{display:block;width:100%;height:auto;aspect-ratio:var(--r);object-fit:cover}
+.photos .pc{position:absolute;left:6px;right:6px;bottom:12px;font:500 17px/1.1 'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;
+  color:#2457c5;text-align:center}
+@media(max-width:700px){.photos{gap:10px}.photos button{padding:5px 5px 30px}.photos .pc{font-size:11px;left:3px;right:3px;bottom:5px;line-height:1.05}}
+@media(prefers-reduced-motion:reduce){.photos button{transition:none}}
 
 /* sections */
 .sec{padding-top:76px}
@@ -229,7 +238,6 @@ body.intro-lock{overflow:hidden}
 .pn-svg path{fill:none;stroke:#2457c5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset .9s cubic-bezier(.5,0,.2,1)}
 .pn-svg path.on{stroke-dashoffset:0}
 @media(max-width:1179px){.pn,.pn-svg{display:none}}
-@media(min-width:1180px){.hero .photos{margin-bottom:96px}} /* room for the note under the middle photo, above the writing */
 @media(prefers-reduced-motion:reduce){.pn,.pn-svg path{transition:none}}
 /* 2. a paper's first page lifts to a readable size on hover */
 .pg{position:relative;z-index:1}
@@ -274,7 +282,8 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 @media(prefers-reduced-motion:reduce){.js .hl{background-size:100% .5em;transition:none}}
 .wl2 .hl{color:var(--ink)}
 /* the About paragraph's key phrases are written in by hand, in the notes' ballpoint blue (3 Nov, Adrian picked C of five; no underline there) */
-.hw{font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;color:#2457c5;font-size:.94em}
+/* in black ink since 5 Nov (his pick D of _mock/ink-options.png: "a lot of blue"; blue stays in the margin notes) */
+.hw{font-family:'Shantell Sans','Comic Sans MS',cursive;font-variation-settings:'INFM' 100,'BNCE' 30;font-weight:500;color:var(--ink);font-size:.94em}
 
 /* ---- the Museum of Adrian (3 Nov, Adrian's pick after three rounds of mocks): the sign in a carved frame with "free
    admission!", a brass picture light over every work, a different carved frame per project (border-image from
