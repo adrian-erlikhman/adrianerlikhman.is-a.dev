@@ -4,12 +4,15 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://adrianerlikhman.is-a.dev/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/adrian.jpg</image:loc><image:title>Adrian Erlikhman</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/img/about/hs-portrait.webp</image:loc><image:title>Adrian Erlikhman</image:title></image:image>
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/fencing-1.jpg</image:loc><image:title>Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/img/about/lunge-wide.webp</image:loc><image:title>Adrian Erlikhman fencing épée for Team USA at the Cadet Pan American Championships</image:title></image:image>
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/img/ycs/yc-sign.jpg</image:loc><image:title>Adrian Erlikhman at Y Combinator Startup School 2026</image:title></image:image>
+    <image:image><image:loc>https://adrianerlikhman.is-a.dev/img/about/yc-portrait.webp</image:loc><image:title>Adrian Erlikhman at Y Combinator Startup School 2026</image:title></image:image>
     <video:video>
       <video:thumbnail_loc>https://adrianerlikhman.is-a.dev/img/cases/monte-film.webp</video:thumbnail_loc>
       <video:title>Monte — the right credit card at the register</video:title>
@@ -71,7 +74,7 @@
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/resume.pdf</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
