@@ -407,6 +407,21 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   into `main` → resync the branch to `origin/main` with `--force-with-lease`.
 
 ## SEO (5 Oct 2026)
+- **Search result pass (7 Nov 2026; his "boost my site to first ... refine what it looks like here").** Search Console's URL
+  Inspection showed the homepage had **not been crawled since 6 Oct**, with no referring page detected, so nothing after that
+  had reached Google (the 7 and 8 Oct description, the chat, the notebook). The "hi, i'm adrian Adrian Erlikhman" snippet
+  and the climbing photos were that month-old copy; the 8 Oct note below about Google "ignoring" the description was really
+  this. He picked (of three): title just **"Adrian Erlikhman"**; description "I'm Adrian Erlikhman, a high school senior in
+  Los Angeles. I research language models, build software and fence épée for Team USA." (same in og and twitter; the title
+  and description notes below are history). `data-nosnippet` moved off the h1 (Google supports it only on span, div and
+  section) onto `section#about`, and is on `#intro` (its hidden name made the doubled "Adrian Erlikhman") and `#offline`.
+  ProfilePage has `primaryImageOfPage` (the headshot; og.png would otherwise be a thumbnail candidate); WebSite's
+  alternateName no longer lists the domain, which Google was showing as the site name; the sitemap also lists the three
+  on-page crops; the preload is the real first image. Rank that day: Google #1 for his name (28-day average 2.9), Bing about
+  4th with a copy still saying "under review at NeurIPS", DuckDuckGo 3rd. He OK'd a Request Indexing and a Temporary Removal
+  of the `/life-*` photos after this deploy. **After a content deploy, ping IndexNow and use Request Indexing: Google does
+  not come back on its own.** Inbound links are the remaining lever (safejew.org and aiml-initiative.org name him but
+  don't link here). Pages' Enforce HTTPS was still off, so plain http answers 200.
 - Adrian asked for the site to be the first result for his name. The head
   already carried title, description, canonical, og/twitter and a Person
   JSON-LD; on 5 Oct the JSON-LD gained the two published papers
