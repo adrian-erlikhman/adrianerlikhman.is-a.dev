@@ -2210,6 +2210,9 @@ const BIG=(function(){
   function fill(i){
     cur=i; const f=figs[i], xd=f.querySelector('.xd'), d=xd.dataset, wl=f.querySelector('.wl2'), name=nm(f);
     F.style.setProperty('--fr',f.style.getPropertyValue('--fr')); F.style.setProperty('--ar',d.ar||'16/9');
+    const tp=f.querySelector('template.walk'); F.parentNode.classList.toggle('wk',!!tp);
+    if(tp) F.replaceChildren(walk(tp.content.firstElementChild.cloneNode(true),d.href));
+    else{
     let m; const lgr=f.querySelector('.lgr'), wi=f.querySelector('.im img');
     if(lgr){ m=lgr.cloneNode(true); m.classList.remove('in'); if(!still) m.classList.add('pr'); }
     else if(d.video&&!quiet){ m=document.createElement('video'); m.muted=true; m.loop=true; m.playsInline=true; m.preload='auto';
@@ -2220,6 +2223,7 @@ const BIG=(function(){
     a.setAttribute('aria-label','Open '+name+' ('+where(d.href)+') in a new tab');
     a.append(m); a.insertAdjacentHTML('beforeend','<span class="mx-u" aria-hidden="true">Visit '+where(d.href)+'</span>');
     F.replaceChildren(a);
+    }
     note.firstChild.textContent=(d.note||'click it to open the live site!').replace(/^click/,touch?'tap':'click');
     // the placard: title, year and medium from the wall label, then what the wall label has no room for, then its credit and links
     const b=wl.querySelector('b'), yr=b.nextSibling&&b.nextSibling.nodeType===3?b.nextSibling.textContent:'';
@@ -2234,12 +2238,42 @@ const BIG=(function(){
     mx.querySelector('.pv').setAttribute('aria-label','Previous: '+nm(pv)); mx.querySelector('.nx').setAttribute('aria-label','Next: '+nm(nx));
     mx.querySelector('.mx-nv span').textContent=(i+1)+' of '+n;
   }
+  // miyagi's walkthrough (15 Nov 2026; Adrian: "i want an actual walkthrough when you open the painting, not just a screenshot"):
+  // six frames of a real lesson from the app, one at a time, each with its step and a line on what happens. The bars at the top
+  // fill as it plays (a CSS animation; its end moves to the next step, and it loops); a bar or the picture jumps, the button
+  // pauses, and under reduced motion it starts paused. The arrow keys step it while focus is inside it.
+  function walk(w,href){
+    const segs=[...w.querySelectorAll('.wt-seg')], fs=[...w.querySelectorAll('.wt-st>figure')], pp=w.querySelector('.wt-pp');
+    w.querySelector('.wt-top').insertAdjacentHTML('beforeend','<a class="wt-v" target="_blank" rel="noopener"></a>');
+    const v=w.querySelector('.wt-v'); v.href=href; v.textContent=where(href).replace(/\/$/,''); v.setAttribute('aria-label','Open '+v.textContent+' in a new tab');
+    let k=0;
+    const show=j=>{
+      k=(j+fs.length)%fs.length;
+      fs.forEach((x,i)=>{ x.classList.toggle('on',i===k); x.setAttribute('aria-hidden',i===k?'false':'true'); });
+      segs.forEach((x,i)=>{ x.classList.toggle('done',i<k); x.classList.toggle('now',i===k); if(i===k) x.setAttribute('aria-current','step'); else x.removeAttribute('aria-current'); });
+      const b=segs[k].firstChild; b.style.animation='none'; void b.offsetWidth; b.style.animation=''; // restart its bar
+    };
+    segs.forEach((x,i)=>{
+      const words=fs[i].querySelector('figcaption').textContent.split(/\s+/).length;
+      x.style.setProperty('--d',(1.6+words*.19+(i===segs.length-1?1.5:0)).toFixed(1)+'s'); // time to read it, a beat longer on the last
+      x.addEventListener('click',()=>show(i));
+      x.firstChild.addEventListener('animationend',()=>{ if(i===k&&!w.classList.contains('paused')) show(k+1); });
+    });
+    w.querySelector('.wt-st').addEventListener('click',()=>show(k+1));
+    const pause=on=>{ w.classList.toggle('paused',on); pp.setAttribute('aria-label',on?'Play':'Pause'); };
+    pp.addEventListener('click',()=>pause(!w.classList.contains('paused')));
+    if(still) pause(true);
+    w.step=n=>show(k+n);
+    show(0);
+    return w;
+  }
   // once the frame has landed: the arrow draws, the receipt prints, the film plays, the credit's pen line draws
   function settle(t){
     clearTimeout(tIn); note.classList.remove('on');
     const p=note.querySelector('path'); p.style.setProperty('--len',Math.ceil(p.getTotalLength()));
     tIn=setTimeout(()=>{
       note.classList.add('on'); const l=F.querySelector('.lgr'); if(l) l.classList.add('in');
+      const wt=F.querySelector('.wt'); if(wt) wt.classList.add('run');
       const v=F.querySelector('video'); if(v){ const q=v.play(); if(q&&q.catch) q.catch(()=>{}); }
       Pl.querySelectorAll('.hl').forEach(h=>h.classList.add('on'));
     },still?0:t);
@@ -2301,8 +2335,10 @@ const BIG=(function(){
     if(mx.hidden) return;
     const lb=document.querySelector('.lb'); if(lb&&!lb.hidden) return; // the film viewer is on top: it takes Esc
     if(e.key==='Escape'){ e.preventDefault(); close(); }
-    else if(e.key==='ArrowRight'){ e.preventDefault(); go(1); }
-    else if(e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+    else if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+      e.preventDefault(); const n=e.key==='ArrowRight'?1:-1, wt=F.querySelector('.wt');
+      if(wt&&wt.contains(document.activeElement)) wt.step(n); else go(n);
+    }
     else if(e.key==='Tab'){ // keep focus in the room
       const q=[...mx.querySelectorAll('a[href],button')], a=q[0], z=q[q.length-1];
       if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); }

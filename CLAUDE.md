@@ -11,7 +11,14 @@
   On the site: a museum work third, after SafeJew (`#case-miyagi`, Claude's placement: the biggest hackathon prize; move it if
   he asks), in a **red-lacquer frame with rosettes and laurel** (`img/frames/f-miyagi.svg`, `make_frames2.py` "lacquer"; the
   other eight files came out byte-identical). Wall picture `img/cases/miyagi-home.webp` (its og card, the bonsai, padded to
-  16:10); the closer look shows the app (`miyagi-box.webp`, Devpost screenshot 02-box: the spotlight box on the line to type).
+  16:10). **The closer look plays a walkthrough, not a picture** (15 Nov, his "i want an actual walkthrough when you
+  open the painting, not just a screenshot"): the six frames of the miyagi.study landing page's own story (`img/cases/miyagi-walk/
+  1-ask … 6-learns.webp`, 1200x800, a real neural-net lesson), each with "Step n of 6", its title and one line (his landing copy
+  in sentence case), in a small dark player in the frame: story bars that fill as it plays (about 6 s a step, looping), pause,
+  the live link (miyagi.study) on top; a bar or the picture jumps; arrow keys step it when focus is inside; paused under
+  reduced motion. Markup is a `<template class="walk">` in `#case-miyagi`; site.js MUSEUM `walk()`; CSS `.wt-*`, and
+  `.mx-w.wk` sizes the frame to the screen and pins it while the placard scrolls (desktop). Any other work can get one the
+  same way. `miyagi-box.webp` is no longer used.
   The sign says "nine works". An Honors row after Citadel, JSON-LD `award`, llms.txt; one-pager: first line of Competitions;
   CV: Honors line, and a Selected Projects entry after SafeJew (one bullet, link on the role line, to keep the CV at 4 pages).
 - **WLLFM: accepted 13 Nov** (S22216, "Who Wrote This? LLM Judges Encode Authorship Without a Detectable Sense of Self",
@@ -575,7 +582,7 @@ the custom domain **adrianerlikhman.is-a.dev** (see `CNAME`). The site links a
   design plus copies of the rules for the intro, the maintenance screen, the résumé picker, ⌘K and toasts. `home.css`
   (the chat, 28 Oct to 2 Nov) and `site.css` stay in the repo as history; nothing loads them. `site.js` is still shared:
   its NOTEBOOK block (the photo viewer and paper reader) runs the homepage, while CHAT SITE and BIG VIEW find no `.cg` or
-  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-05-polaroid`).
+  `#dv` and skip. Both links carry `?v=` (currently notebook.css and site.js both `2026-11-15-walk`).
 - 28 Oct to 2 Nov the homepage loaded `assets/home.css` (the chat), not `site.css`.
 - Since 21 Sept the site's styles and scripts live in `assets/site.css` and
   `assets/site.js`, shared by every page that uses the house design; the
