@@ -27,7 +27,14 @@
 - Dated lines fixed the same day: the About now says "In November I presented that research ..." (the ARRSI talk ran 10 Nov
   as his recorded video, played by the organizer); the Nov. 10 Coming-up line is gone; BigData reads "Dec. 14-17" with both
   papers; the CV's ARRSI talk lost "(scheduled)". "Four of my papers are about evaluating language models".
-- Résumé cache-buster is now `?v=2026-11-15-sandhacks` (7 links). Both PDFs built with XeLaTeX (checked first: HEAD's cv.tex
+- **Résumé clean-up (15 Nov, later; his "too messy and not clean ... cut out the links ... no weird bolding in the
+  description"):** the one-pager's body has **no links** (only the header's email, site, LinkedIn and GitHub) and **no
+  bold inside a bullet**. Every entry is a bold name, an italic "title | detail" line and verb-first bullets; papers put
+  status | credit on the italic line (every multi-author paper names its co-authors) and run in the site's order
+  (LangLLM, Curated to Win, WLLFM, portfolio, Whose Line, Legatum); Competitions are "Result, Event: Project, what it
+  is." in order of result. Ledger is "compliance tracking for corner stores" there (the fixed role wording is no longer
+  quoted on the one-pager; the CV keeps it). The CV still has its links and bold citations: ask before changing it to match.
+- Résumé cache-buster is now `?v=2026-11-15-clean` (7 links). Both PDFs built with XeLaTeX (checked first: HEAD's cv.tex
   reproduced the live cv.pdf text exactly), `build.check()` passed (2 and 4 pages).
 
 ## ARRSI talk materials (5 Nov 2026, his "submit it and also updat my site")

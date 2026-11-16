@@ -89,16 +89,19 @@
 \vspace{-6pt}
 
 % =================================================================================
+% House style (15 Nov 2026, Adrian: "too messy and not clean ... cut out the links ... no weird bolding in the
+% description"): no links in the body (the header keeps its contact links), no bold inside a bullet, every entry
+% is a bold name, an italic line of title | detail, and bullets that open with a verb.
 \section{Professional Experience}
 
-\role{Firstness}{Software Engineering \& ML Intern}{\lnk{https://firstness.ai}{firstness.ai}\sep reporting directly to the founder}{2026 -- Present}
+\role{Firstness}{Software Engineering \& ML Intern}{AI research startup, reporting directly to the founder}{2026 -- Present}
 \begin{itemize}
   \item Refining how the platform connects into the research stack, and building demos that make it easier to understand.
 \end{itemize}
 
 \role{Kiddom}{Machine Learning Internship \& Mentorship}{K--12 EdTech}{2026 -- Present}
 \begin{itemize}
-  \item Designing ML and NLP approaches to teacher-facing problems in K--12 assessment with Kiddom's Director of Data Science; built \textbf{Why Wrong}, which names the misconception behind each wrong answer on a class's answer sheets (F1 0.87).
+  \item Designing ML and NLP approaches to teacher-facing problems in K--12 assessment with Kiddom's Director of Data Science; built Why Wrong, which names the misconception behind each of a class's wrong answers (F1 0.87).
 \end{itemize}
 
 \role{Fjor Venture Capital}{Investment \& Software Engineering Intern}{\$15M early-stage fund}{2024 -- 2026}
@@ -106,7 +109,7 @@
   \item Built scoring models to screen 134 startups in Y Combinator's Summer 2025 batch and led the screen with Managing Director Tatiana Janko; ran diligence on 20+ AI startups and wrote 10+ investment memos.
 \end{itemize}
 
-\role{Alliance for SoCal Innovation}{Venture \& Data Strategy Intern}{}{2024 -- 2026}
+\role{Alliance for SoCal Innovation}{Venture \& Data Strategy Intern}{nonprofit coalition of USC, UCLA, Caltech and 20+ organizations}{2024 -- 2026}
 \begin{itemize}
   \item Built a Python/SQL investor-matching engine over 10K contacts at 250+ firms; deduplication cut lookups from days to under a minute. Worked with SoCal deep-tech startups, including Caltech spinouts.
 \end{itemize}
@@ -114,15 +117,15 @@
 % =================================================================================
 \section{Ventures}
 
-\role{AIML-LI (AI/ML Literacy Initiative)}{Co-Founder \& Lead}{\lnk{https://aiml-initiative.org}{aiml-initiative.org}}{2023 -- Present}
+\role{AIML-LI (AI/ML Literacy Initiative)}{Co-Founder \& Lead}{free AI-literacy curriculum for LA public schools}{2023 -- Present}
 \begin{itemize}
   \item Built a free AI-literacy course any teacher can run cold on the Chromebooks a class already has: twelve 30-minute sessions plus a 12-week, six-unit version with Colab notebooks, instructor guides and assessments. Taught in LACES AP Computer Science, spring 2026.
   \item Took it to LAUSD's Ed Tech \& Innovation office, which is carrying it to the district's Chief Academic and Chief Information Officers toward a standing AI-literacy elective.
   \item Organizing the LA Student AI Summit \& Hackathon for 500+ public-school students: keynotes from Google DeepMind, Microsoft, Google and Snap, backed by Snap, Jane Street, MongoDB, Confluent and Discovery Education.
-  \item \textbf{Invited by aiEDU:} speaker on its student panel on AI at NCSS 2026 (National Consortium of STEM Schools, San Diego, Dec 2026) and a guest on its podcast with CEO Alex Kotran.
+  \item Invited by aiEDU to speak on its student panel on AI at NCSS 2026 (National Consortium of STEM Schools, San Diego, Dec 2026) and to join its podcast with CEO Alex Kotran.
 \end{itemize}
 
-\role{SafeJew}{Co-Founder}{\lnk{https://safejew.org}{safejew.org}\sep funded by a JFEDLA Teen Innovation Grant}{2024 -- Present}
+\role{SafeJew}{Co-Founder}{community safety analytics platform}{2024 -- Present}
 \begin{itemize}
   \item Shipped a live map of 1,394 antisemitic incidents, 800 across Greater LA and 594 on 33 university campuses, each with its source; funded by a Teen Innovation Grant from the Jewish Federation of Greater Los Angeles and distributed through its Community Security Initiative.
   \item Wrote a dependency-free LA gazetteer that geocodes places named in news prose, so a daily GitHub Action keeps the map current with no human in the loop; rebuilt as V2 for a Hillel International pitch.
@@ -131,47 +134,47 @@
 % =================================================================================
 \section{Research}
 
-\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{https://github.com/adrian-erlikhman/self-recognition-peer-baseline}{Preprint, arXiv forthcoming}
+\paper{Interpretable Multilingual Attribution of Frontier LLMs}{}{Best Paper Finalist, IEEE BigData 2026 HS Symposium\sep Co-first author, with Michael Tarekegn and Philo Juang}
 \begin{itemize}
-  \item \who{Co-first author, with Michael Tarekegn and Philo Juang}Nine LLM judges, 1,270 texts: the usual self-recognition test flags 15 of 37 cases, 3 beat a peer baseline and none beats its strongest single peer; an 18-feature stylometric classifier (86.3\%) beats every judge.
+  \item Attributed 840 essays from five frontier models in seven languages at 59--72\% accuracy (20\% chance), with no detected drop in low-resource languages; the signal survives Google Translate.
 \end{itemize}
 
-\paper{Who Wrote This? LLM Judges Encode Authorship Without a Detectable Sense of Self}{}{Accepted, WLLFM Workshop @ IEEE BigData 2026}
+\paper{Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation}{}{Accepted, ARRSI Workshop at AACL-IJCNLP 2026\sep Sole author}
 \begin{itemize}
-  \item \who{Co-first author, with Michael Tarekegn and Philo Juang}Probes on four open-weight judges' hidden states name the author of 960 texts at AUC 0.90--0.98, yet no judge's own states beat its strongest peer's: authorship is encoded without a detectable sense of self.
+  \item Introduced a certificate for how much of a validation set can be removed before the chosen reward model or LLM judge changes; on RewardBench, removing 12 of 2,985 items flips the winner.
 \end{itemize}
 
-\paper{Interpretable Multilingual Attribution of Frontier LLMs}{https://adrianerlikhman.is-a.dev/papers/langllm-bigdata2026.pdf}{Best Paper Finalist, IEEE BigData 2026 HS Symposium}
+\paper{Who Wrote This? LLM Judges Encode Authorship Without a Detectable Sense of Self}{}{Accepted, WLLFM Workshop at IEEE BigData 2026\sep Co-first author, with Michael Tarekegn and Philo Juang}
 \begin{itemize}
-  \item \who{Co-first author}840 essays from five models in seven languages: attribution holds at 59--72\% against 20\% chance, with no detected drop for low-resource languages, and survives Google Translate.
+  \item Showed that probes on four open-weight LLM judges' hidden states identify the author of 960 texts (AUC 0.90--0.98), yet no judge's own states beat its strongest peer's.
 \end{itemize}
 
-\paper{Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation}{https://adrianerlikhman.is-a.dev/papers/curated-to-win-arrsi2026.pdf}{Accepted, ARRSI Workshop @ AACL-IJCNLP 2026}
+\paper{Does Portfolio Optimization Beat Splitting Evenly?}{}{Published, Oxford Journal of Student Scholarship\sep Co-first author, with Ryan Erlikhman}
 \begin{itemize}
-  \item \who{Sole author}A certificate for how much of a validation set can be removed before the chosen reward model or LLM judge changes: on RewardBench, 12 of 2,985 items.
+  \item Showed that equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 vs.\ 0.51), and traced the gap to estimating expected returns.
 \end{itemize}
 
-\paper{How Robust Are the Legatum Prosperity Index Rankings?}{https://adrianerlikhman.is-a.dev/papers/legatum-robustness-audit.pdf}{In revision, Journal of High School Science}
+\paper{Whose Line Is It Anyway? Auditing Self- and Other-Recognition in LLM Judges}{}{Preprint, arXiv forthcoming\sep Co-first author, with Michael Tarekegn and Philo Juang}
 \begin{itemize}
-  \item \who{Co-first author, with Ryan Erlikhman}Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects (Spearman 0.91--0.99); the ranking holds globally but not mid-table, where the median 90\% rank interval spans 36 places.
+  \item Tested nine LLM judges on 1,270 texts against a peer baseline: the usual self-recognition test flags 15 of 37 cases, but none beats its strongest single peer, and an 18-feature stylometric classifier beats every judge.
 \end{itemize}
 
-\paper{Does Portfolio Optimization Beat Splitting Evenly?}{https://adrianerlikhman.is-a.dev/papers/portfolio-optimization-vs-equal-weight.pdf}{Published, Oxford Journal of Student Scholarship, Oct 2026}
+\paper{How Robust Are the Legatum Prosperity Index Rankings?}{}{In revision, Journal of High School Science\sep Co-first author, with Ryan Erlikhman}
 \begin{itemize}
-  \item \who{Co-first author, with Ryan Erlikhman}Equal weights beat Markowitz in 74\% of 250 calibrated simulations (Sharpe 0.70 against 0.51); the loss traces to estimating expected returns.
+  \item Derived rank leverage, c\sq(1\,\textminus\,\rhosym\sq), which tracks Sobol' total effects (Spearman 0.91--0.99); the ranking holds overall but not mid-table, where the median 90\% rank interval spans 36 places.
 \end{itemize}
 
 % =================================================================================
 \section{Competitions}
 \begin{itemize}
-  \item \textbf{Grand Prize, SanD Hacks 2026} (UC San Diego). miyagi: turns any coding tutorial into an auto-graded lab that waits until your code works.\enspace\lnk{https://miyagi.study}{live}\,\lnk{https://devpost.com/software/miyagi-x5cw4g}{devpost}
-  \item \textbf{Finalist, Citadel High School Terminal} (top 8 of 45): ``dunderscore,'' a Python bot, revised after each round's replay review.\enspace\lnk{https://terminal.c1games.com/}{about}
-  \item \textbf{Y Combinator Startup School} (sub-5\%, \$30,000+ in credits), admitted as AIML-LI's founder.\enspace\lnk{https://www.startupschool.org/}{about}
-  \item \textbf{1st place, VISION HACK: South LA} (Council District 9 Champion, U18). Ledger: led the build across the vision pipeline, rule engine and frontend, and wrote the two-pass vision pipeline, the dashboard and renewal calendar, and the static fallback.\enspace\lnk{https://visionhack-nu.vercel.app/}{live}
-  \item \textbf{1st place, Finance track, ACM TrojanHacks 2026}. Monte: picks the best credit card at each purchase.\enspace\lnk{https://ace-eta-beryl.vercel.app/}{live}\,\lnk{https://devpost.com/software/monte-calygj}{devpost}
-  \item \textbf{Winner, Agent Behaviour Monitoring track, SEPHacks 2026}. Hivemind: shared memory for AI agents.\enspace\lnk{https://hivemind-q17i.onrender.com/}{live}\,\lnk{https://devpost.com/software/hivemind-v7rwgx}{devpost}
-  \item \textbf{3rd place internationally, Code for Transportation}. Safe Routes: A* over 431,599 crime-scored LA blocks.\enspace\lnk{https://safe-routes-la.github.io/}{live}
-  \item \textbf{1st place, Decode the Ocean Hackathon} (Lovable \texttimes\ UN). eDNAtlas: live coastal health scores from environmental DNA.\enspace\lnk{https://adrianerlikhman.is-a.dev/eDNAtlas/}{live}
+  \item Grand Prize, SanD Hacks 2026 (UC San Diego): miyagi, which turns any coding tutorial into an auto-graded lab.
+  \item 1st place, Finance track, ACM TrojanHacks 2026: Monte, which picks the best credit card at each purchase.
+  \item Winner, Agent Behaviour Monitoring track, SEPHacks 2026: Hivemind, shared memory for a team's AI coding agents.
+  \item 1st place, VISION HACK: South LA (Council District 9 Champion, U18): Ledger, compliance tracking for corner stores.
+  \item 1st place, Decode the Ocean Hackathon (Lovable \texttimes\ UN): eDNAtlas, coastal health scores from environmental DNA.
+  \item 3rd place internationally, Code for Transportation: Safe Routes, safer walking and bus routes to all 668 LAUSD schools.
+  \item Finalist, Citadel High School Terminal (top 8 of 45 teams): dunderscore, a Python bot for Citadel's algorithmic game.
+  \item Admitted, Y Combinator Startup School 2026 (sub-5\%, \$30,000+ in credits), as AIML-LI's co-founder.
 \end{itemize}
 
 % =================================================================================
@@ -180,14 +183,15 @@
 \role{Los Angeles Center for Enriched Studies (LACES)}{Class of 2027}{LAUSD magnet school}{Los Angeles, CA}
 \begin{itemize}
   \item GPA 5.2 weighted, 4.0 unweighted\sep SAT 1520\sep 2\texttimes\ AP Scholar with Distinction\sep 17 APs
-  \item Dual enrollment: Linear Algebra (MATH 270)\sep Programming in Python (CS 119)\sep Python for DS and ML (CS 121, planned)
+  \item \mbox{Dual enrollment: Linear Algebra (MATH 270)}\sep \mbox{Programming in Python (CS 119)}\enspace$|$\hspace{0pt}\enspace\mbox{Python for DS and ML (CS 121, planned)}
 \end{itemize}
 
 % =================================================================================
 \section{Leadership \& Athletics}
 \begin{itemize}
-  \item \textbf{\'Ep\'ee fencing:} USA Fencing A26; Team USA, 2026 Cadet Pan American Championships (6th); U.S. No.\ 49 Junior and No.\ 78 Senior, peak No.\ 17 Cadet; 3\texttimes\ All-American First Team; in active recruitment with MIT.
-  \item \textbf{President}, Jewish Student Union (50+ members)\sep \textbf{Co-Founder \& President}, STEMsters (30+ volunteers in 4 elementary schools)
+  \item \'Ep\'ee fencing: USA Fencing A26; Team USA, 2026 Cadet Pan American Championships (6th); U.S. No.\ 49 Junior and No.\ 78 Senior, peak No.\ 17 Cadet; 3\texttimes\ All-American First Team; in active recruitment with MIT.
+  \item President, Jewish Student Union (50+ members)
+  \item Co-Founder \& President, STEMsters (30+ volunteers in 4 elementary schools)
 \end{itemize}
 
 % =================================================================================
