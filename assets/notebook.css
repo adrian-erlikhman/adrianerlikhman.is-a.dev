@@ -388,9 +388,37 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
 .mx-nv button{pointer-events:auto;font:17px/1.2 'LM Roman',serif;color:var(--acc);background:none;border:0;padding:8px 10px;cursor:pointer}
 .mx-nv button:hover{text-decoration:underline}
 .mx-nv span{font-style:italic;font-size:14.5px;color:var(--dim)}
+/* miyagi's walkthrough in the closer look (15 Nov 2026; site.js MUSEUM walk()): a small player in the frame. Bars that fill as
+   each step plays, a pause button and the live link on top; the app's own frames (3:2) crossfading; the step and its line under
+   them. The figures share one grid cell, so the caption band is as tall as the longest and nothing jumps. */
+.mx-w.wk{width:min(calc(100vw - 576px),calc((100vh - 490px)*1.5 + 128px),980px);min-width:560px;align-self:start;position:sticky;top:92px} /* the placard is long: the player stays in view while you read it */
+.wt{display:block;background:#141318;color:#d9d5cc}
+.wt-top{display:flex;align-items:center;gap:5px;padding:7px 12px 6px}
+.wt-seg{flex:1;position:relative;height:18px;padding:0;border:0;background:none;cursor:pointer}
+.wt-seg::before,.wt-seg i{content:"";position:absolute;left:0;top:7px;height:3px;border-radius:2px}
+.wt-seg::before{right:0;background:rgba(255,255,255,.2)}
+.wt-seg i{width:0;background:#f4f1ea}
+.wt-seg:hover::before{background:rgba(255,255,255,.34)}
+.wt-seg.done i{width:100%}
+.wt-seg.now i{animation:wt-fill var(--d,5s) linear forwards;animation-play-state:paused}
+.wt.run:not(.paused) .wt-seg.now i{animation-play-state:running}
+@keyframes wt-fill{from{width:0}to{width:100%}}
+.wt-pp{flex:none;width:28px;height:24px;margin-left:5px;padding:0;border:0;border-radius:4px;background:none;color:#f4f1ea;cursor:pointer}
+.wt-pp:hover{background:rgba(255,255,255,.1)}
+.wt-pp svg{display:block;width:12px;height:12px;margin:auto;fill:currentColor}
+.wt-pp .pl,.wt.paused .wt-pp .pa{display:none}.wt.paused .wt-pp .pl{display:inline}
+.wt-v{flex:none;margin-left:6px;font-size:15px;color:#c9d6f2;text-decoration:underline;text-underline-offset:2px}
+.wt-v:hover{color:#fff}
+.wt-st{display:grid;cursor:pointer}
+.wt-st>figure{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .45s,visibility 0s .45s}
+.wt-st>figure.on{opacity:1;visibility:visible;transition:opacity .45s}
+.wt-st img{display:block;width:100%;height:auto;aspect-ratio:3/2}
+.wt-st figcaption{padding:11px 16px 14px;font-size:16.5px;line-height:1.42}
+.wt-st figcaption span{display:block;margin-bottom:1px;font-size:14px;font-style:italic;color:#9c978d}
+.wt-st figcaption b{color:#fff}
 @media(max-width:1099px){
   .mx-in{grid-template-columns:minmax(0,1fr);justify-items:center;align-content:start;gap:84px;padding:96px 22px 96px}
-  .mx-w{width:min(100%,760px)}
+  .mx-w,.mx-w.wk{width:min(100%,760px);min-width:0;position:relative;top:auto}
   .mx-p{width:min(100%,640px);transform:translateY(18px)}
 }
 @media(max-width:600px){
@@ -398,8 +426,9 @@ h2:hover .doo{animation:wig .5s ease}@keyframes wig{25%{transform:rotate(-7deg)}
   .mx-f{border-width:30px;padding:5px}
   .mx-w::before{top:-50px;width:104px;height:40px}
   .mx-n{left:3%;font-size:18px}.mx-n svg{height:80px;width:46px}
+  .wt-top{padding:5px 8px 4px}.wt-st figcaption{padding:9px 11px 11px;font-size:15px}.wt-v{font-size:14px}
   .mx-p{padding:18px 18px 16px;font-size:15.5px}.mx-p h3{font-size:22px}
   .mx-hd{font-size:14px;top:20px;left:16px}
   .mx-nv{background:linear-gradient(rgba(244,241,234,0),rgba(244,241,234,.95) 40%);padding:18px 8px 10px}
 }
-@media(prefers-reduced-motion:reduce){.mx-bg,.mx-hd,.mx-in,.mx-w::before,.mx-w::after,.mx-n,.mx-n path,.mx-p,.mx-nv{transition:none}.mx-p{transform:none}}
+@media(prefers-reduced-motion:reduce){.mx-bg,.mx-hd,.mx-in,.mx-w::before,.mx-w::after,.mx-n,.mx-n path,.mx-p,.mx-nv,.wt-st>figure,.wt-st>figure.on{transition:none}.mx-p{transform:none}}
