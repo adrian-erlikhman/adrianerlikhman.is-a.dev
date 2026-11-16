@@ -2,7 +2,7 @@
 %%  Adrian Erlikhman -- curriculum vitae
 %%  Source of cv.pdf on adrianerlikhman.is-a.dev (also copied to resume-long.pdf,
 %%  so old links to the long resume still open).
-%%  Updated: 2026-11-03
+%%  Updated: 2026-11-15
 %%
 %%  An academic CV in the classic black-and-white LaTeX resume layout (Jake's
 %%  Resume), 11pt: education, publications with full citations, presentations
@@ -81,7 +81,7 @@
 \setlist[itemize]{leftmargin=0.18in,labelsep=0.5em,itemsep=0pt,parsep=0pt,
   topsep=1pt,partopsep=0pt,beginpenalty=10000,label={$\vcenter{\hbox{\tiny$\bullet$}}$},
   before=\small}
-% numbered citations, [1] to [5] across the three groups
+% numbered citations, [1] to [6] across the three groups
 \newlist{pubs}{enumerate}{1}
 \setlist[pubs]{label={[\arabic*]},leftmargin=0.34in,labelsep=0.5em,itemsep=5pt,parsep=0pt,
   topsep=2pt,partopsep=0pt}
@@ -139,6 +139,10 @@
     \item Attributed 840 essays from five frontier models in seven languages, English to Hindi, with 21 interpretable features (the syntactic ones from Universal Dependencies parses): 59--72\% accuracy in every language (chance 20\%), with no decline detected as language resources fall.
     \item Character n-grams are 3--22 points more accurate within a language, but the features transfer between languages better (49\% vs.\ 41\%) and reach 57--70\% on machine-translated text; across 4,195 judge calls, four of the five models attribute authorship at chance.
   \end{itemize}
+  \item \me, M.~Tarekegn, P.~Juang. ``Who Wrote This? LLM Judges Encode Authorship Without a Detectable Sense of Self.'' \textit{Fourth Workshop on Large Language and Foundation Models (WLLFM), IEEE BigData 2026}, Phoenix, AZ, Dec 2026. \textbf{Accepted.} Co-first author.
+  \begin{itemize}
+    \item Probes on four LLM judges' hidden states name each text's author (AUC 0.90--0.98), but no judge's own states beat its strongest peer's.
+  \end{itemize}
 \end{pubs}
 
 \subsection{Journal articles}
@@ -168,7 +172,7 @@
 
 \dated{``Interpretable Multilingual Attribution of Frontier LLMs.'' \textit{IEEE BigData 2026 High School Symposium}, Phoenix, AZ (scheduled).}{Dec 2026}
 \dated{Invited panelist, student panel on AI, in aiEDU's pre-conference session ``Transform Your School's AI Readiness.'' \textit{National Consortium of STEM Schools (NCSS) 2026}, San Diego, CA (scheduled).}{Dec 2026}
-\dated{``Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation.'' \textit{ARRSI Workshop, AACL-IJCNLP 2026}, virtual (scheduled).}{Nov 2026}
+\dated{``Curated to Win: Certifying Reward-Model and Judge Selection Against Evaluation-Set Curation.'' \textit{ARRSI Workshop, AACL-IJCNLP 2026}, virtual.}{Nov 2026}
 \dated{Invited guest, aiEDU podcast, hosted by CEO Alex Kotran. aiEDU is a national AI-literacy nonprofit.}{TBA}
 \dated{Presenter, the AIML-LI curriculum. \textit{LAUSD Innovation Expo}, Los Angeles.}{}
 
@@ -177,6 +181,7 @@
 
 \dated{Best Paper Finalist, IEEE BigData 2026 High School Symposium (one of 12 finalists among 130 accepted papers)}{2026}
 \dated{National Merit Semifinalist (about 16,000 of 1.3M+ entrants)}{2026}
+\dated{Grand Prize, SanD Hacks 2026 (UC San Diego), for miyagi}{2026}
 \dated{1st place, Council District 9 Champion (U18), VISION HACK: South LA, for Ledger}{2026}
 \dated{1st place, Finance track, ACM TrojanHacks, for Monte}{2026}
 \dated{Winner, Agent Behaviour Monitoring track, SEPHacks, judged by Lemma, for Hivemind}{2026}
@@ -237,6 +242,11 @@
 \begin{itemize}
   \item Built a live map of antisemitic incidents: 800 across Greater LA (100 individually sourced, each with a citable link) and 594 on 33 U.S. university campuses. Wrote a dependency-free LA gazetteer that geocodes places named in news articles, which lets a daily GitHub Action update the map unattended.
   \item Funded by a Teen Innovation Grant from the Jewish Federation of Greater Los Angeles (JFEDLA) and distributed through its Community Security Initiative.
+\end{itemize}
+
+\role{miyagi}{Grand Prize, SanD Hacks 2026}{\lnk{https://miyagi.study}{miyagi.study}\sep with Michael Tarekegn}{Nov 2026}
+\begin{itemize}
+  \item Auto-graded labs from any coding tutorial. Built the app and the brand; Michael built the engine.
 \end{itemize}
 
 \role{Safe Routes to School}{Co-Creator\sep 3rd place internationally, Code for Transportation}{\lnk{https://safe-routes-la.github.io}{safe-routes-la.github.io}}{2026}

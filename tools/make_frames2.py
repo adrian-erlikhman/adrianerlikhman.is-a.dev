@@ -1,6 +1,7 @@
-"""Eight distinct carved frames, one per project (3 Nov, Adrian: "make the frames a little more different for each one").
+"""Nine distinct carved frames, one per project (3 Nov, Adrian: "make the frames a little more different for each one";
+miyagi's red lacquer, rosettes and laurel added 15 Nov for its SanD Hacks Grand Prize).
 Each mixes a finish, a corner and a frieze, so no two look alike. Reuses the helpers and lighting of make_frames.py.
-Writes img/frames/f-<project>.svg, the eight frames on the homepage's museum wall: python tools/make_frames2.py"""
+Writes img/frames/f-<project>.svg, the nine frames on the homepage's museum wall: python tools/make_frames2.py"""
 import math, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import make_frames as M
@@ -16,6 +17,7 @@ PAL = {  # plate light, plate dark, ornament, specular
  "verdigris": ("#8fae96", "#4d6b57", "#cfb15a", "#f4ffe8"),
  "walnut":    ("#7a5233", "#3e2614", "#d3aa52", "#fff1c8"),
  "cream":     ("#f4ecda", "#cdbf9d", "#d4ac50", "#fff8e0"),
+ "lacquer":   ("#a8382c", "#5c1510", "#d9b04f", "#fff1c8"),
 }
 FRAMES = {  # project: finish, corner, frieze
  "aimlli":     ("gold", "shell", "vine"),
@@ -26,6 +28,7 @@ FRAMES = {  # project: finish, corner, frieze
  "ednatlas":   ("verdigris", "palmette", "wave"),
  "saferoutes": ("walnut", "scroll", "eggdart"),
  "citadel":    ("cream", "scroll", "vine"),
+ "miyagi":     ("lacquer", "rosette", "laurel"),
 }
 PLATE_C = "M120 22 L74 22 C64 10 52 2 38 4 C30 0 20 2 12 6 C6 10 2 18 4 26 C2 38 6 52 18 62 C14 70 22 78 22 84 L22 120 L120 120 Z"
 

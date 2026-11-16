@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://adrianerlikhman.is-a.dev/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://adrianerlikhman.is-a.dev/adrian.jpg</image:loc><image:title>Adrian Erlikhman</image:title></image:image>
@@ -74,13 +74,13 @@
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/resume.pdf</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://adrianerlikhman.is-a.dev/cv.pdf</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
