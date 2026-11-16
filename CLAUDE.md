@@ -1,5 +1,35 @@
 # Project memory — adrianerlikhman.is-a.dev (repo adrian-erlikhman/adrianerlikhman.is-a.dev, formerly adrian-erlikhman.github.io)
 
+## SanD Hacks Grand Prize and WLLFM (15 Nov 2026, his "WE WON SAND HACKS GRAND PRIZE ... i also got into wllfm. add this to webstie resume, linked")
+- **miyagi** (lowercase, as its brand writes it): **Grand Prize, SanD Hacks 2026** (UC San Diego, 14-15 Nov), with Michael
+  Tarekegn; his word, announced in person, no Devpost winner badge seen yet. Turns any coding tutorial into an auto-graded lab
+  that pauses at every step until your code works. Live `miyagi.study` (his repo adrian-erlikhman/miyagi), Devpost
+  `devpost.com/software/miyagi-x5cw4g`, demo `youtu.be/TXrGOwRW3OM`, code `github.com/michae6345-crypto/miyagi` (public).
+  Split per that repo's README Team section: Adrian the Electron overlay (`app/`) and the brand (and miyagi.study); Michael the
+  engine and the VS Code companion. At judging Adrian did the pitch's intro and outro, Michael the demo. Tracks entered: Bright
+  Data, Gemini, Tiger Data, GoDaddy; **never** the SpaceX track (no Grok in it).
+  On the site: a museum work third, after SafeJew (`#case-miyagi`, Claude's placement: the biggest hackathon prize; move it if
+  he asks), in a **red-lacquer frame with rosettes and laurel** (`img/frames/f-miyagi.svg`, `make_frames2.py` "lacquer"; the
+  other eight files came out byte-identical). Wall picture `img/cases/miyagi-home.webp` (its og card, the bonsai, padded to
+  16:10); the closer look shows the app (`miyagi-box.webp`, Devpost screenshot 02-box: the spotlight box on the line to type).
+  The sign says "nine works". An Honors row after Citadel, JSON-LD `award`, llms.txt; one-pager: first line of Competitions;
+  CV: Honors line, and a Selected Projects entry after SafeJew (one bullet, link on the role line, to keep the CV at 4 pages).
+- **WLLFM: accepted 13 Nov** (S22216, "Who Wrote This? LLM Judges Encode Authorship Without a Detectable Sense of Self",
+  Adrian Erlikhman, Michael Tarekegn, Philo Juang, in that order; Fourth Workshop on Large Language and Foundation Models at
+  IEEE BigData 2026, Phoenix, 14-17 Dec; archival, IEEE Xplore). It is the follow-up to Whose Line, built from CompLLM's
+  open-weight panel; private repo `adrian-erlikhman/complm`, branch `wllfm` (4b0f2f3 = the submitted version). Research card
+  `#rs-t6`, third (after Curated to Win; accepted papers first). Numbers from `paper_wllfm/numbers.tex`: 960 texts, probe AUCs
+  0.90-0.98, 0.77-0.89 on 32-word texts, Claude 53.1% as an outside reader. **No PDF or code link yet**: the camera-ready is due
+  26 Nov and the code is promised "with the paper". The cover (`img/papers/r06-wllfm.webp`) is page 1 of the branch's
+  Tectonic `main.pdf`, whose abstract predates the final wording (invisible at 104px); re-render it from the camera-ready, host
+  the PDF, and make the cover and title links (the card's `[EDIT]` comment). Presentation format (oral, poster, online) is not
+  assigned, so, as with ARRSI before, **no Presentations line on the CV yet**; add it once he confirms.
+- Dated lines fixed the same day: the About now says "In November I presented that research ..." (the ARRSI talk ran 10 Nov
+  as his recorded video, played by the organizer); the Nov. 10 Coming-up line is gone; BigData reads "Dec. 14-17" with both
+  papers; the CV's ARRSI talk lost "(scheduled)". "Four of my papers are about evaluating language models".
+- Résumé cache-buster is now `?v=2026-11-15-sandhacks` (7 links). Both PDFs built with XeLaTeX (checked first: HEAD's cv.tex
+  reproduced the live cv.pdf text exactly), `build.check()` passed (2 and 4 pages).
+
 ## ARRSI talk materials (5 Nov 2026, his "submit it and also updat my site")
 - Curated to Win's slides (12 pages) and A0 poster went into the AACL-IJCNLP presentation form on 5 Nov (Underline code
   **W7_7**, submission 6aece44ce842ed4ed804e0bf, confirmation email the same day; he told Claude to sign the release for him).
