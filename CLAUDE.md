@@ -44,11 +44,10 @@
 - Résumé cache-buster is now `?v=2026-11-15-clean` (7 links). Both PDFs built with XeLaTeX (checked first: HEAD's cv.tex
   reproduced the live cv.pdf text exactly), `build.check()` passed (2 and 4 pages).
 
-## AIML-LI on github.io for now (18 Nov 2026, his "Yes, switch them")
-- aiml-initiative.org expired on 9 Nov (it is on Ibrahim Piri's Namecheap account) and was parked, so the AIML-LI site moved
-  to https://aimlinitiative.github.io (its repo's PR #12). The site's AIML-LI links follow it: the museum figure `#case-aimlli`
-  (picture, "Site", the closer look's `data-href`), llms.txt and site.js BIG VIEW `D`. The CV still links the old domain.
-  **Once the domain is renewed, switch all of them back** (and bump site.js's `?v=`).
+## AIML-LI's domain (expired 9 Nov, renewed 20 Nov 2026)
+- aiml-initiative.org lapsed on 9 Nov and was parked; from 18 to 20 Nov the AIML-LI site ran at aimlinitiative.github.io and
+  this site linked there (#331). It was renewed on 20 Nov on the `aimlinitiative` Namecheap account, and every link is back on
+  aiml-initiative.org (the museum figure `#case-aimlli`, llms.txt, site.js BIG VIEW `D`). It renews each 9 Nov.
 
 ## ARRSI talk materials (5 Nov 2026, his "submit it and also updat my site")
 - Curated to Win's slides (12 pages) and A0 poster went into the AACL-IJCNLP presentation form on 5 Nov (Underline code
