@@ -7,6 +7,7 @@ llm_misattribution/
 !.claude/skills/
 !.claude/agents/
 !.claude/settings.json
+!.claude/notes/
 DEPLOY.md
 push-all.ps1
 toggle-site.ps1
