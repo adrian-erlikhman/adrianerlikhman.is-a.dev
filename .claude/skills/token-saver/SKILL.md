@@ -61,7 +61,7 @@ any rule it needs in its brief.
 ## 5. Context hygiene (main session)
 
 - Read part of a file (`offset`/`limit`) or grep it; read a whole large file only
-  when you need all of it. `index.html`, `assets/site.js` and `CLAUDE.md` are large.
+  when you need all of it. `index.html`, `assets/site.js` and the files in `.claude/notes/` are large.
 - Pipe long command output through `tail`/`head` or a filter; never print a full
   build log or a minified file.
 - Send independent tool calls in one message.
@@ -81,7 +81,7 @@ any rule it needs in its brief.
   session grows; `/context` and `/usage` to see what is filling the window.
 - Turn off connectors and plugins a session does not need: each one's tool list
   is paid for on every turn.
-- Keep CLAUDE.md short (the docs suggest under 200 lines): it is loaded in full
+- Keep CLAUDE.md short (under 200 lines; history goes in `.claude/notes/`): it is loaded in full
   into every session and every subagent that does not omit it.
 
 Modelled on the MIT-licensed AqueGen/model-routing, ahnafthaqeef/orchestrate-claude-skill,
