@@ -1,5 +1,17 @@
 # Project memory — adrianerlikhman.is-a.dev (repo adrian-erlikhman/adrianerlikhman.is-a.dev, formerly adrian-erlikhman.github.io)
 
+## Token budget (24 Nov 2026, his "create a token optimizing skill that uses different models based on the intensity of the task ... make this a preset for everything")
+- **Always on, every task:** follow `.claude/skills/token-saver/SKILL.md`. In short: do small things inline; send searches,
+  long-output commands and page fetches to **`scout`** (haiku, low effort, loads without this file, so brief it fully);
+  specified edits and rebuilds to **`builder`** (sonnet, medium); one independent review or a twice-failed bug to
+  **`reviewer`** (opus, high). Any other subagent or workflow `agent()` gets an explicit `model` (default `sonnet`); never
+  dispatch a subagent on fable. Escalate one step at a time, effort before model, and stop after a second failure.
+- Design choices, wording and anything he has ruled on stay in the main session: a cheap model must not rewrite site copy.
+- Read large files in parts (`index.html`, `assets/site.js`, this file), filter long command output, keep replies short.
+- `.claude/settings.json` sets `CLAUDE_CODE_SUBAGENT_MODEL=sonnet` (the default for subagents with no pinned model). The
+  agents are `.claude/agents/{scout,builder,reviewer}.md`. `.gitignore` tracks only those, the skill and settings.json.
+- When compacting, keep: his rulings and picks from this session, files changed, cache-buster values, what is still open.
+
 ## SanD Hacks Grand Prize and WLLFM (15 Nov 2026, his "WE WON SAND HACKS GRAND PRIZE ... i also got into wllfm. add this to webstie resume, linked")
 - **miyagi** (lowercase, as its brand writes it): **Grand Prize, SanD Hacks 2026** (UC San Diego, 14-15 Nov), with Michael
   Tarekegn; his word, announced in person, no Devpost winner badge seen yet. Turns any coding tutorial into an auto-graded lab

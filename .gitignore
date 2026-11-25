@@ -2,7 +2,11 @@
 # The project code and research live in their own separate repos.
 projects/
 llm_misattribution/
-.claude/
+.claude/*
+# shared Claude Code config (token-saver skill, model-pinned agents, settings) is tracked
+!.claude/skills/
+!.claude/agents/
+!.claude/settings.json
 DEPLOY.md
 push-all.ps1
 toggle-site.ps1
