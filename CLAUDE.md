@@ -16,7 +16,9 @@
 - **miyagi** (lowercase, as its brand writes it): **Grand Prize, SanD Hacks 2026** (UC San Diego, 14-15 Nov), with Michael
   Tarekegn; his word, announced in person, no Devpost winner badge seen yet. Turns any coding tutorial into an auto-graded lab
   that pauses at every step until your code works. Live `miyagi.study` (his repo adrian-erlikhman/miyagi), Devpost
-  `devpost.com/software/miyagi-x5cw4g`, demo `youtu.be/TXrGOwRW3OM`, code `github.com/michae6345-crypto/miyagi` (public).
+  `devpost.com/software/miyagi-x5cw4g`, demo `youtu.be/TXrGOwRW3OM`, code `github.com/michae6345-crypto/miyagi`, **not linked since 27 Nov**: Michael is making that repo private before
+  beta and asked for no app or website links into it, so the Code links came off the museum figure, its placard and
+  llms.txt. Don't re-add them. miyagi.study's releases stay on the public adrian-erlikhman/miyagi.
   Split per that repo's README Team section: Adrian the Electron overlay (`app/`) and the brand (and miyagi.study); Michael the
   engine and the VS Code companion. At judging Adrian did the pitch's intro and outro, Michael the demo. Tracks entered: Bright
   Data, Gemini, Tiger Data, GoDaddy; **never** the SpaceX track (no Grok in it).
